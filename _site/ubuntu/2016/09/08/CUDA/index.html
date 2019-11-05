@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+  <head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>
+    
+      Ubuntu CUDA & Cudnn 설치하기 &middot; Jerry's Blog
+    
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
+  <link rel="stylesheet" href="/public/css/main.css">
+
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-precomposed.png">
+  <link rel="shortcut icon" href="/public/favicon.ico">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+
+  <!-- scroll -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script>
+    $( window ).scroll( function() {
+      if ( $( this ).scrollTop() > 500 ) {
+        $( '.top' ).fadeIn();
+      } else {
+        $( '.top' ).fadeOut();
+      }
+    } );
+    $( '.top' ).click( function() {
+      $( 'html, body' ).stop().animate( { scrollTop : 0 }, 100);
+      return false;
+    } );
+  </script>
+  
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <script>
+    (absbygoogle = window.adsbygoogle || []).push({
+        google_ad_client: "ca-pub-1054696837285307",
+        enable_page_level_ads: true
+    });
+  </script>
+  
+  
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      //jax: ["input/TeX", "output/HTML-CSS"],
+      tex2jax: {
+        inlineMath: [ ['$', '$'] ],
+        displayMath: [ ['$$', '$$'] ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+      //,
+      //displayAlign: "left",
+      //displayIndent: "2em"
+    });
+  </script>
+  <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
+  
+  
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="/dest/simple-jekyll-search.js" type="text/javascript"></script>
+  <script type="text/javascript">
+  $(document).ready(function(){
+    document.search.searchinput.focus();
+  });
+  </script>
+</head>
+
+  <style>blockquote {font-size: 1em; line-height: 1.4}</style>
+  </head>
+  <body>
+
+    <!-- Target for toggling the sidebar `.sidebar-checkbox` is for regular
+     styles, `#sidebar-checkbox` for behavior. -->
+<input type="checkbox" class="sidebar-checkbox" id="sidebar-checkbox">
+
+<!-- Toggleable sidebar -->
+<div class="sidebar" id="sidebar">
+  <div class="sidebar-item">
+    <div class="sidebar-personal-info">
+      <div class="sidebar-personal-info-section">
+        <a href="https://gravatar.com/22a6447c0c965de55f4ce9691aed2af4">
+          <img src="https://www.gravatar.com/avatar/22a6447c0c965de55f4ce9691aed2af4?s=350" title="View on Gravatar" alt="View on Gravatar" />
+        </a>
+      </div>
+      <div class="sidebar-personal-info-section">
+        <p></p>
+      </div>
+      
+      
+      
+      <div class="sidebar-personal-info-section">
+        <p> Follow me  :  
+        
+        
+        
+        <a href="https://github.com/jjerry-k">
+          <i class="fa fa-github" aria-hidden="true"></i>
+        </a>
+        
+        |
+        
+        
+        
+        <a href="https://www.facebook.com/jerry.kim.566">
+          <i class="fa fa-facebook" aria-hidden="true"></i>
+        </a>
+        
+        |
+        
+        
+        
+        <a href="mailto:jaeyeol2931@gmail.com">
+          <i class="fa fa-envelope" aria-hidden="true"></i>
+        </a>
+        
+        
+        
+        </p>
+      </div>
+      
+    </div>
+  </div>
+
+  <nav class="sidebar-nav">
+    
+      
+      
+      
+
+      
+
+      <span class="">
+        <a class="sidebar-nav-item " href="/">
+          Home
+        </a>
+
+        
+      </span>
+
+    
+      
+      
+      
+
+      
+
+      <span class="foldable">
+        <a class="sidebar-nav-item " href="/blog/">
+          Contents
+        </a>
+
+        
+          
+            
+            
+            
+              <a class="sidebar-nav-item sidebar-nav-item-sub " href="/blog/blog/">
+                Blog
+              </a>
+          
+        
+          
+            
+            
+            
+              <a class="sidebar-nav-item sidebar-nav-item-sub " href="/blog/python/">
+                Python
+              </a>
+          
+        
+          
+            
+            
+            
+              <a class="sidebar-nav-item sidebar-nav-item-sub " href="/blog/ubuntu/">
+                Ubuntu
+              </a>
+          
+        
+          
+            
+            
+            
+              <a class="sidebar-nav-item sidebar-nav-item-sub " href="/blog/living/">
+                Living
+              </a>
+          
+        
+          
+            
+            
+            
+              <a class="sidebar-nav-item sidebar-nav-item-sub " href="/blog/deeplearning/">
+                Deep Learning
+              </a>
+          
+        
+      </span>
+
+    
+      
+      
+      
+
+      
+
+      <span class="">
+        <a class="sidebar-nav-item " href="/about/">
+          About
+        </a>
+
+        
+      </span>
+
+    
+
+  </nav>
+
+  <div class="sidebar-item">
+    <p>
+    &copy; 2019 Jerry. This work is liscensed under <a href="http://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0</a>.
+    </p>
+  </div>
+
+  <div class="sidebar-item">
+    <p>
+    Powered by <a href="http://jekyllrb.com">jekyll</a>
+    </p>
+  </div>
+</div>
+
+
+    <!-- Wrap is the content to shift when toggling the sidebar. We wrap the
+         content to avoid any CSS collisions with our real content. -->
+    <div class="wrap">
+          <div class="top" style="position:fixed; right:10%; bottom:15px; display:none; z-index:9999;">
+            <a href="#">
+              <img src="https://jjerry-k.github.io/public/top.png" width="40" height="40" class="top" style="border-radius:5px; background-color: #000; margin-bottom:0; margin-right:7px; float:left;">
+            </a>
+            
+            <a href="/blog/ubuntu/">
+              <img src="https://jjerry-k.github.io/public/contents.png" width="40" height="40" class="top" style="border-radius:5px; background-color: #000; margin-bottom:0; float:left;">
+            </a>
+          </div>
+      <div class="masthead">
+        <div class="container">
+          <h3 class="masthead-title" align="center">
+            <a href="/" title="Home" title="Jerry's Blog">
+              <img class="masthead-logo" src="/public/logo.png"/>
+            </a>
+            <small></small>
+            <img src="http://jjerry-k.github.io/public/search.png" width="20" height="20" style="position:absolute; top:1.3rem; right:1.5rem" data-toggle="modal" data-target="#myModal">
+          </h3>
+        </div>
+      </div>
+
+      <div class="container content">
+        <div class="post">
+  <h1 class="post-title">Ubuntu CUDA & Cudnn 설치하기</h1>
+  <h4 style="margin-top:0;"><span class="post-date">08 Sep 2016</span>
+   |
+  
+    <a href="/blog/tags/#setting" class="post-tag">Setting</a>
+  
+  
+  </h4>
+  <h4 style="font-weight: 400; line-height: 1.8;"><article>
+    <h1 id="환경-구축">환경 구축….</h1>
+
+<p>Deep Learning을 하는데 GPU를 사용해야하니 CUDA와 cuDNN을 설치하기로 하죠.</p>
+
+<h2 id="1-nvidia-그래픽-드라이버-설치">1. NVIDIA 그래픽 드라이버 설치</h2>
+
+<p>Ubuntu 14.04 에선 그래픽 드라이버를 설치하는데 굉장히…<br />
+많은 고난과 역경을 겪었습니다…<br />
+(그래서 결국 설치 못해봄..)<br />
+하지만 16.04에선 어렵지 않음!!!!!!<br />
+(갈아탄 결정적인 이유…)<br />
+그렇다면 설치를 시작해보겠습니다.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>add-apt-repository ppa:graphics-drivers/ppa
+
+<span class="nb">sudo </span>apt-get update
+
+<span class="nb">sudo </span>apt-get <span class="nb">install </span>nvidia-364
+</code></pre></div></div>
+
+<p>(제 노트북은 GTX 960m 이므로..)<br />
+그냥 터미널에 입력하시면 되요.<br />
+NVIDIA 사이트에서 GPU 버전이랑 맞는걸로!!<br />
+그게 나을 듯합니다.<br />
+그 후 로그아웃을 하고 다시 로그인을 하려고 하면 무한 로그인이 될 거에요.<br />
+(안그러면 좋고..)<br />
+Ctrl + Alt + F1을 눌러 tty1으로 들어가서 로그인 후 reboot을 실행해줍시다.<br />
+로그인 후 NVIDIA X Server Settings 를 켜면</p>
+
+<p><img src="https://jjerry-k.github.io/public/img/CUDA/01.png" /></p>
+
+<p>요래 설치 된걸 확인할 수 있습니다.</p>
+
+<h2 id="2-cuda-설치">2. CUDA 설치</h2>
+
+<p>NVIDIA 드라이버를 설치 했으니 이제 CUDA를 설치해보도록 하죠.</p>
+
+<p><a href="https://developer.nvidia.com/cuda-downloads">https://developer.nvidia.com/cuda-downloads</a> 에 들어가시면 요로코롬 뜨는데요.</p>
+
+<p><img src="https://jjerry-k.github.io/public/img/CUDA/02.png" /></p>
+
+<p>각자의 환경에 맞춰서 선택한 후 다운로드 하시면 됩니다.<br />
+run 파일을 다운을 받은 후에 터미널을 여시고 run 파일이 다운로드된 디렉토리로 이동합니다.<br />
+그리고 파일의 권한을 모든  사용자가 사용할 수 있도록 변경합니다.<br />
+그리고 실행!</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd </span>Downloads
+<span class="nb">sudo chmod </span>a+r cuda_7.5.18_linux.run
+<span class="nb">sudo</span> ./cuda_7.5.18_linux.run <span class="nt">--override</span>
+or
+<span class="nb">sudo </span>sh cuda_7.5.18_linux.run <span class="nt">--override</span>
+</code></pre></div></div>
+
+<p>16.04는 gcc, g++ 버전이 5.x 라 override 를 해줘야합니다..<br />
+실행하면 어쩌고 저쩌고 약관 내용..? 이 나오는데요…<br />
+살포시 q 를 눌러줍니다.<br />
+그러면…사용자 정의 설치라고 할까요??<br />
+이것 저것 물어봅니다.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Do you accept the previously <span class="nb">read </span>EULA? <span class="o">(</span>accept/decline/quit<span class="o">)</span>: accept
+
+You are attempting to <span class="nb">install </span>on an unsupported configuration. Do you wish to <span class="k">continue</span>? <span class="o">((</span>y<span class="o">)</span>es/<span class="o">(</span>n<span class="o">)</span>o<span class="o">)</span> <span class="o">[</span> default is no <span class="o">]</span>: <span class="nb">yes
+
+</span>Install NVIDIA Accelerated Graphics Driver <span class="k">for </span>Linux-x86_64 352.39? <span class="o">((</span>y<span class="o">)</span>es/<span class="o">(</span>n<span class="o">)</span>o/<span class="o">(</span>q<span class="o">)</span>uit<span class="o">)</span>: no
+
+Install the CUDA 7.5 Toolkit? <span class="o">((</span>y<span class="o">)</span>es/<span class="o">(</span>n<span class="o">)</span>o/<span class="o">(</span>q<span class="o">)</span>uit<span class="o">)</span>: <span class="nb">yes
+
+</span>Enter Toolkit Location <span class="o">[</span> default is /usr/local/cuda-7.5 <span class="o">]</span>: 그냥 엔터
+
+Do you want to <span class="nb">install </span>a symbolic <span class="nb">link </span>at /usr/local/cuda? <span class="o">((</span>y<span class="o">)</span>es/<span class="o">(</span>n<span class="o">)</span>o/<span class="o">(</span>q<span class="o">)</span>uit<span class="o">)</span>: <span class="nb">yes
+
+</span>Install the CUDA 7.5 Samples? <span class="o">((</span>y<span class="o">)</span>es/<span class="o">(</span>n<span class="o">)</span>o/<span class="o">(</span>q<span class="o">)</span>uit<span class="o">)</span>: no
+</code></pre></div></div>
+
+<p>이런식으로 세팅을 해줍니다. <br />
+그리고 그저 기다리고 기다림…. <br />
+설치가 다 되었으면 뭐 따로 실행할 건 없습니다.<br />
+바로 cuDNN 설치를 하죠.<br />
+이건 설치….는 아니고 그냥 cuda 디렉토리에 파일을 파일 복사? 하는거에요.</p>
+
+<h2 id="3-cudnn-설치">3. cuDNN 설치</h2>
+
+<p>먼저 cuDNN 파일을 받으셔야하는데요.</p>
+
+<p><a href="https://developer.nvidia.com/rdp/cudnn-download">https://developer.nvidia.com/rdp/cudnn-download</a></p>
+
+<p>여기에 들어가셔서 계정 만드시고….<br />
+사용 용도… 사용 할 라이브러리.. 등등 선택하시고 원하시는 버전 download 하시면 됩니다.<br />
+저는 4.0으로 했어요.<br />
+Tensorflow라는 라이브러리를 사용할 것이기 때문에…
+그리고 나서 터미널을 켜고</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd</span> /usr/local
+<span class="nb">sudo tar </span>zxf ~/Downloads/cudnn-7.0-linux-x64-v4.0-prod.tgz
+</code></pre></div></div>
+
+<p>이렇게 하시거나 아니면</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd </span>cudnn 다운로드경로
+<span class="nb">sudo tar </span>zxf cudnn-7.0-linux-x64-v4.0-prod.tgz
+<span class="nb">sudo cp </span>cuda/include/cudnn.h /usr/local/cuda/include
+<span class="nb">sudo cp </span>cuda/lib64/libcudnn<span class="k">*</span> /usr/local/cuda/lib64
+</code></pre></div></div>
+
+<p>이렇게 해주시구요.<br />
+환경변수를 설정해줘야 합니다.
+터미널을 껐다가 다시 켜주시고</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>gedit ~/.bashrc
+</code></pre></div></div>
+
+<p>그려면 어떤 메모장? 문서 파일이 열립니다.
+매~~~~앤 아래 부분에</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">export </span><span class="nv">PATH</span><span class="o">=</span>/usr/local/cuda-7.5/bin:<span class="nv">$PATH</span>
+<span class="nb">export </span><span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span>/usr/local/cuda-7.5/lib64:<span class="nv">$LD_LIBRARY_PATH</span>
+</code></pre></div></div>
+
+<p>를 추가해주세요.</p>
+
+<p>이렇게 GPU 설정이 끝났습니다…<br />
+이제 caffe와 tensorflow를 설치해야겠군요..<br />
+험난허다…<br />
+개강이라 죽겠는데..</p>
+
+  </article></h4>
+</div>
+
+
+  
+
+
+
+
+
+<div class="comments">
+  <h2>Comments</h2>
+  <div id="disqus_thread"></div>
+  <script>
+var disqus_config = function () {
+  this.page.url = 'http://localhost:4000/ubuntu/2016/09/08/CUDA/'; // Replace PAGE_URL with your page's canonical URL variable
+  this.page.identifier = '/ubuntu/2016/09/08/CUDA'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+(function() {
+  var d = document, s = d.createElement('script');
+  s.src = '//jerry.disqus.com/embed.js';
+  s.setAttribute('data-timestamp', +new Date());
+  (d.head || d.body).appendChild(s);
+})();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</div>
+
+
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- ad wide -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-1054696837285307"
+     data-ad-slot="7569282579"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+        </div>
+    </div>
+
+    <label for="sidebar-checkbox" class="sidebar-toggle"></label>
+
+    <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Search</h4>
+        </div>
+        <div class="modal-body">
+
+    <h4><div id="search-container">
+      <input type="text" id="search-input" placeholder="검색어 입력" class="input" style="font-size: 1rem; width: 100%; padding: 10px; border: 0px; outline: none; float: left; background: #cecece;" autofocus>
+    </div></h4><br>
+
+      <div id="results">
+        <h1></h1>
+      <ul class="results"></ul>
+      </div>
+      <br><ul id="results-container"></ul>
+    </div>
+
+<!-- Script pointing to jekyll-search.js -->
+
+
+<script type="text/javascript">
+      SimpleJekyllSearch({
+        searchInput: document.getElementById('search-input'),
+        resultsContainer: document.getElementById('results-container'),
+        json: '/dest/search.json',
+        searchResultTemplate: '<h4 style="margin-bottom:-0.5rem;"><a class="post-title" style="color:#ac4142;" href="{url}" title="{desc}">{title}</a> <small>{category}</small></h4>',
+        noResultsText: '<h4><br>문서가 존재하지 않습니다.</h4>',
+        limit: 15,
+        fuzzy: false,
+        exclude: ['Welcome']
+      })
+</script>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+    <script>
+      (function(document) {
+        var toggle = document.querySelector('.sidebar-toggle');
+        var sidebar = document.querySelector('#sidebar');
+        var checkbox = document.querySelector('#sidebar-checkbox');
+        document.addEventListener('click', function(e) {
+          var target = e.target;
+          if (target === toggle) {
+            checkbox.checked = !checkbox.checked;
+            e.preventDefault();
+          } else if (checkbox.checked && !sidebar.contains(target)) {
+            /* click outside the sidebar when sidebar is open */
+            checkbox.checked = false;
+          }
+        }, false);
+      })(document);
+    </script>
+
+    
+      <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){ (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o), m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m) })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-126636477-1', 'auto');
+        ga('send', 'pageview');
+      </script>
+    
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+      (absbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-1054696837285307",
+          enable_page_level_ads: true
+      });
+    </script>
+  </body>
+  
+  <script id="dsq-count-scr" src="//jerry.disqus.com/count.js" async></script>
+  
+</html>

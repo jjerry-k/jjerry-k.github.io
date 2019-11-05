@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+  <head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>
+    
+      MRI interpolation using Deep Learning - [1] &middot; Jerry's Blog
+    
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
+  <link rel="stylesheet" href="/public/css/main.css">
+
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-precomposed.png">
+  <link rel="shortcut icon" href="/public/favicon.ico">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+
+  <!-- scroll -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script>
+    $( window ).scroll( function() {
+      if ( $( this ).scrollTop() > 500 ) {
+        $( '.top' ).fadeIn();
+      } else {
+        $( '.top' ).fadeOut();
+      }
+    } );
+    $( '.top' ).click( function() {
+      $( 'html, body' ).stop().animate( { scrollTop : 0 }, 100);
+      return false;
+    } );
+  </script>
+  
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <script>
+    (absbygoogle = window.adsbygoogle || []).push({
+        google_ad_client: "ca-pub-1054696837285307",
+        enable_page_level_ads: true
+    });
+  </script>
+  
+  
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      //jax: ["input/TeX", "output/HTML-CSS"],
+      tex2jax: {
+        inlineMath: [ ['$', '$'] ],
+        displayMath: [ ['$$', '$$'] ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+      //,
+      //displayAlign: "left",
+      //displayIndent: "2em"
+    });
+  </script>
+  <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
+  
+  
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="/dest/simple-jekyll-search.js" type="text/javascript"></script>
+  <script type="text/javascript">
+  $(document).ready(function(){
+    document.search.searchinput.focus();
+  });
+  </script>
+</head>
+
+  <style>blockquote {font-size: 1em; line-height: 1.4}</style>
+  </head>
+  <body>
+
+    <!-- Target for toggling the sidebar `.sidebar-checkbox` is for regular
+     styles, `#sidebar-checkbox` for behavior. -->
+<input type="checkbox" class="sidebar-checkbox" id="sidebar-checkbox">
+
+<!-- Toggleable sidebar -->
+<div class="sidebar" id="sidebar">
+  <div class="sidebar-item">
+    <div class="sidebar-personal-info">
+      <div class="sidebar-personal-info-section">
+        <a href="https://gravatar.com/22a6447c0c965de55f4ce9691aed2af4">
+          <img src="https://www.gravatar.com/avatar/22a6447c0c965de55f4ce9691aed2af4?s=350" title="View on Gravatar" alt="View on Gravatar" />
+        </a>
+      </div>
+      <div class="sidebar-personal-info-section">
+        <p></p>
+      </div>
+      
+      
+      
+      <div class="sidebar-personal-info-section">
+        <p> Follow me  :  
+        
+        
+        
+        <a href="https://github.com/jjerry-k">
+          <i class="fa fa-github" aria-hidden="true"></i>
+        </a>
+        
+        |
+        
+        
+        
+        <a href="https://www.facebook.com/jerry.kim.566">
+          <i class="fa fa-facebook" aria-hidden="true"></i>
+        </a>
+        
+        |
+        
+        
+        
+        <a href="mailto:jaeyeol2931@gmail.com">
+          <i class="fa fa-envelope" aria-hidden="true"></i>
+        </a>
+        
+        
+        
+        </p>
+      </div>
+      
+    </div>
+  </div>
+
+  <nav class="sidebar-nav">
+    
+      
+      
+      
+
+      
+
+      <span class="">
+        <a class="sidebar-nav-item " href="/">
+          Home
+        </a>
+
+        
+      </span>
+
+    
+      
+      
+      
+
+      
+
+      <span class="foldable">
+        <a class="sidebar-nav-item " href="/blog/">
+          Contents
+        </a>
+
+        
+          
+            
+            
+            
+              <a class="sidebar-nav-item sidebar-nav-item-sub " href="/blog/blog/">
+                Blog
+              </a>
+          
+        
+          
+            
+            
+            
+              <a class="sidebar-nav-item sidebar-nav-item-sub " href="/blog/python/">
+                Python
+              </a>
+          
+        
+          
+            
+            
+            
+              <a class="sidebar-nav-item sidebar-nav-item-sub " href="/blog/ubuntu/">
+                Ubuntu
+              </a>
+          
+        
+          
+            
+            
+            
+              <a class="sidebar-nav-item sidebar-nav-item-sub " href="/blog/living/">
+                Living
+              </a>
+          
+        
+          
+            
+            
+            
+              <a class="sidebar-nav-item sidebar-nav-item-sub " href="/blog/deeplearning/">
+                Deep Learning
+              </a>
+          
+        
+      </span>
+
+    
+      
+      
+      
+
+      
+
+      <span class="">
+        <a class="sidebar-nav-item " href="/about/">
+          About
+        </a>
+
+        
+      </span>
+
+    
+
+  </nav>
+
+  <div class="sidebar-item">
+    <p>
+    &copy; 2019 Jerry. This work is liscensed under <a href="http://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0</a>.
+    </p>
+  </div>
+
+  <div class="sidebar-item">
+    <p>
+    Powered by <a href="http://jekyllrb.com">jekyll</a>
+    </p>
+  </div>
+</div>
+
+
+    <!-- Wrap is the content to shift when toggling the sidebar. We wrap the
+         content to avoid any CSS collisions with our real content. -->
+    <div class="wrap">
+          <div class="top" style="position:fixed; right:10%; bottom:15px; display:none; z-index:9999;">
+            <a href="#">
+              <img src="https://jjerry-k.github.io/public/top.png" width="40" height="40" class="top" style="border-radius:5px; background-color: #000; margin-bottom:0; margin-right:7px; float:left;">
+            </a>
+            
+            <a href="/blog/deeplearning/">
+              <img src="https://jjerry-k.github.io/public/contents.png" width="40" height="40" class="top" style="border-radius:5px; background-color: #000; margin-bottom:0; float:left;">
+            </a>
+          </div>
+      <div class="masthead">
+        <div class="container">
+          <h3 class="masthead-title" align="center">
+            <a href="/" title="Home" title="Jerry's Blog">
+              <img class="masthead-logo" src="/public/logo.png"/>
+            </a>
+            <small></small>
+            <img src="http://jjerry-k.github.io/public/search.png" width="20" height="20" style="position:absolute; top:1.3rem; right:1.5rem" data-toggle="modal" data-target="#myModal">
+          </h3>
+        </div>
+      </div>
+
+      <div class="container content">
+        <div class="post">
+  <h1 class="post-title">MRI interpolation using Deep Learning - [1]</h1>
+  <h4 style="margin-top:0;"><span class="post-date">05 Jul 2019</span>
+   |
+  
+    <a href="/blog/tags/#paper" class="post-tag">Paper</a>
+  
+  
+  </h4>
+  <h4 style="font-weight: 400; line-height: 1.8;"><article>
+    <h1 id="deep-generative-adversarial-networks-for-thin-section-infant-mr-image-reconstruction">Deep Generative Adversarial Networks for Thin-Section Infant MR Image Reconstruction</h1>
+
+<ul>
+  <li>Jiaqi Gu<sup>1</sup>, Zezu Li<sup>1</sup>, YuanYuan Wans<sup>1, 3</sup>, Haowei Yang<sup>2</sup>, Zhongwei Qiao<sup>2</sup>, and Jinhua Yu<sup>1, 3</sup></li>
+  <li><sup>1</sup>School of Information Science and Technology, Fudan University, Shanghai 200433, China<br />
+<sup>2</sup>The Children’s Hospital of Fudan University, Shanghai 201102, China<br />
+<sup>3</sup>Key Laboratory of Medical Imaging Computing and Computer Assisted Intervention of Shanghai, Department of Electronic Engineering, Institute of Functional
+and Molecular Medical Imaging, Fudan University, Shanghai 200433, China
+—</li>
+</ul>
+
+<h2 id="abstract">Abstract</h2>
+<ul>
+  <li>Thin section magnetic resonance images (<strong>Thin MRI</strong>) 는 뇌수술, 뇌 구조 분석에 좋은 영상.</li>
+  <li>하지만 Thick section magnetic resonance images (<strong>Thick MRI</strong>) 에 비해 imaging cost가 많이 들기 때문에 잘 사용되지 않음.</li>
+  <li>Thick MRI 2 Thin MRI 제안.</li>
+  <li>Two stage( GAN -&gt; CNN )로 구성하였고 Thick MRI의 Axial, Sigittal plane을 이용하여 Thin MRI의 Axial reconstruction.</li>
+  <li>3D-Y-Net-GAN 은 Axial, Sagittal Thick MRI 를 이용하여 Fusion.</li>
+  <li>3D-Dense U-Net은 Sagittal plane에 대해 세부적인 calibrations, structual correction 제공.</li>
+  <li>Loss function 은 structual detail을 Network가 capture 할 수 있도록 제안.</li>
+  <li>bicubic, sparse representation, 3D-SRU-Net 과 비교.</li>
+  <li>35번의 Cross-validation, 114개를 이용하여 두개의 testset 구성.
+    <ul>
+      <li>PSNR : 23.5 % 증가.</li>
+      <li>SSIM : 90.5 % 증가.</li>
+      <li>MMI : 21.5 % 증가.</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="introduction">Introduction</h2>
+<ul>
+  <li>Thin MRI 는 slice thickness가 1mm이고 sapcing gap이 0mm.</li>
+  <li>하지만 항상 Thin MRI를 사용할 수 없음.</li>
+  <li>일반적으로 사용하는 Thick MRI는 slice thickness가 4~6mm 이고 sapcing gap이 0.4~1mm.
+    <ul>
+      <li>해상도 : Thin MRI &gt; Thick MRI</li>
+    </ul>
+  </li>
+  <li>인간의 뇌 발달에 대한 insight를 주기 때문에 유아의 brain MR image는 어른의 brain MR image 보다 연구에 가치가 있음</li>
+  <li>하지만 유아의 MR image를 얻는게 쉽지 않음.</li>
+  <li>그래서 Thick to Thin 제안.</li>
+  <li>기존 traditional interpolation algorithm
+    <ul>
+      <li>시각적으로는 성능이 좋아보임. 하지만 성인의 brain 에 초점을 맞춤.</li>
+      <li><strong><a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4478865/pdf/JMI-001-034007.pdf">Interpolation-based super-resolution reconstruction: effects of slice thickness</a></strong></li>
+      <li><strong><a href="https://www.hindawi.com/journals/ijbi/2013/395915/">Evaluation of interpolation effects on upsampling and accuracy of cost functions-based optimized automatic image registration</a></strong></li>
+    </ul>
+  </li>
+  <li>Frame interpolation 방법과 같이 적용 가능.
+    <ul>
+      <li><strong><a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&amp;arnumber=8110374">Slice Interpolation in MRI Using a Decomposition-reconstruction Method</a></strong></li>
+    </ul>
+  </li>
+  <li>Super-resolution 문제로 적용할 수도 있음.
+    <ul>
+      <li><strong><a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&amp;arnumber=5466111">Image super-resolution via sparse representation</a></strong></li>
+    </ul>
+  </li>
+  <li>CNN, GAN 이 발전하면서 super-resolution 이 탄력을 받음.
+    <ul>
+      <li><strong>[<a href="https://link.springer.com/chapter/10.1007/978-3-319-67564-0_12">Context-Sensitive Super-Resolution for Fast Fetal Magnetic Resonance Imaging</a></strong>]</li>
+      <li><strong>[<a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=8417964">Deep Generative Adversarial Neural Networks for Compressive Sensing MRI</a>]</strong></li>
+    </ul>
+  </li>
+  <li>이전에 성인의 Thick MRI를 Thin MRI 로 reconstruction 하는 3D-SRGAN 제안했으나 axial plane만 고려했음. <strong>[<a href="https://link.springer.com/chapter/10.1007%2F978-3-319-67389-9_38">Reconstruction of Thin-Slice Medical Images Using Generative Adversarial Network</a>]</strong></li>
+  <li>Deep Learning 이 reconstruction performance 뿐 아니라 reconstruction time 감소에도 매우 효과적인걸 보임.</li>
+</ul>
+
+<h2 id="proposed-method">Proposed Method</h2>
+
+<h3 id="a-overview">A. Overview</h3>
+<ul>
+  <li>CNN은 기존에도 super-resolution에서 많이 사용됨.</li>
+  <li>하지만 최근까지 제안된 Network는 대부분 2D image에 대한 upscaling.</li>
+  <li>몇몇 Network는 3D image로 확장했지만 그렇게 효과를 보지 못했음.</li>
+  <li>이 논문의 Flow
+<img src="https://jjerry-k.github.io/public/img/thin/fig01.PNG" /></li>
+</ul>
+
+<p><img src="https://jjerry-k.github.io/public/img/thin/fig02.PNG" /></p>
+
+<h3 id="b-network-architecture">B. Network Architecture</h3>
+<ul>
+  <li>First stage는 3D-Y-Net-GAN 으로 Thick MRI를 Thin MRI로 생성 후 3D-DenseU-Net으로 recalibration.</li>
+</ul>
+
+<h4 id="3d-y-net-gan">3D-Y-Net-GAN</h4>
+<ul>
+  <li>Input : Axial, Sagittal Thick MRI</li>
+  <li>Output : Thin MRI</li>
+  <li>r : Upscaling Factor ( r = 8 일 경우의 예시 )</li>
+</ul>
+
+<p><img src="https://jjerry-k.github.io/public/img/thin/fig03.PNG" /></p>
+
+<ul>
+  <li>Feature Extraction Branches
+    <ul>
+      <li>각 input에 대한 feature 추출.</li>
+      <li>Maxpooling layer에서 [1, 2, 1], [2, 1, 1]의 다른 strides factor 적용.</li>
+      <li>3D convolutional layer 는 Convolution + Batch Normalization + Swish 로 구성.
+        <ul>
+          <li><a href="https://arxiv.org/pdf/1710.05941.pdf">Swish</a>는 Activation 의 종류로 ReLU로 인해 생기는 Dead neuron을 극복할 수 있음. <strong>-&gt; 근데 굳이 왜 swish일까…</strong></li>
+        </ul>
+      </li>
+      <li>layers 를 거친 후 shape 의 변화
+        <ul>
+          <li>Axial : [H, W, S, 1] -&gt; [H/2, W/2, S, 32]</li>
+          <li>Sagittal : [H, W, r*S, 1] -&gt; [H/2, W/2, S, 32]</li>
+        </ul>
+      </li>
+      <li>Axial과 Sagittal의 shape이 다르기 때문에 Sagittal 에 대해서 preprocessing으로 3개의 3d convolution layer 적용.</li>
+    </ul>
+  </li>
+  <li>Feature Fusion Branch
+    <ul>
+      <li>두 feature를 channel 방향으로 Concatanation.</li>
+      <li>W 방향으로 Upsampling 후 H 방향으로 Downsampling feature 를 Concatanation.</li>
+      <li>H 방향으로 Upsampling 후 첫번째 Block의 Feature map을 Concatanation</li>
+      <li>U-Net 에서 아이디어를 얻었고 structual alignment, gradient-vanishing 등을 완화.</li>
+    </ul>
+  </li>
+  <li>Reconstruction Branch
+    <ul>
+      <li>Figure 3 (b) 와 같은 구조.</li>
+      <li>Upsampling layer 3개를 연속으로 붙여서 8배 확장하는 구조 대신에 Multipath upscaling strategy 적용. <strong>-&gt; Artifact 완화 효과…?</strong></li>
+    </ul>
+  </li>
+  <li>
+    <p>Discriminator
+<img src="https://jjerry-k.github.io/public/img/thin/fig04.PNG" /></p>
+
+    <ul>
+      <li>Axial Image, Saggital Image, Combination Image 가 Real Pair인지 Fake Pair인지 감별.</li>
+      <li>Input : ($I^A$, $I^Y$, $I^S$), ($I^A$, $I^{GT}$, $I^S$)</li>
+      <li>Output : Real, Fake</li>
+    </ul>
+  </li>
+</ul>
+
+<h4 id="3d-denseu-net">3D-DenseU-Net</h4>
+<p><img src="https://jjerry-k.github.io/public/img/thin/fig05.PNG" /></p>
+
+<ul>
+  <li>전체적인 구조는 U-Net이지만 2개의 Enhanced residual block 을 적용하여 detail recalibration.</li>
+  <li>Input :  $I^Y$, $I^S$, $I^{YA}$ <strong>-&gt; 어떻게 3개가 input으로…?</strong></li>
+  <li>Output : Thin MR Image</li>
+  <li>$I^A$ 를 $I^Y$ 의 해당 위치에 insertion 하여 $I^{YA}$ 생성. -&gt; 아직 이해 X..
+    <ul>
+      <li>Axial Information 을 이용하여 정확한 axial 을 만들기 위해…</li>
+      <li>$I^S$ 를 $I^Y$ 에 insertion하게 되면 Sagittal 에 대한 information 이 과해지기 때문에 Reconstrtion Axial Image의 Quality 가 안좋아 질 것!</li>
+    </ul>
+  </li>
+  <li>End-to-End 가 아니라 각각 따로따로 학습. <strong>-&gt; Faster RCNN 과 같은 방식으로 할런지….?</strong></li>
+</ul>
+
+<h4 id="loss-function">Loss Function</h4>
+<ul>
+  <li>$G$ 는 generator 라는 의미.</li>
+  <li>Self-Adaptive Charbonnier Loss
+    <ul>
+      <li>일반적으로 많이 사용되는 $\ell2$ 전반적으로 Smoothing 하게 만들어지고 $\ell1$ 은 GT와 Prediction 의 차이로 indiscriminate 하게 학습.</li>
+      <li><a href="https://arxiv.org/pdf/1704.03915.pdf">Deep Laplacian Pyramid Networks for Fast and Accurate Super-Resolution</a>에 따르면 <strong>Charbonnier loss</strong>(미분가능한 $\ell1$의 분산)가 $\ell1$, $\ell2$ 보다 성능이 뛰어남.</li>
+      <li><a href="https://arxiv.org/pdf/1706.03142.pdf">Deep Learning for Isotropic Super-Resolution from Non-Isotropic 3D Electron Microscopy</a> 에 따르면 <strong>Cubic-weighted mean square error</strong> 가 Generated 영상과 Ground truth 간의 차이가 큰 “어려운” 부분의 성능을 강조.</li>
+      <li>다음과 같은 Loss 제안.</li>
+      <li>$\epsilon$ 은 default로 $10^{-6}$</li>
+      <li>$L^G_{SC} = \frac{1}{rLWH}\sum_{x,y,z=1,1,1}^{L,W,rH}\sqrt{(I^{GT}<em>{x,y,z}-I^Y</em>{z,y,z})^2+\epsilon}\cdot\bigg(\frac{1}{2}+\frac{(I^{GT}<em>{x,y,z}-I^Y</em>{z,y,z})^2}{2max((I^{GT}-I^Y)^2)}\bigg)$</li>
+    </ul>
+  </li>
+  <li>3-D Gradient Correction Loss
+    <ul>
+      <li>Charbonnier Loss는 Pixelwise difference에 대한 Loss, Gradient에 대한 손실을 줄 수 있음.</li>
+      <li>다음과 같이 각 axis에 대한 Gradient 를 이용하여 Loss 제안.</li>
+      <li>$L^G_{GC} = \mathbb{E}[(\nabla_xI^{GT}<em>{x,y,z}-\nabla_xI^Y</em>{x,y,z})^2] \ + \mathbb{E}[(\nabla_yI^{GT}<em>{x,y,z}-\nabla_yI^Y</em>{x,y,z})]^2\ + \mathbb{E}[(\nabla_zI^{GT}<em>{x,y,z}-\nabla_zI^Y</em>{x,y,z})^2]$</li>
+    </ul>
+  </li>
+  <li>Adversarial Loss
+    <ul>
+      <li>LSGAN Loss 사용.</li>
+      <li>$L^D=\frac{1}{2}\mathbb{E}[(D(I^{GT}, I^A, I^S)-1)^2+(D(I^Y, I^A, I^S)-0)^2]$</li>
+      <li>$L^G_{AD}=\mathbb{E}[(D(I^Y, I^A, I^S)-1)^2]$</li>
+    </ul>
+  </li>
+  <li>$\ell_2$ Weight Regularization Loss
+    <ul>
+      <li>(Loss는 아니지만…)</li>
+      <li>Overfitting을 방지하기 위해 사용.</li>
+      <li>$L^G_{WR} = \sum\Vert W_G\Vert^2_2$</li>
+    </ul>
+  </li>
+  <li>3D-Y-Net-GAN Loss : $L_G = L^G_{SC} + \lambda_1L^G_{GC} + \lambda_2L^G_{AD} + \lambda_3L^G_{WR}$</li>
+  <li>3D-DenseU-Net Loss : $L = L_{SC} + \lambda_1L_{GC} + \lambda_3L_{WR}$</li>
+</ul>
+
+<h2 id="experimental-result">Experimental Result</h2>
+<ul>
+  <li>Multiplanar 의 효율성을 검증하기 위해 다음과 같이 세 가지 경우로 나눔.
+    <ul>
+      <li>1) Axial, Sagittal 둘 다 이용.</li>
+      <li>2) Axial 만 이용.</li>
+      <li>3) Saigittal 만 이용.</li>
+    </ul>
+  </li>
+  <li>Loss function을 검증하기 위해 네 가지 경우로 나눔.
+    <ul>
+      <li>1) $\ell1norm + L_{GC} + L_{AD} + L_{WR}$ (pixelwise loss를 $\ell1norm$으로 대체.)</li>
+      <li>2) $L_{SC} + L_{GC} + L_{WR}$</li>
+      <li>3) $L_{SC} + L_{AD} + L_{WR}$</li>
+      <li>4) $L_{SC} + L_{GC} + L_{AD} + L_{WR}$</li>
+    </ul>
+  </li>
+  <li>Evalutaion Method 로는 아래와 같이 네 가지 기법과 자신들의 Network
+    <ul>
+      <li>1) <a href="https://ieeexplore.ieee.org/document/1163711">Bicubic interpolation</a></li>
+      <li>2) <a href="https://ieeexplore.ieee.org/document/5466111">Sparse representation</a></li>
+      <li>3) <a href="https://arxiv.org/abs/1706.03142">3D-SRU-Net</a></li>
+      <li>4) 3D-Y-Net-GAN</li>
+      <li>5) 3D-Y-Net-GAN + 3D-DenseU-Net</li>
+    </ul>
+  </li>
+  <li>Metrics으로는 다음 세 가지 사용.
+    <ul>
+      <li>PSNR(Peak Signal-to-Noise Ratio)
+<script type="math/tex">\begin{alignedat}{2}
+MAX_I = 255\\
+PSNR = 20\cdot\log_{10}\Bigg(\frac{MAX_I}{\sqrt{\frac{1}{rLWH}\sum_{x, y, z}(I^R_{x,y,z}-I^{GT}_{x,y,z})^2}}\Bigg)
+\end{alignedat}</script></li>
+      <li>SSIM(Structural SIMilarity)
+<script type="math/tex">\begin{alignedat}{2}
+L : 255(\text{dynamic range})\\
+\mu : \text{Variance}\\
+\mu_{ab} : \text{Covariance}\\
+c_1 = (k_1L)^2\\
+c_2 = (k_2L)^2\\
+SSIM=\frac{(2\mu_a\mu_b+c_1)(2\sigma_{ab}+c_2)}{(\mu_a^2+\mu_b^2+c_1)(\sigma_a^2+\sigma_b^2+c_2)}
+\end{alignedat}</script></li>
+      <li>NMI(Normalized Mutual Information)
+<script type="math/tex">\begin{alignedat}{2}
+H(X) = -\sum_{x_i}\in{X}p(x_i)\log{p(x_i)} \\
+H(X, Y) = -\sum_{y_i\in{Y}} \sum_{x_i\in{X}}p(x_i, y_i)\log{p(x_i, y_i)}\\
+NMI(X, Y) = 2\frac{H(X) + H(Y) - H(X, Y)}{H(X)+H(Y)}
+\end{alignedat}</script></li>
+    </ul>
+  </li>
+  <li>pixel 값을 [-1, 1]로 clipping -&gt; 다시 8-bit gray scale로 변환.</li>
+  <li>Generated MR images 와 Ground truth가 비슷할 수록 높은 값을 가짐.</li>
+</ul>
+
+<h3 id="a-data-and-preprocessing">A. Data and Preprocessing</h3>
+
+<ul>
+  <li>총 154 samples의 2~5세 유아 Axial, Sagittal Thick MRI, Axial Thin MRI</li>
+</ul>
+
+<p><img src="https://jjerry-k.github.io/public/img/thin/tab01.PNG" /></p>
+
+<ul>
+  <li>Table 1. 과 같은 parameter 사용.</li>
+  <li>Dataset 분할
+    <ul>
+      <li>Cross Validation Dataset : 40 samples</li>
+      <li>Test 1 Dataset : 65 samples</li>
+      <li>Test 2 Dataset : 49 samples</li>
+    </ul>
+  </li>
+  <li>Preprocessing
+    <ul>
+      <li>각 영상별로 다른 parameter를 가지고 있고 intensities 도 다양하기 때문에 spatial misalignment, intensity imblance를 발견.</li>
+      <li>Registration을 위해 SPM12 를 이용하여 unified spatial normalization 수행.
+        <ul>
+          <li>
+            <ol>
+              <li>DICOM to NIfTI</li>
+            </ol>
+          </li>
+          <li>
+            <ol>
+              <li>Segment gray matter, white matter, cerebrospinal fluid, skull, scalp, and air mask.</li>
+            </ol>
+          </li>
+          <li>
+            <ol>
+              <li>Nonlinear deformation field</li>
+            </ol>
+          </li>
+          <li>
+            <ol>
+              <li>ICBM Asian brain template in affine regularization</li>
+            </ol>
+          </li>
+        </ul>
+      </li>
+      <li>Grayscale Normalization
+        <ul>
+          <li>MRI 는 16 bit..</li>
+          <li>단순 linear transformation 으로 [-1, 1]로 mapping.</li>
+        </ul>
+      </li>
+      <li>Histogram Matching
+        <ul>
+          <li>고정된 샘플을 reference로 histogram matching 적용.</li>
+          <li>histogram imbalance 제거.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Data Augmentation
+    <ul>
+      <li>Radial Transformation
+        <ul>
+          <li><strong><a href="https://arxiv.org/pdf/1708.04347.pdf">Image Augmentation using Radial Transform for Training Deep Neural Networks</a></strong></li>
+        </ul>
+      </li>
+      <li>Mirror Reflection</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="b-experimental-settings">B. Experimental Settings</h3>
+<ul>
+  <li>5-fold cross-validation 적용.</li>
+  <li>35 개중 랜덤으로 28:7로 training:validation . <strong>-&gt; 앞에선 40개라더니..?</strong></li>
+  <li>Training 3D-Y-Net-GAN
+    <ul>
+      <li>Batch Size : 16</li>
+      <li>Epochs : 200</li>
+      <li><a href="https://arxiv.org/pdf/1412.6980.pdf">Adam Optimizer Parameter</a>
+        <ul>
+          <li>$\beta_1$: 0.9</li>
+          <li>Learning rate schedule
+            <ul>
+              <li>Initial value : 5*10<sup>-4</sup></li>
+              <li>Decay Step : 252</li>
+              <li>Decay rate : 0.989</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>$\lambda_1, \lambda_2, \lambda_3$ : 0.2, 0.02, 0.1</li>
+      <li>He initializer</li>
+    </ul>
+  </li>
+  <li>Training 3D-DenseU-Net
+    <ul>
+      <li>Batch Size : 12</li>
+      <li>Epochs : 300</li>
+      <li>Adam Optimizer Parameter
+        <ul>
+          <li>$\beta_1$: 0.9</li>
+          <li>Learning rate schedule
+            <ul>
+              <li>Initial value : 5*10<sup>-4</sup></li>
+              <li>Decay Step : 373</li>
+              <li>Decay rate : 0.989</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>$\lambda_1, \lambda_3$ : 1, 0.001</li>
+      <li>He initializer</li>
+    </ul>
+  </li>
+  <li>SR Parameter
+    <ul>
+      <li>Dictionary size = 512</li>
+      <li>Patch number = 100,000</li>
+      <li>Patch size = 13 x 13</li>
+      <li>Sparsity Regularization = 0.15</li>
+      <li>Overlap = 12.</li>
+    </ul>
+  </li>
+  <li>Training 3D-SRU-Net
+    <ul>
+      <li>Batch Size : 32</li>
+      <li>Epochs : 300</li>
+      <li>Adam Optimizer Parameter
+        <ul>
+          <li>$\beta_1$: 0.9</li>
+          <li>Initial value : 5*10<sup>-4</sup></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h4 id="c-ablation-experiment-on-input-data">C. Ablation Experiment On Input Data</h4>
+<ul>
+  <li>Input을 변경하면서 실험 진행. 
+<img src="https://jjerry-k.github.io/public/img/thin/fig06.PNG" />
+<img src="https://jjerry-k.github.io/public/img/thin/tab02.PNG" /></li>
+  <li>Axial 과 Sagittal 을 같이 사용했을 때가 좀 더 세부적인 구조, 적은 왜곡을 보임.
+    <ul>
+      <li>두 축의 영상이 서로 조합하여 reconstruction task를 향상.</li>
+    </ul>
+  </li>
+  <li>Quantitive evaluation 에서도 더 높은 지표를 산출.</li>
+</ul>
+
+<h4 id="d-ablation-experiment-on-loss-function">D. Ablation Experiment On Loss Function</h4>
+<ul>
+  <li>Loss를 변경하면서 실험 진행.
+<img src="https://jjerry-k.github.io/public/img/thin/fig07.PNG" />
+<img src="https://jjerry-k.github.io/public/img/thin/tab03.PNG" /></li>
+  <li>Self-Adaptive Charbonnier Loss에 비해 $\ell1$ norm 이 흐린 영상을 생성.</li>
+  <li>Without Gradient Correction Loss
+    <ul>
+      <li>덜 선명한 영상을 생성.</li>
+    </ul>
+  </li>
+  <li>Without Adversarial Loss
+    <ul>
+      <li>덜 realistic 영상을 생성. <strong>-&gt; ?????그냥 쓴 말인가..</strong></li>
+    </ul>
+  </li>
+  <li><strong>Table3 …지표 좀 이상..</strong></li>
+</ul>
+
+<h4 id="e-comparison-with-other--methods">E. Comparison With Other  Methods</h4>
+<ul>
+  <li>다른 Method들과 비교.
+<img src="https://jjerry-k.github.io/public/img/thin/fig08.PNG" />
+<img src="https://jjerry-k.github.io/public/img/thin/tab04.PNG" /></li>
+  <li>제안한 method로 생성된 image가 가장 Realistic하고 Ground truth 와 가장 비슷하다고 함.</li>
+  <li>대부분 Quantitative evaluation 에서 제안한 method가 다른 것들을 다 뛰어넘음.</li>
+</ul>
+
+<h2 id="conclusion">Conclusion</h2>
+<ul>
+  <li><strong>제안한 Method 에선 Data preprocessing이 매우 중요하다……</strong></li>
+</ul>
+
+  </article></h4>
+</div>
+
+
+  
+
+
+
+
+
+<div class="comments">
+  <h2>Comments</h2>
+  <div id="disqus_thread"></div>
+  <script>
+var disqus_config = function () {
+  this.page.url = 'http://localhost:4000/deeplearning/2019/07/05/Thin/'; // Replace PAGE_URL with your page's canonical URL variable
+  this.page.identifier = '/deeplearning/2019/07/05/Thin'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+(function() {
+  var d = document, s = d.createElement('script');
+  s.src = '//jerry.disqus.com/embed.js';
+  s.setAttribute('data-timestamp', +new Date());
+  (d.head || d.body).appendChild(s);
+})();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</div>
+
+
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- ad wide -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-1054696837285307"
+     data-ad-slot="7569282579"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+        </div>
+    </div>
+
+    <label for="sidebar-checkbox" class="sidebar-toggle"></label>
+
+    <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Search</h4>
+        </div>
+        <div class="modal-body">
+
+    <h4><div id="search-container">
+      <input type="text" id="search-input" placeholder="검색어 입력" class="input" style="font-size: 1rem; width: 100%; padding: 10px; border: 0px; outline: none; float: left; background: #cecece;" autofocus>
+    </div></h4><br>
+
+      <div id="results">
+        <h1></h1>
+      <ul class="results"></ul>
+      </div>
+      <br><ul id="results-container"></ul>
+    </div>
+
+<!-- Script pointing to jekyll-search.js -->
+
+
+<script type="text/javascript">
+      SimpleJekyllSearch({
+        searchInput: document.getElementById('search-input'),
+        resultsContainer: document.getElementById('results-container'),
+        json: '/dest/search.json',
+        searchResultTemplate: '<h4 style="margin-bottom:-0.5rem;"><a class="post-title" style="color:#ac4142;" href="{url}" title="{desc}">{title}</a> <small>{category}</small></h4>',
+        noResultsText: '<h4><br>문서가 존재하지 않습니다.</h4>',
+        limit: 15,
+        fuzzy: false,
+        exclude: ['Welcome']
+      })
+</script>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+    <script>
+      (function(document) {
+        var toggle = document.querySelector('.sidebar-toggle');
+        var sidebar = document.querySelector('#sidebar');
+        var checkbox = document.querySelector('#sidebar-checkbox');
+        document.addEventListener('click', function(e) {
+          var target = e.target;
+          if (target === toggle) {
+            checkbox.checked = !checkbox.checked;
+            e.preventDefault();
+          } else if (checkbox.checked && !sidebar.contains(target)) {
+            /* click outside the sidebar when sidebar is open */
+            checkbox.checked = false;
+          }
+        }, false);
+      })(document);
+    </script>
+
+    
+      <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){ (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o), m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m) })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-126636477-1', 'auto');
+        ga('send', 'pageview');
+      </script>
+    
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+      (absbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-1054696837285307",
+          enable_page_level_ads: true
+      });
+    </script>
+  </body>
+  
+  <script id="dsq-count-scr" src="//jerry.disqus.com/count.js" async></script>
+  
+</html>

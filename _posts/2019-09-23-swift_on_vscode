@@ -1,0 +1,14 @@
+---
+layout: post
+title: Swift 환경 구축 !
+category: [Living]
+tags: [Macbook]
+sitemap :
+changefreq : daily
+---
+
+예전부터 Swift 에 관심이 있었으나....건드리지 않고 있었습니다.  
+이제부터라도 조금..싹? 건드려보려고 합니다. (얼마나 건드릴지...)
+
+먼저 환경 구축부터 해야겠죠. 저는 맥북을 사용중이고 (12인치...약한 아이..) VSCode를 사용합니다.  
+먼저 `Extensions`에서 Swift Language 를 설치해줍니다.

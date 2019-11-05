@@ -1,0 +1,243 @@
+[
+  
+    {
+      "title"    : "jupyter Lab 에서 단축키 설정하는 방법!",
+      "category" : "Python",
+      "tags"     : "Setting",
+      "url"      : "/python/2019/09/07/Jupyter_shortcut/",
+      "date"     : "2019-09-07 00:00:00 +0900"
+    } ,
+  
+    {
+      "title"    : "jupyter (ipython) 여러 커널 사용하기!",
+      "category" : "Python",
+      "tags"     : "Setting",
+      "url"      : "/python/2019/07/10/Multiple_Kernel/",
+      "date"     : "2019-07-10 00:00:00 +0900"
+    } ,
+  
+    {
+      "title"    : "Python으로 DICOM 영상을 읽어보자!",
+      "category" : "Python",
+      "tags"     : "Usage",
+      "url"      : "/python/2019/07/06/DICOM/",
+      "date"     : "2019-07-06 00:00:00 +0900"
+    } ,
+  
+    {
+      "title"    : "MRI interpolation using Deep Learning - [1]",
+      "category" : "DeepLearning",
+      "tags"     : "Paper",
+      "url"      : "/deeplearning/2019/07/05/Thin/",
+      "date"     : "2019-07-05 00:00:00 +0900"
+    } ,
+  
+    {
+      "title"    : "(개인적으로) 무.조.건 설치하는 Anaconda 패키지",
+      "category" : "Python",
+      "tags"     : "Setting",
+      "url"      : "/python/2019/06/30/conda_package/",
+      "date"     : "2019-06-30 00:00:00 +0900"
+    } ,
+  
+    {
+      "title"    : "Seaborn Tutorial Part 1-A",
+      "category" : "Python",
+      "tags"     : "Usage",
+      "url"      : "/python/2019/05/09/Part1A/",
+      "date"     : "2019-05-09 00:00:00 +0900"
+    } ,
+  
+    {
+      "title"    : "맥북 Atom 완벽 제거",
+      "category" : "Living",
+      "tags"     : "Macbook",
+      "url"      : "/living/2019/04/14/macbook_auto_start/",
+      "date"     : "2019-04-14 00:00:00 +0900"
+    } ,
+  
+    {
+      "title"    : "YOLO 리뷰",
+      "category" : "DeepLearning",
+      "tags"     : "Paper",
+      "url"      : "/deeplearning/2019/03/29/YOLO/",
+      "date"     : "2019-03-29 00:00:00 +0900"
+    } ,
+  
+    {
+      "title"    : "자주 사용하는 Docker Command 정리",
+      "category" : "Ubuntu",
+      "tags"     : "Docker",
+      "url"      : "/ubuntu/2019/02/14/docker/",
+      "date"     : "2019-02-14 00:00:00 +0900"
+    } ,
+  
+    {
+      "title"    : "첫 기계식 키보드 !",
+      "category" : "Living",
+      "tags"     : "Hardware",
+      "url"      : "/living/2019/02/01/keyboard/",
+      "date"     : "2019-02-01 00:00:00 +0900"
+    } ,
+  
+    {
+      "title"    : "Python으로 NIfTI 영상을 읽어보자!",
+      "category" : "Python",
+      "tags"     : "Usage",
+      "url"      : "/python/2019/01/23/nifti/",
+      "date"     : "2019-01-23 00:00:00 +0900"
+    } ,
+  
+    {
+      "title"    : "scp를 이용해서 파일 or 디렉토리 복사하기!",
+      "category" : "Ubuntu",
+      "tags"     : "Command",
+      "url"      : "/ubuntu/2018/12/08/scp/",
+      "date"     : "2018-12-08 00:00:00 +0900"
+    } ,
+  
+    {
+      "title"    : "Anaconda를 이용하여 TensorFlow 설치하기!",
+      "category" : "DeepLearning",
+      "tags"     : "TensorFlow",
+      "url"      : "/deeplearning/2018/11/18/anaconda_setting/",
+      "date"     : "2018-11-18 00:00:00 +0900"
+    } ,
+  
+    {
+      "title"    : "맥북 자동 부팅 옵션 설정법",
+      "category" : "Living",
+      "tags"     : "Macbook",
+      "url"      : "/living/2018/11/17/macbook_auto_start/",
+      "date"     : "2018-11-17 00:00:00 +0900"
+    } ,
+  
+    {
+      "title"    : "Mac Terminal Customizing",
+      "category" : "Living",
+      "tags"     : "Macbook",
+      "url"      : "/living/2018/11/07/terminal/",
+      "date"     : "2018-11-07 00:00:00 +0900"
+    } ,
+  
+    {
+      "title"    : "Github 블로그 만들기",
+      "category" : "Blog",
+      "tags"     : "Jekyll",
+      "url"      : "/blog/2018/10/24/gitblog/",
+      "date"     : "2018-10-24 00:00:00 +0900"
+    } ,
+  
+    {
+      "title"    : "Anaconda 간단하게 사용하기!",
+      "category" : "Python",
+      "tags"     : "Setting",
+      "url"      : "/python/2018/10/23/anaconda/",
+      "date"     : "2018-10-23 00:00:00 +0900"
+    } ,
+  
+    {
+      "title"    : "Python 3.6 에서 이 경고 보기 싫어요..",
+      "category" : "DeepLearning",
+      "tags"     : "TensorFlow",
+      "url"      : "/deeplearning/2018/10/19/warning/",
+      "date"     : "2018-10-19 00:00:00 +0900"
+    } ,
+  
+    {
+      "title"    : "Markdown 사용법",
+      "category" : "Blog",
+      "tags"     : "Markdown",
+      "url"      : "/blog/2018/10/19/markdown/",
+      "date"     : "2018-10-19 00:00:00 +0900"
+    } ,
+  
+    {
+      "title"    : "pip 로 설치하지 말라구요!?",
+      "category" : "DeepLearning",
+      "tags"     : "TensorFlow",
+      "url"      : "/deeplearning/2018/10/18/condavspip/",
+      "date"     : "2018-10-18 00:00:00 +0900"
+    } ,
+  
+    {
+      "title"    : "GPU를 골라서 써보자!",
+      "category" : "Ubuntu",
+      "tags"     : "Usage",
+      "url"      : "/ubuntu/2018/10/10/GPU_Masking/",
+      "date"     : "2018-10-10 00:00:00 +0900"
+    } ,
+  
+    {
+      "title"    : "Python Installation for mac",
+      "category" : "Python",
+      "tags"     : "Setting",
+      "url"      : "/python/2018/09/27/python4mac/",
+      "date"     : "2018-09-27 00:00:00 +0900"
+    } ,
+  
+    {
+      "title"    : "Object Detection API",
+      "category" : "DeepLearning",
+      "tags"     : "TensorFlow",
+      "url"      : "/deeplearning/2018/09/12/TFOD/",
+      "date"     : "2018-09-12 00:00:00 +0900"
+    } ,
+  
+    {
+      "title"    : "휴가",
+      "category" : "Living",
+      "tags"     : "Daily",
+      "url"      : "/living/2018/09/07/Vacation/",
+      "date"     : "2018-09-07 00:00:00 +0900"
+    } ,
+  
+    {
+      "title"    : "LSTM 예제 코드",
+      "category" : "DeepLearning",
+      "tags"     : "TensorFlow",
+      "url"      : "/deeplearning/2018/08/16/LSTM/",
+      "date"     : "2018-08-16 00:00:00 +0900"
+    } ,
+  
+    {
+      "title"    : "라즈베리파이로 미니 PC 만들기!",
+      "category" : "Living",
+      "tags"     : "Hardware",
+      "url"      : "/living/2018/07/10/Raspberry-Mini-PC/",
+      "date"     : "2018-07-10 00:00:00 +0900"
+    } ,
+  
+    {
+      "title"    : "데스크탑 조립기",
+      "category" : "Living",
+      "tags"     : "Hardware",
+      "url"      : "/living/2017/08/04/Desktop/",
+      "date"     : "2017-08-04 00:00:00 +0900"
+    } ,
+  
+    {
+      "title"    : "Ubuntu CUDA &amp; Cudnn 설치하기",
+      "category" : "Ubuntu",
+      "tags"     : "Setting",
+      "url"      : "/ubuntu/2016/09/08/CUDA/",
+      "date"     : "2016-09-08 00:00:00 +0900"
+    } ,
+  
+    {
+      "title"    : "Ubuntu 한글 설정",
+      "category" : "Ubuntu",
+      "tags"     : "Setting",
+      "url"      : "/ubuntu/2016/08/20/Setting/",
+      "date"     : "2016-08-20 00:00:00 +0900"
+    } ,
+  
+    {
+      "title"    : "Windows 10 &amp; Ubuntu 16.04 듀얼부팅",
+      "category" : "Ubuntu",
+      "tags"     : "Setting",
+      "url"      : "/ubuntu/2016/08/16/Dualboot/",
+      "date"     : "2016-08-16 00:00:00 +0900"
+    } 
+  
+]

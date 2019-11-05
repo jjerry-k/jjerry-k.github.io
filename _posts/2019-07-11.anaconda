@@ -1,0 +1,36 @@
+---
+layout: post
+title: Anaconda 4.7 변경사항
+category: [Python]
+tags: [Etc]
+sitemap :
+changefreq : daily
+---
+
+2019년 6월 25일. Anaconda blog에 글이 하나 올라왔습니다.
+
+[How We Made Conda Faster in 4.7](https://www.anaconda.com/how-we-made-conda-faster-4-7/)  
+
+간단히 팩트만 말하면 `conda 최적화를 통하여 속도를 증가시켰다.` 입니다.
+
+최적화 과정에 다음과 같이 세 가지 항목에 집중을 했다네요.
+### Less is more
+    1. Shrink the number of packages that need to be loaded, processed, and considered in the solution
+    2. Lock down packages that are not involved in the solution, so that the solver’s job is simpler
+    3. Reduce the file size necessary to download packages
+
+1번을 해결하기 위해서 "Free" 채널이라는걸 제거하기로 했다고 하네요.  
+이렇게 하면 기본 채널의 패키지 공간이 최대 40% 감소하여 metadata의 품질을 향상시킬 수 있다고 합니다.  
+다음과 같이 했을 때 4.6.14때에 비해 Metadata Collection 에서 약 3.5배 빨라졌다는군요.
+
+### Doing things in parallel
+
+### Overall breakdown of speedups
+
+### Room for improvement
+
+### Acknowledgements
+
+
+[Why We Removed the “Free” Channel in Conda 4.7](https://www.anaconda.com/why-we-removed-the-free-channel-in-conda-4-7/)
+
