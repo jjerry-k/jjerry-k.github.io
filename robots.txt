@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Allow: /ads.txt
 Disallow: /about.html
 Sitemap: http://jjerry-k.github.io/sitemap.xml
