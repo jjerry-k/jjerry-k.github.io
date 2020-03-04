@@ -4,13 +4,771 @@
  <title>Jerry's Blog</title>
  <link href="http://localhost:4000/atom.xml" rel="self"/>
  <link href="http://localhost:4000/"/>
- <updated>2019-11-06T00:12:51+09:00</updated>
+ <updated>2020-03-04T16:04:22+09:00</updated>
  <id>http://localhost:4000</id>
  <author>
    <name>Jerry</name>
    <email></email>
  </author>
 
+ 
+ <entry>
+   <title>StarGAN v2 리뷰</title>
+   <link href="http://localhost:4000/deeplearning/2020/03/04/starganv2/"/>
+   <updated>2020-03-04T00:00:00+09:00</updated>
+   <id>http://localhost:4000/deeplearning/2020/03/04/starganv2</id>
+   <content type="html">&lt;h1 id=&quot;stargan-v2-diverse-image-synthessis-for-multiple-domains&quot;&gt;StarGAN v2: Diverse Image Synthessis for Multiple Domains&lt;/h1&gt;
+
+&lt;p&gt;Author: Yunjey Choi, Youngjung Uh, Jaejun Yoo, Jung-Woo Ha
+Date: Dec 04, 2019
+URL: https://arxiv.org/abs/1912.01865&lt;/p&gt;
+
+&lt;h1 id=&quot;abstract&quot;&gt;Abstract&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Image translation 을 잘 하는 Model을 학습하려면 다음 사항을 만족해야함
+    &lt;ul&gt;
+      &lt;li&gt;Diversity of generated images&lt;/li&gt;
+      &lt;li&gt;Scalability over multiple domains&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;기존의 방법들은 limited diversity, multiple models(networks)를 다룸.&lt;/li&gt;
+  &lt;li&gt;StarGAN v2는 두 조건 모두 만족.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;introduction&quot;&gt;Introduction&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Domain: 시각적으로 구별되는 범주&lt;/li&gt;
+  &lt;li&gt;Style: 각 영상이 가지는 독특한 외관적 특성&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/starganv2/Untitled.png&quot; alt=&quot;https://jjerry-k.github.io/public/img/starganv2/Untitled.png&quot; /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;stargan-v2&quot;&gt;StarGAN v2&lt;/h1&gt;
+
+&lt;h2 id=&quot;proposed-framework&quot;&gt;Proposed framework&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/starganv2/Untitled_1.png&quot; alt=&quot;https://jjerry-k.github.io/public/img/starganv2/Untitled_1.png&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;4개의 Network 로 구성.&lt;/li&gt;
+  &lt;li&gt;Generator (&lt;code class=&quot;highlighter-rouge&quot;&gt;G&lt;/code&gt;)
+    &lt;ul&gt;
+      &lt;li&gt;Image &lt;code class=&quot;highlighter-rouge&quot;&gt;x&lt;/code&gt;와 Style code &lt;code class=&quot;highlighter-rouge&quot;&gt;s&lt;/code&gt;를 입력으로 받아 새로운 영상을 생성.&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://arxiv.org/abs/1703.06868&quot;&gt;adaptive instance normalization (AdaIN)&lt;/a&gt; 사용.&lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/starganv2/Untitled_2.png&quot; alt=&quot;https://jjerry-k.github.io/public/img/starganv2/Untitled_2.png&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Mapping network (&lt;code class=&quot;highlighter-rouge&quot;&gt;F&lt;/code&gt;)
+    &lt;ul&gt;
+      &lt;li&gt;Latent code &lt;code class=&quot;highlighter-rouge&quot;&gt;z&lt;/code&gt;와 Domain code &lt;code class=&quot;highlighter-rouge&quot;&gt;y&lt;/code&gt;를 입력으로 받아 Style code &lt;code class=&quot;highlighter-rouge&quot;&gt;s&lt;/code&gt;생성.&lt;/li&gt;
+      &lt;li&gt;Multi Layer Perceptron 구조.&lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/starganv2/Untitled_3.png&quot; alt=&quot;https://jjerry-k.github.io/public/img/starganv2/Untitled_3.png&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Style encoder (&lt;code class=&quot;highlighter-rouge&quot;&gt;E&lt;/code&gt;)
+    &lt;ul&gt;
+      &lt;li&gt;Image &lt;code class=&quot;highlighter-rouge&quot;&gt;x&lt;/code&gt;와 Domain code &lt;code class=&quot;highlighter-rouge&quot;&gt;y&lt;/code&gt;를 입력으로 받아 &lt;code class=&quot;highlighter-rouge&quot;&gt;x&lt;/code&gt;에서 Style code &lt;code class=&quot;highlighter-rouge&quot;&gt;s&lt;/code&gt;를 추출.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Discriminator (&lt;code class=&quot;highlighter-rouge&quot;&gt;D&lt;/code&gt;)
+    &lt;ul&gt;
+      &lt;li&gt;Image &lt;code class=&quot;highlighter-rouge&quot;&gt;x&lt;/code&gt;를 입력으로 받아 Domain code &lt;code class=&quot;highlighter-rouge&quot;&gt;y&lt;/code&gt;와 Real/Fake 분류.&lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/starganv2/Untitled_4.png&quot; alt=&quot;https://jjerry-k.github.io/public/img/starganv2/Untitled_4.png&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;training-objectives&quot;&gt;Training objectives&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Adversarial objective
+    &lt;ul&gt;
+      &lt;li&gt;GAN 에서 기본적으로 사용되는 Loss&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\mathcal{L}_{adv}=\mathbb{E}_{\mathrm{x},y}[\log{D_y}(\mathrm{x})] + \mathbb{E}_{\mathrm{x}, \tilde{y}, \mathrm{z}}[\log{(1-D_{\tilde{y}}(G(\mathrm{x}, \tilde{\mathrm{s}})))}&lt;/script&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Style reconstruction
+    &lt;ul&gt;
+      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;G(x, s)&lt;/code&gt; 를 Style encoder &lt;code class=&quot;highlighter-rouge&quot;&gt;E&lt;/code&gt; 에 넣어 &lt;code class=&quot;highlighter-rouge&quot;&gt;s&lt;/code&gt; 추출 후 입력 &lt;code class=&quot;highlighter-rouge&quot;&gt;s&lt;/code&gt;와 비교&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\mathcal{L}_{sty}=\mathbb{E}_{\mathrm{x},\tilde{y}, \mathrm{z}}[\parallel\tilde{\mathrm{s}}-E_{\tilde{y}}(G(\mathrm{x}, \tilde{\mathrm{s}}))\parallel_1]&lt;/script&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Style diversification
+    &lt;ul&gt;
+      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;G&lt;/code&gt;가 다양한 Image를 생성할 수 있도록 Regularization 하는 역할.&lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;z1, z2&lt;/code&gt; 가 &lt;code class=&quot;highlighter-rouge&quot;&gt;F&lt;/code&gt;에 의해 생성된 &lt;code class=&quot;highlighter-rouge&quot;&gt;s1, s2&lt;/code&gt;와 입력 &lt;code class=&quot;highlighter-rouge&quot;&gt;x&lt;/code&gt;를 &lt;code class=&quot;highlighter-rouge&quot;&gt;G&lt;/code&gt;의 입력으로 새로운 영상 생성.&lt;/li&gt;
+      &lt;li&gt;L1 Norm 계산.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\mathcal{L}_{ds}=\mathbb{E}_{\mathrm{x},\tilde{y}, \mathrm{z}_1, \mathrm{z}_2}[\parallel G(\mathrm{x}, \tilde{\mathrm{s}}_1) - G(\mathrm{x}, \tilde{\mathrm{s}}_2) \parallel_1]&lt;/script&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Preserving source characteristics
+    &lt;ul&gt;
+      &lt;li&gt;Cycle GAN 의 cycle consistency loss.&lt;/li&gt;
+      &lt;li&gt;target domain의 style 을 적용한 영상을 다시 &lt;code class=&quot;highlighter-rouge&quot;&gt;E(x)&lt;/code&gt;로 추출된 s를 이용하여 &lt;code class=&quot;highlighter-rouge&quot;&gt;x'&lt;/code&gt;로 reconstruction 한 후 L1 Norm 계산.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\mathcal{L}_{cyc}=\mathbb{E}_{\mathrm{x}, y, \tilde{y}, \mathrm{z}}[\parallel \mathrm{x} - G(G(\mathrm{x}, \tilde{\mathrm{s}}), \hat{\mathrm{s}})\parallel_1]&lt;/script&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Full objective&lt;/p&gt;
+
+    &lt;script type=&quot;math/tex; mode=display&quot;&gt;\mathcal{L}_D = -\mathcal{L}_{adv} \\ \mathcal{L}_{F, G, E}=\mathcal{L}_{adv} + \lambda_{sty} \mathcal{L}_{sty} - \lambda_{ds} \mathcal{L}_{ds} + \lambda_{cyc} \mathcal{L}_{cyc}&lt;/script&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;About $\lambda$&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Dataset&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;sty&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;ds&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;cyc&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;CelebA-HQ&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;AFHQ&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0.3&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0.1&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h1 id=&quot;experiments&quot;&gt;Experiments&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Baselines
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;https://arxiv.org/abs/1804.04732&quot;&gt;MUNIT&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://arxiv.org/abs/1808.00948&quot;&gt;DRIT&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://arxiv.org/abs/1903.05628&quot;&gt;MSGAN&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://arxiv.org/abs/1711.09020&quot;&gt;StarGAN&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Datasets
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;http://mmlab.ie.cuhk.edu.hk/projects/CelebA.html&quot;&gt;CelebA-HQ&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://github.com/clovaai/stargan-v2/blob/master/download.sh&quot;&gt;AFHQ&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Evaluation metrics
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;https://arxiv.org/abs/1706.08500&quot;&gt;Frechet inception distance (FID)&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://arxiv.org/abs/1801.03924&quot;&gt;Learned perceptual image patch similarity (LPIPS)&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;analysis-of-individual-components&quot;&gt;Analysis of individual components&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;StarGAN에서 본 연구에서 제안하는 방법들을 하나하나 넣어가면서 성능 실험.&lt;/li&gt;
+  &lt;li&gt;정량적 평가를 보면 추가할 때마다 좋아지는 것을 볼 수 있음.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/starganv2/Untitled_5.png&quot; alt=&quot;https://jjerry-k.github.io/public/img/starganv2/Untitled_5.png&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;각 단계별 생성한 영상의 결과&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/starganv2/Untitled_6.png&quot; alt=&quot;https://jjerry-k.github.io/public/img/starganv2/Untitled_6.png&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;comparison-on-diverse-image-synthesis&quot;&gt;Comparison on diverse image synthesis&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;다른 방법들과 비교&lt;/li&gt;
+  &lt;li&gt;Latent-guided synthesis ( Latent code 만을 이용하여 생성 )&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/starganv2/Untitled_7.png&quot; alt=&quot;https://jjerry-k.github.io/public/img/starganv2/Untitled_7.png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/starganv2/Untitled_8.png&quot; alt=&quot;https://jjerry-k.github.io/public/img/starganv2/Untitled_8.png&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Referenc-guided synthesis ( Style code 를 이용한 생성 )&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/starganv2/Untitled_9.png&quot; alt=&quot;https://jjerry-k.github.io/public/img/starganv2/Untitled_9.png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/starganv2/Untitled_10.png&quot; alt=&quot;https://jjerry-k.github.io/public/img/starganv2/Untitled_10.png&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Human evaluation
+    &lt;ul&gt;
+      &lt;li&gt;방법 별로 100개의 sample 생성 후 사람이 판단.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/starganv2/Untitled_11.png&quot; alt=&quot;https://jjerry-k.github.io/public/img/starganv2/Untitled_11.png&quot; /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;result&quot;&gt;Result&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;겁나….잘 생성함…&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/starganv2/Untitled_12.png&quot; alt=&quot;https://jjerry-k.github.io/public/img/starganv2/Untitled_12.png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/starganv2/Untitled_13.png&quot; alt=&quot;https://jjerry-k.github.io/public/img/starganv2/Untitled_13.png&quot; /&gt;&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Weights & Biases 가 뭐지??</title>
+   <link href="http://localhost:4000/deeplearning/2020/03/01/wandb/"/>
+   <updated>2020-03-01T00:00:00+09:00</updated>
+   <id>http://localhost:4000/deeplearning/2020/03/01/wandb</id>
+   <content type="html">&lt;p&gt;이번 포스팅에선 &lt;a href=&quot;https://www.wandb.com/&quot;&gt;Weights &amp;amp; Biases&lt;/a&gt; 라는 Tool 을 소개드리려 합니다.&lt;/p&gt;
+
+&lt;p&gt;다음과 같은 특징을 강조하네요.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Store hyper-parameters used in a training run&lt;/li&gt;
+  &lt;li&gt;Search, compare, and visualize training runs&lt;/li&gt;
+  &lt;li&gt;Analyze system usage metrics alongside runs&lt;/li&gt;
+  &lt;li&gt;Collaborate with team members&lt;/li&gt;
+  &lt;li&gt;Replicate historic results&lt;/li&gt;
+  &lt;li&gt;Run parameter sweeps&lt;/li&gt;
+  &lt;li&gt;Keep records of experiments available forever&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;그럼 간단 사용법에 대해서 설명드리겠습니다.&lt;/p&gt;
+
+&lt;h3 id=&quot;sign-up-을-했다는-가정하에-진행합니다&quot;&gt;&lt;strong&gt;Sign Up&lt;/strong&gt; 을 했다는 가정하에 진행합니다.&lt;/h3&gt;
+
+&lt;h1 id=&quot;패키지-설치&quot;&gt;패키지 설치&lt;/h1&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;wandb&lt;/code&gt; 패키지를 먼저 설치해줍니다.&lt;/p&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;pip &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;wandb
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h1 id=&quot;wandb-로그인&quot;&gt;wandb 로그인&lt;/h1&gt;
+
+&lt;p&gt;설치 후 Terminal (or 명령 프롬프트) 에 다음과 같이 입력합니다.&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;wandb login
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;그러면 아래와 같은 화면이 나오면서 웹 브라우저가 켜집니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/wandb/Untitled.png&quot; alt=&quot;https://jjerry-k.github.io/public/img/wandb/Untitled.png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/wandb/Untitled_1.png&quot; alt=&quot;https://jjerry-k.github.io/public/img/wandb/Untitled_1.png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Browser 에서 API키를 복사해주해서 Terminal (or 명령 프롬프트) 에 붙여넣기합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/wandb/Untitled_2.png&quot; alt=&quot;https://jjerry-k.github.io/public/img/wandb/Untitled_2.png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;그럼 wandb 에 로그인 완료!&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/wandb/Untitled_3.png&quot; alt=&quot;https://jjerry-k.github.io/public/img/wandb/Untitled_3.png&quot; /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;code-실행&quot;&gt;Code 실행&lt;/h1&gt;
+
+&lt;p&gt;간단한 MLP를 이용한 MNIST Classification 문제입니다.&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&lt;span class=&quot;c1&quot;&gt;# wandb initialization
+&lt;/span&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;wandb&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;wandb&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;init&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;project&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;test_project&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;os&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;numpy&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;matplotlib&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pyplot&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;
+
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;tensorflow&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tf&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;tensorflow.keras&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;models&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;layers&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;optimizers&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;losses&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;utils&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;datasets&lt;/span&gt;
+
+
+&lt;span class=&quot;c1&quot;&gt;# Import callback function
+&lt;/span&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;wandb.keras&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;WandbCallback&lt;/span&gt; 
+
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Packge Loaded!&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+
+&lt;span class=&quot;c1&quot;&gt;# Data Loading
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;train_x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;train_y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;test_x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;test_y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;datasets&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mnist&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;load_data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;train_x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;test_x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;reshape&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;train_x&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;255.&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;784&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;reshape&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;test_x&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;255.&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;784&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Train Data's Shape : &quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;train_x&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;shape&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;train_y&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;shape&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Test Data's Shape : &quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;test_x&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;shape&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;test_y&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;shape&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# Network Building
+## Using Sequential
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mlp&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;models&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Sequential&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;mlp&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;add&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;layers&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Dense&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;256&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;activation&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'relu'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;input_shape&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;784&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,)))&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;mlp&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;add&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;layers&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Dense&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;128&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;activation&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'relu'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;mlp&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;add&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;layers&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Dense&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;activation&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'softmax'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Network Built!&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;mlp&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;compile&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;optimizer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;optimizers&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Adam&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;loss&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;losses&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sparse_categorical_crossentropy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;metrics&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'accuracy'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;history&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;mlp&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;train_x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;train_y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;epochs&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;batch_size&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;16&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; 
+                                    &lt;span class=&quot;n&quot;&gt;validation_data&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;test_x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;test_y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; 
+                                    &lt;span class=&quot;n&quot;&gt;callbacks&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;WandbCallback&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()])&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# callbacks 에 Wandbcallback 추가
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h1 id=&quot;check-training&quot;&gt;Check training&lt;/h1&gt;
+
+&lt;p&gt;해당 코드를 실행시키고 &lt;a href=&quot;https://app.wandb.ai/home&quot;&gt;W&amp;amp;B&lt;/a&gt; 에 접속을 하면 다음과 같은 화면이 나옵니다.&lt;br /&gt;
+위에서 &lt;code class=&quot;highlighter-rouge&quot;&gt;test_project&lt;/code&gt; 라는 프로젝트에 세팅을 했기 때문에 확인을 해봅니다.&lt;br /&gt;
+하나의 프로젝트에서 한번 실행하면 뭔지 모를 조합의 &lt;code class=&quot;highlighter-rouge&quot;&gt;Name&lt;/code&gt;으로 실행 상태를 보여줍니다.
+저는 한번만 했기 때문에 &lt;code class=&quot;highlighter-rouge&quot;&gt;lyric-dream-3&lt;/code&gt; 라는 이름으로 하나만 생겨있습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/wandb/Untitled_4.png&quot; alt=&quot;https://jjerry-k.github.io/public/img/wandb/Untitled_4.png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;lyric-dream-3&lt;/code&gt; 같이 이름을 클릭해서 무엇을 볼 수 있는지 살펴보겠습니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;chart-탭&quot;&gt;Chart 탭&lt;/h2&gt;
+
+&lt;p&gt;Chart 탭에선 loss, epoch, metric 등과 같은 학습 관련 지표를 볼 수 있는 &lt;code class=&quot;highlighter-rouge&quot;&gt;CHARTS&lt;/code&gt;와 모델 학습에 사용된 시스템을 모니터링 할 수 있는 &lt;code class=&quot;highlighter-rouge&quot;&gt;SYSTEM&lt;/code&gt;이 있습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/wandb/Untitled_5.png&quot; alt=&quot;https://jjerry-k.github.io/public/img/wandb/Untitled_5.png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/wandb/Untitled_6.png&quot; alt=&quot;https://jjerry-k.github.io/public/img/wandb/Untitled_6.png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/wandb/Untitled_7.png&quot; alt=&quot;https://jjerry-k.github.io/public/img/wandb/Untitled_7.png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/wandb/Untitled_8.png&quot; alt=&quot;https://jjerry-k.github.io/public/img/wandb/Untitled_8.png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/wandb/Untitled_9.png&quot; alt=&quot;https://jjerry-k.github.io/public/img/wandb/Untitled_9.png&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;system-탭&quot;&gt;System 탭&lt;/h2&gt;
+&lt;p&gt;System 탭에서는 Chart 탭에서 &lt;code class=&quot;highlighter-rouge&quot;&gt;SYSTEM&lt;/code&gt; 과 동일한 그래프를 보여주네요.
+&lt;img src=&quot;https://jjerry-k.github.io/public/img/wandb/Untitled_10.png&quot; alt=&quot;https://jjerry-k.github.io/public/img/wandb/Untitled_10.png&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;model-탭&quot;&gt;Model 탭&lt;/h2&gt;
+&lt;p&gt;이름 그대로 학습하는 Model의 graph 구조를 볼 수 있습니다.
+&lt;img src=&quot;https://jjerry-k.github.io/public/img/wandb/Untitled_11.png&quot; alt=&quot;https://jjerry-k.github.io/public/img/wandb/Untitled_11.png&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;logs-탭&quot;&gt;Logs 탭&lt;/h2&gt;
+&lt;p&gt;여기선 학습 로그들이 저장됩니다.
+&lt;img src=&quot;https://jjerry-k.github.io/public/img/wandb/Untitled_12.png&quot; alt=&quot;https://jjerry-k.github.io/public/img/wandb/Untitled_12.png&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;files-탭&quot;&gt;Files 탭&lt;/h2&gt;
+&lt;p&gt;솔직히 보여주기만 해도 좋지만 저장도 해주면 좋겠죠.&lt;br /&gt;
+Files 탭에는 현재 모델을 돌릴때 사용된 정보, 가장 성능이 좋았을 epoch 의 model, 돌리는 환경에 설치된 package 리스트 등의 정보가 저장됩니다.&lt;br /&gt;
+물론 다운로드 가능!&lt;br /&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;model-best.h5&lt;/code&gt;는 graph 정보도 저장되어 있기 때문에 다운로드 후 load해서 바로 Inference 가능합니다!
+&lt;img src=&quot;https://jjerry-k.github.io/public/img/wandb/Untitled_13.png&quot; alt=&quot;https://jjerry-k.github.io/public/img/wandb/Untitled_13.png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.wandb.com/&quot;&gt;Weights &amp;amp; Biases&lt;/a&gt; 에 대해 정~~~말 간단히 알아봤습니다.&lt;br /&gt;
+딱히 이런저런 기능은 추가를 하지 않고 기본적인 기능만 봤습니다.&lt;br /&gt;
+추후에는 좀 더 다양한 기능과 프레임워크에 적용해보도록 하겠습니다.&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>MobileNet V1 리뷰</title>
+   <link href="http://localhost:4000/deeplearning/2020/02/26/MobileNets-Efficient-Convolutional-Neural-Networks/"/>
+   <updated>2020-02-26T00:00:00+09:00</updated>
+   <id>http://localhost:4000/deeplearning/2020/02/26/MobileNets Efficient Convolutional Neural Networks</id>
+   <content type="html">&lt;h1 id=&quot;mobilenets-efficient-convolutional-neural-networks-for-mobile-vision-applications&quot;&gt;MobileNets: Efficient Convolutional Neural Networks for Mobile Vision Applications&lt;/h1&gt;
+
+&lt;p&gt;Author: Andrew G. Howard, Menglong Zhu, Bo Chen, Dmitry Kalenichenko, Weijun Wang, Tobias Weyand, Marco Andreetto, Hartwig Adam&lt;br /&gt;
+Date: Apr 17, 2017&lt;br /&gt;
+URL: https://arxiv.org/abs/1704.04861&lt;/p&gt;
+
+&lt;h1 id=&quot;abstract&quot;&gt;&lt;strong&gt;Abstract&lt;/strong&gt;&lt;/h1&gt;
+
+&lt;p&gt;- 모바일, 임베디드에 적용할 수 있는 네트워크.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/mobilev1/Untitled.png&quot; alt=&quot;https://jjerry-k.github.io/public/img/mobilev1/Untitled.png&quot; /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;1-introduction&quot;&gt;&lt;strong&gt;1. Introduction&lt;/strong&gt;&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;CNN 유명세 짱짱맨&lt;/li&gt;
+  &lt;li&gt;좋은 성능(정확도)를 위해 연구가 계속 진행되었지만 속도와 메모리 측면에서 &lt;strong&gt;**비&lt;/strong&gt;**효율적.&lt;/li&gt;
+  &lt;li&gt;경량화, 효율화 필요!!&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;2-prior-work&quot;&gt;&lt;strong&gt;2. Prior Work&lt;/strong&gt;&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;최근 경량화, 효율적인 네트워크 개발에 초점.&lt;/li&gt;
+  &lt;li&gt;Depthwse separable convolution,&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;3-mobilenetarchitecture&quot;&gt;&lt;strong&gt;3. MobileNet Architecture&lt;/strong&gt;&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;핵심적인 레이어 설명.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;31-depthwiseseparableconvolution&quot;&gt;&lt;strong&gt;3.1 Depthwise Separable Convolution&lt;/strong&gt;&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Depthwise Convolution 수행 후 Pointwise Convolution 수행.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/mobilev1/Untitled_1.png&quot; alt=&quot;https://jjerry-k.github.io/public/img/mobilev1/Untitled_1.png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/mobilev1/Untitled_2.png&quot; alt=&quot;https://jjerry-k.github.io/public/img/mobilev1/Untitled_2.png&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;MobileNet 에서는 3 x 3 의 Depthwise saparable convolution 사용.&lt;/li&gt;
+  &lt;li&gt;연산량이 약 8~9 배로 크게 감소.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;32-networkstructureandtraining&quot;&gt;&lt;strong&gt;3.2 Network Structure and Training&lt;/strong&gt;&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;총 28개의 레이어&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/mobilev1/Untitled_3.png&quot; alt=&quot;https://jjerry-k.github.io/public/img/mobilev1/Untitled_3.png&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;MobileNet의 Convolution Block 구조&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/mobilev1/Untitled_4.png&quot; alt=&quot;https://jjerry-k.github.io/public/img/mobilev1/Untitled_4.png&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;MobileNet의 대부분 파라미터, 연산 시간은 1x1 Conv&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/mobilev1/Untitled_5.png&quot; alt=&quot;https://jjerry-k.github.io/public/img/mobilev1/Untitled_5.png&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;RMSprop, asynchronous gradient descent 사용.&lt;/li&gt;
+  &lt;li&gt;Tensorflow 로 구현.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;33-widthmultiplierthinnermodels&quot;&gt;&lt;strong&gt;3.3 Width Multiplier: Thinner Models&lt;/strong&gt;&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;MobileNet의 기본 구조는 작고 빠르지만 더 작고 빠른 모델을 필요로 함.&lt;/li&gt;
+  &lt;li&gt;Width multiplier 라는 파라미터 제안.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;34-resolutionmultiplierreducedrepresentation&quot;&gt;&lt;strong&gt;3.4 Resolution Multiplier: Reduced Representation&lt;/strong&gt;&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/mobilev1/Untitled_6.png&quot; alt=&quot;https://jjerry-k.github.io/public/img/mobilev1/Untitled_6.png&quot; /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;4-experiments&quot;&gt;&lt;strong&gt;4. Experiments&lt;/strong&gt;&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;효율적이다 라는&lt;/strong&gt; 내용이 전부..&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;41-modelchoices&quot;&gt;&lt;strong&gt;4.1 Model Choices&lt;/strong&gt;&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/mobilev1/Untitled_7.png&quot; alt=&quot;https://jjerry-k.github.io/public/img/mobilev1/Untitled_7.png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/mobilev1/Untitled_8.png&quot; alt=&quot;https://jjerry-k.github.io/public/img/mobilev1/Untitled_8.png&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;42-modelshrinkinghyperparemeters&quot;&gt;&lt;strong&gt;4.2 Model Shrinking Hyperparemeters&lt;/strong&gt;&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/mobilev1/Untitled_9.png&quot; alt=&quot;https://jjerry-k.github.io/public/img/mobilev1/Untitled_9.png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/mobilev1/Untitled_10.png&quot; alt=&quot;https://jjerry-k.github.io/public/img/mobilev1/Untitled_10.png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/mobilev1/Untitled_11.png&quot; alt=&quot;https://jjerry-k.github.io/public/img/mobilev1/Untitled_11.png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/mobilev1/Untitled_12.png&quot; alt=&quot;https://jjerry-k.github.io/public/img/mobilev1/Untitled_12.png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/mobilev1/Untitled_13.png&quot; alt=&quot;https://jjerry-k.github.io/public/img/mobilev1/Untitled_13.png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/mobilev1/Untitled_14.png&quot; alt=&quot;https://jjerry-k.github.io/public/img/mobilev1/Untitled_14.png&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;43-finegrainedrecognition&quot;&gt;&lt;strong&gt;4.3 Fine Grained Recognition&lt;/strong&gt;&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/mobilev1/Untitled_15.png&quot; alt=&quot;https://jjerry-k.github.io/public/img/mobilev1/Untitled_15.png&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;44-largescalegeolocalization&quot;&gt;&lt;strong&gt;4.4 Large Scale Geolocalization&lt;/strong&gt;&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/mobilev1/Untitled_16.png&quot; alt=&quot;https://jjerry-k.github.io/public/img/mobilev1/Untitled_16.png&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;45-faceattributed&quot;&gt;&lt;strong&gt;4.5 Face Attributed&lt;/strong&gt;&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/mobilev1/Untitled_17.png&quot; alt=&quot;https://jjerry-k.github.io/public/img/mobilev1/Untitled_17.png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/mobilev1/Untitled_18.png&quot; alt=&quot;https://jjerry-k.github.io/public/img/mobilev1/Untitled_18.png&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;46-objectdetection&quot;&gt;&lt;strong&gt;4.6 Object Detection&lt;/strong&gt;&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/mobilev1/Untitled_19.png&quot; alt=&quot;https://jjerry-k.github.io/public/img/mobilev1/Untitled_19.png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/mobilev1/Untitled_20.png&quot; alt=&quot;https://jjerry-k.github.io/public/img/mobilev1/Untitled_20.png&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;47-faceembeddings&quot;&gt;&lt;strong&gt;4.7 Face Embeddings&lt;/strong&gt;&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/mobilev1/Untitled_21.png&quot; alt=&quot;https://jjerry-k.github.io/public/img/mobilev1/Untitled_21.png&quot; /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;5-conclusion&quot;&gt;&lt;strong&gt;5. Conclusion&lt;/strong&gt;&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;연산량이 적고 파라미터 수도 적음!&lt;/li&gt;
+  &lt;li&gt;다양한 task 에 사용가능!&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Xception</title>
+   <link href="http://localhost:4000/deeplearning/2020/02/16/Xception/"/>
+   <updated>2020-02-16T00:00:00+09:00</updated>
+   <id>http://localhost:4000/deeplearning/2020/02/16/Xception</id>
+   <content type="html">&lt;h1 id=&quot;xception-deep-learning-with-depthwise-separable-convolution&quot;&gt;Xception: Deep Learning with Depthwise Separable Convolution&lt;/h1&gt;
+
+&lt;p&gt;Author: Franc¸ois Chollet&lt;br /&gt;
+Date: Dec 19, 2016&lt;br /&gt;
+URL: https://arxiv.org/abs/1610.02357&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;abstract&quot;&gt;Abstract&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;CNN 에서 많이 사용되는 Inception 은 Regular Convolution 과 Depthwise Separable Convolution 의 중간 단계.&lt;/li&gt;
+  &lt;li&gt;Depthwise Separable Convolution 은 최대 개수의 타워를 가진 Inception module (?)&lt;/li&gt;
+  &lt;li&gt;Inception module을 Depthwise Separable Convolution 으로 대체한 새로운 Deep Convolutional Neural Network 제안.&lt;/li&gt;
+  &lt;li&gt;Xception 이라고 칭함.&lt;/li&gt;
+  &lt;li&gt;ImageNet 으로 학습된 Inception V3 보다 살짝 성능이 좋고 350,000,000개의 이미지와 17,000개의 클래스로 구성된 Larger image dataset 에선 Inception V3 보다 월등히 뛰어난 성능을 보임.&lt;/li&gt;
+  &lt;li&gt;Inception V3와 Xception 이 동일한 parameter 수를 가짐.&lt;/li&gt;
+  &lt;li&gt;그러므로 연산량, 메모리의 증가가 아닌 모델 parameter를 효과적으로 사용해서 성능 향상이 된 것.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;1introduction&quot;&gt;&lt;strong&gt;1. Introduction&lt;/strong&gt;&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Convolutional Neural Network (이하 CNN) 은 Computer Vision 에서 가장 주요한 알고리즘이 되었고, 이를 설계하는 방법에 대해 개발하는데 많은 관심을 가지게 됨.&lt;/li&gt;
+  &lt;li&gt;Lenet -&amp;gt; AlexNet (2012) -&amp;gt; ZFNet (2013) -&amp;gt; VGG (2014) -&amp;gt; Inception 종류 … -&amp;gt; Inception-ResNet (2015)&lt;/li&gt;
+  &lt;li&gt;Inception 스타일의 기본 구성 요소는 Inception module.&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Figure 1은 Inception V3 의 표준 Inception Module.&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/xception/Untitled.png&quot; alt=&quot;https://jjerry-k.github.io/public/img/xception/Untitled.png&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Inception 모델은 위와 같은 모듈을 Stack 한 것. VGG-Style 네트워크는 단순히 Convolution layer를 Stack.&lt;/li&gt;
+  &lt;li&gt;실험적으로 Inception-style 이 VGG-style보다 적은 parameter로 다양한, 많은 feature를 학습 할 수 있다는 것을 보임.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;11theinceptionhypothesis&quot;&gt;&lt;strong&gt;1.1 The Inception hypothesis&lt;/strong&gt;&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Convolution layer는 3차원 공간에서 filter를 학습하려고 함.&lt;/li&gt;
+  &lt;li&gt;Single Convolution kernel 은 채널의 correlation과 공간의 correlation 을 동시에 mapping 함.&lt;/li&gt;
+  &lt;li&gt;Inception 모듈은 채널, 공간의 correlation 을 독립적으로 나타낼 수 있도록 연산을 분해. -&amp;gt; 쉽고 효율적인 프로세스를 만듦.&lt;/li&gt;
+  &lt;li&gt;Inception의 가설은 채널 채널, 공간의 correlation 이 분리되어 있으므로 동시에 매핑하는 것은 좋지 않다는 것.&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Figure 2는 3x3 conv와 1x1 conv만 사용한 단순화한 Inception 모듈.&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/xception/Untitled_1.png&quot; alt=&quot;https://jjerry-k.github.io/public/img/xception/Untitled_1.png&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Figure 3은 Figure 2의 Inception 모듈에서 하나의 큰 1x1 Convolution과 3x3 Convolution들로 재구성한 것.&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/xception/Untitled_2.png&quot; alt=&quot;https://jjerry-k.github.io/public/img/xception/Untitled_2.png&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;이 방법이 Inception 의 가설보다 뛰어난 가설을 만드는 것이 합리적인 것일지, 채널과 공간을 독립적으로 매핑할 수 있는지 의문.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;12thecontinuumbetweenconvolutionsandseparableconvolutions&quot;&gt;&lt;strong&gt;1.2 The continuum between convolutions and separable convolutions&lt;/strong&gt;&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Figure 4 처럼 Inception 모듈 구성.&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/xception/Untitled_3.png&quot; alt=&quot;https://jjerry-k.github.io/public/img/xception/Untitled_3.png&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;1x1 Convolution 적용하여 채널의 correlation 매핑, 그 후 각각의 channel별로 공간의 correlation 매핑&lt;/li&gt;
+  &lt;li&gt;이를 &lt;strong&gt;An “extreme” version of an Inception module&lt;/strong&gt; 이라고 칭함.&lt;/li&gt;
+  &lt;li&gt;TensorFlow 프레임워크에 Depthwise Separable Convolution 연산과 거의 동일함.&lt;/li&gt;
+  &lt;li&gt;TensorFlow나 Keras 프레임워크에 있는 Depthwise Separable Convolution (Separable Convolution 라고도 불림.) 은 각 channel 별로 3x3 Convolution 적용 후 채널간의 1x1 Convolution 적용.&lt;/li&gt;
+  &lt;li&gt;영상처리 분야에서 사용하는 Separable Convolution 과 혼동하면 안됨, 이 연산은 공간적 분리를 하는 Convolution.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;비교&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Extream&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Depthwise Separable&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;연산순서&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;pointwise–&amp;gt;channelwise&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;channelwise–&amp;gt;pointwise&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;비선형성&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Presence&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Absence&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h1 id=&quot;2priorwork&quot;&gt;&lt;strong&gt;2. Prior work&lt;/strong&gt;&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;VGG-16 과 같은 구조가 xception 과 유사.&lt;/li&gt;
+  &lt;li&gt;Inception 구조는 가지치기의 이점을 보여줌.&lt;/li&gt;
+  &lt;li&gt;Depthwise separable convolution는 경량화에도 적합.&lt;/li&gt;
+  &lt;li&gt;TensorFlow에는 이미 구현되어있음.&lt;/li&gt;
+  &lt;li&gt;Residual connection 을 광범위하게 사용.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;3thexceptionarchitecture&quot;&gt;&lt;strong&gt;3. The Xception architecture&lt;/strong&gt;&lt;/h1&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/xception/Untitled_4.png&quot; alt=&quot;https://jjerry-k.github.io/public/img/xception/Untitled_4.png&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Figure 5 와 같은 구조 제안.&lt;/li&gt;
+  &lt;li&gt;처음과 마지막을 제외하곤 linear residual module 사용.&lt;/li&gt;
+  &lt;li&gt;총 36개의 convolution layer로 구성.&lt;/li&gt;
+  &lt;li&gt;매우 단순한 구조.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;4experimentalevaluation&quot;&gt;&lt;strong&gt;4. Experimental evaluation&lt;/strong&gt;&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Xception과 Inceotion V3 비교.&lt;/li&gt;
+  &lt;li&gt;Parameters가 비슷. 네트워크 규모에 대한 차이를 없애기 위함.&lt;/li&gt;
+  &lt;li&gt;ImageNet과 JFT dataset 이용.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;41thejftdataset&quot;&gt;&lt;strong&gt;4.1 The JFT dataset&lt;/strong&gt;&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;그냥…JFT 데이터 설명…&lt;/li&gt;
+  &lt;li&gt;Google 데이터 중 하나&lt;/li&gt;
+  &lt;li&gt;JFT 로 학습, FastEval14k dataset으로 성능 비교.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;42optimizationconfiguration&quot;&gt;&lt;strong&gt;4.2 Optimization configuration&lt;/strong&gt;&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;각 방법에 대해서 다음과 같은 설정으로 Xception, Inception V3 모두 학습&lt;/li&gt;
+  &lt;li&gt;On ImageNet
+    &lt;ul&gt;
+      &lt;li&gt;Optimizer: SGD&lt;/li&gt;
+      &lt;li&gt;Momentum: 0.9&lt;/li&gt;
+      &lt;li&gt;Initial learning rate: 0.045&lt;/li&gt;
+      &lt;li&gt;Learning rate decay: 0.94 (every 2 epochs)&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;On JFT
+    &lt;ul&gt;
+      &lt;li&gt;Optimizer: RMSprop&lt;/li&gt;
+      &lt;li&gt;Momentum: 0.9&lt;/li&gt;
+      &lt;li&gt;Initial learning rate: 0.001&lt;/li&gt;
+      &lt;li&gt;Learning rate decay: 0.9 (every 3,000,000 samples)&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;43regularizationconfiguration&quot;&gt;&lt;strong&gt;4.3 Regularization configuration&lt;/strong&gt;&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Weight decay&lt;/li&gt;
+  &lt;li&gt;Dropout&lt;/li&gt;
+  &lt;li&gt;Auxiliary loss tower&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;44traininginfrastructure&quot;&gt;&lt;strong&gt;4.4 Training infrastructure&lt;/strong&gt;&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;80개의 NVIDIA K80 GPU ….&lt;/li&gt;
+  &lt;li&gt;ImageNet 학습시 &lt;strong&gt;synchronous gradient descent&lt;/strong&gt;을 적용하여 data parallelism 이용. → 3일 소요&lt;/li&gt;
+  &lt;li&gt;JFT 학습시 &lt;strong&gt;asynchronous gradient descent&lt;/strong&gt;을 적용하여 data parallelism 이용. →한달 소요&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;45comparisonwithinceptionv3&quot;&gt;&lt;strong&gt;4.5 Comparison with Inception V3&lt;/strong&gt;&lt;/h2&gt;
+
+&lt;h3 id=&quot;451classificationperformance&quot;&gt;&lt;strong&gt;4.5.1 Classification performance&lt;/strong&gt;&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;두 데이터 모두 Xception이 좋은 성능을 보임.&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/xception/Untitled_5.png&quot; alt=&quot;https://jjerry-k.github.io/public/img/xception/Untitled_5.png&quot; /&gt;&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/xception/Untitled_6.png&quot; alt=&quot;https://jjerry-k.github.io/public/img/xception/Untitled_6.png&quot; /&gt;&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/xception/Untitled_7.png&quot; alt=&quot;https://jjerry-k.github.io/public/img/xception/Untitled_7.png&quot; /&gt;&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/xception/Untitled_8.png&quot; alt=&quot;https://jjerry-k.github.io/public/img/xception/Untitled_8.png&quot; /&gt;&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/xception/Untitled_9.png&quot; alt=&quot;https://jjerry-k.github.io/public/img/xception/Untitled_9.png&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;452sizeandspeed&quot;&gt;&lt;strong&gt;4.5.2 Size and speed&lt;/strong&gt;&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Parameter가 늘지 않으면서 성능 향상을 보이기에 Xception이 효율적인 모델.&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/xception/Untitled_10.png&quot; alt=&quot;https://jjerry-k.github.io/public/img/xception/Untitled_10.png&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;46effectoftheresidualconnections&quot;&gt;&lt;strong&gt;4.6 Effect of the residual connections&lt;/strong&gt;&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Residual connection에 대한 ablation study 진행.&lt;/li&gt;
+  &lt;li&gt;Residual connection의 중요성을 보여줌.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/xception/Untitled_11.png&quot; alt=&quot;https://jjerry-k.github.io/public/img/xception/Untitled_11.png&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;47effectofanintermediateactivationafterpointwiseconvolutions&quot;&gt;&lt;strong&gt;4.7 Effect of an intermediate activation after point wise convolutions&lt;/strong&gt;&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Depthwise separable convolution은 depthwise → pointwise convolution으로 구성되어있음.&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;그 중간에 activation function에 대한 ablation study 진행.&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/xception/Untitled_12.png&quot; alt=&quot;https://jjerry-k.github.io/public/img/xception/Untitled_12.png&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://arxiv.org/pdf/1512.00567.pdf&quot;&gt;Inception module에 대한 연구&lt;/a&gt;와 반대되는 결과 도출.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;5futuredirections&quot;&gt;&lt;strong&gt;5. Future directions&lt;/strong&gt;&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Depthwise separble convolution 이 만능이라는 보장은 없음.&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+ </entry>
  
  <entry>
    <title>jupyter Lab 에서 단축키 설정하는 방법!</title>
@@ -392,32 +1150,57 @@ and Molecular Medical Imaging, Fudan University, Shanghai 200433, China
       &lt;li&gt;&lt;a href=&quot;https://arxiv.org/pdf/1706.03142.pdf&quot;&gt;Deep Learning for Isotropic Super-Resolution from Non-Isotropic 3D Electron Microscopy&lt;/a&gt; 에 따르면 &lt;strong&gt;Cubic-weighted mean square error&lt;/strong&gt; 가 Generated 영상과 Ground truth 간의 차이가 큰 “어려운” 부분의 성능을 강조.&lt;/li&gt;
       &lt;li&gt;다음과 같은 Loss 제안.&lt;/li&gt;
       &lt;li&gt;$\epsilon$ 은 default로 $10^{-6}$&lt;/li&gt;
-      &lt;li&gt;$L^G_{SC} = \frac{1}{rLWH}\sum_{x,y,z=1,1,1}^{L,W,rH}\sqrt{(I^{GT}&lt;em&gt;{x,y,z}-I^Y&lt;/em&gt;{z,y,z})^2+\epsilon}\cdot\bigg(\frac{1}{2}+\frac{(I^{GT}&lt;em&gt;{x,y,z}-I^Y&lt;/em&gt;{z,y,z})^2}{2max((I^{GT}-I^Y)^2)}\bigg)$&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;L^G_{SC} = \frac{1}{rLWH}\sum_{x,y,z=1,1,1}^{L,W,rH}\sqrt{(I^{GT}_{x,y,z}-I^Y_{z,y,z})^2+\epsilon}\cdot\bigg(\frac{1}{2}+\frac{(I^{GT}_{x,y,z}-I^Y_{z,y,z})^2}{2max((I^{GT}-I^Y)^2)}\bigg)&lt;/script&gt;
+
+&lt;ul&gt;
   &lt;li&gt;3-D Gradient Correction Loss
     &lt;ul&gt;
       &lt;li&gt;Charbonnier Loss는 Pixelwise difference에 대한 Loss, Gradient에 대한 손실을 줄 수 있음.&lt;/li&gt;
       &lt;li&gt;다음과 같이 각 axis에 대한 Gradient 를 이용하여 Loss 제안.&lt;/li&gt;
-      &lt;li&gt;$L^G_{GC} = \mathbb{E}[(\nabla_xI^{GT}&lt;em&gt;{x,y,z}-\nabla_xI^Y&lt;/em&gt;{x,y,z})^2] \ + \mathbb{E}[(\nabla_yI^{GT}&lt;em&gt;{x,y,z}-\nabla_yI^Y&lt;/em&gt;{x,y,z})]^2\ + \mathbb{E}[(\nabla_zI^{GT}&lt;em&gt;{x,y,z}-\nabla_zI^Y&lt;/em&gt;{x,y,z})^2]$&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;L^G_{GC} = \mathbb{E}[(\nabla_{x}I^{GT}_{x,y,z} - \nabla_{x}I^Y_{x,y,z})^2] \\  + \mathbb{E}[(\nabla_{y}I^{GT}_{x,y,z} - \nabla_{y}I^Y_{x,y,z})]^2\\ + \mathbb{E}[(\nabla_{z}I^{GT}_{x,y,z} - \nabla_{z}I^Y_{x,y,z})^2]&lt;/script&gt;
+
+&lt;ul&gt;
   &lt;li&gt;Adversarial Loss
     &lt;ul&gt;
       &lt;li&gt;LSGAN Loss 사용.&lt;/li&gt;
-      &lt;li&gt;$L^D=\frac{1}{2}\mathbb{E}[(D(I^{GT}, I^A, I^S)-1)^2+(D(I^Y, I^A, I^S)-0)^2]$&lt;/li&gt;
-      &lt;li&gt;$L^G_{AD}=\mathbb{E}[(D(I^Y, I^A, I^S)-1)^2]$&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;L^D=\frac{1}{2}\mathbb{E}[(D(I^{GT}, I^A, I^S)-1)^2+D(I^Y, I^A, I^S)^2]&lt;/script&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;L^G_{AD}=\mathbb{E}[(D(I^Y, I^A, I^S)-1)^2]&lt;/script&gt;
+
+&lt;ul&gt;
   &lt;li&gt;$\ell_2$ Weight Regularization Loss
     &lt;ul&gt;
       &lt;li&gt;(Loss는 아니지만…)&lt;/li&gt;
       &lt;li&gt;Overfitting을 방지하기 위해 사용.&lt;/li&gt;
-      &lt;li&gt;$L^G_{WR} = \sum\Vert W_G\Vert^2_2$&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
-  &lt;li&gt;3D-Y-Net-GAN Loss : $L_G = L^G_{SC} + \lambda_1L^G_{GC} + \lambda_2L^G_{AD} + \lambda_3L^G_{WR}$&lt;/li&gt;
-  &lt;li&gt;3D-DenseU-Net Loss : $L = L_{SC} + \lambda_1L_{GC} + \lambda_3L_{WR}$&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;L^G_{WR} = \sum\Vert W_G\Vert^2_2&lt;/script&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;3D-Y-Net-GAN Loss
+    &lt;ul&gt;
+      &lt;li&gt;$L_G = L^G_{SC} + \lambda_1L^G_{GC} + \lambda_2L^G_{AD} + \lambda_3L^G_{WR}$&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;3D-DenseU-Net Loss
+    &lt;ul&gt;
+      &lt;li&gt;$L = L_{SC} + \lambda_1L_{GC} + \lambda_3L_{WR}$&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&quot;experimental-result&quot;&gt;Experimental Result&lt;/h2&gt;
@@ -1195,18 +1978,9 @@ g.fig.autofmt_xdate()
       &lt;/li&gt;
       &lt;li&gt;Class Probabilities 정보
         &lt;ul&gt;
+          &lt;li&gt;C개의 class에 대한 conditional class probabilities, $Pr(Class_i \mid Object)$&lt;/li&gt;
           &lt;li&gt;
-            &lt;table&gt;
-              &lt;tbody&gt;
-                &lt;tr&gt;
-                  &lt;td&gt;C개의 class에 대한 conditional class probabilities, $Pr(Class_i&lt;/td&gt;
-                  &lt;td&gt;Object)$&lt;/td&gt;
-                &lt;/tr&gt;
-              &lt;/tbody&gt;
-            &lt;/table&gt;
-          &lt;/li&gt;
-          &lt;li&gt;
-            &lt;p&gt;Test 시에는 Conditional class probabilities와 individual box confidence score를 곱했다고 함.
+            &lt;p&gt;Test 시에는 Conditional class probabilities와 individual box confidence score를 곱했다고 함.&lt;br /&gt;
 &lt;script type=&quot;math/tex&quot;&gt;Pr(Class_i|Object) =  Pr(Object) * IOU^{truth}_{pred} = Pr(Class_i) * IOU^{truth}_{pred}&lt;/script&gt;&lt;/p&gt;
           &lt;/li&gt;
           &lt;li&gt;bbox 별로 class confidence score를 알 수 있음.&lt;/li&gt;
@@ -2485,11 +3259,11 @@ brew &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;wget
 brew &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;pyenv
 
 &lt;span class=&quot;c&quot;&gt;# bash_profile 에 경로 추가.&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'export PYENV_ROOT=&quot;${HOME}/.pyenv&quot;'&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&lt;/span&gt; ~/.bash_profile
+&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'export PYENV_ROOT=&quot;${HOME}/.pyenv&quot;'&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&lt;/span&gt; ~/.zshrc
 
-&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'export PATH=&quot;${PYENV_ROOT}bin:$PATH&quot;'&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&lt;/span&gt; ~/.bash_profile
+&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'export PATH=&quot;${PYENV_ROOT}bin:$PATH&quot;'&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&lt;/span&gt; ~/.zshrc
 
-&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'eval &quot;$(pyenv init -)&quot;'&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&lt;/span&gt; ~/.bash_profile
+&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'eval &quot;$(pyenv init -)&quot;'&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&lt;/span&gt; ~/.zshrc
 
 &lt;span class=&quot;nb&quot;&gt;exec&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$SHELL&lt;/span&gt;
 

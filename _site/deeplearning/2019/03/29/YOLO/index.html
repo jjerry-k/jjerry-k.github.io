@@ -232,7 +232,7 @@
 
   <div class="sidebar-item">
     <p>
-    &copy; 2019 Jerry. This work is liscensed under <a href="http://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0</a>.
+    &copy; 2020 Jerry. This work is liscensed under <a href="http://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0</a>.
     </p>
   </div>
 
@@ -360,18 +360,9 @@
       </li>
       <li>Class Probabilities 정보
         <ul>
+          <li>C개의 class에 대한 conditional class probabilities, $Pr(Class_i \mid Object)$</li>
           <li>
-            <table>
-              <tbody>
-                <tr>
-                  <td>C개의 class에 대한 conditional class probabilities, $Pr(Class_i</td>
-                  <td>Object)$</td>
-                </tr>
-              </tbody>
-            </table>
-          </li>
-          <li>
-            <p>Test 시에는 Conditional class probabilities와 individual box confidence score를 곱했다고 함.
+            <p>Test 시에는 Conditional class probabilities와 individual box confidence score를 곱했다고 함.<br />
 <script type="math/tex">Pr(Class_i|Object) =  Pr(Object) * IOU^{truth}_{pred} = Pr(Class_i) * IOU^{truth}_{pred}</script></p>
           </li>
           <li>bbox 별로 class confidence score를 알 수 있음.</li>

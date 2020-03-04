@@ -232,7 +232,7 @@
 
   <div class="sidebar-item">
     <p>
-    &copy; 2019 Jerry. This work is liscensed under <a href="http://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0</a>.
+    &copy; 2020 Jerry. This work is liscensed under <a href="http://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0</a>.
     </p>
   </div>
 
@@ -289,11 +289,11 @@ brew <span class="nb">install </span>wget
 brew <span class="nb">install </span>pyenv
 
 <span class="c"># bash_profile 에 경로 추가.</span>
-<span class="nb">echo</span> <span class="s1">'export PYENV_ROOT="${HOME}/.pyenv"'</span> <span class="o">&gt;&gt;</span> ~/.bash_profile
+<span class="nb">echo</span> <span class="s1">'export PYENV_ROOT="${HOME}/.pyenv"'</span> <span class="o">&gt;&gt;</span> ~/.zshrc
 
-<span class="nb">echo</span> <span class="s1">'export PATH="${PYENV_ROOT}bin:$PATH"'</span> <span class="o">&gt;&gt;</span> ~/.bash_profile
+<span class="nb">echo</span> <span class="s1">'export PATH="${PYENV_ROOT}bin:$PATH"'</span> <span class="o">&gt;&gt;</span> ~/.zshrc
 
-<span class="nb">echo</span> <span class="s1">'eval "$(pyenv init -)"'</span> <span class="o">&gt;&gt;</span> ~/.bash_profile
+<span class="nb">echo</span> <span class="s1">'eval "$(pyenv init -)"'</span> <span class="o">&gt;&gt;</span> ~/.zshrc
 
 <span class="nb">exec</span> <span class="nv">$SHELL</span>
 

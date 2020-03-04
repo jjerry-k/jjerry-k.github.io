@@ -232,7 +232,7 @@
 
   <div class="sidebar-item">
     <p>
-    &copy; 2019 Jerry. This work is liscensed under <a href="http://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0</a>.
+    &copy; 2020 Jerry. This work is liscensed under <a href="http://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0</a>.
     </p>
   </div>
 
@@ -446,32 +446,57 @@ and Molecular Medical Imaging, Fudan University, Shanghai 200433, China
       <li><a href="https://arxiv.org/pdf/1706.03142.pdf">Deep Learning for Isotropic Super-Resolution from Non-Isotropic 3D Electron Microscopy</a> 에 따르면 <strong>Cubic-weighted mean square error</strong> 가 Generated 영상과 Ground truth 간의 차이가 큰 “어려운” 부분의 성능을 강조.</li>
       <li>다음과 같은 Loss 제안.</li>
       <li>$\epsilon$ 은 default로 $10^{-6}$</li>
-      <li>$L^G_{SC} = \frac{1}{rLWH}\sum_{x,y,z=1,1,1}^{L,W,rH}\sqrt{(I^{GT}<em>{x,y,z}-I^Y</em>{z,y,z})^2+\epsilon}\cdot\bigg(\frac{1}{2}+\frac{(I^{GT}<em>{x,y,z}-I^Y</em>{z,y,z})^2}{2max((I^{GT}-I^Y)^2)}\bigg)$</li>
     </ul>
   </li>
+</ul>
+
+<script type="math/tex; mode=display">L^G_{SC} = \frac{1}{rLWH}\sum_{x,y,z=1,1,1}^{L,W,rH}\sqrt{(I^{GT}_{x,y,z}-I^Y_{z,y,z})^2+\epsilon}\cdot\bigg(\frac{1}{2}+\frac{(I^{GT}_{x,y,z}-I^Y_{z,y,z})^2}{2max((I^{GT}-I^Y)^2)}\bigg)</script>
+
+<ul>
   <li>3-D Gradient Correction Loss
     <ul>
       <li>Charbonnier Loss는 Pixelwise difference에 대한 Loss, Gradient에 대한 손실을 줄 수 있음.</li>
       <li>다음과 같이 각 axis에 대한 Gradient 를 이용하여 Loss 제안.</li>
-      <li>$L^G_{GC} = \mathbb{E}[(\nabla_xI^{GT}<em>{x,y,z}-\nabla_xI^Y</em>{x,y,z})^2] \ + \mathbb{E}[(\nabla_yI^{GT}<em>{x,y,z}-\nabla_yI^Y</em>{x,y,z})]^2\ + \mathbb{E}[(\nabla_zI^{GT}<em>{x,y,z}-\nabla_zI^Y</em>{x,y,z})^2]$</li>
     </ul>
   </li>
+</ul>
+
+<script type="math/tex; mode=display">L^G_{GC} = \mathbb{E}[(\nabla_{x}I^{GT}_{x,y,z} - \nabla_{x}I^Y_{x,y,z})^2] \\  + \mathbb{E}[(\nabla_{y}I^{GT}_{x,y,z} - \nabla_{y}I^Y_{x,y,z})]^2\\ + \mathbb{E}[(\nabla_{z}I^{GT}_{x,y,z} - \nabla_{z}I^Y_{x,y,z})^2]</script>
+
+<ul>
   <li>Adversarial Loss
     <ul>
       <li>LSGAN Loss 사용.</li>
-      <li>$L^D=\frac{1}{2}\mathbb{E}[(D(I^{GT}, I^A, I^S)-1)^2+(D(I^Y, I^A, I^S)-0)^2]$</li>
-      <li>$L^G_{AD}=\mathbb{E}[(D(I^Y, I^A, I^S)-1)^2]$</li>
     </ul>
   </li>
+</ul>
+
+<script type="math/tex; mode=display">L^D=\frac{1}{2}\mathbb{E}[(D(I^{GT}, I^A, I^S)-1)^2+D(I^Y, I^A, I^S)^2]</script>
+
+<script type="math/tex; mode=display">L^G_{AD}=\mathbb{E}[(D(I^Y, I^A, I^S)-1)^2]</script>
+
+<ul>
   <li>$\ell_2$ Weight Regularization Loss
     <ul>
       <li>(Loss는 아니지만…)</li>
       <li>Overfitting을 방지하기 위해 사용.</li>
-      <li>$L^G_{WR} = \sum\Vert W_G\Vert^2_2$</li>
     </ul>
   </li>
-  <li>3D-Y-Net-GAN Loss : $L_G = L^G_{SC} + \lambda_1L^G_{GC} + \lambda_2L^G_{AD} + \lambda_3L^G_{WR}$</li>
-  <li>3D-DenseU-Net Loss : $L = L_{SC} + \lambda_1L_{GC} + \lambda_3L_{WR}$</li>
+</ul>
+
+<script type="math/tex; mode=display">L^G_{WR} = \sum\Vert W_G\Vert^2_2</script>
+
+<ul>
+  <li>3D-Y-Net-GAN Loss
+    <ul>
+      <li>$L_G = L^G_{SC} + \lambda_1L^G_{GC} + \lambda_2L^G_{AD} + \lambda_3L^G_{WR}$</li>
+    </ul>
+  </li>
+  <li>3D-DenseU-Net Loss
+    <ul>
+      <li>$L = L_{SC} + \lambda_1L_{GC} + \lambda_3L_{WR}$</li>
+    </ul>
+  </li>
 </ul>
 
 <h2 id="experimental-result">Experimental Result</h2>

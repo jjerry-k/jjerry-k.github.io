@@ -232,7 +232,7 @@
 
   <div class="sidebar-item">
     <p>
-    &copy; 2019 Jerry. This work is liscensed under <a href="http://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0</a>.
+    &copy; 2020 Jerry. This work is liscensed under <a href="http://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0</a>.
     </p>
   </div>
 
@@ -270,6 +270,832 @@
 
       <div class="container content">
         <div class="posts">
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/deeplearning/2020/03/04/starganv2/">
+        StarGAN v2 리뷰
+      </a>
+    </h1>
+
+    <span class="post-date">04 Mar 2020</span>
+     | 
+    
+    <a href="/blog/tags/#paper" class="post-tag">Paper</a>
+    
+    
+
+    <h4 style="font-weight: 400; line-height: 1.8;"><article>
+      <h1 id="stargan-v2-diverse-image-synthessis-for-multiple-domains">StarGAN v2: Diverse Image Synthessis for Multiple Domains</h1>
+
+<p>Author: Yunjey Choi, Youngjung Uh, Jaejun Yoo, Jung-Woo Ha
+Date: Dec 04, 2019
+URL: https://arxiv.org/abs/1912.01865</p>
+
+<h1 id="abstract">Abstract</h1>
+
+<ul>
+  <li>Image translation 을 잘 하는 Model을 학습하려면 다음 사항을 만족해야함
+    <ul>
+      <li>Diversity of generated images</li>
+      <li>Scalability over multiple domains</li>
+    </ul>
+  </li>
+  <li>기존의 방법들은 limited diversity, multiple models(networks)를 다룸.</li>
+  <li>StarGAN v2는 두 조건 모두 만족.</li>
+</ul>
+
+<h1 id="introduction">Introduction</h1>
+
+<ul>
+  <li>Domain: 시각적으로 구별되는 범주</li>
+  <li>Style: 각 영상이 가지는 독특한 외관적 특성</li>
+</ul>
+
+<p><img src="https://jjerry-k.github.io/public/img/starganv2/Untitled.png" alt="https://jjerry-k.github.io/public/img/starganv2/Untitled.png" /></p>
+
+<h1 id="stargan-v2">StarGAN v2</h1>
+
+<h2 id="proposed-framework">Proposed framework</h2>
+
+<p><img src="https://jjerry-k.github.io/public/img/starganv2/Untitled_1.png" alt="https://jjerry-k.github.io/public/img/starganv2/Untitled_1.png" /></p>
+
+<ul>
+  <li>4개의 Network 로 구성.</li>
+  <li>Generator (<code class="highlighter-rouge">G</code>)
+    <ul>
+      <li>Image <code class="highlighter-rouge">x</code>와 Style code <code class="highlighter-rouge">s</code>를 입력으로 받아 새로운 영상을 생성.</li>
+      <li><a href="https://arxiv.org/abs/1703.06868">adaptive instance normalization (AdaIN)</a> 사용.</li>
+    </ul>
+
+    <p><img src="https://jjerry-k.github.io/public/img/starganv2/Untitled_2.png" alt="https://jjerry-k.github.io/public/img/starganv2/Untitled_2.png" /></p>
+  </li>
+  <li>Mapping network (<code class="highlighter-rouge">F</code>)
+    <ul>
+      <li>Latent code <code class="highlighter-rouge">z</code>와 Domain code <code class="highlighter-rouge">y</code>를 입력으로 받아 Style code <code class="highlighter-rouge">s</code>생성.</li>
+      <li>Multi Layer Perceptron 구조.</li>
+    </ul>
+
+    <p><img src="https://jjerry-k.github.io/public/img/starganv2/Untitled_3.png" alt="https://jjerry-k.github.io/public/img/starganv2/Untitled_3.png" /></p>
+  </li>
+  <li>Style encoder (<code class="highlighter-rouge">E</code>)
+    <ul>
+      <li>Image <code class="highlighter-rouge">x</code>와 Domain code <code class="highlighter-rouge">y</code>를 입력으로 받아 <code class="highlighter-rouge">x</code>에서 Style code <code class="highlighter-rouge">s</code>를 추출.</li>
+    </ul>
+  </li>
+  <li>Discriminator (<code class="highlighter-rouge">D</code>)
+    <ul>
+      <li>Image <code class="highlighter-rouge">x</code>를 입력으로 받아 Domain code <code class="highlighter-rouge">y</code>와 Real/Fake 분류.</li>
+    </ul>
+
+    <p><img src="https://jjerry-k.github.io/public/img/starganv2/Untitled_4.png" alt="https://jjerry-k.github.io/public/img/starganv2/Untitled_4.png" /></p>
+  </li>
+</ul>
+
+<h2 id="training-objectives">Training objectives</h2>
+
+<ul>
+  <li>Adversarial objective
+    <ul>
+      <li>GAN 에서 기본적으로 사용되는 Loss</li>
+    </ul>
+  </li>
+</ul>
+
+<script type="math/tex; mode=display">\mathcal{L}_{adv}=\mathbb{E}_{\mathrm{x},y}[\log{D_y}(\mathrm{x})] + \mathbb{E}_{\mathrm{x}, \tilde{y}, \mathrm{z}}[\log{(1-D_{\tilde{y}}(G(\mathrm{x}, \tilde{\mathrm{s}})))}</script>
+
+<ul>
+  <li>Style reconstruction
+    <ul>
+      <li><code class="highlighter-rouge">G(x, s)</code> 를 Style encoder <code class="highlighter-rouge">E</code> 에 넣어 <code class="highlighter-rouge">s</code> 추출 후 입력 <code class="highlighter-rouge">s</code>와 비교</li>
+    </ul>
+  </li>
+</ul>
+
+<script type="math/tex; mode=display">\mathcal{L}_{sty}=\mathbb{E}_{\mathrm{x},\tilde{y}, \mathrm{z}}[\parallel\tilde{\mathrm{s}}-E_{\tilde{y}}(G(\mathrm{x}, \tilde{\mathrm{s}}))\parallel_1]</script>
+
+<ul>
+  <li>Style diversification
+    <ul>
+      <li><code class="highlighter-rouge">G</code>가 다양한 Image를 생성할 수 있도록 Regularization 하는 역할.</li>
+      <li><code class="highlighter-rouge">z1, z2</code> 가 <code class="highlighter-rouge">F</code>에 의해 생성된 <code class="highlighter-rouge">s1, s2</code>와 입력 <code class="highlighter-rouge">x</code>를 <code class="highlighter-rouge">G</code>의 입력으로 새로운 영상 생성.</li>
+      <li>L1 Norm 계산.</li>
+    </ul>
+  </li>
+</ul>
+
+<script type="math/tex; mode=display">\mathcal{L}_{ds}=\mathbb{E}_{\mathrm{x},\tilde{y}, \mathrm{z}_1, \mathrm{z}_2}[\parallel G(\mathrm{x}, \tilde{\mathrm{s}}_1) - G(\mathrm{x}, \tilde{\mathrm{s}}_2) \parallel_1]</script>
+
+<ul>
+  <li>Preserving source characteristics
+    <ul>
+      <li>Cycle GAN 의 cycle consistency loss.</li>
+      <li>target domain의 style 을 적용한 영상을 다시 <code class="highlighter-rouge">E(x)</code>로 추출된 s를 이용하여 <code class="highlighter-rouge">x'</code>로 reconstruction 한 후 L1 Norm 계산.</li>
+    </ul>
+  </li>
+</ul>
+
+<script type="math/tex; mode=display">\mathcal{L}_{cyc}=\mathbb{E}_{\mathrm{x}, y, \tilde{y}, \mathrm{z}}[\parallel \mathrm{x} - G(G(\mathrm{x}, \tilde{\mathrm{s}}), \hat{\mathrm{s}})\parallel_1]</script>
+
+<ul>
+  <li>
+    <p>Full objective</p>
+
+    <script type="math/tex; mode=display">\mathcal{L}_D = -\mathcal{L}_{adv} \\ \mathcal{L}_{F, G, E}=\mathcal{L}_{adv} + \lambda_{sty} \mathcal{L}_{sty} - \lambda_{ds} \mathcal{L}_{ds} + \lambda_{cyc} \mathcal{L}_{cyc}</script>
+
+    <ul>
+      <li>About $\lambda$</li>
+    </ul>
+  </li>
+</ul>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">Dataset</th>
+      <th style="text-align: center">sty</th>
+      <th style="text-align: center">ds</th>
+      <th style="text-align: center">cyc</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">CelebA-HQ</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">1</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">AFHQ</td>
+      <td style="text-align: center">0.3</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">0.1</td>
+    </tr>
+  </tbody>
+</table>
+
+<h1 id="experiments">Experiments</h1>
+
+<ul>
+  <li>Baselines
+    <ul>
+      <li><a href="https://arxiv.org/abs/1804.04732">MUNIT</a></li>
+      <li><a href="https://arxiv.org/abs/1808.00948">DRIT</a></li>
+      <li><a href="https://arxiv.org/abs/1903.05628">MSGAN</a></li>
+      <li><a href="https://arxiv.org/abs/1711.09020">StarGAN</a></li>
+    </ul>
+  </li>
+  <li>Datasets
+    <ul>
+      <li><a href="http://mmlab.ie.cuhk.edu.hk/projects/CelebA.html">CelebA-HQ</a></li>
+      <li><a href="https://github.com/clovaai/stargan-v2/blob/master/download.sh">AFHQ</a></li>
+    </ul>
+  </li>
+  <li>Evaluation metrics
+    <ul>
+      <li><a href="https://arxiv.org/abs/1706.08500">Frechet inception distance (FID)</a></li>
+      <li><a href="https://arxiv.org/abs/1801.03924">Learned perceptual image patch similarity (LPIPS)</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="analysis-of-individual-components">Analysis of individual components</h2>
+
+<ul>
+  <li>StarGAN에서 본 연구에서 제안하는 방법들을 하나하나 넣어가면서 성능 실험.</li>
+  <li>정량적 평가를 보면 추가할 때마다 좋아지는 것을 볼 수 있음.</li>
+</ul>
+
+<p><img src="https://jjerry-k.github.io/public/img/starganv2/Untitled_5.png" alt="https://jjerry-k.github.io/public/img/starganv2/Untitled_5.png" /></p>
+
+<ul>
+  <li>각 단계별 생성한 영상의 결과</li>
+</ul>
+
+<p><img src="https://jjerry-k.github.io/public/img/starganv2/Untitled_6.png" alt="https://jjerry-k.github.io/public/img/starganv2/Untitled_6.png" /></p>
+
+<h2 id="comparison-on-diverse-image-synthesis">Comparison on diverse image synthesis</h2>
+
+<ul>
+  <li>다른 방법들과 비교</li>
+  <li>Latent-guided synthesis ( Latent code 만을 이용하여 생성 )</li>
+</ul>
+
+<p><img src="https://jjerry-k.github.io/public/img/starganv2/Untitled_7.png" alt="https://jjerry-k.github.io/public/img/starganv2/Untitled_7.png" /></p>
+
+<p><img src="https://jjerry-k.github.io/public/img/starganv2/Untitled_8.png" alt="https://jjerry-k.github.io/public/img/starganv2/Untitled_8.png" /></p>
+
+<ul>
+  <li>Referenc-guided synthesis ( Style code 를 이용한 생성 )</li>
+</ul>
+
+<p><img src="https://jjerry-k.github.io/public/img/starganv2/Untitled_9.png" alt="https://jjerry-k.github.io/public/img/starganv2/Untitled_9.png" /></p>
+
+<p><img src="https://jjerry-k.github.io/public/img/starganv2/Untitled_10.png" alt="https://jjerry-k.github.io/public/img/starganv2/Untitled_10.png" /></p>
+
+<ul>
+  <li>Human evaluation
+    <ul>
+      <li>방법 별로 100개의 sample 생성 후 사람이 판단.</li>
+    </ul>
+  </li>
+</ul>
+
+<p><img src="https://jjerry-k.github.io/public/img/starganv2/Untitled_11.png" alt="https://jjerry-k.github.io/public/img/starganv2/Untitled_11.png" /></p>
+
+<h1 id="result">Result</h1>
+
+<ul>
+  <li>겁나….잘 생성함…</li>
+</ul>
+
+<p><img src="https://jjerry-k.github.io/public/img/starganv2/Untitled_12.png" alt="https://jjerry-k.github.io/public/img/starganv2/Untitled_12.png" /></p>
+
+<p><img src="https://jjerry-k.github.io/public/img/starganv2/Untitled_13.png" alt="https://jjerry-k.github.io/public/img/starganv2/Untitled_13.png" /></p>
+
+    <article></h4>
+    <div class="post-more">
+      
+      <a href="/deeplearning/2020/03/04/starganv2/#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
+      
+      <a href="/deeplearning/2020/03/04/starganv2/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
+    </div>
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/deeplearning/2020/03/01/wandb/">
+        Weights & Biases 가 뭐지??
+      </a>
+    </h1>
+
+    <span class="post-date">01 Mar 2020</span>
+     | 
+    
+    <a href="/blog/tags/#tools" class="post-tag">Tools</a>
+    
+    
+
+    <h4 style="font-weight: 400; line-height: 1.8;"><article>
+      <p>이번 포스팅에선 <a href="https://www.wandb.com/">Weights &amp; Biases</a> 라는 Tool 을 소개드리려 합니다.</p>
+
+<p>다음과 같은 특징을 강조하네요.</p>
+<ul>
+  <li>Store hyper-parameters used in a training run</li>
+  <li>Search, compare, and visualize training runs</li>
+  <li>Analyze system usage metrics alongside runs</li>
+  <li>Collaborate with team members</li>
+  <li>Replicate historic results</li>
+  <li>Run parameter sweeps</li>
+  <li>Keep records of experiments available forever</li>
+</ul>
+
+<p>그럼 간단 사용법에 대해서 설명드리겠습니다.</p>
+
+<h3 id="sign-up-을-했다는-가정하에-진행합니다"><strong>Sign Up</strong> 을 했다는 가정하에 진행합니다.</h3>
+
+<h1 id="패키지-설치">패키지 설치</h1>
+
+<p><code class="highlighter-rouge">wandb</code> 패키지를 먼저 설치해줍니다.</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pip <span class="nb">install </span>wandb
+</code></pre></div></div>
+
+<h1 id="wandb-로그인">wandb 로그인</h1>
+
+<p>설치 후 Terminal (or 명령 프롬프트) 에 다음과 같이 입력합니다.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wandb login
+</code></pre></div></div>
+
+<p>그러면 아래와 같은 화면이 나오면서 웹 브라우저가 켜집니다.</p>
+
+<p><img src="https://jjerry-k.github.io/public/img/wandb/Untitled.png" alt="https://jjerry-k.github.io/public/img/wandb/Untitled.png" /></p>
+
+<p><img src="https://jjerry-k.github.io/public/img/wandb/Untitled_1.png" alt="https://jjerry-k.github.io/public/img/wandb/Untitled_1.png" /></p>
+
+<p>Browser 에서 API키를 복사해주해서 Terminal (or 명령 프롬프트) 에 붙여넣기합니다.</p>
+
+<p><img src="https://jjerry-k.github.io/public/img/wandb/Untitled_2.png" alt="https://jjerry-k.github.io/public/img/wandb/Untitled_2.png" /></p>
+
+<p>그럼 wandb 에 로그인 완료!</p>
+
+<p><img src="https://jjerry-k.github.io/public/img/wandb/Untitled_3.png" alt="https://jjerry-k.github.io/public/img/wandb/Untitled_3.png" /></p>
+
+<h1 id="code-실행">Code 실행</h1>
+
+<p>간단한 MLP를 이용한 MNIST Classification 문제입니다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="c1"># wandb initialization
+</span><span class="kn">import</span> <span class="nn">wandb</span>
+<span class="n">wandb</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">project</span><span class="o">=</span><span class="s">"test_project"</span><span class="p">)</span>
+
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+
+<span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="n">tf</span>
+<span class="kn">from</span> <span class="nn">tensorflow.keras</span> <span class="kn">import</span> <span class="n">models</span><span class="p">,</span> <span class="n">layers</span><span class="p">,</span> <span class="n">optimizers</span><span class="p">,</span> <span class="n">losses</span><span class="p">,</span> <span class="n">utils</span><span class="p">,</span> <span class="n">datasets</span>
+
+
+<span class="c1"># Import callback function
+</span><span class="kn">from</span> <span class="nn">wandb.keras</span> <span class="kn">import</span> <span class="n">WandbCallback</span> 
+
+<span class="k">print</span><span class="p">(</span><span class="s">"Packge Loaded!"</span><span class="p">)</span>
+
+
+<span class="c1"># Data Loading
+</span><span class="p">(</span><span class="n">train_x</span><span class="p">,</span> <span class="n">train_y</span><span class="p">),</span> <span class="p">(</span><span class="n">test_x</span><span class="p">,</span> <span class="n">test_y</span><span class="p">)</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">mnist</span><span class="o">.</span><span class="n">load_data</span><span class="p">()</span>
+<span class="n">train_x</span><span class="p">,</span> <span class="n">test_x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">train_x</span><span class="o">/</span><span class="mf">255.</span><span class="p">,</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">784</span><span class="p">]),</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">test_x</span><span class="o">/</span><span class="mf">255.</span><span class="p">,</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">784</span><span class="p">])</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s">"Train Data's Shape : "</span><span class="p">,</span> <span class="n">train_x</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">train_y</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"Test Data's Shape : "</span><span class="p">,</span> <span class="n">test_x</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">test_y</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+
+<span class="c1"># Network Building
+## Using Sequential
+</span><span class="n">mlp</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">Sequential</span><span class="p">()</span>
+<span class="n">mlp</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">256</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s">'relu'</span><span class="p">,</span> <span class="n">input_shape</span><span class="o">=</span><span class="p">(</span><span class="mi">784</span><span class="p">,)))</span>
+<span class="n">mlp</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s">'relu'</span><span class="p">))</span>
+<span class="n">mlp</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s">'softmax'</span><span class="p">))</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s">"Network Built!"</span><span class="p">)</span>
+
+<span class="n">mlp</span><span class="o">.</span><span class="nb">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="n">optimizers</span><span class="o">.</span><span class="n">Adam</span><span class="p">(),</span> <span class="n">loss</span><span class="o">=</span><span class="n">losses</span><span class="o">.</span><span class="n">sparse_categorical_crossentropy</span><span class="p">,</span> <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s">'accuracy'</span><span class="p">])</span>
+
+<span class="n">history</span> <span class="o">=</span> <span class="n">mlp</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">train_x</span><span class="p">,</span> <span class="n">train_y</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> 
+                                    <span class="n">validation_data</span><span class="o">=</span><span class="p">(</span><span class="n">test_x</span><span class="p">,</span> <span class="n">test_y</span><span class="p">),</span> 
+                                    <span class="n">callbacks</span><span class="o">=</span><span class="p">[</span><span class="n">WandbCallback</span><span class="p">()])</span> <span class="c1"># callbacks 에 Wandbcallback 추가
+</span></code></pre></div></div>
+
+<h1 id="check-training">Check training</h1>
+
+<p>해당 코드를 실행시키고 <a href="https://app.wandb.ai/home">W&amp;B</a> 에 접속을 하면 다음과 같은 화면이 나옵니다.<br />
+위에서 <code class="highlighter-rouge">test_project</code> 라는 프로젝트에 세팅을 했기 때문에 확인을 해봅니다.<br />
+하나의 프로젝트에서 한번 실행하면 뭔지 모를 조합의 <code class="highlighter-rouge">Name</code>으로 실행 상태를 보여줍니다.
+저는 한번만 했기 때문에 <code class="highlighter-rouge">lyric-dream-3</code> 라는 이름으로 하나만 생겨있습니다.</p>
+
+<p><img src="https://jjerry-k.github.io/public/img/wandb/Untitled_4.png" alt="https://jjerry-k.github.io/public/img/wandb/Untitled_4.png" /></p>
+
+<p><code class="highlighter-rouge">lyric-dream-3</code> 같이 이름을 클릭해서 무엇을 볼 수 있는지 살펴보겠습니다.</p>
+
+<h2 id="chart-탭">Chart 탭</h2>
+
+<p>Chart 탭에선 loss, epoch, metric 등과 같은 학습 관련 지표를 볼 수 있는 <code class="highlighter-rouge">CHARTS</code>와 모델 학습에 사용된 시스템을 모니터링 할 수 있는 <code class="highlighter-rouge">SYSTEM</code>이 있습니다.</p>
+
+<p><img src="https://jjerry-k.github.io/public/img/wandb/Untitled_5.png" alt="https://jjerry-k.github.io/public/img/wandb/Untitled_5.png" /></p>
+
+<p><img src="https://jjerry-k.github.io/public/img/wandb/Untitled_6.png" alt="https://jjerry-k.github.io/public/img/wandb/Untitled_6.png" /></p>
+
+<p><img src="https://jjerry-k.github.io/public/img/wandb/Untitled_7.png" alt="https://jjerry-k.github.io/public/img/wandb/Untitled_7.png" /></p>
+
+<p><img src="https://jjerry-k.github.io/public/img/wandb/Untitled_8.png" alt="https://jjerry-k.github.io/public/img/wandb/Untitled_8.png" /></p>
+
+<p><img src="https://jjerry-k.github.io/public/img/wandb/Untitled_9.png" alt="https://jjerry-k.github.io/public/img/wandb/Untitled_9.png" /></p>
+
+<h2 id="system-탭">System 탭</h2>
+<p>System 탭에서는 Chart 탭에서 <code class="highlighter-rouge">SYSTEM</code> 과 동일한 그래프를 보여주네요.
+<img src="https://jjerry-k.github.io/public/img/wandb/Untitled_10.png" alt="https://jjerry-k.github.io/public/img/wandb/Untitled_10.png" /></p>
+
+<h2 id="model-탭">Model 탭</h2>
+<p>이름 그대로 학습하는 Model의 graph 구조를 볼 수 있습니다.
+<img src="https://jjerry-k.github.io/public/img/wandb/Untitled_11.png" alt="https://jjerry-k.github.io/public/img/wandb/Untitled_11.png" /></p>
+
+<h2 id="logs-탭">Logs 탭</h2>
+<p>여기선 학습 로그들이 저장됩니다.
+<img src="https://jjerry-k.github.io/public/img/wandb/Untitled_12.png" alt="https://jjerry-k.github.io/public/img/wandb/Untitled_12.png" /></p>
+
+<h2 id="files-탭">Files 탭</h2>
+<p>솔직히 보여주기만 해도 좋지만 저장도 해주면 좋겠죠.<br />
+Files 탭에는 현재 모델을 돌릴때 사용된 정보, 가장 성능이 좋았을 epoch 의 model, 돌리는 환경에 설치된 package 리스트 등의 정보가 저장됩니다.<br />
+물론 다운로드 가능!<br />
+<code class="highlighter-rouge">model-best.h5</code>는 graph 정보도 저장되어 있기 때문에 다운로드 후 load해서 바로 Inference 가능합니다!
+<img src="https://jjerry-k.github.io/public/img/wandb/Untitled_13.png" alt="https://jjerry-k.github.io/public/img/wandb/Untitled_13.png" /></p>
+
+<p><a href="https://www.wandb.com/">Weights &amp; Biases</a> 에 대해 정~~~말 간단히 알아봤습니다.<br />
+딱히 이런저런 기능은 추가를 하지 않고 기본적인 기능만 봤습니다.<br />
+추후에는 좀 더 다양한 기능과 프레임워크에 적용해보도록 하겠습니다.</p>
+
+    <article></h4>
+    <div class="post-more">
+      
+      <a href="/deeplearning/2020/03/01/wandb/#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
+      
+      <a href="/deeplearning/2020/03/01/wandb/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
+    </div>
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/deeplearning/2020/02/26/MobileNets-Efficient-Convolutional-Neural-Networks/">
+        MobileNet V1 리뷰
+      </a>
+    </h1>
+
+    <span class="post-date">26 Feb 2020</span>
+     | 
+    
+    <a href="/blog/tags/#paper" class="post-tag">Paper</a>
+    
+    
+
+    <h4 style="font-weight: 400; line-height: 1.8;"><article>
+      <h1 id="mobilenets-efficient-convolutional-neural-networks-for-mobile-vision-applications">MobileNets: Efficient Convolutional Neural Networks for Mobile Vision Applications</h1>
+
+<p>Author: Andrew G. Howard, Menglong Zhu, Bo Chen, Dmitry Kalenichenko, Weijun Wang, Tobias Weyand, Marco Andreetto, Hartwig Adam<br />
+Date: Apr 17, 2017<br />
+URL: https://arxiv.org/abs/1704.04861</p>
+
+<h1 id="abstract"><strong>Abstract</strong></h1>
+
+<p>- 모바일, 임베디드에 적용할 수 있는 네트워크.</p>
+
+<p><img src="https://jjerry-k.github.io/public/img/mobilev1/Untitled.png" alt="https://jjerry-k.github.io/public/img/mobilev1/Untitled.png" /></p>
+
+<h1 id="1-introduction"><strong>1. Introduction</strong></h1>
+
+<ul>
+  <li>CNN 유명세 짱짱맨</li>
+  <li>좋은 성능(정확도)를 위해 연구가 계속 진행되었지만 속도와 메모리 측면에서 <strong>**비</strong>**효율적.</li>
+  <li>경량화, 효율화 필요!!</li>
+</ul>
+
+<h1 id="2-prior-work"><strong>2. Prior Work</strong></h1>
+
+<ul>
+  <li>최근 경량화, 효율적인 네트워크 개발에 초점.</li>
+  <li>Depthwse separable convolution,</li>
+</ul>
+
+<h1 id="3-mobilenetarchitecture"><strong>3. MobileNet Architecture</strong></h1>
+
+<ul>
+  <li>핵심적인 레이어 설명.</li>
+</ul>
+
+<h2 id="31-depthwiseseparableconvolution"><strong>3.1 Depthwise Separable Convolution</strong></h2>
+
+<ul>
+  <li>Depthwise Convolution 수행 후 Pointwise Convolution 수행.</li>
+</ul>
+
+<p><img src="https://jjerry-k.github.io/public/img/mobilev1/Untitled_1.png" alt="https://jjerry-k.github.io/public/img/mobilev1/Untitled_1.png" /></p>
+
+<p><img src="https://jjerry-k.github.io/public/img/mobilev1/Untitled_2.png" alt="https://jjerry-k.github.io/public/img/mobilev1/Untitled_2.png" /></p>
+
+<ul>
+  <li>MobileNet 에서는 3 x 3 의 Depthwise saparable convolution 사용.</li>
+  <li>연산량이 약 8~9 배로 크게 감소.</li>
+</ul>
+
+<h2 id="32-networkstructureandtraining"><strong>3.2 Network Structure and Training</strong></h2>
+
+<ul>
+  <li>총 28개의 레이어</li>
+</ul>
+
+<p><img src="https://jjerry-k.github.io/public/img/mobilev1/Untitled_3.png" alt="https://jjerry-k.github.io/public/img/mobilev1/Untitled_3.png" /></p>
+
+<ul>
+  <li>MobileNet의 Convolution Block 구조</li>
+</ul>
+
+<p><img src="https://jjerry-k.github.io/public/img/mobilev1/Untitled_4.png" alt="https://jjerry-k.github.io/public/img/mobilev1/Untitled_4.png" /></p>
+
+<ul>
+  <li>MobileNet의 대부분 파라미터, 연산 시간은 1x1 Conv</li>
+</ul>
+
+<p><img src="https://jjerry-k.github.io/public/img/mobilev1/Untitled_5.png" alt="https://jjerry-k.github.io/public/img/mobilev1/Untitled_5.png" /></p>
+
+<ul>
+  <li>RMSprop, asynchronous gradient descent 사용.</li>
+  <li>Tensorflow 로 구현.</li>
+</ul>
+
+<h2 id="33-widthmultiplierthinnermodels"><strong>3.3 Width Multiplier: Thinner Models</strong></h2>
+
+<ul>
+  <li>MobileNet의 기본 구조는 작고 빠르지만 더 작고 빠른 모델을 필요로 함.</li>
+  <li>Width multiplier 라는 파라미터 제안.</li>
+</ul>
+
+<h2 id="34-resolutionmultiplierreducedrepresentation"><strong>3.4 Resolution Multiplier: Reduced Representation</strong></h2>
+
+<p><img src="https://jjerry-k.github.io/public/img/mobilev1/Untitled_6.png" alt="https://jjerry-k.github.io/public/img/mobilev1/Untitled_6.png" /></p>
+
+<h1 id="4-experiments"><strong>4. Experiments</strong></h1>
+
+<ul>
+  <li><strong>효율적이다 라는</strong> 내용이 전부..</li>
+</ul>
+
+<h2 id="41-modelchoices"><strong>4.1 Model Choices</strong></h2>
+
+<p><img src="https://jjerry-k.github.io/public/img/mobilev1/Untitled_7.png" alt="https://jjerry-k.github.io/public/img/mobilev1/Untitled_7.png" /></p>
+
+<p><img src="https://jjerry-k.github.io/public/img/mobilev1/Untitled_8.png" alt="https://jjerry-k.github.io/public/img/mobilev1/Untitled_8.png" /></p>
+
+<h2 id="42-modelshrinkinghyperparemeters"><strong>4.2 Model Shrinking Hyperparemeters</strong></h2>
+
+<p><img src="https://jjerry-k.github.io/public/img/mobilev1/Untitled_9.png" alt="https://jjerry-k.github.io/public/img/mobilev1/Untitled_9.png" /></p>
+
+<p><img src="https://jjerry-k.github.io/public/img/mobilev1/Untitled_10.png" alt="https://jjerry-k.github.io/public/img/mobilev1/Untitled_10.png" /></p>
+
+<p><img src="https://jjerry-k.github.io/public/img/mobilev1/Untitled_11.png" alt="https://jjerry-k.github.io/public/img/mobilev1/Untitled_11.png" /></p>
+
+<p><img src="https://jjerry-k.github.io/public/img/mobilev1/Untitled_12.png" alt="https://jjerry-k.github.io/public/img/mobilev1/Untitled_12.png" /></p>
+
+<p><img src="https://jjerry-k.github.io/public/img/mobilev1/Untitled_13.png" alt="https://jjerry-k.github.io/public/img/mobilev1/Untitled_13.png" /></p>
+
+<p><img src="https://jjerry-k.github.io/public/img/mobilev1/Untitled_14.png" alt="https://jjerry-k.github.io/public/img/mobilev1/Untitled_14.png" /></p>
+
+<h2 id="43-finegrainedrecognition"><strong>4.3 Fine Grained Recognition</strong></h2>
+
+<p><img src="https://jjerry-k.github.io/public/img/mobilev1/Untitled_15.png" alt="https://jjerry-k.github.io/public/img/mobilev1/Untitled_15.png" /></p>
+
+<h2 id="44-largescalegeolocalization"><strong>4.4 Large Scale Geolocalization</strong></h2>
+
+<p><img src="https://jjerry-k.github.io/public/img/mobilev1/Untitled_16.png" alt="https://jjerry-k.github.io/public/img/mobilev1/Untitled_16.png" /></p>
+
+<h2 id="45-faceattributed"><strong>4.5 Face Attributed</strong></h2>
+
+<p><img src="https://jjerry-k.github.io/public/img/mobilev1/Untitled_17.png" alt="https://jjerry-k.github.io/public/img/mobilev1/Untitled_17.png" /></p>
+
+<p><img src="https://jjerry-k.github.io/public/img/mobilev1/Untitled_18.png" alt="https://jjerry-k.github.io/public/img/mobilev1/Untitled_18.png" /></p>
+
+<h2 id="46-objectdetection"><strong>4.6 Object Detection</strong></h2>
+
+<p><img src="https://jjerry-k.github.io/public/img/mobilev1/Untitled_19.png" alt="https://jjerry-k.github.io/public/img/mobilev1/Untitled_19.png" /></p>
+
+<p><img src="https://jjerry-k.github.io/public/img/mobilev1/Untitled_20.png" alt="https://jjerry-k.github.io/public/img/mobilev1/Untitled_20.png" /></p>
+
+<h2 id="47-faceembeddings"><strong>4.7 Face Embeddings</strong></h2>
+
+<p><img src="https://jjerry-k.github.io/public/img/mobilev1/Untitled_21.png" alt="https://jjerry-k.github.io/public/img/mobilev1/Untitled_21.png" /></p>
+
+<h1 id="5-conclusion"><strong>5. Conclusion</strong></h1>
+
+<ul>
+  <li>연산량이 적고 파라미터 수도 적음!</li>
+  <li>다양한 task 에 사용가능!</li>
+</ul>
+
+    <article></h4>
+    <div class="post-more">
+      
+      <a href="/deeplearning/2020/02/26/MobileNets-Efficient-Convolutional-Neural-Networks/#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
+      
+      <a href="/deeplearning/2020/02/26/MobileNets-Efficient-Convolutional-Neural-Networks/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
+    </div>
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/deeplearning/2020/02/16/Xception/">
+        Xception
+      </a>
+    </h1>
+
+    <span class="post-date">16 Feb 2020</span>
+     | 
+    
+    <a href="/blog/tags/#paper" class="post-tag">Paper</a>
+    
+    
+
+    <h4 style="font-weight: 400; line-height: 1.8;"><article>
+      <h1 id="xception-deep-learning-with-depthwise-separable-convolution">Xception: Deep Learning with Depthwise Separable Convolution</h1>
+
+<p>Author: Franc¸ois Chollet<br />
+Date: Dec 19, 2016<br />
+URL: https://arxiv.org/abs/1610.02357</p>
+
+<hr />
+
+<h1 id="abstract">Abstract</h1>
+
+<ul>
+  <li>CNN 에서 많이 사용되는 Inception 은 Regular Convolution 과 Depthwise Separable Convolution 의 중간 단계.</li>
+  <li>Depthwise Separable Convolution 은 최대 개수의 타워를 가진 Inception module (?)</li>
+  <li>Inception module을 Depthwise Separable Convolution 으로 대체한 새로운 Deep Convolutional Neural Network 제안.</li>
+  <li>Xception 이라고 칭함.</li>
+  <li>ImageNet 으로 학습된 Inception V3 보다 살짝 성능이 좋고 350,000,000개의 이미지와 17,000개의 클래스로 구성된 Larger image dataset 에선 Inception V3 보다 월등히 뛰어난 성능을 보임.</li>
+  <li>Inception V3와 Xception 이 동일한 parameter 수를 가짐.</li>
+  <li>그러므로 연산량, 메모리의 증가가 아닌 모델 parameter를 효과적으로 사용해서 성능 향상이 된 것.</li>
+</ul>
+
+<h1 id="1introduction"><strong>1. Introduction</strong></h1>
+
+<ul>
+  <li>Convolutional Neural Network (이하 CNN) 은 Computer Vision 에서 가장 주요한 알고리즘이 되었고, 이를 설계하는 방법에 대해 개발하는데 많은 관심을 가지게 됨.</li>
+  <li>Lenet -&gt; AlexNet (2012) -&gt; ZFNet (2013) -&gt; VGG (2014) -&gt; Inception 종류 … -&gt; Inception-ResNet (2015)</li>
+  <li>Inception 스타일의 기본 구성 요소는 Inception module.</li>
+  <li>
+    <p>Figure 1은 Inception V3 의 표준 Inception Module.</p>
+
+    <p><img src="https://jjerry-k.github.io/public/img/xception/Untitled.png" alt="https://jjerry-k.github.io/public/img/xception/Untitled.png" /></p>
+  </li>
+  <li>Inception 모델은 위와 같은 모듈을 Stack 한 것. VGG-Style 네트워크는 단순히 Convolution layer를 Stack.</li>
+  <li>실험적으로 Inception-style 이 VGG-style보다 적은 parameter로 다양한, 많은 feature를 학습 할 수 있다는 것을 보임.</li>
+</ul>
+
+<h2 id="11theinceptionhypothesis"><strong>1.1 The Inception hypothesis</strong></h2>
+
+<ul>
+  <li>Convolution layer는 3차원 공간에서 filter를 학습하려고 함.</li>
+  <li>Single Convolution kernel 은 채널의 correlation과 공간의 correlation 을 동시에 mapping 함.</li>
+  <li>Inception 모듈은 채널, 공간의 correlation 을 독립적으로 나타낼 수 있도록 연산을 분해. -&gt; 쉽고 효율적인 프로세스를 만듦.</li>
+  <li>Inception의 가설은 채널 채널, 공간의 correlation 이 분리되어 있으므로 동시에 매핑하는 것은 좋지 않다는 것.</li>
+  <li>
+    <p>Figure 2는 3x3 conv와 1x1 conv만 사용한 단순화한 Inception 모듈.</p>
+
+    <p><img src="https://jjerry-k.github.io/public/img/xception/Untitled_1.png" alt="https://jjerry-k.github.io/public/img/xception/Untitled_1.png" /></p>
+  </li>
+  <li>
+    <p>Figure 3은 Figure 2의 Inception 모듈에서 하나의 큰 1x1 Convolution과 3x3 Convolution들로 재구성한 것.</p>
+
+    <p><img src="https://jjerry-k.github.io/public/img/xception/Untitled_2.png" alt="https://jjerry-k.github.io/public/img/xception/Untitled_2.png" /></p>
+  </li>
+  <li>이 방법이 Inception 의 가설보다 뛰어난 가설을 만드는 것이 합리적인 것일지, 채널과 공간을 독립적으로 매핑할 수 있는지 의문.</li>
+</ul>
+
+<h2 id="12thecontinuumbetweenconvolutionsandseparableconvolutions"><strong>1.2 The continuum between convolutions and separable convolutions</strong></h2>
+
+<ul>
+  <li>
+    <p>Figure 4 처럼 Inception 모듈 구성.</p>
+
+    <p><img src="https://jjerry-k.github.io/public/img/xception/Untitled_3.png" alt="https://jjerry-k.github.io/public/img/xception/Untitled_3.png" /></p>
+  </li>
+  <li>1x1 Convolution 적용하여 채널의 correlation 매핑, 그 후 각각의 channel별로 공간의 correlation 매핑</li>
+  <li>이를 <strong>An “extreme” version of an Inception module</strong> 이라고 칭함.</li>
+  <li>TensorFlow 프레임워크에 Depthwise Separable Convolution 연산과 거의 동일함.</li>
+  <li>TensorFlow나 Keras 프레임워크에 있는 Depthwise Separable Convolution (Separable Convolution 라고도 불림.) 은 각 channel 별로 3x3 Convolution 적용 후 채널간의 1x1 Convolution 적용.</li>
+  <li>영상처리 분야에서 사용하는 Separable Convolution 과 혼동하면 안됨, 이 연산은 공간적 분리를 하는 Convolution.</li>
+</ul>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">비교</th>
+      <th style="text-align: center">Extream</th>
+      <th style="text-align: center">Depthwise Separable</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">연산순서</td>
+      <td style="text-align: center">pointwise–&gt;channelwise</td>
+      <td style="text-align: center">channelwise–&gt;pointwise</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">비선형성</td>
+      <td style="text-align: center">Presence</td>
+      <td style="text-align: center">Absence</td>
+    </tr>
+  </tbody>
+</table>
+
+<h1 id="2priorwork"><strong>2. Prior work</strong></h1>
+
+<ul>
+  <li>VGG-16 과 같은 구조가 xception 과 유사.</li>
+  <li>Inception 구조는 가지치기의 이점을 보여줌.</li>
+  <li>Depthwise separable convolution는 경량화에도 적합.</li>
+  <li>TensorFlow에는 이미 구현되어있음.</li>
+  <li>Residual connection 을 광범위하게 사용.</li>
+</ul>
+
+<h1 id="3thexceptionarchitecture"><strong>3. The Xception architecture</strong></h1>
+
+<p><img src="https://jjerry-k.github.io/public/img/xception/Untitled_4.png" alt="https://jjerry-k.github.io/public/img/xception/Untitled_4.png" /></p>
+
+<ul>
+  <li>Figure 5 와 같은 구조 제안.</li>
+  <li>처음과 마지막을 제외하곤 linear residual module 사용.</li>
+  <li>총 36개의 convolution layer로 구성.</li>
+  <li>매우 단순한 구조.</li>
+</ul>
+
+<h1 id="4experimentalevaluation"><strong>4. Experimental evaluation</strong></h1>
+
+<ul>
+  <li>Xception과 Inceotion V3 비교.</li>
+  <li>Parameters가 비슷. 네트워크 규모에 대한 차이를 없애기 위함.</li>
+  <li>ImageNet과 JFT dataset 이용.</li>
+</ul>
+
+<h2 id="41thejftdataset"><strong>4.1 The JFT dataset</strong></h2>
+
+<ul>
+  <li>그냥…JFT 데이터 설명…</li>
+  <li>Google 데이터 중 하나</li>
+  <li>JFT 로 학습, FastEval14k dataset으로 성능 비교.</li>
+</ul>
+
+<h2 id="42optimizationconfiguration"><strong>4.2 Optimization configuration</strong></h2>
+
+<ul>
+  <li>각 방법에 대해서 다음과 같은 설정으로 Xception, Inception V3 모두 학습</li>
+  <li>On ImageNet
+    <ul>
+      <li>Optimizer: SGD</li>
+      <li>Momentum: 0.9</li>
+      <li>Initial learning rate: 0.045</li>
+      <li>Learning rate decay: 0.94 (every 2 epochs)</li>
+    </ul>
+  </li>
+  <li>On JFT
+    <ul>
+      <li>Optimizer: RMSprop</li>
+      <li>Momentum: 0.9</li>
+      <li>Initial learning rate: 0.001</li>
+      <li>Learning rate decay: 0.9 (every 3,000,000 samples)</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="43regularizationconfiguration"><strong>4.3 Regularization configuration</strong></h2>
+
+<ul>
+  <li>Weight decay</li>
+  <li>Dropout</li>
+  <li>Auxiliary loss tower</li>
+</ul>
+
+<h2 id="44traininginfrastructure"><strong>4.4 Training infrastructure</strong></h2>
+
+<ul>
+  <li>80개의 NVIDIA K80 GPU ….</li>
+  <li>ImageNet 학습시 <strong>synchronous gradient descent</strong>을 적용하여 data parallelism 이용. → 3일 소요</li>
+  <li>JFT 학습시 <strong>asynchronous gradient descent</strong>을 적용하여 data parallelism 이용. →한달 소요</li>
+</ul>
+
+<h2 id="45comparisonwithinceptionv3"><strong>4.5 Comparison with Inception V3</strong></h2>
+
+<h3 id="451classificationperformance"><strong>4.5.1 Classification performance</strong></h3>
+
+<ul>
+  <li>
+    <p>두 데이터 모두 Xception이 좋은 성능을 보임.</p>
+
+    <p><img src="https://jjerry-k.github.io/public/img/xception/Untitled_5.png" alt="https://jjerry-k.github.io/public/img/xception/Untitled_5.png" /></p>
+
+    <p><img src="https://jjerry-k.github.io/public/img/xception/Untitled_6.png" alt="https://jjerry-k.github.io/public/img/xception/Untitled_6.png" /></p>
+
+    <p><img src="https://jjerry-k.github.io/public/img/xception/Untitled_7.png" alt="https://jjerry-k.github.io/public/img/xception/Untitled_7.png" /></p>
+
+    <p><img src="https://jjerry-k.github.io/public/img/xception/Untitled_8.png" alt="https://jjerry-k.github.io/public/img/xception/Untitled_8.png" /></p>
+
+    <p><img src="https://jjerry-k.github.io/public/img/xception/Untitled_9.png" alt="https://jjerry-k.github.io/public/img/xception/Untitled_9.png" /></p>
+  </li>
+</ul>
+
+<h3 id="452sizeandspeed"><strong>4.5.2 Size and speed</strong></h3>
+
+<ul>
+  <li>
+    <p>Parameter가 늘지 않으면서 성능 향상을 보이기에 Xception이 효율적인 모델.</p>
+
+    <p><img src="https://jjerry-k.github.io/public/img/xception/Untitled_10.png" alt="https://jjerry-k.github.io/public/img/xception/Untitled_10.png" /></p>
+  </li>
+</ul>
+
+<h3 id="46effectoftheresidualconnections"><strong>4.6 Effect of the residual connections</strong></h3>
+
+<ul>
+  <li>Residual connection에 대한 ablation study 진행.</li>
+  <li>Residual connection의 중요성을 보여줌.</li>
+</ul>
+
+<p><img src="https://jjerry-k.github.io/public/img/xception/Untitled_11.png" alt="https://jjerry-k.github.io/public/img/xception/Untitled_11.png" /></p>
+
+<h3 id="47effectofanintermediateactivationafterpointwiseconvolutions"><strong>4.7 Effect of an intermediate activation after point wise convolutions</strong></h3>
+
+<ul>
+  <li>Depthwise separable convolution은 depthwise → pointwise convolution으로 구성되어있음.</li>
+  <li>
+    <p>그 중간에 activation function에 대한 ablation study 진행.</p>
+
+    <p><img src="https://jjerry-k.github.io/public/img/xception/Untitled_12.png" alt="https://jjerry-k.github.io/public/img/xception/Untitled_12.png" /></p>
+  </li>
+  <li><a href="https://arxiv.org/pdf/1512.00567.pdf">Inception module에 대한 연구</a>와 반대되는 결과 도출.</li>
+</ul>
+
+<h1 id="5futuredirections"><strong>5. Future directions</strong></h1>
+
+<ul>
+  <li>Depthwise separble convolution 이 만능이라는 보장은 없음.</li>
+</ul>
+
+    <article></h4>
+    <div class="post-more">
+      
+      <a href="/deeplearning/2020/02/16/Xception/#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
+      
+      <a href="/deeplearning/2020/02/16/Xception/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
+    </div>
+  </div>
   
   <div class="post">
     <h1 class="post-title">
@@ -387,678 +1213,6 @@ jupyter lab 1.0.2 버전에 extension을 설치하면 sidebar 부분이 깨지�
       <a href="/python/2019/09/07/Jupyter_shortcut/#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
       
       <a href="/python/2019/09/07/Jupyter_shortcut/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
-    </div>
-  </div>
-  
-  <div class="post">
-    <h1 class="post-title">
-      <a href="/python/2019/07/10/Multiple_Kernel/">
-        jupyter (ipython) 여러 커널 사용하기!
-      </a>
-    </h1>
-
-    <span class="post-date">10 Jul 2019</span>
-     | 
-    
-    <a href="/blog/tags/#setting" class="post-tag">Setting</a>
-    
-    
-
-    <h4 style="font-weight: 400; line-height: 1.8;"><article>
-      <p>Anaconda 를 사용하다보면 여러 가상환경을 만들게 됩니다. (아닐수도 있구요…)<br />
-그 후에 jupyter 를 사용하시는 분들이라면 대부분 이렇게 사용하실 겁니다.</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>conda activate 환경이름
-jupyter notebook
-</code></pre></div></div>
-
-<p><code class="highlighter-rouge">conda activate 환경이름</code> 이라는걸 <strong>무.조.건</strong> 써줘야하죠..<br />
-이게 매우 귀찮았습니다…</p>
-<blockquote>
-  <p>“activate 없이 base에서 <code class="highlighter-rouge">jupyter notebook</code>을 실행해도 가상환경을 잡을 수 있는 방법이 없나..”</p>
-</blockquote>
-
-<p>이런 생각 많이들 하실 것 같습니다.<br />
-당연히 방법이 있습니다!<br />
-그 방법에 대해 알려드리겠습니다.</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>conda activate <span class="o">{</span>환경이름<span class="o">}</span>
-python <span class="nt">-m</span> ipykernel <span class="nb">install</span> <span class="nt">--user</span> <span class="nt">--name</span> <span class="o">{</span>환경이름<span class="o">}</span> <span class="nt">--display-name</span> <span class="o">{</span>Jupyter에 표시될 이름<span class="o">}</span>
-</code></pre></div></div>
-
-<p>이렇게 하시면 됩니다. 예시를 직접 보여드리겠습니다.</p>
-
-<p><img src="https://jjerry-k.github.io/public/img/multi_kernel/01.png" /></p>
-
-<p>저는 base 환경만 썼습니다. 가상환경을 가볍게 하나 만들도록 할게요!</p>
-
-<p><img src="https://jjerry-k.github.io/public/img/multi_kernel/02.png" /></p>
-
-<p><code class="highlighter-rouge">test</code>라는 가상환경을 만들었습니다. 먼저 <strong>kernel을 추가하지 않고</strong> jupyter notebook을 실행해보겠습니다.</p>
-
-<p><img src="https://jjerry-k.github.io/public/img/multi_kernel/03.png" />
-<img src="https://jjerry-k.github.io/public/img/multi_kernel/04.png" /></p>
-
-<p>첫번째 사진을 보시면 <strong>Python 3</strong> 만 나오는걸 보실 수 있습니다. 저 <strong>Python 3</strong> 는 base의 Python을 가리킵니다.<br />
-base에는 제가 tensorflow를 설치해놨기 때문에 import 가 잘 작동하는군요..<br />
-그럼 kernel을 추가해보겠습니다.  (일단 test 환경에 ipython 이 안깔려있어서 설치함..)</p>
-
-<p><img src="https://jjerry-k.github.io/public/img/multi_kernel/05.png" />
-<img src="https://jjerry-k.github.io/public/img/multi_kernel/06.png" /></p>
-
-<p>커널을 추가하고 나면 <code class="highlighter-rouge">Installed ~~~~</code> 라는 메세지를 보실 수 있어요!<br />
-그럼 다시 base로 돌아가서 jupyter notebook을 실행해보겠습니다.</p>
-
-<p><img src="https://jjerry-k.github.io/public/img/multi_kernel/07.png" />
-<img src="https://jjerry-k.github.io/public/img/multi_kernel/08.png" /></p>
-
-<p>첫번째 사진을 보시면 추가하기 전과는 다르게 <strong>test</strong> 라는 항목이 추가되었습니다!<br />
-실행을 해봐도 tensorflow 모듈이 없다고 나오는걸 확인하실 수 있습니다!<br />
-앞으로는 <code class="highlighter-rouge">conda activate ~~</code>를 안하셔도 되요! (뿌듯)</p>
-
-<p>이번 포스팅은 여기까지 입니다.<br />
-많은 분들께 도움이 되었으면 좋겠네요!</p>
-
-<p><strong>PS. jupyter notebook 우측 상단쪽에 어떤 커널로 실행하고 있는지 표시가 됩니다.  (<code class="highlighter-rouge">Logout</code> 아래)</strong></p>
-
-    <article></h4>
-    <div class="post-more">
-      
-      <a href="/python/2019/07/10/Multiple_Kernel/#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
-      
-      <a href="/python/2019/07/10/Multiple_Kernel/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
-    </div>
-  </div>
-  
-  <div class="post">
-    <h1 class="post-title">
-      <a href="/python/2019/07/06/DICOM/">
-        Python으로 DICOM 영상을 읽어보자!
-      </a>
-    </h1>
-
-    <span class="post-date">06 Jul 2019</span>
-     | 
-    
-    <a href="/blog/tags/#usage" class="post-tag">Usage</a>
-    
-    
-
-    <h4 style="font-weight: 400; line-height: 1.8;"><article>
-      <p>예~~전에 <a href="https://jjerry-k.github.io/python/2019/01/23/nifti/">NIfTI</a> 파일을 load 하는 방법을 올렸었습니다! <br />
-이번에는 Python에서 <a href="https://www.dicomstandard.org">DICOM</a> 포맷의 데이터를 load 하는 방법에 대한 포스팅을 해보려고 합니다.</p>
-
-<p>가장 먼저 관련 패키지인 <a href="https://pydicom.github.io/pydicom/stable/index.html"><code class="highlighter-rouge">Pydicom</code></a> 을 설치를 해줍니다.</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>conda <span class="nb">install</span> <span class="nt">-c</span> conda-forge pydicom
-</code></pre></div></div>
-
-<p>저번과 똑같이 단순한 설치방법!</p>
-
-<p>이제 코딩으로 읽어보겠습니다.<br />
-예시 데이터로 다음 <a href="https://github.com/pydicom/pydicom/blob/master/pydicom/data/test_files/MR_small.dcm">링크</a>에 있는 영상을 이용하였습니다.</p>
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-<span class="kn">import</span> <span class="nn">pydicom</span> <span class="k">as</span> <span class="n">di</span>
-<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
-
-<span class="n">data</span> <span class="o">=</span> <span class="n">di</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="s">".dcm 경로"</span><span class="p">)</span>
-<span class="c1">#data = di.dcmread(".dcm 경로") # 편한거 쓰시면 됩니다.
-</span>
-<span class="n">img</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">pixel_array</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img</span><span class="p">)</span> <span class="c1"># 슬라이스 1장일 경우
-#plt.imshow(img[:,:,"slice 번호"]) # 슬라이스가 여러 장일 경우
-</span><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</code></pre></div></div>
-
-<p>이런 식으로 작성하시면 됩니다.<br />
- 예시를 보여드리면</p>
-
-<p><img src="https://jjerry-k.github.io/public/img/dicom/01.png" /></p>
-
-<p>예시 영상이 좀 작네요…<br />
-어쨌든 이런 식으로 읽습니다.</p>
-
-<p>흠….NIfTI와 DICOM을 했으니…다음엔 <strong>Insight Meta-Image</strong> 를 해보겠습니다!</p>
-
-    <article></h4>
-    <div class="post-more">
-      
-      <a href="/python/2019/07/06/DICOM/#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
-      
-      <a href="/python/2019/07/06/DICOM/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
-    </div>
-  </div>
-  
-  <div class="post">
-    <h1 class="post-title">
-      <a href="/deeplearning/2019/07/05/Thin/">
-        MRI interpolation using Deep Learning - [1]
-      </a>
-    </h1>
-
-    <span class="post-date">05 Jul 2019</span>
-     | 
-    
-    <a href="/blog/tags/#paper" class="post-tag">Paper</a>
-    
-    
-
-    <h4 style="font-weight: 400; line-height: 1.8;"><article>
-      <h1 id="deep-generative-adversarial-networks-for-thin-section-infant-mr-image-reconstruction">Deep Generative Adversarial Networks for Thin-Section Infant MR Image Reconstruction</h1>
-
-<ul>
-  <li>Jiaqi Gu<sup>1</sup>, Zezu Li<sup>1</sup>, YuanYuan Wans<sup>1, 3</sup>, Haowei Yang<sup>2</sup>, Zhongwei Qiao<sup>2</sup>, and Jinhua Yu<sup>1, 3</sup></li>
-  <li><sup>1</sup>School of Information Science and Technology, Fudan University, Shanghai 200433, China<br />
-<sup>2</sup>The Children’s Hospital of Fudan University, Shanghai 201102, China<br />
-<sup>3</sup>Key Laboratory of Medical Imaging Computing and Computer Assisted Intervention of Shanghai, Department of Electronic Engineering, Institute of Functional
-and Molecular Medical Imaging, Fudan University, Shanghai 200433, China
-—</li>
-</ul>
-
-<h2 id="abstract">Abstract</h2>
-<ul>
-  <li>Thin section magnetic resonance images (<strong>Thin MRI</strong>) 는 뇌수술, 뇌 구조 분석에 좋은 영상.</li>
-  <li>하지만 Thick section magnetic resonance images (<strong>Thick MRI</strong>) 에 비해 imaging cost가 많이 들기 때문에 잘 사용되지 않음.</li>
-  <li>Thick MRI 2 Thin MRI 제안.</li>
-  <li>Two stage( GAN -&gt; CNN )로 구성하였고 Thick MRI의 Axial, Sigittal plane을 이용하여 Thin MRI의 Axial reconstruction.</li>
-  <li>3D-Y-Net-GAN 은 Axial, Sagittal Thick MRI 를 이용하여 Fusion.</li>
-  <li>3D-Dense U-Net은 Sagittal plane에 대해 세부적인 calibrations, structual correction 제공.</li>
-  <li>Loss function 은 structual detail을 Network가 capture 할 수 있도록 제안.</li>
-  <li>bicubic, sparse representation, 3D-SRU-Net 과 비교.</li>
-  <li>35번의 Cross-validation, 114개를 이용하여 두개의 testset 구성.
-    <ul>
-      <li>PSNR : 23.5 % 증가.</li>
-      <li>SSIM : 90.5 % 증가.</li>
-      <li>MMI : 21.5 % 증가.</li>
-    </ul>
-  </li>
-</ul>
-
-<h2 id="introduction">Introduction</h2>
-<ul>
-  <li>Thin MRI 는 slice thickness가 1mm이고 sapcing gap이 0mm.</li>
-  <li>하지만 항상 Thin MRI를 사용할 수 없음.</li>
-  <li>일반적으로 사용하는 Thick MRI는 slice thickness가 4~6mm 이고 sapcing gap이 0.4~1mm.
-    <ul>
-      <li>해상도 : Thin MRI &gt; Thick MRI</li>
-    </ul>
-  </li>
-  <li>인간의 뇌 발달에 대한 insight를 주기 때문에 유아의 brain MR image는 어른의 brain MR image 보다 연구에 가치가 있음</li>
-  <li>하지만 유아의 MR image를 얻는게 쉽지 않음.</li>
-  <li>그래서 Thick to Thin 제안.</li>
-  <li>기존 traditional interpolation algorithm
-    <ul>
-      <li>시각적으로는 성능이 좋아보임. 하지만 성인의 brain 에 초점을 맞춤.</li>
-      <li><strong><a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4478865/pdf/JMI-001-034007.pdf">Interpolation-based super-resolution reconstruction: effects of slice thickness</a></strong></li>
-      <li><strong><a href="https://www.hindawi.com/journals/ijbi/2013/395915/">Evaluation of interpolation effects on upsampling and accuracy of cost functions-based optimized automatic image registration</a></strong></li>
-    </ul>
-  </li>
-  <li>Frame interpolation 방법과 같이 적용 가능.
-    <ul>
-      <li><strong><a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&amp;arnumber=8110374">Slice Interpolation in MRI Using a Decomposition-reconstruction Method</a></strong></li>
-    </ul>
-  </li>
-  <li>Super-resolution 문제로 적용할 수도 있음.
-    <ul>
-      <li><strong><a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&amp;arnumber=5466111">Image super-resolution via sparse representation</a></strong></li>
-    </ul>
-  </li>
-  <li>CNN, GAN 이 발전하면서 super-resolution 이 탄력을 받음.
-    <ul>
-      <li><strong>[<a href="https://link.springer.com/chapter/10.1007/978-3-319-67564-0_12">Context-Sensitive Super-Resolution for Fast Fetal Magnetic Resonance Imaging</a></strong>]</li>
-      <li><strong>[<a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=8417964">Deep Generative Adversarial Neural Networks for Compressive Sensing MRI</a>]</strong></li>
-    </ul>
-  </li>
-  <li>이전에 성인의 Thick MRI를 Thin MRI 로 reconstruction 하는 3D-SRGAN 제안했으나 axial plane만 고려했음. <strong>[<a href="https://link.springer.com/chapter/10.1007%2F978-3-319-67389-9_38">Reconstruction of Thin-Slice Medical Images Using Generative Adversarial Network</a>]</strong></li>
-  <li>Deep Learning 이 reconstruction performance 뿐 아니라 reconstruction time 감소에도 매우 효과적인걸 보임.</li>
-</ul>
-
-<h2 id="proposed-method">Proposed Method</h2>
-
-<h3 id="a-overview">A. Overview</h3>
-<ul>
-  <li>CNN은 기존에도 super-resolution에서 많이 사용됨.</li>
-  <li>하지만 최근까지 제안된 Network는 대부분 2D image에 대한 upscaling.</li>
-  <li>몇몇 Network는 3D image로 확장했지만 그렇게 효과를 보지 못했음.</li>
-  <li>이 논문의 Flow
-<img src="https://jjerry-k.github.io/public/img/thin/fig01.PNG" /></li>
-</ul>
-
-<p><img src="https://jjerry-k.github.io/public/img/thin/fig02.PNG" /></p>
-
-<h3 id="b-network-architecture">B. Network Architecture</h3>
-<ul>
-  <li>First stage는 3D-Y-Net-GAN 으로 Thick MRI를 Thin MRI로 생성 후 3D-DenseU-Net으로 recalibration.</li>
-</ul>
-
-<h4 id="3d-y-net-gan">3D-Y-Net-GAN</h4>
-<ul>
-  <li>Input : Axial, Sagittal Thick MRI</li>
-  <li>Output : Thin MRI</li>
-  <li>r : Upscaling Factor ( r = 8 일 경우의 예시 )</li>
-</ul>
-
-<p><img src="https://jjerry-k.github.io/public/img/thin/fig03.PNG" /></p>
-
-<ul>
-  <li>Feature Extraction Branches
-    <ul>
-      <li>각 input에 대한 feature 추출.</li>
-      <li>Maxpooling layer에서 [1, 2, 1], [2, 1, 1]의 다른 strides factor 적용.</li>
-      <li>3D convolutional layer 는 Convolution + Batch Normalization + Swish 로 구성.
-        <ul>
-          <li><a href="https://arxiv.org/pdf/1710.05941.pdf">Swish</a>는 Activation 의 종류로 ReLU로 인해 생기는 Dead neuron을 극복할 수 있음. <strong>-&gt; 근데 굳이 왜 swish일까…</strong></li>
-        </ul>
-      </li>
-      <li>layers 를 거친 후 shape 의 변화
-        <ul>
-          <li>Axial : [H, W, S, 1] -&gt; [H/2, W/2, S, 32]</li>
-          <li>Sagittal : [H, W, r*S, 1] -&gt; [H/2, W/2, S, 32]</li>
-        </ul>
-      </li>
-      <li>Axial과 Sagittal의 shape이 다르기 때문에 Sagittal 에 대해서 preprocessing으로 3개의 3d convolution layer 적용.</li>
-    </ul>
-  </li>
-  <li>Feature Fusion Branch
-    <ul>
-      <li>두 feature를 channel 방향으로 Concatanation.</li>
-      <li>W 방향으로 Upsampling 후 H 방향으로 Downsampling feature 를 Concatanation.</li>
-      <li>H 방향으로 Upsampling 후 첫번째 Block의 Feature map을 Concatanation</li>
-      <li>U-Net 에서 아이디어를 얻었고 structual alignment, gradient-vanishing 등을 완화.</li>
-    </ul>
-  </li>
-  <li>Reconstruction Branch
-    <ul>
-      <li>Figure 3 (b) 와 같은 구조.</li>
-      <li>Upsampling layer 3개를 연속으로 붙여서 8배 확장하는 구조 대신에 Multipath upscaling strategy 적용. <strong>-&gt; Artifact 완화 효과…?</strong></li>
-    </ul>
-  </li>
-  <li>
-    <p>Discriminator
-<img src="https://jjerry-k.github.io/public/img/thin/fig04.PNG" /></p>
-
-    <ul>
-      <li>Axial Image, Saggital Image, Combination Image 가 Real Pair인지 Fake Pair인지 감별.</li>
-      <li>Input : ($I^A$, $I^Y$, $I^S$), ($I^A$, $I^{GT}$, $I^S$)</li>
-      <li>Output : Real, Fake</li>
-    </ul>
-  </li>
-</ul>
-
-<h4 id="3d-denseu-net">3D-DenseU-Net</h4>
-<p><img src="https://jjerry-k.github.io/public/img/thin/fig05.PNG" /></p>
-
-<ul>
-  <li>전체적인 구조는 U-Net이지만 2개의 Enhanced residual block 을 적용하여 detail recalibration.</li>
-  <li>Input :  $I^Y$, $I^S$, $I^{YA}$ <strong>-&gt; 어떻게 3개가 input으로…?</strong></li>
-  <li>Output : Thin MR Image</li>
-  <li>$I^A$ 를 $I^Y$ 의 해당 위치에 insertion 하여 $I^{YA}$ 생성. -&gt; 아직 이해 X..
-    <ul>
-      <li>Axial Information 을 이용하여 정확한 axial 을 만들기 위해…</li>
-      <li>$I^S$ 를 $I^Y$ 에 insertion하게 되면 Sagittal 에 대한 information 이 과해지기 때문에 Reconstrtion Axial Image의 Quality 가 안좋아 질 것!</li>
-    </ul>
-  </li>
-  <li>End-to-End 가 아니라 각각 따로따로 학습. <strong>-&gt; Faster RCNN 과 같은 방식으로 할런지….?</strong></li>
-</ul>
-
-<h4 id="loss-function">Loss Function</h4>
-<ul>
-  <li>$G$ 는 generator 라는 의미.</li>
-  <li>Self-Adaptive Charbonnier Loss
-    <ul>
-      <li>일반적으로 많이 사용되는 $\ell2$ 전반적으로 Smoothing 하게 만들어지고 $\ell1$ 은 GT와 Prediction 의 차이로 indiscriminate 하게 학습.</li>
-      <li><a href="https://arxiv.org/pdf/1704.03915.pdf">Deep Laplacian Pyramid Networks for Fast and Accurate Super-Resolution</a>에 따르면 <strong>Charbonnier loss</strong>(미분가능한 $\ell1$의 분산)가 $\ell1$, $\ell2$ 보다 성능이 뛰어남.</li>
-      <li><a href="https://arxiv.org/pdf/1706.03142.pdf">Deep Learning for Isotropic Super-Resolution from Non-Isotropic 3D Electron Microscopy</a> 에 따르면 <strong>Cubic-weighted mean square error</strong> 가 Generated 영상과 Ground truth 간의 차이가 큰 “어려운” 부분의 성능을 강조.</li>
-      <li>다음과 같은 Loss 제안.</li>
-      <li>$\epsilon$ 은 default로 $10^{-6}$</li>
-      <li>$L^G_{SC} = \frac{1}{rLWH}\sum_{x,y,z=1,1,1}^{L,W,rH}\sqrt{(I^{GT}<em>{x,y,z}-I^Y</em>{z,y,z})^2+\epsilon}\cdot\bigg(\frac{1}{2}+\frac{(I^{GT}<em>{x,y,z}-I^Y</em>{z,y,z})^2}{2max((I^{GT}-I^Y)^2)}\bigg)$</li>
-    </ul>
-  </li>
-  <li>3-D Gradient Correction Loss
-    <ul>
-      <li>Charbonnier Loss는 Pixelwise difference에 대한 Loss, Gradient에 대한 손실을 줄 수 있음.</li>
-      <li>다음과 같이 각 axis에 대한 Gradient 를 이용하여 Loss 제안.</li>
-      <li>$L^G_{GC} = \mathbb{E}[(\nabla_xI^{GT}<em>{x,y,z}-\nabla_xI^Y</em>{x,y,z})^2] \ + \mathbb{E}[(\nabla_yI^{GT}<em>{x,y,z}-\nabla_yI^Y</em>{x,y,z})]^2\ + \mathbb{E}[(\nabla_zI^{GT}<em>{x,y,z}-\nabla_zI^Y</em>{x,y,z})^2]$</li>
-    </ul>
-  </li>
-  <li>Adversarial Loss
-    <ul>
-      <li>LSGAN Loss 사용.</li>
-      <li>$L^D=\frac{1}{2}\mathbb{E}[(D(I^{GT}, I^A, I^S)-1)^2+(D(I^Y, I^A, I^S)-0)^2]$</li>
-      <li>$L^G_{AD}=\mathbb{E}[(D(I^Y, I^A, I^S)-1)^2]$</li>
-    </ul>
-  </li>
-  <li>$\ell_2$ Weight Regularization Loss
-    <ul>
-      <li>(Loss는 아니지만…)</li>
-      <li>Overfitting을 방지하기 위해 사용.</li>
-      <li>$L^G_{WR} = \sum\Vert W_G\Vert^2_2$</li>
-    </ul>
-  </li>
-  <li>3D-Y-Net-GAN Loss : $L_G = L^G_{SC} + \lambda_1L^G_{GC} + \lambda_2L^G_{AD} + \lambda_3L^G_{WR}$</li>
-  <li>3D-DenseU-Net Loss : $L = L_{SC} + \lambda_1L_{GC} + \lambda_3L_{WR}$</li>
-</ul>
-
-<h2 id="experimental-result">Experimental Result</h2>
-<ul>
-  <li>Multiplanar 의 효율성을 검증하기 위해 다음과 같이 세 가지 경우로 나눔.
-    <ul>
-      <li>1) Axial, Sagittal 둘 다 이용.</li>
-      <li>2) Axial 만 이용.</li>
-      <li>3) Saigittal 만 이용.</li>
-    </ul>
-  </li>
-  <li>Loss function을 검증하기 위해 네 가지 경우로 나눔.
-    <ul>
-      <li>1) $\ell1norm + L_{GC} + L_{AD} + L_{WR}$ (pixelwise loss를 $\ell1norm$으로 대체.)</li>
-      <li>2) $L_{SC} + L_{GC} + L_{WR}$</li>
-      <li>3) $L_{SC} + L_{AD} + L_{WR}$</li>
-      <li>4) $L_{SC} + L_{GC} + L_{AD} + L_{WR}$</li>
-    </ul>
-  </li>
-  <li>Evalutaion Method 로는 아래와 같이 네 가지 기법과 자신들의 Network
-    <ul>
-      <li>1) <a href="https://ieeexplore.ieee.org/document/1163711">Bicubic interpolation</a></li>
-      <li>2) <a href="https://ieeexplore.ieee.org/document/5466111">Sparse representation</a></li>
-      <li>3) <a href="https://arxiv.org/abs/1706.03142">3D-SRU-Net</a></li>
-      <li>4) 3D-Y-Net-GAN</li>
-      <li>5) 3D-Y-Net-GAN + 3D-DenseU-Net</li>
-    </ul>
-  </li>
-  <li>Metrics으로는 다음 세 가지 사용.
-    <ul>
-      <li>PSNR(Peak Signal-to-Noise Ratio)
-<script type="math/tex">\begin{alignedat}{2}
-MAX_I = 255\\
-PSNR = 20\cdot\log_{10}\Bigg(\frac{MAX_I}{\sqrt{\frac{1}{rLWH}\sum_{x, y, z}(I^R_{x,y,z}-I^{GT}_{x,y,z})^2}}\Bigg)
-\end{alignedat}</script></li>
-      <li>SSIM(Structural SIMilarity)
-<script type="math/tex">\begin{alignedat}{2}
-L : 255(\text{dynamic range})\\
-\mu : \text{Variance}\\
-\mu_{ab} : \text{Covariance}\\
-c_1 = (k_1L)^2\\
-c_2 = (k_2L)^2\\
-SSIM=\frac{(2\mu_a\mu_b+c_1)(2\sigma_{ab}+c_2)}{(\mu_a^2+\mu_b^2+c_1)(\sigma_a^2+\sigma_b^2+c_2)}
-\end{alignedat}</script></li>
-      <li>NMI(Normalized Mutual Information)
-<script type="math/tex">\begin{alignedat}{2}
-H(X) = -\sum_{x_i}\in{X}p(x_i)\log{p(x_i)} \\
-H(X, Y) = -\sum_{y_i\in{Y}} \sum_{x_i\in{X}}p(x_i, y_i)\log{p(x_i, y_i)}\\
-NMI(X, Y) = 2\frac{H(X) + H(Y) - H(X, Y)}{H(X)+H(Y)}
-\end{alignedat}</script></li>
-    </ul>
-  </li>
-  <li>pixel 값을 [-1, 1]로 clipping -&gt; 다시 8-bit gray scale로 변환.</li>
-  <li>Generated MR images 와 Ground truth가 비슷할 수록 높은 값을 가짐.</li>
-</ul>
-
-<h3 id="a-data-and-preprocessing">A. Data and Preprocessing</h3>
-
-<ul>
-  <li>총 154 samples의 2~5세 유아 Axial, Sagittal Thick MRI, Axial Thin MRI</li>
-</ul>
-
-<p><img src="https://jjerry-k.github.io/public/img/thin/tab01.PNG" /></p>
-
-<ul>
-  <li>Table 1. 과 같은 parameter 사용.</li>
-  <li>Dataset 분할
-    <ul>
-      <li>Cross Validation Dataset : 40 samples</li>
-      <li>Test 1 Dataset : 65 samples</li>
-      <li>Test 2 Dataset : 49 samples</li>
-    </ul>
-  </li>
-  <li>Preprocessing
-    <ul>
-      <li>각 영상별로 다른 parameter를 가지고 있고 intensities 도 다양하기 때문에 spatial misalignment, intensity imblance를 발견.</li>
-      <li>Registration을 위해 SPM12 를 이용하여 unified spatial normalization 수행.
-        <ul>
-          <li>
-            <ol>
-              <li>DICOM to NIfTI</li>
-            </ol>
-          </li>
-          <li>
-            <ol>
-              <li>Segment gray matter, white matter, cerebrospinal fluid, skull, scalp, and air mask.</li>
-            </ol>
-          </li>
-          <li>
-            <ol>
-              <li>Nonlinear deformation field</li>
-            </ol>
-          </li>
-          <li>
-            <ol>
-              <li>ICBM Asian brain template in affine regularization</li>
-            </ol>
-          </li>
-        </ul>
-      </li>
-      <li>Grayscale Normalization
-        <ul>
-          <li>MRI 는 16 bit..</li>
-          <li>단순 linear transformation 으로 [-1, 1]로 mapping.</li>
-        </ul>
-      </li>
-      <li>Histogram Matching
-        <ul>
-          <li>고정된 샘플을 reference로 histogram matching 적용.</li>
-          <li>histogram imbalance 제거.</li>
-        </ul>
-      </li>
-    </ul>
-  </li>
-  <li>Data Augmentation
-    <ul>
-      <li>Radial Transformation
-        <ul>
-          <li><strong><a href="https://arxiv.org/pdf/1708.04347.pdf">Image Augmentation using Radial Transform for Training Deep Neural Networks</a></strong></li>
-        </ul>
-      </li>
-      <li>Mirror Reflection</li>
-    </ul>
-  </li>
-</ul>
-
-<h3 id="b-experimental-settings">B. Experimental Settings</h3>
-<ul>
-  <li>5-fold cross-validation 적용.</li>
-  <li>35 개중 랜덤으로 28:7로 training:validation . <strong>-&gt; 앞에선 40개라더니..?</strong></li>
-  <li>Training 3D-Y-Net-GAN
-    <ul>
-      <li>Batch Size : 16</li>
-      <li>Epochs : 200</li>
-      <li><a href="https://arxiv.org/pdf/1412.6980.pdf">Adam Optimizer Parameter</a>
-        <ul>
-          <li>$\beta_1$: 0.9</li>
-          <li>Learning rate schedule
-            <ul>
-              <li>Initial value : 5*10<sup>-4</sup></li>
-              <li>Decay Step : 252</li>
-              <li>Decay rate : 0.989</li>
-            </ul>
-          </li>
-        </ul>
-      </li>
-      <li>$\lambda_1, \lambda_2, \lambda_3$ : 0.2, 0.02, 0.1</li>
-      <li>He initializer</li>
-    </ul>
-  </li>
-  <li>Training 3D-DenseU-Net
-    <ul>
-      <li>Batch Size : 12</li>
-      <li>Epochs : 300</li>
-      <li>Adam Optimizer Parameter
-        <ul>
-          <li>$\beta_1$: 0.9</li>
-          <li>Learning rate schedule
-            <ul>
-              <li>Initial value : 5*10<sup>-4</sup></li>
-              <li>Decay Step : 373</li>
-              <li>Decay rate : 0.989</li>
-            </ul>
-          </li>
-        </ul>
-      </li>
-      <li>$\lambda_1, \lambda_3$ : 1, 0.001</li>
-      <li>He initializer</li>
-    </ul>
-  </li>
-  <li>SR Parameter
-    <ul>
-      <li>Dictionary size = 512</li>
-      <li>Patch number = 100,000</li>
-      <li>Patch size = 13 x 13</li>
-      <li>Sparsity Regularization = 0.15</li>
-      <li>Overlap = 12.</li>
-    </ul>
-  </li>
-  <li>Training 3D-SRU-Net
-    <ul>
-      <li>Batch Size : 32</li>
-      <li>Epochs : 300</li>
-      <li>Adam Optimizer Parameter
-        <ul>
-          <li>$\beta_1$: 0.9</li>
-          <li>Initial value : 5*10<sup>-4</sup></li>
-        </ul>
-      </li>
-    </ul>
-  </li>
-</ul>
-
-<h4 id="c-ablation-experiment-on-input-data">C. Ablation Experiment On Input Data</h4>
-<ul>
-  <li>Input을 변경하면서 실험 진행. 
-<img src="https://jjerry-k.github.io/public/img/thin/fig06.PNG" />
-<img src="https://jjerry-k.github.io/public/img/thin/tab02.PNG" /></li>
-  <li>Axial 과 Sagittal 을 같이 사용했을 때가 좀 더 세부적인 구조, 적은 왜곡을 보임.
-    <ul>
-      <li>두 축의 영상이 서로 조합하여 reconstruction task를 향상.</li>
-    </ul>
-  </li>
-  <li>Quantitive evaluation 에서도 더 높은 지표를 산출.</li>
-</ul>
-
-<h4 id="d-ablation-experiment-on-loss-function">D. Ablation Experiment On Loss Function</h4>
-<ul>
-  <li>Loss를 변경하면서 실험 진행.
-<img src="https://jjerry-k.github.io/public/img/thin/fig07.PNG" />
-<img src="https://jjerry-k.github.io/public/img/thin/tab03.PNG" /></li>
-  <li>Self-Adaptive Charbonnier Loss에 비해 $\ell1$ norm 이 흐린 영상을 생성.</li>
-  <li>Without Gradient Correction Loss
-    <ul>
-      <li>덜 선명한 영상을 생성.</li>
-    </ul>
-  </li>
-  <li>Without Adversarial Loss
-    <ul>
-      <li>덜 realistic 영상을 생성. <strong>-&gt; ?????그냥 쓴 말인가..</strong></li>
-    </ul>
-  </li>
-  <li><strong>Table3 …지표 좀 이상..</strong></li>
-</ul>
-
-<h4 id="e-comparison-with-other--methods">E. Comparison With Other  Methods</h4>
-<ul>
-  <li>다른 Method들과 비교.
-<img src="https://jjerry-k.github.io/public/img/thin/fig08.PNG" />
-<img src="https://jjerry-k.github.io/public/img/thin/tab04.PNG" /></li>
-  <li>제안한 method로 생성된 image가 가장 Realistic하고 Ground truth 와 가장 비슷하다고 함.</li>
-  <li>대부분 Quantitative evaluation 에서 제안한 method가 다른 것들을 다 뛰어넘음.</li>
-</ul>
-
-<h2 id="conclusion">Conclusion</h2>
-<ul>
-  <li><strong>제안한 Method 에선 Data preprocessing이 매우 중요하다……</strong></li>
-</ul>
-
-    <article></h4>
-    <div class="post-more">
-      
-      <a href="/deeplearning/2019/07/05/Thin/#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
-      
-      <a href="/deeplearning/2019/07/05/Thin/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
-    </div>
-  </div>
-  
-  <div class="post">
-    <h1 class="post-title">
-      <a href="/python/2019/06/30/conda_package/">
-        (개인적으로) 무.조.건 설치하는 Anaconda 패키지
-      </a>
-    </h1>
-
-    <span class="post-date">30 Jun 2019</span>
-     | 
-    
-    <a href="/blog/tags/#setting" class="post-tag">Setting</a>
-    
-    
-
-    <h4 style="font-weight: 400; line-height: 1.8;"><article>
-      <p>이번 포스팅은 제가 많이 쓰는 패키지들에 대해서 적어보려고 합니다. <br />
-추후에 포맷하고 다시 세팅할 수도 있으니까….<br />
-저는 Anaconda가 아닌 <strong>Miniconda</strong>를 사용하기 때문에 어지간하면 하나 하나 설치를 해줘야해요. 
-물론 머리로는 기억하고 있지만 커맨드 쓰기가 귀찮으니…적어놓으려고 합니다!<br />
-각각 설명은…생략할거에요. 보시는 분들 구글링 실력을 믿습니다.</p>
-
-<h4 id="scientific-uses">Scientific uses</h4>
-<ul>
-  <li>numpy, scipy, pandas</li>
-  <li><code class="highlighter-rouge">conda install numpy scipy pandas</code></li>
-</ul>
-
-<h4 id="visualization">Visualization</h4>
-<ul>
-  <li>matplotlib, seaborn</li>
-  <li><code class="highlighter-rouge">conda install matplotlib seaborn</code></li>
-</ul>
-
-<h4 id="image-processing">Image Processing</h4>
-<ul>
-  <li>pillow, scikit-image, opencv</li>
-  <li><code class="highlighter-rouge">conda install pillow scikit-image opencv</code></li>
-</ul>
-
-<h4 id="ml--dl">ML &amp; DL</h4>
-<ul>
-  <li>scikit-learn, tensorflow, pytorch (keras도 썼었는데…이번에 뺐어요..)</li>
-  <li><code class="highlighter-rouge">conda install scikit-learn tensorflow</code></li>
-  <li><code class="highlighter-rouge">conda install -c pytorch pytorch torchvision</code></li>
-</ul>
-
-<h4 id="medical-image-processing">Medical Image Processing</h4>
-<ul>
-  <li>pydicom, nibabel, simpleitk</li>
-  <li><code class="highlighter-rouge">conda install -c conda-forge pydicom nibabel</code></li>
-  <li><code class="highlighter-rouge">conda install -c SimpleITK SimpleITK</code></li>
-</ul>
-
-<h4 id="tools">Tools</h4>
-<ul>
-  <li>tqdm, jupyter, jupyter-lab</li>
-  <li><code class="highlighter-rouge">conda install  tqdm jupyter jupyterlab</code></li>
-</ul>
-
-<p>이….정도네요!<br />
-솔직히 제가 이렇게 포스팅을 하는 이유는….<br />
-이미 제 노트북을…한번 갈아엎었습니다…<br />
-conda 를 4.7.5 로 올리는 순간…모든게 날아갔거든요.<br />
-하…얼른 세팅하러 갑니다..</p>
-
-<p><strong>P.S</strong> conda 를 조심하세요…</p>
-
-    <article></h4>
-    <div class="post-more">
-      
-      <a href="/python/2019/06/30/conda_package/#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
-      
-      <a href="/python/2019/06/30/conda_package/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
     </div>
   </div>
   

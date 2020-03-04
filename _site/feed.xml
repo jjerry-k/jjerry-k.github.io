@@ -5,9 +5,791 @@
     <description></description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 06 Nov 2019 00:12:51 +0900</pubDate>
-    <lastBuildDate>Wed, 06 Nov 2019 00:12:51 +0900</lastBuildDate>
+    <pubDate>Wed, 04 Mar 2020 16:04:22 +0900</pubDate>
+    <lastBuildDate>Wed, 04 Mar 2020 16:04:22 +0900</lastBuildDate>
     <generator>Jekyll v3.8.5</generator>
+    
+      <item>
+        <title>StarGAN v2 리뷰</title>
+        <description>&lt;h1 id=&quot;stargan-v2-diverse-image-synthessis-for-multiple-domains&quot;&gt;StarGAN v2: Diverse Image Synthessis for Multiple Domains&lt;/h1&gt;
+
+&lt;p&gt;Author: Yunjey Choi, Youngjung Uh, Jaejun Yoo, Jung-Woo Ha
+Date: Dec 04, 2019
+URL: https://arxiv.org/abs/1912.01865&lt;/p&gt;
+
+&lt;h1 id=&quot;abstract&quot;&gt;Abstract&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Image translation 을 잘 하는 Model을 학습하려면 다음 사항을 만족해야함
+    &lt;ul&gt;
+      &lt;li&gt;Diversity of generated images&lt;/li&gt;
+      &lt;li&gt;Scalability over multiple domains&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;기존의 방법들은 limited diversity, multiple models(networks)를 다룸.&lt;/li&gt;
+  &lt;li&gt;StarGAN v2는 두 조건 모두 만족.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;introduction&quot;&gt;Introduction&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Domain: 시각적으로 구별되는 범주&lt;/li&gt;
+  &lt;li&gt;Style: 각 영상이 가지는 독특한 외관적 특성&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/starganv2/Untitled.png&quot; alt=&quot;https://jjerry-k.github.io/public/img/starganv2/Untitled.png&quot; /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;stargan-v2&quot;&gt;StarGAN v2&lt;/h1&gt;
+
+&lt;h2 id=&quot;proposed-framework&quot;&gt;Proposed framework&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/starganv2/Untitled_1.png&quot; alt=&quot;https://jjerry-k.github.io/public/img/starganv2/Untitled_1.png&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;4개의 Network 로 구성.&lt;/li&gt;
+  &lt;li&gt;Generator (&lt;code class=&quot;highlighter-rouge&quot;&gt;G&lt;/code&gt;)
+    &lt;ul&gt;
+      &lt;li&gt;Image &lt;code class=&quot;highlighter-rouge&quot;&gt;x&lt;/code&gt;와 Style code &lt;code class=&quot;highlighter-rouge&quot;&gt;s&lt;/code&gt;를 입력으로 받아 새로운 영상을 생성.&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://arxiv.org/abs/1703.06868&quot;&gt;adaptive instance normalization (AdaIN)&lt;/a&gt; 사용.&lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/starganv2/Untitled_2.png&quot; alt=&quot;https://jjerry-k.github.io/public/img/starganv2/Untitled_2.png&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Mapping network (&lt;code class=&quot;highlighter-rouge&quot;&gt;F&lt;/code&gt;)
+    &lt;ul&gt;
+      &lt;li&gt;Latent code &lt;code class=&quot;highlighter-rouge&quot;&gt;z&lt;/code&gt;와 Domain code &lt;code class=&quot;highlighter-rouge&quot;&gt;y&lt;/code&gt;를 입력으로 받아 Style code &lt;code class=&quot;highlighter-rouge&quot;&gt;s&lt;/code&gt;생성.&lt;/li&gt;
+      &lt;li&gt;Multi Layer Perceptron 구조.&lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/starganv2/Untitled_3.png&quot; alt=&quot;https://jjerry-k.github.io/public/img/starganv2/Untitled_3.png&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Style encoder (&lt;code class=&quot;highlighter-rouge&quot;&gt;E&lt;/code&gt;)
+    &lt;ul&gt;
+      &lt;li&gt;Image &lt;code class=&quot;highlighter-rouge&quot;&gt;x&lt;/code&gt;와 Domain code &lt;code class=&quot;highlighter-rouge&quot;&gt;y&lt;/code&gt;를 입력으로 받아 &lt;code class=&quot;highlighter-rouge&quot;&gt;x&lt;/code&gt;에서 Style code &lt;code class=&quot;highlighter-rouge&quot;&gt;s&lt;/code&gt;를 추출.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Discriminator (&lt;code class=&quot;highlighter-rouge&quot;&gt;D&lt;/code&gt;)
+    &lt;ul&gt;
+      &lt;li&gt;Image &lt;code class=&quot;highlighter-rouge&quot;&gt;x&lt;/code&gt;를 입력으로 받아 Domain code &lt;code class=&quot;highlighter-rouge&quot;&gt;y&lt;/code&gt;와 Real/Fake 분류.&lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/starganv2/Untitled_4.png&quot; alt=&quot;https://jjerry-k.github.io/public/img/starganv2/Untitled_4.png&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;training-objectives&quot;&gt;Training objectives&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Adversarial objective
+    &lt;ul&gt;
+      &lt;li&gt;GAN 에서 기본적으로 사용되는 Loss&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\mathcal{L}_{adv}=\mathbb{E}_{\mathrm{x},y}[\log{D_y}(\mathrm{x})] + \mathbb{E}_{\mathrm{x}, \tilde{y}, \mathrm{z}}[\log{(1-D_{\tilde{y}}(G(\mathrm{x}, \tilde{\mathrm{s}})))}&lt;/script&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Style reconstruction
+    &lt;ul&gt;
+      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;G(x, s)&lt;/code&gt; 를 Style encoder &lt;code class=&quot;highlighter-rouge&quot;&gt;E&lt;/code&gt; 에 넣어 &lt;code class=&quot;highlighter-rouge&quot;&gt;s&lt;/code&gt; 추출 후 입력 &lt;code class=&quot;highlighter-rouge&quot;&gt;s&lt;/code&gt;와 비교&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\mathcal{L}_{sty}=\mathbb{E}_{\mathrm{x},\tilde{y}, \mathrm{z}}[\parallel\tilde{\mathrm{s}}-E_{\tilde{y}}(G(\mathrm{x}, \tilde{\mathrm{s}}))\parallel_1]&lt;/script&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Style diversification
+    &lt;ul&gt;
+      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;G&lt;/code&gt;가 다양한 Image를 생성할 수 있도록 Regularization 하는 역할.&lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;z1, z2&lt;/code&gt; 가 &lt;code class=&quot;highlighter-rouge&quot;&gt;F&lt;/code&gt;에 의해 생성된 &lt;code class=&quot;highlighter-rouge&quot;&gt;s1, s2&lt;/code&gt;와 입력 &lt;code class=&quot;highlighter-rouge&quot;&gt;x&lt;/code&gt;를 &lt;code class=&quot;highlighter-rouge&quot;&gt;G&lt;/code&gt;의 입력으로 새로운 영상 생성.&lt;/li&gt;
+      &lt;li&gt;L1 Norm 계산.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\mathcal{L}_{ds}=\mathbb{E}_{\mathrm{x},\tilde{y}, \mathrm{z}_1, \mathrm{z}_2}[\parallel G(\mathrm{x}, \tilde{\mathrm{s}}_1) - G(\mathrm{x}, \tilde{\mathrm{s}}_2) \parallel_1]&lt;/script&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Preserving source characteristics
+    &lt;ul&gt;
+      &lt;li&gt;Cycle GAN 의 cycle consistency loss.&lt;/li&gt;
+      &lt;li&gt;target domain의 style 을 적용한 영상을 다시 &lt;code class=&quot;highlighter-rouge&quot;&gt;E(x)&lt;/code&gt;로 추출된 s를 이용하여 &lt;code class=&quot;highlighter-rouge&quot;&gt;x'&lt;/code&gt;로 reconstruction 한 후 L1 Norm 계산.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\mathcal{L}_{cyc}=\mathbb{E}_{\mathrm{x}, y, \tilde{y}, \mathrm{z}}[\parallel \mathrm{x} - G(G(\mathrm{x}, \tilde{\mathrm{s}}), \hat{\mathrm{s}})\parallel_1]&lt;/script&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Full objective&lt;/p&gt;
+
+    &lt;script type=&quot;math/tex; mode=display&quot;&gt;\mathcal{L}_D = -\mathcal{L}_{adv} \\ \mathcal{L}_{F, G, E}=\mathcal{L}_{adv} + \lambda_{sty} \mathcal{L}_{sty} - \lambda_{ds} \mathcal{L}_{ds} + \lambda_{cyc} \mathcal{L}_{cyc}&lt;/script&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;About $\lambda$&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Dataset&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;sty&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;ds&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;cyc&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;CelebA-HQ&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;AFHQ&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0.3&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0.1&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h1 id=&quot;experiments&quot;&gt;Experiments&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Baselines
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;https://arxiv.org/abs/1804.04732&quot;&gt;MUNIT&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://arxiv.org/abs/1808.00948&quot;&gt;DRIT&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://arxiv.org/abs/1903.05628&quot;&gt;MSGAN&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://arxiv.org/abs/1711.09020&quot;&gt;StarGAN&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Datasets
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;http://mmlab.ie.cuhk.edu.hk/projects/CelebA.html&quot;&gt;CelebA-HQ&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://github.com/clovaai/stargan-v2/blob/master/download.sh&quot;&gt;AFHQ&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Evaluation metrics
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;https://arxiv.org/abs/1706.08500&quot;&gt;Frechet inception distance (FID)&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://arxiv.org/abs/1801.03924&quot;&gt;Learned perceptual image patch similarity (LPIPS)&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;analysis-of-individual-components&quot;&gt;Analysis of individual components&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;StarGAN에서 본 연구에서 제안하는 방법들을 하나하나 넣어가면서 성능 실험.&lt;/li&gt;
+  &lt;li&gt;정량적 평가를 보면 추가할 때마다 좋아지는 것을 볼 수 있음.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/starganv2/Untitled_5.png&quot; alt=&quot;https://jjerry-k.github.io/public/img/starganv2/Untitled_5.png&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;각 단계별 생성한 영상의 결과&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/starganv2/Untitled_6.png&quot; alt=&quot;https://jjerry-k.github.io/public/img/starganv2/Untitled_6.png&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;comparison-on-diverse-image-synthesis&quot;&gt;Comparison on diverse image synthesis&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;다른 방법들과 비교&lt;/li&gt;
+  &lt;li&gt;Latent-guided synthesis ( Latent code 만을 이용하여 생성 )&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/starganv2/Untitled_7.png&quot; alt=&quot;https://jjerry-k.github.io/public/img/starganv2/Untitled_7.png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/starganv2/Untitled_8.png&quot; alt=&quot;https://jjerry-k.github.io/public/img/starganv2/Untitled_8.png&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Referenc-guided synthesis ( Style code 를 이용한 생성 )&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/starganv2/Untitled_9.png&quot; alt=&quot;https://jjerry-k.github.io/public/img/starganv2/Untitled_9.png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/starganv2/Untitled_10.png&quot; alt=&quot;https://jjerry-k.github.io/public/img/starganv2/Untitled_10.png&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Human evaluation
+    &lt;ul&gt;
+      &lt;li&gt;방법 별로 100개의 sample 생성 후 사람이 판단.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/starganv2/Untitled_11.png&quot; alt=&quot;https://jjerry-k.github.io/public/img/starganv2/Untitled_11.png&quot; /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;result&quot;&gt;Result&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;겁나….잘 생성함…&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/starganv2/Untitled_12.png&quot; alt=&quot;https://jjerry-k.github.io/public/img/starganv2/Untitled_12.png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/starganv2/Untitled_13.png&quot; alt=&quot;https://jjerry-k.github.io/public/img/starganv2/Untitled_13.png&quot; /&gt;&lt;/p&gt;
+</description>
+        <pubDate>Wed, 04 Mar 2020 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/deeplearning/2020/03/04/starganv2/</link>
+        <guid isPermaLink="true">http://localhost:4000/deeplearning/2020/03/04/starganv2/</guid>
+        
+        <category>Paper</category>
+        
+        
+        <category>DeepLearning</category>
+        
+      </item>
+    
+      <item>
+        <title>Weights &amp; Biases 가 뭐지??</title>
+        <description>&lt;p&gt;이번 포스팅에선 &lt;a href=&quot;https://www.wandb.com/&quot;&gt;Weights &amp;amp; Biases&lt;/a&gt; 라는 Tool 을 소개드리려 합니다.&lt;/p&gt;
+
+&lt;p&gt;다음과 같은 특징을 강조하네요.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Store hyper-parameters used in a training run&lt;/li&gt;
+  &lt;li&gt;Search, compare, and visualize training runs&lt;/li&gt;
+  &lt;li&gt;Analyze system usage metrics alongside runs&lt;/li&gt;
+  &lt;li&gt;Collaborate with team members&lt;/li&gt;
+  &lt;li&gt;Replicate historic results&lt;/li&gt;
+  &lt;li&gt;Run parameter sweeps&lt;/li&gt;
+  &lt;li&gt;Keep records of experiments available forever&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;그럼 간단 사용법에 대해서 설명드리겠습니다.&lt;/p&gt;
+
+&lt;h3 id=&quot;sign-up-을-했다는-가정하에-진행합니다&quot;&gt;&lt;strong&gt;Sign Up&lt;/strong&gt; 을 했다는 가정하에 진행합니다.&lt;/h3&gt;
+
+&lt;h1 id=&quot;패키지-설치&quot;&gt;패키지 설치&lt;/h1&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;wandb&lt;/code&gt; 패키지를 먼저 설치해줍니다.&lt;/p&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;pip &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;wandb
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h1 id=&quot;wandb-로그인&quot;&gt;wandb 로그인&lt;/h1&gt;
+
+&lt;p&gt;설치 후 Terminal (or 명령 프롬프트) 에 다음과 같이 입력합니다.&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;wandb login
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;그러면 아래와 같은 화면이 나오면서 웹 브라우저가 켜집니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/wandb/Untitled.png&quot; alt=&quot;https://jjerry-k.github.io/public/img/wandb/Untitled.png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/wandb/Untitled_1.png&quot; alt=&quot;https://jjerry-k.github.io/public/img/wandb/Untitled_1.png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Browser 에서 API키를 복사해주해서 Terminal (or 명령 프롬프트) 에 붙여넣기합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/wandb/Untitled_2.png&quot; alt=&quot;https://jjerry-k.github.io/public/img/wandb/Untitled_2.png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;그럼 wandb 에 로그인 완료!&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/wandb/Untitled_3.png&quot; alt=&quot;https://jjerry-k.github.io/public/img/wandb/Untitled_3.png&quot; /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;code-실행&quot;&gt;Code 실행&lt;/h1&gt;
+
+&lt;p&gt;간단한 MLP를 이용한 MNIST Classification 문제입니다.&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&lt;span class=&quot;c1&quot;&gt;# wandb initialization
+&lt;/span&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;wandb&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;wandb&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;init&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;project&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;test_project&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;os&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;numpy&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;matplotlib&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pyplot&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;
+
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;tensorflow&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tf&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;tensorflow.keras&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;models&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;layers&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;optimizers&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;losses&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;utils&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;datasets&lt;/span&gt;
+
+
+&lt;span class=&quot;c1&quot;&gt;# Import callback function
+&lt;/span&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;wandb.keras&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;WandbCallback&lt;/span&gt; 
+
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Packge Loaded!&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+
+&lt;span class=&quot;c1&quot;&gt;# Data Loading
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;train_x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;train_y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;test_x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;test_y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;datasets&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mnist&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;load_data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;train_x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;test_x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;reshape&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;train_x&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;255.&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;784&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;reshape&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;test_x&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;255.&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;784&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Train Data's Shape : &quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;train_x&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;shape&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;train_y&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;shape&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Test Data's Shape : &quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;test_x&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;shape&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;test_y&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;shape&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# Network Building
+## Using Sequential
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mlp&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;models&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Sequential&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;mlp&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;add&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;layers&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Dense&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;256&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;activation&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'relu'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;input_shape&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;784&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,)))&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;mlp&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;add&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;layers&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Dense&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;128&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;activation&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'relu'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;mlp&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;add&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;layers&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Dense&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;activation&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'softmax'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Network Built!&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;mlp&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;compile&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;optimizer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;optimizers&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Adam&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;loss&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;losses&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sparse_categorical_crossentropy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;metrics&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'accuracy'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;history&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;mlp&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;train_x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;train_y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;epochs&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;batch_size&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;16&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; 
+                                    &lt;span class=&quot;n&quot;&gt;validation_data&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;test_x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;test_y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; 
+                                    &lt;span class=&quot;n&quot;&gt;callbacks&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;WandbCallback&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()])&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# callbacks 에 Wandbcallback 추가
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h1 id=&quot;check-training&quot;&gt;Check training&lt;/h1&gt;
+
+&lt;p&gt;해당 코드를 실행시키고 &lt;a href=&quot;https://app.wandb.ai/home&quot;&gt;W&amp;amp;B&lt;/a&gt; 에 접속을 하면 다음과 같은 화면이 나옵니다.&lt;br /&gt;
+위에서 &lt;code class=&quot;highlighter-rouge&quot;&gt;test_project&lt;/code&gt; 라는 프로젝트에 세팅을 했기 때문에 확인을 해봅니다.&lt;br /&gt;
+하나의 프로젝트에서 한번 실행하면 뭔지 모를 조합의 &lt;code class=&quot;highlighter-rouge&quot;&gt;Name&lt;/code&gt;으로 실행 상태를 보여줍니다.
+저는 한번만 했기 때문에 &lt;code class=&quot;highlighter-rouge&quot;&gt;lyric-dream-3&lt;/code&gt; 라는 이름으로 하나만 생겨있습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/wandb/Untitled_4.png&quot; alt=&quot;https://jjerry-k.github.io/public/img/wandb/Untitled_4.png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;lyric-dream-3&lt;/code&gt; 같이 이름을 클릭해서 무엇을 볼 수 있는지 살펴보겠습니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;chart-탭&quot;&gt;Chart 탭&lt;/h2&gt;
+
+&lt;p&gt;Chart 탭에선 loss, epoch, metric 등과 같은 학습 관련 지표를 볼 수 있는 &lt;code class=&quot;highlighter-rouge&quot;&gt;CHARTS&lt;/code&gt;와 모델 학습에 사용된 시스템을 모니터링 할 수 있는 &lt;code class=&quot;highlighter-rouge&quot;&gt;SYSTEM&lt;/code&gt;이 있습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/wandb/Untitled_5.png&quot; alt=&quot;https://jjerry-k.github.io/public/img/wandb/Untitled_5.png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/wandb/Untitled_6.png&quot; alt=&quot;https://jjerry-k.github.io/public/img/wandb/Untitled_6.png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/wandb/Untitled_7.png&quot; alt=&quot;https://jjerry-k.github.io/public/img/wandb/Untitled_7.png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/wandb/Untitled_8.png&quot; alt=&quot;https://jjerry-k.github.io/public/img/wandb/Untitled_8.png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/wandb/Untitled_9.png&quot; alt=&quot;https://jjerry-k.github.io/public/img/wandb/Untitled_9.png&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;system-탭&quot;&gt;System 탭&lt;/h2&gt;
+&lt;p&gt;System 탭에서는 Chart 탭에서 &lt;code class=&quot;highlighter-rouge&quot;&gt;SYSTEM&lt;/code&gt; 과 동일한 그래프를 보여주네요.
+&lt;img src=&quot;https://jjerry-k.github.io/public/img/wandb/Untitled_10.png&quot; alt=&quot;https://jjerry-k.github.io/public/img/wandb/Untitled_10.png&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;model-탭&quot;&gt;Model 탭&lt;/h2&gt;
+&lt;p&gt;이름 그대로 학습하는 Model의 graph 구조를 볼 수 있습니다.
+&lt;img src=&quot;https://jjerry-k.github.io/public/img/wandb/Untitled_11.png&quot; alt=&quot;https://jjerry-k.github.io/public/img/wandb/Untitled_11.png&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;logs-탭&quot;&gt;Logs 탭&lt;/h2&gt;
+&lt;p&gt;여기선 학습 로그들이 저장됩니다.
+&lt;img src=&quot;https://jjerry-k.github.io/public/img/wandb/Untitled_12.png&quot; alt=&quot;https://jjerry-k.github.io/public/img/wandb/Untitled_12.png&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;files-탭&quot;&gt;Files 탭&lt;/h2&gt;
+&lt;p&gt;솔직히 보여주기만 해도 좋지만 저장도 해주면 좋겠죠.&lt;br /&gt;
+Files 탭에는 현재 모델을 돌릴때 사용된 정보, 가장 성능이 좋았을 epoch 의 model, 돌리는 환경에 설치된 package 리스트 등의 정보가 저장됩니다.&lt;br /&gt;
+물론 다운로드 가능!&lt;br /&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;model-best.h5&lt;/code&gt;는 graph 정보도 저장되어 있기 때문에 다운로드 후 load해서 바로 Inference 가능합니다!
+&lt;img src=&quot;https://jjerry-k.github.io/public/img/wandb/Untitled_13.png&quot; alt=&quot;https://jjerry-k.github.io/public/img/wandb/Untitled_13.png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.wandb.com/&quot;&gt;Weights &amp;amp; Biases&lt;/a&gt; 에 대해 정~~~말 간단히 알아봤습니다.&lt;br /&gt;
+딱히 이런저런 기능은 추가를 하지 않고 기본적인 기능만 봤습니다.&lt;br /&gt;
+추후에는 좀 더 다양한 기능과 프레임워크에 적용해보도록 하겠습니다.&lt;/p&gt;
+</description>
+        <pubDate>Sun, 01 Mar 2020 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/deeplearning/2020/03/01/wandb/</link>
+        <guid isPermaLink="true">http://localhost:4000/deeplearning/2020/03/01/wandb/</guid>
+        
+        <category>Tools</category>
+        
+        
+        <category>DeepLearning</category>
+        
+      </item>
+    
+      <item>
+        <title>MobileNet V1 리뷰</title>
+        <description>&lt;h1 id=&quot;mobilenets-efficient-convolutional-neural-networks-for-mobile-vision-applications&quot;&gt;MobileNets: Efficient Convolutional Neural Networks for Mobile Vision Applications&lt;/h1&gt;
+
+&lt;p&gt;Author: Andrew G. Howard, Menglong Zhu, Bo Chen, Dmitry Kalenichenko, Weijun Wang, Tobias Weyand, Marco Andreetto, Hartwig Adam&lt;br /&gt;
+Date: Apr 17, 2017&lt;br /&gt;
+URL: https://arxiv.org/abs/1704.04861&lt;/p&gt;
+
+&lt;h1 id=&quot;abstract&quot;&gt;&lt;strong&gt;Abstract&lt;/strong&gt;&lt;/h1&gt;
+
+&lt;p&gt;- 모바일, 임베디드에 적용할 수 있는 네트워크.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/mobilev1/Untitled.png&quot; alt=&quot;https://jjerry-k.github.io/public/img/mobilev1/Untitled.png&quot; /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;1-introduction&quot;&gt;&lt;strong&gt;1. Introduction&lt;/strong&gt;&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;CNN 유명세 짱짱맨&lt;/li&gt;
+  &lt;li&gt;좋은 성능(정확도)를 위해 연구가 계속 진행되었지만 속도와 메모리 측면에서 &lt;strong&gt;**비&lt;/strong&gt;**효율적.&lt;/li&gt;
+  &lt;li&gt;경량화, 효율화 필요!!&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;2-prior-work&quot;&gt;&lt;strong&gt;2. Prior Work&lt;/strong&gt;&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;최근 경량화, 효율적인 네트워크 개발에 초점.&lt;/li&gt;
+  &lt;li&gt;Depthwse separable convolution,&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;3-mobilenetarchitecture&quot;&gt;&lt;strong&gt;3. MobileNet Architecture&lt;/strong&gt;&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;핵심적인 레이어 설명.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;31-depthwiseseparableconvolution&quot;&gt;&lt;strong&gt;3.1 Depthwise Separable Convolution&lt;/strong&gt;&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Depthwise Convolution 수행 후 Pointwise Convolution 수행.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/mobilev1/Untitled_1.png&quot; alt=&quot;https://jjerry-k.github.io/public/img/mobilev1/Untitled_1.png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/mobilev1/Untitled_2.png&quot; alt=&quot;https://jjerry-k.github.io/public/img/mobilev1/Untitled_2.png&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;MobileNet 에서는 3 x 3 의 Depthwise saparable convolution 사용.&lt;/li&gt;
+  &lt;li&gt;연산량이 약 8~9 배로 크게 감소.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;32-networkstructureandtraining&quot;&gt;&lt;strong&gt;3.2 Network Structure and Training&lt;/strong&gt;&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;총 28개의 레이어&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/mobilev1/Untitled_3.png&quot; alt=&quot;https://jjerry-k.github.io/public/img/mobilev1/Untitled_3.png&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;MobileNet의 Convolution Block 구조&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/mobilev1/Untitled_4.png&quot; alt=&quot;https://jjerry-k.github.io/public/img/mobilev1/Untitled_4.png&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;MobileNet의 대부분 파라미터, 연산 시간은 1x1 Conv&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/mobilev1/Untitled_5.png&quot; alt=&quot;https://jjerry-k.github.io/public/img/mobilev1/Untitled_5.png&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;RMSprop, asynchronous gradient descent 사용.&lt;/li&gt;
+  &lt;li&gt;Tensorflow 로 구현.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;33-widthmultiplierthinnermodels&quot;&gt;&lt;strong&gt;3.3 Width Multiplier: Thinner Models&lt;/strong&gt;&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;MobileNet의 기본 구조는 작고 빠르지만 더 작고 빠른 모델을 필요로 함.&lt;/li&gt;
+  &lt;li&gt;Width multiplier 라는 파라미터 제안.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;34-resolutionmultiplierreducedrepresentation&quot;&gt;&lt;strong&gt;3.4 Resolution Multiplier: Reduced Representation&lt;/strong&gt;&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/mobilev1/Untitled_6.png&quot; alt=&quot;https://jjerry-k.github.io/public/img/mobilev1/Untitled_6.png&quot; /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;4-experiments&quot;&gt;&lt;strong&gt;4. Experiments&lt;/strong&gt;&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;효율적이다 라는&lt;/strong&gt; 내용이 전부..&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;41-modelchoices&quot;&gt;&lt;strong&gt;4.1 Model Choices&lt;/strong&gt;&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/mobilev1/Untitled_7.png&quot; alt=&quot;https://jjerry-k.github.io/public/img/mobilev1/Untitled_7.png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/mobilev1/Untitled_8.png&quot; alt=&quot;https://jjerry-k.github.io/public/img/mobilev1/Untitled_8.png&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;42-modelshrinkinghyperparemeters&quot;&gt;&lt;strong&gt;4.2 Model Shrinking Hyperparemeters&lt;/strong&gt;&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/mobilev1/Untitled_9.png&quot; alt=&quot;https://jjerry-k.github.io/public/img/mobilev1/Untitled_9.png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/mobilev1/Untitled_10.png&quot; alt=&quot;https://jjerry-k.github.io/public/img/mobilev1/Untitled_10.png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/mobilev1/Untitled_11.png&quot; alt=&quot;https://jjerry-k.github.io/public/img/mobilev1/Untitled_11.png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/mobilev1/Untitled_12.png&quot; alt=&quot;https://jjerry-k.github.io/public/img/mobilev1/Untitled_12.png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/mobilev1/Untitled_13.png&quot; alt=&quot;https://jjerry-k.github.io/public/img/mobilev1/Untitled_13.png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/mobilev1/Untitled_14.png&quot; alt=&quot;https://jjerry-k.github.io/public/img/mobilev1/Untitled_14.png&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;43-finegrainedrecognition&quot;&gt;&lt;strong&gt;4.3 Fine Grained Recognition&lt;/strong&gt;&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/mobilev1/Untitled_15.png&quot; alt=&quot;https://jjerry-k.github.io/public/img/mobilev1/Untitled_15.png&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;44-largescalegeolocalization&quot;&gt;&lt;strong&gt;4.4 Large Scale Geolocalization&lt;/strong&gt;&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/mobilev1/Untitled_16.png&quot; alt=&quot;https://jjerry-k.github.io/public/img/mobilev1/Untitled_16.png&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;45-faceattributed&quot;&gt;&lt;strong&gt;4.5 Face Attributed&lt;/strong&gt;&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/mobilev1/Untitled_17.png&quot; alt=&quot;https://jjerry-k.github.io/public/img/mobilev1/Untitled_17.png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/mobilev1/Untitled_18.png&quot; alt=&quot;https://jjerry-k.github.io/public/img/mobilev1/Untitled_18.png&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;46-objectdetection&quot;&gt;&lt;strong&gt;4.6 Object Detection&lt;/strong&gt;&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/mobilev1/Untitled_19.png&quot; alt=&quot;https://jjerry-k.github.io/public/img/mobilev1/Untitled_19.png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/mobilev1/Untitled_20.png&quot; alt=&quot;https://jjerry-k.github.io/public/img/mobilev1/Untitled_20.png&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;47-faceembeddings&quot;&gt;&lt;strong&gt;4.7 Face Embeddings&lt;/strong&gt;&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/mobilev1/Untitled_21.png&quot; alt=&quot;https://jjerry-k.github.io/public/img/mobilev1/Untitled_21.png&quot; /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;5-conclusion&quot;&gt;&lt;strong&gt;5. Conclusion&lt;/strong&gt;&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;연산량이 적고 파라미터 수도 적음!&lt;/li&gt;
+  &lt;li&gt;다양한 task 에 사용가능!&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Wed, 26 Feb 2020 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/deeplearning/2020/02/26/MobileNets-Efficient-Convolutional-Neural-Networks/</link>
+        <guid isPermaLink="true">http://localhost:4000/deeplearning/2020/02/26/MobileNets-Efficient-Convolutional-Neural-Networks/</guid>
+        
+        <category>Paper</category>
+        
+        
+        <category>DeepLearning</category>
+        
+      </item>
+    
+      <item>
+        <title>Xception</title>
+        <description>&lt;h1 id=&quot;xception-deep-learning-with-depthwise-separable-convolution&quot;&gt;Xception: Deep Learning with Depthwise Separable Convolution&lt;/h1&gt;
+
+&lt;p&gt;Author: Franc¸ois Chollet&lt;br /&gt;
+Date: Dec 19, 2016&lt;br /&gt;
+URL: https://arxiv.org/abs/1610.02357&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;abstract&quot;&gt;Abstract&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;CNN 에서 많이 사용되는 Inception 은 Regular Convolution 과 Depthwise Separable Convolution 의 중간 단계.&lt;/li&gt;
+  &lt;li&gt;Depthwise Separable Convolution 은 최대 개수의 타워를 가진 Inception module (?)&lt;/li&gt;
+  &lt;li&gt;Inception module을 Depthwise Separable Convolution 으로 대체한 새로운 Deep Convolutional Neural Network 제안.&lt;/li&gt;
+  &lt;li&gt;Xception 이라고 칭함.&lt;/li&gt;
+  &lt;li&gt;ImageNet 으로 학습된 Inception V3 보다 살짝 성능이 좋고 350,000,000개의 이미지와 17,000개의 클래스로 구성된 Larger image dataset 에선 Inception V3 보다 월등히 뛰어난 성능을 보임.&lt;/li&gt;
+  &lt;li&gt;Inception V3와 Xception 이 동일한 parameter 수를 가짐.&lt;/li&gt;
+  &lt;li&gt;그러므로 연산량, 메모리의 증가가 아닌 모델 parameter를 효과적으로 사용해서 성능 향상이 된 것.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;1introduction&quot;&gt;&lt;strong&gt;1. Introduction&lt;/strong&gt;&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Convolutional Neural Network (이하 CNN) 은 Computer Vision 에서 가장 주요한 알고리즘이 되었고, 이를 설계하는 방법에 대해 개발하는데 많은 관심을 가지게 됨.&lt;/li&gt;
+  &lt;li&gt;Lenet -&amp;gt; AlexNet (2012) -&amp;gt; ZFNet (2013) -&amp;gt; VGG (2014) -&amp;gt; Inception 종류 … -&amp;gt; Inception-ResNet (2015)&lt;/li&gt;
+  &lt;li&gt;Inception 스타일의 기본 구성 요소는 Inception module.&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Figure 1은 Inception V3 의 표준 Inception Module.&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/xception/Untitled.png&quot; alt=&quot;https://jjerry-k.github.io/public/img/xception/Untitled.png&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Inception 모델은 위와 같은 모듈을 Stack 한 것. VGG-Style 네트워크는 단순히 Convolution layer를 Stack.&lt;/li&gt;
+  &lt;li&gt;실험적으로 Inception-style 이 VGG-style보다 적은 parameter로 다양한, 많은 feature를 학습 할 수 있다는 것을 보임.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;11theinceptionhypothesis&quot;&gt;&lt;strong&gt;1.1 The Inception hypothesis&lt;/strong&gt;&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Convolution layer는 3차원 공간에서 filter를 학습하려고 함.&lt;/li&gt;
+  &lt;li&gt;Single Convolution kernel 은 채널의 correlation과 공간의 correlation 을 동시에 mapping 함.&lt;/li&gt;
+  &lt;li&gt;Inception 모듈은 채널, 공간의 correlation 을 독립적으로 나타낼 수 있도록 연산을 분해. -&amp;gt; 쉽고 효율적인 프로세스를 만듦.&lt;/li&gt;
+  &lt;li&gt;Inception의 가설은 채널 채널, 공간의 correlation 이 분리되어 있으므로 동시에 매핑하는 것은 좋지 않다는 것.&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Figure 2는 3x3 conv와 1x1 conv만 사용한 단순화한 Inception 모듈.&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/xception/Untitled_1.png&quot; alt=&quot;https://jjerry-k.github.io/public/img/xception/Untitled_1.png&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Figure 3은 Figure 2의 Inception 모듈에서 하나의 큰 1x1 Convolution과 3x3 Convolution들로 재구성한 것.&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/xception/Untitled_2.png&quot; alt=&quot;https://jjerry-k.github.io/public/img/xception/Untitled_2.png&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;이 방법이 Inception 의 가설보다 뛰어난 가설을 만드는 것이 합리적인 것일지, 채널과 공간을 독립적으로 매핑할 수 있는지 의문.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;12thecontinuumbetweenconvolutionsandseparableconvolutions&quot;&gt;&lt;strong&gt;1.2 The continuum between convolutions and separable convolutions&lt;/strong&gt;&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Figure 4 처럼 Inception 모듈 구성.&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/xception/Untitled_3.png&quot; alt=&quot;https://jjerry-k.github.io/public/img/xception/Untitled_3.png&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;1x1 Convolution 적용하여 채널의 correlation 매핑, 그 후 각각의 channel별로 공간의 correlation 매핑&lt;/li&gt;
+  &lt;li&gt;이를 &lt;strong&gt;An “extreme” version of an Inception module&lt;/strong&gt; 이라고 칭함.&lt;/li&gt;
+  &lt;li&gt;TensorFlow 프레임워크에 Depthwise Separable Convolution 연산과 거의 동일함.&lt;/li&gt;
+  &lt;li&gt;TensorFlow나 Keras 프레임워크에 있는 Depthwise Separable Convolution (Separable Convolution 라고도 불림.) 은 각 channel 별로 3x3 Convolution 적용 후 채널간의 1x1 Convolution 적용.&lt;/li&gt;
+  &lt;li&gt;영상처리 분야에서 사용하는 Separable Convolution 과 혼동하면 안됨, 이 연산은 공간적 분리를 하는 Convolution.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;비교&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Extream&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Depthwise Separable&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;연산순서&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;pointwise–&amp;gt;channelwise&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;channelwise–&amp;gt;pointwise&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;비선형성&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Presence&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Absence&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h1 id=&quot;2priorwork&quot;&gt;&lt;strong&gt;2. Prior work&lt;/strong&gt;&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;VGG-16 과 같은 구조가 xception 과 유사.&lt;/li&gt;
+  &lt;li&gt;Inception 구조는 가지치기의 이점을 보여줌.&lt;/li&gt;
+  &lt;li&gt;Depthwise separable convolution는 경량화에도 적합.&lt;/li&gt;
+  &lt;li&gt;TensorFlow에는 이미 구현되어있음.&lt;/li&gt;
+  &lt;li&gt;Residual connection 을 광범위하게 사용.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;3thexceptionarchitecture&quot;&gt;&lt;strong&gt;3. The Xception architecture&lt;/strong&gt;&lt;/h1&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/xception/Untitled_4.png&quot; alt=&quot;https://jjerry-k.github.io/public/img/xception/Untitled_4.png&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Figure 5 와 같은 구조 제안.&lt;/li&gt;
+  &lt;li&gt;처음과 마지막을 제외하곤 linear residual module 사용.&lt;/li&gt;
+  &lt;li&gt;총 36개의 convolution layer로 구성.&lt;/li&gt;
+  &lt;li&gt;매우 단순한 구조.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;4experimentalevaluation&quot;&gt;&lt;strong&gt;4. Experimental evaluation&lt;/strong&gt;&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Xception과 Inceotion V3 비교.&lt;/li&gt;
+  &lt;li&gt;Parameters가 비슷. 네트워크 규모에 대한 차이를 없애기 위함.&lt;/li&gt;
+  &lt;li&gt;ImageNet과 JFT dataset 이용.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;41thejftdataset&quot;&gt;&lt;strong&gt;4.1 The JFT dataset&lt;/strong&gt;&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;그냥…JFT 데이터 설명…&lt;/li&gt;
+  &lt;li&gt;Google 데이터 중 하나&lt;/li&gt;
+  &lt;li&gt;JFT 로 학습, FastEval14k dataset으로 성능 비교.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;42optimizationconfiguration&quot;&gt;&lt;strong&gt;4.2 Optimization configuration&lt;/strong&gt;&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;각 방법에 대해서 다음과 같은 설정으로 Xception, Inception V3 모두 학습&lt;/li&gt;
+  &lt;li&gt;On ImageNet
+    &lt;ul&gt;
+      &lt;li&gt;Optimizer: SGD&lt;/li&gt;
+      &lt;li&gt;Momentum: 0.9&lt;/li&gt;
+      &lt;li&gt;Initial learning rate: 0.045&lt;/li&gt;
+      &lt;li&gt;Learning rate decay: 0.94 (every 2 epochs)&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;On JFT
+    &lt;ul&gt;
+      &lt;li&gt;Optimizer: RMSprop&lt;/li&gt;
+      &lt;li&gt;Momentum: 0.9&lt;/li&gt;
+      &lt;li&gt;Initial learning rate: 0.001&lt;/li&gt;
+      &lt;li&gt;Learning rate decay: 0.9 (every 3,000,000 samples)&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;43regularizationconfiguration&quot;&gt;&lt;strong&gt;4.3 Regularization configuration&lt;/strong&gt;&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Weight decay&lt;/li&gt;
+  &lt;li&gt;Dropout&lt;/li&gt;
+  &lt;li&gt;Auxiliary loss tower&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;44traininginfrastructure&quot;&gt;&lt;strong&gt;4.4 Training infrastructure&lt;/strong&gt;&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;80개의 NVIDIA K80 GPU ….&lt;/li&gt;
+  &lt;li&gt;ImageNet 학습시 &lt;strong&gt;synchronous gradient descent&lt;/strong&gt;을 적용하여 data parallelism 이용. → 3일 소요&lt;/li&gt;
+  &lt;li&gt;JFT 학습시 &lt;strong&gt;asynchronous gradient descent&lt;/strong&gt;을 적용하여 data parallelism 이용. →한달 소요&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;45comparisonwithinceptionv3&quot;&gt;&lt;strong&gt;4.5 Comparison with Inception V3&lt;/strong&gt;&lt;/h2&gt;
+
+&lt;h3 id=&quot;451classificationperformance&quot;&gt;&lt;strong&gt;4.5.1 Classification performance&lt;/strong&gt;&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;두 데이터 모두 Xception이 좋은 성능을 보임.&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/xception/Untitled_5.png&quot; alt=&quot;https://jjerry-k.github.io/public/img/xception/Untitled_5.png&quot; /&gt;&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/xception/Untitled_6.png&quot; alt=&quot;https://jjerry-k.github.io/public/img/xception/Untitled_6.png&quot; /&gt;&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/xception/Untitled_7.png&quot; alt=&quot;https://jjerry-k.github.io/public/img/xception/Untitled_7.png&quot; /&gt;&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/xception/Untitled_8.png&quot; alt=&quot;https://jjerry-k.github.io/public/img/xception/Untitled_8.png&quot; /&gt;&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/xception/Untitled_9.png&quot; alt=&quot;https://jjerry-k.github.io/public/img/xception/Untitled_9.png&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;452sizeandspeed&quot;&gt;&lt;strong&gt;4.5.2 Size and speed&lt;/strong&gt;&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Parameter가 늘지 않으면서 성능 향상을 보이기에 Xception이 효율적인 모델.&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/xception/Untitled_10.png&quot; alt=&quot;https://jjerry-k.github.io/public/img/xception/Untitled_10.png&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;46effectoftheresidualconnections&quot;&gt;&lt;strong&gt;4.6 Effect of the residual connections&lt;/strong&gt;&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Residual connection에 대한 ablation study 진행.&lt;/li&gt;
+  &lt;li&gt;Residual connection의 중요성을 보여줌.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/xception/Untitled_11.png&quot; alt=&quot;https://jjerry-k.github.io/public/img/xception/Untitled_11.png&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;47effectofanintermediateactivationafterpointwiseconvolutions&quot;&gt;&lt;strong&gt;4.7 Effect of an intermediate activation after point wise convolutions&lt;/strong&gt;&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Depthwise separable convolution은 depthwise → pointwise convolution으로 구성되어있음.&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;그 중간에 activation function에 대한 ablation study 진행.&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/xception/Untitled_12.png&quot; alt=&quot;https://jjerry-k.github.io/public/img/xception/Untitled_12.png&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://arxiv.org/pdf/1512.00567.pdf&quot;&gt;Inception module에 대한 연구&lt;/a&gt;와 반대되는 결과 도출.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;5futuredirections&quot;&gt;&lt;strong&gt;5. Future directions&lt;/strong&gt;&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Depthwise separble convolution 이 만능이라는 보장은 없음.&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Sun, 16 Feb 2020 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/deeplearning/2020/02/16/Xception/</link>
+        <guid isPermaLink="true">http://localhost:4000/deeplearning/2020/02/16/Xception/</guid>
+        
+        <category>Paper</category>
+        
+        
+        <category>DeepLearning</category>
+        
+      </item>
     
       <item>
         <title>jupyter Lab 에서 단축키 설정하는 방법!</title>
@@ -404,32 +1186,57 @@ and Molecular Medical Imaging, Fudan University, Shanghai 200433, China
       &lt;li&gt;&lt;a href=&quot;https://arxiv.org/pdf/1706.03142.pdf&quot;&gt;Deep Learning for Isotropic Super-Resolution from Non-Isotropic 3D Electron Microscopy&lt;/a&gt; 에 따르면 &lt;strong&gt;Cubic-weighted mean square error&lt;/strong&gt; 가 Generated 영상과 Ground truth 간의 차이가 큰 “어려운” 부분의 성능을 강조.&lt;/li&gt;
       &lt;li&gt;다음과 같은 Loss 제안.&lt;/li&gt;
       &lt;li&gt;$\epsilon$ 은 default로 $10^{-6}$&lt;/li&gt;
-      &lt;li&gt;$L^G_{SC} = \frac{1}{rLWH}\sum_{x,y,z=1,1,1}^{L,W,rH}\sqrt{(I^{GT}&lt;em&gt;{x,y,z}-I^Y&lt;/em&gt;{z,y,z})^2+\epsilon}\cdot\bigg(\frac{1}{2}+\frac{(I^{GT}&lt;em&gt;{x,y,z}-I^Y&lt;/em&gt;{z,y,z})^2}{2max((I^{GT}-I^Y)^2)}\bigg)$&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;L^G_{SC} = \frac{1}{rLWH}\sum_{x,y,z=1,1,1}^{L,W,rH}\sqrt{(I^{GT}_{x,y,z}-I^Y_{z,y,z})^2+\epsilon}\cdot\bigg(\frac{1}{2}+\frac{(I^{GT}_{x,y,z}-I^Y_{z,y,z})^2}{2max((I^{GT}-I^Y)^2)}\bigg)&lt;/script&gt;
+
+&lt;ul&gt;
   &lt;li&gt;3-D Gradient Correction Loss
     &lt;ul&gt;
       &lt;li&gt;Charbonnier Loss는 Pixelwise difference에 대한 Loss, Gradient에 대한 손실을 줄 수 있음.&lt;/li&gt;
       &lt;li&gt;다음과 같이 각 axis에 대한 Gradient 를 이용하여 Loss 제안.&lt;/li&gt;
-      &lt;li&gt;$L^G_{GC} = \mathbb{E}[(\nabla_xI^{GT}&lt;em&gt;{x,y,z}-\nabla_xI^Y&lt;/em&gt;{x,y,z})^2] \ + \mathbb{E}[(\nabla_yI^{GT}&lt;em&gt;{x,y,z}-\nabla_yI^Y&lt;/em&gt;{x,y,z})]^2\ + \mathbb{E}[(\nabla_zI^{GT}&lt;em&gt;{x,y,z}-\nabla_zI^Y&lt;/em&gt;{x,y,z})^2]$&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;L^G_{GC} = \mathbb{E}[(\nabla_{x}I^{GT}_{x,y,z} - \nabla_{x}I^Y_{x,y,z})^2] \\  + \mathbb{E}[(\nabla_{y}I^{GT}_{x,y,z} - \nabla_{y}I^Y_{x,y,z})]^2\\ + \mathbb{E}[(\nabla_{z}I^{GT}_{x,y,z} - \nabla_{z}I^Y_{x,y,z})^2]&lt;/script&gt;
+
+&lt;ul&gt;
   &lt;li&gt;Adversarial Loss
     &lt;ul&gt;
       &lt;li&gt;LSGAN Loss 사용.&lt;/li&gt;
-      &lt;li&gt;$L^D=\frac{1}{2}\mathbb{E}[(D(I^{GT}, I^A, I^S)-1)^2+(D(I^Y, I^A, I^S)-0)^2]$&lt;/li&gt;
-      &lt;li&gt;$L^G_{AD}=\mathbb{E}[(D(I^Y, I^A, I^S)-1)^2]$&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;L^D=\frac{1}{2}\mathbb{E}[(D(I^{GT}, I^A, I^S)-1)^2+D(I^Y, I^A, I^S)^2]&lt;/script&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;L^G_{AD}=\mathbb{E}[(D(I^Y, I^A, I^S)-1)^2]&lt;/script&gt;
+
+&lt;ul&gt;
   &lt;li&gt;$\ell_2$ Weight Regularization Loss
     &lt;ul&gt;
       &lt;li&gt;(Loss는 아니지만…)&lt;/li&gt;
       &lt;li&gt;Overfitting을 방지하기 위해 사용.&lt;/li&gt;
-      &lt;li&gt;$L^G_{WR} = \sum\Vert W_G\Vert^2_2$&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
-  &lt;li&gt;3D-Y-Net-GAN Loss : $L_G = L^G_{SC} + \lambda_1L^G_{GC} + \lambda_2L^G_{AD} + \lambda_3L^G_{WR}$&lt;/li&gt;
-  &lt;li&gt;3D-DenseU-Net Loss : $L = L_{SC} + \lambda_1L_{GC} + \lambda_3L_{WR}$&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;L^G_{WR} = \sum\Vert W_G\Vert^2_2&lt;/script&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;3D-Y-Net-GAN Loss
+    &lt;ul&gt;
+      &lt;li&gt;$L_G = L^G_{SC} + \lambda_1L^G_{GC} + \lambda_2L^G_{AD} + \lambda_3L^G_{WR}$&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;3D-DenseU-Net Loss
+    &lt;ul&gt;
+      &lt;li&gt;$L = L_{SC} + \lambda_1L_{GC} + \lambda_3L_{WR}$&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&quot;experimental-result&quot;&gt;Experimental Result&lt;/h2&gt;
@@ -1231,18 +2038,9 @@ g.fig.autofmt_xdate()
       &lt;/li&gt;
       &lt;li&gt;Class Probabilities 정보
         &lt;ul&gt;
+          &lt;li&gt;C개의 class에 대한 conditional class probabilities, $Pr(Class_i \mid Object)$&lt;/li&gt;
           &lt;li&gt;
-            &lt;table&gt;
-              &lt;tbody&gt;
-                &lt;tr&gt;
-                  &lt;td&gt;C개의 class에 대한 conditional class probabilities, $Pr(Class_i&lt;/td&gt;
-                  &lt;td&gt;Object)$&lt;/td&gt;
-                &lt;/tr&gt;
-              &lt;/tbody&gt;
-            &lt;/table&gt;
-          &lt;/li&gt;
-          &lt;li&gt;
-            &lt;p&gt;Test 시에는 Conditional class probabilities와 individual box confidence score를 곱했다고 함.
+            &lt;p&gt;Test 시에는 Conditional class probabilities와 individual box confidence score를 곱했다고 함.&lt;br /&gt;
 &lt;script type=&quot;math/tex&quot;&gt;Pr(Class_i|Object) =  Pr(Object) * IOU^{truth}_{pred} = Pr(Class_i) * IOU^{truth}_{pred}&lt;/script&gt;&lt;/p&gt;
           &lt;/li&gt;
           &lt;li&gt;bbox 별로 class confidence score를 알 수 있음.&lt;/li&gt;
@@ -2605,11 +3403,11 @@ brew &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;wget
 brew &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;pyenv
 
 &lt;span class=&quot;c&quot;&gt;# bash_profile 에 경로 추가.&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'export PYENV_ROOT=&quot;${HOME}/.pyenv&quot;'&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&lt;/span&gt; ~/.bash_profile
+&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'export PYENV_ROOT=&quot;${HOME}/.pyenv&quot;'&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&lt;/span&gt; ~/.zshrc
 
-&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'export PATH=&quot;${PYENV_ROOT}bin:$PATH&quot;'&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&lt;/span&gt; ~/.bash_profile
+&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'export PATH=&quot;${PYENV_ROOT}bin:$PATH&quot;'&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&lt;/span&gt; ~/.zshrc
 
-&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'eval &quot;$(pyenv init -)&quot;'&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&lt;/span&gt; ~/.bash_profile
+&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'eval &quot;$(pyenv init -)&quot;'&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&lt;/span&gt; ~/.zshrc
 
 &lt;span class=&quot;nb&quot;&gt;exec&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$SHELL&lt;/span&gt;
 
@@ -2899,561 +3697,6 @@ https://www.raspberrypi.org/products/raspberry-pi-3-model-b-plus/&lt;/p&gt;
         
         
         <category>Living</category>
-        
-      </item>
-    
-      <item>
-        <title>데스크탑 조립기</title>
-        <description>&lt;h1 id=&quot;building-desktop&quot;&gt;Building Desktop&lt;/h1&gt;
-
-&lt;p&gt;학부생 연구원으로 연구실에서 공부와 연구를 하고 있지만..&lt;br /&gt;
-개인용 데스크탑이 없어서 노트북이 굉장히 고생을 많이 했습니다..&lt;br /&gt;
-1차 피해자 Dell Inspiron 15 7559..&lt;br /&gt;
-현재는 다른 주인에게로 넘어간 상태..&lt;br /&gt;
-2차 피해자 Lenovo yoga 2 pro..&lt;br /&gt;
-근래에 고생하다가 친구한테 넘어감..&lt;/p&gt;
-
-&lt;p&gt;결국!&lt;br /&gt;
-어짜피 나중에 집에서 쓸 데스크탑을 맞춘다고 생각하고!&lt;br /&gt;
-부품을 각각 사서 조립을 하기로 했습니다!!&lt;/p&gt;
-
-&lt;p&gt;CPU : 인텔 i5-7600&lt;br /&gt;
-메인보드 : 기가바이트 Z270N-WIFI 듀러블에디션&lt;br /&gt;
-메모리 : 커세어 VENGEANCE PC4-21300 8G x 2&lt;br /&gt;
-VGA : EVGA GeForce GTX 1050ti sc gaming&lt;br /&gt;
-SSD : 삼성 850 EVO M.2 (256GB)&lt;br /&gt;
-HDD : Toshiba 1TB MQ01ABD100&lt;br /&gt;
-케이스 : Fractal Design node 202&lt;br /&gt;
-파워 : 커세어 SF450 80PLUS GOLD&lt;/p&gt;
-
-&lt;p&gt;오자마자 포스팅 생각없이 조립을 해버림…&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/desktop/01.jpg&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;커세어의 위엄…..번쩍번쩍 램….이쁘다…&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/desktop/02.jpg&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;사이트에는 Fractal 로고가 위로 올라오게 해놨지만…&lt;/p&gt;
-
-&lt;p&gt;그렇게하면 파워의 위치가 위가 되버려서 난 반대로 로고가 아래로 내려가게 했습니다.&lt;/p&gt;
-
-&lt;p&gt;후기&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;데스크탑을 사용만 해봤지 조립은 처음이였음..&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;괜히 작은 케이스로 해서 선정리가 힘들었음..&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;살 수 있는건 중고나라를 이용해서 미개봉품을 싸게 삼.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;25만원 정도 절약함.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;내 눈에만 이쁘면 됬음.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;아.. ITX 케이스를 조립할 땐 대부분 SFX 규격을 쓰지만.. &lt;br /&gt;
-같은 SFX라도 크기를 고려해야함 . .&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-</description>
-        <pubDate>Fri, 04 Aug 2017 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/living/2017/08/04/Desktop/</link>
-        <guid isPermaLink="true">http://localhost:4000/living/2017/08/04/Desktop/</guid>
-        
-        <category>Hardware</category>
-        
-        
-        <category>Living</category>
-        
-      </item>
-    
-      <item>
-        <title>Ubuntu CUDA &amp; Cudnn 설치하기</title>
-        <description>&lt;h1 id=&quot;환경-구축&quot;&gt;환경 구축….&lt;/h1&gt;
-
-&lt;p&gt;Deep Learning을 하는데 GPU를 사용해야하니 CUDA와 cuDNN을 설치하기로 하죠.&lt;/p&gt;
-
-&lt;h2 id=&quot;1-nvidia-그래픽-드라이버-설치&quot;&gt;1. NVIDIA 그래픽 드라이버 설치&lt;/h2&gt;
-
-&lt;p&gt;Ubuntu 14.04 에선 그래픽 드라이버를 설치하는데 굉장히…&lt;br /&gt;
-많은 고난과 역경을 겪었습니다…&lt;br /&gt;
-(그래서 결국 설치 못해봄..)&lt;br /&gt;
-하지만 16.04에선 어렵지 않음!!!!!!&lt;br /&gt;
-(갈아탄 결정적인 이유…)&lt;br /&gt;
-그렇다면 설치를 시작해보겠습니다.&lt;/p&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;add-apt-repository ppa:graphics-drivers/ppa
-
-&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt-get update
-
-&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt-get &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;nvidia-364
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;(제 노트북은 GTX 960m 이므로..)&lt;br /&gt;
-그냥 터미널에 입력하시면 되요.&lt;br /&gt;
-NVIDIA 사이트에서 GPU 버전이랑 맞는걸로!!&lt;br /&gt;
-그게 나을 듯합니다.&lt;br /&gt;
-그 후 로그아웃을 하고 다시 로그인을 하려고 하면 무한 로그인이 될 거에요.&lt;br /&gt;
-(안그러면 좋고..)&lt;br /&gt;
-Ctrl + Alt + F1을 눌러 tty1으로 들어가서 로그인 후 reboot을 실행해줍시다.&lt;br /&gt;
-로그인 후 NVIDIA X Server Settings 를 켜면&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/CUDA/01.png&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;요래 설치 된걸 확인할 수 있습니다.&lt;/p&gt;
-
-&lt;h2 id=&quot;2-cuda-설치&quot;&gt;2. CUDA 설치&lt;/h2&gt;
-
-&lt;p&gt;NVIDIA 드라이버를 설치 했으니 이제 CUDA를 설치해보도록 하죠.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://developer.nvidia.com/cuda-downloads&quot;&gt;https://developer.nvidia.com/cuda-downloads&lt;/a&gt; 에 들어가시면 요로코롬 뜨는데요.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/CUDA/02.png&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;각자의 환경에 맞춰서 선택한 후 다운로드 하시면 됩니다.&lt;br /&gt;
-run 파일을 다운을 받은 후에 터미널을 여시고 run 파일이 다운로드된 디렉토리로 이동합니다.&lt;br /&gt;
-그리고 파일의 권한을 모든  사용자가 사용할 수 있도록 변경합니다.&lt;br /&gt;
-그리고 실행!&lt;/p&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;Downloads
-&lt;span class=&quot;nb&quot;&gt;sudo chmod &lt;/span&gt;a+r cuda_7.5.18_linux.run
-&lt;span class=&quot;nb&quot;&gt;sudo&lt;/span&gt; ./cuda_7.5.18_linux.run &lt;span class=&quot;nt&quot;&gt;--override&lt;/span&gt;
-or
-&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;sh cuda_7.5.18_linux.run &lt;span class=&quot;nt&quot;&gt;--override&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;16.04는 gcc, g++ 버전이 5.x 라 override 를 해줘야합니다..&lt;br /&gt;
-실행하면 어쩌고 저쩌고 약관 내용..? 이 나오는데요…&lt;br /&gt;
-살포시 q 를 눌러줍니다.&lt;br /&gt;
-그러면…사용자 정의 설치라고 할까요??&lt;br /&gt;
-이것 저것 물어봅니다.&lt;/p&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Do you accept the previously &lt;span class=&quot;nb&quot;&gt;read &lt;/span&gt;EULA? &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;accept/decline/quit&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;: accept
-
-You are attempting to &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;on an unsupported configuration. Do you wish to &lt;span class=&quot;k&quot;&gt;continue&lt;/span&gt;? &lt;span class=&quot;o&quot;&gt;((&lt;/span&gt;y&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;es/&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;n&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;o&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; default is no &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;: &lt;span class=&quot;nb&quot;&gt;yes
-
-&lt;/span&gt;Install NVIDIA Accelerated Graphics Driver &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;Linux-x86_64 352.39? &lt;span class=&quot;o&quot;&gt;((&lt;/span&gt;y&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;es/&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;n&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;o/&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;q&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;uit&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;: no
-
-Install the CUDA 7.5 Toolkit? &lt;span class=&quot;o&quot;&gt;((&lt;/span&gt;y&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;es/&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;n&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;o/&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;q&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;uit&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;: &lt;span class=&quot;nb&quot;&gt;yes
-
-&lt;/span&gt;Enter Toolkit Location &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; default is /usr/local/cuda-7.5 &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;: 그냥 엔터
-
-Do you want to &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;a symbolic &lt;span class=&quot;nb&quot;&gt;link &lt;/span&gt;at /usr/local/cuda? &lt;span class=&quot;o&quot;&gt;((&lt;/span&gt;y&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;es/&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;n&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;o/&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;q&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;uit&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;: &lt;span class=&quot;nb&quot;&gt;yes
-
-&lt;/span&gt;Install the CUDA 7.5 Samples? &lt;span class=&quot;o&quot;&gt;((&lt;/span&gt;y&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;es/&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;n&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;o/&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;q&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;uit&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;: no
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;이런식으로 세팅을 해줍니다. &lt;br /&gt;
-그리고 그저 기다리고 기다림…. &lt;br /&gt;
-설치가 다 되었으면 뭐 따로 실행할 건 없습니다.&lt;br /&gt;
-바로 cuDNN 설치를 하죠.&lt;br /&gt;
-이건 설치….는 아니고 그냥 cuda 디렉토리에 파일을 파일 복사? 하는거에요.&lt;/p&gt;
-
-&lt;h2 id=&quot;3-cudnn-설치&quot;&gt;3. cuDNN 설치&lt;/h2&gt;
-
-&lt;p&gt;먼저 cuDNN 파일을 받으셔야하는데요.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://developer.nvidia.com/rdp/cudnn-download&quot;&gt;https://developer.nvidia.com/rdp/cudnn-download&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;여기에 들어가셔서 계정 만드시고….&lt;br /&gt;
-사용 용도… 사용 할 라이브러리.. 등등 선택하시고 원하시는 버전 download 하시면 됩니다.&lt;br /&gt;
-저는 4.0으로 했어요.&lt;br /&gt;
-Tensorflow라는 라이브러리를 사용할 것이기 때문에…
-그리고 나서 터미널을 켜고&lt;/p&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; /usr/local
-&lt;span class=&quot;nb&quot;&gt;sudo tar &lt;/span&gt;zxf ~/Downloads/cudnn-7.0-linux-x64-v4.0-prod.tgz
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;이렇게 하시거나 아니면&lt;/p&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;cudnn 다운로드경로
-&lt;span class=&quot;nb&quot;&gt;sudo tar &lt;/span&gt;zxf cudnn-7.0-linux-x64-v4.0-prod.tgz
-&lt;span class=&quot;nb&quot;&gt;sudo cp &lt;/span&gt;cuda/include/cudnn.h /usr/local/cuda/include
-&lt;span class=&quot;nb&quot;&gt;sudo cp &lt;/span&gt;cuda/lib64/libcudnn&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; /usr/local/cuda/lib64
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;이렇게 해주시구요.&lt;br /&gt;
-환경변수를 설정해줘야 합니다.
-터미널을 껐다가 다시 켜주시고&lt;/p&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;gedit ~/.bashrc
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;그려면 어떤 메모장? 문서 파일이 열립니다.
-매~~~~앤 아래 부분에&lt;/p&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;PATH&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;/usr/local/cuda-7.5/bin:&lt;span class=&quot;nv&quot;&gt;$PATH&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;LD_LIBRARY_PATH&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;/usr/local/cuda-7.5/lib64:&lt;span class=&quot;nv&quot;&gt;$LD_LIBRARY_PATH&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;를 추가해주세요.&lt;/p&gt;
-
-&lt;p&gt;이렇게 GPU 설정이 끝났습니다…&lt;br /&gt;
-이제 caffe와 tensorflow를 설치해야겠군요..&lt;br /&gt;
-험난허다…&lt;br /&gt;
-개강이라 죽겠는데..&lt;/p&gt;
-</description>
-        <pubDate>Thu, 08 Sep 2016 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/ubuntu/2016/09/08/CUDA/</link>
-        <guid isPermaLink="true">http://localhost:4000/ubuntu/2016/09/08/CUDA/</guid>
-        
-        <category>Setting</category>
-        
-        
-        <category>Ubuntu</category>
-        
-      </item>
-    
-      <item>
-        <title>Ubuntu 한글 설정</title>
-        <description>&lt;p&gt;우분투를 설치를 했으나!!!!
-한글 키보드를 설정을 해야합니다.
-그럼 시작해볼까요.
-(이번에도 사진 촤라라락..)&lt;/p&gt;
-
-&lt;h1 id=&quot;1-시스템-한글-설정&quot;&gt;1. 시스템 한글 설정&lt;/h1&gt;
-
-&lt;p&gt;부팅을 했습니다.
-크으… 깔끔깔끔…&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/setting/01.png&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;오른쪽 위에 전원 버튼 누르고 &lt;br /&gt;
-System Settings로 들어가서 Language Support를 눌러줍니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/setting/02.png&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;그럼 설치를 해야한다고 하네요.
-묻지도 따지지도 말고 설치합시다.
-(뒤에 사진찍은건 애교로 넘어갑시다…)&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/setting/03.png&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;로그인 비밀번호 입력하구요.
-(여기도 있네…)&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/setting/04.png&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;그럼 설치가 시작됩니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/setting/05.png&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;설치가 끝나면 한국어라고 똿! 나옵니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/setting/06.png&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;아래에 있는 한국어를 드래그해서 맨 위로 올려줍니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/setting/07.png&quot; /&gt;
-&lt;img src=&quot;https://jjerry-k.github.io/public/img/setting/08.png&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;그리고 ‘Apply System-wide’를 클릭!&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/setting/09.png&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;비밀번호 입력하시구요.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/setting/10.png&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Regional Formats는 설치할때 이미 Seoul로 해서 상관은 없지만 그냥 들어가서 ‘Apply system-wide’눌러줍니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/setting/11.png&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;로그아웃을 하고 다시 로그인 해주세요!!
-그럼 다음과 같이 창이 뜨는데 저는 영문이 편해서 그냥 이름을 유지하기로 했습니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/setting/12.png&quot; /&gt;&lt;/p&gt;
-
-&lt;h1 id=&quot;2-한글-키보드-설정하기&quot;&gt;2. 한글 키보드 설정하기&lt;/h1&gt;
-
-&lt;p&gt;키보드를 설정해보죠.&lt;br /&gt;
-시스템 설정으로 들어갑니다.&lt;br /&gt;
-그리고 텍스트 입력창을 눌러줍니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/setting/13.png&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;다음과 같이 뜨는데요.
-저기에 +를 눌러줍니다.
-(정말 더럽게 못그리네..)&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/setting/14.png&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;쭉쭉쭈욱~ 내려서 ‘한국어 (Hangul)(IBus)’를 선택하고 ‘추가’버튼을 누릅니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/setting/15.png&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;지금은 키 변환이 Super+스페이스로 되어있네요.
-이대로 쓰실분들은 쓰셔도 됩니다.
-하지만!! 저는 한/영 키를 사용하고 싶기 때문에…
-저 키를 바꿔보도록 하죠.
-‘키보드 설정…‘을 누릅니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/setting/16.png&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;자판입력 탭에서 구성키를 ‘오른쪽 Alt’로 바꾼 후에 ‘다음 입력 소스로 전환’ 키는 한/영으로 바꿉니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/setting/17.png&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;다시 텍스트 입력으로 돌아와서 한국어를 선택한 후 사진에 표시된 도구 버튼을 누릅니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/setting/18.png&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;다음과 같이 나오는데요.&lt;br /&gt;
-‘한글 모드로 시작’을 체크한 후 확인을 눌러줍니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/setting/19.png&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;이제 한글에 대한 설정이 끝났습니다!&lt;br /&gt;
-다시 로그아웃을 한 후 로그인을 하시면 한글을 쓰실 수 있습니다!!&lt;/p&gt;
-
-&lt;p&gt;오늘은 포스팅 Day인듯합니다.
-왜냐하면 오늘 우분투를 재설치 했기 때문이죠…
-으하하하하하하하핳……
-우분투 다시 셋팅하면서 포스팅중….
-다음은 소프트웨어 관련 세팅 포스팅하겠습니다.&lt;/p&gt;
-</description>
-        <pubDate>Sat, 20 Aug 2016 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/ubuntu/2016/08/20/Setting/</link>
-        <guid isPermaLink="true">http://localhost:4000/ubuntu/2016/08/20/Setting/</guid>
-        
-        <category>Setting</category>
-        
-        
-        <category>Ubuntu</category>
-        
-      </item>
-    
-      <item>
-        <title>Windows 10 &amp; Ubuntu 16.04 듀얼부팅</title>
-        <description>&lt;p&gt;Deep Learning을 하기 위해 windows를 사용할 수도 있겠지만…&lt;br /&gt;
-저는 Ubuntu를 사용하기로 했습니다. 왜냐하면 Ubuntu로 배웠으니..ㅎㅎ&lt;br /&gt;
-자, 그럼 시작하겠습니다 .&lt;br /&gt;
-제가 예전에 16.04를 다운받아서 설치한거라..&lt;br /&gt;
-다운로드는 16.04.1로 되어있는데 설치는 16.04로 되어있습니다.&lt;br /&gt;
-하지만 설치 방법은 똑같음!&lt;br /&gt;
-그리고 듀얼부팅은 Windows가 먼저 설치되어야 한다는거 잊지마세요.&lt;/p&gt;
-
-&lt;h2 id=&quot;1-설치-전에-확일-해야할-사항&quot;&gt;1. 설치 전에 확일 해야할 사항&lt;/h2&gt;
-&lt;ul&gt;
-  &lt;li&gt;BIOS에서 secure booting disable&lt;/li&gt;
-  &lt;li&gt;Windows 에서 빠른 시작 켜기 옵션 끄기&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/dualboot/01.jpeg&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/dualboot/02.jpeg&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/dualboot/03.jpeg&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/dualboot/04.jpeg&quot; /&gt;&lt;/p&gt;
-
-&lt;h4 id=&quot;11-설치-할-디스크-볼륨-만들기&quot;&gt;1.1 설치 할 디스크 볼륨 만들기&lt;/h4&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/dualboot/05.jpeg&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;저는 HDD에 설치할 거니까 HDD 주 파티션에서 마우스 오른쪽 클릭!&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/dualboot/06.jpeg&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;볼륨을 축소합시다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/dualboot/07.jpeg&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;원하시는 만큼 입력하세요.
-102,400 MB는 예시일뿐…&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/dualboot/08.jpeg&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;할당되지 않은 부분이 100GB 생겼네요!&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/dualboot/09.jpeg&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;2-ubuntu-설치-과정&quot;&gt;2. Ubuntu 설치 과정&lt;/h2&gt;
-
-&lt;h4 id=&quot;21-ubuntu-16041-lts-image-download&quot;&gt;2.1 Ubuntu 16.04.1 LTS image Download&lt;/h4&gt;
-
-&lt;p&gt;&lt;a href=&quot;http://www.ubuntu.com/download/desktop&quot;&gt;http://www.ubuntu.com/download/desktop&lt;/a&gt;에 들어갑니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/dualboot/10.jpeg&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Download를 클릭하면 다음 사진과 같이 나오는데 흠…잘 모르겠습니다.&lt;br /&gt;
-후원..같지만 ‘Not now, take me to the download’를 클릭합니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/dualboot/11.jpeg&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;다운로드 창이 자동으로 나옵니다. &lt;br /&gt;
-저장할 경로 지정해주세요!&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/dualboot/12.jpeg&quot; /&gt;&lt;/p&gt;
-
-&lt;h4 id=&quot;22-ubuntu-16041-lts-부팅-디스크-만들기&quot;&gt;2.2 Ubuntu 16.04.1 LTS 부팅 디스크 만들기&lt;/h4&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://rufus.akeo.ie&quot;&gt;https://rufus.akeo.ie&lt;/a&gt;에서 util을 받습니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/dualboot/13.jpeg&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Util을 실행!&lt;br /&gt;
-처음으로 부팅 디스크로 쓸 USB를 선택합니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/dualboot/14.jpeg&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;OS image를 불러와야겠죠?&lt;br /&gt;
-저~~기 아이콘 눌러주세요!&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/dualboot/15.jpeg&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;ISO 파일이 있는 곳으로 가서 선택하고 열기!&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/dualboot/16.jpeg&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;그리고 시작을 누릅니다!&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/dualboot/17.jpeg&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;구구절절… 구구절절… ‘OK’ 눌러주세요.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/dualboot/18.jpeg&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;이런 경고는…저에게 통하지 않습니다..&lt;br /&gt;
-‘확인’을 눌러주세요!&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/dualboot/19.jpeg&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;진행이 됩니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/dualboot/20.jpeg&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;되고 있는…건가..?&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/dualboot/21.jpeg&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;6분 36초 정도 걸렸네요..&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/dualboot/22.jpeg&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;그럼 이제 설치를 해보겠습니다.&lt;/p&gt;
-
-&lt;h4 id=&quot;23-ubuntu-설치하기&quot;&gt;2.3 Ubuntu 설치하기&lt;/h4&gt;
-
-&lt;p&gt;BIOS 세팅에서 부팅 순서를 USB로 바꿔주시거나&lt;br /&gt;
-Boot Option에서 USB를 선택해서 부팅합니다.&lt;br /&gt;
-검은 화면이 나오면서 ‘Try Ubuntu without installing’, ‘Install 어쩌고…’ 등이 있는데요.&lt;br /&gt;
-저는 스크린샷을 해야하므로 ‘Try Ubuntu without installing’ 을 선택했습니다.&lt;br /&gt;
-‘또로롱’하면서 화면이 뜹니다!&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/dualboot/23.jpeg&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;바탕화면에 ‘Install Ubuntu 16.04 LTS’ 실행합니다.  &lt;br /&gt;
-디렉토리 이름이 영어인게 좋으니까 일단 English로 진행.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/dualboot/24.jpeg&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;설치하면서 업데이트, 다른 소프트웨어 설치 여부는..마음대로…&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/dualboot/25.jpeg&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;설치 방식에 대한 옵션이 나옵니다.&lt;br /&gt;
-‘Something else’를 선택해주세요.&lt;br /&gt;
-그래야 더 안심하고 설치하니까요…&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/dualboot/26.jpeg&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;윈도우에서 파티션을 나눴었죠.&lt;br /&gt;
-저는 SSD에 윈도우, HDD에 우분투를 설치할 것이니..&lt;br /&gt;
-HDD 파티션을 나눠놨었습니다.&lt;br /&gt;
-얼마나 나눌건지는..여러분 마음…
-전 64GB 정도 나눴습니다. (100GB 뺐다가 다시 줄임…)
-‘free space’를 선택하고 왼쪽 아래에 ‘+’버튼을 눌러주세요.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/dualboot/27.jpeg&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;먼저 Swap 파티션부터 만들죠.&lt;br /&gt;
-자신의 RAM 용량과 똑같이 맞추라는 분도 계시고&lt;br /&gt;
-요즘은 RAM 용량이 다 커서 필요없다는 분도 계셔서&lt;br /&gt;
-저는 그 중간인 8GB를 Swap으로 만들었습니다.&lt;br /&gt;
-설정법은 아래 사진과 같이!&lt;br /&gt;
-그리고 ‘OK’를 누릅시다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/dualboot/28.jpeg&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;아래 사진과 같이 swap 영역이 unknown으로 만들어집니다.&lt;br /&gt;
-이제 Ubuntu 파티션을 만들어보죠.&lt;br /&gt;
-똑같이 ‘free space’ 를 선택하고 ‘+’ 버튼을 눌러줍니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/dualboot/29.jpeg&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;‘Size’에는 남은 용량을 다 씁니다.&lt;br /&gt;
-나머지는 아래 사진과 같이 설정 !&lt;br /&gt;
-그리고 ‘OK’를 누릅시다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/dualboot/30.jpeg&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;이제 Boot loader 경로를 지정해야하는데요.&lt;br /&gt;
-아랫 부분에 ‘Device for boot loader installation’에서 &lt;br /&gt;
-디스크를 선택하면 됩니다. &lt;br /&gt;
-SSD에 지정을 하시기도 하지만 저는 HDD 지정을 했습니다.&lt;br /&gt;
-그리고 ‘Install Now’을 클릭합니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/dualboot/31.jpeg&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;디스크가 변경됩니다. 뭐 이런 내용이 뜨는데&lt;br /&gt;
-그냥. 조용히. 살포시.&lt;br /&gt;
-‘Continue’ 를 눌러줍시다.&lt;br /&gt;
-(불안하시면 다시 확인 하시구요..)&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/dualboot/32.jpeg&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;위치 설정하시구요!&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/dualboot/33.jpeg&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;키보드 설정은 그냥 영어로 놔두세요.  &lt;br /&gt;
-나중에 설치 후에 설정 할겁니다!&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/dualboot/34.jpeg&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;계정 설정을 합니다!&lt;br /&gt;
-저는 Jerry니까… 우분투 계정도 Jerry.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/dualboot/35.jpeg&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;설치 시작!!&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/dualboot/36.jpeg&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;그저… 기다림…&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/dualboot/37.jpeg&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/dualboot/38.jpeg&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;설치가 완료되었습니다!&lt;br /&gt;
-과감히 바로 ‘Restart Now’를 클립했습니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/dualboot/39.jpeg&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;첫 포스팅이라 굉장히 난잡하고 스크롤이 촤라라라락하네요…&lt;br /&gt;
-좀 더 정리해서 쓰는 습관을 들여야지…&lt;/p&gt;
-
-&lt;p&gt;Ubuntu를 접하게 되면서 굉장히 다사다난한 경험을 하는 저와 제 노트북….&lt;br /&gt;
-어쩌면 조만간 Windows 와 Ubuntu를 재설치 할 수도 있을 듯합니다..&lt;br /&gt;
-다음 포스팅은 설치 후 세팅에 관련하여 하겠습니다!&lt;/p&gt;
-</description>
-        <pubDate>Tue, 16 Aug 2016 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/ubuntu/2016/08/16/Dualboot/</link>
-        <guid isPermaLink="true">http://localhost:4000/ubuntu/2016/08/16/Dualboot/</guid>
-        
-        <category>Setting</category>
-        
-        
-        <category>Ubuntu</category>
         
       </item>
     

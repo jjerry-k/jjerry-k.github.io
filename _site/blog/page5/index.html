@@ -232,7 +232,7 @@
 
   <div class="sidebar-item">
     <p>
-    &copy; 2019 Jerry. This work is liscensed under <a href="http://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0</a>.
+    &copy; 2020 Jerry. This work is liscensed under <a href="http://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0</a>.
     </p>
   </div>
 
@@ -273,6 +273,847 @@
   
   <div class="post">
     <h1 class="post-title">
+      <a href="/python/2018/10/23/anaconda/">
+        Anaconda 간단하게 사용하기!
+      </a>
+    </h1>
+
+    <span class="post-date">23 Oct 2018</span>
+     | 
+    
+    <a href="/blog/tags/#setting" class="post-tag">Setting</a>
+    
+    
+
+    <h4 style="font-weight: 400; line-height: 1.8;"><article>
+      <p>저번 <a href="https://jjerry-k.github.io/python/2018/09/27/python4mac/"><strong>Python 설치 포스팅</strong></a>에서 pyenv로 설치 하는 법을 포스팅 했었습니다.<br />
+이번에는 제가 pyenv 로 어떤 버전을 설치했고 무슨 패키지를 설치했는지 포스팅 하려고 합니다.<br />
+먼저 설치할 버전의 이름을 정확히 알아야하므로 설치 가능한 버전들을 봅니다.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pyenv <span class="nb">install</span> <span class="nt">--list</span>
+</code></pre></div></div>
+<p>이렇게 터미널에 입력을 하면</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Available versions:
+  2.1.3
+  2.2.3
+  2.3.7
+  ...
+  중략
+  ...
+  stackless-3.4.2
+  stackless-3.4.7
+  stackless-3.5.4
+</code></pre></div></div>
+
+<p>이런식으로 굉~~~장히 많은 버전이 있습니다. (약 340개?)<br />
+그중에서 저는 <code class="highlighter-rouge">anaconda3-5.2.0</code>을 설치했습니다.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pyenv <span class="nb">install </span>anaconda3-5.2.0
+
+pyenv global anaconda3-5.2.0
+</code></pre></div></div>
+
+<p>아나콘다 환경 설치 끝..<br />
+이제 제가 사용하는 파이썬 패키지를 설치해야겠죠.<br />
+보통 python 이라면 pip를 쓰겠지만 저는 아나콘다를 설치했죠.<br />
+그래서 <code class="highlighter-rouge">conda</code>를 이용해서 설치했습니다.<br />
+제가 설치 할 패키지는 pytorch, tensorflow, keras, tqdm 입니다.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>conda <span class="nb">install </span>tqdm <span class="c"># progress bar 패키지</span>
+conda <span class="nb">install </span>keras tensorflow <span class="c"># machine learning 패키지</span>
+conda <span class="nb">install </span>pytorch torchvision <span class="nt">-c</span> pytorch <span class="c"># machine learning 패키지</span>
+</code></pre></div></div>
+
+<p>이렇게 하면 끝입니다.<br />
+ <code class="highlighter-rouge">numpy, scipy, matplotlib, ...</code>등 패키지는 anaconda를 설치하면서 자동으로 설치가 됩니다 ㅎㅎ</p>
+
+<p>만약 저 환경을 삭제하고 싶다?</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> pyenv uninstall anaconda3-5.2.0
+</code></pre></div></div>
+<p>이라고 하시면 바로 삭제됩니다.</p>
+
+<p>많은 분들께 도움이 되었으면 좋겠습니다!</p>
+
+<p>감사합니다~!</p>
+
+    <article></h4>
+    <div class="post-more">
+      
+      <a href="/python/2018/10/23/anaconda/#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
+      
+      <a href="/python/2018/10/23/anaconda/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
+    </div>
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/deeplearning/2018/10/19/warning/">
+        Python 3.6 에서 이 경고 보기 싫어요..
+      </a>
+    </h1>
+
+    <span class="post-date">19 Oct 2018</span>
+     | 
+    
+    <a href="/blog/tags/#tensorflow" class="post-tag">TensorFlow</a>
+    
+    
+
+    <h4 style="font-weight: 400; line-height: 1.8;"><article>
+      <p>안녕하세요! Jerry 입니다!</p>
+
+<p>어제 <a href="https://jjerry-k.github.io/deeplearning/2018/10/18/condavspip/"><strong>pip 로 설치하지 말라구요!?</strong></a> 라는 포스팅을 했죠?<br />
+포스팅을 하고 갑자기 확 꽂혀서 anaconda 환경을 지웠습니다.<br />
+Setting 을 다시 하기 위해서요! 핳핳핳<br />
+그래서 지우고 다시 구축했죠.<br />
+제가 사용하는 방법은 <a href="https://jjerry-k.github.io/deeplearning/2018/09/27/python4mac/"><strong>Python Installation for mac</strong></a> 에 적혀있습니다!<br />
+아나콘다 환경 설치 후에 이제 python package를 설치해야겠죠?<br />
+pip 가 아닌 conda로 전부 설치했습니다.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>conda <span class="nb">install </span>tensorflow
+conda <span class="nb">install </span>pytorch torchvision <span class="nt">-c</span> pytorch
+conda <span class="nb">install </span>keras
+</code></pre></div></div>
+<p>그 후에 테스트를 하고자 터미널에서 tensorflow를 import 해봤습니다.</p>
+
+<pre><code class="language-python3">import tensorflow
+</code></pre>
+<p>그 후에 나온 warning 입니다.</p>
+
+<p>/Users/jerry/.pyenv/versions/anaconda3-5.2.0/lib/python3.6/site-packages/h5py/<strong>init</strong>.py:36: FutureWarning: Conversion of the second argument of issubdtype from <code class="highlighter-rouge">float</code> to <code class="highlighter-rouge">np.floating</code> is deprecated. In future, it will be treated as <code class="highlighter-rouge">np.float64 == np.dtype(float).type</code>.</p>
+
+<p>라고 나오더군요.<br />
+이게 굉장히 거슬리는 분들 계실겁니다..<br />
+보통 h5py 라는 python 패키지가 2.8.0 미만이면 이 warning이 발생해요!<br />
+해결책은 간단합니다!</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pip <span class="nb">install</span> <span class="nt">--upgrade</span> h5py
+</code></pre></div></div>
+
+<p>이것만 해주시면 됩니다!</p>
+
+<p>그럼 즐거운 코딩!</p>
+
+    <article></h4>
+    <div class="post-more">
+      
+      <a href="/deeplearning/2018/10/19/warning/#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
+      
+      <a href="/deeplearning/2018/10/19/warning/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
+    </div>
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/blog/2018/10/19/markdown/">
+        Markdown 사용법
+      </a>
+    </h1>
+
+    <span class="post-date">19 Oct 2018</span>
+     | 
+    
+    <a href="/blog/tags/#markdown" class="post-tag">Markdown</a>
+    
+    
+
+    <h4 style="font-weight: 400; line-height: 1.8;"><article>
+      <p>Markdown은 2004년 존그루버에 의해 만들어졌으며 쉽게 쓰고 읽을 수 있으며 HTML로 변환이 가능한 텍스트 기반의 마크업언어입니다. 특수기호와 문자를 이용한 매우 간단한 구조의 문법을 사용하여 웹에서도 빠르게 컨텐츠를 작성하고 직관적으로 인식할 수 있습니다. Github을 사용하는 사람이라면 가장 먼저 만나게 되는 파일이 README.md 파일인데요. 이 파일도 Markdown으로 작성된 파일입니다. 마크다운을 통해서 설치방법, 소스코드 설명, 이슈 등을 간단하게 기록하고 가독성을 높일 수 있어서 많은 사람들이 사용하게 되었습니다!</p>
+
+<h2 id="table-of-contents">Table of contents</h2>
+
+<ul>
+  <li><a href="#%ea%b8%b0%eb%b3%b8-%ec%82%ac%ec%9a%a9%eb%b2%95">기본 사용법</a>
+    <ul>
+      <li><a href="#headings">Headings</a></li>
+    </ul>
+  </li>
+  <li><a href="#h1-heading">h1 Heading</a>
+    <ul>
+      <li><a href="#h2-heading">h2 Heading</a>
+        <ul>
+          <li><a href="#h3-heading">h3 Heading</a>
+            <ul>
+              <li><a href="#h4-heading">h4 Heading</a>
+                <ul>
+                  <li><a href="#h5-heading">h5 Heading</a>
+                    <ul>
+                      <li><a href="#h6-heading">h6 Heading</a></li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li><a href="#paragraphs">Paragraphs</a></li>
+      <li><a href="#newline">Newline</a></li>
+      <li><a href="#horizontal-line">Horizontal Line</a></li>
+      <li><a href="#emphasis">Emphasis</a>
+        <ul>
+          <li><a href="#bold">Bold</a></li>
+          <li><a href="#italics">Italics</a></li>
+        </ul>
+      </li>
+      <li><a href="#blockquotes">Blockquotes</a></li>
+      <li><a href="#lists">Lists</a>
+        <ul>
+          <li><a href="#unordered">Unordered</a></li>
+          <li><a href="#ordered">Ordered</a></li>
+          <li><a href="#time-saving-tip">Time-saving Tip</a></li>
+        </ul>
+      </li>
+      <li><a href="#code">Code</a>
+        <ul>
+          <li><a href="#inline-code">Inline code</a></li>
+          <li><a href="#%22fenced%22-code-block">“Fenced” code block</a></li>
+          <li><a href="#indented-code">Indented code</a></li>
+          <li><a href="#syntax-highlighting">Syntax highlighting</a></li>
+        </ul>
+      </li>
+      <li><a href="#links">Links</a>
+        <ul>
+          <li><a href="#autolinks">Autolinks</a></li>
+          <li><a href="#inline-links">Inline links</a></li>
+        </ul>
+      </li>
+      <li><a href="#images">Images</a></li>
+      <li><a href="#raw-html">Raw HTML</a></li>
+      <li><a href="#escaping-with-backslashes">Escaping with backslashes</a></li>
+    </ul>
+  </li>
+  <li><a href="#%ea%b7%b8-%ec%99%b8-%ec%82%ac%ec%9a%a9%eb%b2%95">그 외 사용법</a>
+    <ul>
+      <li><a href="#strikethrough">Strikethrough</a></li>
+      <li><a href="#tables">Tables</a>
+        <ul>
+          <li><a href="#aligning-cells">Aligning cells</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="기본-사용법">기본 사용법</h1>
+
+<h2 id="headings">Headings</h2>
+
+<p>Heading 은 <code class="highlighter-rouge">h1</code> 부터 <code class="highlighter-rouge">h6</code> 까지 있고 <code class="highlighter-rouge">#</code> 의  개수로 단계가 정해집니다.</p>
+
+<p>사용법 :</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># h1 Heading
+## h2 Heading
+### h3 Heading
+#### h4 Heading
+##### h5 Heading
+###### h6 Heading
+</code></pre></div></div>
+
+<p>적용 후 :</p>
+
+<h1 id="h1-heading">h1 Heading</h1>
+<h2 id="h2-heading">h2 Heading</h2>
+<h3 id="h3-heading">h3 Heading</h3>
+<h4 id="h4-heading">h4 Heading</h4>
+<h5 id="h5-heading">h5 Heading</h5>
+<h6 id="h6-heading">h6 Heading</h6>
+
+<hr />
+
+<h2 id="paragraphs">Paragraphs</h2>
+
+<p>문단을 나누는 법입니다. 문단 사이에는 하나 이상의 빈 줄로 구분됩니다.</p>
+
+<p>사용법 :</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;p&gt;이 문장은 첫번째 문단의 첫번째 문장입니다.&lt;/p&gt;
+&lt;p&gt;이 문장은 두번째 문단의 첫번째 문장입니다. 이 문장은 두번째 문단의 두번째 문장입니다.&lt;/p&gt;
+</code></pre></div></div>
+
+<p>적용 후 :</p>
+
+<p>이 문장은 첫번째 문단의 첫번째 문장입니다.</p>
+<p>이 문장은 두번째 문단의 첫번째 문장입니다. 이 문장은 두번째 문단의 두번째 문장입니다.</p>
+
+<hr />
+
+<h2 id="newline">Newline</h2>
+
+<p><code class="highlighter-rouge">공백 두칸 후 엔터</code>, <code class="highlighter-rouge">&lt;br&gt;</code>을 이용하여 개행을 할 수 있습니다.<br />
+(<code class="highlighter-rouge">&lt;br&gt;</code>은 굳이….)</p>
+
+<p>사용법 :</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>test1`공백 두칸 후 엔터`
+test2
+
+test1&lt;br&gt;test2
+</code></pre></div></div>
+
+<p>적용 후 :</p>
+
+<p>test1<br />
+test2</p>
+
+<p>test1<br />test2</p>
+
+<h2 id="horizontal-line">Horizontal Line</h2>
+
+<p>Markdown 문서에 수평선을 추가 할 수 있습니다.</p>
+
+<p>사용법 :</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>`___`: 밑줄(_) 3개
+
+`---`: 대쉬(-) 3개
+
+`***`: 별표(*) 3개
+</code></pre></div></div>
+
+<p>적용 후 :</p>
+
+<hr />
+
+<hr />
+
+<hr />
+
+<hr />
+
+<h2 id="emphasis">Emphasis</h2>
+
+<h3 id="bold">Bold</h3>
+
+<p>볼드체 적용도 가능합니다.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>**이렇게 하면 볼드체!**
+</code></pre></div></div>
+
+<p>적용 후 :</p>
+
+<p><strong>이렇게 하면 볼드체!</strong></p>
+
+<h3 id="italics">Italics</h3>
+
+<p>이텔릭체 적용도 가능합니다.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>_이렇게 하면 이텔릭체!_
+</code></pre></div></div>
+
+<p>적용 후 :</p>
+
+<p><em>이렇게 하면 이텔릭체!</em></p>
+
+<hr />
+
+<h2 id="blockquotes">Blockquotes</h2>
+
+<p>블럭인용은 <code class="highlighter-rouge">&gt;</code> 으로 합니다.<br />
+Heading과 처럼 <code class="highlighter-rouge">&gt;</code> 개수로 인용 안에 인용을 추가 할 수 있습니다.</p>
+
+<p>사용법 :</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt; 이것은 인용구에요.
+</code></pre></div></div>
+
+<p>적용 후 :</p>
+
+<blockquote>
+  <p>이것은 인용구에요.</p>
+</blockquote>
+
+<p>다중 인용 사용법 :</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt; 이것은 첫번째 인용이에요.
+&gt;&gt; 이것은 두번째 인용이에요.
+&gt;&gt;&gt; 이것은 세번째 인용이에요.
+</code></pre></div></div>
+
+<p>적용 후 :</p>
+
+<blockquote>
+  <p>이것은 첫번째 인용이에요.</p>
+  <blockquote>
+    <p>이것은 두번째 인용이에요.</p>
+    <blockquote>
+      <p>이것은 세번째 인용이에요.</p>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<hr />
+
+<h2 id="lists">Lists</h2>
+
+<p>목록에는 순서가 없는 목록, 순서가 있는 목록이 있습니다.</p>
+
+<h3 id="unordered">Unordered</h3>
+
+<p>순서가 없는 목록은 <code class="highlighter-rouge">*</code>, <code class="highlighter-rouge">-</code>, <code class="highlighter-rouge">+</code> 로 사용할 수 있습니다.</p>
+
+<p>사용법 :</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+ 음식
++ 가구
++ 운동
+  - 농구
+  - 축구
+  - 야구
+</code></pre></div></div>
+<p>적용 후 :</p>
+
+<ul>
+  <li>음식</li>
+  <li>가구</li>
+  <li>운동
+    <ul>
+      <li>농구</li>
+      <li>축구</li>
+      <li>야구</li>
+    </ul>
+  </li>
+</ul>
+
+<p>또한 다음과 같이 사용할 수 있습니다.</p>
+
+<p>사용법 :</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>- 신체
+  - 머리
+  - 상체
+  - 하체
+</code></pre></div></div>
+
+<p>적용 후:</p>
+
+<ul>
+  <li>사람
+    <ul>
+      <li>머리
+        <ul>
+          <li>눈</li>
+          <li>코</li>
+          <li>입</li>
+        </ul>
+      </li>
+      <li>상체</li>
+      <li>하체</li>
+    </ul>
+  </li>
+  <li>개미
+    <ul>
+      <li>머리</li>
+      <li>가슴</li>
+      <li>배</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="ordered">Ordered</h3>
+
+<p>순서가 있는 목록을 만들 때는 번호를 매기면 됩니다.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1. 노트북을 켠다.
+2. Atom 에디터를 켠다.
+3. 프로젝트 폴더를 연다.
+4. 코딩을 한다.
+</code></pre></div></div>
+<p>적용 후 :</p>
+
+<ol>
+  <li>노트북을 켠다.</li>
+  <li>Atom 에디터를 켠다.</li>
+  <li>프로젝트 폴더를 연다.</li>
+  <li>코딩을 한다.</li>
+</ol>
+
+<h3 id="time-saving-tip">Time-saving Tip</h3>
+
+<p>순서가 있는 목록에서 시간을 아끼는 방법입니다.<br />
+<code class="highlighter-rouge">1.</code>, <code class="highlighter-rouge">2.</code>,… 라고 적을 필요 없이 <code class="highlighter-rouge">1.</code> 만 적으면 자동으로 번호를 매깁니다.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1. 노트북을 켠다.
+1. Atom 에디터를 켠다.
+1. 프로젝트 폴더를 연다.
+1. 코딩을 한다.
+</code></pre></div></div>
+
+<p>적용 후 :</p>
+
+<ol>
+  <li>노트북을 켠다.</li>
+  <li>Atom 에디터를 켠다.</li>
+  <li>프로젝트 폴더를 연다.</li>
+  <li>코딩을 한다.</li>
+</ol>
+
+<hr />
+
+<h2 id="code">Code</h2>
+
+<h3 id="inline-code">Inline code</h3>
+
+<p>문장 중간에 <code>` `</code>를 이용하여 code를 넣을 수 있습니다.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>파이썬에서 모듈을 쓰려면 `import '모듈명'` 이라고 하면 됩니다.
+</code></pre></div></div>
+
+<p>적용 후 :</p>
+
+<p>파이썬에서 모듈을 쓰려면 <code class="highlighter-rouge">import '모듈명'</code> 이라고 하면 됩니다.</p>
+
+<h3 id="fenced-code-block">“Fenced” code block</h3>
+
+<p>code block을 만들어서 code를 넣을 수 있습니다.</p>
+
+<pre>
+```python
+import os
+import sys
+```
+</pre>
+
+<p>적용 후 :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+</code></pre></div></div>
+
+<h3 id="indented-code">Indented code</h3>
+
+<p>들여쓰기(공백 4개)를 이용하여 code를 쓸 수 있습니다.<br />
+하지만 별로 추천하는 방법은 아닙니다.<br />
+왜냐하면 <strong>syntax highlighting</strong>이 안됩니다.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    import sys
+    impot os
+</code></pre></div></div>
+
+<p>적용 후 :</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import sys
+impot os
+</code></pre></div></div>
+
+<h3 id="syntax-highlighting">Syntax highlighting</h3>
+
+<p>“Fenced” code block 은 어떤 프로그래밍 언어의 code block 을 만들건지 적어서 사용을 합니다.<br />
+그러면 그 언어에 맞게 Syntax highlighting을 합니다.</p>
+
+<pre>
+```python
+import os
+import sys
+
+a = 2
+b = 5
+
+print("Hello, World!")
+print(a + b)
+```
+</pre>
+
+<p>Which renders to:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">5</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s">"Hello, World!"</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span>
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="links">Links</h2>
+
+<p>링크를 거는 방법은 <code class="highlighter-rouge">Autolinks</code>, <code class="highlighter-rouge">Inline links</code>, <code class="highlighter-rouge">Link titles</code>, ‘Named Anchors’ 이렇게 네 가지가 있습니다.<br />
+이 포스팅에선 <code class="highlighter-rouge">Autolinks</code>, <code class="highlighter-rouge">Inline links</code> 이 두 가지를 설명하겠습니다.</p>
+
+<h3 id="autolinks">Autolinks</h3>
+
+<p><code class="highlighter-rouge">&lt;</code>, <code class="highlighter-rouge">&gt;</code> 사이에 링크를 적으면 자동으로 링크가 생성됩니다.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;https://jjerry-k.github.io&gt;
+</code></pre></div></div>
+
+<p>적용 후 :</p>
+
+<p><a href="https://jjerry-k.github.io">https://jjerry-k.github.io</a></p>
+
+<h3 id="inline-links">Inline links</h3>
+
+<p>문장 안에 링크를 생성할 수 있습니다.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[Jerry's Blog](https://jjerry-k.github.io)
+</code></pre></div></div>
+
+<p>적용 후 :</p>
+
+<p><a href="https://jjerry-k.github.io">Jerry’s Blog</a></p>
+
+<hr />
+
+<h2 id="images">Images</h2>
+
+<p>이미지를 올리는 방법입니다.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>첫번째 방법
+![Minion](http://octodex.github.com/images/minion.png)
+</code></pre></div></div>
+
+<p>적용 후 :</p>
+
+<p><img src="http://octodex.github.com/images/minion.png" alt="Minion" /></p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>두번째 방법
+![Alt text](http://octodex.github.com/images/stormtroopocat.jpg "The Stormtroopocat")
+</code></pre></div></div>
+
+<p>적용 후 :</p>
+
+<p><img src="http://octodex.github.com/images/stormtroopocat.jpg" alt="Alt text" title="The Stormtroopocat" /></p>
+
+<p>위 두 방법은 이미지 사이즈 조절을 할 수 없습니다.<br />
+만약 사이즈 조절이 필요하다면 <code class="highlighter-rouge">&lt;img src="" height="" width=""&gt;를 이용하면 됩니다.</code></p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;img src="http://octodex.github.com/images/dojocat.jpg" height="100" width="100"&gt;
+</code></pre></div></div>
+
+<p>적용 후 :
+<img src="http://octodex.github.com/images/dojocat.jpg" height="100" width="100" /></p>
+
+<hr />
+
+<h2 id="raw-html">Raw HTML</h2>
+
+<p>이미지에서 HTML 문법을 쓸 수 있다는걸 확인했다시피 Markdown 에서 HTML 문법을 사용할 수 있습니다.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>여기가 **&lt;a href="https://jjerry-k.github.io"&gt;Jerry의 블로그&lt;/a&gt;**입니다.
+
+여기가 **[Jerry의 블로그](https://jjerry-k.github.io)**입니다.
+</code></pre></div></div>
+
+<p>적용 후 :</p>
+
+<p>여기가 <a href="https://jjerry-k.github.io"><strong>Jerry의 블로그</strong></a>입니다.</p>
+
+<p>여기가 <a href="https://jjerry-k.github.io"><strong>Jerry의 블로그</strong></a>입니다.</p>
+
+<hr />
+
+<h2 id="escaping-with-backslashes">Escaping with backslashes</h2>
+
+<p><code class="highlighter-rouge">\</code> 를 이용하여 문장안에 기호를 사용할 수 있습니다.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>\*를 문장에 쓰고 싶다!
+</code></pre></div></div>
+
+<p>적용 후 :</p>
+
+<p>*를 문장에 쓰고 싶다!</p>
+
+<hr />
+
+<h1 id="그-외-사용법">그 외 사용법</h1>
+
+<h2 id="strikethrough">Strikethrough</h2>
+
+<p>문장에 줄을 그을 수 있습니다.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~~블로그....귀찮다....~~
+</code></pre></div></div>
+
+<p>적용 후 :</p>
+
+<p><del>블로그….귀찮다….</del></p>
+
+<hr />
+
+<h2 id="tables">Tables</h2>
+
+<p>표를 만들 수 있습니다.
+<code class="highlighter-rouge">|</code>, <code class="highlighter-rouge">-</code>를 이용하여 작성합니다.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>| 이름 | 학점 |
+| --- | --- |
+| 제리 |  B+ |
+|  톰  | C+ |
+|스파이크| B0 |
+</code></pre></div></div>
+
+<p>적용 후 :</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>이름</th>
+      <th>학점</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>제리</td>
+      <td>B+</td>
+    </tr>
+    <tr>
+      <td>톰</td>
+      <td>C+</td>
+    </tr>
+    <tr>
+      <td>스파이크</td>
+      <td>B0</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="aligning-cells">Aligning cells</h3>
+
+<p>셀 정렬은 <code class="highlighter-rouge">:</code>를 이용합니다.<br />
+왼쪽 정렬은 <code class="highlighter-rouge">:</code>을 사용하지 않으면 됩니다.</p>
+
+<p><strong>Center text in a column</strong></p>
+
+<p>중앙 정렬은 다음과 같이 합니다.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>| 이름 | 학점 |
+| :-: | :-: |
+| 제리 |  B+ |
+|  톰  | C+ |
+|스파이크| B0 |
+</code></pre></div></div>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">이름</th>
+      <th style="text-align: center">학점</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">제리</td>
+      <td style="text-align: center">B+</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">톰</td>
+      <td style="text-align: center">C+</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">스파이크</td>
+      <td style="text-align: center">B0</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Right-align the text in a column</strong></p>
+
+<p>오른쪽 정렬은 다음과 같이 합니다.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>| 이름 | 학점 |
+| --: | --: |
+| 제리 |  B+ |
+|  톰  | C+ |
+|스파이크| B0 |
+</code></pre></div></div>
+
+<p>적용 후 :</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: right">이름</th>
+      <th style="text-align: right">학점</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: right">제리</td>
+      <td style="text-align: right">B+</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">톰</td>
+      <td style="text-align: right">C+</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">스파이크</td>
+      <td style="text-align: right">B0</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Markdown 설명에 대한 포스팅… <strong>끝!</strong></p>
+
+    <article></h4>
+    <div class="post-more">
+      
+      <a href="/blog/2018/10/19/markdown/#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
+      
+      <a href="/blog/2018/10/19/markdown/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
+    </div>
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/deeplearning/2018/10/18/condavspip/">
+        pip 로 설치하지 말라구요!?
+      </a>
+    </h1>
+
+    <span class="post-date">18 Oct 2018</span>
+     | 
+    
+    <a href="/blog/tags/#tensorflow" class="post-tag">TensorFlow</a>
+    
+    
+
+    <h4 style="font-weight: 400; line-height: 1.8;"><article>
+      <p>오늘 갑자기 당황스러운 포스팅을 봤습니다.</p>
+
+<p>출처 : <a href="https://www.anaconda.com/blog/developer-blog/tensorflow-in-anaconda/"><strong>https://www.anaconda.com/blog/developer-blog/tensorflow-in-anaconda/</strong></a></p>
+
+<p>내용을 보니 pip 로 설치하는것 보다 conda를 이용하면 좋은 점이 두 가지가 있다고 합니다.</p>
+
+<ol>
+  <li>
+    <p>CPU 성능이 더 빨라졌다.
+<img src="https://www.anaconda.com/wp-content/uploads/TensorFlowTraining.png" /></p>
+  </li>
+  <li>
+    <p>GPU 버전 설치가 쉽다.<br />
+  솔직히 이건 잘 모르겠네요.. <br />
+  둘 다 똑같이 그래픽 드라이버 설치하고 CUDA 설치하고 해야하는데 뭐가 쉬워진다는건지..<br />
+  뭐.. 어떤 쿠다 버전을 설치했던 알아서 잡아서 TensorFlow 를 설치해준다면 편해진건 맞겠군요.</p>
+  </li>
+</ol>
+
+<p>그리고 CPU 성능 증가는 <strong>Intel CPU에 한해서</strong> 빨라지는 것 같습니다.</p>
+
+<p><img src="https://jjerry-k.github.io/public/img/nopip/02.png" /></p>
+
+<p>사진을 보시면 <strong>the Intel® Math Kernel Library for Deep Neural Networks (Intel® MKL-DNN)</strong> 을 사용해서 올렸다는거죠. (AMD 사용자 쥬륵..)</p>
+
+<p>뭐 아무튼… 인텔에 텐플쓰시는 분들은 콘다로 넘어가심이 좋을 듯합니다.</p>
+
+<p>전 요즘 pytorch 를 쓰고 있어서 ㅎㅎ..</p>
+
+<p>읽어주셔서 감사합니다 ㅎㅎ</p>
+
+    <article></h4>
+    <div class="post-more">
+      
+      <a href="/deeplearning/2018/10/18/condavspip/#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
+      
+      <a href="/deeplearning/2018/10/18/condavspip/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
+    </div>
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
       <a href="/ubuntu/2018/10/10/GPU_Masking/">
         GPU를 골라서 써보자!
       </a>
@@ -306,256 +1147,6 @@ GPU가 여러 대인 상황에서 아무 옵션도 주지 않고 (스크립트�
       <a href="/ubuntu/2018/10/10/GPU_Masking/#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
       
       <a href="/ubuntu/2018/10/10/GPU_Masking/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
-    </div>
-  </div>
-  
-  <div class="post">
-    <h1 class="post-title">
-      <a href="/python/2018/09/27/python4mac/">
-        Python Installation for mac
-      </a>
-    </h1>
-
-    <span class="post-date">27 Sep 2018</span>
-     | 
-    
-    <a href="/blog/tags/#setting" class="post-tag">Setting</a>
-    
-    
-
-    <h4 style="font-weight: 400; line-height: 1.8;"><article>
-      <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># brew 설치.</span>
-/usr/bin/ruby <span class="nt">-e</span> <span class="s2">"</span><span class="k">$(</span>curl <span class="nt">-fsSL</span> https://raw.githubusercontent.com/Homebrew/install/master/install<span class="k">)</span><span class="s2">"</span>
-
-<span class="c"># wget 설치.</span>
-brew <span class="nb">install </span>wget
-
-<span class="c">#pyenv 설치.</span>
-brew <span class="nb">install </span>pyenv
-
-<span class="c"># bash_profile 에 경로 추가.</span>
-<span class="nb">echo</span> <span class="s1">'export PYENV_ROOT="${HOME}/.pyenv"'</span> <span class="o">&gt;&gt;</span> ~/.bash_profile
-
-<span class="nb">echo</span> <span class="s1">'export PATH="${PYENV_ROOT}bin:$PATH"'</span> <span class="o">&gt;&gt;</span> ~/.bash_profile
-
-<span class="nb">echo</span> <span class="s1">'eval "$(pyenv init -)"'</span> <span class="o">&gt;&gt;</span> ~/.bash_profile
-
-<span class="nb">exec</span> <span class="nv">$SHELL</span>
-
-<span class="c"># 설치할 수 있는 환경 보여줌.</span>
-pyenv <span class="nb">install</span> <span class="nt">--list</span>
-
-<span class="c"># 위에서 환경 확인 후 원하는 버전 입력.</span>
-pyenv <span class="nb">install</span> &lt;버전 이름&gt;
-
-<span class="c"># system  과 &lt;버전 이름&gt; 두 환경이 존재.</span>
-pyenv versions
-
-<span class="c"># &lt;버전 이름&gt;으로 default version 변경.</span>
-pyenv global &lt;버전 이름&gt;
-
-pyenv versions
-
-
-<span class="c"># tmp 폴더 에선 system 이라는 버전으로 사용.</span>
-<span class="nb">mkdir </span>tmp
-
-<span class="nb">cd </span>tmp
-
-pyenv <span class="nb">local </span>system
-
-</code></pre></div></div>
-
-<p><strong>pyenv</strong> 를 사용하면 특정 폴더에서는 python2 로 작동하고 그 외에는 python3 로 작동하게 할 수 있습니다!</p>
-
-<p>감사합니다!</p>
-
-    <article></h4>
-    <div class="post-more">
-      
-      <a href="/python/2018/09/27/python4mac/#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
-      
-      <a href="/python/2018/09/27/python4mac/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
-    </div>
-  </div>
-  
-  <div class="post">
-    <h1 class="post-title">
-      <a href="/deeplearning/2018/09/12/TFOD/">
-        Object Detection API
-      </a>
-    </h1>
-
-    <span class="post-date">12 Sep 2018</span>
-     | 
-    
-    <a href="/blog/tags/#tensorflow" class="post-tag">TensorFlow</a>
-    
-    
-
-    <h4 style="font-weight: 400; line-height: 1.8;"><article>
-      <p>이번에 V.ais에서 TensorFlow Object Detection API 사용 매뉴얼을 작성해봤습니다.</p>
-
-<p><a href="https://github.com/V-AIS/tensorflow"><strong>https://github.com/V-AIS/tensorflow</strong></a></p>
-
-<p>아직 완벽하게 정리된건 아니지만…</p>
-
-<p>TensorFlow Object Detection API를 처음 접하시는 분이라면 쉽게 따라할 수 있도록 적어봤습니다.</p>
-
-<p>수정됬으면 하는 부분이 있으면 댓글 남겨주세요!</p>
-
-    <article></h4>
-    <div class="post-more">
-      
-      <a href="/deeplearning/2018/09/12/TFOD/#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
-      
-      <a href="/deeplearning/2018/09/12/TFOD/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
-    </div>
-  </div>
-  
-  <div class="post">
-    <h1 class="post-title">
-      <a href="/living/2018/09/07/Vacation/">
-        휴가
-      </a>
-    </h1>
-
-    <span class="post-date">07 Sep 2018</span>
-     | 
-    
-    <a href="/blog/tags/#daily" class="post-tag">Daily</a>
-    
-    
-
-    <h4 style="font-weight: 400; line-height: 1.8;"><article>
-      <p>약 두 달정도 달려온 챌린지가 끝나고 처음으로 휴가를 얻었습니다.</p>
-
-<p>일단은 이번 주 쉬고 다음 주부터 다시 연구 시작..!</p>
-
-<p>쉬면서 TensorFlow Object Detection API 설명서나 써보렵니다.</p>
-
-    <article></h4>
-    <div class="post-more">
-      
-      <a href="/living/2018/09/07/Vacation/#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
-      
-      <a href="/living/2018/09/07/Vacation/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
-    </div>
-  </div>
-  
-  <div class="post">
-    <h1 class="post-title">
-      <a href="/deeplearning/2018/08/16/LSTM/">
-        LSTM 예제 코드
-      </a>
-    </h1>
-
-    <span class="post-date">16 Aug 2018</span>
-     | 
-    
-    <a href="/blog/tags/#tensorflow" class="post-tag">TensorFlow</a>
-    
-    
-
-    <h4 style="font-weight: 400; line-height: 1.8;"><article>
-      <h2 id="tensorflow-lstm-예제-코드">TensorFlow LSTM 예제 코드</h2>
-
-<p>여기저기서 TensorFlow LSTM 코드를 찾다가 예제를 제가 보기 편하게 작성햇습니다.</p>
-
-<h3 id="추후에-새로운-코드로-업데이트-할-예정입니다"><strong>추후에 새로운 코드로 업데이트 할 예정입니다.</strong></h3>
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="n">tf</span>
-<span class="kn">from</span> <span class="nn">tensorflow.keras</span> <span class="kn">import</span> <span class="n">models</span><span class="p">,</span> <span class="n">layers</span><span class="p">,</span> <span class="n">optimizers</span><span class="p">,</span> <span class="n">losses</span>
-<span class="kn">from</span> <span class="nn">tensorflow.keras.utills</span> <span class="kn">import</span> <span class="n">to_categorical</span>
-
-<span class="c1"># Setting hyper parameter
-</span><span class="n">learning_rate</span> <span class="o">=</span> <span class="mf">0.001</span>
-<span class="n">total_epoch</span> <span class="o">=</span> <span class="mi">30</span>
-<span class="n">batch_size</span> <span class="o">=</span> <span class="mi">128</span>
-<span class="n">n_input</span> <span class="o">=</span> <span class="mi">28</span>
-<span class="n">n_step</span> <span class="o">=</span> <span class="mi">28</span>
-<span class="n">n_hidden1</span> <span class="o">=</span> <span class="mi">128</span>
-<span class="n">n_class</span> <span class="o">=</span> <span class="mi">10</span>
-
-<span class="c1"># Loading Mnist Data
-</span><span class="n">mnist</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">mnist</span>
-<span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">),</span> <span class="p">(</span><span class="n">x_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span> <span class="o">=</span> <span class="n">mnist</span><span class="o">.</span><span class="n">load_data</span><span class="p">()</span>
-<span class="n">x_train</span><span class="p">,</span> <span class="n">x_test</span> <span class="o">=</span> <span class="n">x_train</span><span class="o">/</span><span class="mf">255.</span><span class="p">,</span> <span class="n">x_test</span><span class="o">/</span><span class="mf">255.</span>
-<span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">to_categorical</span><span class="p">(</span><span class="n">y_train</span><span class="p">,</span> <span class="n">n_class</span><span class="p">),</span> <span class="n">to_categorical</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">n_class</span><span class="p">)</span>
-<span class="n">tf</span><span class="o">.</span><span class="n">set_random_seed</span><span class="p">(</span><span class="mi">777</span><span class="p">)</span>
-
-<span class="n">X</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">placeholder</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span> <span class="p">[</span><span class="bp">None</span><span class="p">,</span> <span class="n">n_step</span><span class="p">,</span> <span class="n">n_input</span><span class="p">])</span>
-<span class="n">Y</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">placeholder</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span> <span class="p">[</span><span class="bp">None</span><span class="p">,</span> <span class="n">n_class</span><span class="p">])</span>
-
-<span class="n">W</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">random_normal</span><span class="p">([</span><span class="n">n_hidden1</span><span class="p">,</span> <span class="n">n_class</span><span class="p">]))</span>
-<span class="n">b</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">random_normal</span><span class="p">([</span><span class="n">n_class</span><span class="p">]))</span>
-
-<span class="c1"># LSTM cell 선언.
-# RNN을 쓰고 싶으면 BasicRNNCell로 바꾸면 됨.
-# Stacked LSTM을 하고 싶으면 cell2 선언.
-</span><span class="n">cell</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">rnn_cell</span><span class="o">.</span><span class="n">BasicLSTMCell</span><span class="p">(</span><span class="n">n_hidden1</span><span class="p">)</span>
-<span class="c1">#cell2 = tf.nn.rnn_cell.BasicLSTMCell(n_hidden1)
-</span>
-<span class="c1"># 선언된 LSTM cell, X를 이용하여 네트워크 생성.
-</span><span class="n">outputs_1</span><span class="p">,</span> <span class="n">states_1</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">dynamic_rnn</span><span class="p">(</span><span class="n">cell</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span><span class="n">scope</span><span class="o">=</span><span class="s">"LSTM1"</span><span class="p">)</span>
-
-<span class="c1"># Stacked LSTM을 하고 싶으면 다음과 같이 선언.
-#outputs_2, states_2 = tf.nn.dynamic_rnn(cell2, outputs_1, dtype=tf.float32, scope="LSTM2")
-</span>
-<span class="c1"># LSTM -&gt; Fully Connected Layer -&gt; Classification
-</span>
-<span class="c1"># outputs_1 : [ ? , num_step, num_hidden
-#             -&gt; [num_step, ? , num_hidden]
-</span><span class="n">outputs</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">outputs_1</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
-
-<span class="c1"># Sequence의 마지막 출력값
-</span><span class="n">outputs</span> <span class="o">=</span> <span class="n">outputs</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-<span class="n">model</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">outputs</span><span class="p">,</span> <span class="n">W</span><span class="p">)</span> <span class="o">+</span> <span class="n">b</span>
-
-<span class="n">cost</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">reduce_mean</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">softmax_cross_entropy_with_logits_v2</span><span class="p">(</span><span class="n">logits</span><span class="o">=</span><span class="n">model</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">Y</span><span class="p">))</span>
-<span class="n">optimizer</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">train</span><span class="o">.</span><span class="n">AdamOptimizer</span><span class="p">(</span><span class="n">learning_rate</span><span class="p">)</span><span class="o">.</span><span class="n">minimize</span><span class="p">(</span><span class="n">cost</span><span class="p">)</span>
-
-<span class="c1"># GPU 메모리 할당.
-</span><span class="n">config</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">ConfigProto</span><span class="p">()</span>
-<span class="n">config</span><span class="o">.</span><span class="n">gpu_options</span><span class="o">.</span><span class="n">allow_growth</span> <span class="o">=</span> <span class="bp">True</span>
-<span class="n">sess</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">Session</span><span class="p">(</span><span class="n">config</span><span class="o">=</span><span class="n">config</span><span class="p">)</span>
-<span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">global_variables_initializer</span><span class="p">())</span>
-
-<span class="n">total_batch</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">mnist</span><span class="o">.</span><span class="n">train</span><span class="o">.</span><span class="n">num_examples</span><span class="o">/</span><span class="n">batch_size</span><span class="p">)</span>
-
-<span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">total_epoch</span><span class="p">):</span>
-    <span class="n">total_cost</span> <span class="o">=</span> <span class="mi">0</span>
-
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">total_batch</span><span class="p">):</span>
-        <span class="n">batch_xs</span><span class="p">,</span> <span class="n">batch_ys</span> <span class="o">=</span> <span class="n">mnist</span><span class="o">.</span><span class="n">train</span><span class="o">.</span><span class="n">next_batch</span><span class="p">(</span><span class="n">batch_size</span><span class="p">)</span>
-
-
-        <span class="n">batch_xs</span> <span class="o">=</span> <span class="n">batch_xs</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">n_step</span><span class="p">,</span> <span class="n">n_input</span><span class="p">))</span>
-
-        <span class="n">_</span><span class="p">,</span> <span class="n">cost_val</span> <span class="o">=</span> <span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">([</span><span class="n">optimizer</span><span class="p">,</span> <span class="n">cost</span><span class="p">],</span>
-                               <span class="n">feed_dict</span><span class="o">=</span><span class="p">{</span><span class="n">X</span><span class="p">:</span> <span class="n">batch_xs</span><span class="p">,</span> <span class="n">Y</span><span class="p">:</span> <span class="n">batch_ys</span><span class="p">})</span>
-        <span class="n">total_cost</span> <span class="o">+=</span> <span class="n">cost_val</span>
-
-    <span class="k">print</span><span class="p">(</span><span class="s">'Epoch : </span><span class="si">%04</span><span class="s">d'</span><span class="o">%</span> <span class="p">(</span><span class="n">epoch</span> <span class="o">+</span> <span class="mi">1</span><span class="p">),</span><span class="s">'Avg cost : {:f}'</span><span class="o">.</span><span class="nb">format</span><span class="p">(</span><span class="n">total_cost</span> <span class="o">/</span> <span class="n">total_batch</span><span class="p">))</span>
-
-<span class="k">print</span><span class="p">(</span><span class="s">'Optimization Done'</span><span class="p">)</span>
-
-<span class="n">is_correct</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">equal</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">tf</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
-<span class="n">accuracy</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">reduce_mean</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="n">is_correct</span><span class="p">,</span> <span class="n">tf</span><span class="o">.</span><span class="n">float32</span><span class="p">))</span>
-
-<span class="n">test_batch_size</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">mnist</span><span class="o">.</span><span class="n">test</span><span class="o">.</span><span class="n">images</span><span class="p">)</span>
-<span class="n">test_xs</span> <span class="o">=</span> <span class="n">mnist</span><span class="o">.</span><span class="n">test</span><span class="o">.</span><span class="n">images</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">test_batch_size</span><span class="p">,</span> <span class="n">n_step</span><span class="p">,</span> <span class="n">n_input</span><span class="p">)</span>
-<span class="n">test_ys</span> <span class="o">=</span> <span class="n">mnist</span><span class="o">.</span><span class="n">test</span><span class="o">.</span><span class="n">labels</span>
-
-<span class="k">print</span><span class="p">(</span><span class="s">'Test Accuracy : '</span><span class="p">,</span> <span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">accuracy</span><span class="p">,</span> <span class="n">feed_dict</span><span class="o">=</span><span class="p">{</span><span class="n">X</span><span class="p">:</span> <span class="n">test_xs</span><span class="p">,</span> <span class="n">Y</span><span class="p">:</span> <span class="n">test_ys</span><span class="p">}))</span>
-
-</code></pre></div></div>
-
-    <article></h4>
-    <div class="post-more">
-      
-      <a href="/deeplearning/2018/08/16/LSTM/#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
-      
-      <a href="/deeplearning/2018/08/16/LSTM/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
     </div>
   </div>
   
