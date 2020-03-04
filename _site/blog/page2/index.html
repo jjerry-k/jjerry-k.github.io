@@ -674,28 +674,40 @@ and Molecular Medical Imaging, Fudan University, Shanghai 200433, China
   </li>
   <li>Metrics으로는 다음 세 가지 사용.
     <ul>
-      <li>PSNR(Peak Signal-to-Noise Ratio)
-<script type="math/tex">\begin{alignedat}{2}
+      <li>PSNR(Peak Signal-to-Noise Ratio)</li>
+    </ul>
+  </li>
+</ul>
+
+<script type="math/tex; mode=display">\begin{alignedat}{2}
 MAX_I = 255\\
 PSNR = 20\cdot\log_{10}\Bigg(\frac{MAX_I}{\sqrt{\frac{1}{rLWH}\sum_{x, y, z}(I^R_{x,y,z}-I^{GT}_{x,y,z})^2}}\Bigg)
-\end{alignedat}</script></li>
-      <li>SSIM(Structural SIMilarity)
-<script type="math/tex">\begin{alignedat}{2}
+\end{alignedat}</script>
+
+<ul>
+  <li>SSIM(Structural SIMilarity)</li>
+</ul>
+
+<script type="math/tex; mode=display">\begin{alignedat}{2}
 L : 255(\text{dynamic range})\\
 \mu : \text{Variance}\\
 \mu_{ab} : \text{Covariance}\\
 c_1 = (k_1L)^2\\
 c_2 = (k_2L)^2\\
 SSIM=\frac{(2\mu_a\mu_b+c_1)(2\sigma_{ab}+c_2)}{(\mu_a^2+\mu_b^2+c_1)(\sigma_a^2+\sigma_b^2+c_2)}
-\end{alignedat}</script></li>
-      <li>NMI(Normalized Mutual Information)
-<script type="math/tex">\begin{alignedat}{2}
+\end{alignedat}</script>
+
+<ul>
+  <li>NMI(Normalized Mutual Information)</li>
+</ul>
+
+<script type="math/tex; mode=display">\begin{alignedat}{2}
 H(X) = -\sum_{x_i}\in{X}p(x_i)\log{p(x_i)} \\
 H(X, Y) = -\sum_{y_i\in{Y}} \sum_{x_i\in{X}}p(x_i, y_i)\log{p(x_i, y_i)}\\
 NMI(X, Y) = 2\frac{H(X) + H(Y) - H(X, Y)}{H(X)+H(Y)}
-\end{alignedat}</script></li>
-    </ul>
-  </li>
+\end{alignedat}</script>
+
+<ul>
   <li>pixel 값을 [-1, 1]로 clipping -&gt; 다시 8-bit gray scale로 변환.</li>
   <li>Generated MR images 와 Ground truth가 비슷할 수록 높은 값을 가짐.</li>
 </ul>
