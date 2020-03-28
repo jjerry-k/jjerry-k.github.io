@@ -524,6 +524,99 @@ URL: https://arxiv.org/abs/1912.01865</p>
   
   <div class="post">
     <h1 class="post-title">
+      <a href="/deeplearning/2020/03/02/starganv1/">
+        StarGAN v1
+      </a>
+    </h1>
+
+    <span class="post-date">02 Mar 2020</span>
+     | 
+    
+    <a href="/blog/tags/#paper" class="post-tag">Paper</a>
+    
+    
+
+    <h4 style="font-weight: 400; line-height: 1.8;"><article>
+      <h1 id="stargan-unified-generative-adversarial-networks-for-multi-domain-image-to-image-translation">StarGAN: Unified Generative Adversarial Networks for Multi-Domain Image-to-Image Translation</h1>
+
+<p>Author: Yunjey Choi, Youngjung Uh, Jaejun Yoo, Jung-Woo Ha
+Date: Dec 21, 2019
+URL: https://arxiv.org/abs/1711.09020</p>
+
+<h1 id="introduction">Introduction</h1>
+
+<ul>
+  <li>Multi domain image translation 이라고 하면 다음 사진과 같이 머리 색, 성별, 연령대 등과 같이 여러 condition 에 대응하는 영상을 생성.</li>
+</ul>
+
+<p><img src="/public/img/starganv1/Untitled.png" alt="/public/img/starganv1/Untitled.png" /></p>
+
+<ul>
+  <li>기존의 image-to-image translation 은 n개의 domain 을 적용할 시에 n*(n-1) 개의 generator가 필요했음.</li>
+  <li>StarGAN은 한 1개의 generator로 n개의 domain 을 적용.</li>
+</ul>
+
+<p><img src="/public/img/starganv1/Untitled_1.png" alt="/public/img/starganv1/Untitled_1.png" /></p>
+
+<h1 id="star-generative-adversarial-networks">Star Generative Adversarial Networks</h1>
+
+<p><img src="/public/img/starganv1/Untitled_2.png" alt="/public/img/starganv1/Untitled_2.png" /></p>
+
+<h1 id="loss-functions">Loss functions</h1>
+
+<ul>
+  <li>Adversarial Loss</li>
+</ul>
+
+<script type="math/tex; mode=display">\mathcal{L}_{adv} = \mathbb{E}_x [\log D_{src}(x)] + \mathbb{E}_{x, c} [\log (1-D_{src}(G(x,c)))] - \lambda_{gp}\mathbb{E}_{\hat{x}}[(\Vert \nabla_{\hat{x}}D_{src}(\hat{x})\Vert_2 -1)^2]</script>
+
+<script type="math/tex; mode=display">\lambda_{gp} = 10</script>
+
+<ul>
+  <li>Domain Classification Loss</li>
+</ul>
+
+<script type="math/tex; mode=display">\mathcal{L}^r_{cls} = \mathbb{E}_{x, c'}[-\log D_{cls}(c'|x)]</script>
+
+<script type="math/tex; mode=display">\mathcal{L}^f_{cls} = \mathbb{E}_{x, c'}[-\log D_{cls}(c|G(x, c)]</script>
+
+<ul>
+  <li>Reconstruction Loss</li>
+</ul>
+
+<script type="math/tex; mode=display">\mathcal{L}_{rec} = \mathbb{E}_{x, c, c'}[\Vert x-G(G(x, c), c')\Vert_1]</script>
+
+<ul>
+  <li>Full Objective</li>
+</ul>
+
+<script type="math/tex; mode=display">\mathcal{L}_D = -\mathcal{L}_{adv} + \lambda_{cls}\mathcal{L}^r_{cls}</script>
+
+<script type="math/tex; mode=display">\mathcal{L}_G = \mathcal{L}_{adv} + \lambda_{cls}\mathcal{L}^f_{cls}+\lambda_{rec}\mathcal{L}_{rec}</script>
+
+<script type="math/tex; mode=display">\lambda_{cls} = 1, \lambda_{rec} = 10</script>
+
+<h1 id="result">Result</h1>
+
+<p><img src="/public/img/starganv1/Untitled_3.png" alt="/public/img/starganv1/Untitled_3.png" /></p>
+
+<p><img src="/public/img/starganv1/Untitled_4.png" alt="/public/img/starganv1/Untitled_4.png" /></p>
+
+<h1 id="training-detail">Training Detail</h1>
+
+<p><img src="/public/img/starganv1/Untitled_5.png" alt="/public/img/starganv1/Untitled_5.png" /></p>
+
+    <article></h4>
+    <div class="post-more">
+      
+      <a href="/deeplearning/2020/03/02/starganv1/#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
+      
+      <a href="/deeplearning/2020/03/02/starganv1/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
+    </div>
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
       <a href="/deeplearning/2020/03/01/wandb/">
         Weights & Biases 가 뭐지??
       </a>
@@ -1094,125 +1187,6 @@ URL: https://arxiv.org/abs/1610.02357</p>
       <a href="/deeplearning/2020/02/16/Xception/#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
       
       <a href="/deeplearning/2020/02/16/Xception/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
-    </div>
-  </div>
-  
-  <div class="post">
-    <h1 class="post-title">
-      <a href="/python/2019/09/07/Jupyter_shortcut/">
-        jupyter Lab 에서 단축키 설정하는 방법!
-      </a>
-    </h1>
-
-    <span class="post-date">07 Sep 2019</span>
-     | 
-    
-    <a href="/blog/tags/#setting" class="post-tag">Setting</a>
-    
-    
-
-    <h4 style="font-weight: 400; line-height: 1.8;"><article>
-      <p>파이썬, 딥러닝을 하시는 분들 중 Jupyter 부류를 이용하시는 분들이 꽤 많습니다. <code class="highlighter-rouge">Jupyter Notebook, Jupyter Lab,...</code><br />
-저는 둘 다 사용해보긴 하지만 주로 <strong>Jupyter Lab</strong> 을 사용합니다.<br />
-이유는 그냥…좀 더 보기 편해서..?<br />
-두 환경의 차이는 다음 링크에서 확인해주세요.</p>
-<ul>
-  <li><a href="https://jupyter.readthedocs.io/en/latest/running.html#running">Jupyter Notebook</a></li>
-  <li><a href="https://jupyterlab.readthedocs.io/en/stable/index.html">Jupyter Lab</a></li>
-</ul>
-
-<h4 id="참고사항">참고사항</h4>
-<p>https://github.com/jupyterlab/jupyterlab/issues/7122<br />
-며칠 전 이슈에 올라온 상황입니다.<br />
-jupyter lab 1.0.2 버전에 extension을 설치하면 sidebar 부분이 깨지는 버그가 있네요…<br />
-1.1.1 에선 고쳐졌다고 합니다.</p>
-
-<p><strong><span style="font-size:25pt;">자, 다시 본론으로 돌아가봅니다.</span></strong></p>
-
-<p>Jupyter Lab 에서 단축키로 설정할 수 있는 기능들은 다음과 같습니다.</p>
-
-<p>‘notebook:create-new’<br />
-‘notebook:interrupt-kernel’<br />
-‘notebook:restart-kernel’<br />
-‘notebook:restart-clear-output’<br />
-‘notebook:restart-run-all’<br />
-‘notebook:reconnect-to-kernel’<br />
-‘notebook:change-kernel’<br />
-… (너무 많다….)<br />
-‘notebook:hide-all-cell-outputs’<br />
-‘notebook:show-all-cell-outputs’<br />
-‘notebook:enable-output-scrolling’<br />
-‘notebook:disable-output-scrolling’<br />
-‘notebook:save-with-view’</p>
-
-<p>너무 많은 관계로 <strong><a href="https://github.com/jupyterlab/jupyterlab/blob/af548c2674427da79d54ad5c4b69bb175463e9a0/packages/notebook-extension/src/index.ts#L69-L197">링크</a></strong> 참고해주세요.</p>
-
-<p>이번 포스팅에선 예시로 
-<code class="highlighter-rouge">Restart and Clear</code> 에 대해서 shortcut을 설정해보겠습니다.</p>
-
-<h2 id="설정-방법">설정 방법</h2>
-
-<p>먼저 Jupyter Lab 을 실행시켜주세요.</p>
-
-<p><img src="https://jjerry-k.github.io/public/img/shortcut/fig01.png" alt="fig1" /></p>
-
-<p><strong>Advanced Setting Editor</strong> 를 클릭해주세요.</p>
-
-<p><img src="https://jjerry-k.github.io/public/img/shortcut/fig02.png" alt="fig2" /></p>
-
-<p>좌측에 <strong>Keyboard Shortuts</strong> 를 선택해주세요.</p>
-
-<p><img src="https://jjerry-k.github.io/public/img/shortcut/fig03.png" alt="fig3" /></p>
-
-<p>여기서 왼쪽의 창은 default setting에 대한 설명이고 오른쪽을 Custom 을 위해 기입하는 부분입니다.</p>
-
-<p>그럼 예시대로 <code class="highlighter-rouge">Restart and Clear</code> 에 대해서 shortcut을 설정해보겠습니다.</p>
-
-<p>위에 기능에 대해서 링크 올려드렸었죠? 그 깃헙에서 링크에 대한 내용을 먼저 찾아봅니다.</p>
-
-<p><img src="https://jjerry-k.github.io/public/img/shortcut/fig04.png" alt="fig4" /></p>
-
-<p>거기서 ‘{기능 이름}’ 부분을 복사해주세요.</p>
-
-<p>그리고 다음과 같이 기입해줍니다.</p>
-
-<p><img src="https://jjerry-k.github.io/public/img/shortcut/fig05.png" alt="fig5" /></p>
-
-<p>그리고 우측 상단에 저장버튼을 누르고 노트북에서 Shift + Command + C 를 눌렀을때 <code class="highlighter-rouge">Restart and Clear</code> 이 작동하게 됩니다.</p>
-
-<p>사진만 보고 따라 적으시기 귀찮으실테니 code block 으로 남깁니다.</p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>"shortcuts": [
-    {
-        "command": "kernelmenu:restart-and-clear",
-        "keys": ["Shift + Ctrl + C"],
-        "selector": "[data-jp-kernel-user]:focus"
-        }]
-</code></pre></div></div>
-
-<p>과정을 요약해드리면 (Jupyter Lab 켜기 ~ Editor 열기 까지는 생략)</p>
-<ol>
-  <li>기능에 대한 링크에서 자신이 원하는 기능 찾기</li>
-  <li>위에 code block 에서 “command”: 부분에 ‘{기능 이름}’ 기입</li>
-  <li>“keys”: 에 원하는 커맨드 넣기 (복수개 가능)</li>
-  <li>“selector”: 에 .jp-Notebook:focus” 혹은 “[data-jp-kernel-user]:focus” 기입</li>
-  <li>저장 후 즐겁게 사용!</li>
-</ol>
-
-<p>shortcut 설정은 여기까지 입니다.<br />
-혹시 이외에 다른 설정에 대해 궁금한거 있으시면 comment 남겨주세요!</p>
-
-<h3 id="참고사항-1">참고사항</h3>
-<blockquote>
-  <p>만약 <strong>A 기능은 Shift + Alt + C</strong> 이고 <strong>B 기능은 Alt + Shift + C</strong> 일때… 전체적으로 보면 같은 키 입력이지만 순서가 다르기 때문에 <strong>별개의 shortcut으로 작동</strong>합니다.</p>
-</blockquote>
-
-    <article></h4>
-    <div class="post-more">
-      
-      <a href="/python/2019/09/07/Jupyter_shortcut/#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
-      
-      <a href="/python/2019/09/07/Jupyter_shortcut/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
     </div>
   </div>
   

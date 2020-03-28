@@ -5,8 +5,8 @@
     <description></description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 04 Mar 2020 16:09:02 +0900</pubDate>
-    <lastBuildDate>Wed, 04 Mar 2020 16:09:02 +0900</lastBuildDate>
+    <pubDate>Sat, 28 Mar 2020 14:38:36 +0900</pubDate>
+    <lastBuildDate>Sat, 28 Mar 2020 14:38:36 +0900</lastBuildDate>
     <generator>Jekyll v3.8.5</generator>
     
       <item>
@@ -241,6 +241,88 @@ URL: https://arxiv.org/abs/1912.01865&lt;/p&gt;
         <pubDate>Wed, 04 Mar 2020 00:00:00 +0900</pubDate>
         <link>http://localhost:4000/deeplearning/2020/03/04/starganv2/</link>
         <guid isPermaLink="true">http://localhost:4000/deeplearning/2020/03/04/starganv2/</guid>
+        
+        <category>Paper</category>
+        
+        
+        <category>DeepLearning</category>
+        
+      </item>
+    
+      <item>
+        <title>StarGAN v1</title>
+        <description>&lt;h1 id=&quot;stargan-unified-generative-adversarial-networks-for-multi-domain-image-to-image-translation&quot;&gt;StarGAN: Unified Generative Adversarial Networks for Multi-Domain Image-to-Image Translation&lt;/h1&gt;
+
+&lt;p&gt;Author: Yunjey Choi, Youngjung Uh, Jaejun Yoo, Jung-Woo Ha
+Date: Dec 21, 2019
+URL: https://arxiv.org/abs/1711.09020&lt;/p&gt;
+
+&lt;h1 id=&quot;introduction&quot;&gt;Introduction&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Multi domain image translation 이라고 하면 다음 사진과 같이 머리 색, 성별, 연령대 등과 같이 여러 condition 에 대응하는 영상을 생성.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/public/img/starganv1/Untitled.png&quot; alt=&quot;/public/img/starganv1/Untitled.png&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;기존의 image-to-image translation 은 n개의 domain 을 적용할 시에 n*(n-1) 개의 generator가 필요했음.&lt;/li&gt;
+  &lt;li&gt;StarGAN은 한 1개의 generator로 n개의 domain 을 적용.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/public/img/starganv1/Untitled_1.png&quot; alt=&quot;/public/img/starganv1/Untitled_1.png&quot; /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;star-generative-adversarial-networks&quot;&gt;Star Generative Adversarial Networks&lt;/h1&gt;
+
+&lt;p&gt;&lt;img src=&quot;/public/img/starganv1/Untitled_2.png&quot; alt=&quot;/public/img/starganv1/Untitled_2.png&quot; /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;loss-functions&quot;&gt;Loss functions&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Adversarial Loss&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\mathcal{L}_{adv} = \mathbb{E}_x [\log D_{src}(x)] + \mathbb{E}_{x, c} [\log (1-D_{src}(G(x,c)))] - \lambda_{gp}\mathbb{E}_{\hat{x}}[(\Vert \nabla_{\hat{x}}D_{src}(\hat{x})\Vert_2 -1)^2]&lt;/script&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\lambda_{gp} = 10&lt;/script&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Domain Classification Loss&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\mathcal{L}^r_{cls} = \mathbb{E}_{x, c'}[-\log D_{cls}(c'|x)]&lt;/script&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\mathcal{L}^f_{cls} = \mathbb{E}_{x, c'}[-\log D_{cls}(c|G(x, c)]&lt;/script&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Reconstruction Loss&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\mathcal{L}_{rec} = \mathbb{E}_{x, c, c'}[\Vert x-G(G(x, c), c')\Vert_1]&lt;/script&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Full Objective&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\mathcal{L}_D = -\mathcal{L}_{adv} + \lambda_{cls}\mathcal{L}^r_{cls}&lt;/script&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\mathcal{L}_G = \mathcal{L}_{adv} + \lambda_{cls}\mathcal{L}^f_{cls}+\lambda_{rec}\mathcal{L}_{rec}&lt;/script&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\lambda_{cls} = 1, \lambda_{rec} = 10&lt;/script&gt;
+
+&lt;h1 id=&quot;result&quot;&gt;Result&lt;/h1&gt;
+
+&lt;p&gt;&lt;img src=&quot;/public/img/starganv1/Untitled_3.png&quot; alt=&quot;/public/img/starganv1/Untitled_3.png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/public/img/starganv1/Untitled_4.png&quot; alt=&quot;/public/img/starganv1/Untitled_4.png&quot; /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;training-detail&quot;&gt;Training Detail&lt;/h1&gt;
+
+&lt;p&gt;&lt;img src=&quot;/public/img/starganv1/Untitled_5.png&quot; alt=&quot;/public/img/starganv1/Untitled_5.png&quot; /&gt;&lt;/p&gt;
+</description>
+        <pubDate>Mon, 02 Mar 2020 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/deeplearning/2020/03/02/starganv1/</link>
+        <guid isPermaLink="true">http://localhost:4000/deeplearning/2020/03/02/starganv1/</guid>
         
         <category>Paper</category>
         
@@ -3606,109 +3688,6 @@ pyenv &lt;span class=&quot;nb&quot;&gt;local &lt;/span&gt;system
         
         
         <category>DeepLearning</category>
-        
-      </item>
-    
-      <item>
-        <title>라즈베리파이로 미니 PC 만들기!</title>
-        <description>&lt;p&gt;근래에 라즈베리파이로 미니 PC를 만들었습니다!&lt;/p&gt;
-
-&lt;p&gt;그래서 만드는 과정에 대해 글을 써보려고 합니다!&lt;/p&gt;
-
-&lt;p&gt;제가 사용한 보드는….
-https://www.raspberrypi.org/products/raspberry-pi-3-model-b-plus/&lt;/p&gt;
-
-&lt;p&gt;올해 출시한 라즈베리파이 3 B+ 입니다!(개인적으로 라즈베리를 처음 써봅니다…)&lt;/p&gt;
-
-&lt;p&gt;방열판도 붙여줬지요!&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/pi/01.jpg&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;아래 사진은 제가 HDD를 장착 할 것이기 때문에….SATA 확장보드…그리고 케이스, 어댑터 구매 내역입니다!&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/pi/02.jpg&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;솔직히…부품들 뚝딱 뚝딱 제작(조립이 맞을 듯…)하는 것 보다 알리발 상품들 기다리는게 더 힘들었어요…. 쥬륵….&lt;/p&gt;
-
-&lt;p&gt;7일 정도 기다린것 같네요…..&lt;/p&gt;
-
-&lt;p&gt;박스 오자마자 정말 광속으로 뜯었습니다…..&lt;/p&gt;
-
-&lt;p&gt;케이스
-&lt;img src=&quot;https://jjerry-k.github.io/public/img/pi/03.jpg&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;SATA 확장보드
-&lt;img src=&quot;https://jjerry-k.github.io/public/img/pi/04.jpg&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;전용 어댑터 (5V 4A)
-&lt;img src=&quot;https://jjerry-k.github.io/public/img/pi/05.jpg&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;넘나…감동…&lt;/p&gt;
-
-&lt;p&gt;금방 조립했습니다..&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/pi/06.jpg&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;조립하는데 집중해서 사진을 잘 안찍었어요…쥬륵…&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/pi/07.jpg&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;아…저 맨 아래에 다리는 안달아도 되는거였어요….&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/pi/08.jpg&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;케이스를 분리하면 이렇게 생겼어요…(누가봐도 팬이 달릴 부분..)&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/pi/09.jpg&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;달아줍니다..&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/pi/10.jpg&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;차례 차례 전원 연결…&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/pi/11.jpg&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;뒷판을 조립하고!&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/pi/12.jpg&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;브릿지? 를 연결!&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/pi/13.jpg&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;어댑터 연결 후 켜시면 됩니다…
-좀 더 정확한 크기 확인을 위해 사진을 좀 찍어봤어요!&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/pi/14.jpg&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;제 주먹이랑 한 컷…&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/pi/15.jpg&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;마지막으로 제 12인치 맥북이랑 한컷….&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/pi/16.jpg&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;처음으로 라즈베리파이를 사용해보면서…정말 재밌고 신기하네요 ㅎㅎㅎ
-(물론 가끔 설정하다가 뻑나면…짜증….)&lt;/p&gt;
-
-&lt;p&gt;나중엔 캠을 달아서 사물인식 같은 걸 해볼까 합니다!&lt;/p&gt;
-
-&lt;p&gt;너무….불친절한 글 같네요….&lt;/p&gt;
-
-&lt;p&gt;나중에 또 뭔가 재미난걸 하면 올리겠습니다!&lt;/p&gt;
-
-&lt;p&gt;감사합니다!&lt;/p&gt;
-</description>
-        <pubDate>Tue, 10 Jul 2018 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/living/2018/07/10/Raspberry-Mini-PC/</link>
-        <guid isPermaLink="true">http://localhost:4000/living/2018/07/10/Raspberry-Mini-PC/</guid>
-        
-        <category>Hardware</category>
-        
-        
-        <category>Living</category>
         
       </item>
     

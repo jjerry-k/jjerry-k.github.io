@@ -4,7 +4,7 @@
  <title>Jerry's Blog</title>
  <link href="http://localhost:4000/atom.xml" rel="self"/>
  <link href="http://localhost:4000/"/>
- <updated>2020-03-04T16:09:02+09:00</updated>
+ <updated>2020-03-28T14:39:12+09:00</updated>
  <id>http://localhost:4000</id>
  <author>
    <name>Jerry</name>
@@ -243,6 +243,82 @@ URL: https://arxiv.org/abs/1912.01865&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/starganv2/Untitled_12.png&quot; alt=&quot;https://jjerry-k.github.io/public/img/starganv2/Untitled_12.png&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/starganv2/Untitled_13.png&quot; alt=&quot;https://jjerry-k.github.io/public/img/starganv2/Untitled_13.png&quot; /&gt;&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>StarGAN v1</title>
+   <link href="http://localhost:4000/deeplearning/2020/03/02/starganv1/"/>
+   <updated>2020-03-02T00:00:00+09:00</updated>
+   <id>http://localhost:4000/deeplearning/2020/03/02/starganv1</id>
+   <content type="html">&lt;h1 id=&quot;stargan-unified-generative-adversarial-networks-for-multi-domain-image-to-image-translation&quot;&gt;StarGAN: Unified Generative Adversarial Networks for Multi-Domain Image-to-Image Translation&lt;/h1&gt;
+
+&lt;p&gt;Author: Yunjey Choi, Youngjung Uh, Jaejun Yoo, Jung-Woo Ha
+Date: Dec 21, 2019
+URL: https://arxiv.org/abs/1711.09020&lt;/p&gt;
+
+&lt;h1 id=&quot;introduction&quot;&gt;Introduction&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Multi domain image translation 이라고 하면 다음 사진과 같이 머리 색, 성별, 연령대 등과 같이 여러 condition 에 대응하는 영상을 생성.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/public/img/starganv1/Untitled.png&quot; alt=&quot;/public/img/starganv1/Untitled.png&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;기존의 image-to-image translation 은 n개의 domain 을 적용할 시에 n*(n-1) 개의 generator가 필요했음.&lt;/li&gt;
+  &lt;li&gt;StarGAN은 한 1개의 generator로 n개의 domain 을 적용.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/public/img/starganv1/Untitled_1.png&quot; alt=&quot;/public/img/starganv1/Untitled_1.png&quot; /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;star-generative-adversarial-networks&quot;&gt;Star Generative Adversarial Networks&lt;/h1&gt;
+
+&lt;p&gt;&lt;img src=&quot;/public/img/starganv1/Untitled_2.png&quot; alt=&quot;/public/img/starganv1/Untitled_2.png&quot; /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;loss-functions&quot;&gt;Loss functions&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Adversarial Loss&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\mathcal{L}_{adv} = \mathbb{E}_x [\log D_{src}(x)] + \mathbb{E}_{x, c} [\log (1-D_{src}(G(x,c)))] - \lambda_{gp}\mathbb{E}_{\hat{x}}[(\Vert \nabla_{\hat{x}}D_{src}(\hat{x})\Vert_2 -1)^2]&lt;/script&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\lambda_{gp} = 10&lt;/script&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Domain Classification Loss&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\mathcal{L}^r_{cls} = \mathbb{E}_{x, c'}[-\log D_{cls}(c'|x)]&lt;/script&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\mathcal{L}^f_{cls} = \mathbb{E}_{x, c'}[-\log D_{cls}(c|G(x, c)]&lt;/script&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Reconstruction Loss&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\mathcal{L}_{rec} = \mathbb{E}_{x, c, c'}[\Vert x-G(G(x, c), c')\Vert_1]&lt;/script&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Full Objective&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\mathcal{L}_D = -\mathcal{L}_{adv} + \lambda_{cls}\mathcal{L}^r_{cls}&lt;/script&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\mathcal{L}_G = \mathcal{L}_{adv} + \lambda_{cls}\mathcal{L}^f_{cls}+\lambda_{rec}\mathcal{L}_{rec}&lt;/script&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\lambda_{cls} = 1, \lambda_{rec} = 10&lt;/script&gt;
+
+&lt;h1 id=&quot;result&quot;&gt;Result&lt;/h1&gt;
+
+&lt;p&gt;&lt;img src=&quot;/public/img/starganv1/Untitled_3.png&quot; alt=&quot;/public/img/starganv1/Untitled_3.png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/public/img/starganv1/Untitled_4.png&quot; alt=&quot;/public/img/starganv1/Untitled_4.png&quot; /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;training-detail&quot;&gt;Training Detail&lt;/h1&gt;
+
+&lt;p&gt;&lt;img src=&quot;/public/img/starganv1/Untitled_5.png&quot; alt=&quot;/public/img/starganv1/Untitled_5.png&quot; /&gt;&lt;/p&gt;
 </content>
  </entry>
  

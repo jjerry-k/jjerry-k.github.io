@@ -9,6 +9,14 @@
     } ,
   
     {
+      "title"    : "StarGAN v1",
+      "category" : "DeepLearning",
+      "tags"     : "Paper",
+      "url"      : "/deeplearning/2020/03/02/starganv1/",
+      "date"     : "2020-03-02 00:00:00 +0900"
+    } ,
+  
+    {
       "title"    : "Weights &amp; Biases 가 뭐지??",
       "category" : "DeepLearning",
       "tags"     : "Tools",
