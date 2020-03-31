@@ -273,6 +273,113 @@
   
   <div class="post">
     <h1 class="post-title">
+      <a href="/living/2018/11/07/terminal/">
+        Mac Terminal Customizing
+      </a>
+    </h1>
+
+    <span class="post-date">07 Nov 2018</span>
+     | 
+    
+    <a href="/blog/tags/#macbook" class="post-tag">Macbook</a>
+    
+    
+
+    <h4 style="font-weight: 400; line-height: 1.8;"><article>
+      <p>저는 터미널을 마음대로 바꾸는걸 좋아합니다.<br />
+기본 터미널을 대체할 앱이 있긴하지만 추가적으로 설치하는걸 안좋아해서..ㅎㅎ<br />
+그래서 Customizing 하는 법을 포스팅하려고 합니다.<br />
+Mac 터미널에서 환경변수 설정은 <code class="highlighter-rouge">.bash_profile</code> 에서 합니다.
+Ubuntu 에서 <code class="highlighter-rouge">.bashrc</code>와 같다고 생각하시면 되요.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># terminal customize</span>
+<span class="c"># 컬러 적용 여부</span>
+<span class="nb">export </span><span class="nv">CLICOLOR</span><span class="o">=</span>1
+<span class="c"># 디렉토리의 생상</span>
+<span class="nb">export </span><span class="nv">LSCOLORS</span><span class="o">=</span>GxFxCxDxBxegedabagaced
+<span class="c"># 유저 및 호스트의 색상</span>
+<span class="nb">export </span><span class="nv">PS1</span><span class="o">=</span><span class="s1">'\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;35m\]\w\[\033[00m\]\$'</span>
+</code></pre></div></div>
+
+<p>첫번째 옵션은 1이면 Customizing응 한다는 의미입니다.</p>
+
+<p>두번째 옵션이 좀 문제인데요..<br />
+알아보기 매우 힘듭니다..<br />
+저도 기억하기 힘들어서 포스팅을 하는거죠.<br />
+자..두번째 옵션을 두 부분으로 나눠서 설명드리겠습니다.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Gx Fx Cx Dx Bx
+1x 2x 3x 4x 5x
+
+1x : 디렉토리 색상
+2x : symbolic link 색상
+3x : socket 색상
+4x : pipe 색
+5x : 실행파일 색상
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>eg ed ab ag ac ed
+1a 2b 3c 4d 5e 6f
+
+1a : block special 색상
+2b : char special 색상
+3c : exe_setuid 색상
+4d : ext_setgid 색상
+5e : a-dir_writeothers_sticky 색상
+6f : b-dir_writeothers_NOsticky 색상
+</code></pre></div></div>
+<p>솔직히 socket, pipe, 1a ~ 6f 까지는 뭔지 잘 모르겠습니다..<br />
+제대로 배우지 않아서…ㅎㅎ</p>
+
+<p>색상 설명</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>a     black
+b     red
+c     green
+d     brown
+e     blue
+f     magenta
+g     cyan
+h     light grey
+
+A     bold black
+B     bold red
+C     bold green
+D     bold brown  (거의 노란색)
+E     bold blue
+F     bold magenta
+G     bold cyan
+H     bold light grey (거의 흰색)
+x     default foreground or background
+</code></pre></div></div>
+
+<p>모든 색상설정은 알파벳 두개로 구성이 됩니다.<br />
+앞에 알파벳은 글자의 색상이고 뒤에 알파벳은 배경의 색상입니다.</p>
+
+<p>세번째 옵션을 살펴보겠습니다.<br />
+이 옵션 또한 복잡하게 써있네요..</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;35m\]\w\[\033[00m\]\$'
+
+</code></pre></div></div>
+
+<p>이건 터미널을 켰을때 유저와 PC 이름을 어떻게 보여줄 것인가를 정합니다.</p>
+
+<p><code class="highlighter-rouge">'\[\033[01;32m\]\u@\h\[\033[00m\]</code> 에서 {USER_NAME}@{PC_NAME}을 초록색 볼드체로 하겠다라는 의미입니다. (01 : 볼드체, 32m : 초록색)</p>
+
+<p><code class="highlighter-rouge">\[\033[01;35m\]\w\[\033[00m\]</code> 에서 ~을 자주색 볼드체로 하겠다라는 의미입니다. (01 : 볼드체, 35m : 자주색)</p>
+
+<p>자세한 정보는 추후에 더 추가하겠습니다!</p>
+
+    <article></h4>
+    <div class="post-more">
+      
+      <a href="/living/2018/11/07/terminal/#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
+      
+      <a href="/living/2018/11/07/terminal/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
+    </div>
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
       <a href="/blog/2018/10/24/gitblog/">
         Github 블로그 만들기
       </a>
@@ -1158,61 +1265,6 @@ print(a + b)
       <a href="/blog/2018/10/19/markdown/#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
       
       <a href="/blog/2018/10/19/markdown/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
-    </div>
-  </div>
-  
-  <div class="post">
-    <h1 class="post-title">
-      <a href="/deeplearning/2018/10/18/condavspip/">
-        pip 로 설치하지 말라구요!?
-      </a>
-    </h1>
-
-    <span class="post-date">18 Oct 2018</span>
-     | 
-    
-    <a href="/blog/tags/#tensorflow" class="post-tag">TensorFlow</a>
-    
-    
-
-    <h4 style="font-weight: 400; line-height: 1.8;"><article>
-      <p>오늘 갑자기 당황스러운 포스팅을 봤습니다.</p>
-
-<p>출처 : <a href="https://www.anaconda.com/blog/developer-blog/tensorflow-in-anaconda/"><strong>https://www.anaconda.com/blog/developer-blog/tensorflow-in-anaconda/</strong></a></p>
-
-<p>내용을 보니 pip 로 설치하는것 보다 conda를 이용하면 좋은 점이 두 가지가 있다고 합니다.</p>
-
-<ol>
-  <li>
-    <p>CPU 성능이 더 빨라졌다.
-<img src="https://www.anaconda.com/wp-content/uploads/TensorFlowTraining.png" /></p>
-  </li>
-  <li>
-    <p>GPU 버전 설치가 쉽다.<br />
-  솔직히 이건 잘 모르겠네요.. <br />
-  둘 다 똑같이 그래픽 드라이버 설치하고 CUDA 설치하고 해야하는데 뭐가 쉬워진다는건지..<br />
-  뭐.. 어떤 쿠다 버전을 설치했던 알아서 잡아서 TensorFlow 를 설치해준다면 편해진건 맞겠군요.</p>
-  </li>
-</ol>
-
-<p>그리고 CPU 성능 증가는 <strong>Intel CPU에 한해서</strong> 빨라지는 것 같습니다.</p>
-
-<p><img src="https://jjerry-k.github.io/public/img/nopip/02.png" /></p>
-
-<p>사진을 보시면 <strong>the Intel® Math Kernel Library for Deep Neural Networks (Intel® MKL-DNN)</strong> 을 사용해서 올렸다는거죠. (AMD 사용자 쥬륵..)</p>
-
-<p>뭐 아무튼… 인텔에 텐플쓰시는 분들은 콘다로 넘어가심이 좋을 듯합니다.</p>
-
-<p>전 요즘 pytorch 를 쓰고 있어서 ㅎㅎ..</p>
-
-<p>읽어주셔서 감사합니다 ㅎㅎ</p>
-
-    <article></h4>
-    <div class="post-more">
-      
-      <a href="/deeplearning/2018/10/18/condavspip/#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
-      
-      <a href="/deeplearning/2018/10/18/condavspip/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
     </div>
   </div>
   

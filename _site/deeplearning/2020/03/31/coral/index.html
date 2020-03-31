@@ -11,7 +11,7 @@
 
   <title>
     
-      StarGAN v1 &middot; Jerry's Blog
+      Google Coral USB 사용기 &middot; Jerry's Blog
     
   </title>
 
@@ -270,85 +270,125 @@
 
       <div class="container content">
         <div class="post">
-  <h1 class="post-title">StarGAN v1</h1>
-  <h4 style="margin-top:0;"><span class="post-date">02 Mar 2020</span>
+  <h1 class="post-title">Google Coral USB 사용기</h1>
+  <h4 style="margin-top:0;"><span class="post-date">31 Mar 2020</span>
    |
   
-    <a href="/blog/tags/#paper" class="post-tag">Paper</a>
+    <a href="/blog/tags/#tools" class="post-tag">Tools</a>
   
   
   </h4>
   <h4 style="font-weight: 400; line-height: 1.8;"><article>
-    <h1 id="stargan-unified-generative-adversarial-networks-for-multi-domain-image-to-image-translation">StarGAN: Unified Generative Adversarial Networks for Multi-Domain Image-to-Image Translation</h1>
+    <h1 id="raspberry-pi-4--google-coral-usb-accelerator">Raspberry pi 4 &amp; Google Coral USB Accelerator</h1>
 
-<p>Author: Yunjey Choi, Youngjung Uh, Jaejun Yoo, Jung-Woo Ha
-Date: Dec 21, 2019
-URL: https://arxiv.org/abs/1711.09020</p>
+<p>평소에 라즈베리파이 4를 NAS로 사용하고 있었습니다.  <a href="https://jjerry-k.github.io/living/2018/07/10/Raspberry-Mini-PC/">이런 느낌으로..</a></p>
 
-<h1 id="introduction">Introduction</h1>
+<p>하지만…항상 마음 속에는 “흠….라즈베리파이로 딥러닝을 돌려보고 싶다…” 라는 생각을 하고 있었죠.</p>
 
-<ul>
-  <li>Multi domain image translation 이라고 하면 다음 사진과 같이 머리 색, 성별, 연령대 등과 같이 여러 condition 에 대응하는 영상을 생성.</li>
-</ul>
+<p>평소와 같이 <del>평화로운 중고나라</del> 를 탐색하고 있었습니다. (모니터가 사고 싶어서 ….)</p>
 
-<p><img src="https://jjerry-k.github.io/public/img/starganv1/Untitled.png" alt="/public/img/starganv1/Untitled.png" /></p>
+<p>근데 . . 갑자기 . . ? 왜 인지 모르겠지만 Google Coral USB Accelerator 를 검색하고 싶더군요.</p>
 
-<ul>
-  <li>기존의 image-to-image translation 은 n개의 domain 을 적용할 시에 n*(n-1) 개의 generator가 필요했음.</li>
-  <li>StarGAN은 한 1개의 generator로 n개의 domain 을 적용.</li>
-</ul>
+<p>그래서 바로 검색을 했고 7마넌(나름 저렴)에 올라와있길래 일요일에 주문을 했습니다.</p>
 
-<p><img src="https://jjerry-k.github.io/public/img/starganv1/Untitled_1.png" alt="/public/img/starganv1/Untitled_1.png" /></p>
+<p>그리고 오늘 집에 도착을 했죠.</p>
 
-<h1 id="star-generative-adversarial-networks">Star Generative Adversarial Networks</h1>
+<p>이제 사용을 해보려고 합니다.</p>
 
-<p><img src="https://jjerry-k.github.io/public/img/starganv1/Untitled_2.png" alt="/public/img/starganv1/Untitled_2.png" /></p>
+<p>준비물을 소개하도록 하죠.</p>
 
-<h1 id="loss-functions">Loss functions</h1>
+<h1 id="준비물">준비물</h1>
 
 <ul>
-  <li>Adversarial Loss</li>
+  <li>라즈베리 파이</li>
+  <li>Coral Accelerator</li>
+  <li>Webcam</li>
 </ul>
 
-<script type="math/tex; mode=display">\mathcal{L}_{adv} = \mathbb{E}_x [\log D_{src}(x)] + \mathbb{E}_{x, c} [\log (1-D_{src}(G(x,c)))] - \lambda_{gp}\mathbb{E}_{\hat{x}}[(\Vert \nabla_{\hat{x}}D_{src}(\hat{x})\Vert_2 -1)^2]</script>
+<p><img src="https://jjerry-k.github.io/public/img/coral/01.png" alt="01.jpg" /></p>
 
-<script type="math/tex; mode=display">\lambda_{gp} = 10</script>
+<h1 id="step-1-연결">Step 1. 연결</h1>
 
-<ul>
-  <li>Domain Classification Loss</li>
-</ul>
+<p><img src="https://jjerry-k.github.io/public/img/coral/02.png" alt="02.jpg" /></p>
 
-<script type="math/tex; mode=display">\mathcal{L}^r_{cls} = \mathbb{E}_{x, c'}[-\log D_{cls}(c'|x)]</script>
+<p><img src="https://jjerry-k.github.io/public/img/coral/03.png" alt="03.jpg" /></p>
 
-<script type="math/tex; mode=display">\mathcal{L}^f_{cls} = \mathbb{E}_{x, c'}[-\log D_{cls}(c|G(x, c)]</script>
+<p>모두 연결 후 라즈베리파이를 켜면 위 사진과 같이 USB에 흰색 불이 들어옵니다.</p>
 
-<ul>
-  <li>Reconstruction Loss</li>
-</ul>
+<h1 id="step-2-라즈베리파이-세팅">Step 2. 라즈베리파이 세팅</h1>
 
-<script type="math/tex; mode=display">\mathcal{L}_{rec} = \mathbb{E}_{x, c, c'}[\Vert x-G(G(x, c), c')\Vert_1]</script>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#!/bin/bash</span>
 
-<ul>
-  <li>Full Objective</li>
-</ul>
+<span class="nb">echo</span> <span class="s2">"deb https://packages.cloud.google.com/apt coral-edgetpu-stable main"</span> | <span class="nb">sudo tee</span> /etc/apt/sources.list.d/coral-edgetpu.list
 
-<script type="math/tex; mode=display">\mathcal{L}_D = -\mathcal{L}_{adv} + \lambda_{cls}\mathcal{L}^r_{cls}</script>
+curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | <span class="nb">sudo </span>apt-key add -
 
-<script type="math/tex; mode=display">\mathcal{L}_G = \mathcal{L}_{adv} + \lambda_{cls}\mathcal{L}^f_{cls}+\lambda_{rec}\mathcal{L}_{rec}</script>
+<span class="nb">sudo </span>apt-get update
 
-<script type="math/tex; mode=display">\lambda_{cls} = 1, \lambda_{rec} = 10</script>
+<span class="nb">sudo </span>apt-get <span class="nb">install </span>libedgetpu1-std
 
-<h1 id="result">Result</h1>
+<span class="c"># Check Your Platform </span>
+<span class="c"># https://www.tensorflow.org/lite/guide/python</span>
+<span class="nb">sudo </span>pip3 <span class="nb">install </span>https://dl.google.com/coral/python/tflite_runtime-2.1.0.post1-cp37-cp37m-linux_armv7l.whl
 
-<p><img src="https://jjerry-k.github.io/public/img/starganv1/Untitled_3.png" alt="/public/img/starganv1/Untitled_3.png" /></p>
+<span class="c">#!/bin/bash</span>
 
-<p><img src="https://jjerry-k.github.io/public/img/starganv1/Untitled_4.png" alt="/public/img/starganv1/Untitled_4.png" /></p>
+git clone https://github.com/google-coral/examples-camera.git
 
-<h1 id="training-detail">Training Detail</h1>
+<span class="nb">cd </span>examples-camera
 
-<p><img src="https://jjerry-k.github.io/public/img/starganv1/Untitled_5.png" alt="/public/img/starganv1/Untitled_5.png" /></p>
+sh download_models.sh
+</code></pre></div></div>
 
-<p><img src="https://jjerry-k.github.io/public/img/starganv1/Untitled_6.png" alt="/public/img/starganv1/Untitled_6.png" /></p>
+<p><code class="highlighter-rouge">download_models.sh</code>를 실행하시면 다음과 같이  <code class="highlighter-rouge">all_models</code>라는 디렉토리 안에 각 데이터셋 별 labelmap.txt와 학습된 모델의 tflite 파일이 있습니다.</p>
+
+<p>여기서 밑줄 친 파일을 이용해서 object detection 을 해볼겁니다! 일단 그 다음 세팅으로 넘어가죠.</p>
+
+<p><img src="https://jjerry-k.github.io/public/img/coral/04.png" alt="04.png" /></p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#!/bin/bash</span>
+
+<span class="nb">cd </span>opencv
+
+sh install_requirements.sh
+</code></pre></div></div>
+
+<p>opencv를 이용한 스크립트를 사용하기 위해 필요한 것들을 설치합니다.</p>
+
+<h1 id="step-3-스크립트-실행">Step 3. 스크립트 실행</h1>
+
+<p>이제 opencv 디렉토리 안에 detect.py를 실행 시켜줄건데요. 옵션이 몇개 있습니다. 한번 살펴보도록 하죠.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>usage: detect.py [-h] [--model MODEL] [--labels LABELS] [--top_k TOP_K]
+                 [--camera_idx CAMERA_IDX] [--threshold THRESHOLD]
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --model MODEL         .tflite model path
+  --labels LABELS       label file path
+  --top_k TOP_K         number of categories with highest score to display
+  --camera_idx CAMERA_IDX
+                        Index of which video source to use.
+  --threshold THRESHOLD
+                        classifier score threshold
+</code></pre></div></div>
+
+<p>한번 다음과 같이 실행을 해보겠습니다.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python detect.py \
+--model ../all_models/mobilenet_ssd_v2_face_quant_postprocess_edgetpu.tflite \
+--labels ../all_models/coco_labels.txt \
+--top_k 3 \
+--threshold 0.7
+</code></pre></div></div>
+
+<p><img src="https://jjerry-k.github.io/public/img/coral/05.png" alt="05.png" /></p>
+
+<p>막 빠를 줄 알았는데 Webcam 의 한계라 그런지… FPS가 낮네요..</p>
+
+<p>추후에 카메라 모듈을 이용해서 해봐야겠습니다.</p>
+
+<p>그럼 간단한 이용기를 마치겠습니다.</p>
 
   </article></h4>
 </div>
@@ -365,8 +405,8 @@ URL: https://arxiv.org/abs/1711.09020</p>
   <div id="disqus_thread"></div>
   <script>
 var disqus_config = function () {
-  this.page.url = 'http://localhost:4000/deeplearning/2020/03/02/starganv1/'; // Replace PAGE_URL with your page's canonical URL variable
-  this.page.identifier = '/deeplearning/2020/03/02/starganv1'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+  this.page.url = 'http://localhost:4000/deeplearning/2020/03/31/coral/'; // Replace PAGE_URL with your page's canonical URL variable
+  this.page.identifier = '/deeplearning/2020/03/31/coral'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
 };
 (function() {
   var d = document, s = d.createElement('script');

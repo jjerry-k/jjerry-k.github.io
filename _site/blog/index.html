@@ -273,6 +273,141 @@
   
   <div class="post">
     <h1 class="post-title">
+      <a href="/deeplearning/2020/03/31/coral/">
+        Google Coral USB 사용기
+      </a>
+    </h1>
+
+    <span class="post-date">31 Mar 2020</span>
+     | 
+    
+    <a href="/blog/tags/#tools" class="post-tag">Tools</a>
+    
+    
+
+    <h4 style="font-weight: 400; line-height: 1.8;"><article>
+      <h1 id="raspberry-pi-4--google-coral-usb-accelerator">Raspberry pi 4 &amp; Google Coral USB Accelerator</h1>
+
+<p>평소에 라즈베리파이 4를 NAS로 사용하고 있었습니다.  <a href="https://jjerry-k.github.io/living/2018/07/10/Raspberry-Mini-PC/">이런 느낌으로..</a></p>
+
+<p>하지만…항상 마음 속에는 “흠….라즈베리파이로 딥러닝을 돌려보고 싶다…” 라는 생각을 하고 있었죠.</p>
+
+<p>평소와 같이 <del>평화로운 중고나라</del> 를 탐색하고 있었습니다. (모니터가 사고 싶어서 ….)</p>
+
+<p>근데 . . 갑자기 . . ? 왜 인지 모르겠지만 Google Coral USB Accelerator 를 검색하고 싶더군요.</p>
+
+<p>그래서 바로 검색을 했고 7마넌(나름 저렴)에 올라와있길래 일요일에 주문을 했습니다.</p>
+
+<p>그리고 오늘 집에 도착을 했죠.</p>
+
+<p>이제 사용을 해보려고 합니다.</p>
+
+<p>준비물을 소개하도록 하죠.</p>
+
+<h1 id="준비물">준비물</h1>
+
+<ul>
+  <li>라즈베리 파이</li>
+  <li>Coral Accelerator</li>
+  <li>Webcam</li>
+</ul>
+
+<p><img src="https://jjerry-k.github.io/public/img/coral/01.png" alt="01.jpg" /></p>
+
+<h1 id="step-1-연결">Step 1. 연결</h1>
+
+<p><img src="https://jjerry-k.github.io/public/img/coral/02.png" alt="02.jpg" /></p>
+
+<p><img src="https://jjerry-k.github.io/public/img/coral/03.png" alt="03.jpg" /></p>
+
+<p>모두 연결 후 라즈베리파이를 켜면 위 사진과 같이 USB에 흰색 불이 들어옵니다.</p>
+
+<h1 id="step-2-라즈베리파이-세팅">Step 2. 라즈베리파이 세팅</h1>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#!/bin/bash</span>
+
+<span class="nb">echo</span> <span class="s2">"deb https://packages.cloud.google.com/apt coral-edgetpu-stable main"</span> | <span class="nb">sudo tee</span> /etc/apt/sources.list.d/coral-edgetpu.list
+
+curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | <span class="nb">sudo </span>apt-key add -
+
+<span class="nb">sudo </span>apt-get update
+
+<span class="nb">sudo </span>apt-get <span class="nb">install </span>libedgetpu1-std
+
+<span class="c"># Check Your Platform </span>
+<span class="c"># https://www.tensorflow.org/lite/guide/python</span>
+<span class="nb">sudo </span>pip3 <span class="nb">install </span>https://dl.google.com/coral/python/tflite_runtime-2.1.0.post1-cp37-cp37m-linux_armv7l.whl
+
+<span class="c">#!/bin/bash</span>
+
+git clone https://github.com/google-coral/examples-camera.git
+
+<span class="nb">cd </span>examples-camera
+
+sh download_models.sh
+</code></pre></div></div>
+
+<p><code class="highlighter-rouge">download_models.sh</code>를 실행하시면 다음과 같이  <code class="highlighter-rouge">all_models</code>라는 디렉토리 안에 각 데이터셋 별 labelmap.txt와 학습된 모델의 tflite 파일이 있습니다.</p>
+
+<p>여기서 밑줄 친 파일을 이용해서 object detection 을 해볼겁니다! 일단 그 다음 세팅으로 넘어가죠.</p>
+
+<p><img src="https://jjerry-k.github.io/public/img/coral/04.png" alt="04.png" /></p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#!/bin/bash</span>
+
+<span class="nb">cd </span>opencv
+
+sh install_requirements.sh
+</code></pre></div></div>
+
+<p>opencv를 이용한 스크립트를 사용하기 위해 필요한 것들을 설치합니다.</p>
+
+<h1 id="step-3-스크립트-실행">Step 3. 스크립트 실행</h1>
+
+<p>이제 opencv 디렉토리 안에 detect.py를 실행 시켜줄건데요. 옵션이 몇개 있습니다. 한번 살펴보도록 하죠.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>usage: detect.py [-h] [--model MODEL] [--labels LABELS] [--top_k TOP_K]
+                 [--camera_idx CAMERA_IDX] [--threshold THRESHOLD]
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --model MODEL         .tflite model path
+  --labels LABELS       label file path
+  --top_k TOP_K         number of categories with highest score to display
+  --camera_idx CAMERA_IDX
+                        Index of which video source to use.
+  --threshold THRESHOLD
+                        classifier score threshold
+</code></pre></div></div>
+
+<p>한번 다음과 같이 실행을 해보겠습니다.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python detect.py \
+--model ../all_models/mobilenet_ssd_v2_face_quant_postprocess_edgetpu.tflite \
+--labels ../all_models/coco_labels.txt \
+--top_k 3 \
+--threshold 0.7
+</code></pre></div></div>
+
+<p><img src="https://jjerry-k.github.io/public/img/coral/05.png" alt="05.png" /></p>
+
+<p>막 빠를 줄 알았는데 Webcam 의 한계라 그런지… FPS가 낮네요..</p>
+
+<p>추후에 카메라 모듈을 이용해서 해봐야겠습니다.</p>
+
+<p>그럼 간단한 이용기를 마치겠습니다.</p>
+
+    <article></h4>
+    <div class="post-more">
+      
+      <a href="/deeplearning/2020/03/31/coral/#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
+      
+      <a href="/deeplearning/2020/03/31/coral/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
+    </div>
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
       <a href="/deeplearning/2020/03/04/starganv2/">
         StarGAN v2 리뷰
       </a>
@@ -549,18 +684,18 @@ URL: https://arxiv.org/abs/1711.09020</p>
   <li>Multi domain image translation 이라고 하면 다음 사진과 같이 머리 색, 성별, 연령대 등과 같이 여러 condition 에 대응하는 영상을 생성.</li>
 </ul>
 
-<p><img src="/public/img/starganv1/Untitled.png" alt="/public/img/starganv1/Untitled.png" /></p>
+<p><img src="https://jjerry-k.github.io/public/img/starganv1/Untitled.png" alt="/public/img/starganv1/Untitled.png" /></p>
 
 <ul>
   <li>기존의 image-to-image translation 은 n개의 domain 을 적용할 시에 n*(n-1) 개의 generator가 필요했음.</li>
   <li>StarGAN은 한 1개의 generator로 n개의 domain 을 적용.</li>
 </ul>
 
-<p><img src="/public/img/starganv1/Untitled_1.png" alt="/public/img/starganv1/Untitled_1.png" /></p>
+<p><img src="https://jjerry-k.github.io/public/img/starganv1/Untitled_1.png" alt="/public/img/starganv1/Untitled_1.png" /></p>
 
 <h1 id="star-generative-adversarial-networks">Star Generative Adversarial Networks</h1>
 
-<p><img src="/public/img/starganv1/Untitled_2.png" alt="/public/img/starganv1/Untitled_2.png" /></p>
+<p><img src="https://jjerry-k.github.io/public/img/starganv1/Untitled_2.png" alt="/public/img/starganv1/Untitled_2.png" /></p>
 
 <h1 id="loss-functions">Loss functions</h1>
 
@@ -598,13 +733,15 @@ URL: https://arxiv.org/abs/1711.09020</p>
 
 <h1 id="result">Result</h1>
 
-<p><img src="/public/img/starganv1/Untitled_3.png" alt="/public/img/starganv1/Untitled_3.png" /></p>
+<p><img src="https://jjerry-k.github.io/public/img/starganv1/Untitled_3.png" alt="/public/img/starganv1/Untitled_3.png" /></p>
 
-<p><img src="/public/img/starganv1/Untitled_4.png" alt="/public/img/starganv1/Untitled_4.png" /></p>
+<p><img src="https://jjerry-k.github.io/public/img/starganv1/Untitled_4.png" alt="/public/img/starganv1/Untitled_4.png" /></p>
 
 <h1 id="training-detail">Training Detail</h1>
 
-<p><img src="/public/img/starganv1/Untitled_5.png" alt="/public/img/starganv1/Untitled_5.png" /></p>
+<p><img src="https://jjerry-k.github.io/public/img/starganv1/Untitled_5.png" alt="/public/img/starganv1/Untitled_5.png" /></p>
+
+<p><img src="https://jjerry-k.github.io/public/img/starganv1/Untitled_6.png" alt="/public/img/starganv1/Untitled_6.png" /></p>
 
     <article></h4>
     <div class="post-more">
@@ -939,254 +1076,6 @@ URL: https://arxiv.org/abs/1704.04861</p>
       <a href="/deeplearning/2020/02/26/MobileNets-Efficient-Convolutional-Neural-Networks/#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
       
       <a href="/deeplearning/2020/02/26/MobileNets-Efficient-Convolutional-Neural-Networks/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
-    </div>
-  </div>
-  
-  <div class="post">
-    <h1 class="post-title">
-      <a href="/deeplearning/2020/02/16/Xception/">
-        Xception
-      </a>
-    </h1>
-
-    <span class="post-date">16 Feb 2020</span>
-     | 
-    
-    <a href="/blog/tags/#paper" class="post-tag">Paper</a>
-    
-    
-
-    <h4 style="font-weight: 400; line-height: 1.8;"><article>
-      <h1 id="xception-deep-learning-with-depthwise-separable-convolution">Xception: Deep Learning with Depthwise Separable Convolution</h1>
-
-<p>Author: Franc¸ois Chollet<br />
-Date: Dec 19, 2016<br />
-URL: https://arxiv.org/abs/1610.02357</p>
-
-<hr />
-
-<h1 id="abstract">Abstract</h1>
-
-<ul>
-  <li>CNN 에서 많이 사용되는 Inception 은 Regular Convolution 과 Depthwise Separable Convolution 의 중간 단계.</li>
-  <li>Depthwise Separable Convolution 은 최대 개수의 타워를 가진 Inception module (?)</li>
-  <li>Inception module을 Depthwise Separable Convolution 으로 대체한 새로운 Deep Convolutional Neural Network 제안.</li>
-  <li>Xception 이라고 칭함.</li>
-  <li>ImageNet 으로 학습된 Inception V3 보다 살짝 성능이 좋고 350,000,000개의 이미지와 17,000개의 클래스로 구성된 Larger image dataset 에선 Inception V3 보다 월등히 뛰어난 성능을 보임.</li>
-  <li>Inception V3와 Xception 이 동일한 parameter 수를 가짐.</li>
-  <li>그러므로 연산량, 메모리의 증가가 아닌 모델 parameter를 효과적으로 사용해서 성능 향상이 된 것.</li>
-</ul>
-
-<h1 id="1introduction"><strong>1. Introduction</strong></h1>
-
-<ul>
-  <li>Convolutional Neural Network (이하 CNN) 은 Computer Vision 에서 가장 주요한 알고리즘이 되었고, 이를 설계하는 방법에 대해 개발하는데 많은 관심을 가지게 됨.</li>
-  <li>Lenet -&gt; AlexNet (2012) -&gt; ZFNet (2013) -&gt; VGG (2014) -&gt; Inception 종류 … -&gt; Inception-ResNet (2015)</li>
-  <li>Inception 스타일의 기본 구성 요소는 Inception module.</li>
-  <li>
-    <p>Figure 1은 Inception V3 의 표준 Inception Module.</p>
-
-    <p><img src="https://jjerry-k.github.io/public/img/xception/Untitled.png" alt="https://jjerry-k.github.io/public/img/xception/Untitled.png" /></p>
-  </li>
-  <li>Inception 모델은 위와 같은 모듈을 Stack 한 것. VGG-Style 네트워크는 단순히 Convolution layer를 Stack.</li>
-  <li>실험적으로 Inception-style 이 VGG-style보다 적은 parameter로 다양한, 많은 feature를 학습 할 수 있다는 것을 보임.</li>
-</ul>
-
-<h2 id="11theinceptionhypothesis"><strong>1.1 The Inception hypothesis</strong></h2>
-
-<ul>
-  <li>Convolution layer는 3차원 공간에서 filter를 학습하려고 함.</li>
-  <li>Single Convolution kernel 은 채널의 correlation과 공간의 correlation 을 동시에 mapping 함.</li>
-  <li>Inception 모듈은 채널, 공간의 correlation 을 독립적으로 나타낼 수 있도록 연산을 분해. -&gt; 쉽고 효율적인 프로세스를 만듦.</li>
-  <li>Inception의 가설은 채널 채널, 공간의 correlation 이 분리되어 있으므로 동시에 매핑하는 것은 좋지 않다는 것.</li>
-  <li>
-    <p>Figure 2는 3x3 conv와 1x1 conv만 사용한 단순화한 Inception 모듈.</p>
-
-    <p><img src="https://jjerry-k.github.io/public/img/xception/Untitled_1.png" alt="https://jjerry-k.github.io/public/img/xception/Untitled_1.png" /></p>
-  </li>
-  <li>
-    <p>Figure 3은 Figure 2의 Inception 모듈에서 하나의 큰 1x1 Convolution과 3x3 Convolution들로 재구성한 것.</p>
-
-    <p><img src="https://jjerry-k.github.io/public/img/xception/Untitled_2.png" alt="https://jjerry-k.github.io/public/img/xception/Untitled_2.png" /></p>
-  </li>
-  <li>이 방법이 Inception 의 가설보다 뛰어난 가설을 만드는 것이 합리적인 것일지, 채널과 공간을 독립적으로 매핑할 수 있는지 의문.</li>
-</ul>
-
-<h2 id="12thecontinuumbetweenconvolutionsandseparableconvolutions"><strong>1.2 The continuum between convolutions and separable convolutions</strong></h2>
-
-<ul>
-  <li>
-    <p>Figure 4 처럼 Inception 모듈 구성.</p>
-
-    <p><img src="https://jjerry-k.github.io/public/img/xception/Untitled_3.png" alt="https://jjerry-k.github.io/public/img/xception/Untitled_3.png" /></p>
-  </li>
-  <li>1x1 Convolution 적용하여 채널의 correlation 매핑, 그 후 각각의 channel별로 공간의 correlation 매핑</li>
-  <li>이를 <strong>An “extreme” version of an Inception module</strong> 이라고 칭함.</li>
-  <li>TensorFlow 프레임워크에 Depthwise Separable Convolution 연산과 거의 동일함.</li>
-  <li>TensorFlow나 Keras 프레임워크에 있는 Depthwise Separable Convolution (Separable Convolution 라고도 불림.) 은 각 channel 별로 3x3 Convolution 적용 후 채널간의 1x1 Convolution 적용.</li>
-  <li>영상처리 분야에서 사용하는 Separable Convolution 과 혼동하면 안됨, 이 연산은 공간적 분리를 하는 Convolution.</li>
-</ul>
-
-<table>
-  <thead>
-    <tr>
-      <th style="text-align: center">비교</th>
-      <th style="text-align: center">Extream</th>
-      <th style="text-align: center">Depthwise Separable</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align: center">연산순서</td>
-      <td style="text-align: center">pointwise–&gt;channelwise</td>
-      <td style="text-align: center">channelwise–&gt;pointwise</td>
-    </tr>
-    <tr>
-      <td style="text-align: center">비선형성</td>
-      <td style="text-align: center">Presence</td>
-      <td style="text-align: center">Absence</td>
-    </tr>
-  </tbody>
-</table>
-
-<h1 id="2priorwork"><strong>2. Prior work</strong></h1>
-
-<ul>
-  <li>VGG-16 과 같은 구조가 xception 과 유사.</li>
-  <li>Inception 구조는 가지치기의 이점을 보여줌.</li>
-  <li>Depthwise separable convolution는 경량화에도 적합.</li>
-  <li>TensorFlow에는 이미 구현되어있음.</li>
-  <li>Residual connection 을 광범위하게 사용.</li>
-</ul>
-
-<h1 id="3thexceptionarchitecture"><strong>3. The Xception architecture</strong></h1>
-
-<p><img src="https://jjerry-k.github.io/public/img/xception/Untitled_4.png" alt="https://jjerry-k.github.io/public/img/xception/Untitled_4.png" /></p>
-
-<ul>
-  <li>Figure 5 와 같은 구조 제안.</li>
-  <li>처음과 마지막을 제외하곤 linear residual module 사용.</li>
-  <li>총 36개의 convolution layer로 구성.</li>
-  <li>매우 단순한 구조.</li>
-</ul>
-
-<h1 id="4experimentalevaluation"><strong>4. Experimental evaluation</strong></h1>
-
-<ul>
-  <li>Xception과 Inceotion V3 비교.</li>
-  <li>Parameters가 비슷. 네트워크 규모에 대한 차이를 없애기 위함.</li>
-  <li>ImageNet과 JFT dataset 이용.</li>
-</ul>
-
-<h2 id="41thejftdataset"><strong>4.1 The JFT dataset</strong></h2>
-
-<ul>
-  <li>그냥…JFT 데이터 설명…</li>
-  <li>Google 데이터 중 하나</li>
-  <li>JFT 로 학습, FastEval14k dataset으로 성능 비교.</li>
-</ul>
-
-<h2 id="42optimizationconfiguration"><strong>4.2 Optimization configuration</strong></h2>
-
-<ul>
-  <li>각 방법에 대해서 다음과 같은 설정으로 Xception, Inception V3 모두 학습</li>
-  <li>On ImageNet
-    <ul>
-      <li>Optimizer: SGD</li>
-      <li>Momentum: 0.9</li>
-      <li>Initial learning rate: 0.045</li>
-      <li>Learning rate decay: 0.94 (every 2 epochs)</li>
-    </ul>
-  </li>
-  <li>On JFT
-    <ul>
-      <li>Optimizer: RMSprop</li>
-      <li>Momentum: 0.9</li>
-      <li>Initial learning rate: 0.001</li>
-      <li>Learning rate decay: 0.9 (every 3,000,000 samples)</li>
-    </ul>
-  </li>
-</ul>
-
-<h2 id="43regularizationconfiguration"><strong>4.3 Regularization configuration</strong></h2>
-
-<ul>
-  <li>Weight decay</li>
-  <li>Dropout</li>
-  <li>Auxiliary loss tower</li>
-</ul>
-
-<h2 id="44traininginfrastructure"><strong>4.4 Training infrastructure</strong></h2>
-
-<ul>
-  <li>80개의 NVIDIA K80 GPU ….</li>
-  <li>ImageNet 학습시 <strong>synchronous gradient descent</strong>을 적용하여 data parallelism 이용. → 3일 소요</li>
-  <li>JFT 학습시 <strong>asynchronous gradient descent</strong>을 적용하여 data parallelism 이용. →한달 소요</li>
-</ul>
-
-<h2 id="45comparisonwithinceptionv3"><strong>4.5 Comparison with Inception V3</strong></h2>
-
-<h3 id="451classificationperformance"><strong>4.5.1 Classification performance</strong></h3>
-
-<ul>
-  <li>
-    <p>두 데이터 모두 Xception이 좋은 성능을 보임.</p>
-
-    <p><img src="https://jjerry-k.github.io/public/img/xception/Untitled_5.png" alt="https://jjerry-k.github.io/public/img/xception/Untitled_5.png" /></p>
-
-    <p><img src="https://jjerry-k.github.io/public/img/xception/Untitled_6.png" alt="https://jjerry-k.github.io/public/img/xception/Untitled_6.png" /></p>
-
-    <p><img src="https://jjerry-k.github.io/public/img/xception/Untitled_7.png" alt="https://jjerry-k.github.io/public/img/xception/Untitled_7.png" /></p>
-
-    <p><img src="https://jjerry-k.github.io/public/img/xception/Untitled_8.png" alt="https://jjerry-k.github.io/public/img/xception/Untitled_8.png" /></p>
-
-    <p><img src="https://jjerry-k.github.io/public/img/xception/Untitled_9.png" alt="https://jjerry-k.github.io/public/img/xception/Untitled_9.png" /></p>
-  </li>
-</ul>
-
-<h3 id="452sizeandspeed"><strong>4.5.2 Size and speed</strong></h3>
-
-<ul>
-  <li>
-    <p>Parameter가 늘지 않으면서 성능 향상을 보이기에 Xception이 효율적인 모델.</p>
-
-    <p><img src="https://jjerry-k.github.io/public/img/xception/Untitled_10.png" alt="https://jjerry-k.github.io/public/img/xception/Untitled_10.png" /></p>
-  </li>
-</ul>
-
-<h3 id="46effectoftheresidualconnections"><strong>4.6 Effect of the residual connections</strong></h3>
-
-<ul>
-  <li>Residual connection에 대한 ablation study 진행.</li>
-  <li>Residual connection의 중요성을 보여줌.</li>
-</ul>
-
-<p><img src="https://jjerry-k.github.io/public/img/xception/Untitled_11.png" alt="https://jjerry-k.github.io/public/img/xception/Untitled_11.png" /></p>
-
-<h3 id="47effectofanintermediateactivationafterpointwiseconvolutions"><strong>4.7 Effect of an intermediate activation after point wise convolutions</strong></h3>
-
-<ul>
-  <li>Depthwise separable convolution은 depthwise → pointwise convolution으로 구성되어있음.</li>
-  <li>
-    <p>그 중간에 activation function에 대한 ablation study 진행.</p>
-
-    <p><img src="https://jjerry-k.github.io/public/img/xception/Untitled_12.png" alt="https://jjerry-k.github.io/public/img/xception/Untitled_12.png" /></p>
-  </li>
-  <li><a href="https://arxiv.org/pdf/1512.00567.pdf">Inception module에 대한 연구</a>와 반대되는 결과 도출.</li>
-</ul>
-
-<h1 id="5futuredirections"><strong>5. Future directions</strong></h1>
-
-<ul>
-  <li>Depthwise separble convolution 이 만능이라는 보장은 없음.</li>
-</ul>
-
-    <article></h4>
-    <div class="post-more">
-      
-      <a href="/deeplearning/2020/02/16/Xception/#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
-      
-      <a href="/deeplearning/2020/02/16/Xception/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
     </div>
   </div>
   

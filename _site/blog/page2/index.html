@@ -273,6 +273,254 @@
   
   <div class="post">
     <h1 class="post-title">
+      <a href="/deeplearning/2020/02/16/Xception/">
+        Xception
+      </a>
+    </h1>
+
+    <span class="post-date">16 Feb 2020</span>
+     | 
+    
+    <a href="/blog/tags/#paper" class="post-tag">Paper</a>
+    
+    
+
+    <h4 style="font-weight: 400; line-height: 1.8;"><article>
+      <h1 id="xception-deep-learning-with-depthwise-separable-convolution">Xception: Deep Learning with Depthwise Separable Convolution</h1>
+
+<p>Author: Franc¸ois Chollet<br />
+Date: Dec 19, 2016<br />
+URL: https://arxiv.org/abs/1610.02357</p>
+
+<hr />
+
+<h1 id="abstract">Abstract</h1>
+
+<ul>
+  <li>CNN 에서 많이 사용되는 Inception 은 Regular Convolution 과 Depthwise Separable Convolution 의 중간 단계.</li>
+  <li>Depthwise Separable Convolution 은 최대 개수의 타워를 가진 Inception module (?)</li>
+  <li>Inception module을 Depthwise Separable Convolution 으로 대체한 새로운 Deep Convolutional Neural Network 제안.</li>
+  <li>Xception 이라고 칭함.</li>
+  <li>ImageNet 으로 학습된 Inception V3 보다 살짝 성능이 좋고 350,000,000개의 이미지와 17,000개의 클래스로 구성된 Larger image dataset 에선 Inception V3 보다 월등히 뛰어난 성능을 보임.</li>
+  <li>Inception V3와 Xception 이 동일한 parameter 수를 가짐.</li>
+  <li>그러므로 연산량, 메모리의 증가가 아닌 모델 parameter를 효과적으로 사용해서 성능 향상이 된 것.</li>
+</ul>
+
+<h1 id="1introduction"><strong>1. Introduction</strong></h1>
+
+<ul>
+  <li>Convolutional Neural Network (이하 CNN) 은 Computer Vision 에서 가장 주요한 알고리즘이 되었고, 이를 설계하는 방법에 대해 개발하는데 많은 관심을 가지게 됨.</li>
+  <li>Lenet -&gt; AlexNet (2012) -&gt; ZFNet (2013) -&gt; VGG (2014) -&gt; Inception 종류 … -&gt; Inception-ResNet (2015)</li>
+  <li>Inception 스타일의 기본 구성 요소는 Inception module.</li>
+  <li>
+    <p>Figure 1은 Inception V3 의 표준 Inception Module.</p>
+
+    <p><img src="https://jjerry-k.github.io/public/img/xception/Untitled.png" alt="https://jjerry-k.github.io/public/img/xception/Untitled.png" /></p>
+  </li>
+  <li>Inception 모델은 위와 같은 모듈을 Stack 한 것. VGG-Style 네트워크는 단순히 Convolution layer를 Stack.</li>
+  <li>실험적으로 Inception-style 이 VGG-style보다 적은 parameter로 다양한, 많은 feature를 학습 할 수 있다는 것을 보임.</li>
+</ul>
+
+<h2 id="11theinceptionhypothesis"><strong>1.1 The Inception hypothesis</strong></h2>
+
+<ul>
+  <li>Convolution layer는 3차원 공간에서 filter를 학습하려고 함.</li>
+  <li>Single Convolution kernel 은 채널의 correlation과 공간의 correlation 을 동시에 mapping 함.</li>
+  <li>Inception 모듈은 채널, 공간의 correlation 을 독립적으로 나타낼 수 있도록 연산을 분해. -&gt; 쉽고 효율적인 프로세스를 만듦.</li>
+  <li>Inception의 가설은 채널 채널, 공간의 correlation 이 분리되어 있으므로 동시에 매핑하는 것은 좋지 않다는 것.</li>
+  <li>
+    <p>Figure 2는 3x3 conv와 1x1 conv만 사용한 단순화한 Inception 모듈.</p>
+
+    <p><img src="https://jjerry-k.github.io/public/img/xception/Untitled_1.png" alt="https://jjerry-k.github.io/public/img/xception/Untitled_1.png" /></p>
+  </li>
+  <li>
+    <p>Figure 3은 Figure 2의 Inception 모듈에서 하나의 큰 1x1 Convolution과 3x3 Convolution들로 재구성한 것.</p>
+
+    <p><img src="https://jjerry-k.github.io/public/img/xception/Untitled_2.png" alt="https://jjerry-k.github.io/public/img/xception/Untitled_2.png" /></p>
+  </li>
+  <li>이 방법이 Inception 의 가설보다 뛰어난 가설을 만드는 것이 합리적인 것일지, 채널과 공간을 독립적으로 매핑할 수 있는지 의문.</li>
+</ul>
+
+<h2 id="12thecontinuumbetweenconvolutionsandseparableconvolutions"><strong>1.2 The continuum between convolutions and separable convolutions</strong></h2>
+
+<ul>
+  <li>
+    <p>Figure 4 처럼 Inception 모듈 구성.</p>
+
+    <p><img src="https://jjerry-k.github.io/public/img/xception/Untitled_3.png" alt="https://jjerry-k.github.io/public/img/xception/Untitled_3.png" /></p>
+  </li>
+  <li>1x1 Convolution 적용하여 채널의 correlation 매핑, 그 후 각각의 channel별로 공간의 correlation 매핑</li>
+  <li>이를 <strong>An “extreme” version of an Inception module</strong> 이라고 칭함.</li>
+  <li>TensorFlow 프레임워크에 Depthwise Separable Convolution 연산과 거의 동일함.</li>
+  <li>TensorFlow나 Keras 프레임워크에 있는 Depthwise Separable Convolution (Separable Convolution 라고도 불림.) 은 각 channel 별로 3x3 Convolution 적용 후 채널간의 1x1 Convolution 적용.</li>
+  <li>영상처리 분야에서 사용하는 Separable Convolution 과 혼동하면 안됨, 이 연산은 공간적 분리를 하는 Convolution.</li>
+</ul>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">비교</th>
+      <th style="text-align: center">Extream</th>
+      <th style="text-align: center">Depthwise Separable</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">연산순서</td>
+      <td style="text-align: center">pointwise–&gt;channelwise</td>
+      <td style="text-align: center">channelwise–&gt;pointwise</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">비선형성</td>
+      <td style="text-align: center">Presence</td>
+      <td style="text-align: center">Absence</td>
+    </tr>
+  </tbody>
+</table>
+
+<h1 id="2priorwork"><strong>2. Prior work</strong></h1>
+
+<ul>
+  <li>VGG-16 과 같은 구조가 xception 과 유사.</li>
+  <li>Inception 구조는 가지치기의 이점을 보여줌.</li>
+  <li>Depthwise separable convolution는 경량화에도 적합.</li>
+  <li>TensorFlow에는 이미 구현되어있음.</li>
+  <li>Residual connection 을 광범위하게 사용.</li>
+</ul>
+
+<h1 id="3thexceptionarchitecture"><strong>3. The Xception architecture</strong></h1>
+
+<p><img src="https://jjerry-k.github.io/public/img/xception/Untitled_4.png" alt="https://jjerry-k.github.io/public/img/xception/Untitled_4.png" /></p>
+
+<ul>
+  <li>Figure 5 와 같은 구조 제안.</li>
+  <li>처음과 마지막을 제외하곤 linear residual module 사용.</li>
+  <li>총 36개의 convolution layer로 구성.</li>
+  <li>매우 단순한 구조.</li>
+</ul>
+
+<h1 id="4experimentalevaluation"><strong>4. Experimental evaluation</strong></h1>
+
+<ul>
+  <li>Xception과 Inceotion V3 비교.</li>
+  <li>Parameters가 비슷. 네트워크 규모에 대한 차이를 없애기 위함.</li>
+  <li>ImageNet과 JFT dataset 이용.</li>
+</ul>
+
+<h2 id="41thejftdataset"><strong>4.1 The JFT dataset</strong></h2>
+
+<ul>
+  <li>그냥…JFT 데이터 설명…</li>
+  <li>Google 데이터 중 하나</li>
+  <li>JFT 로 학습, FastEval14k dataset으로 성능 비교.</li>
+</ul>
+
+<h2 id="42optimizationconfiguration"><strong>4.2 Optimization configuration</strong></h2>
+
+<ul>
+  <li>각 방법에 대해서 다음과 같은 설정으로 Xception, Inception V3 모두 학습</li>
+  <li>On ImageNet
+    <ul>
+      <li>Optimizer: SGD</li>
+      <li>Momentum: 0.9</li>
+      <li>Initial learning rate: 0.045</li>
+      <li>Learning rate decay: 0.94 (every 2 epochs)</li>
+    </ul>
+  </li>
+  <li>On JFT
+    <ul>
+      <li>Optimizer: RMSprop</li>
+      <li>Momentum: 0.9</li>
+      <li>Initial learning rate: 0.001</li>
+      <li>Learning rate decay: 0.9 (every 3,000,000 samples)</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="43regularizationconfiguration"><strong>4.3 Regularization configuration</strong></h2>
+
+<ul>
+  <li>Weight decay</li>
+  <li>Dropout</li>
+  <li>Auxiliary loss tower</li>
+</ul>
+
+<h2 id="44traininginfrastructure"><strong>4.4 Training infrastructure</strong></h2>
+
+<ul>
+  <li>80개의 NVIDIA K80 GPU ….</li>
+  <li>ImageNet 학습시 <strong>synchronous gradient descent</strong>을 적용하여 data parallelism 이용. → 3일 소요</li>
+  <li>JFT 학습시 <strong>asynchronous gradient descent</strong>을 적용하여 data parallelism 이용. →한달 소요</li>
+</ul>
+
+<h2 id="45comparisonwithinceptionv3"><strong>4.5 Comparison with Inception V3</strong></h2>
+
+<h3 id="451classificationperformance"><strong>4.5.1 Classification performance</strong></h3>
+
+<ul>
+  <li>
+    <p>두 데이터 모두 Xception이 좋은 성능을 보임.</p>
+
+    <p><img src="https://jjerry-k.github.io/public/img/xception/Untitled_5.png" alt="https://jjerry-k.github.io/public/img/xception/Untitled_5.png" /></p>
+
+    <p><img src="https://jjerry-k.github.io/public/img/xception/Untitled_6.png" alt="https://jjerry-k.github.io/public/img/xception/Untitled_6.png" /></p>
+
+    <p><img src="https://jjerry-k.github.io/public/img/xception/Untitled_7.png" alt="https://jjerry-k.github.io/public/img/xception/Untitled_7.png" /></p>
+
+    <p><img src="https://jjerry-k.github.io/public/img/xception/Untitled_8.png" alt="https://jjerry-k.github.io/public/img/xception/Untitled_8.png" /></p>
+
+    <p><img src="https://jjerry-k.github.io/public/img/xception/Untitled_9.png" alt="https://jjerry-k.github.io/public/img/xception/Untitled_9.png" /></p>
+  </li>
+</ul>
+
+<h3 id="452sizeandspeed"><strong>4.5.2 Size and speed</strong></h3>
+
+<ul>
+  <li>
+    <p>Parameter가 늘지 않으면서 성능 향상을 보이기에 Xception이 효율적인 모델.</p>
+
+    <p><img src="https://jjerry-k.github.io/public/img/xception/Untitled_10.png" alt="https://jjerry-k.github.io/public/img/xception/Untitled_10.png" /></p>
+  </li>
+</ul>
+
+<h3 id="46effectoftheresidualconnections"><strong>4.6 Effect of the residual connections</strong></h3>
+
+<ul>
+  <li>Residual connection에 대한 ablation study 진행.</li>
+  <li>Residual connection의 중요성을 보여줌.</li>
+</ul>
+
+<p><img src="https://jjerry-k.github.io/public/img/xception/Untitled_11.png" alt="https://jjerry-k.github.io/public/img/xception/Untitled_11.png" /></p>
+
+<h3 id="47effectofanintermediateactivationafterpointwiseconvolutions"><strong>4.7 Effect of an intermediate activation after point wise convolutions</strong></h3>
+
+<ul>
+  <li>Depthwise separable convolution은 depthwise → pointwise convolution으로 구성되어있음.</li>
+  <li>
+    <p>그 중간에 activation function에 대한 ablation study 진행.</p>
+
+    <p><img src="https://jjerry-k.github.io/public/img/xception/Untitled_12.png" alt="https://jjerry-k.github.io/public/img/xception/Untitled_12.png" /></p>
+  </li>
+  <li><a href="https://arxiv.org/pdf/1512.00567.pdf">Inception module에 대한 연구</a>와 반대되는 결과 도출.</li>
+</ul>
+
+<h1 id="5futuredirections"><strong>5. Future directions</strong></h1>
+
+<ul>
+  <li>Depthwise separble convolution 이 만능이라는 보장은 없음.</li>
+</ul>
+
+    <article></h4>
+    <div class="post-more">
+      
+      <a href="/deeplearning/2020/02/16/Xception/#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
+      
+      <a href="/deeplearning/2020/02/16/Xception/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
+    </div>
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
       <a href="/python/2019/09/07/Jupyter_shortcut/">
         jupyter Lab 에서 단축키 설정하는 방법!
       </a>
@@ -1020,82 +1268,6 @@ NMI(X, Y) = 2\frac{H(X) + H(Y) - H(X, Y)}{H(X)+H(Y)}
       <a href="/deeplearning/2019/07/05/Thin/#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
       
       <a href="/deeplearning/2019/07/05/Thin/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
-    </div>
-  </div>
-  
-  <div class="post">
-    <h1 class="post-title">
-      <a href="/python/2019/06/30/conda_package/">
-        (개인적으로) 무.조.건 설치하는 Anaconda 패키지
-      </a>
-    </h1>
-
-    <span class="post-date">30 Jun 2019</span>
-     | 
-    
-    <a href="/blog/tags/#setting" class="post-tag">Setting</a>
-    
-    
-
-    <h4 style="font-weight: 400; line-height: 1.8;"><article>
-      <p>이번 포스팅은 제가 많이 쓰는 패키지들에 대해서 적어보려고 합니다. <br />
-추후에 포맷하고 다시 세팅할 수도 있으니까….<br />
-저는 Anaconda가 아닌 <strong>Miniconda</strong>를 사용하기 때문에 어지간하면 하나 하나 설치를 해줘야해요. 
-물론 머리로는 기억하고 있지만 커맨드 쓰기가 귀찮으니…적어놓으려고 합니다!<br />
-각각 설명은…생략할거에요. 보시는 분들 구글링 실력을 믿습니다.</p>
-
-<h4 id="scientific-uses">Scientific uses</h4>
-<ul>
-  <li>numpy, scipy, pandas</li>
-  <li><code class="highlighter-rouge">conda install numpy scipy pandas</code></li>
-</ul>
-
-<h4 id="visualization">Visualization</h4>
-<ul>
-  <li>matplotlib, seaborn</li>
-  <li><code class="highlighter-rouge">conda install matplotlib seaborn</code></li>
-</ul>
-
-<h4 id="image-processing">Image Processing</h4>
-<ul>
-  <li>pillow, scikit-image, opencv</li>
-  <li><code class="highlighter-rouge">conda install pillow scikit-image opencv</code></li>
-</ul>
-
-<h4 id="ml--dl">ML &amp; DL</h4>
-<ul>
-  <li>scikit-learn, tensorflow, pytorch (keras도 썼었는데…이번에 뺐어요..)</li>
-  <li><code class="highlighter-rouge">conda install scikit-learn tensorflow</code></li>
-  <li><code class="highlighter-rouge">conda install -c pytorch pytorch torchvision</code></li>
-</ul>
-
-<h4 id="medical-image-processing">Medical Image Processing</h4>
-<ul>
-  <li>pydicom, nibabel, simpleitk</li>
-  <li><code class="highlighter-rouge">conda install -c conda-forge pydicom nibabel</code></li>
-  <li><code class="highlighter-rouge">conda install -c SimpleITK SimpleITK</code></li>
-</ul>
-
-<h4 id="tools">Tools</h4>
-<ul>
-  <li>tqdm, jupyter, jupyter-lab</li>
-  <li><code class="highlighter-rouge">conda install  tqdm jupyter jupyterlab</code></li>
-</ul>
-
-<p>이….정도네요!<br />
-솔직히 제가 이렇게 포스팅을 하는 이유는….<br />
-이미 제 노트북을…한번 갈아엎었습니다…<br />
-conda 를 4.7.5 로 올리는 순간…모든게 날아갔거든요.<br />
-하…얼른 세팅하러 갑니다..</p>
-
-<p><strong>P.S</strong> conda 를 조심하세요…</p>
-
-    <article></h4>
-    <div class="post-more">
-      
-      <a href="/python/2019/06/30/conda_package/#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
-      
-      <a href="/python/2019/06/30/conda_package/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
     </div>
   </div>
   
