@@ -273,6 +273,559 @@
   
   <div class="post">
     <h1 class="post-title">
+      <a href="/python/2019/07/06/DICOM/">
+        Python으로 DICOM 영상을 읽어보자!
+      </a>
+    </h1>
+
+    <span class="post-date">06 Jul 2019</span>
+     | 
+    
+    <a href="/blog/tags/#usage" class="post-tag">Usage</a>
+    
+    
+
+    <h4 style="font-weight: 400; line-height: 1.8;"><article>
+      <p>예~~전에 <a href="https://jjerry-k.github.io/python/2019/01/23/nifti/">NIfTI</a> 파일을 load 하는 방법을 올렸었습니다! <br />
+이번에는 Python에서 <a href="https://www.dicomstandard.org">DICOM</a> 포맷의 데이터를 load 하는 방법에 대한 포스팅을 해보려고 합니다.</p>
+
+<p>가장 먼저 관련 패키지인 <a href="https://pydicom.github.io/pydicom/stable/index.html"><code class="highlighter-rouge">Pydicom</code></a> 을 설치를 해줍니다.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>conda <span class="nb">install</span> <span class="nt">-c</span> conda-forge pydicom
+</code></pre></div></div>
+
+<p>저번과 똑같이 단순한 설치방법!</p>
+
+<p>이제 코딩으로 읽어보겠습니다.<br />
+예시 데이터로 다음 <a href="https://github.com/pydicom/pydicom/blob/master/pydicom/data/test_files/MR_small.dcm">링크</a>에 있는 영상을 이용하였습니다.</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="kn">import</span> <span class="nn">pydicom</span> <span class="k">as</span> <span class="n">di</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">di</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="s">".dcm 경로"</span><span class="p">)</span>
+<span class="c1">#data = di.dcmread(".dcm 경로") # 편한거 쓰시면 됩니다.
+</span>
+<span class="n">img</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">pixel_array</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img</span><span class="p">)</span> <span class="c1"># 슬라이스 1장일 경우
+#plt.imshow(img[:,:,"slice 번호"]) # 슬라이스가 여러 장일 경우
+</span><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>이런 식으로 작성하시면 됩니다.<br />
+ 예시를 보여드리면</p>
+
+<p><img src="https://jjerry-k.github.io/public/img/dicom/01.png" /></p>
+
+<p>예시 영상이 좀 작네요…<br />
+어쨌든 이런 식으로 읽습니다.</p>
+
+<p>흠….NIfTI와 DICOM을 했으니…다음엔 <strong>Insight Meta-Image</strong> 를 해보겠습니다!</p>
+
+    <article></h4>
+    <div class="post-more">
+      
+      <a href="/python/2019/07/06/DICOM/#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
+      
+      <a href="/python/2019/07/06/DICOM/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
+    </div>
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/deeplearning/2019/07/05/Thin/">
+        MRI interpolation using Deep Learning
+      </a>
+    </h1>
+
+    <span class="post-date">05 Jul 2019</span>
+     | 
+    
+    <a href="/blog/tags/#paper" class="post-tag">Paper</a>
+    
+    
+
+    <h4 style="font-weight: 400; line-height: 1.8;"><article>
+      <h1 id="deep-generative-adversarial-networks-for-thin-section-infant-mr-image-reconstruction">Deep Generative Adversarial Networks for Thin-Section Infant MR Image Reconstruction</h1>
+
+<ul>
+  <li>Jiaqi Gu<sup>1</sup>, Zezu Li<sup>1</sup>, YuanYuan Wans<sup>1, 3</sup>, Haowei Yang<sup>2</sup>, Zhongwei Qiao<sup>2</sup>, and Jinhua Yu<sup>1, 3</sup></li>
+  <li><sup>1</sup>School of Information Science and Technology, Fudan University, Shanghai 200433, China<br />
+<sup>2</sup>The Children’s Hospital of Fudan University, Shanghai 201102, China<br />
+<sup>3</sup>Key Laboratory of Medical Imaging Computing and Computer Assisted Intervention of Shanghai, Department of Electronic Engineering, Institute of Functional
+and Molecular Medical Imaging, Fudan University, Shanghai 200433, China
+—</li>
+</ul>
+
+<h2 id="abstract">Abstract</h2>
+<ul>
+  <li>Thin section magnetic resonance images (<strong>Thin MRI</strong>) 는 뇌수술, 뇌 구조 분석에 좋은 영상.</li>
+  <li>하지만 Thick section magnetic resonance images (<strong>Thick MRI</strong>) 에 비해 imaging cost가 많이 들기 때문에 잘 사용되지 않음.</li>
+  <li>Thick MRI 2 Thin MRI 제안.</li>
+  <li>Two stage( GAN -&gt; CNN )로 구성하였고 Thick MRI의 Axial, Sigittal plane을 이용하여 Thin MRI의 Axial reconstruction.</li>
+  <li>3D-Y-Net-GAN 은 Axial, Sagittal Thick MRI 를 이용하여 Fusion.</li>
+  <li>3D-Dense U-Net은 Sagittal plane에 대해 세부적인 calibrations, structual correction 제공.</li>
+  <li>Loss function 은 structual detail을 Network가 capture 할 수 있도록 제안.</li>
+  <li>bicubic, sparse representation, 3D-SRU-Net 과 비교.</li>
+  <li>35번의 Cross-validation, 114개를 이용하여 두개의 testset 구성.
+    <ul>
+      <li>PSNR : 23.5 % 증가.</li>
+      <li>SSIM : 90.5 % 증가.</li>
+      <li>MMI : 21.5 % 증가.</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="introduction">Introduction</h2>
+<ul>
+  <li>Thin MRI 는 slice thickness가 1mm이고 sapcing gap이 0mm.</li>
+  <li>하지만 항상 Thin MRI를 사용할 수 없음.</li>
+  <li>일반적으로 사용하는 Thick MRI는 slice thickness가 4~6mm 이고 sapcing gap이 0.4~1mm.
+    <ul>
+      <li>해상도 : Thin MRI &gt; Thick MRI</li>
+    </ul>
+  </li>
+  <li>인간의 뇌 발달에 대한 insight를 주기 때문에 유아의 brain MR image는 어른의 brain MR image 보다 연구에 가치가 있음</li>
+  <li>하지만 유아의 MR image를 얻는게 쉽지 않음.</li>
+  <li>그래서 Thick to Thin 제안.</li>
+  <li>기존 traditional interpolation algorithm
+    <ul>
+      <li>시각적으로는 성능이 좋아보임. 하지만 성인의 brain 에 초점을 맞춤.</li>
+      <li><strong><a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4478865/pdf/JMI-001-034007.pdf">Interpolation-based super-resolution reconstruction: effects of slice thickness</a></strong></li>
+      <li><strong><a href="https://www.hindawi.com/journals/ijbi/2013/395915/">Evaluation of interpolation effects on upsampling and accuracy of cost functions-based optimized automatic image registration</a></strong></li>
+    </ul>
+  </li>
+  <li>Frame interpolation 방법과 같이 적용 가능.
+    <ul>
+      <li><strong><a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&amp;arnumber=8110374">Slice Interpolation in MRI Using a Decomposition-reconstruction Method</a></strong></li>
+    </ul>
+  </li>
+  <li>Super-resolution 문제로 적용할 수도 있음.
+    <ul>
+      <li><strong><a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&amp;arnumber=5466111">Image super-resolution via sparse representation</a></strong></li>
+    </ul>
+  </li>
+  <li>CNN, GAN 이 발전하면서 super-resolution 이 탄력을 받음.
+    <ul>
+      <li><strong>[<a href="https://link.springer.com/chapter/10.1007/978-3-319-67564-0_12">Context-Sensitive Super-Resolution for Fast Fetal Magnetic Resonance Imaging</a></strong>]</li>
+      <li><strong>[<a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=8417964">Deep Generative Adversarial Neural Networks for Compressive Sensing MRI</a>]</strong></li>
+    </ul>
+  </li>
+  <li>이전에 성인의 Thick MRI를 Thin MRI 로 reconstruction 하는 3D-SRGAN 제안했으나 axial plane만 고려했음. <strong>[<a href="https://link.springer.com/chapter/10.1007%2F978-3-319-67389-9_38">Reconstruction of Thin-Slice Medical Images Using Generative Adversarial Network</a>]</strong></li>
+  <li>Deep Learning 이 reconstruction performance 뿐 아니라 reconstruction time 감소에도 매우 효과적인걸 보임.</li>
+</ul>
+
+<h2 id="proposed-method">Proposed Method</h2>
+
+<h3 id="a-overview">A. Overview</h3>
+<ul>
+  <li>CNN은 기존에도 super-resolution에서 많이 사용됨.</li>
+  <li>하지만 최근까지 제안된 Network는 대부분 2D image에 대한 upscaling.</li>
+  <li>몇몇 Network는 3D image로 확장했지만 그렇게 효과를 보지 못했음.</li>
+  <li>이 논문의 Flow
+<img src="https://jjerry-k.github.io/public/img/thin/fig01.PNG" /></li>
+</ul>
+
+<p><img src="https://jjerry-k.github.io/public/img/thin/fig02.PNG" /></p>
+
+<h3 id="b-network-architecture">B. Network Architecture</h3>
+<ul>
+  <li>First stage는 3D-Y-Net-GAN 으로 Thick MRI를 Thin MRI로 생성 후 3D-DenseU-Net으로 recalibration.</li>
+</ul>
+
+<h4 id="3d-y-net-gan">3D-Y-Net-GAN</h4>
+<ul>
+  <li>Input : Axial, Sagittal Thick MRI</li>
+  <li>Output : Thin MRI</li>
+  <li>r : Upscaling Factor ( r = 8 일 경우의 예시 )</li>
+</ul>
+
+<p><img src="https://jjerry-k.github.io/public/img/thin/fig03.PNG" /></p>
+
+<ul>
+  <li>Feature Extraction Branches
+    <ul>
+      <li>각 input에 대한 feature 추출.</li>
+      <li>Maxpooling layer에서 [1, 2, 1], [2, 1, 1]의 다른 strides factor 적용.</li>
+      <li>3D convolutional layer 는 Convolution + Batch Normalization + Swish 로 구성.
+        <ul>
+          <li><a href="https://arxiv.org/pdf/1710.05941.pdf">Swish</a>는 Activation 의 종류로 ReLU로 인해 생기는 Dead neuron을 극복할 수 있음. <strong>-&gt; 근데 굳이 왜 swish일까…</strong></li>
+        </ul>
+      </li>
+      <li>layers 를 거친 후 shape 의 변화
+        <ul>
+          <li>Axial : [H, W, S, 1] -&gt; [H/2, W/2, S, 32]</li>
+          <li>Sagittal : [H, W, r*S, 1] -&gt; [H/2, W/2, S, 32]</li>
+        </ul>
+      </li>
+      <li>Axial과 Sagittal의 shape이 다르기 때문에 Sagittal 에 대해서 preprocessing으로 3개의 3d convolution layer 적용.</li>
+    </ul>
+  </li>
+  <li>Feature Fusion Branch
+    <ul>
+      <li>두 feature를 channel 방향으로 Concatanation.</li>
+      <li>W 방향으로 Upsampling 후 H 방향으로 Downsampling feature 를 Concatanation.</li>
+      <li>H 방향으로 Upsampling 후 첫번째 Block의 Feature map을 Concatanation</li>
+      <li>U-Net 에서 아이디어를 얻었고 structual alignment, gradient-vanishing 등을 완화.</li>
+    </ul>
+  </li>
+  <li>Reconstruction Branch
+    <ul>
+      <li>Figure 3 (b) 와 같은 구조.</li>
+      <li>Upsampling layer 3개를 연속으로 붙여서 8배 확장하는 구조 대신에 Multipath upscaling strategy 적용. <strong>-&gt; Artifact 완화 효과…?</strong></li>
+    </ul>
+  </li>
+  <li>
+    <p>Discriminator
+<img src="https://jjerry-k.github.io/public/img/thin/fig04.PNG" /></p>
+
+    <ul>
+      <li>Axial Image, Saggital Image, Combination Image 가 Real Pair인지 Fake Pair인지 감별.</li>
+      <li>Input : ($I^A$, $I^Y$, $I^S$), ($I^A$, $I^{GT}$, $I^S$)</li>
+      <li>Output : Real, Fake</li>
+    </ul>
+  </li>
+</ul>
+
+<h4 id="3d-denseu-net">3D-DenseU-Net</h4>
+<p><img src="https://jjerry-k.github.io/public/img/thin/fig05.PNG" /></p>
+
+<ul>
+  <li>전체적인 구조는 U-Net이지만 2개의 Enhanced residual block 을 적용하여 detail recalibration.</li>
+  <li>Input :  $I^Y$, $I^S$, $I^{YA}$ <strong>-&gt; 어떻게 3개가 input으로…?</strong></li>
+  <li>Output : Thin MR Image</li>
+  <li>$I^A$ 를 $I^Y$ 의 해당 위치에 insertion 하여 $I^{YA}$ 생성. -&gt; 아직 이해 X..
+    <ul>
+      <li>Axial Information 을 이용하여 정확한 axial 을 만들기 위해…</li>
+      <li>$I^S$ 를 $I^Y$ 에 insertion하게 되면 Sagittal 에 대한 information 이 과해지기 때문에 Reconstrtion Axial Image의 Quality 가 안좋아 질 것!</li>
+    </ul>
+  </li>
+  <li>End-to-End 가 아니라 각각 따로따로 학습. <strong>-&gt; Faster RCNN 과 같은 방식으로 할런지….?</strong></li>
+</ul>
+
+<h4 id="loss-function">Loss Function</h4>
+<ul>
+  <li>$G$ 는 generator 라는 의미.</li>
+  <li>Self-Adaptive Charbonnier Loss
+    <ul>
+      <li>일반적으로 많이 사용되는 $\ell2$ 전반적으로 Smoothing 하게 만들어지고 $\ell1$ 은 GT와 Prediction 의 차이로 indiscriminate 하게 학습.</li>
+      <li><a href="https://arxiv.org/pdf/1704.03915.pdf">Deep Laplacian Pyramid Networks for Fast and Accurate Super-Resolution</a>에 따르면 <strong>Charbonnier loss</strong>(미분가능한 $\ell1$의 분산)가 $\ell1$, $\ell2$ 보다 성능이 뛰어남.</li>
+      <li><a href="https://arxiv.org/pdf/1706.03142.pdf">Deep Learning for Isotropic Super-Resolution from Non-Isotropic 3D Electron Microscopy</a> 에 따르면 <strong>Cubic-weighted mean square error</strong> 가 Generated 영상과 Ground truth 간의 차이가 큰 “어려운” 부분의 성능을 강조.</li>
+      <li>다음과 같은 Loss 제안.</li>
+      <li>$\epsilon$ 은 default로 $10^{-6}$</li>
+    </ul>
+  </li>
+</ul>
+
+<script type="math/tex; mode=display">L^G_{SC} = \frac{1}{rLWH}\sum_{x,y,z=1,1,1}^{L,W,rH}\sqrt{(I^{GT}_{x,y,z}-I^Y_{z,y,z})^2+\epsilon}\cdot\bigg(\frac{1}{2}+\frac{(I^{GT}_{x,y,z}-I^Y_{z,y,z})^2}{2max((I^{GT}-I^Y)^2)}\bigg)</script>
+
+<ul>
+  <li>3-D Gradient Correction Loss
+    <ul>
+      <li>Charbonnier Loss는 Pixelwise difference에 대한 Loss, Gradient에 대한 손실을 줄 수 있음.</li>
+      <li>다음과 같이 각 axis에 대한 Gradient 를 이용하여 Loss 제안.</li>
+    </ul>
+  </li>
+</ul>
+
+<script type="math/tex; mode=display">L^G_{GC} = \mathbb{E}[(\nabla_{x}I^{GT}_{x,y,z} - \nabla_{x}I^Y_{x,y,z})^2] \\  + \mathbb{E}[(\nabla_{y}I^{GT}_{x,y,z} - \nabla_{y}I^Y_{x,y,z})]^2\\ + \mathbb{E}[(\nabla_{z}I^{GT}_{x,y,z} - \nabla_{z}I^Y_{x,y,z})^2]</script>
+
+<ul>
+  <li>Adversarial Loss
+    <ul>
+      <li>LSGAN Loss 사용.</li>
+    </ul>
+  </li>
+</ul>
+
+<script type="math/tex; mode=display">L^D=\frac{1}{2}\mathbb{E}[(D(I^{GT}, I^A, I^S)-1)^2+D(I^Y, I^A, I^S)^2]</script>
+
+<script type="math/tex; mode=display">L^G_{AD}=\mathbb{E}[(D(I^Y, I^A, I^S)-1)^2]</script>
+
+<ul>
+  <li>$\ell_2$ Weight Regularization Loss
+    <ul>
+      <li>(Loss는 아니지만…)</li>
+      <li>Overfitting을 방지하기 위해 사용.</li>
+    </ul>
+  </li>
+</ul>
+
+<script type="math/tex; mode=display">L^G_{WR} = \sum\Vert W_G\Vert^2_2</script>
+
+<ul>
+  <li>3D-Y-Net-GAN Loss
+    <ul>
+      <li>$L_G = L^G_{SC} + \lambda_1L^G_{GC} + \lambda_2L^G_{AD} + \lambda_3L^G_{WR}$</li>
+    </ul>
+  </li>
+  <li>3D-DenseU-Net Loss
+    <ul>
+      <li>$L = L_{SC} + \lambda_1L_{GC} + \lambda_3L_{WR}$</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="experimental-result">Experimental Result</h2>
+<ul>
+  <li>Multiplanar 의 효율성을 검증하기 위해 다음과 같이 세 가지 경우로 나눔.
+    <ul>
+      <li>1) Axial, Sagittal 둘 다 이용.</li>
+      <li>2) Axial 만 이용.</li>
+      <li>3) Saigittal 만 이용.</li>
+    </ul>
+  </li>
+  <li>Loss function을 검증하기 위해 네 가지 경우로 나눔.
+    <ul>
+      <li>1) $\ell1norm + L_{GC} + L_{AD} + L_{WR}$ (pixelwise loss를 $\ell1norm$으로 대체.)</li>
+      <li>2) $L_{SC} + L_{GC} + L_{WR}$</li>
+      <li>3) $L_{SC} + L_{AD} + L_{WR}$</li>
+      <li>4) $L_{SC} + L_{GC} + L_{AD} + L_{WR}$</li>
+    </ul>
+  </li>
+  <li>Evalutaion Method 로는 아래와 같이 네 가지 기법과 자신들의 Network
+    <ul>
+      <li>1) <a href="https://ieeexplore.ieee.org/document/1163711">Bicubic interpolation</a></li>
+      <li>2) <a href="https://ieeexplore.ieee.org/document/5466111">Sparse representation</a></li>
+      <li>3) <a href="https://arxiv.org/abs/1706.03142">3D-SRU-Net</a></li>
+      <li>4) 3D-Y-Net-GAN</li>
+      <li>5) 3D-Y-Net-GAN + 3D-DenseU-Net</li>
+    </ul>
+  </li>
+  <li>Metrics으로는 다음 세 가지 사용.
+    <ul>
+      <li>PSNR(Peak Signal-to-Noise Ratio)</li>
+    </ul>
+  </li>
+</ul>
+
+<script type="math/tex; mode=display">\begin{alignedat}{2}
+MAX_I = 255\\
+PSNR = 20\cdot\log_{10}\Bigg(\frac{MAX_I}{\sqrt{\frac{1}{rLWH}\sum_{x, y, z}(I^R_{x,y,z}-I^{GT}_{x,y,z})^2}}\Bigg)
+\end{alignedat}</script>
+
+<ul>
+  <li>SSIM(Structural SIMilarity)</li>
+</ul>
+
+<script type="math/tex; mode=display">\begin{alignedat}{2}
+L : 255(\text{dynamic range})\\
+\mu : \text{Variance}\\
+\mu_{ab} : \text{Covariance}\\
+c_1 = (k_1L)^2\\
+c_2 = (k_2L)^2\\
+SSIM=\frac{(2\mu_a\mu_b+c_1)(2\sigma_{ab}+c_2)}{(\mu_a^2+\mu_b^2+c_1)(\sigma_a^2+\sigma_b^2+c_2)}
+\end{alignedat}</script>
+
+<ul>
+  <li>NMI(Normalized Mutual Information)</li>
+</ul>
+
+<script type="math/tex; mode=display">\begin{alignedat}{2}
+H(X) = -\sum_{x_i}\in{X}p(x_i)\log{p(x_i)} \\
+H(X, Y) = -\sum_{y_i\in{Y}} \sum_{x_i\in{X}}p(x_i, y_i)\log{p(x_i, y_i)}\\
+NMI(X, Y) = 2\frac{H(X) + H(Y) - H(X, Y)}{H(X)+H(Y)}
+\end{alignedat}</script>
+
+<ul>
+  <li>pixel 값을 [-1, 1]로 clipping -&gt; 다시 8-bit gray scale로 변환.</li>
+  <li>Generated MR images 와 Ground truth가 비슷할 수록 높은 값을 가짐.</li>
+</ul>
+
+<h3 id="a-data-and-preprocessing">A. Data and Preprocessing</h3>
+
+<ul>
+  <li>총 154 samples의 2~5세 유아 Axial, Sagittal Thick MRI, Axial Thin MRI</li>
+</ul>
+
+<p><img src="https://jjerry-k.github.io/public/img/thin/tab01.PNG" /></p>
+
+<ul>
+  <li>Table 1. 과 같은 parameter 사용.</li>
+  <li>Dataset 분할
+    <ul>
+      <li>Cross Validation Dataset : 40 samples</li>
+      <li>Test 1 Dataset : 65 samples</li>
+      <li>Test 2 Dataset : 49 samples</li>
+    </ul>
+  </li>
+  <li>Preprocessing
+    <ul>
+      <li>각 영상별로 다른 parameter를 가지고 있고 intensities 도 다양하기 때문에 spatial misalignment, intensity imblance를 발견.</li>
+      <li>Registration을 위해 SPM12 를 이용하여 unified spatial normalization 수행.
+        <ul>
+          <li>
+            <ol>
+              <li>DICOM to NIfTI</li>
+            </ol>
+          </li>
+          <li>
+            <ol>
+              <li>Segment gray matter, white matter, cerebrospinal fluid, skull, scalp, and air mask.</li>
+            </ol>
+          </li>
+          <li>
+            <ol>
+              <li>Nonlinear deformation field</li>
+            </ol>
+          </li>
+          <li>
+            <ol>
+              <li>ICBM Asian brain template in affine regularization</li>
+            </ol>
+          </li>
+        </ul>
+      </li>
+      <li>Grayscale Normalization
+        <ul>
+          <li>MRI 는 16 bit..</li>
+          <li>단순 linear transformation 으로 [-1, 1]로 mapping.</li>
+        </ul>
+      </li>
+      <li>Histogram Matching
+        <ul>
+          <li>고정된 샘플을 reference로 histogram matching 적용.</li>
+          <li>histogram imbalance 제거.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Data Augmentation
+    <ul>
+      <li>Radial Transformation
+        <ul>
+          <li><strong><a href="https://arxiv.org/pdf/1708.04347.pdf">Image Augmentation using Radial Transform for Training Deep Neural Networks</a></strong></li>
+        </ul>
+      </li>
+      <li>Mirror Reflection</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="b-experimental-settings">B. Experimental Settings</h3>
+<ul>
+  <li>5-fold cross-validation 적용.</li>
+  <li>35 개중 랜덤으로 28:7로 training:validation . <strong>-&gt; 앞에선 40개라더니..?</strong></li>
+  <li>Training 3D-Y-Net-GAN
+    <ul>
+      <li>Batch Size : 16</li>
+      <li>Epochs : 200</li>
+      <li><a href="https://arxiv.org/pdf/1412.6980.pdf">Adam Optimizer Parameter</a>
+        <ul>
+          <li>$\beta_1$: 0.9</li>
+          <li>Learning rate schedule
+            <ul>
+              <li>Initial value : 5*10<sup>-4</sup></li>
+              <li>Decay Step : 252</li>
+              <li>Decay rate : 0.989</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>$\lambda_1, \lambda_2, \lambda_3$ : 0.2, 0.02, 0.1</li>
+      <li>He initializer</li>
+    </ul>
+  </li>
+  <li>Training 3D-DenseU-Net
+    <ul>
+      <li>Batch Size : 12</li>
+      <li>Epochs : 300</li>
+      <li>Adam Optimizer Parameter
+        <ul>
+          <li>$\beta_1$: 0.9</li>
+          <li>Learning rate schedule
+            <ul>
+              <li>Initial value : 5*10<sup>-4</sup></li>
+              <li>Decay Step : 373</li>
+              <li>Decay rate : 0.989</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>$\lambda_1, \lambda_3$ : 1, 0.001</li>
+      <li>He initializer</li>
+    </ul>
+  </li>
+  <li>SR Parameter
+    <ul>
+      <li>Dictionary size = 512</li>
+      <li>Patch number = 100,000</li>
+      <li>Patch size = 13 x 13</li>
+      <li>Sparsity Regularization = 0.15</li>
+      <li>Overlap = 12.</li>
+    </ul>
+  </li>
+  <li>Training 3D-SRU-Net
+    <ul>
+      <li>Batch Size : 32</li>
+      <li>Epochs : 300</li>
+      <li>Adam Optimizer Parameter
+        <ul>
+          <li>$\beta_1$: 0.9</li>
+          <li>Initial value : 5*10<sup>-4</sup></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h4 id="c-ablation-experiment-on-input-data">C. Ablation Experiment On Input Data</h4>
+<ul>
+  <li>Input을 변경하면서 실험 진행. 
+<img src="https://jjerry-k.github.io/public/img/thin/fig06.PNG" />
+<img src="https://jjerry-k.github.io/public/img/thin/tab02.PNG" /></li>
+  <li>Axial 과 Sagittal 을 같이 사용했을 때가 좀 더 세부적인 구조, 적은 왜곡을 보임.
+    <ul>
+      <li>두 축의 영상이 서로 조합하여 reconstruction task를 향상.</li>
+    </ul>
+  </li>
+  <li>Quantitive evaluation 에서도 더 높은 지표를 산출.</li>
+</ul>
+
+<h4 id="d-ablation-experiment-on-loss-function">D. Ablation Experiment On Loss Function</h4>
+<ul>
+  <li>Loss를 변경하면서 실험 진행.
+<img src="https://jjerry-k.github.io/public/img/thin/fig07.PNG" />
+<img src="https://jjerry-k.github.io/public/img/thin/tab03.PNG" /></li>
+  <li>Self-Adaptive Charbonnier Loss에 비해 $\ell1$ norm 이 흐린 영상을 생성.</li>
+  <li>Without Gradient Correction Loss
+    <ul>
+      <li>덜 선명한 영상을 생성.</li>
+    </ul>
+  </li>
+  <li>Without Adversarial Loss
+    <ul>
+      <li>덜 realistic 영상을 생성. <strong>-&gt; ?????그냥 쓴 말인가..</strong></li>
+    </ul>
+  </li>
+  <li><strong>Table3 …지표 좀 이상..</strong></li>
+</ul>
+
+<h4 id="e-comparison-with-other--methods">E. Comparison With Other  Methods</h4>
+<ul>
+  <li>다른 Method들과 비교.
+<img src="https://jjerry-k.github.io/public/img/thin/fig08.PNG" />
+<img src="https://jjerry-k.github.io/public/img/thin/tab04.PNG" /></li>
+  <li>제안한 method로 생성된 image가 가장 Realistic하고 Ground truth 와 가장 비슷하다고 함.</li>
+  <li>대부분 Quantitative evaluation 에서 제안한 method가 다른 것들을 다 뛰어넘음.</li>
+</ul>
+
+<h2 id="conclusion">Conclusion</h2>
+<ul>
+  <li><strong>제안한 Method 에선 Data preprocessing이 매우 중요하다……</strong></li>
+</ul>
+
+    <article></h4>
+    <div class="post-more">
+      
+      <a href="/deeplearning/2019/07/05/Thin/#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
+      
+      <a href="/deeplearning/2019/07/05/Thin/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
+    </div>
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
       <a href="/python/2019/06/30/conda_package/">
         (개인적으로) 무.조.건 설치하는 Anaconda 패키지
       </a>
@@ -769,294 +1322,6 @@ g.fig.autofmt_xdate()
       <a href="/living/2019/04/14/macbook_auto_start/#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
       
       <a href="/living/2019/04/14/macbook_auto_start/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
-    </div>
-  </div>
-  
-  <div class="post">
-    <h1 class="post-title">
-      <a href="/deeplearning/2019/03/29/YOLO/">
-        YOLO 리뷰
-      </a>
-    </h1>
-
-    <span class="post-date">29 Mar 2019</span>
-     | 
-    
-    <a href="/blog/tags/#paper" class="post-tag">Paper</a>
-    
-    
-
-    <h4 style="font-weight: 400; line-height: 1.8;"><article>
-      <h1 id="you-only-look-once-unified-real-time-object-detection">You Only Look Once: Unified, Real-Time, Object detection</h1>
-<hr />
-
-<blockquote>
-  <p>편의상 bounding box -&gt; bbox</p>
-  <h2 id="abstract">Abstract</h2>
-</blockquote>
-
-<ul>
-  <li>Object detection을 bboxes, class probabilities regression 문제로 접근.</li>
-  <li>Single Neural Network 로 bboxes와 class probabilities 둘 다 예측.</li>
-  <li>Localization Error가 다소 높지만 background error가 낮음.</li>
-  <li>End-to-End, Extremely fast</li>
-</ul>
-
-<h2 id="1-introduction">1. Introduction</h2>
-
-<ul>
-  <li>Current Detection 시스템
-    <ul>
-      <li>DPM : Sliding Window 방식</li>
-      <li>R-CNN 계열 : potential bboxes 추출 -&gt; image 에서 bboxes 부분 다시 classify -&gt; Post-processing</li>
-    </ul>
-  </li>
-  <li>Slow, Hard to optimize(각 요소별로 따로따로 학습을 해야함. RPN -&gt; Classifier -&gt; RPN -&gt; …)</li>
-</ul>
-
-<p><img src="https://jjerry-k.github.io/public/img/yolo/fig01.png" /></p>
-
-<ul>
-  <li>복잡하지 않은 pipeline과 빠른 inferenc time.
-    <ul>
-      <li>45 fps on a Titan X .</li>
-    </ul>
-  </li>
-  <li>이미지 전체를 이용한 prediction
-    <ul>
-      <li>Fast R-CNN 보다 적은 background error</li>
-    </ul>
-  </li>
-  <li>Object의 general한 representations 학습.
-    <ul>
-      <li>natural image로 학습하고 art works로 test 했을 때 기존의 DPM 이나 R-CNN 보다 성능이 좋았다.</li>
-      <li>새로운 도메인이나 뭔가 모를 입력에 대해 일반화 할 수 있다.</li>
-    </ul>
-  </li>
-</ul>
-
-<h2 id="2-unfied-detection">2. Unfied Detection</h2>
-
-<ul>
-  <li>Single Neural Network로 통합.</li>
-  <li>이미지 전체를 이용해서 각각의 bbox 예측.</li>
-</ul>
-
-<p><img src="https://jjerry-k.github.io/public/img/yolo/fig02.png" /></p>
-
-<ul>
-  <li>입력 이미지를 S x S grid로 나눔.
-    <ul>
-      <li>Feature map이 S x S 라고 이해하면 됨.</li>
-    </ul>
-  </li>
-  <li>각 grid cell은 B개의 bbox의 정보(x, y, w, h, confidence score), 해당 grid cell의 Class probabilities 정보를 가짐.
-    <ul>
-      <li>bbox의 정보
-        <ul>
-          <li>x, y : bbox의 center 좌표</li>
-          <li>w, h : 이미지 크기에 대비한 상대적인 값.</li>
-          <li>confidence score : bbox가 object를 가졌는지 box가 얼마나 정확히 예측했는지에 대한 score</li>
-          <li>Confidence Score는 다음과 같이 정의.
-<script type="math/tex">{Confidence\; Score}= Pr(Object) * IOU^{truth}_{pred}</script></li>
-          <li>No object의 경우
-            <ul>
-              <li>Confidence Score는 0 이어야함.</li>
-            </ul>
-          </li>
-          <li>Confidence Score가 IOU와 같아지길 원함.</li>
-        </ul>
-      </li>
-      <li>Class Probabilities 정보
-        <ul>
-          <li>C개의 class에 대한 conditional class probabilities, $Pr(Class_i \mid Object)$</li>
-          <li>
-            <p>Test 시에는 Conditional class probabilities와 individual box confidence score를 곱했다고 함.<br />
-<script type="math/tex">Pr(Class_i|Object) =  Pr(Object) * IOU^{truth}_{pred} = Pr(Class_i) * IOU^{truth}_{pred}</script></p>
-          </li>
-          <li>bbox 별로 class confidence score를 알 수 있음.</li>
-        </ul>
-      </li>
-    </ul>
-  </li>
-  <li>PASCAL VOC 로 평가. S = 7, B = 2, C = 20</li>
-  <li>최종 출력은  7 x 7 x 30 의 tensor.</li>
-</ul>
-
-<h3 id="21-design">2.1 Design</h3>
-
-<ul>
-  <li>24개의 Convolution layer, 2개의 Fully Connected layer.</li>
-  <li>GoogLeNet의 inception 모듈 대신에 <span style="color:skyblue">1 x 1 Convolution layer를 이용하여 reduction.</span>
-<img src="https://jjerry-k.github.io/public/img/yolo/fig03_1.png" /></li>
-  <li>Tiny model은 9개의 Convolution layer, 2개의 Fully Connected layer.</li>
-</ul>
-
-<h3 id="22-training">2.2 Training</h3>
-<ul>
-  <li>앞 단의 20개의 Convolution layer(Feature Extractor)를 ImageNet 1000-class competition 데이터(224 x 224)로 Pretrain.</li>
-  <li>20번째 Convolution layer 뒤에 Average Pooling, Fully Connected Layer.</li>
-  <li>
-    <p>ImageNet 2012 validation set으로 top-5 accuracy 88% 정도..
-<img src="https://jjerry-k.github.io/public/img/yolo/fig03_2.png" /></p>
-  </li>
-  <li>
-    <p>Pretrain 후 Detector 부분 추가 후 입력 크기를 448 x 448 로 높여서 학습 진행.</p>
-  </li>
-  <li>Bounding Box의 width, height 값은 이미지의 width, height로 normalize 하여 0 ~ 1 사이 값을 같도록 함.</li>
-  <li>Bounding Box의 x, y 값은 특정 grid cell의 left top으로부터 offset 값. 0 ~ 1 사이 값을 같도록 함.</li>
-  <li>마지막 layer는 linear activation function 사용.</li>
-  <li>다른 layer는 leaky ReLU 사용.</li>
-</ul>
-
-<script type="math/tex; mode=display">% <![CDATA[
-\phi(x) =\left\{\begin{array}{lcl}x, & if\;x > 0\\ {0.1}x, & otherwise\end{array} \right. %]]></script>
-
-<ul>
-  <li>
-    <p>Optimization이 쉬운 Sum-Squared Error 를 사용.</p>
-  </li>
-  <li>이미지의 대부분 grid cell이 object 를 가지고 있지 않기 때문에 Confidence Score가 0 에 수렴.</li>
-  <li>이 상황에선 object를 가지고 있는 grid cell의 gradient를 압도할 수 있음.</li>
-  <li>
-    <p>이를 해결하기 위해 Bbox coordinate loss와 No object의 confidence loss 에 대해 weight 를 부여.<br />
-$\lambda_{coord} = 5$ and $\lambda_{noobj} = 0.5$.</p>
-  </li>
-  <li>Sum-Squared Error는 large boxes와 small boxes 를 동일하게 평가.</li>
-  <li>large boxes 에 대해서 중요성을 반영하기 위해 width, height 는 square root 사용.</li>
-</ul>
-
-<script type="math/tex; mode=display">\lambda_{coord}\sum^{S^2}_{i=0}\sum^B_{j=0}\mathbb{I}^{obj}_{ij}(x_i-\hat{x}_i)^2 + (y_i-\hat{y}_i)^2 \\
-+ \lambda_{coord}\sum^{S^2}_{i=0}\sum^B_{j=0}\mathbb{I}^{obj}_{ij}(\sqrt{w_i}-\sqrt{\hat{w}_i})^2 + (\sqrt{h_i}-\sqrt{\hat{h}_i})^2 \\
-+ \sum^{S^2}_{i=0}\sum^B_{j=0}\mathbb{I}^{obj}_{ij}(C_i - \hat{C}_i)^2 \\
-+ \lambda_{noobj}\sum^{S^2}_{i=0}\sum^B_{j=0}\mathbb{I}^{noobj}_{ij}(C_i - \hat{C}_i)^2 \\
-+ \sum^{S^2}_{i=0}\mathbb{I}^{obj}_{i}\sum^B_{c\in{classes}}(p_i(c) - \hat{p}_i(c))^2</script>
-
-<ul>
-  <li>$\mathbb{I}^{obj}_{i}$ : Object가 존재하는 Grid Cell i.</li>
-  <li>
-    <p>$\mathbb{I}^{obj}_{ij}$ : Object가 존재하는 Grid Cell i의 Bounding Box j.</p>
-  </li>
-  <li>Train 관련 Parameter
-    <ul>
-      <li>Batch Szie : 64</li>
-      <li>Momentum : 0.9</li>
-      <li>Decay : 0.0005</li>
-      <li>Learning rate
-        <ul>
-          <li>$10^{-3}$ 부터 $10^{-2}$ 까지 천천히 증가.</li>
-          <li>$10^{-2}$ 로 75 epochs 학습.</li>
-          <li>$10^{-3}$ 로 줄여서 30 epochs 학습.</li>
-          <li>$10^{-4}$ 로 줄여서 30 epochs 학습.</li>
-        </ul>
-      </li>
-      <li>Dropout : 0.5</li>
-      <li>Data Augmentation
-        <ul>
-          <li>Random Scaling, Translation of up to 20% of the original image size.</li>
-          <li>Random adjustment exposure and saturation</li>
-        </ul>
-      </li>
-    </ul>
-  </li>
-</ul>
-
-<h3 id="23-inference">2.3 Inference</h3>
-<ul>
-  <li>Large Object 나 여러 grid cell에 걸쳐있는 object는 여러 셀에 predict 될 수 있음.</li>
-  <li>Non-maximal suppression 사용하여 해결.</li>
-</ul>
-
-<h3 id="24-limitations-of-yolo">2.4 Limitations of YOLO</h3>
-<ul>
-  <li>각 Grid Cell은 하나의 클래스만 가질 수 있기 때문에 Grid Cell 하나에 작은 object가 여러 개 있을때 제대로 예측하지 못할 수 있다.</li>
-  <li>예상치 못한 aspect ratio나 configuration을 가진 객체를 일반화 하는데 어려움.</li>
-  <li>Large box와 Small box를 동일하게 처리.</li>
-  <li>Large box의 small error보다 Small box의 small error가 IOU에 훨씬 큰 영향을 끼침.</li>
-</ul>
-
-<h2 id="3-comparison-to-other-detection-systems">3. Comparison to Other Detection Systems</h2>
-<ul>
-  <li>생략</li>
-</ul>
-
-<h2 id="4-experiments">4. Experiments</h2>
-
-<h3 id="41-comparison-to-other-realtime-systems">4.1. Comparison to Other RealTime Systems</h3>
-<ul>
-  <li>Fast Yolo는 가장 빠른 속도를 보여줌.</li>
-  <li>YOLO 는 real-time 성능을 보여주면서 mAP도 뛰어난걸 확인할 수 있음.
-<img src="https://jjerry-k.github.io/public/img/yolo/fig04_1.png" /></li>
-</ul>
-
-<h3 id="42-voc-2007-error-analysis">4.2. VOC 2007 Error Analysis</h3>
-<ul>
-  <li>Object Localization은 Fast R-CNN이 더 뛰어남.</li>
-  <li>But, Background Error(False Positive)가 훨씬 높음.
-<img src="https://jjerry-k.github.io/public/img/yolo/fig04_2.png" /></li>
-</ul>
-
-<h3 id="43-combining-fast-rcnn-and-yolo">4.3. Combining Fast RCNN and YOLO</h3>
-<ul>
-  <li>Fast R-CNN과 YOLO를 앙상블 한 모델이 성능이 가장 좋음. 
-<img src="https://jjerry-k.github.io/public/img/yolo/fig04_3.png" /></li>
-</ul>
-
-<h3 id="44-voc-2012-results">4.4. VOC 2012 Results</h3>
-<p><img src="https://jjerry-k.github.io/public/img/yolo/fig04_4.png" /></p>
-
-<h3 id="45-generalizability">4.5 Generalizability</h3>
-<ul>
-  <li>새로운 도메인, 예상치 못한 입력이 들어왔을때 일반화 성능이 뛰어남.</li>
-  <li>Picasso Dataset 과 People-Art Dataset을 이용하여 다른 모델들과 일반화 성능 비교.</li>
-  <li>YOLO가 가장 성능이 좋은것을 보여줌. 
-<img src="https://jjerry-k.github.io/public/img/yolo/fig05_1.png" />
-<img src="https://jjerry-k.github.io/public/img/yolo/fig05_2.png" /></li>
-</ul>
-
-    <article></h4>
-    <div class="post-more">
-      
-      <a href="/deeplearning/2019/03/29/YOLO/#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
-      
-      <a href="/deeplearning/2019/03/29/YOLO/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
-    </div>
-  </div>
-  
-  <div class="post">
-    <h1 class="post-title">
-      <a href="/ubuntu/2019/02/14/docker/">
-        자주 사용하는 Docker Command 정리
-      </a>
-    </h1>
-
-    <span class="post-date">14 Feb 2019</span>
-     | 
-    
-    <a href="/blog/tags/#docker" class="post-tag">Docker</a>
-    
-    
-
-    <h4 style="font-weight: 400; line-height: 1.8;"><article>
-      <p>service nvidia-docker start (sudo 권한으로) : nvidia docker 서비스 시작.</p>
-
-<p>docker -i -t -rm -p 호스트포트:도커포트 -v 호스트경로:도커경로 IMAGE_NAME:tag bash : IMAGE_NAME 컨테이너를 실행.</p>
-
-<p>docker rm NAME : Docker 프로세스 제거</p>
-
-<p>docker rmi IMAGE_NAME : Docker Image 제거</p>
-
-<p>docker commit NAME 레포이름:태그 :</p>
-
-<p>CUDA_VISIBLE_DEVICES=0 jupyter notebook –ip=0.0.0.0 –port=포트번호 –allow-root</p>
-
-
-    <article></h4>
-    <div class="post-more">
-      
-      <a href="/ubuntu/2019/02/14/docker/#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
-      
-      <a href="/ubuntu/2019/02/14/docker/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
     </div>
   </div>
   

@@ -417,6 +417,119 @@ Files 탭에는 현재 모델을 돌릴때 사용된 정보, 가장 성능이 �
 딱히 이런저런 기능은 추가를 하지 않고 기본적인 기능만 봤습니다.<br />
 추후에는 좀 더 다양한 기능과 프레임워크에 적용해보도록 하겠습니다.</p>
 
+<hr />
+
+<h1 id="200401-pytorch-예제-추가">200401 PyTorch 예제 추가</h1>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="c1"># wandb initialization
+</span><span class="kn">import</span> <span class="nn">wandb</span>
+<span class="n">wandb</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">project</span><span class="o">=</span><span class="s">"test_project"</span><span class="p">)</span>
+
+<span class="c1"># Importing Modules
+</span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+
+<span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">from</span> <span class="nn">torch</span> <span class="kn">import</span> <span class="n">nn</span><span class="p">,</span> <span class="n">optim</span>
+<span class="kn">import</span> <span class="nn">torch.nn.functional</span> <span class="k">as</span> <span class="n">F</span>
+<span class="kn">from</span> <span class="nn">torchvision</span> <span class="kn">import</span> <span class="n">utils</span><span class="p">,</span> <span class="n">datasets</span><span class="p">,</span> <span class="n">transforms</span>
+
+<span class="c1"># Loading Data
+</span>
+<span class="c1"># MNIST dataset
+</span><span class="n">mnist_train</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">MNIST</span><span class="p">(</span><span class="n">root</span><span class="o">=</span><span class="s">'./'</span><span class="p">,</span>
+                          <span class="n">train</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+                          <span class="n">transform</span><span class="o">=</span><span class="n">transforms</span><span class="o">.</span><span class="n">ToTensor</span><span class="p">(),</span>
+                          <span class="n">download</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"Downloading Train Data Done ! "</span><span class="p">)</span>
+
+<span class="n">mnist_test</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">MNIST</span><span class="p">(</span><span class="n">root</span><span class="o">=</span><span class="s">'./'</span><span class="p">,</span>
+                         <span class="n">train</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>
+                         <span class="n">transform</span><span class="o">=</span><span class="n">transforms</span><span class="o">.</span><span class="n">ToTensor</span><span class="p">(),</span>
+                         <span class="n">download</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"Downloading Test Data Done ! "</span><span class="p">)</span>
+
+<span class="c1"># Defining Model
+</span>
+<span class="c1"># our model
+</span><span class="k">class</span> <span class="nc">Model</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Model</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">linear1</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">784</span><span class="p">,</span> <span class="mi">256</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">linear2</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">256</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+    
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">):</span>
+        <span class="n">X</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">relu</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">linear1</span><span class="p">(</span><span class="n">X</span><span class="p">)))</span>
+        <span class="n">X</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">linear2</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">X</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">Model</span><span class="p">()</span>
+<span class="n">criterion</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">CrossEntropyLoss</span><span class="p">()</span>
+<span class="n">optimizer</span> <span class="o">=</span> <span class="n">optim</span><span class="o">.</span><span class="n">Adam</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="mf">0.001</span><span class="p">)</span>
+
+<span class="c1"># Logging model, Gradient, parameters on dashboard
+</span><span class="n">wandb</span><span class="o">.</span><span class="n">watch</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+
+<span class="c1"># Training Phase
+</span><span class="n">batch_size</span> <span class="o">=</span> <span class="mi">100</span>
+
+<span class="n">data_iter</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">DataLoader</span><span class="p">(</span><span class="n">mnist_train</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">num_workers</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s">"Iteration maker Done !"</span><span class="p">)</span>
+
+<span class="c1"># Training loop
+</span><span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="n">avg_loss</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">total_batch</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">mnist_train</span><span class="p">)</span> <span class="o">//</span> <span class="n">batch_size</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">batch_img</span><span class="p">,</span> <span class="n">batch_lab</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">data_iter</span><span class="p">):</span>
+        <span class="n">X</span> <span class="o">=</span> <span class="n">batch_img</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">28</span><span class="o">*</span><span class="mi">28</span><span class="p">)</span>
+        <span class="n">Y</span> <span class="o">=</span> <span class="n">batch_lab</span>
+        
+        <span class="n">y_pred</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+        
+        <span class="n">loss</span> <span class="o">=</span> <span class="n">criterion</span><span class="p">(</span><span class="n">y_pred</span><span class="p">,</span> <span class="n">Y</span><span class="p">)</span>
+        <span class="c1"># Zero gradients, perform a backward pass, and update the weights.
+</span>        <span class="n">optimizer</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span>
+        <span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
+        <span class="n">optimizer</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+        
+        <span class="n">avg_loss</span> <span class="o">+=</span> <span class="n">loss</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">%</span><span class="mi">100</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">:</span>
+            <span class="k">print</span><span class="p">(</span><span class="s">"Epoch : "</span><span class="p">,</span> <span class="n">epoch</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="s">"Iteration : "</span><span class="p">,</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="s">" Loss : "</span><span class="p">,</span> <span class="n">avg_loss</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span><span class="o">/</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
+
+    <span class="c1"># Logging metrics    
+</span>    <span class="n">wandb</span><span class="o">.</span><span class="n">log</span><span class="p">({</span><span class="s">'epoch'</span><span class="p">:</span> <span class="n">epoch</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="s">"loss"</span><span class="p">:</span> <span class="n">avg_loss</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span><span class="o">/</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)})</span>
+
+    <span class="k">print</span><span class="p">(</span><span class="s">"Epoch : "</span><span class="p">,</span> <span class="n">epoch</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="s">" Loss : "</span><span class="p">,</span> <span class="n">avg_loss</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span><span class="o">/</span><span class="n">total_batch</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"Training Done !"</span><span class="p">)</span>
+
+<span class="c1"># Save final model
+</span><span class="n">torch</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">state_dict</span><span class="p">(),</span> <span class="s">"model.h5"</span><span class="p">)</span>
+<span class="n">wandb</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s">'model.h5'</span><span class="p">)</span>
+
+<span class="c1"># Evaluation
+</span>
+<span class="n">test_img</span> <span class="o">=</span> <span class="n">mnist_test</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">28</span><span class="o">*</span><span class="mi">28</span><span class="p">)</span><span class="o">.</span><span class="nb">type</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">FloatTensor</span><span class="p">)</span>
+<span class="n">test_lab</span> <span class="o">=</span> <span class="n">mnist_test</span><span class="o">.</span><span class="n">targets</span>
+<span class="n">outputs</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="n">test_img</span><span class="p">)</span>
+<span class="n">pred_val</span><span class="p">,</span> <span class="n">pred_idx</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="nb">max</span><span class="p">(</span><span class="n">outputs</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">correct</span> <span class="o">=</span> <span class="p">(</span><span class="n">pred_idx</span> <span class="o">==</span> <span class="n">test_lab</span><span class="p">)</span><span class="o">.</span><span class="nb">sum</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="s">'Accuracy : '</span><span class="p">,</span> <span class="n">correct</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">test_img</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="p">)</span>
+
+<span class="c1"># Testing
+</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">mnist_test</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">X_single_data</span> <span class="o">=</span> <span class="n">mnist_test</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">r</span><span class="p">:</span><span class="n">r</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">28</span><span class="o">*</span><span class="mi">28</span><span class="p">)</span><span class="o">.</span><span class="nb">float</span><span class="p">()</span>
+<span class="n">Y_single_data</span> <span class="o">=</span> <span class="n">mnist_test</span><span class="o">.</span><span class="n">targets</span><span class="p">[</span><span class="n">r</span><span class="p">:</span><span class="n">r</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
+
+<span class="n">single_prediction</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">X_single_data</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">X_single_data</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="mi">28</span><span class="p">,</span><span class="mi">28</span><span class="p">)</span><span class="o">.</span><span class="n">numpy</span><span class="p">(),</span> <span class="n">cmap</span><span class="o">=</span><span class="s">'gray'</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s">'Label : '</span><span class="p">,</span> <span class="n">Y_single_data</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">numpy</span><span class="p">()[</span><span class="mi">0</span><span class="p">])</span>
+<span class="k">print</span><span class="p">(</span><span class="s">'Prediction : '</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="nb">max</span><span class="p">(</span><span class="n">single_prediction</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="mi">1</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">numpy</span><span class="p">()[</span><span class="mi">0</span><span class="p">])</span>
+</code></pre></div></div>
+
   </article></h4>
 </div>
 

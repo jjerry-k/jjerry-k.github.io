@@ -1,6 +1,6 @@
 ---
 layout: post
-title: MobileNet V1 리뷰
+title: "Review: MobileNet V1"
 category: [DeepLearning]
 tags: [Paper]
 sitemap :

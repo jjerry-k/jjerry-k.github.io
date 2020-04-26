@@ -1,6 +1,22 @@
 [
   
     {
+      "title"    : "개인적인 맥북 세팅법",
+      "category" : "Living",
+      "tags"     : "Macbook",
+      "url"      : "/living/2020/04/26/macbook-setup/",
+      "date"     : "2020-04-26 00:00:00 +0900"
+    } ,
+  
+    {
+      "title"    : "Raspberry pi 4 에 Transmission 세팅하기",
+      "category" : "Living",
+      "tags"     : "Hardware",
+      "url"      : "/living/2020/04/20/rpi_transmission/",
+      "date"     : "2020-04-20 00:00:00 +0900"
+    } ,
+  
+    {
       "title"    : "Google Coral USB 사용기",
       "category" : "DeepLearning",
       "tags"     : "Tools",
@@ -9,7 +25,7 @@
     } ,
   
     {
-      "title"    : "StarGAN v2 리뷰",
+      "title"    : "StarGAN v2",
       "category" : "DeepLearning",
       "tags"     : "Paper",
       "url"      : "/deeplearning/2020/03/04/starganv2/",
@@ -33,7 +49,7 @@
     } ,
   
     {
-      "title"    : "MobileNet V1 리뷰",
+      "title"    : "MobileNet V1",
       "category" : "DeepLearning",
       "tags"     : "Paper",
       "url"      : "/deeplearning/2020/02/26/MobileNets-Efficient-Convolutional-Neural-Networks/",
@@ -73,7 +89,7 @@
     } ,
   
     {
-      "title"    : "MRI interpolation using Deep Learning - [1]",
+      "title"    : "MRI interpolation using Deep Learning",
       "category" : "DeepLearning",
       "tags"     : "Paper",
       "url"      : "/deeplearning/2019/07/05/Thin/",
@@ -105,7 +121,7 @@
     } ,
   
     {
-      "title"    : "YOLO 리뷰",
+      "title"    : "Review: YOLO",
       "category" : "DeepLearning",
       "tags"     : "Paper",
       "url"      : "/deeplearning/2019/03/29/YOLO/",

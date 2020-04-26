@@ -273,6 +273,325 @@
   
   <div class="post">
     <h1 class="post-title">
+      <a href="/living/2020/04/26/macbook-setup/">
+        개인적인 맥북 세팅법
+      </a>
+    </h1>
+
+    <span class="post-date">26 Apr 2020</span>
+     | 
+    
+    <a href="/blog/tags/#macbook" class="post-tag">Macbook</a>
+    
+    
+
+    <h4 style="font-weight: 400; line-height: 1.8;"><article>
+      <h1 id="after-macos-install">After MacOS Install</h1>
+
+<h2 id="1-install-applications">1. Install applications</h2>
+
+<ul>
+  <li>Kakao Talk</li>
+  <li>Between</li>
+  <li>Snap
+    <ul>
+      <li>Add Terminal shortcut</li>
+    </ul>
+  </li>
+  <li>Speedtest</li>
+  <li>Magnet</li>
+  <li>MenuBar Stats
+    <ul>
+      <li>Add MenuBar Stats Plugins Manager</li>
+      <li><a href="https://www.seense.com/menubarstats/plugins3/">https://www.seense.com/menubarstats/plugins3/</a></li>
+    </ul>
+  </li>
+  <li>Buddy for Youtube</li>
+  <li>Bandizip
+    <ul>
+      <li><a href="https://kr.bandisoft.com/bandizip/x/">https://kr.bandisoft.com/bandizip/x/</a></li>
+    </ul>
+  </li>
+  <li>Notion
+    <ul>
+      <li><a href="https://www.notion.so/desktop">https://www.notion.so/desktop</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="2-install-brew">2. Install brew</h2>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/usr/bin/ruby <span class="nt">-e</span> <span class="s2">"</span><span class="k">$(</span>curl <span class="nt">-fsSL</span> https://raw.githubusercontent.com/Homebrew/install/master/install<span class="k">)</span><span class="s2">"</span>
+</code></pre></div></div>
+
+<h2 id="3-install-oh-my-zsh">3. Install oh-my-zsh</h2>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sh <span class="nt">-c</span> <span class="s2">"</span><span class="k">$(</span>curl <span class="nt">-fsSL</span> https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh<span class="k">)</span><span class="s2">"</span>
+</code></pre></div></div>
+
+<h2 id="4-install-pyenv">4. Install pyenv</h2>
+
+<p><a href="https://jjerry-k.github.io/python/2018/09/27/python4mac/">Python Installation for mac</a></p>
+
+<h2 id="5-edit-zshrc">5. Edit .zshrc</h2>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># If you come from bash you might have to change your $PATH.</span>
+<span class="c"># export PATH=$HOME/bin:/usr/local/bin:$PATH</span>
+
+<span class="c"># Path to your oh-my-zsh installation.</span>
+<span class="nb">export </span><span class="nv">ZSH</span><span class="o">=</span><span class="s2">"/Users/jerry/.oh-my-zsh"</span>
+
+<span class="c"># Set name of the theme to load --- if set to "random", it will</span>
+<span class="c"># load a random theme each time oh-my-zsh is loaded, in which case,</span>
+<span class="c"># to know which specific one was loaded, run: echo $RANDOM_THEME</span>
+<span class="c"># See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes</span>
+<span class="nv">ZSH_THEME</span><span class="o">=</span><span class="s2">"jreese"</span>
+
+<span class="c"># Set list of themes to pick from when loading at random</span>
+<span class="c"># Setting this variable when ZSH_THEME=random will cause zsh to load</span>
+<span class="c"># a theme from this variable instead of looking in ~/.oh-my-zsh/themes/</span>
+<span class="c"># If set to an empty array, this variable will have no effect.</span>
+<span class="c"># ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )</span>
+
+<span class="c"># Uncomment the following line to use case-sensitive completion.</span>
+<span class="c"># CASE_SENSITIVE="true"</span>
+
+<span class="c"># Uncomment the following line to use hyphen-insensitive completion.</span>
+<span class="c"># Case-sensitive completion must be off. _ and - will be interchangeable.</span>
+<span class="c"># HYPHEN_INSENSITIVE="true"</span>
+
+<span class="c"># Uncomment the following line to disable bi-weekly auto-update checks.</span>
+<span class="c"># DISABLE_AUTO_UPDATE="true"</span>
+
+<span class="c"># Uncomment the following line to automatically update without prompting.</span>
+<span class="c"># DISABLE_UPDATE_PROMPT="true"</span>
+
+<span class="c"># Uncomment the following line to change how often to auto-update (in days).</span>
+<span class="c"># export UPDATE_ZSH_DAYS=13</span>
+
+<span class="c"># Uncomment the following line if pasting URLs and other text is messed up.</span>
+<span class="c"># DISABLE_MAGIC_FUNCTIONS=true</span>
+
+<span class="c"># Uncomment the following line to disable colors in ls.</span>
+<span class="c"># DISABLE_LS_COLORS="true"</span>
+
+<span class="c"># Uncomment the following line to disable auto-setting terminal title.</span>
+<span class="c"># DISABLE_AUTO_TITLE="true"</span>
+
+<span class="c"># Uncomment the following line to enable command auto-correction.</span>
+<span class="c"># ENABLE_CORRECTION="true"</span>
+
+<span class="c"># Uncomment the following line to display red dots whilst waiting for completion.</span>
+<span class="c"># COMPLETION_WAITING_DOTS="true"</span>
+
+<span class="c"># Uncomment the following line if you want to disable marking untracked files</span>
+<span class="c"># under VCS as dirty. This makes repository status check for large repositories</span>
+<span class="c"># much, much faster.</span>
+<span class="c"># DISABLE_UNTRACKED_FILES_DIRTY="true"</span>
+
+<span class="c"># Uncomment the following line if you want to change the command execution time</span>
+<span class="c"># stamp shown in the history command output.</span>
+<span class="c"># You can set one of the optional three formats:</span>
+<span class="c"># "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"</span>
+<span class="c"># or set a custom format using the strftime function format specifications,</span>
+<span class="c"># see 'man strftime' for details.</span>
+<span class="c"># HIST_STAMPS="mm/dd/yyyy"</span>
+
+<span class="c"># Would you like to use another custom folder than $ZSH/custom?</span>
+<span class="c"># ZSH_CUSTOM=/path/to/new-custom-folder</span>
+
+<span class="c"># Which plugins would you like to load?</span>
+<span class="c"># Standard plugins can be found in ~/.oh-my-zsh/plugins/*</span>
+<span class="c"># Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/</span>
+<span class="c"># Example format: plugins=(rails git textmate ruby lighthouse)</span>
+<span class="c"># Add wisely, as too many plugins slow down shell startup.</span>
+<span class="nv">plugins</span><span class="o">=(</span>git<span class="o">)</span>
+
+<span class="nb">source</span> <span class="nv">$ZSH</span>/oh-my-zsh.sh
+
+<span class="c"># User configuration</span>
+
+<span class="c"># export MANPATH="/usr/local/man:$MANPATH"</span>
+
+<span class="c"># You may need to manually set your language environment</span>
+<span class="c"># export LANG=en_US.UTF-8</span>
+
+<span class="c"># Preferred editor for local and remote sessions</span>
+<span class="c"># if [[ -n $SSH_CONNECTION ]]; then</span>
+<span class="c">#   export EDITOR='vim'</span>
+<span class="c"># else</span>
+<span class="c">#   export EDITOR='mvim'</span>
+<span class="c"># fi</span>
+
+<span class="c"># Compilation flags</span>
+<span class="c"># export ARCHFLAGS="-arch x86_64"</span>
+
+<span class="c"># Set personal aliases, overriding those provided by oh-my-zsh libs,</span>
+<span class="c"># plugins, and themes. Aliases can be placed here, though oh-my-zsh</span>
+<span class="c"># users are encouraged to define aliases within the ZSH_CUSTOM folder.</span>
+<span class="c"># For a full list of active aliases, run `alias`.</span>
+<span class="c">#</span>
+<span class="c"># Example aliases</span>
+<span class="c"># alias zshconfig="mate ~/.zshrc"</span>
+<span class="c"># alias ohmyzsh="mate ~/.oh-my-zsh"</span>
+
+<span class="c"># Set pyenv</span>
+<span class="nb">export </span><span class="nv">PYENV_ROOT</span><span class="o">=</span><span class="s2">"</span><span class="k">${</span><span class="nv">HOME</span><span class="k">}</span><span class="s2">/.pyenv"</span>
+<span class="nb">export </span><span class="nv">PATH</span><span class="o">=</span><span class="s2">"</span><span class="k">${</span><span class="nv">PYENV_ROOT</span><span class="k">}</span><span class="s2">bin:</span><span class="nv">$PATH</span><span class="s2">"</span>
+<span class="nb">eval</span> <span class="s2">"</span><span class="k">$(</span>pyenv init -<span class="k">)</span><span class="s2">"</span>
+
+<span class="c"># &gt;&gt;&gt; conda initialize &gt;&gt;&gt;</span>
+<span class="c"># !! Contents within this block are managed by 'conda init' !!</span>
+<span class="nv">__conda_setup</span><span class="o">=</span><span class="s2">"</span><span class="k">$(</span><span class="s1">'/Users/jerry/.pyenv/versions/miniconda3-latest/bin/conda'</span> <span class="s1">'shell.zsh'</span> <span class="s1">'hook'</span> 2&gt; /dev/null<span class="k">)</span><span class="s2">"</span>
+<span class="k">if</span> <span class="o">[</span> <span class="nv">$?</span> <span class="nt">-eq</span> 0 <span class="o">]</span><span class="p">;</span> <span class="k">then
+    </span><span class="nb">eval</span> <span class="s2">"</span><span class="nv">$__conda_setup</span><span class="s2">"</span>
+<span class="k">else
+    if</span> <span class="o">[</span> <span class="nt">-f</span> <span class="s2">"/Users/jerry/.pyenv/versions/miniconda3-latest/etc/profile.d/conda.sh"</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+        <span class="nb">.</span> <span class="s2">"/Users/jerry/.pyenv/versions/miniconda3-latest/etc/profile.d/conda.sh"</span>
+    <span class="k">else
+        </span><span class="nb">export </span><span class="nv">PATH</span><span class="o">=</span><span class="s2">"/Users/jerry/.pyenv/versions/miniconda3-latest/bin:</span><span class="nv">$PATH</span><span class="s2">"</span>
+    <span class="k">fi
+fi
+</span><span class="nb">unset </span>__conda_setup
+<span class="c"># &lt;&lt;&lt; conda initialize &lt;&lt;&lt;</span>
+</code></pre></div></div>
+
+<h2 id="6-create-conda-environment">6. Create conda environment</h2>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#!/bin/bash</span>
+
+conda <span class="nb">install</span> <span class="nt">-y</span> ipykernel jupyter jupyterlab pylint
+conda update <span class="nt">--all</span> <span class="nt">-y</span>
+conda create <span class="nt">-y</span> <span class="nt">-n</span> tf <span class="nv">python</span><span class="o">=</span>3.7
+conda create <span class="nt">-y</span> <span class="nt">-n</span> tc <span class="nv">python</span><span class="o">=</span>3.7
+
+<span class="nb">source</span> ~/.pyenv/versions/miniconda3-latest/etc/profile.d/conda.sh
+
+<span class="c"># Create TensorFlow Environment</span>
+conda activate tf
+conda <span class="nb">install</span> <span class="nt">-y</span> numpy scipy pandas matplotlib pylint
+conda <span class="nb">install</span> <span class="nt">-y</span> seaborn pillow scikit-image opencv scikit-learn tqdm ipython ipykernel ipywidgets
+conda <span class="nb">install</span> <span class="nt">-y</span> <span class="nt">-c</span> conda-forge pydicom nibabel
+conda <span class="nb">install</span> <span class="nt">-y</span> <span class="nt">-c</span> SimpleITK SimpleITK
+conda <span class="nb">install</span> <span class="nt">-y</span> tensorflow
+conda update <span class="nt">--all</span> <span class="nt">-y</span>
+python <span class="nt">-m</span> ipykernel <span class="nb">install</span> <span class="nt">--user</span> <span class="nt">--name</span> tf <span class="nt">--display-name</span> TensorFlow
+conda deactivate
+
+<span class="c"># Create PyTorch Environment</span>
+conda activate tc
+conda <span class="nb">install</span> <span class="nt">-y</span> numpy scipy pandas matplotlib pylint
+conda <span class="nb">install</span> <span class="nt">-y</span> seaborn pillow scikit-image opencv scikit-learn tqdm ipython ipykernel ipywidgets
+conda <span class="nb">install</span> <span class="nt">-y</span> <span class="nt">-c</span> conda-forge pydicom nibabel
+conda <span class="nb">install</span> <span class="nt">-y</span> <span class="nt">-c</span> SimpleITK SimpleITK
+conda <span class="nb">install</span> <span class="nt">-y</span> <span class="nt">-c</span> pytorch pytorch torchvision
+conda update <span class="nt">--all</span> <span class="nt">-y</span>
+python <span class="nt">-m</span> ipykernel <span class="nb">install</span> <span class="nt">--user</span> <span class="nt">--name</span> tc <span class="nt">--display-name</span> PyTorch
+conda deactivate
+</code></pre></div></div>
+
+<h2 id="7-install-vscode">7. Install VSCode</h2>
+
+<ul>
+  <li><a href="https://code.visualstudio.com/docs/?dv=osx">https://code.visualstudio.com/docs/?dv=osx</a></li>
+  <li>Install plugin
+    <ul>
+      <li>python</li>
+      <li>kite
+        <ul>
+          <li><a href="https://kite.com/download/">https://kite.com/download/</a></li>
+        </ul>
+      </li>
+      <li>c/c++</li>
+      <li>markdown-all-in-one</li>
+      <li>leetcode
+        <ul>
+          <li>brew install node</li>
+          <li>Sign in using github</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+    <article></h4>
+    <div class="post-more">
+      
+      <a href="/living/2020/04/26/macbook-setup/#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
+      
+      <a href="/living/2020/04/26/macbook-setup/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
+    </div>
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/living/2020/04/20/rpi_transmission/">
+        Raspberry pi 4 에 Transmission 세팅하기
+      </a>
+    </h1>
+
+    <span class="post-date">20 Apr 2020</span>
+     | 
+    
+    <a href="/blog/tags/#hardware" class="post-tag">Hardware</a>
+    
+    
+
+    <h4 style="font-weight: 400; line-height: 1.8;"><article>
+      <h1 id="raspberry-pi-4--transmission-container">Raspberry pi 4 &amp; Transmission Container</h1>
+
+<hr />
+
+<h1 id="1-docker-install">1. Docker Install</h1>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl <span class="nt">-fsSL</span> get.docker.com <span class="nt">-o</span> get-docker.sh
+
+<span class="nb">sudo </span>bash get-docker.sh
+
+<span class="nb">sudo </span>usermod <span class="nt">-aG</span> docker pi
+</code></pre></div></div>
+<p>그리고 재부팅</p>
+
+<h1 id="2-pull-transmission-image">2. Pull Transmission Image</h1>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker pull linuxserver/transmission
+</code></pre></div></div>
+
+<h1 id="3-create-transmission-container">3. Create Transmission Container</h1>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker create <span class="se">\</span>
+    <span class="nt">--name</span><span class="o">=</span>transmission <span class="se">\</span>
+    <span class="nt">-e</span> <span class="nv">PUID</span><span class="o">=</span>1000 <span class="se">\</span>
+    <span class="nt">-e</span> <span class="nv">PGID</span><span class="o">=</span>1000 <span class="se">\</span>
+    <span class="nt">-e</span> <span class="nv">TZ</span><span class="o">=</span>Asia/Seoul <span class="se">\</span>
+    <span class="nt">-e</span> <span class="nv">USER</span><span class="o">={</span>username<span class="o">}</span> <span class="se">\</span>
+    <span class="nt">-e</span> <span class="nv">PASS</span><span class="o">={</span>password<span class="o">}</span> <span class="se">\</span>
+    <span class="nt">-p</span> 9091:9091 <span class="se">\</span>
+    <span class="nt">-p</span> 51413:51413 <span class="se">\</span>
+    <span class="nt">-p</span> 51413:51413/udp <span class="se">\</span>
+    <span class="nt">-v</span> <span class="o">{</span>path to data<span class="o">}</span>:/config <span class="se">\</span>
+    <span class="nt">-v</span> <span class="o">{</span>path to downloads<span class="o">}</span>:/downloads <span class="se">\</span>
+    <span class="nt">-v</span> <span class="o">{</span>path to watch folder<span class="o">}</span>:/watch <span class="se">\</span>
+    <span class="nt">--restart</span> unless-stopped <span class="se">\</span>
+    linuxserver/transmission
+</code></pre></div></div>
+
+<h1 id="4-run-container">4. Run Container</h1>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker start transmission
+</code></pre></div></div>
+
+    <article></h4>
+    <div class="post-more">
+      
+      <a href="/living/2020/04/20/rpi_transmission/#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
+      
+      <a href="/living/2020/04/20/rpi_transmission/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
+    </div>
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
       <a href="/deeplearning/2020/03/31/coral/">
         Google Coral USB 사용기
       </a>
@@ -409,7 +728,7 @@ optional arguments:
   <div class="post">
     <h1 class="post-title">
       <a href="/deeplearning/2020/03/04/starganv2/">
-        StarGAN v2 리뷰
+        StarGAN v2
       </a>
     </h1>
 
@@ -749,333 +1068,6 @@ URL: https://arxiv.org/abs/1711.09020</p>
       <a href="/deeplearning/2020/03/02/starganv1/#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
       
       <a href="/deeplearning/2020/03/02/starganv1/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
-    </div>
-  </div>
-  
-  <div class="post">
-    <h1 class="post-title">
-      <a href="/deeplearning/2020/03/01/wandb/">
-        Weights & Biases 가 뭐지??
-      </a>
-    </h1>
-
-    <span class="post-date">01 Mar 2020</span>
-     | 
-    
-    <a href="/blog/tags/#tools" class="post-tag">Tools</a>
-    
-    
-
-    <h4 style="font-weight: 400; line-height: 1.8;"><article>
-      <p>이번 포스팅에선 <a href="https://www.wandb.com/">Weights &amp; Biases</a> 라는 Tool 을 소개드리려 합니다.</p>
-
-<p>다음과 같은 특징을 강조하네요.</p>
-<ul>
-  <li>Store hyper-parameters used in a training run</li>
-  <li>Search, compare, and visualize training runs</li>
-  <li>Analyze system usage metrics alongside runs</li>
-  <li>Collaborate with team members</li>
-  <li>Replicate historic results</li>
-  <li>Run parameter sweeps</li>
-  <li>Keep records of experiments available forever</li>
-</ul>
-
-<p>그럼 간단 사용법에 대해서 설명드리겠습니다.</p>
-
-<h3 id="sign-up-을-했다는-가정하에-진행합니다"><strong>Sign Up</strong> 을 했다는 가정하에 진행합니다.</h3>
-
-<h1 id="패키지-설치">패키지 설치</h1>
-
-<p><code class="highlighter-rouge">wandb</code> 패키지를 먼저 설치해줍니다.</p>
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pip <span class="nb">install </span>wandb
-</code></pre></div></div>
-
-<h1 id="wandb-로그인">wandb 로그인</h1>
-
-<p>설치 후 Terminal (or 명령 프롬프트) 에 다음과 같이 입력합니다.</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wandb login
-</code></pre></div></div>
-
-<p>그러면 아래와 같은 화면이 나오면서 웹 브라우저가 켜집니다.</p>
-
-<p><img src="https://jjerry-k.github.io/public/img/wandb/Untitled.png" alt="https://jjerry-k.github.io/public/img/wandb/Untitled.png" /></p>
-
-<p><img src="https://jjerry-k.github.io/public/img/wandb/Untitled_1.png" alt="https://jjerry-k.github.io/public/img/wandb/Untitled_1.png" /></p>
-
-<p>Browser 에서 API키를 복사해주해서 Terminal (or 명령 프롬프트) 에 붙여넣기합니다.</p>
-
-<p><img src="https://jjerry-k.github.io/public/img/wandb/Untitled_2.png" alt="https://jjerry-k.github.io/public/img/wandb/Untitled_2.png" /></p>
-
-<p>그럼 wandb 에 로그인 완료!</p>
-
-<p><img src="https://jjerry-k.github.io/public/img/wandb/Untitled_3.png" alt="https://jjerry-k.github.io/public/img/wandb/Untitled_3.png" /></p>
-
-<h1 id="code-실행">Code 실행</h1>
-
-<p>간단한 MLP를 이용한 MNIST Classification 문제입니다.</p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-<span class="c1"># wandb initialization
-</span><span class="kn">import</span> <span class="nn">wandb</span>
-<span class="n">wandb</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">project</span><span class="o">=</span><span class="s">"test_project"</span><span class="p">)</span>
-
-<span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
-<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
-
-<span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="n">tf</span>
-<span class="kn">from</span> <span class="nn">tensorflow.keras</span> <span class="kn">import</span> <span class="n">models</span><span class="p">,</span> <span class="n">layers</span><span class="p">,</span> <span class="n">optimizers</span><span class="p">,</span> <span class="n">losses</span><span class="p">,</span> <span class="n">utils</span><span class="p">,</span> <span class="n">datasets</span>
-
-
-<span class="c1"># Import callback function
-</span><span class="kn">from</span> <span class="nn">wandb.keras</span> <span class="kn">import</span> <span class="n">WandbCallback</span> 
-
-<span class="k">print</span><span class="p">(</span><span class="s">"Packge Loaded!"</span><span class="p">)</span>
-
-
-<span class="c1"># Data Loading
-</span><span class="p">(</span><span class="n">train_x</span><span class="p">,</span> <span class="n">train_y</span><span class="p">),</span> <span class="p">(</span><span class="n">test_x</span><span class="p">,</span> <span class="n">test_y</span><span class="p">)</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">mnist</span><span class="o">.</span><span class="n">load_data</span><span class="p">()</span>
-<span class="n">train_x</span><span class="p">,</span> <span class="n">test_x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">train_x</span><span class="o">/</span><span class="mf">255.</span><span class="p">,</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">784</span><span class="p">]),</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">test_x</span><span class="o">/</span><span class="mf">255.</span><span class="p">,</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">784</span><span class="p">])</span>
-
-<span class="k">print</span><span class="p">(</span><span class="s">"Train Data's Shape : "</span><span class="p">,</span> <span class="n">train_x</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">train_y</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s">"Test Data's Shape : "</span><span class="p">,</span> <span class="n">test_x</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">test_y</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
-
-<span class="c1"># Network Building
-## Using Sequential
-</span><span class="n">mlp</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">Sequential</span><span class="p">()</span>
-<span class="n">mlp</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">256</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s">'relu'</span><span class="p">,</span> <span class="n">input_shape</span><span class="o">=</span><span class="p">(</span><span class="mi">784</span><span class="p">,)))</span>
-<span class="n">mlp</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s">'relu'</span><span class="p">))</span>
-<span class="n">mlp</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s">'softmax'</span><span class="p">))</span>
-
-<span class="k">print</span><span class="p">(</span><span class="s">"Network Built!"</span><span class="p">)</span>
-
-<span class="n">mlp</span><span class="o">.</span><span class="nb">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="n">optimizers</span><span class="o">.</span><span class="n">Adam</span><span class="p">(),</span> <span class="n">loss</span><span class="o">=</span><span class="n">losses</span><span class="o">.</span><span class="n">sparse_categorical_crossentropy</span><span class="p">,</span> <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s">'accuracy'</span><span class="p">])</span>
-
-<span class="n">history</span> <span class="o">=</span> <span class="n">mlp</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">train_x</span><span class="p">,</span> <span class="n">train_y</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> 
-                                    <span class="n">validation_data</span><span class="o">=</span><span class="p">(</span><span class="n">test_x</span><span class="p">,</span> <span class="n">test_y</span><span class="p">),</span> 
-                                    <span class="n">callbacks</span><span class="o">=</span><span class="p">[</span><span class="n">WandbCallback</span><span class="p">()])</span> <span class="c1"># callbacks 에 Wandbcallback 추가
-</span></code></pre></div></div>
-
-<h1 id="check-training">Check training</h1>
-
-<p>해당 코드를 실행시키고 <a href="https://app.wandb.ai/home">W&amp;B</a> 에 접속을 하면 다음과 같은 화면이 나옵니다.<br />
-위에서 <code class="highlighter-rouge">test_project</code> 라는 프로젝트에 세팅을 했기 때문에 확인을 해봅니다.<br />
-하나의 프로젝트에서 한번 실행하면 뭔지 모를 조합의 <code class="highlighter-rouge">Name</code>으로 실행 상태를 보여줍니다.
-저는 한번만 했기 때문에 <code class="highlighter-rouge">lyric-dream-3</code> 라는 이름으로 하나만 생겨있습니다.</p>
-
-<p><img src="https://jjerry-k.github.io/public/img/wandb/Untitled_4.png" alt="https://jjerry-k.github.io/public/img/wandb/Untitled_4.png" /></p>
-
-<p><code class="highlighter-rouge">lyric-dream-3</code> 같이 이름을 클릭해서 무엇을 볼 수 있는지 살펴보겠습니다.</p>
-
-<h2 id="chart-탭">Chart 탭</h2>
-
-<p>Chart 탭에선 loss, epoch, metric 등과 같은 학습 관련 지표를 볼 수 있는 <code class="highlighter-rouge">CHARTS</code>와 모델 학습에 사용된 시스템을 모니터링 할 수 있는 <code class="highlighter-rouge">SYSTEM</code>이 있습니다.</p>
-
-<p><img src="https://jjerry-k.github.io/public/img/wandb/Untitled_5.png" alt="https://jjerry-k.github.io/public/img/wandb/Untitled_5.png" /></p>
-
-<p><img src="https://jjerry-k.github.io/public/img/wandb/Untitled_6.png" alt="https://jjerry-k.github.io/public/img/wandb/Untitled_6.png" /></p>
-
-<p><img src="https://jjerry-k.github.io/public/img/wandb/Untitled_7.png" alt="https://jjerry-k.github.io/public/img/wandb/Untitled_7.png" /></p>
-
-<p><img src="https://jjerry-k.github.io/public/img/wandb/Untitled_8.png" alt="https://jjerry-k.github.io/public/img/wandb/Untitled_8.png" /></p>
-
-<p><img src="https://jjerry-k.github.io/public/img/wandb/Untitled_9.png" alt="https://jjerry-k.github.io/public/img/wandb/Untitled_9.png" /></p>
-
-<h2 id="system-탭">System 탭</h2>
-<p>System 탭에서는 Chart 탭에서 <code class="highlighter-rouge">SYSTEM</code> 과 동일한 그래프를 보여주네요.
-<img src="https://jjerry-k.github.io/public/img/wandb/Untitled_10.png" alt="https://jjerry-k.github.io/public/img/wandb/Untitled_10.png" /></p>
-
-<h2 id="model-탭">Model 탭</h2>
-<p>이름 그대로 학습하는 Model의 graph 구조를 볼 수 있습니다.
-<img src="https://jjerry-k.github.io/public/img/wandb/Untitled_11.png" alt="https://jjerry-k.github.io/public/img/wandb/Untitled_11.png" /></p>
-
-<h2 id="logs-탭">Logs 탭</h2>
-<p>여기선 학습 로그들이 저장됩니다.
-<img src="https://jjerry-k.github.io/public/img/wandb/Untitled_12.png" alt="https://jjerry-k.github.io/public/img/wandb/Untitled_12.png" /></p>
-
-<h2 id="files-탭">Files 탭</h2>
-<p>솔직히 보여주기만 해도 좋지만 저장도 해주면 좋겠죠.<br />
-Files 탭에는 현재 모델을 돌릴때 사용된 정보, 가장 성능이 좋았을 epoch 의 model, 돌리는 환경에 설치된 package 리스트 등의 정보가 저장됩니다.<br />
-물론 다운로드 가능!<br />
-<code class="highlighter-rouge">model-best.h5</code>는 graph 정보도 저장되어 있기 때문에 다운로드 후 load해서 바로 Inference 가능합니다!
-<img src="https://jjerry-k.github.io/public/img/wandb/Untitled_13.png" alt="https://jjerry-k.github.io/public/img/wandb/Untitled_13.png" /></p>
-
-<p><a href="https://www.wandb.com/">Weights &amp; Biases</a> 에 대해 정~~~말 간단히 알아봤습니다.<br />
-딱히 이런저런 기능은 추가를 하지 않고 기본적인 기능만 봤습니다.<br />
-추후에는 좀 더 다양한 기능과 프레임워크에 적용해보도록 하겠습니다.</p>
-
-    <article></h4>
-    <div class="post-more">
-      
-      <a href="/deeplearning/2020/03/01/wandb/#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
-      
-      <a href="/deeplearning/2020/03/01/wandb/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
-    </div>
-  </div>
-  
-  <div class="post">
-    <h1 class="post-title">
-      <a href="/deeplearning/2020/02/26/MobileNets-Efficient-Convolutional-Neural-Networks/">
-        MobileNet V1 리뷰
-      </a>
-    </h1>
-
-    <span class="post-date">26 Feb 2020</span>
-     | 
-    
-    <a href="/blog/tags/#paper" class="post-tag">Paper</a>
-    
-    
-
-    <h4 style="font-weight: 400; line-height: 1.8;"><article>
-      <h1 id="mobilenets-efficient-convolutional-neural-networks-for-mobile-vision-applications">MobileNets: Efficient Convolutional Neural Networks for Mobile Vision Applications</h1>
-
-<p>Author: Andrew G. Howard, Menglong Zhu, Bo Chen, Dmitry Kalenichenko, Weijun Wang, Tobias Weyand, Marco Andreetto, Hartwig Adam<br />
-Date: Apr 17, 2017<br />
-URL: https://arxiv.org/abs/1704.04861</p>
-
-<h1 id="abstract"><strong>Abstract</strong></h1>
-
-<p>- 모바일, 임베디드에 적용할 수 있는 네트워크.</p>
-
-<p><img src="https://jjerry-k.github.io/public/img/mobilev1/Untitled.png" alt="https://jjerry-k.github.io/public/img/mobilev1/Untitled.png" /></p>
-
-<h1 id="1-introduction"><strong>1. Introduction</strong></h1>
-
-<ul>
-  <li>CNN 유명세 짱짱맨</li>
-  <li>좋은 성능(정확도)를 위해 연구가 계속 진행되었지만 속도와 메모리 측면에서 <strong>**비</strong>**효율적.</li>
-  <li>경량화, 효율화 필요!!</li>
-</ul>
-
-<h1 id="2-prior-work"><strong>2. Prior Work</strong></h1>
-
-<ul>
-  <li>최근 경량화, 효율적인 네트워크 개발에 초점.</li>
-  <li>Depthwse separable convolution,</li>
-</ul>
-
-<h1 id="3-mobilenetarchitecture"><strong>3. MobileNet Architecture</strong></h1>
-
-<ul>
-  <li>핵심적인 레이어 설명.</li>
-</ul>
-
-<h2 id="31-depthwiseseparableconvolution"><strong>3.1 Depthwise Separable Convolution</strong></h2>
-
-<ul>
-  <li>Depthwise Convolution 수행 후 Pointwise Convolution 수행.</li>
-</ul>
-
-<p><img src="https://jjerry-k.github.io/public/img/mobilev1/Untitled_1.png" alt="https://jjerry-k.github.io/public/img/mobilev1/Untitled_1.png" /></p>
-
-<p><img src="https://jjerry-k.github.io/public/img/mobilev1/Untitled_2.png" alt="https://jjerry-k.github.io/public/img/mobilev1/Untitled_2.png" /></p>
-
-<ul>
-  <li>MobileNet 에서는 3 x 3 의 Depthwise saparable convolution 사용.</li>
-  <li>연산량이 약 8~9 배로 크게 감소.</li>
-</ul>
-
-<h2 id="32-networkstructureandtraining"><strong>3.2 Network Structure and Training</strong></h2>
-
-<ul>
-  <li>총 28개의 레이어</li>
-</ul>
-
-<p><img src="https://jjerry-k.github.io/public/img/mobilev1/Untitled_3.png" alt="https://jjerry-k.github.io/public/img/mobilev1/Untitled_3.png" /></p>
-
-<ul>
-  <li>MobileNet의 Convolution Block 구조</li>
-</ul>
-
-<p><img src="https://jjerry-k.github.io/public/img/mobilev1/Untitled_4.png" alt="https://jjerry-k.github.io/public/img/mobilev1/Untitled_4.png" /></p>
-
-<ul>
-  <li>MobileNet의 대부분 파라미터, 연산 시간은 1x1 Conv</li>
-</ul>
-
-<p><img src="https://jjerry-k.github.io/public/img/mobilev1/Untitled_5.png" alt="https://jjerry-k.github.io/public/img/mobilev1/Untitled_5.png" /></p>
-
-<ul>
-  <li>RMSprop, asynchronous gradient descent 사용.</li>
-  <li>Tensorflow 로 구현.</li>
-</ul>
-
-<h2 id="33-widthmultiplierthinnermodels"><strong>3.3 Width Multiplier: Thinner Models</strong></h2>
-
-<ul>
-  <li>MobileNet의 기본 구조는 작고 빠르지만 더 작고 빠른 모델을 필요로 함.</li>
-  <li>Width multiplier 라는 파라미터 제안.</li>
-</ul>
-
-<h2 id="34-resolutionmultiplierreducedrepresentation"><strong>3.4 Resolution Multiplier: Reduced Representation</strong></h2>
-
-<p><img src="https://jjerry-k.github.io/public/img/mobilev1/Untitled_6.png" alt="https://jjerry-k.github.io/public/img/mobilev1/Untitled_6.png" /></p>
-
-<h1 id="4-experiments"><strong>4. Experiments</strong></h1>
-
-<ul>
-  <li><strong>효율적이다 라는</strong> 내용이 전부..</li>
-</ul>
-
-<h2 id="41-modelchoices"><strong>4.1 Model Choices</strong></h2>
-
-<p><img src="https://jjerry-k.github.io/public/img/mobilev1/Untitled_7.png" alt="https://jjerry-k.github.io/public/img/mobilev1/Untitled_7.png" /></p>
-
-<p><img src="https://jjerry-k.github.io/public/img/mobilev1/Untitled_8.png" alt="https://jjerry-k.github.io/public/img/mobilev1/Untitled_8.png" /></p>
-
-<h2 id="42-modelshrinkinghyperparemeters"><strong>4.2 Model Shrinking Hyperparemeters</strong></h2>
-
-<p><img src="https://jjerry-k.github.io/public/img/mobilev1/Untitled_9.png" alt="https://jjerry-k.github.io/public/img/mobilev1/Untitled_9.png" /></p>
-
-<p><img src="https://jjerry-k.github.io/public/img/mobilev1/Untitled_10.png" alt="https://jjerry-k.github.io/public/img/mobilev1/Untitled_10.png" /></p>
-
-<p><img src="https://jjerry-k.github.io/public/img/mobilev1/Untitled_11.png" alt="https://jjerry-k.github.io/public/img/mobilev1/Untitled_11.png" /></p>
-
-<p><img src="https://jjerry-k.github.io/public/img/mobilev1/Untitled_12.png" alt="https://jjerry-k.github.io/public/img/mobilev1/Untitled_12.png" /></p>
-
-<p><img src="https://jjerry-k.github.io/public/img/mobilev1/Untitled_13.png" alt="https://jjerry-k.github.io/public/img/mobilev1/Untitled_13.png" /></p>
-
-<p><img src="https://jjerry-k.github.io/public/img/mobilev1/Untitled_14.png" alt="https://jjerry-k.github.io/public/img/mobilev1/Untitled_14.png" /></p>
-
-<h2 id="43-finegrainedrecognition"><strong>4.3 Fine Grained Recognition</strong></h2>
-
-<p><img src="https://jjerry-k.github.io/public/img/mobilev1/Untitled_15.png" alt="https://jjerry-k.github.io/public/img/mobilev1/Untitled_15.png" /></p>
-
-<h2 id="44-largescalegeolocalization"><strong>4.4 Large Scale Geolocalization</strong></h2>
-
-<p><img src="https://jjerry-k.github.io/public/img/mobilev1/Untitled_16.png" alt="https://jjerry-k.github.io/public/img/mobilev1/Untitled_16.png" /></p>
-
-<h2 id="45-faceattributed"><strong>4.5 Face Attributed</strong></h2>
-
-<p><img src="https://jjerry-k.github.io/public/img/mobilev1/Untitled_17.png" alt="https://jjerry-k.github.io/public/img/mobilev1/Untitled_17.png" /></p>
-
-<p><img src="https://jjerry-k.github.io/public/img/mobilev1/Untitled_18.png" alt="https://jjerry-k.github.io/public/img/mobilev1/Untitled_18.png" /></p>
-
-<h2 id="46-objectdetection"><strong>4.6 Object Detection</strong></h2>
-
-<p><img src="https://jjerry-k.github.io/public/img/mobilev1/Untitled_19.png" alt="https://jjerry-k.github.io/public/img/mobilev1/Untitled_19.png" /></p>
-
-<p><img src="https://jjerry-k.github.io/public/img/mobilev1/Untitled_20.png" alt="https://jjerry-k.github.io/public/img/mobilev1/Untitled_20.png" /></p>
-
-<h2 id="47-faceembeddings"><strong>4.7 Face Embeddings</strong></h2>
-
-<p><img src="https://jjerry-k.github.io/public/img/mobilev1/Untitled_21.png" alt="https://jjerry-k.github.io/public/img/mobilev1/Untitled_21.png" /></p>
-
-<h1 id="5-conclusion"><strong>5. Conclusion</strong></h1>
-
-<ul>
-  <li>연산량이 적고 파라미터 수도 적음!</li>
-  <li>다양한 task 에 사용가능!</li>
-</ul>
-
-    <article></h4>
-    <div class="post-more">
-      
-      <a href="/deeplearning/2020/02/26/MobileNets-Efficient-Convolutional-Neural-Networks/#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
-      
-      <a href="/deeplearning/2020/02/26/MobileNets-Efficient-Convolutional-Neural-Networks/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
     </div>
   </div>
   
