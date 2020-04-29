@@ -9,8 +9,8 @@ changefreq : daily
 
 # MobileNetV2: Inverted Residuals and Linear Bottlenecks
 
-Author: Mark Sandler, Andrew G. Howard, Menglong Zhu, Andrey Zhmoginov, Liang-Chieh Chen
-Date: Jan 13, 2018
+Author: Mark Sandler, Andrew G. Howard, Menglong Zhu, Andrey Zhmoginov, Liang-Chieh Chen  
+Date: Jan 13, 2018  
 URL: https://arxiv.org/abs/1801.04381
 
 # **Abstract**

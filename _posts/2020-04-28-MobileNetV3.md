@@ -10,8 +10,8 @@ changefreq : daily
 # Searching for MobileNetV3
 
 Author: Andrew G. Howard, Mark Sandler, Grace Chu, Liang-Chieh Chen, Bo Chen, Mingxing Tan,
-Weijun Wang, Yukun Zhu, Ruoming Pang, Vijay Vasudevan, Quoc V. Le, Hartwig Adam
-Date: May 06, 2019
+Weijun Wang, Yukun Zhu, Ruoming Pang, Vijay Vasudevan, Quoc V. Le, Hartwig Adam  
+Date: May 06, 2019  
 URL: https://arxiv.org/abs/1905.02244
 
 # **Introduction**
