@@ -50,8 +50,8 @@ $$MAC = hw(c_1+c_2) +c_1c_2 = hwc_1 + hwc_2 + c_1c_2 \\ hwc_1: \text{Number of i
 
 $$MAC \ge 2\sqrt{hwB} + \frac{B}{hw} \to 2hw\sqrt{c_1c_2} + c_1c_2$$
 
-- c_1 = c_2 이면 MAC가 최소.
-- 전체 연산량은 고정해놓고 c_1:c_2의 비율을 바꿔가면서 runtime 비교.
+- $c_1 = c_2$ 이면 MAC가 최소.
+- 전체 연산량은 고정해놓고 $c_1:c_2$의 비율을 바꿔가면서 runtime 비교.
 - 1:1일때가 가장 빠른 성능을 보임.
 
 ![https://jjerry-k.github.io/public/img/shufflenetv2/Untitled_2.png](https://jjerry-k.github.io/public/img/shufflenetv2/Untitled_2.png)
@@ -65,7 +65,7 @@ $$MAC \ge 2\sqrt{hwB} + \frac{B}{hw} \to 2hw\sqrt{c_1c_2} + c_1c_2$$
 
 $$B=hwc_1c_2/g$$
 
-$$MAC = hw(c_1+c_2) + \frac{c_1c_2}{g} \\ hwc_1 + hwc_2 + \frac{c_1c_2}{g} \\ = hwc_1 + \frac{Bg}{c_1} + \frac{B}{hw}$$
+$$MAC = hw(c_1+c_2) + \frac{c_1c_2}{g} \\ = hwc_1 + hwc_2 + \frac{c_1c_2}{g} \\ = hwc_1 + \frac{Bg}{c_1} + \frac{B}{hw}$$
 
 - Groups 에 따라 runtime 비교.
 
