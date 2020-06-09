@@ -53,7 +53,7 @@ URL: https://arxiv.org/abs/1905.02244
 
 ## **Redesigning Expensive Layers**
 
-![https://jjerry-k.github.io/public/img/mobilev3/Untitled_01.png](https://jjerry-k.github.io/public/img/mobilev3/Untitled_01.png)
+![https://jjerry-k.github.io/public/img/mobilev3/Untitled_01.png](https://jjerry-k.github.io/public/img/mobilev3/Untitled_1.png)
 
 ## **Nonlinearities**
 
@@ -65,9 +65,9 @@ URL: https://arxiv.org/abs/1905.02244
 
 2. h-swish 를 deeper layer에서만 사용.
 
-![https://jjerry-k.github.io/public/img/mobilev3/Untitled_03.png](https://jjerry-k.github.io/public/img/mobilev3/Untitled_03.png)
+![https://jjerry-k.github.io/public/img/mobilev3/Untitled_03.png](https://jjerry-k.github.io/public/img/mobilev3/Untitled_3.png)
 
-![https://jjerry-k.github.io/public/img/mobilev3/Untitled_04.png](https://jjerry-k.github.io/public/img/mobilev3/Untitled_04.png)
+![https://jjerry-k.github.io/public/img/mobilev3/Untitled_04.png](https://jjerry-k.github.io/public/img/mobilev3/Untitled_4.png)
 
 ## **Large squeeze-and-excite**
 
@@ -77,9 +77,9 @@ URL: https://arxiv.org/abs/1905.02244
 
 # Result
 
-![https://jjerry-k.github.io/public/img/mobilev3/Untitled_05.png](https://jjerry-k.github.io/public/img/mobilev3/Untitled_05.png)
+![https://jjerry-k.github.io/public/img/mobilev3/Untitled_05.png](https://jjerry-k.github.io/public/img/mobilev3/Untitled_5.png)
 
-![https://jjerry-k.github.io/public/img/mobilev3/Untitled_06.png](https://jjerry-k.github.io/public/img/mobilev3/Untitled_06.png)
+![https://jjerry-k.github.io/public/img/mobilev3/Untitled_06.png](https://jjerry-k.github.io/public/img/mobilev3/Untitled_6.png)
 
 ### P.S
 
