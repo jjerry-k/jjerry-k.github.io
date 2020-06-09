@@ -61,7 +61,7 @@ URL: https://arxiv.org/abs/1905.02244
 
     $$hard\text{-}swish(x) = x\frac{ReLU6(x + 3)}{6}$$
 
-    ![https://jjerry-k.github.io/public/img/mobilev3/Untitled_02.png](https://jjerry-k.github.io/public/img/mobilev3/Untitled_02.png)
+    ![https://jjerry-k.github.io/public/img/mobilev3/Untitled_02.png](https://jjerry-k.github.io/public/img/mobilev3/Untitled_2.png)
 
 2. h-swish 를 deeper layer에서만 사용.
 
