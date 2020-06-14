@@ -49,6 +49,7 @@ history = cnn.fit(train_x, train_y, epochs=10, batch_size=batch_size, validation
 
 ## Multi GPU 예시
 - 다음 코드는 Multi GPU를 이용한 코드입니다. 
+
 ``` python
 # Import Package
 import os
@@ -91,6 +92,7 @@ history = cnn.fit(train_x, train_y, epochs=10, batch_size=batch_size, validation
 그렇기 떄문에 다음과 같이 코드를 추가하여 `필요한 만큼` 할당하도록 합니다. 
 
 ## 필요한 만큼의 GPU 메모리만 사용하기
+
 ``` python
 # Import Package
 import os
