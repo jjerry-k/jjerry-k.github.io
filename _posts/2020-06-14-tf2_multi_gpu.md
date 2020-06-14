@@ -14,6 +14,8 @@ changefreq : daily
 
 ## Single GPU 예시
 - 다음 코드는 Single GPU를 이용하여 mnist data를 분류하는 코드입니다. 
+
+
 ``` python
 # Import Package
 import os
