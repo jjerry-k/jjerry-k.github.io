@@ -149,3 +149,151 @@ history = cnn.fit(train_x, train_y, epochs=10, batch_size=batch_size, validation
 
 ## P.S 
 - 다음은 뭘로 포스팅하지...
+
+## 번외편 (Using gradient tape)
+
+``` python 
+
+# %%
+# Import Package
+import os
+import numpy as np
+import tensorflow as tf
+from tensorflow.keras import layers, models, losses, optimizers, datasets, utils
+
+gpus = tf.config.experimental.list_physical_devices('GPU')
+if gpus:
+    try:
+        # Currently, memory growth needs to be the same across GPUs
+        for gpu in gpus:
+            tf.config.experimental.set_memory_growth(gpu, True)
+        logical_gpus = tf.config.experimental.list_logical_devices('GPU')
+        print(len(gpus), "Physical GPUs,", len(logical_gpus), "Logical GPUs")
+    except RuntimeError as e:
+        # Memory growth must be set before GPUs have been initialized
+        print(e)
+
+# %%
+# Data Prepare
+epochs=10
+batch_size_each_gpu = 4096
+batch_size = batch_size_each_gpu*len(gpus)
+
+(train_x, train_y), (test_x, test_y) = datasets.mnist.load_data()
+train_x, test_x = np.expand_dims(train_x/255., -1), np.expand_dims(test_x/255., -1)
+
+print("Train Data's Shape : ", train_x.shape, train_y.shape)
+print("Test Data's Shape : ", test_x.shape, test_y.shape)
+
+# %%
+# Build Network
+class build_model(models.Model):
+    def __init__(self):
+        super(build_model, self).__init__()
+
+        self.conv1 = layers.Conv2D(16, 3, activation='relu')
+        self.pool1 = layers.MaxPool2D()
+
+        self.conv2 = layers.Conv2D(32, 3, activation='relu')
+        self.pool2 = layers.MaxPool2D()
+
+        self.flatten = layers.Flatten()
+        self.dense = layers.Dense(10, activation='softmax')
+    
+    def call(self, x):
+        x = self.conv1(x)
+        x = self.pool1(x)
+
+        x = self.conv2(x)
+        x = self.pool2(x)
+
+        x = self.flatten(x)
+
+        return self.dense(x)
+
+print("Network Built!")
+
+# Set mirrored Strategy
+strategy = tf.distribute.MirroredStrategy()
+
+with strategy.scope():
+    
+    # Prepare dataset 
+    train_dataset = tf.data.Dataset.from_tensor_slices((train_x, train_y)).shuffle(len(train_x)).batch(batch_size) 
+    train_dist_dataset = strategy.experimental_distribute_dataset(train_dataset)
+    
+    test_dataset = tf.data.Dataset.from_tensor_slices((test_x, test_y)).batch(batch_size) 
+    test_dist_dataset = strategy.experimental_distribute_dataset(test_dataset)
+
+    # Make Network
+    cnn = build_model()
+
+    # Set Loss & Metric function
+    loss_object = tf.keras.losses.SparseCategoricalCrossentropy(reduction=tf.keras.losses.Reduction.NONE)
+    def compute_loss(labels, predictions):
+        per_example_loss = loss_object(labels, predictions)
+        return tf.nn.compute_average_loss(per_example_loss, global_batch_size=batch_size)
+        
+    test_loss = tf.keras.metrics.Mean(name='test_loss')
+
+    train_accuracy = tf.keras.metrics.SparseCategoricalAccuracy(name='train_accuracy')
+    test_accuracy = tf.keras.metrics.SparseCategoricalAccuracy(name='test_accuracy')
+
+    # Set optimizer
+    optimizer = tf.keras.optimizers.Adam()
+
+    # Define taining, test function
+    def train_step(inputs):
+        images, labels = inputs
+
+        with tf.GradientTape() as tape:
+            predictions = cnn(images, training=True)
+            loss = compute_loss(labels, predictions)
+
+        gradients = tape.gradient(loss, cnn.trainable_variables)
+        optimizer.apply_gradients(zip(gradients, cnn.trainable_variables))
+
+        train_accuracy.update_state(labels, predictions)
+        return loss 
+    
+    def test_step(inputs):
+        images, labels = inputs
+
+        predictions = cnn(images, training=False)
+        t_loss = loss_object(labels, predictions)
+
+        test_loss.update_state(t_loss)
+        test_accuracy.update_state(labels, predictions)
+
+    # Define training, test function suitable for Mirrored Strategy 
+    @tf.function
+    def distributed_train_step(dataset_inputs):
+        per_replica_losses = strategy.experimental_run_v2(train_step, args=(dataset_inputs,))
+        return strategy.reduce(tf.distribute.ReduceOp.SUM, per_replica_losses, axis=None)
+ 
+    @tf.function
+    def distributed_test_step(dataset_inputs):
+        return strategy.experimental_run_v2(test_step, args=(dataset_inputs,))
+
+    # Train Network
+    for epoch in range(epochs):
+    
+        # Training Loop
+        total_loss = 0.0
+        num_batches = 0
+        for x in train_dist_dataset:
+            total_loss += distributed_train_step(x)
+            num_batches += 1
+        train_loss = total_loss / num_batches
+
+        # Test Loop
+        for x in test_dist_dataset:
+            distributed_test_step(x)
+
+        template = ("에포크 {}, 손실: {}, 정확도: {}, 테스트 손실: {}, 테스트 정확도: {}")
+        print (template.format(epoch+1, train_loss, train_accuracy.result()*100, test_loss.result(), test_accuracy.result()*100))
+
+        test_loss.reset_states()
+        train_accuracy.reset_states()
+        test_accuracy.reset_states()
+```
