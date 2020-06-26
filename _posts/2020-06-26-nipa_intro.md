@@ -37,8 +37,11 @@ NIPA는 [**정보통신산업진흥원**](https://www.nipa.kr/) 의 약자인데
 집에 서버가 따로 없는 분들이라면 이보다 좋은 건 없겠죠. (게다가 VRAM이 32기가임....)
 
 | **헤헿 겁나 좋군** |
-|:--:| 
-| ![good.png](https://jjerry-k.github.io/public/img/nipa_intro/good.png) |
+| :----: |
+| ![good.png](https://jjerry-k.github.io/public/img/nipa_intro/good.png)|
+ 
+
+
 다음엔 NIPA 신청 방법에 대한 포스팅은 간단히 해보겠습니다.
 
 그럼 모두 즐거운 딥러닝 공부, 연구하세요.
