@@ -37,11 +37,7 @@ NIPA는 [**정보통신산업진흥원**](https://www.nipa.kr/) 의 약자인데
 집에 서버가 따로 없는 분들이라면 이보다 좋은 건 없겠죠. (게다가 VRAM이 32기가임....)
 
 | **헤헿 겁나 좋군** |
-<<<<<<< HEAD
 | :----: |
-=======
-| ---- |
->>>>>>> b9c2a2c2587454110f4d7524bf6ae4c5b6c1475c
 | ![good.png](https://jjerry-k.github.io/public/img/nipa_intro/good.png)|
  
 
