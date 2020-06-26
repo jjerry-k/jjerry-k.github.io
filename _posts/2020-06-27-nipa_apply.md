@@ -53,9 +53,7 @@ changefreq : daily
 메일에는 NIPA 서버 사용방법, 문자에는 관리 페이지 이용 안내가 옵니다.   
 신청이 어렵지 않으니 많이 많이 신청하시고 즐거운 딥러닝 공부, 연구하세요! (홍보 아님)
 
-![go.png](https://github.com/jjerry-k/jjerry-k.github.io/blob/master/public/img/nipa_apply/go.png?raw=true)
-
-<!-- ![go.png](https://jjerry-k.github.io/public/img/nipa_apply/go.png) -->
+![go.png](https://jjerry-k.github.io/public/img/nipa_apply/go.png)
 
 ## P.S.
 - 중요! ! ! **수시 사용자는 계속 사용하려면 10일마다 연장 신청 해야함. 꼭! 반드시!**
