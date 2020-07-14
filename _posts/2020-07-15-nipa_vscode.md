@@ -42,7 +42,7 @@ RUN apt-get install -y \
 RUN apt-get update && apt-get -y upgrade
 
 #RUN mkdir /var/run/sshd
-RUN echo 'root:**{개인 비밀번호}**' | chpasswd
+RUN echo 'root:{개인 비밀번호}' | chpasswd
 RUN sed -i 's/PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
 
 # SSH login fix. Otherwise user is kicked off after login
