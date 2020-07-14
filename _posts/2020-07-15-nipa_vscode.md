@@ -13,7 +13,7 @@ Docker 까진 좋은데...연결을 항상 Terminal 혹은 CMD를 켜서 ssh로 
 
 그래서 이래저래 찾아봤습니다. 
 
-Docker 공식 문서를 보니 `[Dockerize an SSH service](https://docs.docker.com/engine/examples/running_ssh_service/)` 이런 글이 있더군요. 
+Docker 공식 문서를 보니 [Dockerize an SSH service](https://docs.docker.com/engine/examples/running_ssh_service/) 이런 글이 있더군요. 
 
 이 글을 참고하여 image(이하 이미지)를 만들어 보기로 했습니다. 
 
@@ -77,7 +77,7 @@ RUN echo 'root:test' | chpasswd
 
 위 내용들을 vim이나 nano같은 에디터를 이용해서 Dockerfile을 만들어주세요!
 
-![Phttps://jjerry-k.github.io/public/img/nipa_vscode/Untitled.png](Phttps://jjerry-k.github.io/public/img/nipa_vscode/Untitled.png)
+![Phttps://jjerry-k.github.io/public/img/nipa_vscode/Untitled.png](https://jjerry-k.github.io/public/img/nipa_vscode/Untitled.png)
 
 그리고 다음과 같이 커맨드를 입력하여 도커 이미지를 build 합니다.
 
@@ -85,13 +85,13 @@ RUN echo 'root:test' | chpasswd
 docker build -t {이미지 이름} .
 ```
 
-![Phttps://jjerry-k.github.io/public/img/nipa_vscode/Untitled_1.png](Phttps://jjerry-k.github.io/public/img/nipa_vscode/Untitled_1.png)
+![Phttps://jjerry-k.github.io/public/img/nipa_vscode/Untitled_1.png](https://jjerry-k.github.io/public/img/nipa_vscode/Untitled_1.png)
 
 뭐 이런 저런 Log 들이 촤라———라락 넘어갈겁니다. 계속 기다려 주세요.... 
 
 `docker images` 를 입력하면 제대로 생성된 것을 볼 수 있습니다!
 
-![Phttps://jjerry-k.github.io/public/img/nipa_vscode/Untitled_2.png](Phttps://jjerry-k.github.io/public/img/nipa_vscode/Untitled_2.png)
+![Phttps://jjerry-k.github.io/public/img/nipa_vscode/Untitled_2.png](https://jjerry-k.github.io/public/img/nipa_vscode/Untitled_2.png)
 
 ## 2. Container 실행
 
