@@ -182,8 +182,6 @@ source ~/.pyenv/versions/miniconda3-latest/etc/profile.d/conda.sh
 conda activate tf
 conda install -y numpy scipy pandas matplotlib pylint
 conda install -y seaborn pillow scikit-image opencv scikit-learn tqdm ipython ipykernel ipywidgets
-conda install -y -c conda-forge pydicom nibabel
-conda install -y -c SimpleITK SimpleITK
 conda install -y tensorflow
 conda update --all -y
 python -m ipykernel install --user --name tf --display-name TensorFlow
@@ -193,8 +191,6 @@ conda deactivate
 conda activate tc
 conda install -y numpy scipy pandas matplotlib pylint
 conda install -y seaborn pillow scikit-image opencv scikit-learn tqdm ipython ipykernel ipywidgets
-conda install -y -c conda-forge pydicom nibabel
-conda install -y -c SimpleITK SimpleITK
 conda install -y -c pytorch pytorch torchvision
 conda update --all -y
 python -m ipykernel install --user --name tc --display-name PyTorch
@@ -206,6 +202,10 @@ conda deactivate
 - [https://code.visualstudio.com/docs/?dv=osx](https://code.visualstudio.com/docs/?dv=osx)
 - Install plugin
     - python
+    - pylance
+    - Rainbow Brackets
+    - indent-rainbow
+    - Remote - SSH
     - kite
         - [https://kite.com/download/](https://kite.com/download/)
     - c/c++
