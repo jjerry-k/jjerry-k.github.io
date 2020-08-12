@@ -263,6 +263,9 @@
               <img class="masthead-logo" src="/public/logo.png"/>
             </a>
             <small></small>
+            <a href="https://donaricano.com/mypage/1391188679_guPzXC" target="_blank">
+              <img src="https://d1u4yishnma8v5.cloudfront.net/mobile-gift.png" width="60" height="60" style="position:absolute; top:0.25rem; right:4rem" alt="donaricano-btn" style="height: 130px !important;width: 130px !important;" />
+            </a>
             <img src="http://jjerry-k.github.io/public/search.png" width="20" height="20" style="position:absolute; top:1.3rem; right:1.5rem" data-toggle="modal" data-target="#myModal">
           </h3>
         </div>
@@ -273,12 +276,12 @@
   
   <div class="post">
     <h1 class="post-title">
-      <a href="/deeplearning/2019/03/29/YOLO/">
-        Review: YOLO
+      <a href="/deeplearning/2020/05/06/CutMix/">
+        Review: CutMix
       </a>
     </h1>
 
-    <span class="post-date">29 Mar 2019</span>
+    <span class="post-date">06 May 2020</span>
      | 
     
     <a href="/blog/tags/#paper" class="post-tag">Paper</a>
@@ -286,250 +289,196 @@
     
 
     <h4 style="font-weight: 400; line-height: 1.8;"><article>
-      <h1 id="you-only-look-once-unified-real-time-object-detection">You Only Look Once: Unified, Real-Time, Object detection</h1>
-<hr />
+      <h1 id="cutmix-regularization-strategy-to-train-strong-classifiers-with-localizable-features">CutMix: Regularization Strategy to Train Strong Classifiers with Localizable Features</h1>
 
-<blockquote>
-  <p>편의상 bounding box -&gt; bbox</p>
-  <h2 id="abstract">Abstract</h2>
-</blockquote>
+<p>Author: Sangdoo Yun, Dongyoon Han, Seong Joon Oh, Sanghyuk Chun, Junsuk Choe, Youngjoon Yoo<br />
+Date: May 13, 2019<br />
+URL: https://arxiv.org/abs/1905.04899</p>
+
+<h1 id="introduction">Introduction</h1>
 
 <ul>
-  <li>Object detection을 bboxes, class probabilities regression 문제로 접근.</li>
-  <li>Single Neural Network 로 bboxes와 class probabilities 둘 다 예측.</li>
-  <li>Localization Error가 다소 높지만 background error가 낮음.</li>
-  <li>End-to-End, Extremely fast</li>
+  <li>CNN 은 computer vision 문제에 많이 사용되고 있음.</li>
+  <li>효율적이고 높은 성능을 위해 data augmentation, regularization 등 기법을 적용.</li>
+  <li>특정 부분에 overfitting(?) 되는 것을 방지하기 위해 dropout, regional dropout 과 같은 방법 사용.</li>
+  <li>그 외에도 일부분을 0으로 채운다거나 노이즈로 채우는 방법, 정보가 있는 부분의 pixel을 줄이는 방법 등이 성능 향상을 보였으나 CNN은 데이터가 많이 고픈데….데이터를 없앤다..? 라는 부분에서 의문을 가짐.</li>
+  <li>영상의 일부를 자르고 다른 영상으로 대체하는 CutMix 를 제안.</li>
 </ul>
 
-<h2 id="1-introduction">1. Introduction</h2>
+<p><img src="https://jjerry-k.github.io/public/img/cutmix/Untitled.png" alt="https://jjerry-k.github.io/public/img/cutmix/Untitled.png" /></p>
+
+<h1 id="cutmix">CutMix</h1>
+
+<h2 id="algorithm">Algorithm</h2>
 
 <ul>
-  <li>Current Detection 시스템
-    <ul>
-      <li>DPM : Sliding Window 방식</li>
-      <li>R-CNN 계열 : potential bboxes 추출 -&gt; image 에서 bboxes 부분 다시 classify -&gt; Post-processing</li>
-    </ul>
-  </li>
-  <li>Slow, Hard to optimize(각 요소별로 따로따로 학습을 해야함. RPN -&gt; Classifier -&gt; RPN -&gt; …)</li>
+  <li>A, B 두개의 클래스만 존재.</li>
 </ul>
 
-<p><img src="https://jjerry-k.github.io/public/img/yolo/fig01.png" /></p>
+<script type="math/tex; mode=display">(x, y): \text{Training image, label} \\ (A, B): \text{Training class} \\ (x_A, y_A), (x_B, y_B): \text{Training sample}</script>
 
 <ul>
-  <li>복잡하지 않은 pipeline과 빠른 inferenc time.
-    <ul>
-      <li>45 fps on a Titan X .</li>
-    </ul>
-  </li>
-  <li>이미지 전체를 이용한 prediction
-    <ul>
-      <li>Fast R-CNN 보다 적은 background error</li>
-    </ul>
-  </li>
-  <li>Object의 general한 representations 학습.
-    <ul>
-      <li>natural image로 학습하고 art works로 test 했을 때 기존의 DPM 이나 R-CNN 보다 성능이 좋았다.</li>
-      <li>새로운 도메인이나 뭔가 모를 입력에 대해 일반화 할 수 있다.</li>
-    </ul>
-  </li>
+  <li>어느 부분을 섞을 것인지 binary mask (M) 생성</li>
+  <li>생성된 mask를 통해 섞을 비율 lambda 추출.</li>
+  <li>Label의 경우 비율에 One-hot encoding이 합친 후 영상에서의 각 클래스의 비율로 변경.</li>
 </ul>
 
-<h2 id="2-unfied-detection">2. Unfied Detection</h2>
+<script type="math/tex; mode=display">\mathrm{M}: \text{Binary mask where to drop out and fill} \\ \lambda: \text{Combination ratio} \\ \tilde{x} = \mathrm{M} \bigodot x_A + (1 - \mathrm{M}) \bigodot x_B \\ \tilde{y} = \lambda{y_A} + (1 - \lambda)y_B</script>
 
 <ul>
-  <li>Single Neural Network로 통합.</li>
-  <li>이미지 전체를 이용해서 각각의 bbox 예측.</li>
+  <li>M에서 bounding box 좌표 (B) 추출.</li>
+  <li>x, y 좌표는 Uniform distribution.</li>
+  <li>$x_B$에서 B 를 매칭시켜서 crop 후 B에 매칭되는 $x_A$ 의 부분에 paste.</li>
 </ul>
 
-<p><img src="https://jjerry-k.github.io/public/img/yolo/fig02.png" /></p>
+<script type="math/tex; mode=display">\mathrm{B}: \text{Bounding box coordinates }  (r_x, r_y, r_w, r_h) \\ r_x \sim \text{Unif }(0, W), r_w = W\sqrt{1-\lambda}, \\ r_y \sim \text{Unif } (0, H), r_h = H\sqrt{1-\lambda}</script>
+
+<h2 id="discussion">Discussion</h2>
 
 <ul>
-  <li>입력 이미지를 S x S grid로 나눔.
-    <ul>
-      <li>Feature map이 S x S 라고 이해하면 됨.</li>
-    </ul>
-  </li>
-  <li>각 grid cell은 B개의 bbox의 정보(x, y, w, h, confidence score), 해당 grid cell의 Class probabilities 정보를 가짐.
-    <ul>
-      <li>bbox의 정보
-        <ul>
-          <li>x, y : bbox의 center 좌표</li>
-          <li>w, h : 이미지 크기에 대비한 상대적인 값.</li>
-          <li>confidence score : bbox가 object를 가졌는지 box가 얼마나 정확히 예측했는지에 대한 score</li>
-          <li>Confidence Score는 다음과 같이 정의.
-<script type="math/tex">{Confidence\; Score}= Pr(Object) * IOU^{truth}_{pred}</script></li>
-          <li>No object의 경우
-            <ul>
-              <li>Confidence Score는 0 이어야함.</li>
-            </ul>
-          </li>
-          <li>Confidence Score가 IOU와 같아지길 원함.</li>
-        </ul>
-      </li>
-      <li>Class Probabilities 정보
-        <ul>
-          <li>C개의 class에 대한 conditional class probabilities, $Pr(Class_i \mid Object)$</li>
-          <li>
-            <p>Test 시에는 Conditional class probabilities와 individual box confidence score를 곱했다고 함.<br />
-<script type="math/tex">Pr(Class_i|Object) =  Pr(Object) * IOU^{truth}_{pred} = Pr(Class_i) * IOU^{truth}_{pred}</script></p>
-          </li>
-          <li>bbox 별로 class confidence score를 알 수 있음.</li>
-        </ul>
-      </li>
-    </ul>
-  </li>
-  <li>PASCAL VOC 로 평가. S = 7, B = 2, C = 20</li>
-  <li>최종 출력은  7 x 7 x 30 의 tensor.</li>
+  <li>CutMix를 이용했을 때 CNN이 어느 부분을 학습하는지 확인.</li>
 </ul>
 
-<h3 id="21-design">2.1 Design</h3>
+<p><img src="https://jjerry-k.github.io/public/img/cutmix/Untitled_1.png" alt="https://jjerry-k.github.io/public/img/cutmix/Untitled_1.png" /></p>
 
 <ul>
-  <li>24개의 Convolution layer, 2개의 Fully Connected layer.</li>
-  <li>GoogLeNet의 inception 모듈 대신에 <span style="color:skyblue">1 x 1 Convolution layer를 이용하여 reduction.</span>
-<img src="https://jjerry-k.github.io/public/img/yolo/fig03_1.png" /></li>
-  <li>Tiny model은 9개의 Convolution layer, 2개의 Fully Connected layer.</li>
+  <li>다른 method와 비교하여 CutMix의 주요 차이점.</li>
 </ul>
 
-<h3 id="22-training">2.2 Training</h3>
+<p><img src="https://jjerry-k.github.io/public/img/cutmix/Untitled_2.png" alt="https://jjerry-k.github.io/public/img/cutmix/Untitled_2.png" /></p>
+
 <ul>
-  <li>앞 단의 20개의 Convolution layer(Feature Extractor)를 ImageNet 1000-class competition 데이터(224 x 224)로 Pretrain.</li>
-  <li>20번째 Convolution layer 뒤에 Average Pooling, Fully Connected Layer.</li>
-  <li>
-    <p>ImageNet 2012 validation set으로 top-5 accuracy 88% 정도..
-<img src="https://jjerry-k.github.io/public/img/yolo/fig03_2.png" /></p>
-  </li>
-  <li>
-    <p>Pretrain 후 Detector 부분 추가 후 입력 크기를 448 x 448 로 높여서 학습 진행.</p>
-  </li>
-  <li>Bounding Box의 width, height 값은 이미지의 width, height로 normalize 하여 0 ~ 1 사이 값을 같도록 함.</li>
-  <li>Bounding Box의 x, y 값은 특정 grid cell의 left top으로부터 offset 값. 0 ~ 1 사이 값을 같도록 함.</li>
-  <li>마지막 layer는 linear activation function 사용.</li>
-  <li>다른 layer는 leaky ReLU 사용.</li>
+  <li>Validation Error를 비교했을 때 기존의 모델에 비해 CutMix 적용시 Error가 낮음.</li>
 </ul>
 
-<script type="math/tex; mode=display">% <![CDATA[
-\phi(x) =\left\{\begin{array}{lcl}x, & if\;x > 0\\ {0.1}x, & otherwise\end{array} \right. %]]></script>
+<p><img src="https://jjerry-k.github.io/public/img/cutmix/Untitled_3.png" alt="https://jjerry-k.github.io/public/img/cutmix/Untitled_3.png" /></p>
+
+<h1 id="experiments">Experiments</h1>
+
+<h2 id="image-classification">Image Classification</h2>
+
+<h3 id="imagenet-classification">ImageNet Classification</h3>
 
 <ul>
-  <li>
-    <p>Optimization이 쉬운 Sum-Squared Error 를 사용.</p>
-  </li>
-  <li>이미지의 대부분 grid cell이 object 를 가지고 있지 않기 때문에 Confidence Score가 0 에 수렴.</li>
-  <li>이 상황에선 object를 가지고 있는 grid cell의 gradient를 압도할 수 있음.</li>
-  <li>
-    <p>이를 해결하기 위해 Bbox coordinate loss와 No object의 confidence loss 에 대해 weight 를 부여.<br />
-$\lambda_{coord} = 5$ and $\lambda_{noobj} = 0.5$.</p>
-  </li>
-  <li>Sum-Squared Error는 large boxes와 small boxes 를 동일하게 평가.</li>
-  <li>large boxes 에 대해서 중요성을 반영하기 위해 width, height 는 square root 사용.</li>
+  <li>Baseline, 다른 augmentation method와 비교</li>
 </ul>
 
-<script type="math/tex; mode=display">\lambda_{coord}\sum^{S^2}_{i=0}\sum^B_{j=0}\mathbb{I}^{obj}_{ij}(x_i-\hat{x}_i)^2 + (y_i-\hat{y}_i)^2 \\
-+ \lambda_{coord}\sum^{S^2}_{i=0}\sum^B_{j=0}\mathbb{I}^{obj}_{ij}(\sqrt{w_i}-\sqrt{\hat{w}_i})^2 + (\sqrt{h_i}-\sqrt{\hat{h}_i})^2 \\
-+ \sum^{S^2}_{i=0}\sum^B_{j=0}\mathbb{I}^{obj}_{ij}(C_i - \hat{C}_i)^2 \\
-+ \lambda_{noobj}\sum^{S^2}_{i=0}\sum^B_{j=0}\mathbb{I}^{noobj}_{ij}(C_i - \hat{C}_i)^2 \\
-+ \sum^{S^2}_{i=0}\mathbb{I}^{obj}_{i}\sum^B_{c\in{classes}}(p_i(c) - \hat{p}_i(c))^2</script>
+<p><img src="https://jjerry-k.github.io/public/img/cutmix/Untitled_4.png" alt="https://jjerry-k.github.io/public/img/cutmix/Untitled_4.png" /></p>
 
 <ul>
-  <li>$\mathbb{I}^{obj}_{i}$ : Object가 존재하는 Grid Cell i.</li>
-  <li>
-    <p>$\mathbb{I}^{obj}_{ij}$ : Object가 존재하는 Grid Cell i의 Bounding Box j.</p>
-  </li>
-  <li>Train 관련 Parameter
-    <ul>
-      <li>Batch Szie : 64</li>
-      <li>Momentum : 0.9</li>
-      <li>Decay : 0.0005</li>
-      <li>Learning rate
-        <ul>
-          <li>$10^{-3}$ 부터 $10^{-2}$ 까지 천천히 증가.</li>
-          <li>$10^{-2}$ 로 75 epochs 학습.</li>
-          <li>$10^{-3}$ 로 줄여서 30 epochs 학습.</li>
-          <li>$10^{-4}$ 로 줄여서 30 epochs 학습.</li>
-        </ul>
-      </li>
-      <li>Dropout : 0.5</li>
-      <li>Data Augmentation
-        <ul>
-          <li>Random Scaling, Translation of up to 20% of the original image size.</li>
-          <li>Random adjustment exposure and saturation</li>
-        </ul>
-      </li>
-    </ul>
-  </li>
+  <li>두 Model에 CutMix를 적용하여 성능 비교.</li>
 </ul>
 
-<h3 id="23-inference">2.3 Inference</h3>
+<p><img src="https://jjerry-k.github.io/public/img/cutmix/Untitled_5.png" alt="https://jjerry-k.github.io/public/img/cutmix/Untitled_5.png" /></p>
+
+<h3 id="cifar-classification">CIFAR Classification</h3>
+
 <ul>
-  <li>Large Object 나 여러 grid cell에 걸쳐있는 object는 여러 셀에 predict 될 수 있음.</li>
-  <li>Non-maximal suppression 사용하여 해결.</li>
+  <li>다른 Regularization 들과 비교.</li>
 </ul>
 
-<h3 id="24-limitations-of-yolo">2.4 Limitations of YOLO</h3>
+<p><img src="https://jjerry-k.github.io/public/img/cutmix/Untitled_6.png" alt="https://jjerry-k.github.io/public/img/cutmix/Untitled_6.png" /></p>
+
 <ul>
-  <li>각 Grid Cell은 하나의 클래스만 가질 수 있기 때문에 Grid Cell 하나에 작은 object가 여러 개 있을때 제대로 예측하지 못할 수 있다.</li>
-  <li>예상치 못한 aspect ratio나 configuration을 가진 객체를 일반화 하는데 어려움.</li>
-  <li>Large box와 Small box를 동일하게 처리.</li>
-  <li>Large box의 small error보다 Small box의 small error가 IOU에 훨씬 큰 영향을 끼침.</li>
+  <li>가벼운 Model 에 적용하여 비교.</li>
 </ul>
 
-<h2 id="3-comparison-to-other-detection-systems">3. Comparison to Other Detection Systems</h2>
+<p><img src="https://jjerry-k.github.io/public/img/cutmix/Untitled_7.png" alt="https://jjerry-k.github.io/public/img/cutmix/Untitled_7.png" /></p>
+
 <ul>
-  <li>생략</li>
+  <li>CIFAR-10에 적용한 결과.</li>
 </ul>
 
-<h2 id="4-experiments">4. Experiments</h2>
+<p><img src="https://jjerry-k.github.io/public/img/cutmix/Untitled_8.png" alt="https://jjerry-k.github.io/public/img/cutmix/Untitled_8.png" /></p>
 
-<h3 id="41-comparison-to-other-realtime-systems">4.1. Comparison to Other RealTime Systems</h3>
+<h3 id="ablation-studies">Ablation Studies</h3>
+
 <ul>
-  <li>Fast Yolo는 가장 빠른 속도를 보여줌.</li>
-  <li>YOLO 는 real-time 성능을 보여주면서 mAP도 뛰어난걸 확인할 수 있음.
-<img src="https://jjerry-k.github.io/public/img/yolo/fig04_1.png" /></li>
+  <li><strong>CutMix 에서 alpha가 뭐지…….</strong></li>
 </ul>
 
-<h3 id="42-voc-2007-error-analysis">4.2. VOC 2007 Error Analysis</h3>
+<p><img src="https://jjerry-k.github.io/public/img/cutmix/Untitled_9.png" alt="https://jjerry-k.github.io/public/img/cutmix/Untitled_9.png" /></p>
+
 <ul>
-  <li>Object Localization은 Fast R-CNN이 더 뛰어남.</li>
-  <li>But, Background Error(False Positive)가 훨씬 높음.
-<img src="https://jjerry-k.github.io/public/img/yolo/fig04_2.png" /></li>
+  <li>CutMix하는 방법을 다양하게 적용했을 때 성능 비교</li>
+  <li>Center Gaussian: Uniform distribution → Gaussian distribution</li>
+  <li>Fixed-size: 16 x 16 ( $\lambda = 0.75$ )로 고정</li>
+  <li>Scheduled: 학습이 진행될 수록 CutMix 확률을 0부터 1까지 증가</li>
+  <li>One-hot: 패치 비율에 따라 Portion label이 아닌 One-hot encoding으로 적용</li>
+  <li>Complete-label: lambda 를 고려하지 않고 $y = 0.5y_A + 0.5y_B$로 적용</li>
 </ul>
 
-<h3 id="43-combining-fast-rcnn-and-yolo">4.3. Combining Fast RCNN and YOLO</h3>
+<p><img src="https://jjerry-k.github.io/public/img/cutmix/Untitled_10.png" alt="https://jjerry-k.github.io/public/img/cutmix/Untitled_10.png" /></p>
+
+<h2 id="weakly-supervised-object-localization">Weakly Supervised Object Localization</h2>
+
 <ul>
-  <li>Fast R-CNN과 YOLO를 앙상블 한 모델이 성능이 가장 좋음. 
-<img src="https://jjerry-k.github.io/public/img/yolo/fig04_3.png" /></li>
+  <li>Localization 부분에 대해 다른 방법들과 비교.</li>
+  <li>학습 후 CAM을 이용해서 bounding box를 그린 것으로 보임.</li>
 </ul>
 
-<h3 id="44-voc-2012-results">4.4. VOC 2012 Results</h3>
-<p><img src="https://jjerry-k.github.io/public/img/yolo/fig04_4.png" /></p>
+<p><img src="https://jjerry-k.github.io/public/img/cutmix/Untitled_11.png" alt="https://jjerry-k.github.io/public/img/cutmix/Untitled_11.png" /></p>
 
-<h3 id="45-generalizability">4.5 Generalizability</h3>
+<p><img src="https://jjerry-k.github.io/public/img/cutmix/Untitled_12.png" alt="https://jjerry-k.github.io/public/img/cutmix/Untitled_12.png" /></p>
+
+<h2 id="transfer-learning-of-pretrained-model">Transfer Learning of Pretrained Model</h2>
+
 <ul>
-  <li>새로운 도메인, 예상치 못한 입력이 들어왔을때 일반화 성능이 뛰어남.</li>
-  <li>Picasso Dataset 과 People-Art Dataset을 이용하여 다른 모델들과 일반화 성능 비교.</li>
-  <li>YOLO가 가장 성능이 좋은것을 보여줌. 
-<img src="https://jjerry-k.github.io/public/img/yolo/fig05_1.png" />
-<img src="https://jjerry-k.github.io/public/img/yolo/fig05_2.png" /></li>
+  <li>Object detection, Image captioning 에 적용하여 성능 비교.</li>
+</ul>
+
+<p><img src="https://jjerry-k.github.io/public/img/cutmix/Untitled_13.png" alt="https://jjerry-k.github.io/public/img/cutmix/Untitled_13.png" /></p>
+
+<h2 id="robustness-and-uncertainty">Robustness and Uncertainty</h2>
+
+<ul>
+  <li>Adversarial attack 에 대해 Accuracy 비교.</li>
+  <li><a href="https://arxiv.org/abs/1412.6572">Fast Gradient Sign Method (FGSM)</a>을 이용하여 adversarial perturbation 생성.</li>
+</ul>
+
+<p><img src="https://jjerry-k.github.io/public/img/cutmix/Untitled_14.png" alt="https://jjerry-k.github.io/public/img/cutmix/Untitled_14.png" /></p>
+
+<ul>
+  <li>Occlusion 상황에 대해서 성능 비교.</li>
+  <li>가운데 부분 혹은 Boundary 에 0~224 크기 사이의 hole을 생성.</li>
+</ul>
+
+<p><img src="https://jjerry-k.github.io/public/img/cutmix/Untitled_15.png" alt="https://jjerry-k.github.io/public/img/cutmix/Untitled_15.png" /></p>
+
+<ul>
+  <li>Uncertainty</li>
+</ul>
+
+<p><img src="https://jjerry-k.github.io/public/img/cutmix/Untitled_16.png" alt="https://jjerry-k.github.io/public/img/cutmix/Untitled_16.png" /></p>
+
+<h2 id="cutmix-algorithm">CutMix Algorithm</h2>
+
+<p><img src="https://jjerry-k.github.io/public/img/cutmix/Untitled_17.png" alt="https://jjerry-k.github.io/public/img/cutmix/Untitled_17.png" /></p>
+
+<h2 id="ps">P.S</h2>
+
+<ul>
+  <li>Appendix에 내용이 더 있지만… 간단히 정리하려니 넣기 좀 힘듦.</li>
+  <li>당연한 얘기지만 모든 데이터에 적용하기엔 어려움이 있을 것으로 보임.</li>
 </ul>
 
     <article></h4>
     <div class="post-more">
       
-      <a href="/deeplearning/2019/03/29/YOLO/#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
+      <a href="/deeplearning/2020/05/06/CutMix/#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
       
-      <a href="/deeplearning/2019/03/29/YOLO/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
+      <a href="/deeplearning/2020/05/06/CutMix/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
     </div>
   </div>
   
   <div class="post">
     <h1 class="post-title">
-      <a href="/ubuntu/2019/02/14/docker/">
-        자주 사용하는 Docker Command 정리
+      <a href="/living/2020/05/05/dockerfile/">
+        개인적인 도커 파일
       </a>
     </h1>
 
-    <span class="post-date">14 Feb 2019</span>
+    <span class="post-date">05 May 2020</span>
      | 
     
     <a href="/blog/tags/#docker" class="post-tag">Docker</a>
@@ -537,151 +486,582 @@ $\lambda_{coord} = 5$ and $\lambda_{noobj} = 0.5$.</p>
     
 
     <h4 style="font-weight: 400; line-height: 1.8;"><article>
-      <p>service nvidia-docker start (sudo 권한으로) : nvidia docker 서비스 시작.</p>
+      <h1 id="지극히-개인이-사용하기-위한-dockerfile">지극히 개인이 사용하기 위한 Dockerfile</h1>
 
-<p>docker -i -t -rm -p 호스트포트:도커포트 -v 호스트경로:도커경로 IMAGE_NAME:tag bash : IMAGE_NAME 컨테이너를 실행.</p>
+<hr />
 
-<p>docker rm NAME : Docker 프로세스 제거</p>
+<ul>
+  <li>환경을 만들 때마다 추가될 예정입니다.</li>
+  <li>마음껏 편하신대로 Copy &amp; Paste 하세요!</li>
+</ul>
 
-<p>docker rmi IMAGE_NAME : Docker Image 제거</p>
+<h2 id="tensorflow">TensorFlow</h2>
+<pre><code class="language-Dockerfile">FROM nvidia/cuda:10.1-cudnn7-runtime-ubuntu18.04
+LABEL maintainer "Jerry Kim &lt;jaeyeol2931@gmail.com&gt;"
+ARG PYTHON_VERSION=3.7
+RUN apt-get update
+RUN apt-get install -y \
+        build-essential \
+        cmake \
+        git \
+        curl \
+        wget \
+        ca-certificates \
+        libjpeg-dev \
+        libpng-dev
 
-<p>docker commit NAME 레포이름:태그 :</p>
+RUN apt-get update &amp;&amp; apt-get -y upgrade
 
-<p>CUDA_VISIBLE_DEVICES=0 jupyter notebook –ip=0.0.0.0 –port=포트번호 –allow-root</p>
+RUN rm -rf /var/lib/apt/lists/*
 
+RUN curl https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -o ~/miniconda.sh
+
+RUN chmod +x ~/miniconda.sh &amp;&amp; \
+    ~/miniconda.sh -b -p /opt/conda &amp;&amp; \
+    rm ~/miniconda.sh
+
+RUN /opt/conda/bin/conda install -y python=$PYTHON_VERSION numpy pyyaml scipy ipython mkl mkl-include ninja cython typing opencv matplotlib tqdm &amp;&amp; \
+    /opt/conda/bin/conda install -y jupyter jupyterlab seaborn pillow pandas pylint scikit-learn scikit-image tensorflow-gpu &amp;&amp; \
+    /opt/conda/bin/conda update -y --all &amp;&amp; \
+    /opt/conda/bin/conda clean -ya
+
+ENV PATH /opt/conda/bin:$PATH
+
+</code></pre>
 
     <article></h4>
     <div class="post-more">
       
-      <a href="/ubuntu/2019/02/14/docker/#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
+      <a href="/living/2020/05/05/dockerfile/#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
       
-      <a href="/ubuntu/2019/02/14/docker/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
+      <a href="/living/2020/05/05/dockerfile/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
     </div>
   </div>
   
   <div class="post">
     <h1 class="post-title">
-      <a href="/living/2019/02/01/keyboard/">
-        첫 기계식 키보드 !
+      <a href="/deeplearning/2020/05/02/EfficientNet/">
+        Review: EfficientNet
       </a>
     </h1>
 
-    <span class="post-date">01 Feb 2019</span>
+    <span class="post-date">02 May 2020</span>
      | 
     
-    <a href="/blog/tags/#hardware" class="post-tag">Hardware</a>
+    <a href="/blog/tags/#paper" class="post-tag">Paper</a>
     
     
 
     <h4 style="font-weight: 400; line-height: 1.8;"><article>
-      <p>늦었지만 키보드 자랑…<br />
-바밀로 저소음<strong>흑축</strong> 108키 입니다.</p>
+      <h1 id="efficientnet-rethinking-model-scaling-for-convolutional-neural-networks">EfficientNet: Rethinking Model Scaling for Convolutional Neural Networks</h1>
 
-<p>넘나 영롱하다…</p>
+<p>Author: Mingxing Tan, Quoc V. Le<br />
+Date: May 28, 2019<br />
+URL: https://arxiv.org/abs/1905.11946</p>
 
-<p><img src="https://jjerry-k.github.io/public/img/keyboard/vamilo.png" /></p>
+<h1 id="introduction">Introduction</h1>
 
-<p>이건 타건 영상입니다.</p>
+<ul>
+  <li>ConvNet 의 성능을 높이는데 Depth, Width, Image size 중 하나를 증가 시키는게 일반적인 방법.</li>
+  <li>본 논문에서는 ConvNet의 성능과 효율성을 증가시키기 위한 원론적인 방법에 대한 연구.</li>
+  <li>실험의 결과로 <strong><em>Compound scaling method</em></strong> 를 제안.</li>
+</ul>
 
-<iframe class="youtube" src="https://jjerry-k.github.io/public/img/keyboard/vamilo.mp4" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen=""></iframe>
+<p><img src="https://jjerry-k.github.io/public/img/efficientnet/Untitled.png" alt="https://jjerry-k.github.io/public/img/efficientnet/Untitled.png" /></p>
+
+<h1 id="compound-model-scaling">Compound Model Scaling</h1>
+
+<ul>
+  <li>Scaling 문제에 대한 정의, Approache 별 연구, 새로운 방법에 대한  내용 서술.</li>
+</ul>
+
+<h2 id="problem-formulation">Problem Formulation</h2>
+
+<ul>
+  <li>Model scaling은 Baseline 에서 Length(Depth), Width, Resolution 를 확장.</li>
+  <li>하지만 실제론 리소스에 제약이 있으니 이에 맞춰 문제를 새롭게, 단순하게 정의.</li>
+  <li>Design space를 줄이기 위해 모든 레이어는 상수 값을 이용하여 규칙적으로 변화하도록 함.</li>
+  <li>최종 목적은 제한된 리소스에서 성능을 최대화하는 것.</li>
+</ul>
+
+<script type="math/tex; mode=display">\mathcal{N}: \text{ConvNet} \\ \mathcal{F}_i: \text{Layer architecture} \\ L_i: \text{Network length} \\ C_i: \text{Width} \\ H_i, W_i: \text{Input resolution}</script>
+
+<script type="math/tex; mode=display">{max}_{d, w, r} Accuracy(\mathcal{N}(d, w, r)) \\ s.t. \mathcal{N}(d, w, r) = \bigodot_{i=1...s}\hat{\mathcal{F}}_i^{d \cdot \hat{L}_i}(X_{\langle r\cdot \hat{H}_i, r \cdot \hat{W}_i, w\cdot \hat{C}_i \rangle} ) \\ Memory(\mathcal{N}) \leq \text{target memory} \\FLOPS(\mathcal{N}) \leq \text{target flops}</script>
+
+<h2 id="scaling-dimensions">Scaling Dimensions</h2>
+
+<ul>
+  <li>두번째 문제는 d, w, r 이 서로 dependent 하고 제한된 리소스에 따라 값이 변화.</li>
+  <li>그래서 기존에는 다음 세 개의 요소 중 하나를 변경함.</li>
+</ul>
+
+<h3 id="depth-d">Depth (d)</h3>
+
+<ul>
+  <li>VGGNet, GoogLeNet, ResNet 등등 레이어를 많이 많이 !</li>
+</ul>
+
+<h3 id="width-w">Width (w)</h3>
+
+<ul>
+  <li>채널 수를 늘리고 깊이를 줄이는 방식.</li>
+  <li>하지만 <strong>higher level feature를 잡기 힘들 수 있음.</strong></li>
+</ul>
+
+<h3 id="resolution-r">Resolution (r)</h3>
+
+<ul>
+  <li>클수록 더 양질의 패턴을 찾을 수 있음.</li>
+</ul>
+
+<p><img src="https://jjerry-k.github.io/public/img/efficientnet/Untitled_1.png" alt="https://jjerry-k.github.io/public/img/efficientnet/Untitled_1.png" /></p>
+
+<ul>
+  <li>Observation 1: 이를 통해서 어떤 요소를 증가시키던 성능이 오르는 것을 확인 하지만 Model이 무거워짐.</li>
+</ul>
+
+<h2 id="compound-scaling">Compound Scaling</h2>
+
+<ul>
+  <li>경험적으로 세 요소가 dependent 하다는 것을 이미 알고 있음.</li>
+  <li>다른 depth, resolution 을 이용하여 성능 비교.</li>
+</ul>
+
+<p><img src="https://jjerry-k.github.io/public/img/efficientnet/Untitled_2.png" alt="https://jjerry-k.github.io/public/img/efficientnet/Untitled_2.png" /></p>
+
+<ul>
+  <li>Observation 2: 세 요소의 balance가 매우 중요..</li>
+  <li>다음과 같은 compound scaling method 제안.</li>
+</ul>
+
+<script type="math/tex; mode=display">\phi: \text{Compound Coefficient} \\ depth: d = \alpha^\phi \\ width: w = \beta^\phi \\ resolution: r = \gamma^\phi \\ \text{s.t. }\alpha \cdot \beta^2 \cdot \gamma^2 \approx 2 \\ \alpha \ge 1, \beta \ge 1, \gamma \ge 1</script>
+
+<ul>
+  <li>각 값은 small grid search로 결정된 상수 값.</li>
+</ul>
+
+<h1 id="efficientnet-architecture">EfficientNet Architecture</h1>
+
+<p><img src="https://jjerry-k.github.io/public/img/efficientnet/Untitled_3.png" alt="https://jjerry-k.github.io/public/img/efficientnet/Untitled_3.png" /></p>
+
+<ul>
+  <li>EfficientNet-B0 를 baseline network로 하여  Accuracy, FLOPS 둘 다 최적화하도록 multi-objective neural architecture search 적용.
+    <ul>
+      <li>Step 1
+        <ul>
+          <li>$\phi$ =1 로 고정</li>
+          <li>식 2, 3을 기반으로 하여 small grid search</li>
+          <li>EfficientNet-B0에 가장 적합한 값을 $\alpha$=1.2, $\beta$=1.1, $\gamma$=1.15</li>
+        </ul>
+      </li>
+      <li>Step 2
+        <ul>
+          <li>$\alpha$, $\beta$, $\gamma$를 고정하고 $\phi$를 변경하여 실험.</li>
+          <li>Result (ImageNet Result for EfficientNet) 참고</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="result">Result</h1>
+
+<h2 id="scaling-up-mobilenets-and-resnets">Scaling Up MobileNets and ResNets</h2>
+
+<ul>
+  <li>Compound scale 을 증명하기 위해 MobileNet과 ResNet을 이용하여 비교.</li>
+  <li>기존의 방법들은 3개중 1개의 요소만 scaling.</li>
+</ul>
+
+<p><img src="https://jjerry-k.github.io/public/img/efficientnet/Untitled_4.png" alt="https://jjerry-k.github.io/public/img/efficientnet/Untitled_4.png" /></p>
+
+<h2 id="imagenet-result-for-efficientnet">ImageNet Result for EfficientNet</h2>
+
+<ul>
+  <li>Training Setting
+    <ul>
+      <li>Optimization
+        <ul>
+          <li>RMSProp</li>
+          <li>Decay: 0.9</li>
+          <li>Momentum: 0.9</li>
+        </ul>
+      </li>
+      <li>Batch normalization
+        <ul>
+          <li>Momentum: 0.99</li>
+        </ul>
+      </li>
+      <li>Weight decay: 1e-5</li>
+      <li>Initial learning rate: 0.256
+        <ul>
+          <li>Decay: 0.97 (every 2.4 epochs)</li>
+        </ul>
+      </li>
+      <li>Swish Activation</li>
+      <li><a href="https://arxiv.org/abs/1805.09501">AutoAugmentation</a>: 뭔지 모르겠군 1</li>
+      <li><a href="https://arxiv.org/abs/1603.09382">Stochastic depth</a>: 뭔지 모르겠군 2
+        <ul>
+          <li>Drop connect ratio: 0.2</li>
+        </ul>
+      </li>
+      <li>Dropout
+        <ul>
+          <li>0.2 ~ 0.5 (B0 ~ B7)</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>B0부터 B7 까지 성능 비교.</li>
+  <li>GPipe에 비해 <strong>8.4배 적고 좋은 성능.</strong></li>
+</ul>
+
+<p><img src="https://jjerry-k.github.io/public/img/efficientnet/Untitled_5.png" alt="https://jjerry-k.github.io/public/img/efficientnet/Untitled_5.png" /></p>
+
+<ul>
+  <li>CPU를 이용한 Inference 속도 비교.</li>
+</ul>
+
+<p><img src="https://jjerry-k.github.io/public/img/efficientnet/Untitled_6.png" alt="https://jjerry-k.github.io/public/img/efficientnet/Untitled_6.png" /></p>
+
+<ul>
+  <li>모델별 FLOPS-Accuracy curve</li>
+</ul>
+
+<p><img src="https://jjerry-k.github.io/public/img/efficientnet/Untitled_7.png" alt="https://jjerry-k.github.io/public/img/efficientnet/Untitled_7.png" /></p>
+
+<h2 id="transfer-learning-result-for-efficientnet">Transfer Learning Result for EfficientNet</h2>
+
+<ul>
+  <li>ImageNet pretrained model 을 이용하여 각종 Dataset을 Transfer learning 한 성능 비교</li>
+  <li>사용한 Dataset</li>
+</ul>
+
+<p><img src="https://jjerry-k.github.io/public/img/efficientnet/Untitled_8.png" alt="https://jjerry-k.github.io/public/img/efficientnet/Untitled_8.png" /></p>
+
+<ul>
+  <li>Transfer learning 결과</li>
+  <li>전체적으로 모델이 가벼움.</li>
+</ul>
+
+<p><img src="https://jjerry-k.github.io/public/img/efficientnet/Untitled_9.png" alt="https://jjerry-k.github.io/public/img/efficientnet/Untitled_9.png" /></p>
+
+<ul>
+  <li>기존의 모델들과 비교하여 가볍지만 뛰어난 성능을 보임.</li>
+</ul>
+
+<p><img src="https://jjerry-k.github.io/public/img/efficientnet/Untitled_10.png" alt="https://jjerry-k.github.io/public/img/efficientnet/Untitled_10.png" /></p>
+
+<h1 id="discussion">Discussion</h1>
+
+<ul>
+  <li>EfficientNet-B0 를 이용하여 각기 다른 scaling method를 이용하여 성능 비교</li>
+</ul>
+
+<p><img src="https://jjerry-k.github.io/public/img/efficientnet/Untitled_11.png" alt="https://jjerry-k.github.io/public/img/efficientnet/Untitled_11.png" /></p>
+
+<p><img src="https://jjerry-k.github.io/public/img/efficientnet/Untitled_12.png" alt="https://jjerry-k.github.io/public/img/efficientnet/Untitled_12.png" /></p>
+
+<p><img src="https://jjerry-k.github.io/public/img/efficientnet/Untitled_13.png" alt="https://jjerry-k.github.io/public/img/efficientnet/Untitled_13.png" /></p>
+
+<h2 id="ps">P.S</h2>
+
+<ul>
+  <li>이런 연구는..NAS(Network Architecture Search)가 답..인건가</li>
+  <li>근데 이것도 하드웨어가 빵빵해야….. 크흡</li>
+</ul>
 
     <article></h4>
     <div class="post-more">
       
-      <a href="/living/2019/02/01/keyboard/#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
+      <a href="/deeplearning/2020/05/02/EfficientNet/#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
       
-      <a href="/living/2019/02/01/keyboard/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
+      <a href="/deeplearning/2020/05/02/EfficientNet/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
     </div>
   </div>
   
   <div class="post">
     <h1 class="post-title">
-      <a href="/python/2019/01/23/nifti/">
-        Python으로 NIfTI 영상을 읽어보자!
+      <a href="/deeplearning/2020/04/30/CBAM/">
+        Review: CBAM
       </a>
     </h1>
 
-    <span class="post-date">23 Jan 2019</span>
+    <span class="post-date">30 Apr 2020</span>
      | 
     
-    <a href="/blog/tags/#usage" class="post-tag">Usage</a>
+    <a href="/blog/tags/#paper" class="post-tag">Paper</a>
     
     
 
     <h4 style="font-weight: 400; line-height: 1.8;"><article>
-      <p>거의 한달 반…만에 글을 씁니다..!<br />
-이번에는 Python에서 <a href="https://nifti.nimh.nih.gov/">NIfTI</a> 포맷의 데이터를 load 하는 방법에 대한 포스팅을 해보려고 합니다.<br />
-저는 Anaconda를 사용중이기에..제 사용환경에 맞게 설명을 하겠습니다.</p>
+      <h1 id="cbam-convolutional-block-attention-module">CBAM: Convolutional Block Attention Module</h1>
 
-<p>가장 먼저 관련 패키지인 <a href="http://nipy.org/nibabel/"><code class="highlighter-rouge">Nibabel</code></a> 을 설치를 해줍니다.</p>
+<p>Author: Sanghyun Woo, Jongchan Park, Joon-Young Lee, In So Kweon<br />
+Date: Jul 17, 2018<br />
+URL: https://arxiv.org/abs/1807.06521</p>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>conda <span class="nb">install</span> <span class="nt">-c</span> conda-forge nibabel
-</code></pre></div></div>
+<h1 id="introduction">Introduction</h1>
 
-<p>이러면 설치는 끝입니다.</p>
+<ul>
+  <li>BAM 에서 설명한 것처럼 최근 CNN 성능 향상에 주로 연구되는 요소는 depth, width, cardinality.</li>
+  <li>본 논문에선 Convolutional Block Attention Module(CBAM) 제안.</li>
+  <li>Convolution을 이용하여 channel, spatial information 을 추출하고 섞어서 사용.</li>
+  <li>channel, spatial attention module은 각각 “what”, “where”에 대한 정보를 학습할 수 있음.</li>
+</ul>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-<span class="kn">import</span> <span class="nn">nibabel</span> <span class="k">as</span> <span class="n">nib</span>
-<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<p><img src="https://jjerry-k.github.io/public/img/cbam/Untitled.png" alt="https://jjerry-k.github.io/public/img/cbam/Untitled.png" /></p>
 
-<span class="n">data</span> <span class="o">=</span> <span class="n">nib</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s">".nii 경로"</span><span class="p">)</span>
-<span class="n">img</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">get_data</span><span class="p">()</span>
+<h1 id="convolutional-block-attention-module">Convolutional Block Attention Module</h1>
 
-<span class="c1">#plt.imshow(img)# 슬라이스 1장일 경우
-</span><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img</span><span class="p">[:,:,</span><span class="s">"slice 번호"</span><span class="p">])</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</code></pre></div></div>
+<ul>
+  <li>CBAM 의 구조는 다음 사진과 같음.</li>
+</ul>
 
-<p>이런 식으로 작성하시면 됩니다.</p>
+<script type="math/tex; mode=display">F: \text{Input feature map} \\ F':\text{Channel attention module feature map} \\ F'': \text{Spatial attention module feature map} \\ F' = M_c(F)\bigotimes F \\F'' = M_s(F')\bigotimes F'</script>
 
-<p>예시를 보여드리면</p>
+<p><img src="https://jjerry-k.github.io/public/img/cbam/Untitled_1.png" alt="https://jjerry-k.github.io/public/img/cbam/Untitled_1.png" /></p>
 
-<p><img src="https://jjerry-k.github.io/public/img/nifti/01.png" /></p>
+<h2 id="channel-attention-branch">Channel attention branch</h2>
 
-<p>이렇습니다!</p>
+<script type="math/tex; mode=display">M_c(F) = \sigma(MLP(AvgPool(F)) + MLP(MaxPool(F))) \\ = \sigma(W1(W0(F^c_{avg})) + W1(W0(F^c_{max})))</script>
 
-<p>추후엔 DICOM 다루는 법에 대해서 업로드 해보겠습니다!</p>
+<p>W0 의 output channel 크기: F의 채널 수 / reduction ratio(r)</p>
+
+<p>W1 의 output channel 크기: F의 채널 수</p>
+
+<h2 id="spatial-attention-branch">Spatial attention branch</h2>
+
+<script type="math/tex; mode=display">M_s(F)=\sigma(f^{7\times7}([AvgPool(F); MaxPool(F)])) \\ = \sigma(f^{7 \times 7}([F^s_{avg};F^s_{max}]))</script>
+
+<ul>
+  <li>7x7 Convolution의 output channel 크기: 1</li>
+</ul>
+
+<h2 id="arrangement-of-attention-modules">Arrangement of attention modules</h2>
+
+<ul>
+  <li>두 branch의 순서를 어떻게 배열할지 고민.</li>
+  <li>실험적으로 Channel → Spatial 로 하기로 함.</li>
+</ul>
+
+<h1 id="ablation-study-using-imagenet-1k">Ablation study using ImageNet-1K</h1>
+
+<h2 id="channel-attention">Channel attention</h2>
+
+<ul>
+  <li>Pooling 기법별 성능 비교</li>
+</ul>
+
+<p><img src="https://jjerry-k.github.io/public/img/cbam/Untitled_2.png" alt="https://jjerry-k.github.io/public/img/cbam/Untitled_2.png" /></p>
+
+<h2 id="spatial-attention">Spatial attention</h2>
+
+<ul>
+  <li>Pooling, convolution kernel size 에 따른 성능 비교</li>
+</ul>
+
+<p><img src="https://jjerry-k.github.io/public/img/cbam/Untitled_3.png" alt="https://jjerry-k.github.io/public/img/cbam/Untitled_3.png" /></p>
+
+<h2 id="arrangement-of-the-channel-and-spatial-attention">Arrangement of the channel and spatial attention</h2>
+
+<ul>
+  <li>Attention module 순서에 따른 성능 비교</li>
+</ul>
+
+<p><img src="https://jjerry-k.github.io/public/img/cbam/Untitled_4.png" alt="https://jjerry-k.github.io/public/img/cbam/Untitled_4.png" /></p>
+
+<h1 id="result">Result</h1>
+
+<h3 id="classification-result-on-imagenet-1k">Classification Result on ImageNet-1K</h3>
+
+<p><img src="https://jjerry-k.github.io/public/img/cbam/Untitled_5.png" alt="https://jjerry-k.github.io/public/img/cbam/Untitled_5.png" /></p>
+
+<p><img src="https://jjerry-k.github.io/public/img/cbam/Untitled_6.png" alt="https://jjerry-k.github.io/public/img/cbam/Untitled_6.png" /></p>
+
+<p><img src="https://jjerry-k.github.io/public/img/cbam/Untitled_7.png" alt="https://jjerry-k.github.io/public/img/cbam/Untitled_7.png" /></p>
+
+<h3 id="object-detection-on-ms-coco-and-voc-2007">Object Detection on MS COCO and VOC 2007</h3>
+
+<p><img src="https://jjerry-k.github.io/public/img/cbam/Untitled_8.png" alt="https://jjerry-k.github.io/public/img/cbam/Untitled_8.png" /></p>
+
+<p><img src="https://jjerry-k.github.io/public/img/cbam/Untitled_9.png" alt="https://jjerry-k.github.io/public/img/cbam/Untitled_9.png" /></p>
+
+<h3 id="network-visualization-with-grad-cam">Network Visualization with Grad-CAM</h3>
+
+<p><img src="https://jjerry-k.github.io/public/img/cbam/Untitled_10.png" alt="https://jjerry-k.github.io/public/img/cbam/Untitled_10.png" /></p>
+
+<h2 id="ps">P.S</h2>
+
+<ul>
+  <li>BAM과 동일하게 Original Code가 있지만….논문과 다른 부분이 매우 많음.</li>
+</ul>
 
     <article></h4>
     <div class="post-more">
       
-      <a href="/python/2019/01/23/nifti/#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
+      <a href="/deeplearning/2020/04/30/CBAM/#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
       
-      <a href="/python/2019/01/23/nifti/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
+      <a href="/deeplearning/2020/04/30/CBAM/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
     </div>
   </div>
   
   <div class="post">
     <h1 class="post-title">
-      <a href="/ubuntu/2018/12/08/scp/">
-        scp를 이용해서 파일 or 디렉토리 복사하기!
+      <a href="/deeplearning/2020/04/29/BAM/">
+        Review: BAM
       </a>
     </h1>
 
-    <span class="post-date">08 Dec 2018</span>
+    <span class="post-date">29 Apr 2020</span>
      | 
     
-    <a href="/blog/tags/#command" class="post-tag">Command</a>
+    <a href="/blog/tags/#paper" class="post-tag">Paper</a>
     
     
 
     <h4 style="font-weight: 400; line-height: 1.8;"><article>
-      <p>대부분이 그렇겠지만 딥러닝, 머신러닝 하시는 분들은 우분투 서버를 이용합니다.<br />
-물론 저도 그렇구요. 가끔 파일을 로컬에 복사할 일이 있습니다.<br />
- <code class="highlighter-rouge">mobaXterm</code> 이라던가 <code class="highlighter-rouge">xshell</code> 같은 프로그램으로 옮길 수도 있지만 제 경험상 대용량이라던가 파일이 많다면 끊기더구요..<br />
- 그래서 CLI 환경에서 하는 방법을 찾아보다가 <code class="highlighter-rouge">scp</code> 라는 명령어가 있더군요.<br />
- 방법은 간단합니다.</p>
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>scp <span class="nt">-r</span> <span class="o">(</span>계정이름<span class="o">)</span>@<span class="o">(</span>IP<span class="o">)</span>:<span class="o">(</span>복사할 파일 경로<span class="o">)</span> <span class="o">(</span>저장할 경로<span class="o">)</span>
-</code></pre></div></div>
+      <h1 id="bam-bottleneck-attention-module">BAM: Bottleneck Attention Module</h1>
 
-<p>이렇게 하면 끝나더군요. scp에 대한 자세한 설명은 추후에 추가하겠습니다.</p>
+<p>Author: Jongchan Park, Sanghyun Woo, Joon-Young Lee, In So Kweon<br />
+Date: Jul 17, 2018<br />
+URL: https://arxiv.org/abs/1807.06514</p>
+
+<h1 id="introduction">Introduction</h1>
+
+<ul>
+  <li>
+    <p>DL은 Classification, Detection, Segmentation 등 많은 패턴 인식 분야에서 강력한 Tool로 사용.</p>
+  </li>
+  <li>
+    <p>성능을 올리기 위해서 좋은 backbone을 설계하는 것이 기본적인 접근법.</p>
+  </li>
+  <li>
+    <p>직관적인 방법은 더 깊게 설계하는 것.</p>
+  </li>
+  <li>
+    <p>VGGNet는 AlexNet 보다 두배 이상.</p>
+  </li>
+  <li>
+    <p>ResNet 은 VGGNet보다 22배 이상이면서 residual connections 사용하여 gradient flow 를 향상.</p>
+  </li>
+  <li>
+    <p>GoogLeNet 은 매우 깊고 같은 layer에서 다양한 feature를 사용하여 성능 향상.</p>
+  </li>
+  <li>
+    <p>DenseNet 이전 layer의 feature map 들을 concatenation 하여 사용.</p>
+  </li>
+  <li>
+    <p>WideResNet, PyramidNet layer의 channels 를 증가하여 성능 향상.</p>
+  </li>
+  <li>
+    <p>ResNeXt, Xception과 같은 backbone은 grouped convolutions을 이용하여 성능 향상.</p>
+  </li>
+  <li>
+    <p>본 논문에선 attention 의 효과를 보기 위해 기존의 architecture 에 사용하기 쉬운 가벼운 Bottle Attention Module(BAM) 제안</p>
+  </li>
+</ul>
+
+<p><img src="https://jjerry-k.github.io/public/img/bam/Untitled.png" alt="https://jjerry-k.github.io/public/img/bam/Untitled.png" /></p>
+
+<h1 id="bottleneck-attention-module">Bottleneck Attention Module</h1>
+
+<ul>
+  <li>BAM 의 구조는 다음 사진과 같음.</li>
+</ul>
+
+<script type="math/tex; mode=display">F: \text{Input feature map} \\ M(F): \text{Attention map} \\F' = F + F\bigotimes M(F) \\ M(F) = \sigma(M_c(F) + M_s(F))</script>
+
+<p><img src="https://jjerry-k.github.io/public/img/bam/Untitled_1.png" alt="https://jjerry-k.github.io/public/img/bam/Untitled_1.png" /></p>
+
+<h2 id="channel-attention-branch">Channel attention branch</h2>
+
+<script type="math/tex; mode=display">M_c(F) = BN(MLP(AvgPool(F))) \\ = BN(W_1(W_0AvgPool(F) + b_0)+b_1)</script>
+
+<p>W0 의 output channel 크기: F의 채널 수 / reduction ratio(r)</p>
+
+<p>W1 의 output channel 크기: F의 채널 수</p>
+
+<h2 id="spatial-attention-branch">Spatial attention branch</h2>
+
+<script type="math/tex; mode=display">M_s(F)=BN(f_3^{1\times1}(f_2^{3\times3}(f_1^{3\times3}(f_0^{1\times1}(F)))))</script>
+
+<ul>
+  <li>모든 연산은 convolution 연산.</li>
+  <li>3x3 Convolution 연산 수행시엔 dilation convolution 사용.</li>
+  <li>첫번째~세번째 Convolution 의 output channel 크기: F의 채널 수 / reduction ratio(r)</li>
+  <li>마지막 Convolution 의 output channel 크기: 1</li>
+</ul>
+
+<h2 id="combine-two-attention-branches">Combine two attention branches</h2>
+
+<script type="math/tex; mode=display">M(F) = \sigma(M_c(F) + M_s(F))</script>
+
+<ul>
+  <li>Channel attention branch 출력: 1x1xR</li>
+  <li>Spatial attention branch 출력: HxWx1</li>
+  <li>두 attention branch를 합치는 방법으로 element-wise summation, multiplication, max operation 고려.</li>
+</ul>
+
+<h1 id="ablation-study-using-cifar-100">Ablation study using CIFAR-100</h1>
+
+<h2 id="dilation-value-and-reduction-ratio">Dilation value and Reduction ratio</h2>
+
+<ul>
+  <li>Dilation value와 Reduction ratio에 따른 성능 비교</li>
+  <li>Table 1 (a)</li>
+</ul>
+
+<h2 id="separate-or-combined-branches--combining-methods">Separate or Combined branches &amp; Combining methods</h2>
+
+<ul>
+  <li>두 attention branch 사용 방법에 따른 성능 비교</li>
+  <li>Table 1 (b)</li>
+</ul>
+
+<h2 id="comparison-with-placing-original-convblocks">Comparison with placing original convblocks</h2>
+
+<ul>
+  <li>BAM 사용 여부에 따른 성능 비교</li>
+  <li>Table 1 (c)</li>
+</ul>
+
+<p><img src="https://jjerry-k.github.io/public/img/bam/Untitled_2.png" alt="https://jjerry-k.github.io/public/img/bam/Untitled_2.png" /></p>
+
+<h2 id="bottleneck-the-efficient-point-to-place-bam">Bottleneck: The efficient point to place BAM</h2>
+
+<ul>
+  <li>BAM 사용 위치에 따른 성능 비교.</li>
+</ul>
+
+<p><img src="https://jjerry-k.github.io/public/img/bam/Untitled_3.png" alt="https://jjerry-k.github.io/public/img/bam/Untitled_3.png" /></p>
+
+<h1 id="result">Result</h1>
+
+<h2 id="classification-result-on-cifar-100-and-imagenet-1k">Classification Result on CIFAR-100 and ImageNet-1K</h2>
+
+<p><img src="https://jjerry-k.github.io/public/img/bam/Untitled_4.png" alt="https://jjerry-k.github.io/public/img/bam/Untitled_4.png" /></p>
+
+<h2 id="object-detection-on-ms-coco-and-voc-2007">Object Detection on MS COCO and VOC 2007</h2>
+
+<p><img src="https://jjerry-k.github.io/public/img/bam/Untitled_5.png" alt="https://jjerry-k.github.io/public/img/bam/Untitled_5.png" /></p>
+
+<h2 id="comparison-with-squeeze-and-excitation">Comparison with Squeeze-and-Excitation</h2>
+
+<p><img src="https://jjerry-k.github.io/public/img/bam/Untitled_6.png" alt="https://jjerry-k.github.io/public/img/bam/Untitled_6.png" /></p>
+
+<h3 id="ps">P.S</h3>
+
+<ul>
+  <li>Original Code가 있지만….논문과 다른 부분이 매우 많음.</li>
+</ul>
 
     <article></h4>
     <div class="post-more">
       
-      <a href="/ubuntu/2018/12/08/scp/#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
+      <a href="/deeplearning/2020/04/29/BAM/#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
       
-      <a href="/ubuntu/2018/12/08/scp/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
+      <a href="/deeplearning/2020/04/29/BAM/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
     </div>
   </div>
   

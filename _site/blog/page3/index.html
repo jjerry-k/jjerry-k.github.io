@@ -263,6 +263,9 @@
               <img class="masthead-logo" src="/public/logo.png"/>
             </a>
             <small></small>
+            <a href="https://donaricano.com/mypage/1391188679_guPzXC" target="_blank">
+              <img src="https://d1u4yishnma8v5.cloudfront.net/mobile-gift.png" width="60" height="60" style="position:absolute; top:0.25rem; right:4rem" alt="donaricano-btn" style="height: 130px !important;width: 130px !important;" />
+            </a>
             <img src="http://jjerry-k.github.io/public/search.png" width="20" height="20" style="position:absolute; top:1.3rem; right:1.5rem" data-toggle="modal" data-target="#myModal">
           </h3>
         </div>
@@ -273,72 +276,12 @@
   
   <div class="post">
     <h1 class="post-title">
-      <a href="/python/2019/07/06/DICOM/">
-        Python으로 DICOM 영상을 읽어보자!
+      <a href="/deeplearning/2020/06/13/DETR/">
+        Review: DETR
       </a>
     </h1>
 
-    <span class="post-date">06 Jul 2019</span>
-     | 
-    
-    <a href="/blog/tags/#usage" class="post-tag">Usage</a>
-    
-    
-
-    <h4 style="font-weight: 400; line-height: 1.8;"><article>
-      <p>예~~전에 <a href="https://jjerry-k.github.io/python/2019/01/23/nifti/">NIfTI</a> 파일을 load 하는 방법을 올렸었습니다! <br />
-이번에는 Python에서 <a href="https://www.dicomstandard.org">DICOM</a> 포맷의 데이터를 load 하는 방법에 대한 포스팅을 해보려고 합니다.</p>
-
-<p>가장 먼저 관련 패키지인 <a href="https://pydicom.github.io/pydicom/stable/index.html"><code class="highlighter-rouge">Pydicom</code></a> 을 설치를 해줍니다.</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>conda <span class="nb">install</span> <span class="nt">-c</span> conda-forge pydicom
-</code></pre></div></div>
-
-<p>저번과 똑같이 단순한 설치방법!</p>
-
-<p>이제 코딩으로 읽어보겠습니다.<br />
-예시 데이터로 다음 <a href="https://github.com/pydicom/pydicom/blob/master/pydicom/data/test_files/MR_small.dcm">링크</a>에 있는 영상을 이용하였습니다.</p>
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-<span class="kn">import</span> <span class="nn">pydicom</span> <span class="k">as</span> <span class="n">di</span>
-<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
-
-<span class="n">data</span> <span class="o">=</span> <span class="n">di</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="s">".dcm 경로"</span><span class="p">)</span>
-<span class="c1">#data = di.dcmread(".dcm 경로") # 편한거 쓰시면 됩니다.
-</span>
-<span class="n">img</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">pixel_array</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img</span><span class="p">)</span> <span class="c1"># 슬라이스 1장일 경우
-#plt.imshow(img[:,:,"slice 번호"]) # 슬라이스가 여러 장일 경우
-</span><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</code></pre></div></div>
-
-<p>이런 식으로 작성하시면 됩니다.<br />
- 예시를 보여드리면</p>
-
-<p><img src="https://jjerry-k.github.io/public/img/dicom/01.png" /></p>
-
-<p>예시 영상이 좀 작네요…<br />
-어쨌든 이런 식으로 읽습니다.</p>
-
-<p>흠….NIfTI와 DICOM을 했으니…다음엔 <strong>Insight Meta-Image</strong> 를 해보겠습니다!</p>
-
-    <article></h4>
-    <div class="post-more">
-      
-      <a href="/python/2019/07/06/DICOM/#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
-      
-      <a href="/python/2019/07/06/DICOM/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
-    </div>
-  </div>
-  
-  <div class="post">
-    <h1 class="post-title">
-      <a href="/deeplearning/2019/07/05/Thin/">
-        MRI interpolation using Deep Learning
-      </a>
-    </h1>
-
-    <span class="post-date">05 Jul 2019</span>
+    <span class="post-date">13 Jun 2020</span>
      | 
     
     <a href="/blog/tags/#paper" class="post-tag">Paper</a>
@@ -346,982 +289,781 @@
     
 
     <h4 style="font-weight: 400; line-height: 1.8;"><article>
-      <h1 id="deep-generative-adversarial-networks-for-thin-section-infant-mr-image-reconstruction">Deep Generative Adversarial Networks for Thin-Section Infant MR Image Reconstruction</h1>
+      <h1 id="end-to-end-object-detection-with-transformers">End-to-End Object Detection with Transformers</h1>
+
+<p>Author: Nicolas Carion, Francisco Massa, Gabriel Synnaeve, Nicolas Usunier, Alexander Kirillov, and Sergey Zagoruyko
+Date: May 27, 2020
+URL: https://ai.facebook.com/research/publications/end-to-end-object-detection-with-transformers</p>
+
+<h1 id="introduction">Introduction</h1>
 
 <ul>
-  <li>Jiaqi Gu<sup>1</sup>, Zezu Li<sup>1</sup>, YuanYuan Wans<sup>1, 3</sup>, Haowei Yang<sup>2</sup>, Zhongwei Qiao<sup>2</sup>, and Jinhua Yu<sup>1, 3</sup></li>
-  <li><sup>1</sup>School of Information Science and Technology, Fudan University, Shanghai 200433, China<br />
-<sup>2</sup>The Children’s Hospital of Fudan University, Shanghai 201102, China<br />
-<sup>3</sup>Key Laboratory of Medical Imaging Computing and Computer Assisted Intervention of Shanghai, Department of Electronic Engineering, Institute of Functional
-and Molecular Medical Imaging, Fudan University, Shanghai 200433, China
-—</li>
+  <li>현재 Object detection model들은 Input부터 Output (bounding bos, category label) 까지 Direct 하지 못함.  Post processing 이 영향을 끼치기 때문에…</li>
+  <li>본 논문에선 Direct prediction approach 제안.</li>
+  <li>이전에도 몇몇 실험이 있었으나 그 당시에는 prior knowledge를 준다거나 성능이 별로 좋지 못했음.</li>
+  <li><a href="https://arxiv.org/abs/1706.03762">Transformer</a> 를 사용.</li>
+  <li>새로운 Loss function 도입.</li>
 </ul>
 
-<h2 id="abstract">Abstract</h2>
+<p><img src="https://jjerry-k.github.io/public/img/DETR/Untitled.png" alt="jjerry-k.github.io/public/img/DETR/Untitled.png" /></p>
+
+<h1 id="related-works">Related Works</h1>
+
+<h2 id="set-prediction">Set Prediction</h2>
+
 <ul>
-  <li>Thin section magnetic resonance images (<strong>Thin MRI</strong>) 는 뇌수술, 뇌 구조 분석에 좋은 영상.</li>
-  <li>하지만 Thick section magnetic resonance images (<strong>Thick MRI</strong>) 에 비해 imaging cost가 많이 들기 때문에 잘 사용되지 않음.</li>
-  <li>Thick MRI 2 Thin MRI 제안.</li>
-  <li>Two stage( GAN -&gt; CNN )로 구성하였고 Thick MRI의 Axial, Sigittal plane을 이용하여 Thin MRI의 Axial reconstruction.</li>
-  <li>3D-Y-Net-GAN 은 Axial, Sagittal Thick MRI 를 이용하여 Fusion.</li>
-  <li>3D-Dense U-Net은 Sagittal plane에 대해 세부적인 calibrations, structual correction 제공.</li>
-  <li>Loss function 은 structual detail을 Network가 capture 할 수 있도록 제안.</li>
-  <li>bicubic, sparse representation, 3D-SRU-Net 과 비교.</li>
-  <li>35번의 Cross-validation, 114개를 이용하여 두개의 testset 구성.
-    <ul>
-      <li>PSNR : 23.5 % 증가.</li>
-      <li>SSIM : 90.5 % 증가.</li>
-      <li>MMI : 21.5 % 증가.</li>
-    </ul>
-  </li>
+  <li>현재까지 Direct로 set(box, class)을 prediction 하는 방법이 없음.</li>
+  <li>Post processing 이 없는 model 제안.</li>
+  <li>이를 위해 Hungarian algorithm 기반의 loss 설계.</li>
 </ul>
 
-<h2 id="introduction">Introduction</h2>
+<h2 id="transformers-and-parallel-decoding">Transformers and Parallel Decoding</h2>
+
 <ul>
-  <li>Thin MRI 는 slice thickness가 1mm이고 sapcing gap이 0mm.</li>
-  <li>하지만 항상 Thin MRI를 사용할 수 없음.</li>
-  <li>일반적으로 사용하는 Thick MRI는 slice thickness가 4~6mm 이고 sapcing gap이 0.4~1mm.
-    <ul>
-      <li>해상도 : Thin MRI &gt; Thick MRI</li>
-    </ul>
-  </li>
-  <li>인간의 뇌 발달에 대한 insight를 주기 때문에 유아의 brain MR image는 어른의 brain MR image 보다 연구에 가치가 있음</li>
-  <li>하지만 유아의 MR image를 얻는게 쉽지 않음.</li>
-  <li>그래서 Thick to Thin 제안.</li>
-  <li>기존 traditional interpolation algorithm
-    <ul>
-      <li>시각적으로는 성능이 좋아보임. 하지만 성인의 brain 에 초점을 맞춤.</li>
-      <li><strong><a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4478865/pdf/JMI-001-034007.pdf">Interpolation-based super-resolution reconstruction: effects of slice thickness</a></strong></li>
-      <li><strong><a href="https://www.hindawi.com/journals/ijbi/2013/395915/">Evaluation of interpolation effects on upsampling and accuracy of cost functions-based optimized automatic image registration</a></strong></li>
-    </ul>
-  </li>
-  <li>Frame interpolation 방법과 같이 적용 가능.
-    <ul>
-      <li><strong><a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&amp;arnumber=8110374">Slice Interpolation in MRI Using a Decomposition-reconstruction Method</a></strong></li>
-    </ul>
-  </li>
-  <li>Super-resolution 문제로 적용할 수도 있음.
-    <ul>
-      <li><strong><a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&amp;arnumber=5466111">Image super-resolution via sparse representation</a></strong></li>
-    </ul>
-  </li>
-  <li>CNN, GAN 이 발전하면서 super-resolution 이 탄력을 받음.
-    <ul>
-      <li><strong>[<a href="https://link.springer.com/chapter/10.1007/978-3-319-67564-0_12">Context-Sensitive Super-Resolution for Fast Fetal Magnetic Resonance Imaging</a></strong>]</li>
-      <li><strong>[<a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=8417964">Deep Generative Adversarial Neural Networks for Compressive Sensing MRI</a>]</strong></li>
-    </ul>
-  </li>
-  <li>이전에 성인의 Thick MRI를 Thin MRI 로 reconstruction 하는 3D-SRGAN 제안했으나 axial plane만 고려했음. <strong>[<a href="https://link.springer.com/chapter/10.1007%2F978-3-319-67389-9_38">Reconstruction of Thin-Slice Medical Images Using Generative Adversarial Network</a>]</strong></li>
-  <li>Deep Learning 이 reconstruction performance 뿐 아니라 reconstruction time 감소에도 매우 효과적인걸 보임.</li>
+  <li>다른 RNN 계열보다 Long sequence 에 적합한 model</li>
+  <li>auto-regressive model</li>
 </ul>
 
-<h2 id="proposed-method">Proposed Method</h2>
+<h2 id="object-detection">Object detection</h2>
 
-<h3 id="a-overview">A. Overview</h3>
+<h3 id="set-based-loss">Set-based loss</h3>
+
 <ul>
-  <li>CNN은 기존에도 super-resolution에서 많이 사용됨.</li>
-  <li>하지만 최근까지 제안된 Network는 대부분 2D image에 대한 upscaling.</li>
-  <li>몇몇 Network는 3D image로 확장했지만 그렇게 효과를 보지 못했음.</li>
-  <li>이 논문의 Flow
-<img src="https://jjerry-k.github.io/public/img/thin/fig01.PNG" /></li>
+  <li>기존에 bipatite matching loss 를 사용했지만  NMS 를 사용해야 성능이 향상되었음.</li>
+  <li>그 후 Learnable NMS 를 사용한 방법이 제시 되었으나 hand-crafted context feature 를 사용 하기에 효율적이지 못함.</li>
 </ul>
 
-<p><img src="https://jjerry-k.github.io/public/img/thin/fig02.PNG" /></p>
+<h3 id="recurrent-detectors">Recurrent detectors</h3>
 
-<h3 id="b-network-architecture">B. Network Architecture</h3>
 <ul>
-  <li>First stage는 3D-Y-Net-GAN 으로 Thick MRI를 Thin MRI로 생성 후 3D-DenseU-Net으로 recalibration.</li>
+  <li>이름에서 알 수 있듯 RNN 계열을 도입한 Object detection</li>
+  <li>기존 방법에선 Small dataset을 이용했고 RNN 계열을 이용했기에 parallel 구조를 가져가지 못했음.</li>
 </ul>
 
-<h4 id="3d-y-net-gan">3D-Y-Net-GAN</h4>
+<h1 id="the-detr-model">The DETR model</h1>
+
 <ul>
-  <li>Input : Axial, Sagittal Thick MRI</li>
-  <li>Output : Thin MRI</li>
-  <li>r : Upscaling Factor ( r = 8 일 경우의 예시 )</li>
+  <li>DETR은 크게 두 개의 장점이 있음. → a set prediction loss, a architecture</li>
 </ul>
 
-<p><img src="https://jjerry-k.github.io/public/img/thin/fig03.PNG" /></p>
+<p><img src="https://jjerry-k.github.io/public/img/DETR/Untitled_1.png" alt="jjerry-k.github.io/public/img/DETR/Untitled_1.png" /></p>
+
+<h2 id="object-detection-set-prediction-loss">Object detection set prediction loss</h2>
+
+<script type="math/tex; mode=display">\hat{\sigma} = {argmin}_{\sigma \in \mathfrak{S}_N} \sum^N_i \mathcal{L}_{match}(y_i, \hat{y}_{\sigma(i)})</script>
+
+<script type="math/tex; mode=display">\mathcal{L}_{match}(y_i, \hat{y}_{\sigma(i)}) = -1_{c_i \neq \phi}\hat{p}_{\sigma(i)}(c_i) +1_{c_i \neq \phi}\mathcal{L}_{box}(b_i, \hat{b}_{\sigma(i)})</script>
+
+<script type="math/tex; mode=display">\mathcal{L}_{Hungarian}(y, \hat{y}) = \sum^N_i[-\log\hat{p}_{\hat{\sigma}(i)}(c_i) +1_{c_i \neq \phi}\mathcal{L}_{box}(b_i, \hat{b}_{\hat{\sigma}(i)})]</script>
+
+<h3 id="bounding-box-loss">Bounding box loss</h3>
+
+<script type="math/tex; mode=display">\lambda_{iou}\mathcal{L}_{iou}(b_i, \hat{b}_{\sigma(i)}) + \lambda_{\mathrm{L}1}\|b_i - \hat{b}_{\sigma(i)}\|_1</script>
+
+<h2 id="detr-architecture">DETR architecture</h2>
+
+<h3 id="backbone">Backbone</h3>
 
 <ul>
-  <li>Feature Extraction Branches
-    <ul>
-      <li>각 input에 대한 feature 추출.</li>
-      <li>Maxpooling layer에서 [1, 2, 1], [2, 1, 1]의 다른 strides factor 적용.</li>
-      <li>3D convolutional layer 는 Convolution + Batch Normalization + Swish 로 구성.
-        <ul>
-          <li><a href="https://arxiv.org/pdf/1710.05941.pdf">Swish</a>는 Activation 의 종류로 ReLU로 인해 생기는 Dead neuron을 극복할 수 있음. <strong>-&gt; 근데 굳이 왜 swish일까…</strong></li>
-        </ul>
-      </li>
-      <li>layers 를 거친 후 shape 의 변화
-        <ul>
-          <li>Axial : [H, W, S, 1] -&gt; [H/2, W/2, S, 32]</li>
-          <li>Sagittal : [H, W, r*S, 1] -&gt; [H/2, W/2, S, 32]</li>
-        </ul>
-      </li>
-      <li>Axial과 Sagittal의 shape이 다르기 때문에 Sagittal 에 대해서 preprocessing으로 3개의 3d convolution layer 적용.</li>
-    </ul>
-  </li>
-  <li>Feature Fusion Branch
-    <ul>
-      <li>두 feature를 channel 방향으로 Concatanation.</li>
-      <li>W 방향으로 Upsampling 후 H 방향으로 Downsampling feature 를 Concatanation.</li>
-      <li>H 방향으로 Upsampling 후 첫번째 Block의 Feature map을 Concatanation</li>
-      <li>U-Net 에서 아이디어를 얻었고 structual alignment, gradient-vanishing 등을 완화.</li>
-    </ul>
-  </li>
-  <li>Reconstruction Branch
-    <ul>
-      <li>Figure 3 (b) 와 같은 구조.</li>
-      <li>Upsampling layer 3개를 연속으로 붙여서 8배 확장하는 구조 대신에 Multipath upscaling strategy 적용. <strong>-&gt; Artifact 완화 효과…?</strong></li>
-    </ul>
-  </li>
-  <li>
-    <p>Discriminator
-<img src="https://jjerry-k.github.io/public/img/thin/fig04.PNG" /></p>
-
-    <ul>
-      <li>Axial Image, Saggital Image, Combination Image 가 Real Pair인지 Fake Pair인지 감별.</li>
-      <li>Input : ($I^A$, $I^Y$, $I^S$), ($I^A$, $I^{GT}$, $I^S$)</li>
-      <li>Output : Real, Fake</li>
-    </ul>
-  </li>
+  <li>일반적인 Backbone 사용.</li>
+  <li>마지막 feataure map은 원본 사이즈 H, W 에 비해 32분의 1 downsampling, C는 2048</li>
 </ul>
 
-<h4 id="3d-denseu-net">3D-DenseU-Net</h4>
-<p><img src="https://jjerry-k.github.io/public/img/thin/fig05.PNG" /></p>
+<h3 id="transformer-encoder">Transformer encoder</h3>
 
 <ul>
-  <li>전체적인 구조는 U-Net이지만 2개의 Enhanced residual block 을 적용하여 detail recalibration.</li>
-  <li>Input :  $I^Y$, $I^S$, $I^{YA}$ <strong>-&gt; 어떻게 3개가 input으로…?</strong></li>
-  <li>Output : Thin MR Image</li>
-  <li>$I^A$ 를 $I^Y$ 의 해당 위치에 insertion 하여 $I^{YA}$ 생성. -&gt; 아직 이해 X..
-    <ul>
-      <li>Axial Information 을 이용하여 정확한 axial 을 만들기 위해…</li>
-      <li>$I^S$ 를 $I^Y$ 에 insertion하게 되면 Sagittal 에 대한 information 이 과해지기 때문에 Reconstrtion Axial Image의 Quality 가 안좋아 질 것!</li>
-    </ul>
-  </li>
-  <li>End-to-End 가 아니라 각각 따로따로 학습. <strong>-&gt; Faster RCNN 과 같은 방식으로 할런지….?</strong></li>
+  <li>Attention is all you need의 Transformer의 encoder와 동일한 구조.</li>
+  <li>Fixed positional encodings 으로 인하여 permutation-invariant 한 구조!</li>
 </ul>
 
-<h4 id="loss-function">Loss Function</h4>
+<h3 id="transformer-decoder">Transformer decoder</h3>
+
 <ul>
-  <li>$G$ 는 generator 라는 의미.</li>
-  <li>Self-Adaptive Charbonnier Loss
-    <ul>
-      <li>일반적으로 많이 사용되는 $\ell2$ 전반적으로 Smoothing 하게 만들어지고 $\ell1$ 은 GT와 Prediction 의 차이로 indiscriminate 하게 학습.</li>
-      <li><a href="https://arxiv.org/pdf/1704.03915.pdf">Deep Laplacian Pyramid Networks for Fast and Accurate Super-Resolution</a>에 따르면 <strong>Charbonnier loss</strong>(미분가능한 $\ell1$의 분산)가 $\ell1$, $\ell2$ 보다 성능이 뛰어남.</li>
-      <li><a href="https://arxiv.org/pdf/1706.03142.pdf">Deep Learning for Isotropic Super-Resolution from Non-Isotropic 3D Electron Microscopy</a> 에 따르면 <strong>Cubic-weighted mean square error</strong> 가 Generated 영상과 Ground truth 간의 차이가 큰 “어려운” 부분의 성능을 강조.</li>
-      <li>다음과 같은 Loss 제안.</li>
-      <li>$\epsilon$ 은 default로 $10^{-6}$</li>
-    </ul>
-  </li>
+  <li>Attention is all you need의 Transformer의 decoder와 동일한 구조.</li>
+  <li>기존 Transformer와 차이는</li>
 </ul>
 
-<script type="math/tex; mode=display">L^G_{SC} = \frac{1}{rLWH}\sum_{x,y,z=1,1,1}^{L,W,rH}\sqrt{(I^{GT}_{x,y,z}-I^Y_{z,y,z})^2+\epsilon}\cdot\bigg(\frac{1}{2}+\frac{(I^{GT}_{x,y,z}-I^Y_{z,y,z})^2}{2max((I^{GT}-I^Y)^2)}\bigg)</script>
+<h3 id="prediction-feed-forward-networks-ffns">Prediction feed-forward networks (FFNs)</h3>
 
 <ul>
-  <li>3-D Gradient Correction Loss
-    <ul>
-      <li>Charbonnier Loss는 Pixelwise difference에 대한 Loss, Gradient에 대한 손실을 줄 수 있음.</li>
-      <li>다음과 같이 각 axis에 대한 Gradient 를 이용하여 Loss 제안.</li>
-    </ul>
-  </li>
+  <li>ReLU를 사용하는 d dimension의 linear layer 3 개 사용.</li>
+  <li>한 branch 에서는 Normalized center coordinate, height, width 를 예측.</li>
+  <li>다른 하나의 branch는 class label을 softmax를 이용하여 예측.</li>
+  <li>DETR은 항상 N개의 box에 대해 예측. 하지만 실제 object 수가 적을때는 나머지 box들을 no object 로 처리.</li>
 </ul>
 
-<script type="math/tex; mode=display">L^G_{GC} = \mathbb{E}[(\nabla_{x}I^{GT}_{x,y,z} - \nabla_{x}I^Y_{x,y,z})^2] \\  + \mathbb{E}[(\nabla_{y}I^{GT}_{x,y,z} - \nabla_{y}I^Y_{x,y,z})]^2\\ + \mathbb{E}[(\nabla_{z}I^{GT}_{x,y,z} - \nabla_{z}I^Y_{x,y,z})^2]</script>
+<h3 id="auxiliary-decoding-losses">Auxiliary decoding losses</h3>
 
 <ul>
-  <li>Adversarial Loss
-    <ul>
-      <li>LSGAN Loss 사용.</li>
-    </ul>
-  </li>
+  <li>Transformer decoder에  Auxiliary loss 를 추가.</li>
 </ul>
 
-<script type="math/tex; mode=display">L^D=\frac{1}{2}\mathbb{E}[(D(I^{GT}, I^A, I^S)-1)^2+D(I^Y, I^A, I^S)^2]</script>
+<h1 id="experiment">Experiment</h1>
 
-<script type="math/tex; mode=display">L^G_{AD}=\mathbb{E}[(D(I^Y, I^A, I^S)-1)^2]</script>
+<h2 id="comparison-with-faster-r-cnn">Comparison with Faster R-CNN</h2>
 
+<p><img src="https://jjerry-k.github.io/public/img/DETR/Untitled_2.png" alt="jjerry-k.github.io/public/img/DETR/Untitled_2.png" /></p>
+
+<h2 id="ablations">Ablations</h2>
+
+<p><img src="https://jjerry-k.github.io/public/img/DETR/Untitled_3.png" alt="jjerry-k.github.io/public/img/DETR/Untitled_3.png" /></p>
+
+<p><img src="https://jjerry-k.github.io/public/img/DETR/Untitled_4.png" alt="jjerry-k.github.io/public/img/DETR/Untitled_4.png" /></p>
+
+<h2 id="panoptic-segmentation">Panoptic segmentation</h2>
+
+<p><img src="https://jjerry-k.github.io/public/img/DETR/Untitled_5.png" alt="jjerry-k.github.io/public/img/DETR/Untitled_5.png" /></p>
+
+<h2 id="ps">P.S</h2>
 <ul>
-  <li>$\ell_2$ Weight Regularization Loss
-    <ul>
-      <li>(Loss는 아니지만…)</li>
-      <li>Overfitting을 방지하기 위해 사용.</li>
-    </ul>
-  </li>
-</ul>
-
-<script type="math/tex; mode=display">L^G_{WR} = \sum\Vert W_G\Vert^2_2</script>
-
-<ul>
-  <li>3D-Y-Net-GAN Loss
-    <ul>
-      <li>$L_G = L^G_{SC} + \lambda_1L^G_{GC} + \lambda_2L^G_{AD} + \lambda_3L^G_{WR}$</li>
-    </ul>
-  </li>
-  <li>3D-DenseU-Net Loss
-    <ul>
-      <li>$L = L_{SC} + \lambda_1L_{GC} + \lambda_3L_{WR}$</li>
-    </ul>
-  </li>
-</ul>
-
-<h2 id="experimental-result">Experimental Result</h2>
-<ul>
-  <li>Multiplanar 의 효율성을 검증하기 위해 다음과 같이 세 가지 경우로 나눔.
-    <ul>
-      <li>1) Axial, Sagittal 둘 다 이용.</li>
-      <li>2) Axial 만 이용.</li>
-      <li>3) Saigittal 만 이용.</li>
-    </ul>
-  </li>
-  <li>Loss function을 검증하기 위해 네 가지 경우로 나눔.
-    <ul>
-      <li>1) $\ell1norm + L_{GC} + L_{AD} + L_{WR}$ (pixelwise loss를 $\ell1norm$으로 대체.)</li>
-      <li>2) $L_{SC} + L_{GC} + L_{WR}$</li>
-      <li>3) $L_{SC} + L_{AD} + L_{WR}$</li>
-      <li>4) $L_{SC} + L_{GC} + L_{AD} + L_{WR}$</li>
-    </ul>
-  </li>
-  <li>Evalutaion Method 로는 아래와 같이 네 가지 기법과 자신들의 Network
-    <ul>
-      <li>1) <a href="https://ieeexplore.ieee.org/document/1163711">Bicubic interpolation</a></li>
-      <li>2) <a href="https://ieeexplore.ieee.org/document/5466111">Sparse representation</a></li>
-      <li>3) <a href="https://arxiv.org/abs/1706.03142">3D-SRU-Net</a></li>
-      <li>4) 3D-Y-Net-GAN</li>
-      <li>5) 3D-Y-Net-GAN + 3D-DenseU-Net</li>
-    </ul>
-  </li>
-  <li>Metrics으로는 다음 세 가지 사용.
-    <ul>
-      <li>PSNR(Peak Signal-to-Noise Ratio)</li>
-    </ul>
-  </li>
-</ul>
-
-<script type="math/tex; mode=display">\begin{alignedat}{2}
-MAX_I = 255\\
-PSNR = 20\cdot\log_{10}\Bigg(\frac{MAX_I}{\sqrt{\frac{1}{rLWH}\sum_{x, y, z}(I^R_{x,y,z}-I^{GT}_{x,y,z})^2}}\Bigg)
-\end{alignedat}</script>
-
-<ul>
-  <li>SSIM(Structural SIMilarity)</li>
-</ul>
-
-<script type="math/tex; mode=display">\begin{alignedat}{2}
-L : 255(\text{dynamic range})\\
-\mu : \text{Variance}\\
-\mu_{ab} : \text{Covariance}\\
-c_1 = (k_1L)^2\\
-c_2 = (k_2L)^2\\
-SSIM=\frac{(2\mu_a\mu_b+c_1)(2\sigma_{ab}+c_2)}{(\mu_a^2+\mu_b^2+c_1)(\sigma_a^2+\sigma_b^2+c_2)}
-\end{alignedat}</script>
-
-<ul>
-  <li>NMI(Normalized Mutual Information)</li>
-</ul>
-
-<script type="math/tex; mode=display">\begin{alignedat}{2}
-H(X) = -\sum_{x_i}\in{X}p(x_i)\log{p(x_i)} \\
-H(X, Y) = -\sum_{y_i\in{Y}} \sum_{x_i\in{X}}p(x_i, y_i)\log{p(x_i, y_i)}\\
-NMI(X, Y) = 2\frac{H(X) + H(Y) - H(X, Y)}{H(X)+H(Y)}
-\end{alignedat}</script>
-
-<ul>
-  <li>pixel 값을 [-1, 1]로 clipping -&gt; 다시 8-bit gray scale로 변환.</li>
-  <li>Generated MR images 와 Ground truth가 비슷할 수록 높은 값을 가짐.</li>
-</ul>
-
-<h3 id="a-data-and-preprocessing">A. Data and Preprocessing</h3>
-
-<ul>
-  <li>총 154 samples의 2~5세 유아 Axial, Sagittal Thick MRI, Axial Thin MRI</li>
-</ul>
-
-<p><img src="https://jjerry-k.github.io/public/img/thin/tab01.PNG" /></p>
-
-<ul>
-  <li>Table 1. 과 같은 parameter 사용.</li>
-  <li>Dataset 분할
-    <ul>
-      <li>Cross Validation Dataset : 40 samples</li>
-      <li>Test 1 Dataset : 65 samples</li>
-      <li>Test 2 Dataset : 49 samples</li>
-    </ul>
-  </li>
-  <li>Preprocessing
-    <ul>
-      <li>각 영상별로 다른 parameter를 가지고 있고 intensities 도 다양하기 때문에 spatial misalignment, intensity imblance를 발견.</li>
-      <li>Registration을 위해 SPM12 를 이용하여 unified spatial normalization 수행.
-        <ul>
-          <li>
-            <ol>
-              <li>DICOM to NIfTI</li>
-            </ol>
-          </li>
-          <li>
-            <ol>
-              <li>Segment gray matter, white matter, cerebrospinal fluid, skull, scalp, and air mask.</li>
-            </ol>
-          </li>
-          <li>
-            <ol>
-              <li>Nonlinear deformation field</li>
-            </ol>
-          </li>
-          <li>
-            <ol>
-              <li>ICBM Asian brain template in affine regularization</li>
-            </ol>
-          </li>
-        </ul>
-      </li>
-      <li>Grayscale Normalization
-        <ul>
-          <li>MRI 는 16 bit..</li>
-          <li>단순 linear transformation 으로 [-1, 1]로 mapping.</li>
-        </ul>
-      </li>
-      <li>Histogram Matching
-        <ul>
-          <li>고정된 샘플을 reference로 histogram matching 적용.</li>
-          <li>histogram imbalance 제거.</li>
-        </ul>
-      </li>
-    </ul>
-  </li>
-  <li>Data Augmentation
-    <ul>
-      <li>Radial Transformation
-        <ul>
-          <li><strong><a href="https://arxiv.org/pdf/1708.04347.pdf">Image Augmentation using Radial Transform for Training Deep Neural Networks</a></strong></li>
-        </ul>
-      </li>
-      <li>Mirror Reflection</li>
-    </ul>
-  </li>
-</ul>
-
-<h3 id="b-experimental-settings">B. Experimental Settings</h3>
-<ul>
-  <li>5-fold cross-validation 적용.</li>
-  <li>35 개중 랜덤으로 28:7로 training:validation . <strong>-&gt; 앞에선 40개라더니..?</strong></li>
-  <li>Training 3D-Y-Net-GAN
-    <ul>
-      <li>Batch Size : 16</li>
-      <li>Epochs : 200</li>
-      <li><a href="https://arxiv.org/pdf/1412.6980.pdf">Adam Optimizer Parameter</a>
-        <ul>
-          <li>$\beta_1$: 0.9</li>
-          <li>Learning rate schedule
-            <ul>
-              <li>Initial value : 5*10<sup>-4</sup></li>
-              <li>Decay Step : 252</li>
-              <li>Decay rate : 0.989</li>
-            </ul>
-          </li>
-        </ul>
-      </li>
-      <li>$\lambda_1, \lambda_2, \lambda_3$ : 0.2, 0.02, 0.1</li>
-      <li>He initializer</li>
-    </ul>
-  </li>
-  <li>Training 3D-DenseU-Net
-    <ul>
-      <li>Batch Size : 12</li>
-      <li>Epochs : 300</li>
-      <li>Adam Optimizer Parameter
-        <ul>
-          <li>$\beta_1$: 0.9</li>
-          <li>Learning rate schedule
-            <ul>
-              <li>Initial value : 5*10<sup>-4</sup></li>
-              <li>Decay Step : 373</li>
-              <li>Decay rate : 0.989</li>
-            </ul>
-          </li>
-        </ul>
-      </li>
-      <li>$\lambda_1, \lambda_3$ : 1, 0.001</li>
-      <li>He initializer</li>
-    </ul>
-  </li>
-  <li>SR Parameter
-    <ul>
-      <li>Dictionary size = 512</li>
-      <li>Patch number = 100,000</li>
-      <li>Patch size = 13 x 13</li>
-      <li>Sparsity Regularization = 0.15</li>
-      <li>Overlap = 12.</li>
-    </ul>
-  </li>
-  <li>Training 3D-SRU-Net
-    <ul>
-      <li>Batch Size : 32</li>
-      <li>Epochs : 300</li>
-      <li>Adam Optimizer Parameter
-        <ul>
-          <li>$\beta_1$: 0.9</li>
-          <li>Initial value : 5*10<sup>-4</sup></li>
-        </ul>
-      </li>
-    </ul>
-  </li>
-</ul>
-
-<h4 id="c-ablation-experiment-on-input-data">C. Ablation Experiment On Input Data</h4>
-<ul>
-  <li>Input을 변경하면서 실험 진행. 
-<img src="https://jjerry-k.github.io/public/img/thin/fig06.PNG" />
-<img src="https://jjerry-k.github.io/public/img/thin/tab02.PNG" /></li>
-  <li>Axial 과 Sagittal 을 같이 사용했을 때가 좀 더 세부적인 구조, 적은 왜곡을 보임.
-    <ul>
-      <li>두 축의 영상이 서로 조합하여 reconstruction task를 향상.</li>
-    </ul>
-  </li>
-  <li>Quantitive evaluation 에서도 더 높은 지표를 산출.</li>
-</ul>
-
-<h4 id="d-ablation-experiment-on-loss-function">D. Ablation Experiment On Loss Function</h4>
-<ul>
-  <li>Loss를 변경하면서 실험 진행.
-<img src="https://jjerry-k.github.io/public/img/thin/fig07.PNG" />
-<img src="https://jjerry-k.github.io/public/img/thin/tab03.PNG" /></li>
-  <li>Self-Adaptive Charbonnier Loss에 비해 $\ell1$ norm 이 흐린 영상을 생성.</li>
-  <li>Without Gradient Correction Loss
-    <ul>
-      <li>덜 선명한 영상을 생성.</li>
-    </ul>
-  </li>
-  <li>Without Adversarial Loss
-    <ul>
-      <li>덜 realistic 영상을 생성. <strong>-&gt; ?????그냥 쓴 말인가..</strong></li>
-    </ul>
-  </li>
-  <li><strong>Table3 …지표 좀 이상..</strong></li>
-</ul>
-
-<h4 id="e-comparison-with-other--methods">E. Comparison With Other  Methods</h4>
-<ul>
-  <li>다른 Method들과 비교.
-<img src="https://jjerry-k.github.io/public/img/thin/fig08.PNG" />
-<img src="https://jjerry-k.github.io/public/img/thin/tab04.PNG" /></li>
-  <li>제안한 method로 생성된 image가 가장 Realistic하고 Ground truth 와 가장 비슷하다고 함.</li>
-  <li>대부분 Quantitative evaluation 에서 제안한 method가 다른 것들을 다 뛰어넘음.</li>
-</ul>
-
-<h2 id="conclusion">Conclusion</h2>
-<ul>
-  <li><strong>제안한 Method 에선 Data preprocessing이 매우 중요하다……</strong></li>
+  <li>내용 보충 예정.</li>
+  <li>신박한 컨셉.</li>
 </ul>
 
     <article></h4>
     <div class="post-more">
       
-      <a href="/deeplearning/2019/07/05/Thin/#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
+      <a href="/deeplearning/2020/06/13/DETR/#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
       
-      <a href="/deeplearning/2019/07/05/Thin/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
+      <a href="/deeplearning/2020/06/13/DETR/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
     </div>
   </div>
   
   <div class="post">
     <h1 class="post-title">
-      <a href="/python/2019/06/30/conda_package/">
-        (개인적으로) 무.조.건 설치하는 Anaconda 패키지
+      <a href="/living/2020/05/31/Dlink_ddns/">
+        D-Link ddns 서비스 종료
       </a>
     </h1>
 
-    <span class="post-date">30 Jun 2019</span>
+    <span class="post-date">31 May 2020</span>
      | 
     
-    <a href="/blog/tags/#setting" class="post-tag">Setting</a>
+    <a href="/blog/tags/#hardware" class="post-tag">Hardware</a>
     
     
 
     <h4 style="font-weight: 400; line-height: 1.8;"><article>
-      <p>이번 포스팅은 제가 많이 쓰는 패키지들에 대해서 적어보려고 합니다. <br />
-추후에 포맷하고 다시 세팅할 수도 있으니까….<br />
-저는 Anaconda가 아닌 <strong>Miniconda</strong>를 사용하기 때문에 어지간하면 하나 하나 설치를 해줘야해요. 
-물론 머리로는 기억하고 있지만 커맨드 쓰기가 귀찮으니…적어놓으려고 합니다!<br />
-각각 설명은…생략할거에요. 보시는 분들 구글링 실력을 믿습니다.</p>
+      <p><a href="https://eu.dlink.com/uk/en/products/dir-850l-wireless-ac1200-dual-band-gigabit-cloud-router">D-Link의 DIR-815L</a> 을 잘 쓰고 있었습니다…<br />
+라즈베리파이와 연결하여 DDNS 도해놓고..<br />
+근데 어느 날 다음과 같은 글이 메일, 공지로 올라오더군요.</p>
 
-<h4 id="scientific-uses">Scientific uses</h4>
-<ul>
-  <li>numpy, scipy, pandas</li>
-  <li><code class="highlighter-rouge">conda install numpy scipy pandas</code></li>
-</ul>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>안녕하세요. D-Link Korea 입니다. 저희 dlink 제품군에서 제공되었던 무료 dlinkddns 서비스 종료에 관한 안내 말씀드립니다. 죄송합니다만, dlinkddns 무료 서비스는 기존에 오라클사의 dyn ddns 와의 계약만료일인 2020년 7월 2일 종료될 예정입니다. 이후에는 정상적인 무료 ddns서비스 이용이 불가하니 계속해서 dlinkddns 서비스를 이용하기를 원하실 경우에는 유료상품으로 전환하시기 바랍니다. ■ 유료전환 http://dlinkddns.com 사이트 접속시 유료전환은 안내 팝업과 함께 결재시 50% 할인 메뉴 클릭하여 진행합니다. 이외에 관련해서 궁금한 점이 있으신 분은 D-Link Korea 고객센터(1899-3540)로 문의하시기 바랍니다. 기존 무료로 지원되던 dlinkddns 서비스 종료에, 앞으로 더욱 나은 서비스로 보답하겠습니다. 감사합니다.
+</code></pre></div></div>
 
-<h4 id="visualization">Visualization</h4>
-<ul>
-  <li>matplotlib, seaborn</li>
-  <li><code class="highlighter-rouge">conda install matplotlib seaborn</code></li>
-</ul>
-
-<h4 id="image-processing">Image Processing</h4>
-<ul>
-  <li>pillow, scikit-image, opencv</li>
-  <li><code class="highlighter-rouge">conda install pillow scikit-image opencv</code></li>
-</ul>
-
-<h4 id="ml--dl">ML &amp; DL</h4>
-<ul>
-  <li>scikit-learn, tensorflow, pytorch (keras도 썼었는데…이번에 뺐어요..)</li>
-  <li><code class="highlighter-rouge">conda install scikit-learn tensorflow</code></li>
-  <li><code class="highlighter-rouge">conda install -c pytorch pytorch torchvision</code></li>
-</ul>
-
-<h4 id="medical-image-processing">Medical Image Processing</h4>
-<ul>
-  <li>pydicom, nibabel, simpleitk</li>
-  <li><code class="highlighter-rouge">conda install -c conda-forge pydicom nibabel</code></li>
-  <li><code class="highlighter-rouge">conda install -c SimpleITK SimpleITK</code></li>
-</ul>
-
-<h4 id="tools">Tools</h4>
-<ul>
-  <li>tqdm, jupyter, jupyter-lab</li>
-  <li><code class="highlighter-rouge">conda install  tqdm jupyter jupyterlab</code></li>
-</ul>
-
-<p>이….정도네요!<br />
-솔직히 제가 이렇게 포스팅을 하는 이유는….<br />
-이미 제 노트북을…한번 갈아엎었습니다…<br />
-conda 를 4.7.5 로 올리는 순간…모든게 날아갔거든요.<br />
-하…얼른 세팅하러 갑니다..</p>
-
-<p><strong>P.S</strong> conda 를 조심하세요…</p>
+<p>What the…?<br />
+후… 공유기를 새로 사던 DDNS 서비스를 이용하던 해야겠네요.<br />
+디자인이랑 DDNS 때문에 샀는데.. 젠장.. 앞으론 그냥 Iptime 쓸래요.</p>
 
     <article></h4>
     <div class="post-more">
       
-      <a href="/python/2019/06/30/conda_package/#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
+      <a href="/living/2020/05/31/Dlink_ddns/#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
       
-      <a href="/python/2019/06/30/conda_package/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
+      <a href="/living/2020/05/31/Dlink_ddns/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
     </div>
   </div>
   
   <div class="post">
     <h1 class="post-title">
-      <a href="/python/2019/05/09/Part1A/">
-        Seaborn Tutorial Part 1-A
+      <a href="/deeplearning/2020/05/09/ShuffleNetV2/">
+        Review: ShuffleNetV2
       </a>
     </h1>
 
-    <span class="post-date">09 May 2019</span>
+    <span class="post-date">09 May 2020</span>
      | 
     
-    <a href="/blog/tags/#usage" class="post-tag">Usage</a>
+    <a href="/blog/tags/#paper" class="post-tag">Paper</a>
     
     
 
     <h4 style="font-weight: 400; line-height: 1.8;"><article>
-      <h1 id="index">Index</h1>
+      <h1 id="shufflenet-v2-practical-guidelines-for-efficient-cnn-architecture-design">ShuffleNet V2: Practical Guidelines for Efficient CNN Architecture Design</h1>
+
+<p>Author: Ningning Ma, Xiangyu Zhang, Hai-Tao Zheng, Jian Sun<br />
+Date: Jul 30, 2018<br />
+URL: https://arxiv.org/abs/1807.11164</p>
+
+<h1 id="introduction">Introduction</h1>
+
 <ul>
-  <li><a href="#index">Index</a>
+  <li>CNN 계열이 AlexNet 부터 정확도, 속도가 많이 발전하고 있음.</li>
+  <li>실제로는 제한된 컴퓨팅 파워에서(Mobile과 같은) 최고의 성능을 내는데 목표로 하고 있음.</li>
+  <li>이로 인해 Xception, MobileNet, ShuffleNet 등이 개발 되었음.</li>
+  <li>지금까지는 모델의 연산량을 이용하여 모델의 효율성을 판단하였으나 적합한 지표가 아님을 주장.</li>
+  <li>FLOPs와 speed 간의 성능 비교가 옳지 않은 주요 이유가 두 가지.
     <ul>
-      <li><a href="#a-visualizing-statistical-relationships">A. Visualizing statistical relationships</a>
-        <ul>
-          <li><a href="#relating-variables-with-scatter-plots">Relating variables with scatter plots</a></li>
-          <li><a href="#emphasizing-continuity-with-line-plots">Emphasizing continuity with line plots</a>
-            <ul>
-              <li><a href="#aggregation-and-representing-uncertainty">Aggregation and representing uncertainty</a></li>
-              <li><a href="#plotting-subsets-of-data-with-semantic-mappings">Plotting subsets of data with semantic mappings</a></li>
-              <li><a href="#plotting-with-date-data">Plotting with date data</a></li>
-            </ul>
-          </li>
-          <li><a href="#showing-multiple-relationships-with-facets">Showing multiple relationships with facets</a></li>
-        </ul>
-      </li>
+      <li>memory access cost(MAC): 메모리 접근량(사용량)</li>
+      <li>depending on the platform</li>
     </ul>
   </li>
 </ul>
 
-<h2 id="a-visualizing-statistical-relationships">A. Visualizing statistical relationships</h2>
-<p>Relationships 시각화에선 <code class="highlighter-rouge">relplot()</code> 이라는걸 주로 사용합니다. 
-<code class="highlighter-rouge">relplot()</code> 에는 <code class="highlighter-rouge">kind</code>라는 옵션으로 <code class="highlighter-rouge">scatter</code>, <code class="highlighter-rouge">line</code> 을 그릴 수 있습니다.<br />
-일단! 다음과 같이 기본적인 패키지를 import 하고 진행하겠습니다!</p>
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
-<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="n">sns</span>
-<span class="n">sns</span><span class="o">.</span><span class="nb">set</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="s">"darkgrid"</span><span class="p">)</span> <span class="c1"># 추후 Part 3 에서 다룰 내용!
-</span></code></pre></div></div>
+<p><img src="https://jjerry-k.github.io/public/img/shufflenetv2/Untitled.png" alt="https://jjerry-k.github.io/public/img/shufflenetv2/Untitled.png" /></p>
 
-<h3 id="relating-variables-with-scatter-plots">Relating variables with scatter plots</h3>
-<p>Scatter plot을 해볼겁니다!<br />
-<code class="highlighter-rouge">scatterplot()</code>을 사용해도 되지만 <code class="highlighter-rouge">relplot()</code>을 사용해서 그려보겠습니다.<br />
-가장 먼저 … 사용할 데이터를 읽어오겠습니다.</p>
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">tips</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s">"tips"</span><span class="p">)</span>
-<span class="n">tips</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
-</code></pre></div></div>
-<p>위를 실행하면 다음 사진과 같이 출력이 나옵니다.<br />
-<img src="https://jjerry-k.github.io/public/img/sb_part1a/001.png" /><br />
-정확히 무슨 데이터인지는 모르겠지만… 어떤 가게의 가계부…? 같습니다.
-총 금액, 팁, 성별, 흡연 여부, 요일, 시간대, 크기(…?) 등의 카테고리가 있네요.<br />
-그럼 한번 plot 해보겠습니다.</p>
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sns</span><span class="o">.</span><span class="n">relplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s">"total_bill"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">"tip"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">tips</span><span class="p">);</span>
-</code></pre></div></div>
-<p><img src="https://jjerry-k.github.io/public/img/sb_part1a/002.png" /></p>
+<h1 id="practical-guidelines-for-ecient-network-design">Practical Guidelines for Ecient Network Design</h1>
 
-<p>다음과 같은 figure가 나오네요!<br />
-x, y, data에 들어간 의미를 알아볼까요?
-<code class="highlighter-rouge">x=</code> 는 x축을 어떤 데이터로 할지 정하는 부분입니다.
-<code class="highlighter-rouge">y=</code> 는 당연히 y축이겠죠?
-<code class="highlighter-rouge">data=</code> 는 어떤 data를 plot에 사용할지 적는 부분입니다.<br />
-그래서 plot하는 코드를 풀어서 얘기해보자면<br />
-<code class="highlighter-rouge">tips</code>라는 DataFrame에서 <code class="highlighter-rouge">total_bill</code>을 x축으로 <code class="highlighter-rouge">tip</code>을 y축으로 골라서 scatter plot 하라는 얘기입니다.<br />
-좀 더 해볼까요?</p>
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sns</span><span class="o">.</span><span class="n">relplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s">"total_bill"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">"tip"</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s">"smoker"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">tips</span><span class="p">);</span>
-</code></pre></div></div>
-<p><img src="https://jjerry-k.github.io/public/img/sb_part1a/003.png" /></p>
+<ul>
+  <li>본 연구는 GPU 하드웨어(1080ti), ARM 하드웨어(Snapdragon 810) 이 두 가지 환경에서 실험.</li>
+  <li>모델의 Runtime을 쪼개보면 다음과 같은 차트가 그려짐.</li>
+  <li>FLOPs는 Convolution 에 대해 설명하기 떄문에 비교 지표로 적절하지 못함을 강조.</li>
+</ul>
 
-<p><code class="highlighter-rouge">x, y, data</code>는 위랑 다를게 없는데… <code class="highlighter-rouge">hue</code>라는 옵션이 추가가 되었습니다.<br />
-<code class="highlighter-rouge">hue='smoke'</code>라고 흡연 여부에 대해 색상으로 표시를 해줍니다!</p>
+<p><img src="https://jjerry-k.github.io/public/img/shufflenetv2/Untitled_1.png" alt="https://jjerry-k.github.io/public/img/shufflenetv2/Untitled_1.png" /></p>
 
-<p>하나 또 있습니다.</p>
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sns</span><span class="o">.</span><span class="n">relplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s">"total_bill"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">"tip"</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s">"smoker"</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s">"smoker"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">tips</span><span class="p">);</span>
-</code></pre></div></div>
-<p><img src="https://jjerry-k.github.io/public/img/sb_part1a/004.png" /></p>
+<ul>
+  <li>위 문제를 근거로 다음과 같이 여러 개의 가이드 라인을 제시.</li>
+</ul>
 
-<p><code class="highlighter-rouge">style</code> 옵션이 추가되었어요!
-<code class="highlighter-rouge">style='smoker'</code>를 추가해주면서 plot 스타일이 추가되었네요!<br />
-다음 사진은 <code class="highlighter-rouge">style="time"</code> 옵션을 준거에요!<br />
-<img src="https://jjerry-k.github.io/public/img/sb_part1a/005.png" /></p>
+<h2 id="g1-equal-channel-width-minimizes-memory-access-cost-mac">G1) Equal channel width minimizes memory access cost (MAC)</h2>
 
-<p><strong>색으로는 흡연여부</strong>를 표시하고 <strong>plot 스타일로는 시간대</strong>를 표시해주네요!</p>
+<ul>
+  <li>근래에 많이 사용되는 depthwise separable convoltuion에서 연산량의 대부분은 pointwise convolution 이 차지.</li>
+  <li>1x1 convolution 이 차지하는 연산량은 다음과 같음.</li>
+</ul>
 
-<p>자, <code class="highlighter-rouge">hue</code> 옵션의 또 다른 예시입니다.</p>
+<script type="math/tex; mode=display">h, w: \text{the spatial size of the input feature map} \\ c_1, c_2: \text{Number of channels about input and output } \\ B=hwc_1c_2, \text{ FLOPs of the }1 \times 1 \text{ convolution}</script>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sns</span><span class="o">.</span><span class="n">relplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s">"total_bill"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">"tip"</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s">"size"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">tips</span><span class="p">);</span>
-</code></pre></div></div>
-<p><img src="https://jjerry-k.github.io/public/img/sb_part1a/006.png" /></p>
+<ul>
+  <li>현 상황에서 MAC의 수식은 다음과 같음.</li>
+</ul>
 
-<p>이전 예시에선 <strong>Yes</strong> or <strong>No</strong> 였죠.<br />
-이번 수치에 대해 색별로 의미를 줬습니다!<br />
-다음과 같이 <code class="highlighter-rouge">pallette</code> 옵션을 줘서 색을 바꿀 수도 있어요!<br />
-<code class="highlighter-rouge">pallette</code>에 대한 자세한건 <strong>Part 3</strong> 에서 다루겠습니다.</p>
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sns</span><span class="o">.</span><span class="n">relplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s">"total_bill"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">"tip"</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s">"size"</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s">"ch:r=-.5,l=.75"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">tips</span><span class="p">);</span>
-</code></pre></div></div>
-<p><img src="https://jjerry-k.github.io/public/img/sb_part1a/007.png" /></p>
+<script type="math/tex; mode=display">MAC = hw(c_1+c_2) +c_1c_2 = hwc_1 + hwc_2 + c_1c_2 \\ hwc_1: \text{Number of input feature map's element} \\ hwc_2: \text{Number of output feature map's element} \\ c_1c_2: \text{Number of filter's element}</script>
 
-<p>오…scatter plot의 끝이 보여요…<br />
-<code class="highlighter-rouge">size</code> 옵션입니다.</p>
+<ul>
+  <li>MAC의 lower bound 는 다음과 같음.</li>
+</ul>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sns</span><span class="o">.</span><span class="n">relplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s">"total_bill"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">"tip"</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="s">"size"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">tips</span><span class="p">);</span>
-</code></pre></div></div>
-<p><img src="https://jjerry-k.github.io/public/img/sb_part1a/008.png" /></p>
+<script type="math/tex; mode=display">MAC \ge 2\sqrt{hwB} + \frac{B}{hw} \to 2hw\sqrt{c_1c_2} + c_1c_2</script>
 
-<p><code class="highlighter-rouge">size="size"</code>라고 옵션을 줬어요!<br />
-plot의 크기에 따라 의미가 나뉘어졌습니다!<br />
-다음고 같이 <code class="highlighter-rouge">sizes</code>를 이용해서 크기 범위를 정해줄수도 있네요!</p>
+<ul>
+  <li>$c_1 = c_2$ 이면 MAC가 최소.</li>
+  <li>전체 연산량은 고정해놓고 $c_1:c_2$의 비율을 바꿔가면서 runtime 비교.</li>
+  <li>1:1일때가 가장 빠른 성능을 보임.</li>
+</ul>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sns</span><span class="o">.</span><span class="n">relplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s">"total_bill"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">"tip"</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="s">"size"</span><span class="p">,</span> <span class="n">sizes</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">200</span><span class="p">),</span> <span class="n">data</span><span class="o">=</span><span class="n">tips</span><span class="p">);</span>
-</code></pre></div></div>
-<p><img src="https://jjerry-k.github.io/public/img/sb_part1a/009.png" /></p>
-
-<h3 id="emphasizing-continuity-with-line-plots">Emphasizing continuity with line plots</h3>
-
-<p>이 파트는 연속적인 값을 가진 데이터에 대한 plot입니다.<br />
-다음과 같이 DataFrame을 하나 만들어 봅시다!</p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">500</span><span class="p">),</span> <span class="n">value</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">500</span><span class="p">)</span><span class="o">.</span><span class="n">cumsum</span><span class="p">()))</span>
-<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
-</code></pre></div></div>
-<p>&lt;img src=’https://jjerry-k.github.io/public/img/sb_part1a/010.png’ height=50% width=50%&gt;</p>
-
-<p>결과는 사진과 다를 수 있어요!<br />
-time, value 를 가지고 있다는 거에 초점을 맞추시면 됩니다!<br />
-일별로 뭔가 값이 들어가 있네요.<br />
-이를 <code class="highlighter-rouge">relplot()</code> 을 이용하여 그려보겠습니다.
-<code class="highlighter-rouge">kind</code> 옵션에 <code class="highlighter-rouge">"line"</code> 라고 주면 됩니다!<br />
-<code class="highlighter-rouge">autofmt_xdata()</code> 라는건 이름에서 유추할 수 있듯이 x 축 레이블을 데이터에 맞게 format을 자동으로 맞춰주는거에요!<br />
-지금은 x 축이 날짜니까 날짜에 대해선 x 축 레이블을 살짝쿵 기울인거에요!<br />
-이걸 쓰지 않으면 날짜가 겹쳐질거에요…(한번 해보세요..)</p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>g = sns.relplot(x="time", y="value", kind="line", data=df)
-g.fig.autofmt_xdate()
-</code></pre></div></div>
-<p><img src="https://jjerry-k.github.io/public/img/sb_part1a/011.png" /></p>
-
-<p>위 예시는 x 축이 연속적이지만 시계열 데이터였습니다!<br />
-만약 연속적이지만 이동경로와 같이 x, y 축 좌표만 가진 데이터라면?<br />
-예시를 들어볼게요! 다음과 같이 x, y 에 대한 데이터를 만듭니다.</p>
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">500</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s">"x"</span><span class="p">,</span> <span class="s">"y"</span><span class="p">])</span>
-<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
-</code></pre></div></div>
-<p>&lt;img src=’https://jjerry-k.github.io/public/img/sb_part1a/012.png’ height=50% width=50%&gt;</p>
-
-<p>이런 위치에 대한 데이터는 <code class="highlighter-rouge">sort = False</code> 옵션을 줘야합니다!<br />
-그렇지 않으면 …. x 데이터를 자동으로 sorting 해서 plot 해버립니다..</p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sns</span><span class="o">.</span><span class="n">relplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s">"x"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">"y"</span><span class="p">,</span> <span class="n">sort</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s">"line"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">);</span>
-</code></pre></div></div>
-<p><img src="https://jjerry-k.github.io/public/img/sb_part1a/013.png" /></p>
-
-<h4 id="aggregation-and-representing-uncertainty">Aggregation and representing uncertainty</h4>
-
-<p>이 파트는 집계 및 신뢰구간 표시에 대한 설명입니다.<br />
-<strong>seaborn</strong>은 기본 값으로 95% 신뢰구간을 표시해준다고 하녜요!<br />
-다음과 같이 데이터를 load 해줍니다!</p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">fmri</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s">"fmri"</span><span class="p">)</span>
-<span class="n">fmri</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
-</code></pre></div></div>
-<p>&lt;img src=’https://jjerry-k.github.io/public/img/sb_part1a/014.png’ height=50% width=50%&gt;</p>
-
-<p>fmri data 군요! 일단 무슨 의미인지 잘 모르겠습니다!<br />
-각 환자별로 timepoint 를 가지고 signal을 가지는건 알겠네요..<br />
-이 데이터를 이용해 다음과 같이 plot을 해봅시다!<br />
-뭔가 선이랑 범위(?)로 보이는 불투명한 부분이 생겼습니다!<br />
-선은 해당 timepoint 에서 signal 의 mean 값이고 불투명한 부분은 신뢰구간을 의미합니다!</p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sns</span><span class="o">.</span><span class="n">relplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s">"timepoint"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">"signal"</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s">"line"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">fmri</span><span class="p">);</span>
-</code></pre></div></div>
-<p><img src="https://jjerry-k.github.io/public/img/sb_part1a/015.png" /></p>
+<p><img src="https://jjerry-k.github.io/public/img/shufflenetv2/Untitled_2.png" alt="https://jjerry-k.github.io/public/img/shufflenetv2/Untitled_2.png" /></p>
 
 <blockquote>
-  <blockquote>
-    <p>“그럼…이런 데이터는 항상 신뢰구간을 같이 봐야하는가?”</p>
-  </blockquote>
+  <p><em>It reaches the lower bound when the numbers of input and output channels are equal.</em></p>
 </blockquote>
 
-<p>아닙니다. <code class="highlighter-rouge">ci</code>(Confidence Intervals) 옵션을 바꿔주면 됩니다!<br />
-<code class="highlighter-rouge">ci=None</code> 이라고 옵션을 주고 plot을 하면 신뢰구간이 표현이 안됩니다!</p>
+<h2 id="g2-excessive-group-convolution-increases-mac">G2) Excessive group convolution increases MAC</h2>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sns</span><span class="o">.</span><span class="n">relplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s">"timepoint"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">"signal"</span><span class="p">,</span> <span class="n">ci</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s">"line"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">fmri</span><span class="p">);</span>
-</code></pre></div></div>
-<p><img src="https://jjerry-k.github.io/public/img/sb_part1a/016.png" /></p>
+<ul>
+  <li>Group convolution 이 많은 네트워크의 핵심이지만 Groups가 커지면 MAC을 증가시킴. → 안쓸 수는 없으니 적당히 쓰는게 좋다.</li>
+  <li>그룹에 따라 연산량이 줄어들기 때문에 B는 다음과 같음.</li>
+</ul>
 
-<p>또 다른 옵션이 있습니다.<br />
-데이터가 매우 큰 경우! <code class="highlighter-rouge">ci</code> 옵션에 표준 편차를 넣어주면 각 timepoint 에서 분산을 표현해줍니다!</p>
+<script type="math/tex; mode=display">B=hwc_1c_2/g</script>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sns</span><span class="o">.</span><span class="n">relplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s">"timepoint"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">"signal"</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s">"line"</span><span class="p">,</span> <span class="n">ci</span><span class="o">=</span><span class="s">"sd"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">fmri</span><span class="p">);</span>
-</code></pre></div></div>
-<p><img src="https://jjerry-k.github.io/public/img/sb_part1a/017.png" /></p>
+<script type="math/tex; mode=display">MAC = hw(c_1+c_2) + \frac{c_1c_2}{g} \\ = hwc_1 + hwc_2 + \frac{c_1c_2}{g} \\ = hwc_1 + \frac{Bg}{c_1} + \frac{B}{hw}</script>
 
-<p>마지막으로… 이런 집계말고 정말 원본 그대로 plot 해보고 싶다면!<br />
-<code class="highlighter-rouge">estimator=None</code>이라고 주면 됩니다.</p>
+<ul>
+  <li>Groups 에 따라 runtime 비교.</li>
+</ul>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sns</span><span class="o">.</span><span class="n">relplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s">"timepoint"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">"signal"</span><span class="p">,</span> <span class="n">estimator</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s">"line"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">fmri</span><span class="p">);</span>
-</code></pre></div></div>
-<p><img src="https://jjerry-k.github.io/public/img/sb_part1a/018.png" /></p>
+<p><img src="https://jjerry-k.github.io/public/img/shufflenetv2/Untitled_3.png" alt="https://jjerry-k.github.io/public/img/shufflenetv2/Untitled_3.png" /></p>
 
-<h4 id="plotting-subsets-of-data-with-semantic-mappings">Plotting subsets of data with semantic mappings</h4>
+<blockquote>
+  <p><em>The group number should be carefully chosen based on the target platform and task. It is unwise to use a large group number simply because this may enable using more channels, because the benet of accuracy increase can easily be outweighed by the rapidly increasing computational cost.</em></p>
+</blockquote>
 
-<p>이 파트에선 <code class="highlighter-rouge">relplot()</code> 을 이용해서 scatter plot, line plot을 동시에 표현합니다.<br />
-데이터는 위 파트에서 썼던 <strong>fmri</strong> 데이터를 사용합니다!<br />
-그리고 위 파트와 같이 <code class="highlighter-rouge">relplot(kind="line")</code>을 쓰지만 <code class="highlighter-rouge">hue="event"</code>라는 옵션을 주도록합니다!<br />
-한번에 scatter plot과 line plot이 표현되네요!</p>
+<h2 id="g3-network-fragmentation-reduces-degree-of-parallelism">G3) Network fragmentation reduces degree of parallelism</h2>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sns</span><span class="o">.</span><span class="n">relplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s">"timepoint"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">"signal"</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s">"event"</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s">"line"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">fmri</span><span class="p">);</span>
-</code></pre></div></div>
-<p><img src="https://jjerry-k.github.io/public/img/sb_part1a/019.png" /></p>
+<ul>
+  <li>Inception 과 같이 여러 branch를 parallel하게 구성할 경우 성능은 좋아졌지만 효율성은 감소시킴. → GPU 같은 자원에는 어울리지 않음.</li>
+  <li>Fragmentation 에 따른 runtime 비교.</li>
+</ul>
 
-<p>그럼…<code class="highlighter-rouge">style</code>도 추가해보도록 하죠!<br />
-<code class="highlighter-rouge">hue="region", style="event"</code>라고 옵션을 줍니다! <br />
-점점 표현해주는게 많아지죠?</p>
+<p><img src="https://jjerry-k.github.io/public/img/shufflenetv2/Untitled_4.png" alt="https://jjerry-k.github.io/public/img/shufflenetv2/Untitled_4.png" /></p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sns</span><span class="o">.</span><span class="n">relplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s">"timepoint"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">"signal"</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s">"region"</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s">"event"</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s">"line"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">fmri</span><span class="p">);</span>
-</code></pre></div></div>
-<p><img src="https://jjerry-k.github.io/public/img/sb_part1a/020.png" /></p>
+<p><img src="https://jjerry-k.github.io/public/img/shufflenetv2/Untitled_5.png" alt="https://jjerry-k.github.io/public/img/shufflenetv2/Untitled_5.png" /></p>
 
-<p>또한 선 스타일과 마커 옵션을 줄 수도 있어요!<br />
-<code class="highlighter-rouge">dashes=False, markers=True</code>를 추가해보세요!<br />
-점선이 모두 실선이 되었고 마커가 추가되었습니다!</p>
+<blockquote>
+  <p><em>Fragmented structure has been shown benecial for accuracy, it could decrease eciency because it is unfriendly for devices with strong parallel computing powers like GPU. It also introduces extra overheads such as kernel launching and synchronization.</em></p>
+</blockquote>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sns</span><span class="o">.</span><span class="n">relplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s">"timepoint"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">"signal"</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s">"region"</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s">"event"</span><span class="p">,</span> <span class="n">dashes</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">markers</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s">"line"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">fmri</span><span class="p">);</span>
-</code></pre></div></div>
-<p><img src="https://jjerry-k.github.io/public/img/sb_part1a/021.png" /></p>
+<h2 id="g4-element-wise-operations-are-non-negligible">G4) Element-wise operations are non-negligible</h2>
 
-<p>괜히 정보가 많아지면…해석이 겁나 어려워질 수 있습니다..<br />
-다음과 같이 단순화하는게 좋을 때도 있습니다!</p>
+<ul>
+  <li>Activation, Add 와 같은 Element-wise operation들의 비율이 꽤 존재. Figure 2 참고</li>
+  <li>이 연산은 FLOPs는 적지만 상대적으로 MAC은 큼.</li>
+  <li>
+    <p>Depthwise convolution 또한 element-wise 여서 MAC/FLOPs 가 클 것이라 생각.</p>
+  </li>
+  <li>각 상황에 대한 runtime 비교.</li>
+</ul>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sns</span><span class="o">.</span><span class="n">relplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s">"timepoint"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">"signal"</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s">"event"</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s">"event"</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s">"line"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">fmri</span><span class="p">);</span>
-</code></pre></div></div>
-<p><img src="https://jjerry-k.github.io/public/img/sb_part1a/022.png" /></p>
+<p><img src="https://jjerry-k.github.io/public/img/shufflenetv2/Untitled_6.png" alt="https://jjerry-k.github.io/public/img/shufflenetv2/Untitled_6.png" /></p>
 
-<p>필요에 따라 모든 샘플 각각을 plot 해야하기도 하죠..<br />
-다음 예시는 <code class="highlighter-rouge">event</code>가 <strong>stim</strong> 인 데이터들을 <strong>subject</strong> 별로 plot을 합니다!<br />
-(저 plot이 되는 방법은 추후에 좀 더 자세히 설명을 적을게요!)</p>
+<blockquote>
+  <p><em>We observe around 20% speedup is obtained on both GPU and ARM, after ReLU and shortcut are removed.</em></p>
+</blockquote>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sns</span><span class="o">.</span><span class="n">relplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s">"timepoint"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">"signal"</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s">"region"</span><span class="p">,</span> <span class="n">units</span><span class="o">=</span><span class="s">"subject"</span><span class="p">,</span> <span class="n">estimator</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s">"line"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">fmri</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s">"event == 'stim'"</span><span class="p">));</span>
-</code></pre></div></div>
-<p><img src="https://jjerry-k.github.io/public/img/sb_part1a/023.png" /></p>
+<h2 id="conclusion-and-discussions">Conclusion and Discussions</h2>
 
-<p>여기서는 Colormap을 조금씩 다뤄보는 구간입니다.<br />
-다음과 같이 데이터를 load 합니다!<br />
-(뭔지는 모르겠습니다…)</p>
+<ol>
+  <li>use “balanced convolutions (equal channel width);</li>
+  <li>be aware of the cost of using group convolution;</li>
+  <li>reduce the degree of fragmentation;</li>
+  <li>reduce element-wise operations.</li>
+</ol>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">dots</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s">"dots"</span><span class="p">)</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s">"align == 'dots'"</span><span class="p">)</span>
-<span class="n">dots</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
-</code></pre></div></div>
-<p>&lt;img src=’https://jjerry-k.github.io/public/img/sb_part1a/024.png’ height=50% width=50%&gt;</p>
+<ul>
+  <li>다른 네트워크들에 대한 고찰
+    <ul>
+      <li>ShuffleNet V1
+        <ul>
+          <li>Heavily group convolutions → G2</li>
+          <li>Bottleneck-like building blocks → G1</li>
+          <li>Residual Block → G3</li>
+          <li>Element-wise operation→ G4</li>
+        </ul>
+      </li>
+      <li>MobileNet V2
+        <ul>
+          <li>Inverted bottleneck structure → G1</li>
+        </ul>
+      </li>
+      <li>Depthwise convolution &amp; ReLU
+        <ul>
+          <li>Element-wise operation → G4</li>
+        </ul>
+      </li>
+      <li>NAS
+        <ul>
+          <li>Highly fragmentation → G3</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
 
-<p>지금까지 해왔던거 처럼 plot을 해봅니다.</p>
+<h1 id="shuenet-v2-an-ecient-architecture">ShueNet V2: an Ecient Architecture</h1>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sns</span><span class="o">.</span><span class="n">relplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s">"time"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">"firing_rate"</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s">"coherence"</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s">"choice"</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s">"line"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">dots</span><span class="p">);</span>
-</code></pre></div></div>
-<p><img src="https://jjerry-k.github.io/public/img/sb_part1a/025.png" /></p>
+<h2 id="review-of-shuenet-v1">Review of ShueNet v1</h2>
 
-<p>음….근데 위에 사진이 뭔가 부족하다고 느껴집니다.<br />
-자세히 보시면 그려지는 실선, 점선은 각각 6개인데 표현된 색상은 4개네요…<br />
-다음과 같이 작성하면 pallette를 custom하여 색상을 6개로 늘릴 수 있습니다!</p>
+<ul>
+  <li>G1, G2, G3, G4 모두 지키지 않음.</li>
+  <li>이를 해결한 구조가 ShuffleNet V2 의 유닛 (Fig 3 (c), Fig 3 (d))</li>
+</ul>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">palette</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">cubehelix_palette</span><span class="p">(</span><span class="n">light</span><span class="o">=</span><span class="mf">.8</span><span class="p">,</span> <span class="n">n_colors</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">relplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s">"time"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">"firing_rate"</span><span class="p">,</span>
-            <span class="n">hue</span><span class="o">=</span><span class="s">"coherence"</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s">"choice"</span><span class="p">,</span>
-            <span class="n">palette</span><span class="o">=</span><span class="n">palette</span><span class="p">,</span>
-            <span class="n">kind</span><span class="o">=</span><span class="s">"line"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">dots</span><span class="p">);</span>
-</code></pre></div></div>
-<p><img src="https://jjerry-k.github.io/public/img/sb_part1a/026.png" /></p>
+<p><img src="https://jjerry-k.github.io/public/img/shufflenetv2/Untitled_7.png" alt="https://jjerry-k.github.io/public/img/shufflenetv2/Untitled_7.png" /></p>
 
-<p>또는 다음과 같이 Colormap을 Normalization 할 수도 있죠!</p>
+<h2 id="channel-split-and-shuenet-v2">Channel Split and ShueNet V2</h2>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">matplotlib.colors</span> <span class="kn">import</span> <span class="n">LogNorm</span>
-<span class="n">palette</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">cubehelix_palette</span><span class="p">(</span><span class="n">light</span><span class="o">=</span><span class="mf">.7</span><span class="p">,</span> <span class="n">n_colors</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">relplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s">"time"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">"firing_rate"</span><span class="p">,</span>
-            <span class="n">hue</span><span class="o">=</span><span class="s">"coherence"</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s">"choice"</span><span class="p">,</span>
-            <span class="n">hue_norm</span><span class="o">=</span><span class="n">LogNorm</span><span class="p">(),</span>
-            <span class="n">kind</span><span class="o">=</span><span class="s">"line"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">dots</span><span class="p">);</span>
-</code></pre></div></div>
-<p><img src="https://jjerry-k.github.io/public/img/sb_part1a/027.png" /></p>
+<ul>
+  <li>Fig 3 (c)
+    <ul>
+      <li>Input feature 을 절반으로 나눠 두개의 branch 생성.</li>
+      <li>Left branch는 아무 연산도 진행 X. → G3 에 대한 회피법.</li>
+      <li>Right branch는 동일한 Number of filter로 1x1 Conv → 3x3 DWConv → 1x1 Conv 수행. → G1에 대한 회피법.</li>
+      <li>1x1 Conv 는 Group 을 나누지 않음 → G2에 대한 회피법.</li>
+      <li>Residual Block의 Add operation 을 Concatenate 로 변경 → G4에 대한 회피법.</li>
+    </ul>
+  </li>
+  <li>Fig 3 (d)
+    <ul>
+      <li>Downsampling block</li>
+      <li>Input feature 그대로 두개의 branch 생성.</li>
+      <li>Number of filter는 모두 동일</li>
+    </ul>
+  </li>
+  <li>네트워크 구조</li>
+</ul>
 
-<p>아니면… 다음과 같이 <code class="highlighter-rouge">size</code>에 의미를 부여할 수도 있겠죠.</p>
+<p><img src="https://jjerry-k.github.io/public/img/shufflenetv2/Untitled_8.png" alt="https://jjerry-k.github.io/public/img/shufflenetv2/Untitled_8.png" /></p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sns</span><span class="o">.</span><span class="n">relplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s">"time"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">"firing_rate"</span><span class="p">,</span>
-            <span class="n">size</span><span class="o">=</span><span class="s">"coherence"</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s">"choice"</span><span class="p">,</span>
-            <span class="n">kind</span><span class="o">=</span><span class="s">"line"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">dots</span><span class="p">);</span>
-</code></pre></div></div>
-<p><img src="https://jjerry-k.github.io/public/img/sb_part1a/028.png" /></p>
+<h2 id="analysis-of-network-accuracy">Analysis of Network Accuracy</h2>
 
-<p>여기선 Colormap 변경이 주요 내용이였습니다.<br />
-그럼 다음과 같이 Colormap도 주면서…<code class="highlighter-rouge">size</code>를 이용해서 의미를 부여하는 것도 가능하겠죠!?</p>
+<ul>
+  <li>ShuffleNet V2는 효율적이며 성능도 좋음.
+    <ul>
+      <li>더 많은 channel, 더 큰 network를 만들 수 있음.</li>
+      <li>DenseNet 이나 CondenseNet 처럼 feature reuse 과 매우 유사함.</li>
+    </ul>
+  </li>
+  <li>DenseNet의 feature reuse 패턴과 ShuffleNet V2의 feature reuse 패턴 비교.</li>
+  <li>붉을 수록 Source layer와 Target layer의 연결성이 강하다는 의미.</li>
+  <li>DenseNet과 같이 ShuffleNet V2에서도 Target layer가 멀어질 수록 연결성이 약함.</li>
+</ul>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sns</span><span class="o">.</span><span class="n">relplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s">"time"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">"firing_rate"</span><span class="p">,</span>
-           <span class="n">hue</span><span class="o">=</span><span class="s">"coherence"</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="s">"choice"</span><span class="p">,</span>
-           <span class="n">palette</span><span class="o">=</span><span class="n">palette</span><span class="p">,</span>
-           <span class="n">kind</span><span class="o">=</span><span class="s">"line"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">dots</span><span class="p">);</span>
-</code></pre></div></div>
-<p><img src="https://jjerry-k.github.io/public/img/sb_part1a/029.png" /></p>
+<p><img src="https://jjerry-k.github.io/public/img/shufflenetv2/Untitled_9.png" alt="https://jjerry-k.github.io/public/img/shufflenetv2/Untitled_9.png" /></p>
 
-<h4 id="plotting-with-date-data">Plotting with date data</h4>
+<h1 id="experiment">Experiment</h1>
 
-<p>이전에 날짜 혹은 시간과 연관된 데이터를 사용할 경우 <code class="highlighter-rouge">autofmt_xdata()</code>라는 부분이 있었습니다.<br />
-이는 x축 레이블의 format을 자동으로 맞춰주는 부분이라고 했었는데요.<br />
-가령 포맷을 변경해야하는 상황이 발생한다면..?<br />
-<code class="highlighter-rouge">matplotlib</code> 문서를 참고하여 변경하셔야합니다..<br />
-왜냐하면 seaborn의 뼈대가 matplotlib 이니까요!</p>
+<ul>
+  <li>총 4개의 모델과 비교.
+    <ul>
+      <li>ShuffleNet V1</li>
+      <li>MobileNet V2</li>
+      <li>Xception</li>
+      <li>DenseNet</li>
+    </ul>
+  </li>
+</ul>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="s">"2017-1-1"</span><span class="p">,</span> <span class="n">periods</span><span class="o">=</span><span class="mi">500</span><span class="p">),</span>
-                       <span class="n">value</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">500</span><span class="p">)</span><span class="o">.</span><span class="n">cumsum</span><span class="p">()))</span>
-<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
-</code></pre></div></div>
-<p>&lt;img src=’https://jjerry-k.github.io/public/img/sb_part1a/030.png’ height=50% width=50%&gt;</p>
+<p><img src="https://jjerry-k.github.io/public/img/shufflenetv2/Untitled_10.png" alt="https://jjerry-k.github.io/public/img/shufflenetv2/Untitled_10.png" /></p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">g</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">relplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s">"time"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">"value"</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s">"line"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">)</span>
-<span class="n">g</span><span class="o">.</span><span class="n">fig</span><span class="o">.</span><span class="n">autofmt_xdate</span><span class="p">()</span>
-</code></pre></div></div>
-<p><img src="https://jjerry-k.github.io/public/img/sb_part1a/031.png" /></p>
+<h3 id="accuracy-vs-flops">Accuracy vs. FLOPs</h3>
 
-<h3 id="showing-multiple-relationships-with-facets">Showing multiple relationships with facets</h3>
+<ul>
+  <li>연산량을 40 MFLOPs 로 고정시키고 Network 를 구성한 후 성능 비교. (Table 8 상단)</li>
+</ul>
 
-<p>지금까지는 단 1개의 figure 만 plot 했습니다!<br />
-하지만 보통..다수의 figure가 필요하죠..<br />
-이번엔 그 부분에 대한 내용입니다.<br />
-<a href="https://seaborn.pydata.org/generated/seaborn.relplot.html#seaborn.relplot"><code class="highlighter-rouge">relplot()</code></a>은 <a href="https://seaborn.pydata.org/generated/seaborn.FacetGrid.html#seaborn.FacetGrid">FacetGrid</a> 기반이기 때문에 쉽게 가능합니다.<br />
-“facet” 이라는 단어가 나올텐데요.<br />
-이는 전체 figure 하나를 facet이라고 칭합니다.
-다음과 같이 데이터를 load 하고 plot 해주세요!
-<code class="highlighter-rouge">col="time"</code> 이라는 옵션을 추가함으로써 <strong>Lunch</strong>에 대한 figure와 <strong>Dinner</strong>에 대한 figure <strong>두 개</strong>가 plot 됩니다!<br />
-여기선 1x2 facet 이라고 할 수 있어요!</p>
+<h3 id="inference-speed-vs-flopsaccuracy">Inference Speed vs. FLOPs/Accuracy</h3>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">tips</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s">"tips"</span><span class="p">)</span>
-<span class="n">tips</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">relplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s">"total_bill"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">"tip"</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s">"smoker"</span><span class="p">,</span>
-            <span class="n">col</span><span class="o">=</span><span class="s">"time"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">tips</span><span class="p">);</span>
-</code></pre></div></div>
-<p><img src="https://jjerry-k.github.io/public/img/sb_part1a/032.png" /></p>
+<ul>
+  <li>연산량을 특정 값 범위로 고정시키고 runtime 비교. (Fig 1 참조)</li>
+</ul>
 
-<p>또한 다음과 같이 두 변수에 대해 figure를 나눌 수도 있습니다.<br />
-<code class="highlighter-rouge">col="region", row="event"</code>라고 하면 <strong>행</strong>은 <strong>“event”</strong>를 기준으로 <strong>열</strong>은 <strong>“region”</strong>으로 총 4개가 plot 됩니다!<br />
-이건 2x2 facet!</p>
+<p><img src="https://jjerry-k.github.io/public/img/shufflenetv2/Untitled_11.png" alt="https://jjerry-k.github.io/public/img/shufflenetv2/Untitled_11.png" /></p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">fmri</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s">"fmri"</span><span class="p">)</span>
-<span class="n">fmri</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">relplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s">"timepoint"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">"signal"</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s">"subject"</span><span class="p">,</span>
-            <span class="n">col</span><span class="o">=</span><span class="s">"region"</span><span class="p">,</span> <span class="n">row</span><span class="o">=</span><span class="s">"event"</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
-            <span class="n">kind</span><span class="o">=</span><span class="s">"line"</span><span class="p">,</span> <span class="n">estimator</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">fmri</span><span class="p">);</span>
-</code></pre></div></div>
-<p><img src="https://jjerry-k.github.io/public/img/sb_part1a/033.png" /></p>
+<h3 id="compared-with-mobilenet-v1">Compared with MobileNet v1</h3>
 
-<p><strong>fmri</strong> 데이터의 경우 여러 subject가 있었습니다.<br />
-그 각각 subject 별로 figure를 만들고 싶을땐…?<br />
-다음과 같이 작성합니다.<br />
-<code class="highlighter-rouge">col="subject", col_wrap=5</code> 는 열을 <strong>subject</strong>를 기준으로 5개씩 끊어서 plot 하겠다는 의미입니다.<br />
-<code class="highlighter-rouge">height</code>는 facet의 높이(인치)를 정합니다.<br />
-<code class="highlighter-rouge">aspect</code>는 <code class="highlighter-rouge">height</code>에 맞춰 비율을 정하구요.<br />
-그럼 총 14개의 figure가 plot되고 3x5 facet이 생성됩니다!</p>
+<ul>
+  <li>MobileNet V1의 경우 Accuracy가 좋지 않으나  GPU runtime은 가장 빠름.</li>
+  <li>이는 위에서 제시한 가이드 라인을 어느 정도 가장 잘 만족하기 때문.</li>
+</ul>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sns</span><span class="o">.</span><span class="n">relplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s">"timepoint"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">"signal"</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s">"event"</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s">"event"</span><span class="p">,</span>
-            <span class="n">col</span><span class="o">=</span><span class="s">"subject"</span><span class="p">,</span> <span class="n">col_wrap</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
-            <span class="n">height</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="mf">.75</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">2.5</span><span class="p">,</span>
-            <span class="n">kind</span><span class="o">=</span><span class="s">"line"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">fmri</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s">"region == 'frontal'"</span><span class="p">));</span>
-</code></pre></div></div>
-<p><img src="https://jjerry-k.github.io/public/img/sb_part1a/034.png" /></p>
+<h3 id="compared-automatic-model-search">Compared automatic model search</h3>
 
-<p>여기까지 Part 1의 A 내용이였습니다.<br />
-그럼 “어떤 내용이 부족해요!”, “이 내용 잘 모르겠어요!” 하는 부분을 남겨주시면 추가하도록 할게요!<br />
-감사합니다!</p>
+<ul>
+  <li>NAS 는 매우 느리지만 제시한 가이드 라인을 만족하고 speed에 대한 metric을 사용한다면 충분히 좋은 성능을 보일 것.</li>
+</ul>
+
+<h3 id="compatibility-with-other-methods">Compatibility with other methods</h3>
+
+<ul>
+  <li>Squeeze-and-excitation 과 같은 module과 같이 사용할 수 있음.</li>
+  <li>속도는 떨어지나 정확도는 상승. (Table 8 하단)</li>
+</ul>
+
+<h3 id="generalization-to-large-models">Generalization to Large Models</h3>
+
+<ul>
+  <li>2GFLOPs 이상의 큰 모델을 생성할 수 있음.</li>
+  <li>50개의 레이어를 가진 모델을 생성해도 ResNet-50 과 비교하여 적은 연산량, 뛰어난 성능을 보임. (Table 6 상단)</li>
+  <li>SE module, residual block을 사용하여 더욱 깊게 만들어도 상대적으로 연산량이 적으면서 뛰어난 성능을 보임. (Table 6 하단)</li>
+</ul>
+
+<p><img src="https://jjerry-k.github.io/public/img/shufflenetv2/Untitled_12.png" alt="https://jjerry-k.github.io/public/img/shufflenetv2/Untitled_12.png" /></p>
+
+<h3 id="object-detection">Object Detection</h3>
+
+<ul>
+  <li><a href="https://arxiv.org/abs/1711.07264">Light-Head RCNN</a> 사용.</li>
+  <li>Classification 에서 성능이 별로였던 Xception 이 Detection 에선 성능이 좋음. → Receptive Field가 크기 때문이라고 생각.</li>
+  <li>3x3 depthwise convolution 을 추가하여 Receptive Field를 키워보니 (ShuffleNet V2*) runtime은 늘었으나 성능이 증가함.</li>
+</ul>
+
+<p><img src="https://jjerry-k.github.io/public/img/shufflenetv2/Untitled_13.png" alt="https://jjerry-k.github.io/public/img/shufflenetv2/Untitled_13.png" /></p>
+
+<h2 id="ps">P.S</h2>
+
+<ul>
+  <li>어려웠다.</li>
+  <li>항상 가이드 라인을 지키면서 모델을 설계할 수 있을까?</li>
+</ul>
 
     <article></h4>
     <div class="post-more">
       
-      <a href="/python/2019/05/09/Part1A/#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
+      <a href="/deeplearning/2020/05/09/ShuffleNetV2/#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
       
-      <a href="/python/2019/05/09/Part1A/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
+      <a href="/deeplearning/2020/05/09/ShuffleNetV2/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
     </div>
   </div>
   
   <div class="post">
     <h1 class="post-title">
-      <a href="/living/2019/04/14/macbook_auto_start/">
-        맥북 Atom 완벽 제거
+      <a href="/deeplearning/2020/05/08/ResNeXt/">
+        Review: ResNeXt
       </a>
     </h1>
 
-    <span class="post-date">14 Apr 2019</span>
+    <span class="post-date">08 May 2020</span>
      | 
     
-    <a href="/blog/tags/#macbook" class="post-tag">Macbook</a>
+    <a href="/blog/tags/#paper" class="post-tag">Paper</a>
     
     
 
     <h4 style="font-weight: 400; line-height: 1.8;"><article>
-      <p>안녕하세요! Jerry 입니다!</p>
+      <h1 id="aggregated-residual-transformations-for-deep-neural-networks">Aggregated Residual Transformations for Deep Neural Networks</h1>
 
-<p>오늘은 .. Atom 에디터를 <strong>완벽히</strong> 지우는 법에 대해 간단 포스팅을 하려고 합니다.</p>
+<p>Author: Saining Xie, Ross Girshick, Piotr Dollár, Zhuowen Tu, Kaiming He<br />
+Date: Nov 16, 2016<br />
+URL: https://arxiv.org/abs/1611.05431</p>
 
-<ol>
-  <li>Applications 디렉토리에서 <strong>Atom</strong>을 지운다.</li>
-  <li>home 디렉토리에서 <code class="highlighter-rouge">.atom</code> 디렉토리를 지운다.</li>
-  <li><code class="highlighter-rouge">/usr/local/bin/atom</code> 을 지운다.</li>
-  <li><code class="highlighter-rouge">/usr/local/bin/apm</code> 을 지운다.</li>
-  <li><code class="highlighter-rouge">~/Library/Preferences/com.github.atom.plist</code> 을 지운다.</li>
-  <li><code class="highlighter-rouge">~/Library/Preferences/com.github.atom.helper.plist</code> 을 지운다.</li>
-</ol>
+<h1 id="introduction">Introduction</h1>
 
-<p>끝입니다..</p>
+<ul>
+  <li>Network desine 에 고려해야할 hyper-parameter가 너무 많음. (Width, filter size, Height, ….)</li>
+  <li>VGG, ResNet은 비슷한 구조의 레이어를 계속 쌓는 방법을 사용.</li>
+  <li>Inception 은 성능은 이전보다 뛰어나지만 이전 방법들과 다르게 복잡한 구조를 쌓는 방법 사용.</li>
+  <li>본 논문에서는 VGG/ResNet과 같이 비슷한 레이어를 반복하지만 AlexNet 에서 나온 처음 제안된 Group Convolution 을 적용하여 split-transform-merge stretegy 를 도입.</li>
+  <li>일반적인 Reidual Block과 ResNeXt의 Residual Block 비교.</li>
+  <li>Cardinality = Number of Groups,</li>
+</ul>
 
-<p>Atom 에 대한 모~~든걸 지운거에요!</p>
+<p><img src="https://jjerry-k.github.io/public/img/resnext/Untitled.png" alt="https://jjerry-k.github.io/public/img/resnext/Untitled.png" /></p>
 
-<p>감사합니다!</p>
+<h1 id="method">Method</h1>
+
+<h2 id="template">Template</h2>
+
+<ul>
+  <li>전체적인 구조는 기존의 VGG/ResNet과 같이 일정 Block 을 반복하여 쌓는 구조.</li>
+  <li>반복되는 블럭은 동일한 hyper parameter 사용.</li>
+</ul>
+
+<p><img src="https://jjerry-k.github.io/public/img/resnext/Untitled_1.png" alt="https://jjerry-k.github.io/public/img/resnext/Untitled_1.png" /></p>
+
+<h2 id="revisiting-simple-neurons">Revisiting Simple Neurons</h2>
+
+<ul>
+  <li>가장 기본적인 뉴런의 구조</li>
+</ul>
+
+<script type="math/tex; mode=display">\sum_{i=1}^Dw_ix_i</script>
+
+<p><img src="https://jjerry-k.github.io/public/img/resnext/Untitled_2.png" alt="https://jjerry-k.github.io/public/img/resnext/Untitled_2.png" /></p>
+
+<ul>
+  <li>기본 뉴런 또한 split-transform-merge (Splitting, Transforming, Aggregating)의 구조를 가짐.</li>
+  <li>Vector X 가 $x_i$로 Splitting, $x_iw_i$로 Transforming, $\sum_{i=1}^D$ 로 Aggregating</li>
+</ul>
+
+<h2 id="aggregated-transformations">Aggregated Transformations</h2>
+
+<ul>
+  <li>Networt-in-Network와 다르게 Network-in-Neuron이라는 컨셉으로 차원 확장</li>
+</ul>
+
+<script type="math/tex; mode=display">\mathcal{F}(x) = \sum_{i=1}^C\mathcal{T}_i(\mathrm{x})</script>
+
+<ul>
+  <li>다른 방식이지만 동일하다는 것을 설명</li>
+</ul>
+
+<p><img src="https://jjerry-k.github.io/public/img/resnext/Untitled_3.png" alt="https://jjerry-k.github.io/public/img/resnext/Untitled_3.png" /></p>
+
+<p><img src="https://jjerry-k.github.io/public/img/resnext/Untitled_4.png" alt="https://jjerry-k.github.io/public/img/resnext/Untitled_4.png" /></p>
+
+<h2 id="model-capacity">Model Capacity</h2>
+
+<ul>
+  <li>Complexity, Number of parameter 를 유지하면서 실험.</li>
+  <li>다른 Hyper parameter는 수정하고 싶지 않기 때문에 Residual Block의 Cardinality C와 bottleneck d를 수정</li>
+  <li>Cardinality와 bottleneck d의 관계</li>
+</ul>
+
+<p><img src="https://jjerry-k.github.io/public/img/resnext/Untitled_5.png" alt="https://jjerry-k.github.io/public/img/resnext/Untitled_5.png" /></p>
+
+<h1 id="result">Result</h1>
+
+<h2 id="on-imagenet-1k">On ImageNet-1K</h2>
+
+<ul>
+  <li>Cardinality를 1~32 씩 증가시키되 complexity 는 유지하도록 설정하고 실험.</li>
+</ul>
+
+<p><img src="https://jjerry-k.github.io/public/img/resnext/Untitled_6.png" alt="https://jjerry-k.github.io/public/img/resnext/Untitled_6.png" /></p>
+
+<p><img src="https://jjerry-k.github.io/public/img/resnext/Untitled_7.png" alt="https://jjerry-k.github.io/public/img/resnext/Untitled_7.png" /></p>
+
+<ul>
+  <li>Increasing Cardinality 와  Increasing depth or width 비교</li>
+  <li>Cardinality 의 성능이 더 좋음.</li>
+</ul>
+
+<p><img src="https://jjerry-k.github.io/public/img/resnext/Untitled_8.png" alt="https://jjerry-k.github.io/public/img/resnext/Untitled_8.png" /></p>
+
+<ul>
+  <li>Residual connections 여부에 따른 비교</li>
+</ul>
+
+<p><img src="https://jjerry-k.github.io/public/img/resnext/Untitled_9.png" alt="https://jjerry-k.github.io/public/img/resnext/Untitled_9.png" /></p>
+
+<ul>
+  <li>State-of-the-art model 과 비교</li>
+</ul>
+
+<p><img src="https://jjerry-k.github.io/public/img/resnext/Untitled_10.png" alt="https://jjerry-k.github.io/public/img/resnext/Untitled_10.png" /></p>
+
+<h2 id="on-imagenet-5k">On ImageNet-5K</h2>
+
+<ul>
+  <li>5000개 클래스에서도 잘 되더라.</li>
+</ul>
+
+<p><img src="https://jjerry-k.github.io/public/img/resnext/Untitled_11.png" alt="https://jjerry-k.github.io/public/img/resnext/Untitled_11.png" /></p>
+
+<p><img src="https://jjerry-k.github.io/public/img/resnext/Untitled_12.png" alt="https://jjerry-k.github.io/public/img/resnext/Untitled_12.png" /></p>
+
+<h2 id="on-cifar">On CIFAR</h2>
+
+<p><img src="https://jjerry-k.github.io/public/img/resnext/Untitled_13.png" alt="https://jjerry-k.github.io/public/img/resnext/Untitled_13.png" /></p>
+
+<p><img src="https://jjerry-k.github.io/public/img/resnext/Untitled_14.png" alt="https://jjerry-k.github.io/public/img/resnext/Untitled_14.png" /></p>
+
+<h2 id="on-coco-object-detection">On COCO object detection</h2>
+
+<ul>
+  <li>Faster RCNN에 적용.</li>
+</ul>
+
+<p><img src="https://jjerry-k.github.io/public/img/resnext/Untitled_15.png" alt="https://jjerry-k.github.io/public/img/resnext/Untitled_15.png" /></p>
+
+<h2 id="ps">P.S</h2>
+
+<ul>
+  <li>AlexNet의 선견지명.</li>
+  <li>하긴 안좋으면 논문으로 쓸리가 없지.</li>
+</ul>
 
     <article></h4>
     <div class="post-more">
       
-      <a href="/living/2019/04/14/macbook_auto_start/#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
+      <a href="/deeplearning/2020/05/08/ResNeXt/#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
       
-      <a href="/living/2019/04/14/macbook_auto_start/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
+      <a href="/deeplearning/2020/05/08/ResNeXt/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
+    </div>
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/deeplearning/2020/05/07/ShuffleNetV1/">
+        Review: ShuffleNetV1
+      </a>
+    </h1>
+
+    <span class="post-date">07 May 2020</span>
+     | 
+    
+    <a href="/blog/tags/#paper" class="post-tag">Paper</a>
+    
+    
+
+    <h4 style="font-weight: 400; line-height: 1.8;"><article>
+      <h1 id="shufflenet-an-extremely-efficient-convolutional-neural-network-for-mobile-devices">ShuffleNet: An Extremely Efficient Convolutional Neural Network for Mobile Devices</h1>
+
+<p>Author: Xiangyu Zhang, Xinyu Zhou, Mengxiao Lin, Jian Sun<br />
+Date: Jul 04, 2017<br />
+URL: https://arxiv.org/abs/1707.01083</p>
+
+<h1 id="introduction">Introduction</h1>
+
+<ul>
+  <li>Visual recognition 에서 deeper, larger CNN을 설계하는 것이 트렌드.</li>
+  <li>하지만 이는 매우 많은 연산량을 필요로함.</li>
+  <li>본 논문은 정해놓은 범위의 연산량에서 최고로 효율적인 구조는 찾아내는 것을 목표로 함.</li>
+  <li>Xception, ResNeXt 에서 1x1 Convolution 을 사용하는데 두 네트워크에서 대부분의 연산량이 1x1 Convolution 이 차지하고 있어 비효율적.</li>
+  <li>이를 보완하기 위해 AlexNet에서 처음 제안한 group convolution 적용.</li>
+  <li>Group convolution 의 단점을 보완하기 위해 channel shuffle operation 또한 제안.</li>
+</ul>
+
+<h1 id="method">Method</h1>
+
+<h2 id="channel-shuffle-for-group-convolutions">Channel Shuffle for Group Convolutions</h2>
+
+<ul>
+  <li>상대적으로 연산량이 많은 1x1 Convolution을 ResNeXt 에서 사용한 Group Convolution 으로 적용.</li>
+  <li>하지만 Group으로 계속 진행하다보면 특정 채널에 편향된 결과를 보이는 문제가 생길 것이므로 channel을 shuffle 해줌.</li>
+</ul>
+
+<p><img src="https://jjerry-k.github.io/public/img/shufflenetv1/Untitled.png" alt="https://jjerry-k.github.io/public/img/shufflenetv1/Untitled.png" /></p>
+
+<h2 id="shufflenet-unit">ShuffleNet Unit</h2>
+
+<ul>
+  <li>ShuffleNet에서 사용된 Bottle unit은 Xception과 MobileNet에서 사용된 Residual Block에서 1x1 Convolution을 Group Convolution으로 변경하고 Channel Shuffle을 추가한 것.</li>
+  <li>Stride unit 에선 element-wise addition이 아닌 concatenation으로 대체.</li>
+</ul>
+
+<p><img src="https://jjerry-k.github.io/public/img/shufflenetv1/Untitled_1.png" alt="https://jjerry-k.github.io/public/img/shufflenetv1/Untitled_1.png" /></p>
+
+<h2 id="network-architecture">Network Architecture</h2>
+
+<p><img src="https://jjerry-k.github.io/public/img/shufflenetv1/Untitled_2.png" alt="https://jjerry-k.github.io/public/img/shufflenetv1/Untitled_2.png" /></p>
+
+<h1 id="result">Result</h1>
+
+<h2 id="ablation-study">Ablation Study</h2>
+
+<h3 id="pointwise-group-convolutions">Pointwise Group Convolutions</h3>
+
+<ul>
+  <li>Groups 에 따른 성능 비교.</li>
+  <li>
+    <p>ShuffleNet s$\times$ 에서 s는 필터 개수에 대한 scaling factor.</p>
+  </li>
+  <li>무조건 많이 나눈다고 좋은 것은 아님.</li>
+</ul>
+
+<p><img src="https://jjerry-k.github.io/public/img/shufflenetv1/Untitled_3.png" alt="https://jjerry-k.github.io/public/img/shufflenetv1/Untitled_3.png" /></p>
+
+<h3 id="channel-shuffle-vs-no-shuffle">Channel Shuffle vs. No Shuffle</h3>
+
+<ul>
+  <li>Channel Shuffle 여부에 따른 성능 비교.</li>
+  <li>Shuffle 적용시 성능이 뚜렷하게 증가한 것을 확인.</li>
+</ul>
+
+<p><img src="https://jjerry-k.github.io/public/img/shufflenetv1/Untitled_4.png" alt="https://jjerry-k.github.io/public/img/shufflenetv1/Untitled_4.png" /></p>
+
+<h2 id="comparison-with-other-sturcture-units">Comparison with Other Sturcture Units</h2>
+
+<ul>
+  <li>제한된 연산량 내에서 다른 Network 들과 성능 비교.</li>
+</ul>
+
+<p><img src="https://jjerry-k.github.io/public/img/shufflenetv1/Untitled_5.png" alt="https://jjerry-k.github.io/public/img/shufflenetv1/Untitled_5.png" /></p>
+
+<ul>
+  <li>기존에 비슷한 성능의 Network들과 연산량 비교.</li>
+</ul>
+
+<p><img src="https://jjerry-k.github.io/public/img/shufflenetv1/Untitled_6.png" alt="https://jjerry-k.github.io/public/img/shufflenetv1/Untitled_6.png" /></p>
+
+<h2 id="comparison-with-mobilenets-and-other-frameworks">Comparison with MobileNets and Other Frameworks</h2>
+
+<ul>
+  <li>Mobile devices에 특화된 MobileNet과 성능 비교</li>
+</ul>
+
+<p><img src="https://jjerry-k.github.io/public/img/shufflenetv1/Untitled_7.png" alt="https://jjerry-k.github.io/public/img/shufflenetv1/Untitled_7.png" /></p>
+
+<h2 id="generalization-ability">Generalization Ability</h2>
+
+<ul>
+  <li>MS COCO Data를 사용하여 Object detection 성능 비교.</li>
+</ul>
+
+<p><img src="https://jjerry-k.github.io/public/img/shufflenetv1/Untitled_8.png" alt="https://jjerry-k.github.io/public/img/shufflenetv1/Untitled_8.png" /></p>
+
+<h2 id="actual-speedup-evaluation">Actual Speedup Evaluation</h2>
+
+<ul>
+  <li>Mobile device에서 Inference 속도 비교.</li>
+</ul>
+
+<p><img src="https://jjerry-k.github.io/public/img/shufflenetv1/Untitled_9.png" alt="https://jjerry-k.github.io/public/img/shufflenetv1/Untitled_9.png" /></p>
+
+<h2 id="ps">P.S</h2>
+<ul>
+  <li>GPU가 부족해서 했다던 Group Convolution의 부활..?</li>
+</ul>
+
+    <article></h4>
+    <div class="post-more">
+      
+      <a href="/deeplearning/2020/05/07/ShuffleNetV1/#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
+      
+      <a href="/deeplearning/2020/05/07/ShuffleNetV1/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
     </div>
   </div>
   

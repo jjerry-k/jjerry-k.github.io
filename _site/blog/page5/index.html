@@ -263,6 +263,9 @@
               <img class="masthead-logo" src="/public/logo.png"/>
             </a>
             <small></small>
+            <a href="https://donaricano.com/mypage/1391188679_guPzXC" target="_blank">
+              <img src="https://d1u4yishnma8v5.cloudfront.net/mobile-gift.png" width="60" height="60" style="position:absolute; top:0.25rem; right:4rem" alt="donaricano-btn" style="height: 130px !important;width: 130px !important;" />
+            </a>
             <img src="http://jjerry-k.github.io/public/search.png" width="20" height="20" style="position:absolute; top:1.3rem; right:1.5rem" data-toggle="modal" data-target="#myModal">
           </h3>
         </div>
@@ -273,57 +276,236 @@
   
   <div class="post">
     <h1 class="post-title">
-      <a href="/deeplearning/2018/11/18/anaconda_setting/">
-        Anaconda를 이용하여 TensorFlow 설치하기!
+      <a href="/deeplearning/2020/04/28/MobileNetV3/">
+        Review: MobileNet V3
       </a>
     </h1>
 
-    <span class="post-date">18 Nov 2018</span>
+    <span class="post-date">28 Apr 2020</span>
      | 
     
-    <a href="/blog/tags/#tensorflow" class="post-tag">TensorFlow</a>
+    <a href="/blog/tags/#paper" class="post-tag">Paper</a>
     
     
 
     <h4 style="font-weight: 400; line-height: 1.8;"><article>
-      <p>안녕하세요!<br />
-오늘은 TensorFlow 설치 방법을 간단하게 알려드리려고 합니다.<br />
-CPU와 GPU 중에서도 <strong>GPU</strong> 버전 설치에 대해 알려드릴거에요!<br />
-매우 간단하니 놀라지마시기 바랍니다.</p>
+      <h1 id="searching-for-mobilenetv3">Searching for MobileNetV3</h1>
 
-<ol>
-  <li>Anaconda 를 설치한다.</li>
-  <li>터미널 or CMD에 <code class="highlighter-rouge">conda install python=3.6</code> 라고 입력한다.
+<p>Author: Andrew G. Howard, Mark Sandler, Grace Chu, Liang-Chieh Chen, Bo Chen, Mingxing Tan,
+Weijun Wang, Yukun Zhu, Ruoming Pang, Vijay Vasudevan, Quoc V. Le, Hartwig Adam<br />
+Date: May 06, 2019<br />
+URL: https://arxiv.org/abs/1905.02244</p>
+
+<h1 id="introduction"><strong>Introduction</strong></h1>
+
+<ul>
+  <li>Efficient neural network 는 low latency, higher accuracy 와 더불어 전력소모가 줄어들게 하기 때문에 배터리 수명 보존에도 기여.</li>
+  <li>이에 힘입어 다음 세대의 더 효율적인 네트워크 제안.</li>
+  <li>본 논문에서 중요한 것은 네 가지.
     <ul>
-      <li>CMD에서 안될경우 Anaconda prompt에서 실행하세요.</li>
+      <li>Complementary search techniques</li>
+      <li>New efficient versions of non-linearities practical</li>
+      <li>New efficient network design</li>
+      <li>New efficient segmentation decoder</li>
     </ul>
   </li>
-  <li>conda install tensorflow-gpu 라고 입력한다.</li>
-  <li>자신이 원하는 IDE로 코딩을 한다.</li>
+</ul>
+
+<h1 id="efficient-mobile-building-blocks"><strong>Efficient Mobile Building Blocks</strong></h1>
+
+<ul>
+  <li>MobileNetV2의 Inverted residual structure에 <a href="https://arxiv.org/abs/1709.01507">squeeze and excitation</a> 을 추가.</li>
+</ul>
+
+<p><img src="https://jjerry-k.github.io/public/img/mobilev3/Untitled.png" alt="https://jjerry-k.github.io/public/img/mobilev3/Untitled.png" /></p>
+
+<h1 id="network-search"><strong>Network Search</strong></h1>
+
+<h2 id="platform-aware-nas-for-block-wise-search"><strong>Platform-Aware NAS for Block-wise Search</strong></h2>
+
+<ul>
+  <li>RNN-based controller, factorized hierarchical search space</li>
+</ul>
+
+<h2 id="netadapt-for-layer-wise-search"><strong>NetAdapt for Layer-wise Search</strong></h2>
+
+<ol>
+  <li>platform-aware NAS로 찾은 Seed network architecture 로 시작.</li>
+  <li>매 스텝마다:
+(a) 이전의 proposal 에 비해 latency가 최소 a만큼 감소된 새로운 proposal 생성. 
+(b) 각 proposal은 이전 스텝의 pre-trained model을 사용하여 새로 제안된 architecture를 채우고 누락된 weight에 대해선 적절한 값으로 채움. 각 proposal 은 T step 동안 finetuning하고 대략적인 accuracy 추출.
+(c) 몇몇 metric을 이용하여 최적의 proposal 을 선택.</li>
+  <li>목표로하는 latency에 도달할 때까지 반복.</li>
 </ol>
 
-<p>이렇게 끝입니다.<br />
-Anaconda 이용시 로컬에 쿠다를 설치 안해줘도 됩니다.<br />
-참 쉽죠….? <br />
-문제가 있다면 댓글 남겨주시기 바랍니다!</p>
+<h1 id="network-improvements"><strong>Network Improvements</strong></h1>
+
+<ul>
+  <li>Network의 초반, 후반부의 expansive layer 구조 수정.</li>
+  <li>새로운 non-linearity fuction 제안.
+    <ul>
+      <li>h-swish: swish 의 변형 버전, 빠른 계산 속도, 경량화</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="redesigning-expensive-layers"><strong>Redesigning Expensive Layers</strong></h2>
+
+<p><img src="https://jjerry-k.github.io/public/img/mobilev3/Untitled_1.png" alt="https://jjerry-k.github.io/public/img/mobilev3/Untitled_01.png" /></p>
+
+<h2 id="nonlinearities"><strong>Nonlinearities</strong></h2>
+
+<ol>
+  <li>
+    <p>sigmoid → h-swish</p>
+
+    <script type="math/tex; mode=display">hard\text{-}swish(x) = x\frac{ReLU6(x + 3)}{6}</script>
+
+    <p><img src="https://jjerry-k.github.io/public/img/mobilev3/Untitled_2.png" alt="https://jjerry-k.github.io/public/img/mobilev3/Untitled_02.png" /></p>
+  </li>
+  <li>
+    <p>h-swish 를 deeper layer에서만 사용.</p>
+  </li>
+</ol>
+
+<p><img src="https://jjerry-k.github.io/public/img/mobilev3/Untitled_3.png" alt="https://jjerry-k.github.io/public/img/mobilev3/Untitled_03.png" /></p>
+
+<p><img src="https://jjerry-k.github.io/public/img/mobilev3/Untitled_4.png" alt="https://jjerry-k.github.io/public/img/mobilev3/Untitled_04.png" /></p>
+
+<h2 id="large-squeeze-and-excite"><strong>Large squeeze-and-excite</strong></h2>
+
+<ul>
+  <li><a href="https://arxiv.org/abs/1807.11626">MnasNet: Platform-Aware Neural Architecture Search for Mobile</a> 에서 Squeeze-and-Excite(SE) bottleneck 크기만큼 convolutional bottleneck 발생.</li>
+  <li>본 논문에선 expansion layer의 채널의 1/4로 고정.</li>
+  <li>파라미터 미약하게 증가하면서 정확도 증가.</li>
+</ul>
+
+<h1 id="result">Result</h1>
+
+<p><img src="https://jjerry-k.github.io/public/img/mobilev3/Untitled_5.png" alt="https://jjerry-k.github.io/public/img/mobilev3/Untitled_05.png" /></p>
+
+<p><img src="https://jjerry-k.github.io/public/img/mobilev3/Untitled_6.png" alt="https://jjerry-k.github.io/public/img/mobilev3/Untitled_06.png" /></p>
+
+<h3 id="ps">P.S</h3>
+
+<ul>
+  <li>Batch size를 4096으로 테스트…. 역시 하드웨어 깡패 구글…</li>
+</ul>
 
     <article></h4>
     <div class="post-more">
       
-      <a href="/deeplearning/2018/11/18/anaconda_setting/#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
+      <a href="/deeplearning/2020/04/28/MobileNetV3/#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
       
-      <a href="/deeplearning/2018/11/18/anaconda_setting/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
+      <a href="/deeplearning/2020/04/28/MobileNetV3/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
     </div>
   </div>
   
   <div class="post">
     <h1 class="post-title">
-      <a href="/living/2018/11/17/macbook_auto_start/">
-        맥북 자동 부팅 옵션 설정법
+      <a href="/deeplearning/2020/04/27/MobileNetV2/">
+        Review: MobileNet V2
       </a>
     </h1>
 
-    <span class="post-date">17 Nov 2018</span>
+    <span class="post-date">27 Apr 2020</span>
+     | 
+    
+    <a href="/blog/tags/#paper" class="post-tag">Paper</a>
+    
+    
+
+    <h4 style="font-weight: 400; line-height: 1.8;"><article>
+      <h1 id="mobilenetv2-inverted-residuals-and-linear-bottlenecks">MobileNetV2: Inverted Residuals and Linear Bottlenecks</h1>
+
+<p>Author: Mark Sandler, Andrew G. Howard, Menglong Zhu, Andrey Zhmoginov, Liang-Chieh Chen<br />
+Date: Jan 13, 2018<br />
+URL: https://arxiv.org/abs/1801.04381</p>
+
+<h1 id="abstract"><strong>Abstract</strong></h1>
+
+<ul>
+  <li>새로운 mobile architecture!</li>
+  <li>mobile에서 Object detection, Semantic segmentation 에 적용할 수 있음!</li>
+</ul>
+
+<h1 id="introduction"><strong>Introduction</strong></h1>
+
+<ul>
+  <li>MobileNet과 비슷한 얘기</li>
+  <li>새로운 모듈 제안! → Inverted residual block</li>
+</ul>
+
+<h1 id="preliminaries-discussion-and-intuition"><strong>Preliminaries, discussion and intuition</strong></h1>
+
+<ul>
+  <li>논문의 가장 큰 특징은 <code class="highlighter-rouge">Depthwise  Separable Convolution</code>, <code class="highlighter-rouge">Linear Bottlenecks</code>, <code class="highlighter-rouge">Inverted Residuals</code>.</li>
+</ul>
+
+<h2 id="depthwiseseparableconvolutions"><strong>Depthwise Separable Convolutions</strong></h2>
+
+<ul>
+  <li><a href="https://arxiv.org/abs/1610.02357">Xception</a> 에서부터 제안된 Convolution</li>
+  <li>Efficient network의 핵심 Block</li>
+</ul>
+
+<h2 id="linear-bottlenecks"><strong>Linear Bottlenecks</strong></h2>
+
+<ul>
+  <li>MobileNetV1에서 computation 과 accuracy의 trade-off 를 비교하기 위해 <code class="highlighter-rouge">width multiplier parameter</code>를 사용.</li>
+  <li>본 논문에선 1x1 Convolution 을 이용하여 dimension reduction 수행.</li>
+</ul>
+
+<h2 id="inverted-residuals"><strong>Inverted Residuals</strong></h2>
+
+<ul>
+  <li>기존의 Residual Block 과 비슷한 구조 (Bottleneck → Expansion &amp; Skip connection).</li>
+  <li>본 논문에선 Expansion → Bottleneck &amp; Skip connection 구조의 Inverted Residual Block 사용.</li>
+</ul>
+
+<p><img src="https://jjerry-k.github.io/public/img/mobilev2/Untitled.png" alt="https://jjerry-k.github.io/public/img/mobilev2/Untitled.png" /></p>
+
+<p><img src="https://jjerry-k.github.io/public/img/mobilev2/Untitled_1.png" alt="https://jjerry-k.github.io/public/img/mobilev2/Untitle_01.png" /></p>
+
+<h1 id="model-architecture"><strong>Model Architecture</strong></h1>
+
+<p><img src="https://jjerry-k.github.io/public/img/mobilev2/Untitled_2.png" alt="https://jjerry-k.github.io/public/img/mobilev2/Untitle_02.png" /></p>
+
+<h1 id="ablation-study"><strong>Ablation study</strong></h1>
+
+<h2 id="inverted-residual-connections">Inverted residual connections</h2>
+
+<ul>
+  <li>Skip connection 을 bottleneck 후에 하는 것이 성능이 더 좋음.</li>
+  <li>Figure 6 (b) 참고</li>
+</ul>
+
+<h2 id="importance-of-linear-bottleneck">Importance of linear bottleneck</h2>
+
+<ul>
+  <li>Bottleneck 에서는 activation 을 사용하지 않는 것이 더 좋음.</li>
+  <li>Figure 6 (a) 참고</li>
+</ul>
+
+<p><img src="https://jjerry-k.github.io/public/img/mobilev2/Untitled_3.png" alt="https://jjerry-k.github.io/public/img/mobilev2/Untitle_03.png" /></p>
+
+    <article></h4>
+    <div class="post-more">
+      
+      <a href="/deeplearning/2020/04/27/MobileNetV2/#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
+      
+      <a href="/deeplearning/2020/04/27/MobileNetV2/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
+    </div>
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/living/2020/04/26/macbook-setup/">
+        개인적인 맥북 세팅법
+      </a>
+    </h1>
+
+    <span class="post-date">26 Apr 2020</span>
      | 
     
     <a href="/blog/tags/#macbook" class="post-tag">Macbook</a>
@@ -331,317 +513,442 @@ Anaconda 이용시 로컬에 쿠다를 설치 안해줘도 됩니다.<br />
     
 
     <h4 style="font-weight: 400; line-height: 1.8;"><article>
-      <p>안녕하세요! Jerry 입니다!</p>
+      <h1 id="after-macos-install">After MacOS Install</h1>
 
-<p>오늘은 맥북 자동 부팅 옵션에 대해서 설정법을 알아보겠습니다.</p>
+<h2 id="1-install-applications">1. Install applications</h2>
 
-<p>매우 짧은 포스팅이 될 듯합니다.</p>
-
-<ol>
-  <li>Terminal 을 실행한다.</li>
-  <li><code class="highlighter-rouge">sudo nvram AutoBoot=%00</code> 이라고 친다.</li>
-  <li>맥북 패스워드를 입력한다.</li>
-  <li>전원을 끈 후 노트북을 닫고 열어서 확인한다.</li>
-</ol>
-
-<p>끝입니다.. 이러면 자동 부팅 옵션이 꺼집니다.</p>
-
-<p>만약 다시 자동 부팅을 켜시려면 1번을 실행하신 후 <code class="highlighter-rouge">sudo nvram AutoBoot=%03</code> 이라고 입력하시면 됩니다.</p>
-
-<p>감사합니다!</p>
-
-    <article></h4>
-    <div class="post-more">
-      
-      <a href="/living/2018/11/17/macbook_auto_start/#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
-      
-      <a href="/living/2018/11/17/macbook_auto_start/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
-    </div>
-  </div>
-  
-  <div class="post">
-    <h1 class="post-title">
-      <a href="/living/2018/11/07/terminal/">
-        Mac Terminal Customizing
-      </a>
-    </h1>
-
-    <span class="post-date">07 Nov 2018</span>
-     | 
-    
-    <a href="/blog/tags/#macbook" class="post-tag">Macbook</a>
-    
-    
-
-    <h4 style="font-weight: 400; line-height: 1.8;"><article>
-      <p>저는 터미널을 마음대로 바꾸는걸 좋아합니다.<br />
-기본 터미널을 대체할 앱이 있긴하지만 추가적으로 설치하는걸 안좋아해서..ㅎㅎ<br />
-그래서 Customizing 하는 법을 포스팅하려고 합니다.<br />
-Mac 터미널에서 환경변수 설정은 <code class="highlighter-rouge">.bash_profile</code> 에서 합니다.
-Ubuntu 에서 <code class="highlighter-rouge">.bashrc</code>와 같다고 생각하시면 되요.</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># terminal customize</span>
-<span class="c"># 컬러 적용 여부</span>
-<span class="nb">export </span><span class="nv">CLICOLOR</span><span class="o">=</span>1
-<span class="c"># 디렉토리의 생상</span>
-<span class="nb">export </span><span class="nv">LSCOLORS</span><span class="o">=</span>GxFxCxDxBxegedabagaced
-<span class="c"># 유저 및 호스트의 색상</span>
-<span class="nb">export </span><span class="nv">PS1</span><span class="o">=</span><span class="s1">'\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;35m\]\w\[\033[00m\]\$'</span>
-</code></pre></div></div>
-
-<p>첫번째 옵션은 1이면 Customizing응 한다는 의미입니다.</p>
-
-<p>두번째 옵션이 좀 문제인데요..<br />
-알아보기 매우 힘듭니다..<br />
-저도 기억하기 힘들어서 포스팅을 하는거죠.<br />
-자..두번째 옵션을 두 부분으로 나눠서 설명드리겠습니다.</p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Gx Fx Cx Dx Bx
-1x 2x 3x 4x 5x
-
-1x : 디렉토리 색상
-2x : symbolic link 색상
-3x : socket 색상
-4x : pipe 색
-5x : 실행파일 색상
-</code></pre></div></div>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>eg ed ab ag ac ed
-1a 2b 3c 4d 5e 6f
-
-1a : block special 색상
-2b : char special 색상
-3c : exe_setuid 색상
-4d : ext_setgid 색상
-5e : a-dir_writeothers_sticky 색상
-6f : b-dir_writeothers_NOsticky 색상
-</code></pre></div></div>
-<p>솔직히 socket, pipe, 1a ~ 6f 까지는 뭔지 잘 모르겠습니다..<br />
-제대로 배우지 않아서…ㅎㅎ</p>
-
-<p>색상 설명</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>a     black
-b     red
-c     green
-d     brown
-e     blue
-f     magenta
-g     cyan
-h     light grey
-
-A     bold black
-B     bold red
-C     bold green
-D     bold brown  (거의 노란색)
-E     bold blue
-F     bold magenta
-G     bold cyan
-H     bold light grey (거의 흰색)
-x     default foreground or background
-</code></pre></div></div>
-
-<p>모든 색상설정은 알파벳 두개로 구성이 됩니다.<br />
-앞에 알파벳은 글자의 색상이고 뒤에 알파벳은 배경의 색상입니다.</p>
-
-<p>세번째 옵션을 살펴보겠습니다.<br />
-이 옵션 또한 복잡하게 써있네요..</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;35m\]\w\[\033[00m\]\$'
-
-</code></pre></div></div>
-
-<p>이건 터미널을 켰을때 유저와 PC 이름을 어떻게 보여줄 것인가를 정합니다.</p>
-
-<p><code class="highlighter-rouge">'\[\033[01;32m\]\u@\h\[\033[00m\]</code> 에서 {USER_NAME}@{PC_NAME}을 초록색 볼드체로 하겠다라는 의미입니다. (01 : 볼드체, 32m : 초록색)</p>
-
-<p><code class="highlighter-rouge">\[\033[01;35m\]\w\[\033[00m\]</code> 에서 ~을 자주색 볼드체로 하겠다라는 의미입니다. (01 : 볼드체, 35m : 자주색)</p>
-
-<p>자세한 정보는 추후에 더 추가하겠습니다!</p>
-
-    <article></h4>
-    <div class="post-more">
-      
-      <a href="/living/2018/11/07/terminal/#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
-      
-      <a href="/living/2018/11/07/terminal/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
-    </div>
-  </div>
-  
-  <div class="post">
-    <h1 class="post-title">
-      <a href="/blog/2018/10/24/gitblog/">
-        Github 블로그 만들기
-      </a>
-    </h1>
-
-    <span class="post-date">24 Oct 2018</span>
-     | 
-    
-    <a href="/blog/tags/#jekyll" class="post-tag">Jekyll</a>
-    
-    
-
-    <h4 style="font-weight: 400; line-height: 1.8;"><article>
-      <p>안녕하세요! Jerry 입니다.<br />
-요즘 깃헙으로 블로그를 하려고 하시는 분이 많은데요!<br />
-한번 만드는 법을 포스팅해보려고 합니다!<br />
-깃헙 블로그는 보통 <code class="highlighter-rouge">Jekyll</code> 이라는 정적 사이트 생성기를 이용합니다.<br />
-자세한 설명은 <a href="https://jekyllrb-ko.github.io/docs/home/"><strong>여기서</strong></a> 확인 하시면 됩니다.<br />
-블로그 만드는 방법은 두 가지가 있는데요.</p>
-
-<ol>
-  <li>
-    <p>테마를 자기가 만드는 방법.</p>
+<ul>
+  <li>Kakao Talk</li>
+  <li>Between</li>
+  <li>Snap
+    <ul>
+      <li>Add Terminal shortcut</li>
+    </ul>
   </li>
-  <li>
-    <p>공개된 테마를 가져와서 수정하는 방법.</p>
+  <li>Speedtest</li>
+  <li>Magnet</li>
+  <li>MenuBar Stats
+    <ul>
+      <li>Add MenuBar Stats Plugins Manager</li>
+      <li><a href="https://www.seense.com/menubarstats/plugins3/">https://www.seense.com/menubarstats/plugins3/</a></li>
+    </ul>
   </li>
-</ol>
+  <li>Buddy for Youtube</li>
+  <li>Bandizip
+    <ul>
+      <li><a href="https://kr.bandisoft.com/bandizip/x/">https://kr.bandisoft.com/bandizip/x/</a></li>
+    </ul>
+  </li>
+  <li>Notion
+    <ul>
+      <li><a href="https://www.notion.so/desktop">https://www.notion.so/desktop</a></li>
+    </ul>
+  </li>
+</ul>
 
-<p>전 <strong>2번 방법</strong> 으로 했습니다.<br />
-왜냐하면 전 웹 프로그래밍 언어를 모르니까요..ㅎㅎ<br />
-그래서 <strong>2번 방법</strong> 에 대해 포스팅하려고 합니다.</p>
+<h2 id="2-install-brew">2. Install brew</h2>
 
-<h2 id="1-원하는-테마-다운받기">1. 원하는 테마 다운받기.</h2>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/usr/bin/ruby <span class="nt">-e</span> <span class="s2">"</span><span class="k">$(</span>curl <span class="nt">-fsSL</span> https://raw.githubusercontent.com/Homebrew/install/master/install<span class="k">)</span><span class="s2">"</span>
+</code></pre></div></div>
 
-<p><a href="http://jekyllthemes.org"><strong>템플릿 모음1</strong></a>
-<a href="https://jekyllthemes.io"><strong>템플릿 모음2</strong></a></p>
+<h2 id="3-install-oh-my-zsh">3. Install oh-my-zsh</h2>
 
-<p>위 링크는 템플릿에 대한 정보를 모아놓은 사이트입니다.<br />
-링크에 자신이 원하는 템플릿을 들어가보면 대부분 깃헙 repository 로 연결됩니다.<br />
-예시로 <strong>템플릿 모음1</strong> 에 있는 <code class="highlighter-rouge">Prologue</code> 라는 테마를 적용해보겠습니다.</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sh <span class="nt">-c</span> <span class="s2">"</span><span class="k">$(</span>curl <span class="nt">-fsSL</span> https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh<span class="k">)</span><span class="s2">"</span>
+</code></pre></div></div>
 
-<p><img src="https://jjerry-k.github.io/public/img/gitblog/01.png" /></p>
+<h2 id="4-install-pyenv">4. Install pyenv</h2>
 
-<p><code class="highlighter-rouge">Download</code>를 바로 누르셔도 되고 <code class="highlighter-rouge">Homepage</code>에 들어가서 <code class="highlighter-rouge">git clone, Download ZIP</code> 하셔도 상관없습니다.<br />
-다운로드 받은 후에 알집을 풀어주세요!<br />
-전 <code class="highlighter-rouge">Home</code>에 풀었구요.</p>
+<p><a href="https://jjerry-k.github.io/python/2018/09/27/python4mac/">Python Installation for mac</a></p>
 
-<p><img src="https://jjerry-k.github.io/public/img/gitblog/02.png" /></p>
+<h2 id="5-edit-zshrc">5. Edit .zshrc</h2>
 
-<p><img src="https://jjerry-k.github.io/public/img/gitblog/03.png" /></p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># If you come from bash you might have to change your $PATH.</span>
+<span class="c"># export PATH=$HOME/bin:/usr/local/bin:$PATH</span>
 
-<p>그 폴더 안에는 이렇게 구성이 되어 있습니다.</p>
+<span class="c"># Path to your oh-my-zsh installation.</span>
+<span class="nb">export </span><span class="nv">ZSH</span><span class="o">=</span><span class="s2">"/Users/jerry/.oh-my-zsh"</span>
 
-<h2 id="2-루비-젬-설치">2. 루비 젬 설치.</h2>
+<span class="c"># Set name of the theme to load --- if set to "random", it will</span>
+<span class="c"># load a random theme each time oh-my-zsh is loaded, in which case,</span>
+<span class="c"># to know which specific one was loaded, run: echo $RANDOM_THEME</span>
+<span class="c"># See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes</span>
+<span class="nv">ZSH_THEME</span><span class="o">=</span><span class="s2">"jreese"</span>
 
-<p>템플릿을 만들면서 바로 바로 수정되는 사항을 볼 수 있다면 좋겠죠?<br />
-그렇기 때문에 <strong>루비 젬</strong> 이라는 것을 설치 해야합니다.<br />
-OS 별 설치법은 <a href="https://jekyllrb-ko.github.io/docs/installation/"><strong>여기서</strong></a> 확인하시면 됩니다.</p>
+<span class="c"># Set list of themes to pick from when loading at random</span>
+<span class="c"># Setting this variable when ZSH_THEME=random will cause zsh to load</span>
+<span class="c"># a theme from this variable instead of looking in ~/.oh-my-zsh/themes/</span>
+<span class="c"># If set to an empty array, this variable will have no effect.</span>
+<span class="c"># ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )</span>
 
-<p>저는 Mac OS 를 기준으로 작성하겠습니다.<br />
-<code class="highlighter-rouge">gem install jekyll bundler</code> 까지 진행하세요.</p>
+<span class="c"># Uncomment the following line to use case-sensitive completion.</span>
+<span class="c"># CASE_SENSITIVE="true"</span>
 
-<h2 id="3-localhost-서버-열기">3. localhost 서버 열기.</h2>
+<span class="c"># Uncomment the following line to use hyphen-insensitive completion.</span>
+<span class="c"># Case-sensitive completion must be off. _ and - will be interchangeable.</span>
+<span class="c"># HYPHEN_INSENSITIVE="true"</span>
 
-<p>다음과 같이 터미널을 열고 압축푼 경로로 이동해줍니다.</p>
+<span class="c"># Uncomment the following line to disable bi-weekly auto-update checks.</span>
+<span class="c"># DISABLE_AUTO_UPDATE="true"</span>
 
-<p><img src="https://jjerry-k.github.io/public/img/gitblog/04.png" /></p>
+<span class="c"># Uncomment the following line to automatically update without prompting.</span>
+<span class="c"># DISABLE_UPDATE_PROMPT="true"</span>
 
-<p>그리고 <code class="highlighter-rouge">bundle install</code> 이라고 입력합니다.</p>
+<span class="c"># Uncomment the following line to change how often to auto-update (in days).</span>
+<span class="c"># export UPDATE_ZSH_DAYS=13</span>
 
-<p><img src="https://jjerry-k.github.io/public/img/gitblog/05.png" /></p>
+<span class="c"># Uncomment the following line if pasting URLs and other text is messed up.</span>
+<span class="c"># DISABLE_MAGIC_FUNCTIONS=true</span>
 
-<p>그러면 뭐 이것 저것 설치가 될거에요.</p>
+<span class="c"># Uncomment the following line to disable colors in ls.</span>
+<span class="c"># DISABLE_LS_COLORS="true"</span>
 
-<p><img src="https://jjerry-k.github.io/public/img/gitblog/06.png" /></p>
+<span class="c"># Uncomment the following line to disable auto-setting terminal title.</span>
+<span class="c"># DISABLE_AUTO_TITLE="true"</span>
 
-<p>서버를 열 준비는 끝났습니다.<br />
-이제 터미널에 <code class="highlighter-rouge">bundle exec jekyll serve</code> 라고 입력해주세요.</p>
+<span class="c"># Uncomment the following line to enable command auto-correction.</span>
+<span class="c"># ENABLE_CORRECTION="true"</span>
 
-<p><img src="https://jjerry-k.github.io/public/img/gitblog/07.png" /></p>
+<span class="c"># Uncomment the following line to display red dots whilst waiting for completion.</span>
+<span class="c"># COMPLETION_WAITING_DOTS="true"</span>
 
-<p>사진과 같이 나올거에요!<br />
-밑에 <code class="highlighter-rouge">http://127.0.0.1:4000/jekyll-theme-prologue</code>라고 나와있네요!<br />
-그럼 인터넷 브라우저를 켜주시고 주소창에 입력해주세요!</p>
+<span class="c"># Uncomment the following line if you want to disable marking untracked files</span>
+<span class="c"># under VCS as dirty. This makes repository status check for large repositories</span>
+<span class="c"># much, much faster.</span>
+<span class="c"># DISABLE_UNTRACKED_FILES_DIRTY="true"</span>
 
-<p>그럼 다음과 같은 창이 열립니다.</p>
+<span class="c"># Uncomment the following line if you want to change the command execution time</span>
+<span class="c"># stamp shown in the history command output.</span>
+<span class="c"># You can set one of the optional three formats:</span>
+<span class="c"># "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"</span>
+<span class="c"># or set a custom format using the strftime function format specifications,</span>
+<span class="c"># see 'man strftime' for details.</span>
+<span class="c"># HIST_STAMPS="mm/dd/yyyy"</span>
 
-<p><img src="https://jjerry-k.github.io/public/img/gitblog/08.png" /></p>
+<span class="c"># Would you like to use another custom folder than $ZSH/custom?</span>
+<span class="c"># ZSH_CUSTOM=/path/to/new-custom-folder</span>
 
-<p>이제 블로그를 할 준비는 완료했습니다!<br />
-다음엔 테마를 토대로 커스터마이징 하는 포스팅을 준비해보겠습니다!</p>
+<span class="c"># Which plugins would you like to load?</span>
+<span class="c"># Standard plugins can be found in ~/.oh-my-zsh/plugins/*</span>
+<span class="c"># Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/</span>
+<span class="c"># Example format: plugins=(rails git textmate ruby lighthouse)</span>
+<span class="c"># Add wisely, as too many plugins slow down shell startup.</span>
+<span class="nv">plugins</span><span class="o">=(</span>git<span class="o">)</span>
+
+<span class="nb">source</span> <span class="nv">$ZSH</span>/oh-my-zsh.sh
+
+<span class="c"># User configuration</span>
+
+<span class="c"># export MANPATH="/usr/local/man:$MANPATH"</span>
+
+<span class="c"># You may need to manually set your language environment</span>
+<span class="c"># export LANG=en_US.UTF-8</span>
+
+<span class="c"># Preferred editor for local and remote sessions</span>
+<span class="c"># if [[ -n $SSH_CONNECTION ]]; then</span>
+<span class="c">#   export EDITOR='vim'</span>
+<span class="c"># else</span>
+<span class="c">#   export EDITOR='mvim'</span>
+<span class="c"># fi</span>
+
+<span class="c"># Compilation flags</span>
+<span class="c"># export ARCHFLAGS="-arch x86_64"</span>
+
+<span class="c"># Set personal aliases, overriding those provided by oh-my-zsh libs,</span>
+<span class="c"># plugins, and themes. Aliases can be placed here, though oh-my-zsh</span>
+<span class="c"># users are encouraged to define aliases within the ZSH_CUSTOM folder.</span>
+<span class="c"># For a full list of active aliases, run `alias`.</span>
+<span class="c">#</span>
+<span class="c"># Example aliases</span>
+<span class="c"># alias zshconfig="mate ~/.zshrc"</span>
+<span class="c"># alias ohmyzsh="mate ~/.oh-my-zsh"</span>
+
+<span class="c"># Set pyenv</span>
+<span class="nb">export </span><span class="nv">PYENV_ROOT</span><span class="o">=</span><span class="s2">"</span><span class="k">${</span><span class="nv">HOME</span><span class="k">}</span><span class="s2">/.pyenv"</span>
+<span class="nb">export </span><span class="nv">PATH</span><span class="o">=</span><span class="s2">"</span><span class="k">${</span><span class="nv">PYENV_ROOT</span><span class="k">}</span><span class="s2">bin:</span><span class="nv">$PATH</span><span class="s2">"</span>
+<span class="nb">eval</span> <span class="s2">"</span><span class="k">$(</span>pyenv init -<span class="k">)</span><span class="s2">"</span>
+
+<span class="c"># &gt;&gt;&gt; conda initialize &gt;&gt;&gt;</span>
+<span class="c"># !! Contents within this block are managed by 'conda init' !!</span>
+<span class="nv">__conda_setup</span><span class="o">=</span><span class="s2">"</span><span class="k">$(</span><span class="s1">'/Users/jerry/.pyenv/versions/miniconda3-latest/bin/conda'</span> <span class="s1">'shell.zsh'</span> <span class="s1">'hook'</span> 2&gt; /dev/null<span class="k">)</span><span class="s2">"</span>
+<span class="k">if</span> <span class="o">[</span> <span class="nv">$?</span> <span class="nt">-eq</span> 0 <span class="o">]</span><span class="p">;</span> <span class="k">then
+    </span><span class="nb">eval</span> <span class="s2">"</span><span class="nv">$__conda_setup</span><span class="s2">"</span>
+<span class="k">else
+    if</span> <span class="o">[</span> <span class="nt">-f</span> <span class="s2">"/Users/jerry/.pyenv/versions/miniconda3-latest/etc/profile.d/conda.sh"</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+        <span class="nb">.</span> <span class="s2">"/Users/jerry/.pyenv/versions/miniconda3-latest/etc/profile.d/conda.sh"</span>
+    <span class="k">else
+        </span><span class="nb">export </span><span class="nv">PATH</span><span class="o">=</span><span class="s2">"/Users/jerry/.pyenv/versions/miniconda3-latest/bin:</span><span class="nv">$PATH</span><span class="s2">"</span>
+    <span class="k">fi
+fi
+</span><span class="nb">unset </span>__conda_setup
+<span class="c"># &lt;&lt;&lt; conda initialize &lt;&lt;&lt;</span>
+</code></pre></div></div>
+
+<h2 id="6-create-conda-environment">6. Create conda environment</h2>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#!/bin/bash</span>
+
+conda <span class="nb">install</span> <span class="nt">-y</span> ipykernel jupyter jupyterlab pylint
+conda update <span class="nt">--all</span> <span class="nt">-y</span>
+conda create <span class="nt">-y</span> <span class="nt">-n</span> tf <span class="nv">python</span><span class="o">=</span>3.7
+conda create <span class="nt">-y</span> <span class="nt">-n</span> tc <span class="nv">python</span><span class="o">=</span>3.7
+
+<span class="nb">source</span> ~/.pyenv/versions/miniconda3-latest/etc/profile.d/conda.sh
+
+<span class="c"># Create TensorFlow Environment</span>
+conda activate tf
+conda <span class="nb">install</span> <span class="nt">-y</span> numpy scipy pandas matplotlib pylint
+conda <span class="nb">install</span> <span class="nt">-y</span> seaborn pillow scikit-image opencv scikit-learn tqdm ipython ipykernel ipywidgets
+conda <span class="nb">install</span> <span class="nt">-y</span> tensorflow
+conda update <span class="nt">--all</span> <span class="nt">-y</span>
+python <span class="nt">-m</span> ipykernel <span class="nb">install</span> <span class="nt">--user</span> <span class="nt">--name</span> tf <span class="nt">--display-name</span> TensorFlow
+conda deactivate
+
+<span class="c"># Create PyTorch Environment</span>
+conda activate tc
+conda <span class="nb">install</span> <span class="nt">-y</span> numpy scipy pandas matplotlib pylint
+conda <span class="nb">install</span> <span class="nt">-y</span> seaborn pillow scikit-image opencv scikit-learn tqdm ipython ipykernel ipywidgets
+conda <span class="nb">install</span> <span class="nt">-y</span> <span class="nt">-c</span> pytorch pytorch torchvision
+conda update <span class="nt">--all</span> <span class="nt">-y</span>
+python <span class="nt">-m</span> ipykernel <span class="nb">install</span> <span class="nt">--user</span> <span class="nt">--name</span> tc <span class="nt">--display-name</span> PyTorch
+conda deactivate
+</code></pre></div></div>
+
+<h2 id="7-install-vscode">7. Install VSCode</h2>
+
+<ul>
+  <li><a href="https://code.visualstudio.com/docs/?dv=osx">https://code.visualstudio.com/docs/?dv=osx</a></li>
+  <li>Install plugin
+    <ul>
+      <li>python</li>
+      <li>pylance</li>
+      <li>Rainbow Brackets</li>
+      <li>indent-rainbow</li>
+      <li>Remote - SSH</li>
+      <li>kite
+        <ul>
+          <li><a href="https://kite.com/download/">https://kite.com/download/</a></li>
+        </ul>
+      </li>
+      <li>c/c++</li>
+      <li>markdown-all-in-one</li>
+      <li>leetcode
+        <ul>
+          <li>brew install node</li>
+          <li>Sign in using github</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
 
     <article></h4>
     <div class="post-more">
       
-      <a href="/blog/2018/10/24/gitblog/#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
+      <a href="/living/2020/04/26/macbook-setup/#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
       
-      <a href="/blog/2018/10/24/gitblog/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
+      <a href="/living/2020/04/26/macbook-setup/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
     </div>
   </div>
   
   <div class="post">
     <h1 class="post-title">
-      <a href="/python/2018/10/23/anaconda/">
-        Anaconda 간단하게 사용하기!
+      <a href="/living/2020/04/20/rpi_transmission/">
+        Raspberry pi 4 에 Transmission 세팅하기
       </a>
     </h1>
 
-    <span class="post-date">23 Oct 2018</span>
+    <span class="post-date">20 Apr 2020</span>
      | 
     
-    <a href="/blog/tags/#setting" class="post-tag">Setting</a>
+    <a href="/blog/tags/#hardware" class="post-tag">Hardware</a>
     
     
 
     <h4 style="font-weight: 400; line-height: 1.8;"><article>
-      <p>저번 <a href="https://jjerry-k.github.io/python/2018/09/27/python4mac/"><strong>Python 설치 포스팅</strong></a>에서 pyenv로 설치 하는 법을 포스팅 했었습니다.<br />
-이번에는 제가 pyenv 로 어떤 버전을 설치했고 무슨 패키지를 설치했는지 포스팅 하려고 합니다.<br />
-먼저 설치할 버전의 이름을 정확히 알아야하므로 설치 가능한 버전들을 봅니다.</p>
+      <h1 id="raspberry-pi-4--transmission-container">Raspberry pi 4 &amp; Transmission Container</h1>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pyenv <span class="nb">install</span> <span class="nt">--list</span>
+<hr />
+
+<h1 id="1-docker-install">1. Docker Install</h1>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl <span class="nt">-fsSL</span> get.docker.com <span class="nt">-o</span> get-docker.sh
+
+<span class="nb">sudo </span>bash get-docker.sh
+
+<span class="nb">sudo </span>usermod <span class="nt">-aG</span> docker pi
 </code></pre></div></div>
-<p>이렇게 터미널에 입력을 하면</p>
+<p>그리고 재부팅</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Available versions:
-  2.1.3
-  2.2.3
-  2.3.7
-  ...
-  중략
-  ...
-  stackless-3.4.2
-  stackless-3.4.7
-  stackless-3.5.4
-</code></pre></div></div>
+<h1 id="2-pull-transmission-image">2. Pull Transmission Image</h1>
 
-<p>이런식으로 굉~~~장히 많은 버전이 있습니다. (약 340개?)<br />
-그중에서 저는 <code class="highlighter-rouge">anaconda3-5.2.0</code>을 설치했습니다.</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pyenv <span class="nb">install </span>anaconda3-5.2.0
-
-pyenv global anaconda3-5.2.0
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker pull linuxserver/transmission
 </code></pre></div></div>
 
-<p>아나콘다 환경 설치 끝..<br />
-이제 제가 사용하는 파이썬 패키지를 설치해야겠죠.<br />
-보통 python 이라면 pip를 쓰겠지만 저는 아나콘다를 설치했죠.<br />
-그래서 <code class="highlighter-rouge">conda</code>를 이용해서 설치했습니다.<br />
-제가 설치 할 패키지는 pytorch, tensorflow, keras, tqdm 입니다.</p>
+<h1 id="3-create-transmission-container">3. Create Transmission Container</h1>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>conda <span class="nb">install </span>tqdm <span class="c"># progress bar 패키지</span>
-conda <span class="nb">install </span>keras tensorflow <span class="c"># machine learning 패키지</span>
-conda <span class="nb">install </span>pytorch torchvision <span class="nt">-c</span> pytorch <span class="c"># machine learning 패키지</span>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker create <span class="se">\</span>
+    <span class="nt">--name</span><span class="o">=</span>transmission <span class="se">\</span>
+    <span class="nt">-e</span> <span class="nv">PUID</span><span class="o">=</span>1000 <span class="se">\</span>
+    <span class="nt">-e</span> <span class="nv">PGID</span><span class="o">=</span>1000 <span class="se">\</span>
+    <span class="nt">-e</span> <span class="nv">TZ</span><span class="o">=</span>Asia/Seoul <span class="se">\</span>
+    <span class="nt">-e</span> <span class="nv">USER</span><span class="o">={</span>username<span class="o">}</span> <span class="se">\</span>
+    <span class="nt">-e</span> <span class="nv">PASS</span><span class="o">={</span>password<span class="o">}</span> <span class="se">\</span>
+    <span class="nt">-p</span> 9091:9091 <span class="se">\</span>
+    <span class="nt">-p</span> 51413:51413 <span class="se">\</span>
+    <span class="nt">-p</span> 51413:51413/udp <span class="se">\</span>
+    <span class="nt">-v</span> <span class="o">{</span>path to data<span class="o">}</span>:/config <span class="se">\</span>
+    <span class="nt">-v</span> <span class="o">{</span>path to downloads<span class="o">}</span>:/downloads <span class="se">\</span>
+    <span class="nt">-v</span> <span class="o">{</span>path to watch folder<span class="o">}</span>:/watch <span class="se">\</span>
+    <span class="nt">--restart</span> unless-stopped <span class="se">\</span>
+    linuxserver/transmission
 </code></pre></div></div>
 
-<p>이렇게 하면 끝입니다.<br />
- <code class="highlighter-rouge">numpy, scipy, matplotlib, ...</code>등 패키지는 anaconda를 설치하면서 자동으로 설치가 됩니다 ㅎㅎ</p>
+<h1 id="4-run-container">4. Run Container</h1>
 
-<p>만약 저 환경을 삭제하고 싶다?</p>
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> pyenv uninstall anaconda3-5.2.0
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker start transmission
 </code></pre></div></div>
-<p>이라고 하시면 바로 삭제됩니다.</p>
-
-<p>많은 분들께 도움이 되었으면 좋겠습니다!</p>
-
-<p>감사합니다~!</p>
 
     <article></h4>
     <div class="post-more">
       
-      <a href="/python/2018/10/23/anaconda/#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
+      <a href="/living/2020/04/20/rpi_transmission/#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
       
-      <a href="/python/2018/10/23/anaconda/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
+      <a href="/living/2020/04/20/rpi_transmission/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
+    </div>
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/deeplearning/2020/03/31/coral/">
+        Google Coral USB 사용기
+      </a>
+    </h1>
+
+    <span class="post-date">31 Mar 2020</span>
+     | 
+    
+    <a href="/blog/tags/#tools" class="post-tag">Tools</a>
+    
+    
+
+    <h4 style="font-weight: 400; line-height: 1.8;"><article>
+      <h1 id="raspberry-pi-4--google-coral-usb-accelerator">Raspberry pi 4 &amp; Google Coral USB Accelerator</h1>
+
+<p>평소에 라즈베리파이 4를 NAS로 사용하고 있었습니다.  <a href="https://jjerry-k.github.io/living/2018/07/10/Raspberry-Mini-PC/">이런 느낌으로..</a></p>
+
+<p>하지만…항상 마음 속에는 “흠….라즈베리파이로 딥러닝을 돌려보고 싶다…” 라는 생각을 하고 있었죠.</p>
+
+<p>평소와 같이 <del>평화로운 중고나라</del> 를 탐색하고 있었습니다. (모니터가 사고 싶어서 ….)</p>
+
+<p>근데 . . 갑자기 . . ? 왜 인지 모르겠지만 Google Coral USB Accelerator 를 검색하고 싶더군요.</p>
+
+<p>그래서 바로 검색을 했고 7마넌(나름 저렴)에 올라와있길래 일요일에 주문을 했습니다.</p>
+
+<p>그리고 오늘 집에 도착을 했죠.</p>
+
+<p>이제 사용을 해보려고 합니다.</p>
+
+<p>준비물을 소개하도록 하죠.</p>
+
+<h1 id="준비물">준비물</h1>
+
+<ul>
+  <li>라즈베리 파이</li>
+  <li>Coral Accelerator</li>
+  <li>Webcam</li>
+</ul>
+
+<p><img src="https://jjerry-k.github.io/public/img/coral/01.png" alt="01.jpg" /></p>
+
+<h1 id="step-1-연결">Step 1. 연결</h1>
+
+<p><img src="https://jjerry-k.github.io/public/img/coral/02.png" alt="02.jpg" /></p>
+
+<p><img src="https://jjerry-k.github.io/public/img/coral/03.png" alt="03.jpg" /></p>
+
+<p>모두 연결 후 라즈베리파이를 켜면 위 사진과 같이 USB에 흰색 불이 들어옵니다.</p>
+
+<h1 id="step-2-라즈베리파이-세팅">Step 2. 라즈베리파이 세팅</h1>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#!/bin/bash</span>
+
+<span class="nb">echo</span> <span class="s2">"deb https://packages.cloud.google.com/apt coral-edgetpu-stable main"</span> | <span class="nb">sudo tee</span> /etc/apt/sources.list.d/coral-edgetpu.list
+
+curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | <span class="nb">sudo </span>apt-key add -
+
+<span class="nb">sudo </span>apt-get update
+
+<span class="nb">sudo </span>apt-get <span class="nb">install </span>libedgetpu1-std
+
+<span class="c"># Check Your Platform </span>
+<span class="c"># https://www.tensorflow.org/lite/guide/python</span>
+<span class="nb">sudo </span>pip3 <span class="nb">install </span>https://dl.google.com/coral/python/tflite_runtime-2.1.0.post1-cp37-cp37m-linux_armv7l.whl
+
+<span class="c">#!/bin/bash</span>
+
+git clone https://github.com/google-coral/examples-camera.git
+
+<span class="nb">cd </span>examples-camera
+
+sh download_models.sh
+</code></pre></div></div>
+
+<p><code class="highlighter-rouge">download_models.sh</code>를 실행하시면 다음과 같이  <code class="highlighter-rouge">all_models</code>라는 디렉토리 안에 각 데이터셋 별 labelmap.txt와 학습된 모델의 tflite 파일이 있습니다.</p>
+
+<p>여기서 밑줄 친 파일을 이용해서 object detection 을 해볼겁니다! 일단 그 다음 세팅으로 넘어가죠.</p>
+
+<p><img src="https://jjerry-k.github.io/public/img/coral/04.png" alt="04.png" /></p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#!/bin/bash</span>
+
+<span class="nb">cd </span>opencv
+
+sh install_requirements.sh
+</code></pre></div></div>
+
+<p>opencv를 이용한 스크립트를 사용하기 위해 필요한 것들을 설치합니다.</p>
+
+<h1 id="step-3-스크립트-실행">Step 3. 스크립트 실행</h1>
+
+<p>이제 opencv 디렉토리 안에 detect.py를 실행 시켜줄건데요. 옵션이 몇개 있습니다. 한번 살펴보도록 하죠.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>usage: detect.py [-h] [--model MODEL] [--labels LABELS] [--top_k TOP_K]
+                 [--camera_idx CAMERA_IDX] [--threshold THRESHOLD]
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --model MODEL         .tflite model path
+  --labels LABELS       label file path
+  --top_k TOP_K         number of categories with highest score to display
+  --camera_idx CAMERA_IDX
+                        Index of which video source to use.
+  --threshold THRESHOLD
+                        classifier score threshold
+</code></pre></div></div>
+
+<p>한번 다음과 같이 실행을 해보겠습니다.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python detect.py \
+--model ../all_models/mobilenet_ssd_v2_face_quant_postprocess_edgetpu.tflite \
+--labels ../all_models/coco_labels.txt \
+--top_k 3 \
+--threshold 0.7
+</code></pre></div></div>
+
+<p><img src="https://jjerry-k.github.io/public/img/coral/05.png" alt="05.png" /></p>
+
+<p>막 빠를 줄 알았는데 Webcam 의 한계라 그런지… FPS가 낮네요..</p>
+
+<p>추후에 카메라 모듈을 이용해서 해봐야겠습니다.</p>
+
+<p>그럼 간단한 이용기를 마치겠습니다.</p>
+
+    <article></h4>
+    <div class="post-more">
+      
+      <a href="/deeplearning/2020/03/31/coral/#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
+      
+      <a href="/deeplearning/2020/03/31/coral/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
     </div>
   </div>
   

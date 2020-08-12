@@ -1,6 +1,182 @@
 [
   
     {
+      "title"    : "Review: Cycle GAN",
+      "category" : "DeepLearning",
+      "tags"     : "Paper",
+      "url"      : "/deeplearning/2020/08/11/cycle_gan/",
+      "date"     : "2020-08-11 00:00:00 +0900"
+    } ,
+  
+    {
+      "title"    : "Review: Pix2Pix",
+      "category" : "DeepLearning",
+      "tags"     : "Paper",
+      "url"      : "/deeplearning/2020/08/10/pix2pix/",
+      "date"     : "2020-08-10 00:00:00 +0900"
+    } ,
+  
+    {
+      "title"    : "Neptune...? 은 또 뭐여..",
+      "category" : "DeepLearning",
+      "tags"     : "Tools",
+      "url"      : "/deeplearning/2020/07/23/neptune/",
+      "date"     : "2020-07-23 00:00:00 +0900"
+    } ,
+  
+    {
+      "title"    : "Netron! Network 구조를 보여주세요!",
+      "category" : "DeepLearning",
+      "tags"     : "Tools",
+      "url"      : "/deeplearning/2020/07/20/netron/",
+      "date"     : "2020-07-20 00:00:00 +0900"
+    } ,
+  
+    {
+      "title"    : "NIPA x VScode !",
+      "category" : "DeepLearning",
+      "tags"     : "Tools",
+      "url"      : "/deeplearning/2020/07/15/nipa_vscode/",
+      "date"     : "2020-07-15 00:00:00 +0900"
+    } ,
+  
+    {
+      "title"    : "Colab x VSCode !",
+      "category" : "DeepLearning",
+      "tags"     : "Tools",
+      "url"      : "/deeplearning/2020/07/13/colab_vscode/",
+      "date"     : "2020-07-13 00:00:00 +0900"
+    } ,
+  
+    {
+      "title"    : "NIPA x Docker !",
+      "category" : "DeepLearning",
+      "tags"     : "Tools",
+      "url"      : "/deeplearning/2020/06/28/nipa_docker/",
+      "date"     : "2020-06-28 00:00:00 +0900"
+    } ,
+  
+    {
+      "title"    : "NIPA 컴퓨팅 자원 신청 방법 !",
+      "category" : "DeepLearning",
+      "tags"     : "Tools",
+      "url"      : "/deeplearning/2020/06/27/nipa_apply/",
+      "date"     : "2020-06-27 00:00:00 +0900"
+    } ,
+  
+    {
+      "title"    : "NIPA...NIPA가 뭐죠..",
+      "category" : "DeepLearning",
+      "tags"     : "Tools",
+      "url"      : "/deeplearning/2020/06/26/nipa_intro/",
+      "date"     : "2020-06-26 00:00:00 +0900"
+    } ,
+  
+    {
+      "title"    : "TensorFlow Multi GPU 사용법",
+      "category" : "DeepLearning",
+      "tags"     : "TensorFlow",
+      "url"      : "/deeplearning/2020/06/14/tf2_multi_gpu/",
+      "date"     : "2020-06-14 00:00:00 +0900"
+    } ,
+  
+    {
+      "title"    : "Review: DETR",
+      "category" : "DeepLearning",
+      "tags"     : "Paper",
+      "url"      : "/deeplearning/2020/06/13/DETR/",
+      "date"     : "2020-06-13 00:00:00 +0900"
+    } ,
+  
+    {
+      "title"    : "D-Link ddns 서비스 종료",
+      "category" : "Living",
+      "tags"     : "Hardware",
+      "url"      : "/living/2020/05/31/Dlink_ddns/",
+      "date"     : "2020-05-31 00:00:00 +0900"
+    } ,
+  
+    {
+      "title"    : "Review: ShuffleNetV2",
+      "category" : "DeepLearning",
+      "tags"     : "Paper",
+      "url"      : "/deeplearning/2020/05/09/ShuffleNetV2/",
+      "date"     : "2020-05-09 00:00:00 +0900"
+    } ,
+  
+    {
+      "title"    : "Review: ResNeXt",
+      "category" : "DeepLearning",
+      "tags"     : "Paper",
+      "url"      : "/deeplearning/2020/05/08/ResNeXt/",
+      "date"     : "2020-05-08 00:00:00 +0900"
+    } ,
+  
+    {
+      "title"    : "Review: ShuffleNetV1",
+      "category" : "DeepLearning",
+      "tags"     : "Paper",
+      "url"      : "/deeplearning/2020/05/07/ShuffleNetV1/",
+      "date"     : "2020-05-07 00:00:00 +0900"
+    } ,
+  
+    {
+      "title"    : "Review: CutMix",
+      "category" : "DeepLearning",
+      "tags"     : "Paper",
+      "url"      : "/deeplearning/2020/05/06/CutMix/",
+      "date"     : "2020-05-06 00:00:00 +0900"
+    } ,
+  
+    {
+      "title"    : "개인적인 도커 파일",
+      "category" : "Living",
+      "tags"     : "Docker",
+      "url"      : "/living/2020/05/05/dockerfile/",
+      "date"     : "2020-05-05 00:00:00 +0900"
+    } ,
+  
+    {
+      "title"    : "Review: EfficientNet",
+      "category" : "DeepLearning",
+      "tags"     : "Paper",
+      "url"      : "/deeplearning/2020/05/02/EfficientNet/",
+      "date"     : "2020-05-02 00:00:00 +0900"
+    } ,
+  
+    {
+      "title"    : "Review: CBAM",
+      "category" : "DeepLearning",
+      "tags"     : "Paper",
+      "url"      : "/deeplearning/2020/04/30/CBAM/",
+      "date"     : "2020-04-30 00:00:00 +0900"
+    } ,
+  
+    {
+      "title"    : "Review: BAM",
+      "category" : "DeepLearning",
+      "tags"     : "Paper",
+      "url"      : "/deeplearning/2020/04/29/BAM/",
+      "date"     : "2020-04-29 00:00:00 +0900"
+    } ,
+  
+    {
+      "title"    : "Review: MobileNet V3",
+      "category" : "DeepLearning",
+      "tags"     : "Paper",
+      "url"      : "/deeplearning/2020/04/28/MobileNetV3/",
+      "date"     : "2020-04-28 00:00:00 +0900"
+    } ,
+  
+    {
+      "title"    : "Review: MobileNet V2",
+      "category" : "DeepLearning",
+      "tags"     : "Paper",
+      "url"      : "/deeplearning/2020/04/27/MobileNetV2/",
+      "date"     : "2020-04-27 00:00:00 +0900"
+    } ,
+  
+    {
       "title"    : "개인적인 맥북 세팅법",
       "category" : "Living",
       "tags"     : "Macbook",
@@ -25,7 +201,7 @@
     } ,
   
     {
-      "title"    : "StarGAN v2",
+      "title"    : "Review: StarGAN v2",
       "category" : "DeepLearning",
       "tags"     : "Paper",
       "url"      : "/deeplearning/2020/03/04/starganv2/",
@@ -33,7 +209,7 @@
     } ,
   
     {
-      "title"    : "StarGAN v1",
+      "title"    : "Review: StarGAN v1",
       "category" : "DeepLearning",
       "tags"     : "Paper",
       "url"      : "/deeplearning/2020/03/02/starganv1/",
@@ -49,15 +225,15 @@
     } ,
   
     {
-      "title"    : "MobileNet V1",
+      "title"    : "Review: MobileNet V1",
       "category" : "DeepLearning",
       "tags"     : "Paper",
-      "url"      : "/deeplearning/2020/02/26/MobileNets-Efficient-Convolutional-Neural-Networks/",
+      "url"      : "/deeplearning/2020/02/26/MobileNetV1/",
       "date"     : "2020-02-26 00:00:00 +0900"
     } ,
   
     {
-      "title"    : "Xception",
+      "title"    : "Review: Xception",
       "category" : "DeepLearning",
       "tags"     : "Paper",
       "url"      : "/deeplearning/2020/02/16/Xception/",
@@ -89,7 +265,7 @@
     } ,
   
     {
-      "title"    : "MRI interpolation using Deep Learning",
+      "title"    : "Review: MRI interpolation using Deep Learning",
       "category" : "DeepLearning",
       "tags"     : "Paper",
       "url"      : "/deeplearning/2019/07/05/Thin/",

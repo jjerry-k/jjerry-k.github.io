@@ -263,6 +263,9 @@
               <img class="masthead-logo" src="/public/logo.png"/>
             </a>
             <small></small>
+            <a href="https://donaricano.com/mypage/1391188679_guPzXC" target="_blank">
+              <img src="https://d1u4yishnma8v5.cloudfront.net/mobile-gift.png" width="60" height="60" style="position:absolute; top:0.25rem; right:4rem" alt="donaricano-btn" style="height: 130px !important;width: 130px !important;" />
+            </a>
             <img src="http://jjerry-k.github.io/public/search.png" width="20" height="20" style="position:absolute; top:1.3rem; right:1.5rem" data-toggle="modal" data-target="#myModal">
           </h3>
         </div>
@@ -273,377 +276,829 @@
   
   <div class="post">
     <h1 class="post-title">
-      <a href="/deeplearning/2018/09/12/TFOD/">
-        Object Detection API
+      <a href="/python/2019/09/07/Jupyter_shortcut/">
+        jupyter Lab 에서 단축키 설정하는 방법!
       </a>
     </h1>
 
-    <span class="post-date">12 Sep 2018</span>
+    <span class="post-date">07 Sep 2019</span>
      | 
     
-    <a href="/blog/tags/#tensorflow" class="post-tag">TensorFlow</a>
+    <a href="/blog/tags/#setting" class="post-tag">Setting</a>
     
     
 
     <h4 style="font-weight: 400; line-height: 1.8;"><article>
-      <p>이번에 V.ais에서 TensorFlow Object Detection API 사용 매뉴얼을 작성해봤습니다.</p>
+      <p>파이썬, 딥러닝을 하시는 분들 중 Jupyter 부류를 이용하시는 분들이 꽤 많습니다. <code class="highlighter-rouge">Jupyter Notebook, Jupyter Lab,...</code><br />
+저는 둘 다 사용해보긴 하지만 주로 <strong>Jupyter Lab</strong> 을 사용합니다.<br />
+이유는 그냥…좀 더 보기 편해서..?<br />
+두 환경의 차이는 다음 링크에서 확인해주세요.</p>
+<ul>
+  <li><a href="https://jupyter.readthedocs.io/en/latest/running.html#running">Jupyter Notebook</a></li>
+  <li><a href="https://jupyterlab.readthedocs.io/en/stable/index.html">Jupyter Lab</a></li>
+</ul>
 
-<p><a href="https://github.com/V-AIS/tensorflow"><strong>https://github.com/V-AIS/tensorflow</strong></a></p>
+<h4 id="참고사항">참고사항</h4>
+<p>https://github.com/jupyterlab/jupyterlab/issues/7122<br />
+며칠 전 이슈에 올라온 상황입니다.<br />
+jupyter lab 1.0.2 버전에 extension을 설치하면 sidebar 부분이 깨지는 버그가 있네요…<br />
+1.1.1 에선 고쳐졌다고 합니다.</p>
 
-<p>아직 완벽하게 정리된건 아니지만…</p>
+<p><strong><span style="font-size:25pt;">자, 다시 본론으로 돌아가봅니다.</span></strong></p>
 
-<p>TensorFlow Object Detection API를 처음 접하시는 분이라면 쉽게 따라할 수 있도록 적어봤습니다.</p>
+<p>Jupyter Lab 에서 단축키로 설정할 수 있는 기능들은 다음과 같습니다.</p>
 
-<p>수정됬으면 하는 부분이 있으면 댓글 남겨주세요!</p>
+<p>‘notebook:create-new’<br />
+‘notebook:interrupt-kernel’<br />
+‘notebook:restart-kernel’<br />
+‘notebook:restart-clear-output’<br />
+‘notebook:restart-run-all’<br />
+‘notebook:reconnect-to-kernel’<br />
+‘notebook:change-kernel’<br />
+… (너무 많다….)<br />
+‘notebook:hide-all-cell-outputs’<br />
+‘notebook:show-all-cell-outputs’<br />
+‘notebook:enable-output-scrolling’<br />
+‘notebook:disable-output-scrolling’<br />
+‘notebook:save-with-view’</p>
 
-    <article></h4>
-    <div class="post-more">
-      
-      <a href="/deeplearning/2018/09/12/TFOD/#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
-      
-      <a href="/deeplearning/2018/09/12/TFOD/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
-    </div>
-  </div>
-  
-  <div class="post">
-    <h1 class="post-title">
-      <a href="/living/2018/09/07/Vacation/">
-        휴가
-      </a>
-    </h1>
+<p>너무 많은 관계로 <strong><a href="https://github.com/jupyterlab/jupyterlab/blob/af548c2674427da79d54ad5c4b69bb175463e9a0/packages/notebook-extension/src/index.ts#L69-L197">링크</a></strong> 참고해주세요.</p>
 
-    <span class="post-date">07 Sep 2018</span>
-     | 
-    
-    <a href="/blog/tags/#daily" class="post-tag">Daily</a>
-    
-    
+<p>이번 포스팅에선 예시로 
+<code class="highlighter-rouge">Restart and Clear</code> 에 대해서 shortcut을 설정해보겠습니다.</p>
 
-    <h4 style="font-weight: 400; line-height: 1.8;"><article>
-      <p>약 두 달정도 달려온 챌린지가 끝나고 처음으로 휴가를 얻었습니다.</p>
+<h2 id="설정-방법">설정 방법</h2>
 
-<p>일단은 이번 주 쉬고 다음 주부터 다시 연구 시작..!</p>
+<p>먼저 Jupyter Lab 을 실행시켜주세요.</p>
 
-<p>쉬면서 TensorFlow Object Detection API 설명서나 써보렵니다.</p>
+<p><img src="https://jjerry-k.github.io/public/img/shortcut/fig01.png" alt="fig1" /></p>
 
-    <article></h4>
-    <div class="post-more">
-      
-      <a href="/living/2018/09/07/Vacation/#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
-      
-      <a href="/living/2018/09/07/Vacation/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
-    </div>
-  </div>
-  
-  <div class="post">
-    <h1 class="post-title">
-      <a href="/deeplearning/2018/08/16/LSTM/">
-        LSTM 예제 코드
-      </a>
-    </h1>
+<p><strong>Advanced Setting Editor</strong> 를 클릭해주세요.</p>
 
-    <span class="post-date">16 Aug 2018</span>
-     | 
-    
-    <a href="/blog/tags/#tensorflow" class="post-tag">TensorFlow</a>
-    
-    
+<p><img src="https://jjerry-k.github.io/public/img/shortcut/fig02.png" alt="fig2" /></p>
 
-    <h4 style="font-weight: 400; line-height: 1.8;"><article>
-      <h2 id="tensorflow-lstm-예제-코드">TensorFlow LSTM 예제 코드</h2>
+<p>좌측에 <strong>Keyboard Shortuts</strong> 를 선택해주세요.</p>
 
-<p>여기저기서 TensorFlow LSTM 코드를 찾다가 예제를 제가 보기 편하게 작성햇습니다.</p>
+<p><img src="https://jjerry-k.github.io/public/img/shortcut/fig03.png" alt="fig3" /></p>
 
-<h3 id="추후에-새로운-코드로-업데이트-할-예정입니다"><strong>추후에 새로운 코드로 업데이트 할 예정입니다.</strong></h3>
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="n">tf</span>
-<span class="kn">from</span> <span class="nn">tensorflow.keras</span> <span class="kn">import</span> <span class="n">models</span><span class="p">,</span> <span class="n">layers</span><span class="p">,</span> <span class="n">optimizers</span><span class="p">,</span> <span class="n">losses</span>
-<span class="kn">from</span> <span class="nn">tensorflow.keras.utills</span> <span class="kn">import</span> <span class="n">to_categorical</span>
+<p>여기서 왼쪽의 창은 default setting에 대한 설명이고 오른쪽을 Custom 을 위해 기입하는 부분입니다.</p>
 
-<span class="c1"># Setting hyper parameter
-</span><span class="n">learning_rate</span> <span class="o">=</span> <span class="mf">0.001</span>
-<span class="n">total_epoch</span> <span class="o">=</span> <span class="mi">30</span>
-<span class="n">batch_size</span> <span class="o">=</span> <span class="mi">128</span>
-<span class="n">n_input</span> <span class="o">=</span> <span class="mi">28</span>
-<span class="n">n_step</span> <span class="o">=</span> <span class="mi">28</span>
-<span class="n">n_hidden1</span> <span class="o">=</span> <span class="mi">128</span>
-<span class="n">n_class</span> <span class="o">=</span> <span class="mi">10</span>
+<p>그럼 예시대로 <code class="highlighter-rouge">Restart and Clear</code> 에 대해서 shortcut을 설정해보겠습니다.</p>
 
-<span class="c1"># Loading Mnist Data
-</span><span class="n">mnist</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">mnist</span>
-<span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">),</span> <span class="p">(</span><span class="n">x_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span> <span class="o">=</span> <span class="n">mnist</span><span class="o">.</span><span class="n">load_data</span><span class="p">()</span>
-<span class="n">x_train</span><span class="p">,</span> <span class="n">x_test</span> <span class="o">=</span> <span class="n">x_train</span><span class="o">/</span><span class="mf">255.</span><span class="p">,</span> <span class="n">x_test</span><span class="o">/</span><span class="mf">255.</span>
-<span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">to_categorical</span><span class="p">(</span><span class="n">y_train</span><span class="p">,</span> <span class="n">n_class</span><span class="p">),</span> <span class="n">to_categorical</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">n_class</span><span class="p">)</span>
-<span class="n">tf</span><span class="o">.</span><span class="n">set_random_seed</span><span class="p">(</span><span class="mi">777</span><span class="p">)</span>
+<p>위에 기능에 대해서 링크 올려드렸었죠? 그 깃헙에서 링크에 대한 내용을 먼저 찾아봅니다.</p>
 
-<span class="n">X</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">placeholder</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span> <span class="p">[</span><span class="bp">None</span><span class="p">,</span> <span class="n">n_step</span><span class="p">,</span> <span class="n">n_input</span><span class="p">])</span>
-<span class="n">Y</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">placeholder</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span> <span class="p">[</span><span class="bp">None</span><span class="p">,</span> <span class="n">n_class</span><span class="p">])</span>
+<p><img src="https://jjerry-k.github.io/public/img/shortcut/fig04.png" alt="fig4" /></p>
 
-<span class="n">W</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">random_normal</span><span class="p">([</span><span class="n">n_hidden1</span><span class="p">,</span> <span class="n">n_class</span><span class="p">]))</span>
-<span class="n">b</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">random_normal</span><span class="p">([</span><span class="n">n_class</span><span class="p">]))</span>
+<p>거기서 ‘{기능 이름}’ 부분을 복사해주세요.</p>
 
-<span class="c1"># LSTM cell 선언.
-# RNN을 쓰고 싶으면 BasicRNNCell로 바꾸면 됨.
-# Stacked LSTM을 하고 싶으면 cell2 선언.
-</span><span class="n">cell</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">rnn_cell</span><span class="o">.</span><span class="n">BasicLSTMCell</span><span class="p">(</span><span class="n">n_hidden1</span><span class="p">)</span>
-<span class="c1">#cell2 = tf.nn.rnn_cell.BasicLSTMCell(n_hidden1)
-</span>
-<span class="c1"># 선언된 LSTM cell, X를 이용하여 네트워크 생성.
-</span><span class="n">outputs_1</span><span class="p">,</span> <span class="n">states_1</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">dynamic_rnn</span><span class="p">(</span><span class="n">cell</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span><span class="n">scope</span><span class="o">=</span><span class="s">"LSTM1"</span><span class="p">)</span>
+<p>그리고 다음과 같이 기입해줍니다.</p>
 
-<span class="c1"># Stacked LSTM을 하고 싶으면 다음과 같이 선언.
-#outputs_2, states_2 = tf.nn.dynamic_rnn(cell2, outputs_1, dtype=tf.float32, scope="LSTM2")
-</span>
-<span class="c1"># LSTM -&gt; Fully Connected Layer -&gt; Classification
-</span>
-<span class="c1"># outputs_1 : [ ? , num_step, num_hidden
-#             -&gt; [num_step, ? , num_hidden]
-</span><span class="n">outputs</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">outputs_1</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+<p><img src="https://jjerry-k.github.io/public/img/shortcut/fig05.png" alt="fig5" /></p>
 
-<span class="c1"># Sequence의 마지막 출력값
-</span><span class="n">outputs</span> <span class="o">=</span> <span class="n">outputs</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-<span class="n">model</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">outputs</span><span class="p">,</span> <span class="n">W</span><span class="p">)</span> <span class="o">+</span> <span class="n">b</span>
+<p>그리고 우측 상단에 저장버튼을 누르고 노트북에서 Shift + Command + C 를 눌렀을때 <code class="highlighter-rouge">Restart and Clear</code> 이 작동하게 됩니다.</p>
 
-<span class="n">cost</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">reduce_mean</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">softmax_cross_entropy_with_logits_v2</span><span class="p">(</span><span class="n">logits</span><span class="o">=</span><span class="n">model</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">Y</span><span class="p">))</span>
-<span class="n">optimizer</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">train</span><span class="o">.</span><span class="n">AdamOptimizer</span><span class="p">(</span><span class="n">learning_rate</span><span class="p">)</span><span class="o">.</span><span class="n">minimize</span><span class="p">(</span><span class="n">cost</span><span class="p">)</span>
+<p>사진만 보고 따라 적으시기 귀찮으실테니 code block 으로 남깁니다.</p>
 
-<span class="c1"># GPU 메모리 할당.
-</span><span class="n">config</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">ConfigProto</span><span class="p">()</span>
-<span class="n">config</span><span class="o">.</span><span class="n">gpu_options</span><span class="o">.</span><span class="n">allow_growth</span> <span class="o">=</span> <span class="bp">True</span>
-<span class="n">sess</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">Session</span><span class="p">(</span><span class="n">config</span><span class="o">=</span><span class="n">config</span><span class="p">)</span>
-<span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">global_variables_initializer</span><span class="p">())</span>
-
-<span class="n">total_batch</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">mnist</span><span class="o">.</span><span class="n">train</span><span class="o">.</span><span class="n">num_examples</span><span class="o">/</span><span class="n">batch_size</span><span class="p">)</span>
-
-<span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">total_epoch</span><span class="p">):</span>
-    <span class="n">total_cost</span> <span class="o">=</span> <span class="mi">0</span>
-
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">total_batch</span><span class="p">):</span>
-        <span class="n">batch_xs</span><span class="p">,</span> <span class="n">batch_ys</span> <span class="o">=</span> <span class="n">mnist</span><span class="o">.</span><span class="n">train</span><span class="o">.</span><span class="n">next_batch</span><span class="p">(</span><span class="n">batch_size</span><span class="p">)</span>
-
-
-        <span class="n">batch_xs</span> <span class="o">=</span> <span class="n">batch_xs</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">n_step</span><span class="p">,</span> <span class="n">n_input</span><span class="p">))</span>
-
-        <span class="n">_</span><span class="p">,</span> <span class="n">cost_val</span> <span class="o">=</span> <span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">([</span><span class="n">optimizer</span><span class="p">,</span> <span class="n">cost</span><span class="p">],</span>
-                               <span class="n">feed_dict</span><span class="o">=</span><span class="p">{</span><span class="n">X</span><span class="p">:</span> <span class="n">batch_xs</span><span class="p">,</span> <span class="n">Y</span><span class="p">:</span> <span class="n">batch_ys</span><span class="p">})</span>
-        <span class="n">total_cost</span> <span class="o">+=</span> <span class="n">cost_val</span>
-
-    <span class="k">print</span><span class="p">(</span><span class="s">'Epoch : </span><span class="si">%04</span><span class="s">d'</span><span class="o">%</span> <span class="p">(</span><span class="n">epoch</span> <span class="o">+</span> <span class="mi">1</span><span class="p">),</span><span class="s">'Avg cost : {:f}'</span><span class="o">.</span><span class="nb">format</span><span class="p">(</span><span class="n">total_cost</span> <span class="o">/</span> <span class="n">total_batch</span><span class="p">))</span>
-
-<span class="k">print</span><span class="p">(</span><span class="s">'Optimization Done'</span><span class="p">)</span>
-
-<span class="n">is_correct</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">equal</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">tf</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
-<span class="n">accuracy</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">reduce_mean</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="n">is_correct</span><span class="p">,</span> <span class="n">tf</span><span class="o">.</span><span class="n">float32</span><span class="p">))</span>
-
-<span class="n">test_batch_size</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">mnist</span><span class="o">.</span><span class="n">test</span><span class="o">.</span><span class="n">images</span><span class="p">)</span>
-<span class="n">test_xs</span> <span class="o">=</span> <span class="n">mnist</span><span class="o">.</span><span class="n">test</span><span class="o">.</span><span class="n">images</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">test_batch_size</span><span class="p">,</span> <span class="n">n_step</span><span class="p">,</span> <span class="n">n_input</span><span class="p">)</span>
-<span class="n">test_ys</span> <span class="o">=</span> <span class="n">mnist</span><span class="o">.</span><span class="n">test</span><span class="o">.</span><span class="n">labels</span>
-
-<span class="k">print</span><span class="p">(</span><span class="s">'Test Accuracy : '</span><span class="p">,</span> <span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">accuracy</span><span class="p">,</span> <span class="n">feed_dict</span><span class="o">=</span><span class="p">{</span><span class="n">X</span><span class="p">:</span> <span class="n">test_xs</span><span class="p">,</span> <span class="n">Y</span><span class="p">:</span> <span class="n">test_ys</span><span class="p">}))</span>
-
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>"shortcuts": [
+    {
+        "command": "kernelmenu:restart-and-clear",
+        "keys": ["Shift + Ctrl + C"],
+        "selector": "[data-jp-kernel-user]:focus"
+        }]
 </code></pre></div></div>
 
+<p>과정을 요약해드리면 (Jupyter Lab 켜기 ~ Editor 열기 까지는 생략)</p>
+<ol>
+  <li>기능에 대한 링크에서 자신이 원하는 기능 찾기</li>
+  <li>위에 code block 에서 “command”: 부분에 ‘{기능 이름}’ 기입</li>
+  <li>“keys”: 에 원하는 커맨드 넣기 (복수개 가능)</li>
+  <li>“selector”: 에 .jp-Notebook:focus” 혹은 “[data-jp-kernel-user]:focus” 기입</li>
+  <li>저장 후 즐겁게 사용!</li>
+</ol>
+
+<p>shortcut 설정은 여기까지 입니다.<br />
+혹시 이외에 다른 설정에 대해 궁금한거 있으시면 comment 남겨주세요!</p>
+
+<h3 id="참고사항-1">참고사항</h3>
+<blockquote>
+  <p>만약 <strong>A 기능은 Shift + Alt + C</strong> 이고 <strong>B 기능은 Alt + Shift + C</strong> 일때… 전체적으로 보면 같은 키 입력이지만 순서가 다르기 때문에 <strong>별개의 shortcut으로 작동</strong>합니다.</p>
+</blockquote>
+
     <article></h4>
     <div class="post-more">
       
-      <a href="/deeplearning/2018/08/16/LSTM/#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
+      <a href="/python/2019/09/07/Jupyter_shortcut/#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
       
-      <a href="/deeplearning/2018/08/16/LSTM/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
+      <a href="/python/2019/09/07/Jupyter_shortcut/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
     </div>
   </div>
   
   <div class="post">
     <h1 class="post-title">
-      <a href="/living/2018/07/10/Raspberry-Mini-PC/">
-        라즈베리파이로 미니 PC 만들기!
+      <a href="/python/2019/07/10/Multiple_Kernel/">
+        jupyter (ipython) 여러 커널 사용하기!
       </a>
     </h1>
 
-    <span class="post-date">10 Jul 2018</span>
+    <span class="post-date">10 Jul 2019</span>
      | 
     
-    <a href="/blog/tags/#hardware" class="post-tag">Hardware</a>
+    <a href="/blog/tags/#setting" class="post-tag">Setting</a>
     
     
 
     <h4 style="font-weight: 400; line-height: 1.8;"><article>
-      <p>근래에 라즈베리파이로 미니 PC를 만들었습니다!</p>
+      <p>Anaconda 를 사용하다보면 여러 가상환경을 만들게 됩니다. (아닐수도 있구요…)<br />
+그 후에 jupyter 를 사용하시는 분들이라면 대부분 이렇게 사용하실 겁니다.</p>
 
-<p>그래서 만드는 과정에 대해 글을 써보려고 합니다!</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>conda activate 환경이름
+jupyter notebook
+</code></pre></div></div>
 
-<p>제가 사용한 보드는….
-https://www.raspberrypi.org/products/raspberry-pi-3-model-b-plus/</p>
+<p><code class="highlighter-rouge">conda activate 환경이름</code> 이라는걸 <strong>무.조.건</strong> 써줘야하죠..<br />
+이게 매우 귀찮았습니다…</p>
+<blockquote>
+  <p>“activate 없이 base에서 <code class="highlighter-rouge">jupyter notebook</code>을 실행해도 가상환경을 잡을 수 있는 방법이 없나..”</p>
+</blockquote>
 
-<p>올해 출시한 라즈베리파이 3 B+ 입니다!(개인적으로 라즈베리를 처음 써봅니다…)</p>
+<p>이런 생각 많이들 하실 것 같습니다.<br />
+당연히 방법이 있습니다!<br />
+그 방법에 대해 알려드리겠습니다.</p>
 
-<p>방열판도 붙여줬지요!</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>conda activate <span class="o">{</span>환경이름<span class="o">}</span>
+python <span class="nt">-m</span> ipykernel <span class="nb">install</span> <span class="nt">--user</span> <span class="nt">--name</span> <span class="o">{</span>환경이름<span class="o">}</span> <span class="nt">--display-name</span> <span class="o">{</span>Jupyter에 표시될 이름<span class="o">}</span>
+</code></pre></div></div>
 
-<p><img src="https://jjerry-k.github.io/public/img/pi/01.jpg" /></p>
+<p>이렇게 하시면 됩니다. 예시를 직접 보여드리겠습니다.</p>
 
-<p>아래 사진은 제가 HDD를 장착 할 것이기 때문에….SATA 확장보드…그리고 케이스, 어댑터 구매 내역입니다!</p>
+<p><img src="https://jjerry-k.github.io/public/img/multi_kernel/01.png" /></p>
 
-<p><img src="https://jjerry-k.github.io/public/img/pi/02.jpg" /></p>
+<p>저는 base 환경만 썼습니다. 가상환경을 가볍게 하나 만들도록 할게요!</p>
 
-<p>솔직히…부품들 뚝딱 뚝딱 제작(조립이 맞을 듯…)하는 것 보다 알리발 상품들 기다리는게 더 힘들었어요…. 쥬륵….</p>
+<p><img src="https://jjerry-k.github.io/public/img/multi_kernel/02.png" /></p>
 
-<p>7일 정도 기다린것 같네요…..</p>
+<p><code class="highlighter-rouge">test</code>라는 가상환경을 만들었습니다. 먼저 <strong>kernel을 추가하지 않고</strong> jupyter notebook을 실행해보겠습니다.</p>
 
-<p>박스 오자마자 정말 광속으로 뜯었습니다…..</p>
+<p><img src="https://jjerry-k.github.io/public/img/multi_kernel/03.png" />
+<img src="https://jjerry-k.github.io/public/img/multi_kernel/04.png" /></p>
 
-<p>케이스
-<img src="https://jjerry-k.github.io/public/img/pi/03.jpg" /></p>
+<p>첫번째 사진을 보시면 <strong>Python 3</strong> 만 나오는걸 보실 수 있습니다. 저 <strong>Python 3</strong> 는 base의 Python을 가리킵니다.<br />
+base에는 제가 tensorflow를 설치해놨기 때문에 import 가 잘 작동하는군요..<br />
+그럼 kernel을 추가해보겠습니다.  (일단 test 환경에 ipython 이 안깔려있어서 설치함..)</p>
 
-<p>SATA 확장보드
-<img src="https://jjerry-k.github.io/public/img/pi/04.jpg" /></p>
+<p><img src="https://jjerry-k.github.io/public/img/multi_kernel/05.png" />
+<img src="https://jjerry-k.github.io/public/img/multi_kernel/06.png" /></p>
 
-<p>전용 어댑터 (5V 4A)
-<img src="https://jjerry-k.github.io/public/img/pi/05.jpg" /></p>
+<p>커널을 추가하고 나면 <code class="highlighter-rouge">Installed ~~~~</code> 라는 메세지를 보실 수 있어요!<br />
+그럼 다시 base로 돌아가서 jupyter notebook을 실행해보겠습니다.</p>
 
-<p>넘나…감동…</p>
+<p><img src="https://jjerry-k.github.io/public/img/multi_kernel/07.png" />
+<img src="https://jjerry-k.github.io/public/img/multi_kernel/08.png" /></p>
 
-<p>금방 조립했습니다..</p>
+<p>첫번째 사진을 보시면 추가하기 전과는 다르게 <strong>test</strong> 라는 항목이 추가되었습니다!<br />
+실행을 해봐도 tensorflow 모듈이 없다고 나오는걸 확인하실 수 있습니다!<br />
+앞으로는 <code class="highlighter-rouge">conda activate ~~</code>를 안하셔도 되요! (뿌듯)</p>
 
-<p><img src="https://jjerry-k.github.io/public/img/pi/06.jpg" /></p>
+<p>이번 포스팅은 여기까지 입니다.<br />
+많은 분들께 도움이 되었으면 좋겠네요!</p>
 
-<p>조립하는데 집중해서 사진을 잘 안찍었어요…쥬륵…</p>
-
-<p><img src="https://jjerry-k.github.io/public/img/pi/07.jpg" /></p>
-
-<p>아…저 맨 아래에 다리는 안달아도 되는거였어요….</p>
-
-<p><img src="https://jjerry-k.github.io/public/img/pi/08.jpg" /></p>
-
-<p>케이스를 분리하면 이렇게 생겼어요…(누가봐도 팬이 달릴 부분..)</p>
-
-<p><img src="https://jjerry-k.github.io/public/img/pi/09.jpg" /></p>
-
-<p>달아줍니다..</p>
-
-<p><img src="https://jjerry-k.github.io/public/img/pi/10.jpg" /></p>
-
-<p>차례 차례 전원 연결…</p>
-
-<p><img src="https://jjerry-k.github.io/public/img/pi/11.jpg" /></p>
-
-<p>뒷판을 조립하고!</p>
-
-<p><img src="https://jjerry-k.github.io/public/img/pi/12.jpg" /></p>
-
-<p>브릿지? 를 연결!</p>
-
-<p><img src="https://jjerry-k.github.io/public/img/pi/13.jpg" /></p>
-
-<p>어댑터 연결 후 켜시면 됩니다…
-좀 더 정확한 크기 확인을 위해 사진을 좀 찍어봤어요!</p>
-
-<p><img src="https://jjerry-k.github.io/public/img/pi/14.jpg" /></p>
-
-<p>제 주먹이랑 한 컷…</p>
-
-<p><img src="https://jjerry-k.github.io/public/img/pi/15.jpg" /></p>
-
-<p>마지막으로 제 12인치 맥북이랑 한컷….</p>
-
-<p><img src="https://jjerry-k.github.io/public/img/pi/16.jpg" /></p>
-
-<p>처음으로 라즈베리파이를 사용해보면서…정말 재밌고 신기하네요 ㅎㅎㅎ
-(물론 가끔 설정하다가 뻑나면…짜증….)</p>
-
-<p>나중엔 캠을 달아서 사물인식 같은 걸 해볼까 합니다!</p>
-
-<p>너무….불친절한 글 같네요….</p>
-
-<p>나중에 또 뭔가 재미난걸 하면 올리겠습니다!</p>
-
-<p>감사합니다!</p>
+<p><strong>PS. jupyter notebook 우측 상단쪽에 어떤 커널로 실행하고 있는지 표시가 됩니다.  (<code class="highlighter-rouge">Logout</code> 아래)</strong></p>
 
     <article></h4>
     <div class="post-more">
       
-      <a href="/living/2018/07/10/Raspberry-Mini-PC/#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
+      <a href="/python/2019/07/10/Multiple_Kernel/#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
       
-      <a href="/living/2018/07/10/Raspberry-Mini-PC/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
+      <a href="/python/2019/07/10/Multiple_Kernel/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
     </div>
   </div>
   
   <div class="post">
     <h1 class="post-title">
-      <a href="/living/2017/08/04/Desktop/">
-        데스크탑 조립기
+      <a href="/python/2019/07/06/DICOM/">
+        Python으로 DICOM 영상을 읽어보자!
       </a>
     </h1>
 
-    <span class="post-date">04 Aug 2017</span>
+    <span class="post-date">06 Jul 2019</span>
      | 
     
-    <a href="/blog/tags/#hardware" class="post-tag">Hardware</a>
+    <a href="/blog/tags/#usage" class="post-tag">Usage</a>
     
     
 
     <h4 style="font-weight: 400; line-height: 1.8;"><article>
-      <h1 id="building-desktop">Building Desktop</h1>
+      <p>예~~전에 <a href="https://jjerry-k.github.io/python/2019/01/23/nifti/">NIfTI</a> 파일을 load 하는 방법을 올렸었습니다! <br />
+이번에는 Python에서 <a href="https://www.dicomstandard.org">DICOM</a> 포맷의 데이터를 load 하는 방법에 대한 포스팅을 해보려고 합니다.</p>
 
-<p>학부생 연구원으로 연구실에서 공부와 연구를 하고 있지만..<br />
-개인용 데스크탑이 없어서 노트북이 굉장히 고생을 많이 했습니다..<br />
-1차 피해자 Dell Inspiron 15 7559..<br />
-현재는 다른 주인에게로 넘어간 상태..<br />
-2차 피해자 Lenovo yoga 2 pro..<br />
-근래에 고생하다가 친구한테 넘어감..</p>
+<p>가장 먼저 관련 패키지인 <a href="https://pydicom.github.io/pydicom/stable/index.html"><code class="highlighter-rouge">Pydicom</code></a> 을 설치를 해줍니다.</p>
 
-<p>결국!<br />
-어짜피 나중에 집에서 쓸 데스크탑을 맞춘다고 생각하고!<br />
-부품을 각각 사서 조립을 하기로 했습니다!!</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>conda <span class="nb">install</span> <span class="nt">-c</span> conda-forge pydicom
+</code></pre></div></div>
 
-<p>CPU : 인텔 i5-7600<br />
-메인보드 : 기가바이트 Z270N-WIFI 듀러블에디션<br />
-메모리 : 커세어 VENGEANCE PC4-21300 8G x 2<br />
-VGA : EVGA GeForce GTX 1050ti sc gaming<br />
-SSD : 삼성 850 EVO M.2 (256GB)<br />
-HDD : Toshiba 1TB MQ01ABD100<br />
-케이스 : Fractal Design node 202<br />
-파워 : 커세어 SF450 80PLUS GOLD</p>
+<p>저번과 똑같이 단순한 설치방법!</p>
 
-<p>오자마자 포스팅 생각없이 조립을 해버림…</p>
+<p>이제 코딩으로 읽어보겠습니다.<br />
+예시 데이터로 다음 <a href="https://github.com/pydicom/pydicom/blob/master/pydicom/data/test_files/MR_small.dcm">링크</a>에 있는 영상을 이용하였습니다.</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="kn">import</span> <span class="nn">pydicom</span> <span class="k">as</span> <span class="n">di</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
 
-<p><img src="https://jjerry-k.github.io/public/img/desktop/01.jpg" /></p>
+<span class="n">data</span> <span class="o">=</span> <span class="n">di</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="s">".dcm 경로"</span><span class="p">)</span>
+<span class="c1">#data = di.dcmread(".dcm 경로") # 편한거 쓰시면 됩니다.
+</span>
+<span class="n">img</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">pixel_array</span>
 
-<p>커세어의 위엄…..번쩍번쩍 램….이쁘다…</p>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img</span><span class="p">)</span> <span class="c1"># 슬라이스 1장일 경우
+#plt.imshow(img[:,:,"slice 번호"]) # 슬라이스가 여러 장일 경우
+</span><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
 
-<p><img src="https://jjerry-k.github.io/public/img/desktop/02.jpg" /></p>
+<p>이런 식으로 작성하시면 됩니다.<br />
+ 예시를 보여드리면</p>
 
-<p>사이트에는 Fractal 로고가 위로 올라오게 해놨지만…</p>
+<p><img src="https://jjerry-k.github.io/public/img/dicom/01.png" /></p>
 
-<p>그렇게하면 파워의 위치가 위가 되버려서 난 반대로 로고가 아래로 내려가게 했습니다.</p>
+<p>예시 영상이 좀 작네요…<br />
+어쨌든 이런 식으로 읽습니다.</p>
 
-<p>후기</p>
+<p>흠….NIfTI와 DICOM을 했으니…다음엔 <strong>Insight Meta-Image</strong> 를 해보겠습니다!</p>
+
+    <article></h4>
+    <div class="post-more">
+      
+      <a href="/python/2019/07/06/DICOM/#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
+      
+      <a href="/python/2019/07/06/DICOM/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
+    </div>
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/deeplearning/2019/07/05/Thin/">
+        Review: MRI interpolation using Deep Learning
+      </a>
+    </h1>
+
+    <span class="post-date">05 Jul 2019</span>
+     | 
+    
+    <a href="/blog/tags/#paper" class="post-tag">Paper</a>
+    
+    
+
+    <h4 style="font-weight: 400; line-height: 1.8;"><article>
+      <h1 id="deep-generative-adversarial-networks-for-thin-section-infant-mr-image-reconstruction">Deep Generative Adversarial Networks for Thin-Section Infant MR Image Reconstruction</h1>
 
 <ul>
-  <li>
-    <p>데스크탑을 사용만 해봤지 조립은 처음이였음..</p>
+  <li>Jiaqi Gu<sup>1</sup>, Zezu Li<sup>1</sup>, YuanYuan Wans<sup>1, 3</sup>, Haowei Yang<sup>2</sup>, Zhongwei Qiao<sup>2</sup>, and Jinhua Yu<sup>1, 3</sup></li>
+  <li><sup>1</sup>School of Information Science and Technology, Fudan University, Shanghai 200433, China<br />
+<sup>2</sup>The Children’s Hospital of Fudan University, Shanghai 201102, China<br />
+<sup>3</sup>Key Laboratory of Medical Imaging Computing and Computer Assisted Intervention of Shanghai, Department of Electronic Engineering, Institute of Functional
+and Molecular Medical Imaging, Fudan University, Shanghai 200433, China
+—</li>
+</ul>
+
+<h2 id="abstract">Abstract</h2>
+<ul>
+  <li>Thin section magnetic resonance images (<strong>Thin MRI</strong>) 는 뇌수술, 뇌 구조 분석에 좋은 영상.</li>
+  <li>하지만 Thick section magnetic resonance images (<strong>Thick MRI</strong>) 에 비해 imaging cost가 많이 들기 때문에 잘 사용되지 않음.</li>
+  <li>Thick MRI 2 Thin MRI 제안.</li>
+  <li>Two stage( GAN -&gt; CNN )로 구성하였고 Thick MRI의 Axial, Sigittal plane을 이용하여 Thin MRI의 Axial reconstruction.</li>
+  <li>3D-Y-Net-GAN 은 Axial, Sagittal Thick MRI 를 이용하여 Fusion.</li>
+  <li>3D-Dense U-Net은 Sagittal plane에 대해 세부적인 calibrations, structual correction 제공.</li>
+  <li>Loss function 은 structual detail을 Network가 capture 할 수 있도록 제안.</li>
+  <li>bicubic, sparse representation, 3D-SRU-Net 과 비교.</li>
+  <li>35번의 Cross-validation, 114개를 이용하여 두개의 testset 구성.
+    <ul>
+      <li>PSNR : 23.5 % 증가.</li>
+      <li>SSIM : 90.5 % 증가.</li>
+      <li>MMI : 21.5 % 증가.</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="introduction">Introduction</h2>
+<ul>
+  <li>Thin MRI 는 slice thickness가 1mm이고 sapcing gap이 0mm.</li>
+  <li>하지만 항상 Thin MRI를 사용할 수 없음.</li>
+  <li>일반적으로 사용하는 Thick MRI는 slice thickness가 4~6mm 이고 sapcing gap이 0.4~1mm.
+    <ul>
+      <li>해상도 : Thin MRI &gt; Thick MRI</li>
+    </ul>
+  </li>
+  <li>인간의 뇌 발달에 대한 insight를 주기 때문에 유아의 brain MR image는 어른의 brain MR image 보다 연구에 가치가 있음</li>
+  <li>하지만 유아의 MR image를 얻는게 쉽지 않음.</li>
+  <li>그래서 Thick to Thin 제안.</li>
+  <li>기존 traditional interpolation algorithm
+    <ul>
+      <li>시각적으로는 성능이 좋아보임. 하지만 성인의 brain 에 초점을 맞춤.</li>
+      <li><strong><a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4478865/pdf/JMI-001-034007.pdf">Interpolation-based super-resolution reconstruction: effects of slice thickness</a></strong></li>
+      <li><strong><a href="https://www.hindawi.com/journals/ijbi/2013/395915/">Evaluation of interpolation effects on upsampling and accuracy of cost functions-based optimized automatic image registration</a></strong></li>
+    </ul>
+  </li>
+  <li>Frame interpolation 방법과 같이 적용 가능.
+    <ul>
+      <li><strong><a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&amp;arnumber=8110374">Slice Interpolation in MRI Using a Decomposition-reconstruction Method</a></strong></li>
+    </ul>
+  </li>
+  <li>Super-resolution 문제로 적용할 수도 있음.
+    <ul>
+      <li><strong><a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&amp;arnumber=5466111">Image super-resolution via sparse representation</a></strong></li>
+    </ul>
+  </li>
+  <li>CNN, GAN 이 발전하면서 super-resolution 이 탄력을 받음.
+    <ul>
+      <li><strong>[<a href="https://link.springer.com/chapter/10.1007/978-3-319-67564-0_12">Context-Sensitive Super-Resolution for Fast Fetal Magnetic Resonance Imaging</a></strong>]</li>
+      <li><strong>[<a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=8417964">Deep Generative Adversarial Neural Networks for Compressive Sensing MRI</a>]</strong></li>
+    </ul>
+  </li>
+  <li>이전에 성인의 Thick MRI를 Thin MRI 로 reconstruction 하는 3D-SRGAN 제안했으나 axial plane만 고려했음. <strong>[<a href="https://link.springer.com/chapter/10.1007%2F978-3-319-67389-9_38">Reconstruction of Thin-Slice Medical Images Using Generative Adversarial Network</a>]</strong></li>
+  <li>Deep Learning 이 reconstruction performance 뿐 아니라 reconstruction time 감소에도 매우 효과적인걸 보임.</li>
+</ul>
+
+<h2 id="proposed-method">Proposed Method</h2>
+
+<h3 id="a-overview">A. Overview</h3>
+<ul>
+  <li>CNN은 기존에도 super-resolution에서 많이 사용됨.</li>
+  <li>하지만 최근까지 제안된 Network는 대부분 2D image에 대한 upscaling.</li>
+  <li>몇몇 Network는 3D image로 확장했지만 그렇게 효과를 보지 못했음.</li>
+  <li>이 논문의 Flow
+<img src="https://jjerry-k.github.io/public/img/thin/fig01.PNG" /></li>
+</ul>
+
+<p><img src="https://jjerry-k.github.io/public/img/thin/fig02.PNG" /></p>
+
+<h3 id="b-network-architecture">B. Network Architecture</h3>
+<ul>
+  <li>First stage는 3D-Y-Net-GAN 으로 Thick MRI를 Thin MRI로 생성 후 3D-DenseU-Net으로 recalibration.</li>
+</ul>
+
+<h4 id="3d-y-net-gan">3D-Y-Net-GAN</h4>
+<ul>
+  <li>Input : Axial, Sagittal Thick MRI</li>
+  <li>Output : Thin MRI</li>
+  <li>r : Upscaling Factor ( r = 8 일 경우의 예시 )</li>
+</ul>
+
+<p><img src="https://jjerry-k.github.io/public/img/thin/fig03.PNG" /></p>
+
+<ul>
+  <li>Feature Extraction Branches
+    <ul>
+      <li>각 input에 대한 feature 추출.</li>
+      <li>Maxpooling layer에서 [1, 2, 1], [2, 1, 1]의 다른 strides factor 적용.</li>
+      <li>3D convolutional layer 는 Convolution + Batch Normalization + Swish 로 구성.
+        <ul>
+          <li><a href="https://arxiv.org/pdf/1710.05941.pdf">Swish</a>는 Activation 의 종류로 ReLU로 인해 생기는 Dead neuron을 극복할 수 있음. <strong>-&gt; 근데 굳이 왜 swish일까…</strong></li>
+        </ul>
+      </li>
+      <li>layers 를 거친 후 shape 의 변화
+        <ul>
+          <li>Axial : [H, W, S, 1] -&gt; [H/2, W/2, S, 32]</li>
+          <li>Sagittal : [H, W, r*S, 1] -&gt; [H/2, W/2, S, 32]</li>
+        </ul>
+      </li>
+      <li>Axial과 Sagittal의 shape이 다르기 때문에 Sagittal 에 대해서 preprocessing으로 3개의 3d convolution layer 적용.</li>
+    </ul>
+  </li>
+  <li>Feature Fusion Branch
+    <ul>
+      <li>두 feature를 channel 방향으로 Concatanation.</li>
+      <li>W 방향으로 Upsampling 후 H 방향으로 Downsampling feature 를 Concatanation.</li>
+      <li>H 방향으로 Upsampling 후 첫번째 Block의 Feature map을 Concatanation</li>
+      <li>U-Net 에서 아이디어를 얻었고 structual alignment, gradient-vanishing 등을 완화.</li>
+    </ul>
+  </li>
+  <li>Reconstruction Branch
+    <ul>
+      <li>Figure 3 (b) 와 같은 구조.</li>
+      <li>Upsampling layer 3개를 연속으로 붙여서 8배 확장하는 구조 대신에 Multipath upscaling strategy 적용. <strong>-&gt; Artifact 완화 효과…?</strong></li>
+    </ul>
   </li>
   <li>
-    <p>괜히 작은 케이스로 해서 선정리가 힘들었음..</p>
+    <p>Discriminator
+<img src="https://jjerry-k.github.io/public/img/thin/fig04.PNG" /></p>
+
+    <ul>
+      <li>Axial Image, Saggital Image, Combination Image 가 Real Pair인지 Fake Pair인지 감별.</li>
+      <li>Input : ($I^A$, $I^Y$, $I^S$), ($I^A$, $I^{GT}$, $I^S$)</li>
+      <li>Output : Real, Fake</li>
+    </ul>
   </li>
-  <li>
-    <p>살 수 있는건 중고나라를 이용해서 미개봉품을 싸게 삼.</p>
+</ul>
+
+<h4 id="3d-denseu-net">3D-DenseU-Net</h4>
+<p><img src="https://jjerry-k.github.io/public/img/thin/fig05.PNG" /></p>
+
+<ul>
+  <li>전체적인 구조는 U-Net이지만 2개의 Enhanced residual block 을 적용하여 detail recalibration.</li>
+  <li>Input :  $I^Y$, $I^S$, $I^{YA}$ <strong>-&gt; 어떻게 3개가 input으로…?</strong></li>
+  <li>Output : Thin MR Image</li>
+  <li>$I^A$ 를 $I^Y$ 의 해당 위치에 insertion 하여 $I^{YA}$ 생성. -&gt; 아직 이해 X..
+    <ul>
+      <li>Axial Information 을 이용하여 정확한 axial 을 만들기 위해…</li>
+      <li>$I^S$ 를 $I^Y$ 에 insertion하게 되면 Sagittal 에 대한 information 이 과해지기 때문에 Reconstrtion Axial Image의 Quality 가 안좋아 질 것!</li>
+    </ul>
   </li>
-  <li>
-    <p>25만원 정도 절약함.</p>
+  <li>End-to-End 가 아니라 각각 따로따로 학습. <strong>-&gt; Faster RCNN 과 같은 방식으로 할런지….?</strong></li>
+</ul>
+
+<h4 id="loss-function">Loss Function</h4>
+<ul>
+  <li>$G$ 는 generator 라는 의미.</li>
+  <li>Self-Adaptive Charbonnier Loss
+    <ul>
+      <li>일반적으로 많이 사용되는 $\ell2$ 전반적으로 Smoothing 하게 만들어지고 $\ell1$ 은 GT와 Prediction 의 차이로 indiscriminate 하게 학습.</li>
+      <li><a href="https://arxiv.org/pdf/1704.03915.pdf">Deep Laplacian Pyramid Networks for Fast and Accurate Super-Resolution</a>에 따르면 <strong>Charbonnier loss</strong>(미분가능한 $\ell1$의 분산)가 $\ell1$, $\ell2$ 보다 성능이 뛰어남.</li>
+      <li><a href="https://arxiv.org/pdf/1706.03142.pdf">Deep Learning for Isotropic Super-Resolution from Non-Isotropic 3D Electron Microscopy</a> 에 따르면 <strong>Cubic-weighted mean square error</strong> 가 Generated 영상과 Ground truth 간의 차이가 큰 “어려운” 부분의 성능을 강조.</li>
+      <li>다음과 같은 Loss 제안.</li>
+      <li>$\epsilon$ 은 default로 $10^{-6}$</li>
+    </ul>
   </li>
-  <li>
-    <p>내 눈에만 이쁘면 됬음.</p>
+</ul>
+
+<script type="math/tex; mode=display">L^G_{SC} = \frac{1}{rLWH}\sum_{x,y,z=1,1,1}^{L,W,rH}\sqrt{(I^{GT}_{x,y,z}-I^Y_{z,y,z})^2+\epsilon}\cdot\bigg(\frac{1}{2}+\frac{(I^{GT}_{x,y,z}-I^Y_{z,y,z})^2}{2max((I^{GT}-I^Y)^2)}\bigg)</script>
+
+<ul>
+  <li>3-D Gradient Correction Loss
+    <ul>
+      <li>Charbonnier Loss는 Pixelwise difference에 대한 Loss, Gradient에 대한 손실을 줄 수 있음.</li>
+      <li>다음과 같이 각 axis에 대한 Gradient 를 이용하여 Loss 제안.</li>
+    </ul>
   </li>
-  <li>
-    <p>아.. ITX 케이스를 조립할 땐 대부분 SFX 규격을 쓰지만.. <br />
-같은 SFX라도 크기를 고려해야함 . .</p>
+</ul>
+
+<script type="math/tex; mode=display">L^G_{GC} = \mathbb{E}[(\nabla_{x}I^{GT}_{x,y,z} - \nabla_{x}I^Y_{x,y,z})^2] \\  + \mathbb{E}[(\nabla_{y}I^{GT}_{x,y,z} - \nabla_{y}I^Y_{x,y,z})]^2\\ + \mathbb{E}[(\nabla_{z}I^{GT}_{x,y,z} - \nabla_{z}I^Y_{x,y,z})^2]</script>
+
+<ul>
+  <li>Adversarial Loss
+    <ul>
+      <li>LSGAN Loss 사용.</li>
+    </ul>
   </li>
+</ul>
+
+<script type="math/tex; mode=display">L^D=\frac{1}{2}\mathbb{E}[(D(I^{GT}, I^A, I^S)-1)^2+D(I^Y, I^A, I^S)^2]</script>
+
+<script type="math/tex; mode=display">L^G_{AD}=\mathbb{E}[(D(I^Y, I^A, I^S)-1)^2]</script>
+
+<ul>
+  <li>$\ell_2$ Weight Regularization Loss
+    <ul>
+      <li>(Loss는 아니지만…)</li>
+      <li>Overfitting을 방지하기 위해 사용.</li>
+    </ul>
+  </li>
+</ul>
+
+<script type="math/tex; mode=display">L^G_{WR} = \sum\Vert W_G\Vert^2_2</script>
+
+<ul>
+  <li>3D-Y-Net-GAN Loss
+    <ul>
+      <li>$L_G = L^G_{SC} + \lambda_1L^G_{GC} + \lambda_2L^G_{AD} + \lambda_3L^G_{WR}$</li>
+    </ul>
+  </li>
+  <li>3D-DenseU-Net Loss
+    <ul>
+      <li>$L = L_{SC} + \lambda_1L_{GC} + \lambda_3L_{WR}$</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="experimental-result">Experimental Result</h2>
+<ul>
+  <li>Multiplanar 의 효율성을 검증하기 위해 다음과 같이 세 가지 경우로 나눔.
+    <ul>
+      <li>1) Axial, Sagittal 둘 다 이용.</li>
+      <li>2) Axial 만 이용.</li>
+      <li>3) Saigittal 만 이용.</li>
+    </ul>
+  </li>
+  <li>Loss function을 검증하기 위해 네 가지 경우로 나눔.
+    <ul>
+      <li>1) $\ell1norm + L_{GC} + L_{AD} + L_{WR}$ (pixelwise loss를 $\ell1norm$으로 대체.)</li>
+      <li>2) $L_{SC} + L_{GC} + L_{WR}$</li>
+      <li>3) $L_{SC} + L_{AD} + L_{WR}$</li>
+      <li>4) $L_{SC} + L_{GC} + L_{AD} + L_{WR}$</li>
+    </ul>
+  </li>
+  <li>Evalutaion Method 로는 아래와 같이 네 가지 기법과 자신들의 Network
+    <ul>
+      <li>1) <a href="https://ieeexplore.ieee.org/document/1163711">Bicubic interpolation</a></li>
+      <li>2) <a href="https://ieeexplore.ieee.org/document/5466111">Sparse representation</a></li>
+      <li>3) <a href="https://arxiv.org/abs/1706.03142">3D-SRU-Net</a></li>
+      <li>4) 3D-Y-Net-GAN</li>
+      <li>5) 3D-Y-Net-GAN + 3D-DenseU-Net</li>
+    </ul>
+  </li>
+  <li>Metrics으로는 다음 세 가지 사용.
+    <ul>
+      <li>PSNR(Peak Signal-to-Noise Ratio)</li>
+    </ul>
+  </li>
+</ul>
+
+<script type="math/tex; mode=display">\begin{alignedat}{2}
+MAX_I = 255\\
+PSNR = 20\cdot\log_{10}\Bigg(\frac{MAX_I}{\sqrt{\frac{1}{rLWH}\sum_{x, y, z}(I^R_{x,y,z}-I^{GT}_{x,y,z})^2}}\Bigg)
+\end{alignedat}</script>
+
+<ul>
+  <li>SSIM(Structural SIMilarity)</li>
+</ul>
+
+<script type="math/tex; mode=display">\begin{alignedat}{2}
+L : 255(\text{dynamic range})\\
+\mu : \text{Variance}\\
+\mu_{ab} : \text{Covariance}\\
+c_1 = (k_1L)^2\\
+c_2 = (k_2L)^2\\
+SSIM=\frac{(2\mu_a\mu_b+c_1)(2\sigma_{ab}+c_2)}{(\mu_a^2+\mu_b^2+c_1)(\sigma_a^2+\sigma_b^2+c_2)}
+\end{alignedat}</script>
+
+<ul>
+  <li>NMI(Normalized Mutual Information)</li>
+</ul>
+
+<script type="math/tex; mode=display">\begin{alignedat}{2}
+H(X) = -\sum_{x_i}\in{X}p(x_i)\log{p(x_i)} \\
+H(X, Y) = -\sum_{y_i\in{Y}} \sum_{x_i\in{X}}p(x_i, y_i)\log{p(x_i, y_i)}\\
+NMI(X, Y) = 2\frac{H(X) + H(Y) - H(X, Y)}{H(X)+H(Y)}
+\end{alignedat}</script>
+
+<ul>
+  <li>pixel 값을 [-1, 1]로 clipping -&gt; 다시 8-bit gray scale로 변환.</li>
+  <li>Generated MR images 와 Ground truth가 비슷할 수록 높은 값을 가짐.</li>
+</ul>
+
+<h3 id="a-data-and-preprocessing">A. Data and Preprocessing</h3>
+
+<ul>
+  <li>총 154 samples의 2~5세 유아 Axial, Sagittal Thick MRI, Axial Thin MRI</li>
+</ul>
+
+<p><img src="https://jjerry-k.github.io/public/img/thin/tab01.PNG" /></p>
+
+<ul>
+  <li>Table 1. 과 같은 parameter 사용.</li>
+  <li>Dataset 분할
+    <ul>
+      <li>Cross Validation Dataset : 40 samples</li>
+      <li>Test 1 Dataset : 65 samples</li>
+      <li>Test 2 Dataset : 49 samples</li>
+    </ul>
+  </li>
+  <li>Preprocessing
+    <ul>
+      <li>각 영상별로 다른 parameter를 가지고 있고 intensities 도 다양하기 때문에 spatial misalignment, intensity imblance를 발견.</li>
+      <li>Registration을 위해 SPM12 를 이용하여 unified spatial normalization 수행.
+        <ul>
+          <li>
+            <ol>
+              <li>DICOM to NIfTI</li>
+            </ol>
+          </li>
+          <li>
+            <ol>
+              <li>Segment gray matter, white matter, cerebrospinal fluid, skull, scalp, and air mask.</li>
+            </ol>
+          </li>
+          <li>
+            <ol>
+              <li>Nonlinear deformation field</li>
+            </ol>
+          </li>
+          <li>
+            <ol>
+              <li>ICBM Asian brain template in affine regularization</li>
+            </ol>
+          </li>
+        </ul>
+      </li>
+      <li>Grayscale Normalization
+        <ul>
+          <li>MRI 는 16 bit..</li>
+          <li>단순 linear transformation 으로 [-1, 1]로 mapping.</li>
+        </ul>
+      </li>
+      <li>Histogram Matching
+        <ul>
+          <li>고정된 샘플을 reference로 histogram matching 적용.</li>
+          <li>histogram imbalance 제거.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Data Augmentation
+    <ul>
+      <li>Radial Transformation
+        <ul>
+          <li><strong><a href="https://arxiv.org/pdf/1708.04347.pdf">Image Augmentation using Radial Transform for Training Deep Neural Networks</a></strong></li>
+        </ul>
+      </li>
+      <li>Mirror Reflection</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="b-experimental-settings">B. Experimental Settings</h3>
+<ul>
+  <li>5-fold cross-validation 적용.</li>
+  <li>35 개중 랜덤으로 28:7로 training:validation . <strong>-&gt; 앞에선 40개라더니..?</strong></li>
+  <li>Training 3D-Y-Net-GAN
+    <ul>
+      <li>Batch Size : 16</li>
+      <li>Epochs : 200</li>
+      <li><a href="https://arxiv.org/pdf/1412.6980.pdf">Adam Optimizer Parameter</a>
+        <ul>
+          <li>$\beta_1$: 0.9</li>
+          <li>Learning rate schedule
+            <ul>
+              <li>Initial value : 5*10<sup>-4</sup></li>
+              <li>Decay Step : 252</li>
+              <li>Decay rate : 0.989</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>$\lambda_1, \lambda_2, \lambda_3$ : 0.2, 0.02, 0.1</li>
+      <li>He initializer</li>
+    </ul>
+  </li>
+  <li>Training 3D-DenseU-Net
+    <ul>
+      <li>Batch Size : 12</li>
+      <li>Epochs : 300</li>
+      <li>Adam Optimizer Parameter
+        <ul>
+          <li>$\beta_1$: 0.9</li>
+          <li>Learning rate schedule
+            <ul>
+              <li>Initial value : 5*10<sup>-4</sup></li>
+              <li>Decay Step : 373</li>
+              <li>Decay rate : 0.989</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>$\lambda_1, \lambda_3$ : 1, 0.001</li>
+      <li>He initializer</li>
+    </ul>
+  </li>
+  <li>SR Parameter
+    <ul>
+      <li>Dictionary size = 512</li>
+      <li>Patch number = 100,000</li>
+      <li>Patch size = 13 x 13</li>
+      <li>Sparsity Regularization = 0.15</li>
+      <li>Overlap = 12.</li>
+    </ul>
+  </li>
+  <li>Training 3D-SRU-Net
+    <ul>
+      <li>Batch Size : 32</li>
+      <li>Epochs : 300</li>
+      <li>Adam Optimizer Parameter
+        <ul>
+          <li>$\beta_1$: 0.9</li>
+          <li>Initial value : 5*10<sup>-4</sup></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h4 id="c-ablation-experiment-on-input-data">C. Ablation Experiment On Input Data</h4>
+<ul>
+  <li>Input을 변경하면서 실험 진행. 
+<img src="https://jjerry-k.github.io/public/img/thin/fig06.PNG" />
+<img src="https://jjerry-k.github.io/public/img/thin/tab02.PNG" /></li>
+  <li>Axial 과 Sagittal 을 같이 사용했을 때가 좀 더 세부적인 구조, 적은 왜곡을 보임.
+    <ul>
+      <li>두 축의 영상이 서로 조합하여 reconstruction task를 향상.</li>
+    </ul>
+  </li>
+  <li>Quantitive evaluation 에서도 더 높은 지표를 산출.</li>
+</ul>
+
+<h4 id="d-ablation-experiment-on-loss-function">D. Ablation Experiment On Loss Function</h4>
+<ul>
+  <li>Loss를 변경하면서 실험 진행.
+<img src="https://jjerry-k.github.io/public/img/thin/fig07.PNG" />
+<img src="https://jjerry-k.github.io/public/img/thin/tab03.PNG" /></li>
+  <li>Self-Adaptive Charbonnier Loss에 비해 $\ell1$ norm 이 흐린 영상을 생성.</li>
+  <li>Without Gradient Correction Loss
+    <ul>
+      <li>덜 선명한 영상을 생성.</li>
+    </ul>
+  </li>
+  <li>Without Adversarial Loss
+    <ul>
+      <li>덜 realistic 영상을 생성. <strong>-&gt; ?????그냥 쓴 말인가..</strong></li>
+    </ul>
+  </li>
+  <li><strong>Table3 …지표 좀 이상..</strong></li>
+</ul>
+
+<h4 id="e-comparison-with-other--methods">E. Comparison With Other  Methods</h4>
+<ul>
+  <li>다른 Method들과 비교.
+<img src="https://jjerry-k.github.io/public/img/thin/fig08.PNG" />
+<img src="https://jjerry-k.github.io/public/img/thin/tab04.PNG" /></li>
+  <li>제안한 method로 생성된 image가 가장 Realistic하고 Ground truth 와 가장 비슷하다고 함.</li>
+  <li>대부분 Quantitative evaluation 에서 제안한 method가 다른 것들을 다 뛰어넘음.</li>
+</ul>
+
+<h2 id="conclusion">Conclusion</h2>
+<ul>
+  <li><strong>제안한 Method 에선 Data preprocessing이 매우 중요하다……</strong></li>
 </ul>
 
     <article></h4>
     <div class="post-more">
       
-      <a href="/living/2017/08/04/Desktop/#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
+      <a href="/deeplearning/2019/07/05/Thin/#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
       
-      <a href="/living/2017/08/04/Desktop/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
+      <a href="/deeplearning/2019/07/05/Thin/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
+    </div>
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/python/2019/06/30/conda_package/">
+        (개인적으로) 무.조.건 설치하는 Anaconda 패키지
+      </a>
+    </h1>
+
+    <span class="post-date">30 Jun 2019</span>
+     | 
+    
+    <a href="/blog/tags/#setting" class="post-tag">Setting</a>
+    
+    
+
+    <h4 style="font-weight: 400; line-height: 1.8;"><article>
+      <p>이번 포스팅은 제가 많이 쓰는 패키지들에 대해서 적어보려고 합니다. <br />
+추후에 포맷하고 다시 세팅할 수도 있으니까….<br />
+저는 Anaconda가 아닌 <strong>Miniconda</strong>를 사용하기 때문에 어지간하면 하나 하나 설치를 해줘야해요. 
+물론 머리로는 기억하고 있지만 커맨드 쓰기가 귀찮으니…적어놓으려고 합니다!<br />
+각각 설명은…생략할거에요. 보시는 분들 구글링 실력을 믿습니다.</p>
+
+<h4 id="scientific-uses">Scientific uses</h4>
+<ul>
+  <li>numpy, scipy, pandas</li>
+  <li><code class="highlighter-rouge">conda install numpy scipy pandas</code></li>
+</ul>
+
+<h4 id="visualization">Visualization</h4>
+<ul>
+  <li>matplotlib, seaborn</li>
+  <li><code class="highlighter-rouge">conda install matplotlib seaborn</code></li>
+</ul>
+
+<h4 id="image-processing">Image Processing</h4>
+<ul>
+  <li>pillow, scikit-image, opencv</li>
+  <li><code class="highlighter-rouge">conda install pillow scikit-image opencv</code></li>
+</ul>
+
+<h4 id="ml--dl">ML &amp; DL</h4>
+<ul>
+  <li>scikit-learn, tensorflow, pytorch (keras도 썼었는데…이번에 뺐어요..)</li>
+  <li><code class="highlighter-rouge">conda install scikit-learn tensorflow</code></li>
+  <li><code class="highlighter-rouge">conda install -c pytorch pytorch torchvision</code></li>
+</ul>
+
+<h4 id="medical-image-processing">Medical Image Processing</h4>
+<ul>
+  <li>pydicom, nibabel, simpleitk</li>
+  <li><code class="highlighter-rouge">conda install -c conda-forge pydicom nibabel</code></li>
+  <li><code class="highlighter-rouge">conda install -c SimpleITK SimpleITK</code></li>
+</ul>
+
+<h4 id="tools">Tools</h4>
+<ul>
+  <li>tqdm, jupyter, jupyter-lab</li>
+  <li><code class="highlighter-rouge">conda install  tqdm jupyter jupyterlab</code></li>
+</ul>
+
+<p>이….정도네요!<br />
+솔직히 제가 이렇게 포스팅을 하는 이유는….<br />
+이미 제 노트북을…한번 갈아엎었습니다…<br />
+conda 를 4.7.5 로 올리는 순간…모든게 날아갔거든요.<br />
+하…얼른 세팅하러 갑니다..</p>
+
+<p><strong>P.S</strong> conda 를 조심하세요…</p>
+
+    <article></h4>
+    <div class="post-more">
+      
+      <a href="/python/2019/06/30/conda_package/#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
+      
+      <a href="/python/2019/06/30/conda_package/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
     </div>
   </div>
   

@@ -263,6 +263,9 @@
               <img class="masthead-logo" src="/public/logo.png"/>
             </a>
             <small></small>
+            <a href="https://donaricano.com/mypage/1391188679_guPzXC" target="_blank">
+              <img src="https://d1u4yishnma8v5.cloudfront.net/mobile-gift.png" width="60" height="60" style="position:absolute; top:0.25rem; right:4rem" alt="donaricano-btn" style="height: 130px !important;width: 130px !important;" />
+            </a>
             <img src="http://jjerry-k.github.io/public/search.png" width="20" height="20" style="position:absolute; top:1.3rem; right:1.5rem" data-toggle="modal" data-target="#myModal">
           </h3>
         </div>
@@ -273,518 +276,749 @@
   
   <div class="post">
     <h1 class="post-title">
-      <a href="/ubuntu/2016/09/08/CUDA/">
-        Ubuntu CUDA & Cudnn 설치하기
+      <a href="/python/2019/05/09/Part1A/">
+        Seaborn Tutorial Part 1-A
       </a>
     </h1>
 
-    <span class="post-date">08 Sep 2016</span>
+    <span class="post-date">09 May 2019</span>
      | 
     
-    <a href="/blog/tags/#setting" class="post-tag">Setting</a>
+    <a href="/blog/tags/#usage" class="post-tag">Usage</a>
     
     
 
     <h4 style="font-weight: 400; line-height: 1.8;"><article>
-      <h1 id="환경-구축">환경 구축….</h1>
-
-<p>Deep Learning을 하는데 GPU를 사용해야하니 CUDA와 cuDNN을 설치하기로 하죠.</p>
-
-<h2 id="1-nvidia-그래픽-드라이버-설치">1. NVIDIA 그래픽 드라이버 설치</h2>
-
-<p>Ubuntu 14.04 에선 그래픽 드라이버를 설치하는데 굉장히…<br />
-많은 고난과 역경을 겪었습니다…<br />
-(그래서 결국 설치 못해봄..)<br />
-하지만 16.04에선 어렵지 않음!!!!!!<br />
-(갈아탄 결정적인 이유…)<br />
-그렇다면 설치를 시작해보겠습니다.</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>add-apt-repository ppa:graphics-drivers/ppa
-
-<span class="nb">sudo </span>apt-get update
-
-<span class="nb">sudo </span>apt-get <span class="nb">install </span>nvidia-364
-</code></pre></div></div>
-
-<p>(제 노트북은 GTX 960m 이므로..)<br />
-그냥 터미널에 입력하시면 되요.<br />
-NVIDIA 사이트에서 GPU 버전이랑 맞는걸로!!<br />
-그게 나을 듯합니다.<br />
-그 후 로그아웃을 하고 다시 로그인을 하려고 하면 무한 로그인이 될 거에요.<br />
-(안그러면 좋고..)<br />
-Ctrl + Alt + F1을 눌러 tty1으로 들어가서 로그인 후 reboot을 실행해줍시다.<br />
-로그인 후 NVIDIA X Server Settings 를 켜면</p>
-
-<p><img src="https://jjerry-k.github.io/public/img/CUDA/01.png" /></p>
-
-<p>요래 설치 된걸 확인할 수 있습니다.</p>
-
-<h2 id="2-cuda-설치">2. CUDA 설치</h2>
-
-<p>NVIDIA 드라이버를 설치 했으니 이제 CUDA를 설치해보도록 하죠.</p>
-
-<p><a href="https://developer.nvidia.com/cuda-downloads">https://developer.nvidia.com/cuda-downloads</a> 에 들어가시면 요로코롬 뜨는데요.</p>
-
-<p><img src="https://jjerry-k.github.io/public/img/CUDA/02.png" /></p>
-
-<p>각자의 환경에 맞춰서 선택한 후 다운로드 하시면 됩니다.<br />
-run 파일을 다운을 받은 후에 터미널을 여시고 run 파일이 다운로드된 디렉토리로 이동합니다.<br />
-그리고 파일의 권한을 모든  사용자가 사용할 수 있도록 변경합니다.<br />
-그리고 실행!</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd </span>Downloads
-<span class="nb">sudo chmod </span>a+r cuda_7.5.18_linux.run
-<span class="nb">sudo</span> ./cuda_7.5.18_linux.run <span class="nt">--override</span>
-or
-<span class="nb">sudo </span>sh cuda_7.5.18_linux.run <span class="nt">--override</span>
-</code></pre></div></div>
-
-<p>16.04는 gcc, g++ 버전이 5.x 라 override 를 해줘야합니다..<br />
-실행하면 어쩌고 저쩌고 약관 내용..? 이 나오는데요…<br />
-살포시 q 를 눌러줍니다.<br />
-그러면…사용자 정의 설치라고 할까요??<br />
-이것 저것 물어봅니다.</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Do you accept the previously <span class="nb">read </span>EULA? <span class="o">(</span>accept/decline/quit<span class="o">)</span>: accept
-
-You are attempting to <span class="nb">install </span>on an unsupported configuration. Do you wish to <span class="k">continue</span>? <span class="o">((</span>y<span class="o">)</span>es/<span class="o">(</span>n<span class="o">)</span>o<span class="o">)</span> <span class="o">[</span> default is no <span class="o">]</span>: <span class="nb">yes
-
-</span>Install NVIDIA Accelerated Graphics Driver <span class="k">for </span>Linux-x86_64 352.39? <span class="o">((</span>y<span class="o">)</span>es/<span class="o">(</span>n<span class="o">)</span>o/<span class="o">(</span>q<span class="o">)</span>uit<span class="o">)</span>: no
-
-Install the CUDA 7.5 Toolkit? <span class="o">((</span>y<span class="o">)</span>es/<span class="o">(</span>n<span class="o">)</span>o/<span class="o">(</span>q<span class="o">)</span>uit<span class="o">)</span>: <span class="nb">yes
-
-</span>Enter Toolkit Location <span class="o">[</span> default is /usr/local/cuda-7.5 <span class="o">]</span>: 그냥 엔터
-
-Do you want to <span class="nb">install </span>a symbolic <span class="nb">link </span>at /usr/local/cuda? <span class="o">((</span>y<span class="o">)</span>es/<span class="o">(</span>n<span class="o">)</span>o/<span class="o">(</span>q<span class="o">)</span>uit<span class="o">)</span>: <span class="nb">yes
-
-</span>Install the CUDA 7.5 Samples? <span class="o">((</span>y<span class="o">)</span>es/<span class="o">(</span>n<span class="o">)</span>o/<span class="o">(</span>q<span class="o">)</span>uit<span class="o">)</span>: no
-</code></pre></div></div>
-
-<p>이런식으로 세팅을 해줍니다. <br />
-그리고 그저 기다리고 기다림…. <br />
-설치가 다 되었으면 뭐 따로 실행할 건 없습니다.<br />
-바로 cuDNN 설치를 하죠.<br />
-이건 설치….는 아니고 그냥 cuda 디렉토리에 파일을 파일 복사? 하는거에요.</p>
-
-<h2 id="3-cudnn-설치">3. cuDNN 설치</h2>
-
-<p>먼저 cuDNN 파일을 받으셔야하는데요.</p>
-
-<p><a href="https://developer.nvidia.com/rdp/cudnn-download">https://developer.nvidia.com/rdp/cudnn-download</a></p>
-
-<p>여기에 들어가셔서 계정 만드시고….<br />
-사용 용도… 사용 할 라이브러리.. 등등 선택하시고 원하시는 버전 download 하시면 됩니다.<br />
-저는 4.0으로 했어요.<br />
-Tensorflow라는 라이브러리를 사용할 것이기 때문에…
-그리고 나서 터미널을 켜고</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd</span> /usr/local
-<span class="nb">sudo tar </span>zxf ~/Downloads/cudnn-7.0-linux-x64-v4.0-prod.tgz
-</code></pre></div></div>
-
-<p>이렇게 하시거나 아니면</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd </span>cudnn 다운로드경로
-<span class="nb">sudo tar </span>zxf cudnn-7.0-linux-x64-v4.0-prod.tgz
-<span class="nb">sudo cp </span>cuda/include/cudnn.h /usr/local/cuda/include
-<span class="nb">sudo cp </span>cuda/lib64/libcudnn<span class="k">*</span> /usr/local/cuda/lib64
-</code></pre></div></div>
-
-<p>이렇게 해주시구요.<br />
-환경변수를 설정해줘야 합니다.
-터미널을 껐다가 다시 켜주시고</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>gedit ~/.bashrc
-</code></pre></div></div>
-
-<p>그려면 어떤 메모장? 문서 파일이 열립니다.
-매~~~~앤 아래 부분에</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">export </span><span class="nv">PATH</span><span class="o">=</span>/usr/local/cuda-7.5/bin:<span class="nv">$PATH</span>
-<span class="nb">export </span><span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span>/usr/local/cuda-7.5/lib64:<span class="nv">$LD_LIBRARY_PATH</span>
-</code></pre></div></div>
-
-<p>를 추가해주세요.</p>
-
-<p>이렇게 GPU 설정이 끝났습니다…<br />
-이제 caffe와 tensorflow를 설치해야겠군요..<br />
-험난허다…<br />
-개강이라 죽겠는데..</p>
-
-    <article></h4>
-    <div class="post-more">
-      
-      <a href="/ubuntu/2016/09/08/CUDA/#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
-      
-      <a href="/ubuntu/2016/09/08/CUDA/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
-    </div>
-  </div>
-  
-  <div class="post">
-    <h1 class="post-title">
-      <a href="/ubuntu/2016/08/20/Setting/">
-        Ubuntu 한글 설정
-      </a>
-    </h1>
-
-    <span class="post-date">20 Aug 2016</span>
-     | 
-    
-    <a href="/blog/tags/#setting" class="post-tag">Setting</a>
-    
-    
-
-    <h4 style="font-weight: 400; line-height: 1.8;"><article>
-      <p>우분투를 설치를 했으나!!!!
-한글 키보드를 설정을 해야합니다.
-그럼 시작해볼까요.
-(이번에도 사진 촤라라락..)</p>
-
-<h1 id="1-시스템-한글-설정">1. 시스템 한글 설정</h1>
-
-<p>부팅을 했습니다.
-크으… 깔끔깔끔…</p>
-
-<p><img src="https://jjerry-k.github.io/public/img/setting/01.png" /></p>
-
-<p>오른쪽 위에 전원 버튼 누르고 <br />
-System Settings로 들어가서 Language Support를 눌러줍니다.</p>
-
-<p><img src="https://jjerry-k.github.io/public/img/setting/02.png" /></p>
-
-<p>그럼 설치를 해야한다고 하네요.
-묻지도 따지지도 말고 설치합시다.
-(뒤에 사진찍은건 애교로 넘어갑시다…)</p>
-
-<p><img src="https://jjerry-k.github.io/public/img/setting/03.png" /></p>
-
-<p>로그인 비밀번호 입력하구요.
-(여기도 있네…)</p>
-
-<p><img src="https://jjerry-k.github.io/public/img/setting/04.png" /></p>
-
-<p>그럼 설치가 시작됩니다.</p>
-
-<p><img src="https://jjerry-k.github.io/public/img/setting/05.png" /></p>
-
-<p>설치가 끝나면 한국어라고 똿! 나옵니다.</p>
-
-<p><img src="https://jjerry-k.github.io/public/img/setting/06.png" /></p>
-
-<p>아래에 있는 한국어를 드래그해서 맨 위로 올려줍니다.</p>
-
-<p><img src="https://jjerry-k.github.io/public/img/setting/07.png" />
-<img src="https://jjerry-k.github.io/public/img/setting/08.png" /></p>
-
-<p>그리고 ‘Apply System-wide’를 클릭!</p>
-
-<p><img src="https://jjerry-k.github.io/public/img/setting/09.png" /></p>
-
-<p>비밀번호 입력하시구요.</p>
-
-<p><img src="https://jjerry-k.github.io/public/img/setting/10.png" /></p>
-
-<p>Regional Formats는 설치할때 이미 Seoul로 해서 상관은 없지만 그냥 들어가서 ‘Apply system-wide’눌러줍니다.</p>
-
-<p><img src="https://jjerry-k.github.io/public/img/setting/11.png" /></p>
-
-<p>로그아웃을 하고 다시 로그인 해주세요!!
-그럼 다음과 같이 창이 뜨는데 저는 영문이 편해서 그냥 이름을 유지하기로 했습니다.</p>
-
-<p><img src="https://jjerry-k.github.io/public/img/setting/12.png" /></p>
-
-<h1 id="2-한글-키보드-설정하기">2. 한글 키보드 설정하기</h1>
-
-<p>키보드를 설정해보죠.<br />
-시스템 설정으로 들어갑니다.<br />
-그리고 텍스트 입력창을 눌러줍니다.</p>
-
-<p><img src="https://jjerry-k.github.io/public/img/setting/13.png" /></p>
-
-<p>다음과 같이 뜨는데요.
-저기에 +를 눌러줍니다.
-(정말 더럽게 못그리네..)</p>
-
-<p><img src="https://jjerry-k.github.io/public/img/setting/14.png" /></p>
-
-<p>쭉쭉쭈욱~ 내려서 ‘한국어 (Hangul)(IBus)’를 선택하고 ‘추가’버튼을 누릅니다.</p>
-
-<p><img src="https://jjerry-k.github.io/public/img/setting/15.png" /></p>
-
-<p>지금은 키 변환이 Super+스페이스로 되어있네요.
-이대로 쓰실분들은 쓰셔도 됩니다.
-하지만!! 저는 한/영 키를 사용하고 싶기 때문에…
-저 키를 바꿔보도록 하죠.
-‘키보드 설정…‘을 누릅니다.</p>
-
-<p><img src="https://jjerry-k.github.io/public/img/setting/16.png" /></p>
-
-<p>자판입력 탭에서 구성키를 ‘오른쪽 Alt’로 바꾼 후에 ‘다음 입력 소스로 전환’ 키는 한/영으로 바꿉니다.</p>
-
-<p><img src="https://jjerry-k.github.io/public/img/setting/17.png" /></p>
-
-<p>다시 텍스트 입력으로 돌아와서 한국어를 선택한 후 사진에 표시된 도구 버튼을 누릅니다.</p>
-
-<p><img src="https://jjerry-k.github.io/public/img/setting/18.png" /></p>
-
-<p>다음과 같이 나오는데요.<br />
-‘한글 모드로 시작’을 체크한 후 확인을 눌러줍니다.</p>
-
-<p><img src="https://jjerry-k.github.io/public/img/setting/19.png" /></p>
-
-<p>이제 한글에 대한 설정이 끝났습니다!<br />
-다시 로그아웃을 한 후 로그인을 하시면 한글을 쓰실 수 있습니다!!</p>
-
-<p>오늘은 포스팅 Day인듯합니다.
-왜냐하면 오늘 우분투를 재설치 했기 때문이죠…
-으하하하하하하하핳……
-우분투 다시 셋팅하면서 포스팅중….
-다음은 소프트웨어 관련 세팅 포스팅하겠습니다.</p>
-
-    <article></h4>
-    <div class="post-more">
-      
-      <a href="/ubuntu/2016/08/20/Setting/#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
-      
-      <a href="/ubuntu/2016/08/20/Setting/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
-    </div>
-  </div>
-  
-  <div class="post">
-    <h1 class="post-title">
-      <a href="/ubuntu/2016/08/16/Dualboot/">
-        Windows 10 & Ubuntu 16.04 듀얼부팅
-      </a>
-    </h1>
-
-    <span class="post-date">16 Aug 2016</span>
-     | 
-    
-    <a href="/blog/tags/#setting" class="post-tag">Setting</a>
-    
-    
-
-    <h4 style="font-weight: 400; line-height: 1.8;"><article>
-      <p>Deep Learning을 하기 위해 windows를 사용할 수도 있겠지만…<br />
-저는 Ubuntu를 사용하기로 했습니다. 왜냐하면 Ubuntu로 배웠으니..ㅎㅎ<br />
-자, 그럼 시작하겠습니다 .<br />
-제가 예전에 16.04를 다운받아서 설치한거라..<br />
-다운로드는 16.04.1로 되어있는데 설치는 16.04로 되어있습니다.<br />
-하지만 설치 방법은 똑같음!<br />
-그리고 듀얼부팅은 Windows가 먼저 설치되어야 한다는거 잊지마세요.</p>
-
-<h2 id="1-설치-전에-확일-해야할-사항">1. 설치 전에 확일 해야할 사항</h2>
+      <h1 id="index">Index</h1>
 <ul>
-  <li>BIOS에서 secure booting disable</li>
-  <li>Windows 에서 빠른 시작 켜기 옵션 끄기</li>
+  <li><a href="#index">Index</a>
+    <ul>
+      <li><a href="#a-visualizing-statistical-relationships">A. Visualizing statistical relationships</a>
+        <ul>
+          <li><a href="#relating-variables-with-scatter-plots">Relating variables with scatter plots</a></li>
+          <li><a href="#emphasizing-continuity-with-line-plots">Emphasizing continuity with line plots</a>
+            <ul>
+              <li><a href="#aggregation-and-representing-uncertainty">Aggregation and representing uncertainty</a></li>
+              <li><a href="#plotting-subsets-of-data-with-semantic-mappings">Plotting subsets of data with semantic mappings</a></li>
+              <li><a href="#plotting-with-date-data">Plotting with date data</a></li>
+            </ul>
+          </li>
+          <li><a href="#showing-multiple-relationships-with-facets">Showing multiple relationships with facets</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
 </ul>
 
-<p><img src="https://jjerry-k.github.io/public/img/dualboot/01.jpeg" /></p>
+<h2 id="a-visualizing-statistical-relationships">A. Visualizing statistical relationships</h2>
+<p>Relationships 시각화에선 <code class="highlighter-rouge">relplot()</code> 이라는걸 주로 사용합니다. 
+<code class="highlighter-rouge">relplot()</code> 에는 <code class="highlighter-rouge">kind</code>라는 옵션으로 <code class="highlighter-rouge">scatter</code>, <code class="highlighter-rouge">line</code> 을 그릴 수 있습니다.<br />
+일단! 다음과 같이 기본적인 패키지를 import 하고 진행하겠습니다!</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="n">sns</span>
+<span class="n">sns</span><span class="o">.</span><span class="nb">set</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="s">"darkgrid"</span><span class="p">)</span> <span class="c1"># 추후 Part 3 에서 다룰 내용!
+</span></code></pre></div></div>
+
+<h3 id="relating-variables-with-scatter-plots">Relating variables with scatter plots</h3>
+<p>Scatter plot을 해볼겁니다!<br />
+<code class="highlighter-rouge">scatterplot()</code>을 사용해도 되지만 <code class="highlighter-rouge">relplot()</code>을 사용해서 그려보겠습니다.<br />
+가장 먼저 … 사용할 데이터를 읽어오겠습니다.</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">tips</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s">"tips"</span><span class="p">)</span>
+<span class="n">tips</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</code></pre></div></div>
+<p>위를 실행하면 다음 사진과 같이 출력이 나옵니다.<br />
+<img src="https://jjerry-k.github.io/public/img/sb_part1a/001.png" /><br />
+정확히 무슨 데이터인지는 모르겠지만… 어떤 가게의 가계부…? 같습니다.
+총 금액, 팁, 성별, 흡연 여부, 요일, 시간대, 크기(…?) 등의 카테고리가 있네요.<br />
+그럼 한번 plot 해보겠습니다.</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sns</span><span class="o">.</span><span class="n">relplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s">"total_bill"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">"tip"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">tips</span><span class="p">);</span>
+</code></pre></div></div>
+<p><img src="https://jjerry-k.github.io/public/img/sb_part1a/002.png" /></p>
+
+<p>다음과 같은 figure가 나오네요!<br />
+x, y, data에 들어간 의미를 알아볼까요?
+<code class="highlighter-rouge">x=</code> 는 x축을 어떤 데이터로 할지 정하는 부분입니다.
+<code class="highlighter-rouge">y=</code> 는 당연히 y축이겠죠?
+<code class="highlighter-rouge">data=</code> 는 어떤 data를 plot에 사용할지 적는 부분입니다.<br />
+그래서 plot하는 코드를 풀어서 얘기해보자면<br />
+<code class="highlighter-rouge">tips</code>라는 DataFrame에서 <code class="highlighter-rouge">total_bill</code>을 x축으로 <code class="highlighter-rouge">tip</code>을 y축으로 골라서 scatter plot 하라는 얘기입니다.<br />
+좀 더 해볼까요?</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sns</span><span class="o">.</span><span class="n">relplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s">"total_bill"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">"tip"</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s">"smoker"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">tips</span><span class="p">);</span>
+</code></pre></div></div>
+<p><img src="https://jjerry-k.github.io/public/img/sb_part1a/003.png" /></p>
+
+<p><code class="highlighter-rouge">x, y, data</code>는 위랑 다를게 없는데… <code class="highlighter-rouge">hue</code>라는 옵션이 추가가 되었습니다.<br />
+<code class="highlighter-rouge">hue='smoke'</code>라고 흡연 여부에 대해 색상으로 표시를 해줍니다!</p>
+
+<p>하나 또 있습니다.</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sns</span><span class="o">.</span><span class="n">relplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s">"total_bill"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">"tip"</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s">"smoker"</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s">"smoker"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">tips</span><span class="p">);</span>
+</code></pre></div></div>
+<p><img src="https://jjerry-k.github.io/public/img/sb_part1a/004.png" /></p>
+
+<p><code class="highlighter-rouge">style</code> 옵션이 추가되었어요!
+<code class="highlighter-rouge">style='smoker'</code>를 추가해주면서 plot 스타일이 추가되었네요!<br />
+다음 사진은 <code class="highlighter-rouge">style="time"</code> 옵션을 준거에요!<br />
+<img src="https://jjerry-k.github.io/public/img/sb_part1a/005.png" /></p>
+
+<p><strong>색으로는 흡연여부</strong>를 표시하고 <strong>plot 스타일로는 시간대</strong>를 표시해주네요!</p>
+
+<p>자, <code class="highlighter-rouge">hue</code> 옵션의 또 다른 예시입니다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sns</span><span class="o">.</span><span class="n">relplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s">"total_bill"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">"tip"</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s">"size"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">tips</span><span class="p">);</span>
+</code></pre></div></div>
+<p><img src="https://jjerry-k.github.io/public/img/sb_part1a/006.png" /></p>
+
+<p>이전 예시에선 <strong>Yes</strong> or <strong>No</strong> 였죠.<br />
+이번 수치에 대해 색별로 의미를 줬습니다!<br />
+다음과 같이 <code class="highlighter-rouge">pallette</code> 옵션을 줘서 색을 바꿀 수도 있어요!<br />
+<code class="highlighter-rouge">pallette</code>에 대한 자세한건 <strong>Part 3</strong> 에서 다루겠습니다.</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sns</span><span class="o">.</span><span class="n">relplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s">"total_bill"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">"tip"</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s">"size"</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s">"ch:r=-.5,l=.75"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">tips</span><span class="p">);</span>
+</code></pre></div></div>
+<p><img src="https://jjerry-k.github.io/public/img/sb_part1a/007.png" /></p>
+
+<p>오…scatter plot의 끝이 보여요…<br />
+<code class="highlighter-rouge">size</code> 옵션입니다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sns</span><span class="o">.</span><span class="n">relplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s">"total_bill"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">"tip"</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="s">"size"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">tips</span><span class="p">);</span>
+</code></pre></div></div>
+<p><img src="https://jjerry-k.github.io/public/img/sb_part1a/008.png" /></p>
+
+<p><code class="highlighter-rouge">size="size"</code>라고 옵션을 줬어요!<br />
+plot의 크기에 따라 의미가 나뉘어졌습니다!<br />
+다음고 같이 <code class="highlighter-rouge">sizes</code>를 이용해서 크기 범위를 정해줄수도 있네요!</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sns</span><span class="o">.</span><span class="n">relplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s">"total_bill"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">"tip"</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="s">"size"</span><span class="p">,</span> <span class="n">sizes</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">200</span><span class="p">),</span> <span class="n">data</span><span class="o">=</span><span class="n">tips</span><span class="p">);</span>
+</code></pre></div></div>
+<p><img src="https://jjerry-k.github.io/public/img/sb_part1a/009.png" /></p>
+
+<h3 id="emphasizing-continuity-with-line-plots">Emphasizing continuity with line plots</h3>
+
+<p>이 파트는 연속적인 값을 가진 데이터에 대한 plot입니다.<br />
+다음과 같이 DataFrame을 하나 만들어 봅시다!</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">500</span><span class="p">),</span> <span class="n">value</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">500</span><span class="p">)</span><span class="o">.</span><span class="n">cumsum</span><span class="p">()))</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</code></pre></div></div>
+<p>&lt;img src=’https://jjerry-k.github.io/public/img/sb_part1a/010.png’ height=50% width=50%&gt;</p>
+
+<p>결과는 사진과 다를 수 있어요!<br />
+time, value 를 가지고 있다는 거에 초점을 맞추시면 됩니다!<br />
+일별로 뭔가 값이 들어가 있네요.<br />
+이를 <code class="highlighter-rouge">relplot()</code> 을 이용하여 그려보겠습니다.
+<code class="highlighter-rouge">kind</code> 옵션에 <code class="highlighter-rouge">"line"</code> 라고 주면 됩니다!<br />
+<code class="highlighter-rouge">autofmt_xdata()</code> 라는건 이름에서 유추할 수 있듯이 x 축 레이블을 데이터에 맞게 format을 자동으로 맞춰주는거에요!<br />
+지금은 x 축이 날짜니까 날짜에 대해선 x 축 레이블을 살짝쿵 기울인거에요!<br />
+이걸 쓰지 않으면 날짜가 겹쳐질거에요…(한번 해보세요..)</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>g = sns.relplot(x="time", y="value", kind="line", data=df)
+g.fig.autofmt_xdate()
+</code></pre></div></div>
+<p><img src="https://jjerry-k.github.io/public/img/sb_part1a/011.png" /></p>
+
+<p>위 예시는 x 축이 연속적이지만 시계열 데이터였습니다!<br />
+만약 연속적이지만 이동경로와 같이 x, y 축 좌표만 가진 데이터라면?<br />
+예시를 들어볼게요! 다음과 같이 x, y 에 대한 데이터를 만듭니다.</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">500</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s">"x"</span><span class="p">,</span> <span class="s">"y"</span><span class="p">])</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</code></pre></div></div>
+<p>&lt;img src=’https://jjerry-k.github.io/public/img/sb_part1a/012.png’ height=50% width=50%&gt;</p>
+
+<p>이런 위치에 대한 데이터는 <code class="highlighter-rouge">sort = False</code> 옵션을 줘야합니다!<br />
+그렇지 않으면 …. x 데이터를 자동으로 sorting 해서 plot 해버립니다..</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sns</span><span class="o">.</span><span class="n">relplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s">"x"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">"y"</span><span class="p">,</span> <span class="n">sort</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s">"line"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">);</span>
+</code></pre></div></div>
+<p><img src="https://jjerry-k.github.io/public/img/sb_part1a/013.png" /></p>
+
+<h4 id="aggregation-and-representing-uncertainty">Aggregation and representing uncertainty</h4>
 
-<p><img src="https://jjerry-k.github.io/public/img/dualboot/02.jpeg" /></p>
+<p>이 파트는 집계 및 신뢰구간 표시에 대한 설명입니다.<br />
+<strong>seaborn</strong>은 기본 값으로 95% 신뢰구간을 표시해준다고 하녜요!<br />
+다음과 같이 데이터를 load 해줍니다!</p>
 
-<p><img src="https://jjerry-k.github.io/public/img/dualboot/03.jpeg" /></p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">fmri</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s">"fmri"</span><span class="p">)</span>
+<span class="n">fmri</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</code></pre></div></div>
+<p>&lt;img src=’https://jjerry-k.github.io/public/img/sb_part1a/014.png’ height=50% width=50%&gt;</p>
 
-<p><img src="https://jjerry-k.github.io/public/img/dualboot/04.jpeg" /></p>
-
-<h4 id="11-설치-할-디스크-볼륨-만들기">1.1 설치 할 디스크 볼륨 만들기</h4>
-
-<p><img src="https://jjerry-k.github.io/public/img/dualboot/05.jpeg" /></p>
-
-<p>저는 HDD에 설치할 거니까 HDD 주 파티션에서 마우스 오른쪽 클릭!</p>
-
-<p><img src="https://jjerry-k.github.io/public/img/dualboot/06.jpeg" /></p>
-
-<p>볼륨을 축소합시다.</p>
-
-<p><img src="https://jjerry-k.github.io/public/img/dualboot/07.jpeg" /></p>
-
-<p>원하시는 만큼 입력하세요.
-102,400 MB는 예시일뿐…</p>
-
-<p><img src="https://jjerry-k.github.io/public/img/dualboot/08.jpeg" /></p>
-
-<p>할당되지 않은 부분이 100GB 생겼네요!</p>
-
-<p><img src="https://jjerry-k.github.io/public/img/dualboot/09.jpeg" /></p>
-
-<h2 id="2-ubuntu-설치-과정">2. Ubuntu 설치 과정</h2>
-
-<h4 id="21-ubuntu-16041-lts-image-download">2.1 Ubuntu 16.04.1 LTS image Download</h4>
-
-<p><a href="http://www.ubuntu.com/download/desktop">http://www.ubuntu.com/download/desktop</a>에 들어갑니다.</p>
-
-<p><img src="https://jjerry-k.github.io/public/img/dualboot/10.jpeg" /></p>
-
-<p>Download를 클릭하면 다음 사진과 같이 나오는데 흠…잘 모르겠습니다.<br />
-후원..같지만 ‘Not now, take me to the download’를 클릭합니다.</p>
-
-<p><img src="https://jjerry-k.github.io/public/img/dualboot/11.jpeg" /></p>
-
-<p>다운로드 창이 자동으로 나옵니다. <br />
-저장할 경로 지정해주세요!</p>
-
-<p><img src="https://jjerry-k.github.io/public/img/dualboot/12.jpeg" /></p>
-
-<h4 id="22-ubuntu-16041-lts-부팅-디스크-만들기">2.2 Ubuntu 16.04.1 LTS 부팅 디스크 만들기</h4>
-
-<p><a href="https://rufus.akeo.ie">https://rufus.akeo.ie</a>에서 util을 받습니다.</p>
-
-<p><img src="https://jjerry-k.github.io/public/img/dualboot/13.jpeg" /></p>
-
-<p>Util을 실행!<br />
-처음으로 부팅 디스크로 쓸 USB를 선택합니다.</p>
-
-<p><img src="https://jjerry-k.github.io/public/img/dualboot/14.jpeg" /></p>
-
-<p>OS image를 불러와야겠죠?<br />
-저~~기 아이콘 눌러주세요!</p>
-
-<p><img src="https://jjerry-k.github.io/public/img/dualboot/15.jpeg" /></p>
-
-<p>ISO 파일이 있는 곳으로 가서 선택하고 열기!</p>
-
-<p><img src="https://jjerry-k.github.io/public/img/dualboot/16.jpeg" /></p>
-
-<p>그리고 시작을 누릅니다!</p>
-
-<p><img src="https://jjerry-k.github.io/public/img/dualboot/17.jpeg" /></p>
-
-<p>구구절절… 구구절절… ‘OK’ 눌러주세요.</p>
-
-<p><img src="https://jjerry-k.github.io/public/img/dualboot/18.jpeg" /></p>
-
-<p>이런 경고는…저에게 통하지 않습니다..<br />
-‘확인’을 눌러주세요!</p>
-
-<p><img src="https://jjerry-k.github.io/public/img/dualboot/19.jpeg" /></p>
-
-<p>진행이 됩니다.</p>
-
-<p><img src="https://jjerry-k.github.io/public/img/dualboot/20.jpeg" /></p>
-
-<p>되고 있는…건가..?</p>
-
-<p><img src="https://jjerry-k.github.io/public/img/dualboot/21.jpeg" /></p>
-
-<p>6분 36초 정도 걸렸네요..</p>
-
-<p><img src="https://jjerry-k.github.io/public/img/dualboot/22.jpeg" /></p>
-
-<p>그럼 이제 설치를 해보겠습니다.</p>
-
-<h4 id="23-ubuntu-설치하기">2.3 Ubuntu 설치하기</h4>
-
-<p>BIOS 세팅에서 부팅 순서를 USB로 바꿔주시거나<br />
-Boot Option에서 USB를 선택해서 부팅합니다.<br />
-검은 화면이 나오면서 ‘Try Ubuntu without installing’, ‘Install 어쩌고…’ 등이 있는데요.<br />
-저는 스크린샷을 해야하므로 ‘Try Ubuntu without installing’ 을 선택했습니다.<br />
-‘또로롱’하면서 화면이 뜹니다!</p>
-
-<p><img src="https://jjerry-k.github.io/public/img/dualboot/23.jpeg" /></p>
-
-<p>바탕화면에 ‘Install Ubuntu 16.04 LTS’ 실행합니다.  <br />
-디렉토리 이름이 영어인게 좋으니까 일단 English로 진행.</p>
-
-<p><img src="https://jjerry-k.github.io/public/img/dualboot/24.jpeg" /></p>
-
-<p>설치하면서 업데이트, 다른 소프트웨어 설치 여부는..마음대로…</p>
-
-<p><img src="https://jjerry-k.github.io/public/img/dualboot/25.jpeg" /></p>
-
-<p>설치 방식에 대한 옵션이 나옵니다.<br />
-‘Something else’를 선택해주세요.<br />
-그래야 더 안심하고 설치하니까요…</p>
-
-<p><img src="https://jjerry-k.github.io/public/img/dualboot/26.jpeg" /></p>
-
-<p>윈도우에서 파티션을 나눴었죠.<br />
-저는 SSD에 윈도우, HDD에 우분투를 설치할 것이니..<br />
-HDD 파티션을 나눠놨었습니다.<br />
-얼마나 나눌건지는..여러분 마음…
-전 64GB 정도 나눴습니다. (100GB 뺐다가 다시 줄임…)
-‘free space’를 선택하고 왼쪽 아래에 ‘+’버튼을 눌러주세요.</p>
-
-<p><img src="https://jjerry-k.github.io/public/img/dualboot/27.jpeg" /></p>
-
-<p>먼저 Swap 파티션부터 만들죠.<br />
-자신의 RAM 용량과 똑같이 맞추라는 분도 계시고<br />
-요즘은 RAM 용량이 다 커서 필요없다는 분도 계셔서<br />
-저는 그 중간인 8GB를 Swap으로 만들었습니다.<br />
-설정법은 아래 사진과 같이!<br />
-그리고 ‘OK’를 누릅시다.</p>
-
-<p><img src="https://jjerry-k.github.io/public/img/dualboot/28.jpeg" /></p>
-
-<p>아래 사진과 같이 swap 영역이 unknown으로 만들어집니다.<br />
-이제 Ubuntu 파티션을 만들어보죠.<br />
-똑같이 ‘free space’ 를 선택하고 ‘+’ 버튼을 눌러줍니다.</p>
-
-<p><img src="https://jjerry-k.github.io/public/img/dualboot/29.jpeg" /></p>
-
-<p>‘Size’에는 남은 용량을 다 씁니다.<br />
-나머지는 아래 사진과 같이 설정 !<br />
-그리고 ‘OK’를 누릅시다.</p>
-
-<p><img src="https://jjerry-k.github.io/public/img/dualboot/30.jpeg" /></p>
-
-<p>이제 Boot loader 경로를 지정해야하는데요.<br />
-아랫 부분에 ‘Device for boot loader installation’에서 <br />
-디스크를 선택하면 됩니다. <br />
-SSD에 지정을 하시기도 하지만 저는 HDD 지정을 했습니다.<br />
-그리고 ‘Install Now’을 클릭합니다.</p>
-
-<p><img src="https://jjerry-k.github.io/public/img/dualboot/31.jpeg" /></p>
-
-<p>디스크가 변경됩니다. 뭐 이런 내용이 뜨는데<br />
-그냥. 조용히. 살포시.<br />
-‘Continue’ 를 눌러줍시다.<br />
-(불안하시면 다시 확인 하시구요..)</p>
-
-<p><img src="https://jjerry-k.github.io/public/img/dualboot/32.jpeg" /></p>
-
-<p>위치 설정하시구요!</p>
-
-<p><img src="https://jjerry-k.github.io/public/img/dualboot/33.jpeg" /></p>
-
-<p>키보드 설정은 그냥 영어로 놔두세요.  <br />
-나중에 설치 후에 설정 할겁니다!</p>
-
-<p><img src="https://jjerry-k.github.io/public/img/dualboot/34.jpeg" /></p>
-
-<p>계정 설정을 합니다!<br />
-저는 Jerry니까… 우분투 계정도 Jerry.</p>
-
-<p><img src="https://jjerry-k.github.io/public/img/dualboot/35.jpeg" /></p>
-
-<p>설치 시작!!</p>
-
-<p><img src="https://jjerry-k.github.io/public/img/dualboot/36.jpeg" /></p>
-
-<p>그저… 기다림…</p>
-
-<p><img src="https://jjerry-k.github.io/public/img/dualboot/37.jpeg" /></p>
-
-<p><img src="https://jjerry-k.github.io/public/img/dualboot/38.jpeg" /></p>
-
-<p>설치가 완료되었습니다!<br />
-과감히 바로 ‘Restart Now’를 클립했습니다.</p>
-
-<p><img src="https://jjerry-k.github.io/public/img/dualboot/39.jpeg" /></p>
-
-<p>첫 포스팅이라 굉장히 난잡하고 스크롤이 촤라라라락하네요…<br />
-좀 더 정리해서 쓰는 습관을 들여야지…</p>
-
-<p>Ubuntu를 접하게 되면서 굉장히 다사다난한 경험을 하는 저와 제 노트북….<br />
-어쩌면 조만간 Windows 와 Ubuntu를 재설치 할 수도 있을 듯합니다..<br />
-다음 포스팅은 설치 후 세팅에 관련하여 하겠습니다!</p>
+<p>fmri data 군요! 일단 무슨 의미인지 잘 모르겠습니다!<br />
+각 환자별로 timepoint 를 가지고 signal을 가지는건 알겠네요..<br />
+이 데이터를 이용해 다음과 같이 plot을 해봅시다!<br />
+뭔가 선이랑 범위(?)로 보이는 불투명한 부분이 생겼습니다!<br />
+선은 해당 timepoint 에서 signal 의 mean 값이고 불투명한 부분은 신뢰구간을 의미합니다!</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sns</span><span class="o">.</span><span class="n">relplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s">"timepoint"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">"signal"</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s">"line"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">fmri</span><span class="p">);</span>
+</code></pre></div></div>
+<p><img src="https://jjerry-k.github.io/public/img/sb_part1a/015.png" /></p>
+
+<blockquote>
+  <blockquote>
+    <p>“그럼…이런 데이터는 항상 신뢰구간을 같이 봐야하는가?”</p>
+  </blockquote>
+</blockquote>
+
+<p>아닙니다. <code class="highlighter-rouge">ci</code>(Confidence Intervals) 옵션을 바꿔주면 됩니다!<br />
+<code class="highlighter-rouge">ci=None</code> 이라고 옵션을 주고 plot을 하면 신뢰구간이 표현이 안됩니다!</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sns</span><span class="o">.</span><span class="n">relplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s">"timepoint"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">"signal"</span><span class="p">,</span> <span class="n">ci</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s">"line"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">fmri</span><span class="p">);</span>
+</code></pre></div></div>
+<p><img src="https://jjerry-k.github.io/public/img/sb_part1a/016.png" /></p>
+
+<p>또 다른 옵션이 있습니다.<br />
+데이터가 매우 큰 경우! <code class="highlighter-rouge">ci</code> 옵션에 표준 편차를 넣어주면 각 timepoint 에서 분산을 표현해줍니다!</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sns</span><span class="o">.</span><span class="n">relplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s">"timepoint"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">"signal"</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s">"line"</span><span class="p">,</span> <span class="n">ci</span><span class="o">=</span><span class="s">"sd"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">fmri</span><span class="p">);</span>
+</code></pre></div></div>
+<p><img src="https://jjerry-k.github.io/public/img/sb_part1a/017.png" /></p>
+
+<p>마지막으로… 이런 집계말고 정말 원본 그대로 plot 해보고 싶다면!<br />
+<code class="highlighter-rouge">estimator=None</code>이라고 주면 됩니다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sns</span><span class="o">.</span><span class="n">relplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s">"timepoint"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">"signal"</span><span class="p">,</span> <span class="n">estimator</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s">"line"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">fmri</span><span class="p">);</span>
+</code></pre></div></div>
+<p><img src="https://jjerry-k.github.io/public/img/sb_part1a/018.png" /></p>
+
+<h4 id="plotting-subsets-of-data-with-semantic-mappings">Plotting subsets of data with semantic mappings</h4>
+
+<p>이 파트에선 <code class="highlighter-rouge">relplot()</code> 을 이용해서 scatter plot, line plot을 동시에 표현합니다.<br />
+데이터는 위 파트에서 썼던 <strong>fmri</strong> 데이터를 사용합니다!<br />
+그리고 위 파트와 같이 <code class="highlighter-rouge">relplot(kind="line")</code>을 쓰지만 <code class="highlighter-rouge">hue="event"</code>라는 옵션을 주도록합니다!<br />
+한번에 scatter plot과 line plot이 표현되네요!</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sns</span><span class="o">.</span><span class="n">relplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s">"timepoint"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">"signal"</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s">"event"</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s">"line"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">fmri</span><span class="p">);</span>
+</code></pre></div></div>
+<p><img src="https://jjerry-k.github.io/public/img/sb_part1a/019.png" /></p>
+
+<p>그럼…<code class="highlighter-rouge">style</code>도 추가해보도록 하죠!<br />
+<code class="highlighter-rouge">hue="region", style="event"</code>라고 옵션을 줍니다! <br />
+점점 표현해주는게 많아지죠?</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sns</span><span class="o">.</span><span class="n">relplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s">"timepoint"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">"signal"</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s">"region"</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s">"event"</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s">"line"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">fmri</span><span class="p">);</span>
+</code></pre></div></div>
+<p><img src="https://jjerry-k.github.io/public/img/sb_part1a/020.png" /></p>
+
+<p>또한 선 스타일과 마커 옵션을 줄 수도 있어요!<br />
+<code class="highlighter-rouge">dashes=False, markers=True</code>를 추가해보세요!<br />
+점선이 모두 실선이 되었고 마커가 추가되었습니다!</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sns</span><span class="o">.</span><span class="n">relplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s">"timepoint"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">"signal"</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s">"region"</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s">"event"</span><span class="p">,</span> <span class="n">dashes</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">markers</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s">"line"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">fmri</span><span class="p">);</span>
+</code></pre></div></div>
+<p><img src="https://jjerry-k.github.io/public/img/sb_part1a/021.png" /></p>
+
+<p>괜히 정보가 많아지면…해석이 겁나 어려워질 수 있습니다..<br />
+다음과 같이 단순화하는게 좋을 때도 있습니다!</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sns</span><span class="o">.</span><span class="n">relplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s">"timepoint"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">"signal"</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s">"event"</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s">"event"</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s">"line"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">fmri</span><span class="p">);</span>
+</code></pre></div></div>
+<p><img src="https://jjerry-k.github.io/public/img/sb_part1a/022.png" /></p>
+
+<p>필요에 따라 모든 샘플 각각을 plot 해야하기도 하죠..<br />
+다음 예시는 <code class="highlighter-rouge">event</code>가 <strong>stim</strong> 인 데이터들을 <strong>subject</strong> 별로 plot을 합니다!<br />
+(저 plot이 되는 방법은 추후에 좀 더 자세히 설명을 적을게요!)</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sns</span><span class="o">.</span><span class="n">relplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s">"timepoint"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">"signal"</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s">"region"</span><span class="p">,</span> <span class="n">units</span><span class="o">=</span><span class="s">"subject"</span><span class="p">,</span> <span class="n">estimator</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s">"line"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">fmri</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s">"event == 'stim'"</span><span class="p">));</span>
+</code></pre></div></div>
+<p><img src="https://jjerry-k.github.io/public/img/sb_part1a/023.png" /></p>
+
+<p>여기서는 Colormap을 조금씩 다뤄보는 구간입니다.<br />
+다음과 같이 데이터를 load 합니다!<br />
+(뭔지는 모르겠습니다…)</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">dots</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s">"dots"</span><span class="p">)</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s">"align == 'dots'"</span><span class="p">)</span>
+<span class="n">dots</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</code></pre></div></div>
+<p>&lt;img src=’https://jjerry-k.github.io/public/img/sb_part1a/024.png’ height=50% width=50%&gt;</p>
+
+<p>지금까지 해왔던거 처럼 plot을 해봅니다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sns</span><span class="o">.</span><span class="n">relplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s">"time"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">"firing_rate"</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s">"coherence"</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s">"choice"</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s">"line"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">dots</span><span class="p">);</span>
+</code></pre></div></div>
+<p><img src="https://jjerry-k.github.io/public/img/sb_part1a/025.png" /></p>
+
+<p>음….근데 위에 사진이 뭔가 부족하다고 느껴집니다.<br />
+자세히 보시면 그려지는 실선, 점선은 각각 6개인데 표현된 색상은 4개네요…<br />
+다음과 같이 작성하면 pallette를 custom하여 색상을 6개로 늘릴 수 있습니다!</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">palette</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">cubehelix_palette</span><span class="p">(</span><span class="n">light</span><span class="o">=</span><span class="mf">.8</span><span class="p">,</span> <span class="n">n_colors</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">relplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s">"time"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">"firing_rate"</span><span class="p">,</span>
+            <span class="n">hue</span><span class="o">=</span><span class="s">"coherence"</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s">"choice"</span><span class="p">,</span>
+            <span class="n">palette</span><span class="o">=</span><span class="n">palette</span><span class="p">,</span>
+            <span class="n">kind</span><span class="o">=</span><span class="s">"line"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">dots</span><span class="p">);</span>
+</code></pre></div></div>
+<p><img src="https://jjerry-k.github.io/public/img/sb_part1a/026.png" /></p>
+
+<p>또는 다음과 같이 Colormap을 Normalization 할 수도 있죠!</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">matplotlib.colors</span> <span class="kn">import</span> <span class="n">LogNorm</span>
+<span class="n">palette</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">cubehelix_palette</span><span class="p">(</span><span class="n">light</span><span class="o">=</span><span class="mf">.7</span><span class="p">,</span> <span class="n">n_colors</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">relplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s">"time"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">"firing_rate"</span><span class="p">,</span>
+            <span class="n">hue</span><span class="o">=</span><span class="s">"coherence"</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s">"choice"</span><span class="p">,</span>
+            <span class="n">hue_norm</span><span class="o">=</span><span class="n">LogNorm</span><span class="p">(),</span>
+            <span class="n">kind</span><span class="o">=</span><span class="s">"line"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">dots</span><span class="p">);</span>
+</code></pre></div></div>
+<p><img src="https://jjerry-k.github.io/public/img/sb_part1a/027.png" /></p>
+
+<p>아니면… 다음과 같이 <code class="highlighter-rouge">size</code>에 의미를 부여할 수도 있겠죠.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sns</span><span class="o">.</span><span class="n">relplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s">"time"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">"firing_rate"</span><span class="p">,</span>
+            <span class="n">size</span><span class="o">=</span><span class="s">"coherence"</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s">"choice"</span><span class="p">,</span>
+            <span class="n">kind</span><span class="o">=</span><span class="s">"line"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">dots</span><span class="p">);</span>
+</code></pre></div></div>
+<p><img src="https://jjerry-k.github.io/public/img/sb_part1a/028.png" /></p>
+
+<p>여기선 Colormap 변경이 주요 내용이였습니다.<br />
+그럼 다음과 같이 Colormap도 주면서…<code class="highlighter-rouge">size</code>를 이용해서 의미를 부여하는 것도 가능하겠죠!?</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sns</span><span class="o">.</span><span class="n">relplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s">"time"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">"firing_rate"</span><span class="p">,</span>
+           <span class="n">hue</span><span class="o">=</span><span class="s">"coherence"</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="s">"choice"</span><span class="p">,</span>
+           <span class="n">palette</span><span class="o">=</span><span class="n">palette</span><span class="p">,</span>
+           <span class="n">kind</span><span class="o">=</span><span class="s">"line"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">dots</span><span class="p">);</span>
+</code></pre></div></div>
+<p><img src="https://jjerry-k.github.io/public/img/sb_part1a/029.png" /></p>
+
+<h4 id="plotting-with-date-data">Plotting with date data</h4>
+
+<p>이전에 날짜 혹은 시간과 연관된 데이터를 사용할 경우 <code class="highlighter-rouge">autofmt_xdata()</code>라는 부분이 있었습니다.<br />
+이는 x축 레이블의 format을 자동으로 맞춰주는 부분이라고 했었는데요.<br />
+가령 포맷을 변경해야하는 상황이 발생한다면..?<br />
+<code class="highlighter-rouge">matplotlib</code> 문서를 참고하여 변경하셔야합니다..<br />
+왜냐하면 seaborn의 뼈대가 matplotlib 이니까요!</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="s">"2017-1-1"</span><span class="p">,</span> <span class="n">periods</span><span class="o">=</span><span class="mi">500</span><span class="p">),</span>
+                       <span class="n">value</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">500</span><span class="p">)</span><span class="o">.</span><span class="n">cumsum</span><span class="p">()))</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</code></pre></div></div>
+<p>&lt;img src=’https://jjerry-k.github.io/public/img/sb_part1a/030.png’ height=50% width=50%&gt;</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">g</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">relplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s">"time"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">"value"</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s">"line"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">fig</span><span class="o">.</span><span class="n">autofmt_xdate</span><span class="p">()</span>
+</code></pre></div></div>
+<p><img src="https://jjerry-k.github.io/public/img/sb_part1a/031.png" /></p>
+
+<h3 id="showing-multiple-relationships-with-facets">Showing multiple relationships with facets</h3>
+
+<p>지금까지는 단 1개의 figure 만 plot 했습니다!<br />
+하지만 보통..다수의 figure가 필요하죠..<br />
+이번엔 그 부분에 대한 내용입니다.<br />
+<a href="https://seaborn.pydata.org/generated/seaborn.relplot.html#seaborn.relplot"><code class="highlighter-rouge">relplot()</code></a>은 <a href="https://seaborn.pydata.org/generated/seaborn.FacetGrid.html#seaborn.FacetGrid">FacetGrid</a> 기반이기 때문에 쉽게 가능합니다.<br />
+“facet” 이라는 단어가 나올텐데요.<br />
+이는 전체 figure 하나를 facet이라고 칭합니다.
+다음과 같이 데이터를 load 하고 plot 해주세요!
+<code class="highlighter-rouge">col="time"</code> 이라는 옵션을 추가함으로써 <strong>Lunch</strong>에 대한 figure와 <strong>Dinner</strong>에 대한 figure <strong>두 개</strong>가 plot 됩니다!<br />
+여기선 1x2 facet 이라고 할 수 있어요!</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">tips</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s">"tips"</span><span class="p">)</span>
+<span class="n">tips</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">relplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s">"total_bill"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">"tip"</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s">"smoker"</span><span class="p">,</span>
+            <span class="n">col</span><span class="o">=</span><span class="s">"time"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">tips</span><span class="p">);</span>
+</code></pre></div></div>
+<p><img src="https://jjerry-k.github.io/public/img/sb_part1a/032.png" /></p>
+
+<p>또한 다음과 같이 두 변수에 대해 figure를 나눌 수도 있습니다.<br />
+<code class="highlighter-rouge">col="region", row="event"</code>라고 하면 <strong>행</strong>은 <strong>“event”</strong>를 기준으로 <strong>열</strong>은 <strong>“region”</strong>으로 총 4개가 plot 됩니다!<br />
+이건 2x2 facet!</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">fmri</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s">"fmri"</span><span class="p">)</span>
+<span class="n">fmri</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">relplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s">"timepoint"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">"signal"</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s">"subject"</span><span class="p">,</span>
+            <span class="n">col</span><span class="o">=</span><span class="s">"region"</span><span class="p">,</span> <span class="n">row</span><span class="o">=</span><span class="s">"event"</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+            <span class="n">kind</span><span class="o">=</span><span class="s">"line"</span><span class="p">,</span> <span class="n">estimator</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">fmri</span><span class="p">);</span>
+</code></pre></div></div>
+<p><img src="https://jjerry-k.github.io/public/img/sb_part1a/033.png" /></p>
+
+<p><strong>fmri</strong> 데이터의 경우 여러 subject가 있었습니다.<br />
+그 각각 subject 별로 figure를 만들고 싶을땐…?<br />
+다음과 같이 작성합니다.<br />
+<code class="highlighter-rouge">col="subject", col_wrap=5</code> 는 열을 <strong>subject</strong>를 기준으로 5개씩 끊어서 plot 하겠다는 의미입니다.<br />
+<code class="highlighter-rouge">height</code>는 facet의 높이(인치)를 정합니다.<br />
+<code class="highlighter-rouge">aspect</code>는 <code class="highlighter-rouge">height</code>에 맞춰 비율을 정하구요.<br />
+그럼 총 14개의 figure가 plot되고 3x5 facet이 생성됩니다!</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sns</span><span class="o">.</span><span class="n">relplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s">"timepoint"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">"signal"</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s">"event"</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s">"event"</span><span class="p">,</span>
+            <span class="n">col</span><span class="o">=</span><span class="s">"subject"</span><span class="p">,</span> <span class="n">col_wrap</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+            <span class="n">height</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="mf">.75</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">2.5</span><span class="p">,</span>
+            <span class="n">kind</span><span class="o">=</span><span class="s">"line"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">fmri</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s">"region == 'frontal'"</span><span class="p">));</span>
+</code></pre></div></div>
+<p><img src="https://jjerry-k.github.io/public/img/sb_part1a/034.png" /></p>
+
+<p>여기까지 Part 1의 A 내용이였습니다.<br />
+그럼 “어떤 내용이 부족해요!”, “이 내용 잘 모르겠어요!” 하는 부분을 남겨주시면 추가하도록 할게요!<br />
+감사합니다!</p>
 
     <article></h4>
     <div class="post-more">
       
-      <a href="/ubuntu/2016/08/16/Dualboot/#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
+      <a href="/python/2019/05/09/Part1A/#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
       
-      <a href="/ubuntu/2016/08/16/Dualboot/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
+      <a href="/python/2019/05/09/Part1A/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
+    </div>
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/living/2019/04/14/macbook_auto_start/">
+        맥북 Atom 완벽 제거
+      </a>
+    </h1>
+
+    <span class="post-date">14 Apr 2019</span>
+     | 
+    
+    <a href="/blog/tags/#macbook" class="post-tag">Macbook</a>
+    
+    
+
+    <h4 style="font-weight: 400; line-height: 1.8;"><article>
+      <p>안녕하세요! Jerry 입니다!</p>
+
+<p>오늘은 .. Atom 에디터를 <strong>완벽히</strong> 지우는 법에 대해 간단 포스팅을 하려고 합니다.</p>
+
+<ol>
+  <li>Applications 디렉토리에서 <strong>Atom</strong>을 지운다.</li>
+  <li>home 디렉토리에서 <code class="highlighter-rouge">.atom</code> 디렉토리를 지운다.</li>
+  <li><code class="highlighter-rouge">/usr/local/bin/atom</code> 을 지운다.</li>
+  <li><code class="highlighter-rouge">/usr/local/bin/apm</code> 을 지운다.</li>
+  <li><code class="highlighter-rouge">~/Library/Preferences/com.github.atom.plist</code> 을 지운다.</li>
+  <li><code class="highlighter-rouge">~/Library/Preferences/com.github.atom.helper.plist</code> 을 지운다.</li>
+</ol>
+
+<p>끝입니다..</p>
+
+<p>Atom 에 대한 모~~든걸 지운거에요!</p>
+
+<p>감사합니다!</p>
+
+    <article></h4>
+    <div class="post-more">
+      
+      <a href="/living/2019/04/14/macbook_auto_start/#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
+      
+      <a href="/living/2019/04/14/macbook_auto_start/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
+    </div>
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/deeplearning/2019/03/29/YOLO/">
+        Review: YOLO
+      </a>
+    </h1>
+
+    <span class="post-date">29 Mar 2019</span>
+     | 
+    
+    <a href="/blog/tags/#paper" class="post-tag">Paper</a>
+    
+    
+
+    <h4 style="font-weight: 400; line-height: 1.8;"><article>
+      <h1 id="you-only-look-once-unified-real-time-object-detection">You Only Look Once: Unified, Real-Time, Object detection</h1>
+<hr />
+
+<blockquote>
+  <p>편의상 bounding box -&gt; bbox</p>
+  <h2 id="abstract">Abstract</h2>
+</blockquote>
+
+<ul>
+  <li>Object detection을 bboxes, class probabilities regression 문제로 접근.</li>
+  <li>Single Neural Network 로 bboxes와 class probabilities 둘 다 예측.</li>
+  <li>Localization Error가 다소 높지만 background error가 낮음.</li>
+  <li>End-to-End, Extremely fast</li>
+</ul>
+
+<h2 id="1-introduction">1. Introduction</h2>
+
+<ul>
+  <li>Current Detection 시스템
+    <ul>
+      <li>DPM : Sliding Window 방식</li>
+      <li>R-CNN 계열 : potential bboxes 추출 -&gt; image 에서 bboxes 부분 다시 classify -&gt; Post-processing</li>
+    </ul>
+  </li>
+  <li>Slow, Hard to optimize(각 요소별로 따로따로 학습을 해야함. RPN -&gt; Classifier -&gt; RPN -&gt; …)</li>
+</ul>
+
+<p><img src="https://jjerry-k.github.io/public/img/yolo/fig01.png" /></p>
+
+<ul>
+  <li>복잡하지 않은 pipeline과 빠른 inferenc time.
+    <ul>
+      <li>45 fps on a Titan X .</li>
+    </ul>
+  </li>
+  <li>이미지 전체를 이용한 prediction
+    <ul>
+      <li>Fast R-CNN 보다 적은 background error</li>
+    </ul>
+  </li>
+  <li>Object의 general한 representations 학습.
+    <ul>
+      <li>natural image로 학습하고 art works로 test 했을 때 기존의 DPM 이나 R-CNN 보다 성능이 좋았다.</li>
+      <li>새로운 도메인이나 뭔가 모를 입력에 대해 일반화 할 수 있다.</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="2-unfied-detection">2. Unfied Detection</h2>
+
+<ul>
+  <li>Single Neural Network로 통합.</li>
+  <li>이미지 전체를 이용해서 각각의 bbox 예측.</li>
+</ul>
+
+<p><img src="https://jjerry-k.github.io/public/img/yolo/fig02.png" /></p>
+
+<ul>
+  <li>입력 이미지를 S x S grid로 나눔.
+    <ul>
+      <li>Feature map이 S x S 라고 이해하면 됨.</li>
+    </ul>
+  </li>
+  <li>각 grid cell은 B개의 bbox의 정보(x, y, w, h, confidence score), 해당 grid cell의 Class probabilities 정보를 가짐.
+    <ul>
+      <li>bbox의 정보
+        <ul>
+          <li>x, y : bbox의 center 좌표</li>
+          <li>w, h : 이미지 크기에 대비한 상대적인 값.</li>
+          <li>confidence score : bbox가 object를 가졌는지 box가 얼마나 정확히 예측했는지에 대한 score</li>
+          <li>Confidence Score는 다음과 같이 정의.
+<script type="math/tex">{Confidence\; Score}= Pr(Object) * IOU^{truth}_{pred}</script></li>
+          <li>No object의 경우
+            <ul>
+              <li>Confidence Score는 0 이어야함.</li>
+            </ul>
+          </li>
+          <li>Confidence Score가 IOU와 같아지길 원함.</li>
+        </ul>
+      </li>
+      <li>Class Probabilities 정보
+        <ul>
+          <li>C개의 class에 대한 conditional class probabilities, $Pr(Class_i \mid Object)$</li>
+          <li>
+            <p>Test 시에는 Conditional class probabilities와 individual box confidence score를 곱했다고 함.<br />
+<script type="math/tex">Pr(Class_i|Object) =  Pr(Object) * IOU^{truth}_{pred} = Pr(Class_i) * IOU^{truth}_{pred}</script></p>
+          </li>
+          <li>bbox 별로 class confidence score를 알 수 있음.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>PASCAL VOC 로 평가. S = 7, B = 2, C = 20</li>
+  <li>최종 출력은  7 x 7 x 30 의 tensor.</li>
+</ul>
+
+<h3 id="21-design">2.1 Design</h3>
+
+<ul>
+  <li>24개의 Convolution layer, 2개의 Fully Connected layer.</li>
+  <li>GoogLeNet의 inception 모듈 대신에 <span style="color:skyblue">1 x 1 Convolution layer를 이용하여 reduction.</span>
+<img src="https://jjerry-k.github.io/public/img/yolo/fig03_1.png" /></li>
+  <li>Tiny model은 9개의 Convolution layer, 2개의 Fully Connected layer.</li>
+</ul>
+
+<h3 id="22-training">2.2 Training</h3>
+<ul>
+  <li>앞 단의 20개의 Convolution layer(Feature Extractor)를 ImageNet 1000-class competition 데이터(224 x 224)로 Pretrain.</li>
+  <li>20번째 Convolution layer 뒤에 Average Pooling, Fully Connected Layer.</li>
+  <li>
+    <p>ImageNet 2012 validation set으로 top-5 accuracy 88% 정도..
+<img src="https://jjerry-k.github.io/public/img/yolo/fig03_2.png" /></p>
+  </li>
+  <li>
+    <p>Pretrain 후 Detector 부분 추가 후 입력 크기를 448 x 448 로 높여서 학습 진행.</p>
+  </li>
+  <li>Bounding Box의 width, height 값은 이미지의 width, height로 normalize 하여 0 ~ 1 사이 값을 같도록 함.</li>
+  <li>Bounding Box의 x, y 값은 특정 grid cell의 left top으로부터 offset 값. 0 ~ 1 사이 값을 같도록 함.</li>
+  <li>마지막 layer는 linear activation function 사용.</li>
+  <li>다른 layer는 leaky ReLU 사용.</li>
+</ul>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\phi(x) =\left\{\begin{array}{lcl}x, & if\;x > 0\\ {0.1}x, & otherwise\end{array} \right. %]]></script>
+
+<ul>
+  <li>
+    <p>Optimization이 쉬운 Sum-Squared Error 를 사용.</p>
+  </li>
+  <li>이미지의 대부분 grid cell이 object 를 가지고 있지 않기 때문에 Confidence Score가 0 에 수렴.</li>
+  <li>이 상황에선 object를 가지고 있는 grid cell의 gradient를 압도할 수 있음.</li>
+  <li>
+    <p>이를 해결하기 위해 Bbox coordinate loss와 No object의 confidence loss 에 대해 weight 를 부여.<br />
+$\lambda_{coord} = 5$ and $\lambda_{noobj} = 0.5$.</p>
+  </li>
+  <li>Sum-Squared Error는 large boxes와 small boxes 를 동일하게 평가.</li>
+  <li>large boxes 에 대해서 중요성을 반영하기 위해 width, height 는 square root 사용.</li>
+</ul>
+
+<script type="math/tex; mode=display">\lambda_{coord}\sum^{S^2}_{i=0}\sum^B_{j=0}\mathbb{I}^{obj}_{ij}(x_i-\hat{x}_i)^2 + (y_i-\hat{y}_i)^2 \\
++ \lambda_{coord}\sum^{S^2}_{i=0}\sum^B_{j=0}\mathbb{I}^{obj}_{ij}(\sqrt{w_i}-\sqrt{\hat{w}_i})^2 + (\sqrt{h_i}-\sqrt{\hat{h}_i})^2 \\
++ \sum^{S^2}_{i=0}\sum^B_{j=0}\mathbb{I}^{obj}_{ij}(C_i - \hat{C}_i)^2 \\
++ \lambda_{noobj}\sum^{S^2}_{i=0}\sum^B_{j=0}\mathbb{I}^{noobj}_{ij}(C_i - \hat{C}_i)^2 \\
++ \sum^{S^2}_{i=0}\mathbb{I}^{obj}_{i}\sum^B_{c\in{classes}}(p_i(c) - \hat{p}_i(c))^2</script>
+
+<ul>
+  <li>$\mathbb{I}^{obj}_{i}$ : Object가 존재하는 Grid Cell i.</li>
+  <li>
+    <p>$\mathbb{I}^{obj}_{ij}$ : Object가 존재하는 Grid Cell i의 Bounding Box j.</p>
+  </li>
+  <li>Train 관련 Parameter
+    <ul>
+      <li>Batch Szie : 64</li>
+      <li>Momentum : 0.9</li>
+      <li>Decay : 0.0005</li>
+      <li>Learning rate
+        <ul>
+          <li>$10^{-3}$ 부터 $10^{-2}$ 까지 천천히 증가.</li>
+          <li>$10^{-2}$ 로 75 epochs 학습.</li>
+          <li>$10^{-3}$ 로 줄여서 30 epochs 학습.</li>
+          <li>$10^{-4}$ 로 줄여서 30 epochs 학습.</li>
+        </ul>
+      </li>
+      <li>Dropout : 0.5</li>
+      <li>Data Augmentation
+        <ul>
+          <li>Random Scaling, Translation of up to 20% of the original image size.</li>
+          <li>Random adjustment exposure and saturation</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="23-inference">2.3 Inference</h3>
+<ul>
+  <li>Large Object 나 여러 grid cell에 걸쳐있는 object는 여러 셀에 predict 될 수 있음.</li>
+  <li>Non-maximal suppression 사용하여 해결.</li>
+</ul>
+
+<h3 id="24-limitations-of-yolo">2.4 Limitations of YOLO</h3>
+<ul>
+  <li>각 Grid Cell은 하나의 클래스만 가질 수 있기 때문에 Grid Cell 하나에 작은 object가 여러 개 있을때 제대로 예측하지 못할 수 있다.</li>
+  <li>예상치 못한 aspect ratio나 configuration을 가진 객체를 일반화 하는데 어려움.</li>
+  <li>Large box와 Small box를 동일하게 처리.</li>
+  <li>Large box의 small error보다 Small box의 small error가 IOU에 훨씬 큰 영향을 끼침.</li>
+</ul>
+
+<h2 id="3-comparison-to-other-detection-systems">3. Comparison to Other Detection Systems</h2>
+<ul>
+  <li>생략</li>
+</ul>
+
+<h2 id="4-experiments">4. Experiments</h2>
+
+<h3 id="41-comparison-to-other-realtime-systems">4.1. Comparison to Other RealTime Systems</h3>
+<ul>
+  <li>Fast Yolo는 가장 빠른 속도를 보여줌.</li>
+  <li>YOLO 는 real-time 성능을 보여주면서 mAP도 뛰어난걸 확인할 수 있음.
+<img src="https://jjerry-k.github.io/public/img/yolo/fig04_1.png" /></li>
+</ul>
+
+<h3 id="42-voc-2007-error-analysis">4.2. VOC 2007 Error Analysis</h3>
+<ul>
+  <li>Object Localization은 Fast R-CNN이 더 뛰어남.</li>
+  <li>But, Background Error(False Positive)가 훨씬 높음.
+<img src="https://jjerry-k.github.io/public/img/yolo/fig04_2.png" /></li>
+</ul>
+
+<h3 id="43-combining-fast-rcnn-and-yolo">4.3. Combining Fast RCNN and YOLO</h3>
+<ul>
+  <li>Fast R-CNN과 YOLO를 앙상블 한 모델이 성능이 가장 좋음. 
+<img src="https://jjerry-k.github.io/public/img/yolo/fig04_3.png" /></li>
+</ul>
+
+<h3 id="44-voc-2012-results">4.4. VOC 2012 Results</h3>
+<p><img src="https://jjerry-k.github.io/public/img/yolo/fig04_4.png" /></p>
+
+<h3 id="45-generalizability">4.5 Generalizability</h3>
+<ul>
+  <li>새로운 도메인, 예상치 못한 입력이 들어왔을때 일반화 성능이 뛰어남.</li>
+  <li>Picasso Dataset 과 People-Art Dataset을 이용하여 다른 모델들과 일반화 성능 비교.</li>
+  <li>YOLO가 가장 성능이 좋은것을 보여줌. 
+<img src="https://jjerry-k.github.io/public/img/yolo/fig05_1.png" />
+<img src="https://jjerry-k.github.io/public/img/yolo/fig05_2.png" /></li>
+</ul>
+
+    <article></h4>
+    <div class="post-more">
+      
+      <a href="/deeplearning/2019/03/29/YOLO/#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
+      
+      <a href="/deeplearning/2019/03/29/YOLO/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
+    </div>
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/ubuntu/2019/02/14/docker/">
+        자주 사용하는 Docker Command 정리
+      </a>
+    </h1>
+
+    <span class="post-date">14 Feb 2019</span>
+     | 
+    
+    <a href="/blog/tags/#docker" class="post-tag">Docker</a>
+    
+    
+
+    <h4 style="font-weight: 400; line-height: 1.8;"><article>
+      <p>service nvidia-docker start (sudo 권한으로) : nvidia docker 서비스 시작.</p>
+
+<p>docker -i -t -rm -p 호스트포트:도커포트 -v 호스트경로:도커경로 IMAGE_NAME:tag bash : IMAGE_NAME 컨테이너를 실행.</p>
+
+<p>docker rm NAME : Docker 프로세스 제거</p>
+
+<p>docker rmi IMAGE_NAME : Docker Image 제거</p>
+
+<p>docker commit NAME 레포이름:태그 :</p>
+
+<p>CUDA_VISIBLE_DEVICES=0 jupyter notebook –ip=0.0.0.0 –port=포트번호 –allow-root</p>
+
+
+    <article></h4>
+    <div class="post-more">
+      
+      <a href="/ubuntu/2019/02/14/docker/#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
+      
+      <a href="/ubuntu/2019/02/14/docker/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
+    </div>
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/living/2019/02/01/keyboard/">
+        첫 기계식 키보드 !
+      </a>
+    </h1>
+
+    <span class="post-date">01 Feb 2019</span>
+     | 
+    
+    <a href="/blog/tags/#hardware" class="post-tag">Hardware</a>
+    
+    
+
+    <h4 style="font-weight: 400; line-height: 1.8;"><article>
+      <p>늦었지만 키보드 자랑…<br />
+바밀로 저소음<strong>흑축</strong> 108키 입니다.</p>
+
+<p>넘나 영롱하다…</p>
+
+<p><img src="https://jjerry-k.github.io/public/img/keyboard/vamilo.png" /></p>
+
+<p>이건 타건 영상입니다.</p>
+
+<iframe class="youtube" src="https://jjerry-k.github.io/public/img/keyboard/vamilo.mp4" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen=""></iframe>
+
+    <article></h4>
+    <div class="post-more">
+      
+      <a href="/living/2019/02/01/keyboard/#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
+      
+      <a href="/living/2019/02/01/keyboard/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
     </div>
   </div>
   
@@ -792,7 +1026,7 @@ SSD에 지정을 하시기도 하지만 저는 HDD 지정을 했습니다.<br />
 
 <div class="pagination">
   
-    <span class="pagination-item older">Older</span>
+    <a class="pagination-item older" href="/blog/page9">Older</a>
   
   
     
