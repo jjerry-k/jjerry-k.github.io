@@ -2,57 +2,88 @@
 <html lang="en-us">
   <head>
   <head>
-  <link href="http://gmpg.org/xfn/11" rel="profile">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta http-equiv="content-type" content="text/html; charset=utf-8">
-
-  <!-- Enable responsiveness on mobile devices-->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-
-  <title>
+    <link href="http://gmpg.org/xfn/11" rel="profile">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  
+    <!-- Enable responsiveness on mobile devices-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+  
+    <title>
+      
+        Weights & Biases 가 뭐지?? &middot; Jerry's Blog
+      
+    </title>
+  
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
+    <link rel="stylesheet" href="/public/css/main.css">
+  
+    <!-- Icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-precomposed.png">
+    <link rel="shortcut icon" href="/public/favicon.ico">
+  
+    <!-- RSS -->
+    <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+  
+    <!-- scroll -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+      $( window ).scroll( function() {
+        if ( $( this ).scrollTop() > 500 ) {
+          $( '.top' ).fadeIn();
+        } else {
+          $( '.top' ).fadeOut();
+        }
+      } );
+      $( '.top' ).click( function() {
+        $( 'html, body' ).stop().animate( { scrollTop : 0 }, 100);
+        return false;
+      } );
+    </script>
     
-      Weights & Biases 가 뭐지?? &middot; Jerry's Blog
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+      (absbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-1054696837285307",
+          enable_page_level_ads: true
+      });
+    </script>
     
-  </title>
-
-  <!-- CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
-  <link rel="stylesheet" href="/public/css/main.css">
-
-  <!-- Icons -->
-  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-precomposed.png">
-  <link rel="shortcut icon" href="/public/favicon.ico">
-
-  <!-- RSS -->
-  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
-
-  <!-- scroll -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script>
-    $( window ).scroll( function() {
-      if ( $( this ).scrollTop() > 500 ) {
-        $( '.top' ).fadeIn();
-      } else {
-        $( '.top' ).fadeOut();
-      }
-    } );
-    $( '.top' ).click( function() {
-      $( 'html, body' ).stop().animate( { scrollTop : 0 }, 100);
-      return false;
-    } );
-  </script>
-  
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-  <script>
-    (absbygoogle = window.adsbygoogle || []).push({
-        google_ad_client: "ca-pub-1054696837285307",
-        enable_page_level_ads: true
-    });
-  </script>
-  
-  
+    <!-- 
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        //jax: ["input/TeX", "output/HTML-CSS"],
+        TeX: {
+          equationNumbers: {
+            autoNumber: "AMS"
+          }
+        },
+        tex2jax: {
+          inlineMath: [ ['$', '$'] ],
+          displayMath: [ ['$$', '$$'] ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+        //,
+        //displayAlign: "left",
+        //displayIndent: "2em"
+      });
+      MathJax.Hub.Register.MessageHook("Math Processing Error",function (message) {
+        alert("Math Processing Error: "+message[1]);
+      });
+    MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
+        alert("Math Processing Error: "+message[1]);
+      });
+    </script>
+    <script type="text/javascript" async
+      src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript">
+    </script>
+     -->
+    
+    
   <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
       //jax: ["input/TeX", "output/HTML-CSS"],
@@ -69,17 +100,21 @@
   </script>
   <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
   
-  
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <script src="/dest/simple-jekyll-search.js" type="text/javascript"></script>
-  <script type="text/javascript">
-  $(document).ready(function(){
-    document.search.searchinput.focus();
-  });
-  </script>
-</head>
 
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="/dest/simple-jekyll-search.js" type="text/javascript"></script>
+    <script type="text/javascript">
+    $(document).ready(function(){
+      document.search.searchinput.focus();
+    });
+    </script>
+  </head>
+  
   <style>blockquote {font-size: 1em; line-height: 1.4}</style>
+  
+  <!-- New line Start-->
+  <!--  -->
+  <!-- New line End -->
   </head>
   <body>
 
@@ -301,7 +336,7 @@
 
 <h1 id="패키지-설치">패키지 설치</h1>
 
-<p><code class="highlighter-rouge">wandb</code> 패키지를 먼저 설치해줍니다.</p>
+<p><code class="language-plaintext highlighter-rouge">wandb</code> 패키지를 먼저 설치해줍니다.</p>
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pip <span class="nb">install </span>wandb
 </code></pre></div></div>
 
@@ -333,7 +368,7 @@
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
 <span class="c1"># wandb initialization
 </span><span class="kn">import</span> <span class="nn">wandb</span>
-<span class="n">wandb</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">project</span><span class="o">=</span><span class="s">"test_project"</span><span class="p">)</span>
+<span class="n">wandb</span><span class="p">.</span><span class="n">init</span><span class="p">(</span><span class="n">project</span><span class="o">=</span><span class="s">"test_project"</span><span class="p">)</span>
 
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
@@ -350,24 +385,24 @@
 
 
 <span class="c1"># Data Loading
-</span><span class="p">(</span><span class="n">train_x</span><span class="p">,</span> <span class="n">train_y</span><span class="p">),</span> <span class="p">(</span><span class="n">test_x</span><span class="p">,</span> <span class="n">test_y</span><span class="p">)</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">mnist</span><span class="o">.</span><span class="n">load_data</span><span class="p">()</span>
-<span class="n">train_x</span><span class="p">,</span> <span class="n">test_x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">train_x</span><span class="o">/</span><span class="mf">255.</span><span class="p">,</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">784</span><span class="p">]),</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">test_x</span><span class="o">/</span><span class="mf">255.</span><span class="p">,</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">784</span><span class="p">])</span>
+</span><span class="p">(</span><span class="n">train_x</span><span class="p">,</span> <span class="n">train_y</span><span class="p">),</span> <span class="p">(</span><span class="n">test_x</span><span class="p">,</span> <span class="n">test_y</span><span class="p">)</span> <span class="o">=</span> <span class="n">datasets</span><span class="p">.</span><span class="n">mnist</span><span class="p">.</span><span class="n">load_data</span><span class="p">()</span>
+<span class="n">train_x</span><span class="p">,</span> <span class="n">test_x</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">train_x</span><span class="o">/</span><span class="mf">255.</span><span class="p">,</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">784</span><span class="p">]),</span> <span class="n">np</span><span class="p">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">test_x</span><span class="o">/</span><span class="mf">255.</span><span class="p">,</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">784</span><span class="p">])</span>
 
-<span class="k">print</span><span class="p">(</span><span class="s">"Train Data's Shape : "</span><span class="p">,</span> <span class="n">train_x</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">train_y</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s">"Test Data's Shape : "</span><span class="p">,</span> <span class="n">test_x</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">test_y</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"Train Data's Shape : "</span><span class="p">,</span> <span class="n">train_x</span><span class="p">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">train_y</span><span class="p">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"Test Data's Shape : "</span><span class="p">,</span> <span class="n">test_x</span><span class="p">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">test_y</span><span class="p">.</span><span class="n">shape</span><span class="p">)</span>
 
 <span class="c1"># Network Building
 ## Using Sequential
-</span><span class="n">mlp</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">Sequential</span><span class="p">()</span>
-<span class="n">mlp</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">256</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s">'relu'</span><span class="p">,</span> <span class="n">input_shape</span><span class="o">=</span><span class="p">(</span><span class="mi">784</span><span class="p">,)))</span>
-<span class="n">mlp</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s">'relu'</span><span class="p">))</span>
-<span class="n">mlp</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s">'softmax'</span><span class="p">))</span>
+</span><span class="n">mlp</span> <span class="o">=</span> <span class="n">models</span><span class="p">.</span><span class="n">Sequential</span><span class="p">()</span>
+<span class="n">mlp</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="n">layers</span><span class="p">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">256</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s">'relu'</span><span class="p">,</span> <span class="n">input_shape</span><span class="o">=</span><span class="p">(</span><span class="mi">784</span><span class="p">,)))</span>
+<span class="n">mlp</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="n">layers</span><span class="p">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s">'relu'</span><span class="p">))</span>
+<span class="n">mlp</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="n">layers</span><span class="p">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s">'softmax'</span><span class="p">))</span>
 
 <span class="k">print</span><span class="p">(</span><span class="s">"Network Built!"</span><span class="p">)</span>
 
-<span class="n">mlp</span><span class="o">.</span><span class="nb">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="n">optimizers</span><span class="o">.</span><span class="n">Adam</span><span class="p">(),</span> <span class="n">loss</span><span class="o">=</span><span class="n">losses</span><span class="o">.</span><span class="n">sparse_categorical_crossentropy</span><span class="p">,</span> <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s">'accuracy'</span><span class="p">])</span>
+<span class="n">mlp</span><span class="p">.</span><span class="nb">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="n">optimizers</span><span class="p">.</span><span class="n">Adam</span><span class="p">(),</span> <span class="n">loss</span><span class="o">=</span><span class="n">losses</span><span class="p">.</span><span class="n">sparse_categorical_crossentropy</span><span class="p">,</span> <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s">'accuracy'</span><span class="p">])</span>
 
-<span class="n">history</span> <span class="o">=</span> <span class="n">mlp</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">train_x</span><span class="p">,</span> <span class="n">train_y</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> 
+<span class="n">history</span> <span class="o">=</span> <span class="n">mlp</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">train_x</span><span class="p">,</span> <span class="n">train_y</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> 
                                     <span class="n">validation_data</span><span class="o">=</span><span class="p">(</span><span class="n">test_x</span><span class="p">,</span> <span class="n">test_y</span><span class="p">),</span> 
                                     <span class="n">callbacks</span><span class="o">=</span><span class="p">[</span><span class="n">WandbCallback</span><span class="p">()])</span> <span class="c1"># callbacks 에 Wandbcallback 추가
 </span></code></pre></div></div>
@@ -375,17 +410,17 @@
 <h1 id="check-training">Check training</h1>
 
 <p>해당 코드를 실행시키고 <a href="https://app.wandb.ai/home">W&amp;B</a> 에 접속을 하면 다음과 같은 화면이 나옵니다.<br />
-위에서 <code class="highlighter-rouge">test_project</code> 라는 프로젝트에 세팅을 했기 때문에 확인을 해봅니다.<br />
-하나의 프로젝트에서 한번 실행하면 뭔지 모를 조합의 <code class="highlighter-rouge">Name</code>으로 실행 상태를 보여줍니다.
-저는 한번만 했기 때문에 <code class="highlighter-rouge">lyric-dream-3</code> 라는 이름으로 하나만 생겨있습니다.</p>
+위에서 <code class="language-plaintext highlighter-rouge">test_project</code> 라는 프로젝트에 세팅을 했기 때문에 확인을 해봅니다.<br />
+하나의 프로젝트에서 한번 실행하면 뭔지 모를 조합의 <code class="language-plaintext highlighter-rouge">Name</code>으로 실행 상태를 보여줍니다.
+저는 한번만 했기 때문에 <code class="language-plaintext highlighter-rouge">lyric-dream-3</code> 라는 이름으로 하나만 생겨있습니다.</p>
 
 <p><img src="https://jjerry-k.github.io/public/img/wandb/Untitled_4.png" alt="https://jjerry-k.github.io/public/img/wandb/Untitled_4.png" /></p>
 
-<p><code class="highlighter-rouge">lyric-dream-3</code> 같이 이름을 클릭해서 무엇을 볼 수 있는지 살펴보겠습니다.</p>
+<p><code class="language-plaintext highlighter-rouge">lyric-dream-3</code> 같이 이름을 클릭해서 무엇을 볼 수 있는지 살펴보겠습니다.</p>
 
 <h2 id="chart-탭">Chart 탭</h2>
 
-<p>Chart 탭에선 loss, epoch, metric 등과 같은 학습 관련 지표를 볼 수 있는 <code class="highlighter-rouge">CHARTS</code>와 모델 학습에 사용된 시스템을 모니터링 할 수 있는 <code class="highlighter-rouge">SYSTEM</code>이 있습니다.</p>
+<p>Chart 탭에선 loss, epoch, metric 등과 같은 학습 관련 지표를 볼 수 있는 <code class="language-plaintext highlighter-rouge">CHARTS</code>와 모델 학습에 사용된 시스템을 모니터링 할 수 있는 <code class="language-plaintext highlighter-rouge">SYSTEM</code>이 있습니다.</p>
 
 <p><img src="https://jjerry-k.github.io/public/img/wandb/Untitled_5.png" alt="https://jjerry-k.github.io/public/img/wandb/Untitled_5.png" /></p>
 
@@ -398,7 +433,7 @@
 <p><img src="https://jjerry-k.github.io/public/img/wandb/Untitled_9.png" alt="https://jjerry-k.github.io/public/img/wandb/Untitled_9.png" /></p>
 
 <h2 id="system-탭">System 탭</h2>
-<p>System 탭에서는 Chart 탭에서 <code class="highlighter-rouge">SYSTEM</code> 과 동일한 그래프를 보여주네요.
+<p>System 탭에서는 Chart 탭에서 <code class="language-plaintext highlighter-rouge">SYSTEM</code> 과 동일한 그래프를 보여주네요.
 <img src="https://jjerry-k.github.io/public/img/wandb/Untitled_10.png" alt="https://jjerry-k.github.io/public/img/wandb/Untitled_10.png" /></p>
 
 <h2 id="model-탭">Model 탭</h2>
@@ -413,7 +448,7 @@
 <p>솔직히 보여주기만 해도 좋지만 저장도 해주면 좋겠죠.<br />
 Files 탭에는 현재 모델을 돌릴때 사용된 정보, 가장 성능이 좋았을 epoch 의 model, 돌리는 환경에 설치된 package 리스트 등의 정보가 저장됩니다.<br />
 물론 다운로드 가능!<br />
-<code class="highlighter-rouge">model-best.h5</code>는 graph 정보도 저장되어 있기 때문에 다운로드 후 load해서 바로 Inference 가능합니다!
+<code class="language-plaintext highlighter-rouge">model-best.h5</code>는 graph 정보도 저장되어 있기 때문에 다운로드 후 load해서 바로 Inference 가능합니다!
 <img src="https://jjerry-k.github.io/public/img/wandb/Untitled_13.png" alt="https://jjerry-k.github.io/public/img/wandb/Untitled_13.png" /></p>
 
 <p><a href="https://www.wandb.com/">Weights &amp; Biases</a> 에 대해 정~~~말 간단히 알아봤습니다.<br />
@@ -427,7 +462,7 @@ Files 탭에는 현재 모델을 돌릴때 사용된 정보, 가장 성능이 �
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
 <span class="c1"># wandb initialization
 </span><span class="kn">import</span> <span class="nn">wandb</span>
-<span class="n">wandb</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">project</span><span class="o">=</span><span class="s">"test_project"</span><span class="p">)</span>
+<span class="n">wandb</span><span class="p">.</span><span class="n">init</span><span class="p">(</span><span class="n">project</span><span class="o">=</span><span class="s">"test_project"</span><span class="p">)</span>
 
 <span class="c1"># Importing Modules
 </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
@@ -441,43 +476,43 @@ Files 탭에는 현재 모델을 돌릴때 사용된 정보, 가장 성능이 �
 <span class="c1"># Loading Data
 </span>
 <span class="c1"># MNIST dataset
-</span><span class="n">mnist_train</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">MNIST</span><span class="p">(</span><span class="n">root</span><span class="o">=</span><span class="s">'./'</span><span class="p">,</span>
+</span><span class="n">mnist_train</span> <span class="o">=</span> <span class="n">datasets</span><span class="p">.</span><span class="n">MNIST</span><span class="p">(</span><span class="n">root</span><span class="o">=</span><span class="s">'./'</span><span class="p">,</span>
                           <span class="n">train</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
-                          <span class="n">transform</span><span class="o">=</span><span class="n">transforms</span><span class="o">.</span><span class="n">ToTensor</span><span class="p">(),</span>
+                          <span class="n">transform</span><span class="o">=</span><span class="n">transforms</span><span class="p">.</span><span class="n">ToTensor</span><span class="p">(),</span>
                           <span class="n">download</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="s">"Downloading Train Data Done ! "</span><span class="p">)</span>
 
-<span class="n">mnist_test</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">MNIST</span><span class="p">(</span><span class="n">root</span><span class="o">=</span><span class="s">'./'</span><span class="p">,</span>
+<span class="n">mnist_test</span> <span class="o">=</span> <span class="n">datasets</span><span class="p">.</span><span class="n">MNIST</span><span class="p">(</span><span class="n">root</span><span class="o">=</span><span class="s">'./'</span><span class="p">,</span>
                          <span class="n">train</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>
-                         <span class="n">transform</span><span class="o">=</span><span class="n">transforms</span><span class="o">.</span><span class="n">ToTensor</span><span class="p">(),</span>
+                         <span class="n">transform</span><span class="o">=</span><span class="n">transforms</span><span class="p">.</span><span class="n">ToTensor</span><span class="p">(),</span>
                          <span class="n">download</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="s">"Downloading Test Data Done ! "</span><span class="p">)</span>
 
 <span class="c1"># Defining Model
 </span>
 <span class="c1"># our model
-</span><span class="k">class</span> <span class="nc">Model</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+</span><span class="k">class</span> <span class="nc">Model</span><span class="p">(</span><span class="n">nn</span><span class="p">.</span><span class="n">Module</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">(</span><span class="n">Model</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">linear1</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">784</span><span class="p">,</span> <span class="mi">256</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">linear2</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">256</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Model</span><span class="p">,</span> <span class="bp">self</span><span class="p">).</span><span class="n">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">linear1</span> <span class="o">=</span> <span class="n">nn</span><span class="p">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">784</span><span class="p">,</span> <span class="mi">256</span><span class="p">)</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">linear2</span> <span class="o">=</span> <span class="n">nn</span><span class="p">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">256</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
     
     <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">):</span>
-        <span class="n">X</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">relu</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">linear1</span><span class="p">(</span><span class="n">X</span><span class="p">)))</span>
-        <span class="n">X</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">linear2</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+        <span class="n">X</span> <span class="o">=</span> <span class="n">F</span><span class="p">.</span><span class="n">relu</span><span class="p">((</span><span class="bp">self</span><span class="p">.</span><span class="n">linear1</span><span class="p">(</span><span class="n">X</span><span class="p">)))</span>
+        <span class="n">X</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">linear2</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">X</span>
 
 <span class="n">model</span> <span class="o">=</span> <span class="n">Model</span><span class="p">()</span>
-<span class="n">criterion</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">CrossEntropyLoss</span><span class="p">()</span>
-<span class="n">optimizer</span> <span class="o">=</span> <span class="n">optim</span><span class="o">.</span><span class="n">Adam</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="mf">0.001</span><span class="p">)</span>
+<span class="n">criterion</span> <span class="o">=</span> <span class="n">nn</span><span class="p">.</span><span class="n">CrossEntropyLoss</span><span class="p">()</span>
+<span class="n">optimizer</span> <span class="o">=</span> <span class="n">optim</span><span class="p">.</span><span class="n">Adam</span><span class="p">(</span><span class="n">model</span><span class="p">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="mf">0.001</span><span class="p">)</span>
 
 <span class="c1"># Logging model, Gradient, parameters on dashboard
-</span><span class="n">wandb</span><span class="o">.</span><span class="n">watch</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+</span><span class="n">wandb</span><span class="p">.</span><span class="n">watch</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
 
 <span class="c1"># Training Phase
 </span><span class="n">batch_size</span> <span class="o">=</span> <span class="mi">100</span>
 
-<span class="n">data_iter</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">DataLoader</span><span class="p">(</span><span class="n">mnist_train</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">num_workers</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">data_iter</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">utils</span><span class="p">.</span><span class="n">data</span><span class="p">.</span><span class="n">DataLoader</span><span class="p">(</span><span class="n">mnist_train</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">num_workers</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 
 <span class="k">print</span><span class="p">(</span><span class="s">"Iteration maker Done !"</span><span class="p">)</span>
 
@@ -486,51 +521,51 @@ Files 탭에는 현재 모델을 돌릴때 사용된 정보, 가장 성능이 �
     <span class="n">avg_loss</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="n">total_batch</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">mnist_train</span><span class="p">)</span> <span class="o">//</span> <span class="n">batch_size</span>
     <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">batch_img</span><span class="p">,</span> <span class="n">batch_lab</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">data_iter</span><span class="p">):</span>
-        <span class="n">X</span> <span class="o">=</span> <span class="n">batch_img</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">28</span><span class="o">*</span><span class="mi">28</span><span class="p">)</span>
+        <span class="n">X</span> <span class="o">=</span> <span class="n">batch_img</span><span class="p">.</span><span class="n">view</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">28</span><span class="o">*</span><span class="mi">28</span><span class="p">)</span>
         <span class="n">Y</span> <span class="o">=</span> <span class="n">batch_lab</span>
         
-        <span class="n">y_pred</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+        <span class="n">y_pred</span> <span class="o">=</span> <span class="n">model</span><span class="p">.</span><span class="n">forward</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
         
         <span class="n">loss</span> <span class="o">=</span> <span class="n">criterion</span><span class="p">(</span><span class="n">y_pred</span><span class="p">,</span> <span class="n">Y</span><span class="p">)</span>
         <span class="c1"># Zero gradients, perform a backward pass, and update the weights.
-</span>        <span class="n">optimizer</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span>
-        <span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
-        <span class="n">optimizer</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+</span>        <span class="n">optimizer</span><span class="p">.</span><span class="n">zero_grad</span><span class="p">()</span>
+        <span class="n">loss</span><span class="p">.</span><span class="n">backward</span><span class="p">()</span>
+        <span class="n">optimizer</span><span class="p">.</span><span class="n">step</span><span class="p">()</span>
         
         <span class="n">avg_loss</span> <span class="o">+=</span> <span class="n">loss</span>
         <span class="k">if</span> <span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">%</span><span class="mi">100</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">:</span>
-            <span class="k">print</span><span class="p">(</span><span class="s">"Epoch : "</span><span class="p">,</span> <span class="n">epoch</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="s">"Iteration : "</span><span class="p">,</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="s">" Loss : "</span><span class="p">,</span> <span class="n">avg_loss</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span><span class="o">/</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
+            <span class="k">print</span><span class="p">(</span><span class="s">"Epoch : "</span><span class="p">,</span> <span class="n">epoch</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="s">"Iteration : "</span><span class="p">,</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="s">" Loss : "</span><span class="p">,</span> <span class="n">avg_loss</span><span class="p">.</span><span class="n">data</span><span class="p">.</span><span class="n">numpy</span><span class="p">()</span><span class="o">/</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
 
     <span class="c1"># Logging metrics    
-</span>    <span class="n">wandb</span><span class="o">.</span><span class="n">log</span><span class="p">({</span><span class="s">'epoch'</span><span class="p">:</span> <span class="n">epoch</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="s">"loss"</span><span class="p">:</span> <span class="n">avg_loss</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span><span class="o">/</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)})</span>
+</span>    <span class="n">wandb</span><span class="p">.</span><span class="n">log</span><span class="p">({</span><span class="s">'epoch'</span><span class="p">:</span> <span class="n">epoch</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="s">"loss"</span><span class="p">:</span> <span class="n">avg_loss</span><span class="p">.</span><span class="n">data</span><span class="p">.</span><span class="n">numpy</span><span class="p">()</span><span class="o">/</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)})</span>
 
-    <span class="k">print</span><span class="p">(</span><span class="s">"Epoch : "</span><span class="p">,</span> <span class="n">epoch</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="s">" Loss : "</span><span class="p">,</span> <span class="n">avg_loss</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span><span class="o">/</span><span class="n">total_batch</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"Epoch : "</span><span class="p">,</span> <span class="n">epoch</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="s">" Loss : "</span><span class="p">,</span> <span class="n">avg_loss</span><span class="p">.</span><span class="n">data</span><span class="p">.</span><span class="n">numpy</span><span class="p">()</span><span class="o">/</span><span class="n">total_batch</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="s">"Training Done !"</span><span class="p">)</span>
 
 <span class="c1"># Save final model
-</span><span class="n">torch</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">state_dict</span><span class="p">(),</span> <span class="s">"model.h5"</span><span class="p">)</span>
-<span class="n">wandb</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s">'model.h5'</span><span class="p">)</span>
+</span><span class="n">torch</span><span class="p">.</span><span class="n">save</span><span class="p">(</span><span class="n">model</span><span class="p">.</span><span class="n">state_dict</span><span class="p">(),</span> <span class="s">"model.h5"</span><span class="p">)</span>
+<span class="n">wandb</span><span class="p">.</span><span class="n">save</span><span class="p">(</span><span class="s">'model.h5'</span><span class="p">)</span>
 
 <span class="c1"># Evaluation
 </span>
-<span class="n">test_img</span> <span class="o">=</span> <span class="n">mnist_test</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">28</span><span class="o">*</span><span class="mi">28</span><span class="p">)</span><span class="o">.</span><span class="nb">type</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">FloatTensor</span><span class="p">)</span>
-<span class="n">test_lab</span> <span class="o">=</span> <span class="n">mnist_test</span><span class="o">.</span><span class="n">targets</span>
-<span class="n">outputs</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="n">test_img</span><span class="p">)</span>
-<span class="n">pred_val</span><span class="p">,</span> <span class="n">pred_idx</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="nb">max</span><span class="p">(</span><span class="n">outputs</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-<span class="n">correct</span> <span class="o">=</span> <span class="p">(</span><span class="n">pred_idx</span> <span class="o">==</span> <span class="n">test_lab</span><span class="p">)</span><span class="o">.</span><span class="nb">sum</span><span class="p">()</span>
-<span class="k">print</span><span class="p">(</span><span class="s">'Accuracy : '</span><span class="p">,</span> <span class="n">correct</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">test_img</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">test_img</span> <span class="o">=</span> <span class="n">mnist_test</span><span class="p">.</span><span class="n">data</span><span class="p">.</span><span class="n">view</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">28</span><span class="o">*</span><span class="mi">28</span><span class="p">).</span><span class="nb">type</span><span class="p">(</span><span class="n">torch</span><span class="p">.</span><span class="n">FloatTensor</span><span class="p">)</span>
+<span class="n">test_lab</span> <span class="o">=</span> <span class="n">mnist_test</span><span class="p">.</span><span class="n">targets</span>
+<span class="n">outputs</span> <span class="o">=</span> <span class="n">model</span><span class="p">.</span><span class="n">forward</span><span class="p">(</span><span class="n">test_img</span><span class="p">)</span>
+<span class="n">pred_val</span><span class="p">,</span> <span class="n">pred_idx</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="nb">max</span><span class="p">(</span><span class="n">outputs</span><span class="p">.</span><span class="n">data</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">correct</span> <span class="o">=</span> <span class="p">(</span><span class="n">pred_idx</span> <span class="o">==</span> <span class="n">test_lab</span><span class="p">).</span><span class="nb">sum</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="s">'Accuracy : '</span><span class="p">,</span> <span class="n">correct</span><span class="p">.</span><span class="n">data</span><span class="p">.</span><span class="n">numpy</span><span class="p">()</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">test_img</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="p">)</span>
 
 <span class="c1"># Testing
 </span>
-<span class="n">r</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">mnist_test</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">X_single_data</span> <span class="o">=</span> <span class="n">mnist_test</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">r</span><span class="p">:</span><span class="n">r</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">28</span><span class="o">*</span><span class="mi">28</span><span class="p">)</span><span class="o">.</span><span class="nb">float</span><span class="p">()</span>
-<span class="n">Y_single_data</span> <span class="o">=</span> <span class="n">mnist_test</span><span class="o">.</span><span class="n">targets</span><span class="p">[</span><span class="n">r</span><span class="p">:</span><span class="n">r</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">mnist_test</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">X_single_data</span> <span class="o">=</span> <span class="n">mnist_test</span><span class="p">.</span><span class="n">data</span><span class="p">[</span><span class="n">r</span><span class="p">:</span><span class="n">r</span> <span class="o">+</span> <span class="mi">1</span><span class="p">].</span><span class="n">view</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">28</span><span class="o">*</span><span class="mi">28</span><span class="p">).</span><span class="nb">float</span><span class="p">()</span>
+<span class="n">Y_single_data</span> <span class="o">=</span> <span class="n">mnist_test</span><span class="p">.</span><span class="n">targets</span><span class="p">[</span><span class="n">r</span><span class="p">:</span><span class="n">r</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
 
 <span class="n">single_prediction</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">X_single_data</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">X_single_data</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="mi">28</span><span class="p">,</span><span class="mi">28</span><span class="p">)</span><span class="o">.</span><span class="n">numpy</span><span class="p">(),</span> <span class="n">cmap</span><span class="o">=</span><span class="s">'gray'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">X_single_data</span><span class="p">.</span><span class="n">data</span><span class="p">.</span><span class="n">view</span><span class="p">(</span><span class="mi">28</span><span class="p">,</span><span class="mi">28</span><span class="p">).</span><span class="n">numpy</span><span class="p">(),</span> <span class="n">cmap</span><span class="o">=</span><span class="s">'gray'</span><span class="p">)</span>
 
-<span class="k">print</span><span class="p">(</span><span class="s">'Label : '</span><span class="p">,</span> <span class="n">Y_single_data</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">numpy</span><span class="p">()[</span><span class="mi">0</span><span class="p">])</span>
-<span class="k">print</span><span class="p">(</span><span class="s">'Prediction : '</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="nb">max</span><span class="p">(</span><span class="n">single_prediction</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="mi">1</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">numpy</span><span class="p">()[</span><span class="mi">0</span><span class="p">])</span>
+<span class="k">print</span><span class="p">(</span><span class="s">'Label : '</span><span class="p">,</span> <span class="n">Y_single_data</span><span class="p">.</span><span class="n">data</span><span class="p">.</span><span class="n">numpy</span><span class="p">()[</span><span class="mi">0</span><span class="p">])</span>
+<span class="k">print</span><span class="p">(</span><span class="s">'Prediction : '</span><span class="p">,</span> <span class="n">torch</span><span class="p">.</span><span class="nb">max</span><span class="p">(</span><span class="n">single_prediction</span><span class="p">.</span><span class="n">data</span><span class="p">,</span> <span class="mi">1</span><span class="p">)[</span><span class="mi">1</span><span class="p">].</span><span class="n">numpy</span><span class="p">()[</span><span class="mi">0</span><span class="p">])</span>
 </code></pre></div></div>
 
   </article></h4>

@@ -2,57 +2,88 @@
 <html lang="en-us">
   <head>
   <head>
-  <link href="http://gmpg.org/xfn/11" rel="profile">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta http-equiv="content-type" content="text/html; charset=utf-8">
-
-  <!-- Enable responsiveness on mobile devices-->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-
-  <title>
+    <link href="http://gmpg.org/xfn/11" rel="profile">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  
+    <!-- Enable responsiveness on mobile devices-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+  
+    <title>
+      
+        NIPA...NIPA가 뭐죠.. &middot; Jerry's Blog
+      
+    </title>
+  
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
+    <link rel="stylesheet" href="/public/css/main.css">
+  
+    <!-- Icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-precomposed.png">
+    <link rel="shortcut icon" href="/public/favicon.ico">
+  
+    <!-- RSS -->
+    <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+  
+    <!-- scroll -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+      $( window ).scroll( function() {
+        if ( $( this ).scrollTop() > 500 ) {
+          $( '.top' ).fadeIn();
+        } else {
+          $( '.top' ).fadeOut();
+        }
+      } );
+      $( '.top' ).click( function() {
+        $( 'html, body' ).stop().animate( { scrollTop : 0 }, 100);
+        return false;
+      } );
+    </script>
     
-      NIPA...NIPA가 뭐죠.. &middot; Jerry's Blog
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+      (absbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-1054696837285307",
+          enable_page_level_ads: true
+      });
+    </script>
     
-  </title>
-
-  <!-- CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
-  <link rel="stylesheet" href="/public/css/main.css">
-
-  <!-- Icons -->
-  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-precomposed.png">
-  <link rel="shortcut icon" href="/public/favicon.ico">
-
-  <!-- RSS -->
-  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
-
-  <!-- scroll -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script>
-    $( window ).scroll( function() {
-      if ( $( this ).scrollTop() > 500 ) {
-        $( '.top' ).fadeIn();
-      } else {
-        $( '.top' ).fadeOut();
-      }
-    } );
-    $( '.top' ).click( function() {
-      $( 'html, body' ).stop().animate( { scrollTop : 0 }, 100);
-      return false;
-    } );
-  </script>
-  
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-  <script>
-    (absbygoogle = window.adsbygoogle || []).push({
-        google_ad_client: "ca-pub-1054696837285307",
-        enable_page_level_ads: true
-    });
-  </script>
-  
-  
+    <!-- 
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        //jax: ["input/TeX", "output/HTML-CSS"],
+        TeX: {
+          equationNumbers: {
+            autoNumber: "AMS"
+          }
+        },
+        tex2jax: {
+          inlineMath: [ ['$', '$'] ],
+          displayMath: [ ['$$', '$$'] ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+        //,
+        //displayAlign: "left",
+        //displayIndent: "2em"
+      });
+      MathJax.Hub.Register.MessageHook("Math Processing Error",function (message) {
+        alert("Math Processing Error: "+message[1]);
+      });
+    MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
+        alert("Math Processing Error: "+message[1]);
+      });
+    </script>
+    <script type="text/javascript" async
+      src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript">
+    </script>
+     -->
+    
+    
   <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
       //jax: ["input/TeX", "output/HTML-CSS"],
@@ -69,17 +100,21 @@
   </script>
   <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
   
-  
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <script src="/dest/simple-jekyll-search.js" type="text/javascript"></script>
-  <script type="text/javascript">
-  $(document).ready(function(){
-    document.search.searchinput.focus();
-  });
-  </script>
-</head>
 
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="/dest/simple-jekyll-search.js" type="text/javascript"></script>
+    <script type="text/javascript">
+    $(document).ready(function(){
+      document.search.searchinput.focus();
+    });
+    </script>
+  </head>
+  
   <style>blockquote {font-size: 1em; line-height: 1.4}</style>
+  
+  <!-- New line Start-->
+  <!--  -->
+  <!-- New line End -->
   </head>
   <body>
 
@@ -283,7 +318,7 @@
   </h4>
   <h4 style="font-weight: 400; line-height: 1.8;"><article>
     <p>요즘 커뮤니티(V-AIS) 에선 NIPA에 대한 얘기가 많이 나옵니다.<br />
-NIPA는 <a href="https://www.nipa.kr/"><strong>정보통신산업진흥원</strong></a> 의 약자인데 <code class="highlighter-rouge">근데 그래서 이게 왜..?</code> 라는 의문을 가지실 겁니다. <br />
+NIPA는 <a href="https://www.nipa.kr/"><strong>정보통신산업진흥원</strong></a> 의 약자인데 <code class="language-plaintext highlighter-rouge">근데 그래서 이게 왜..?</code> 라는 의문을 가지실 겁니다. <br />
 지금 AI Hub에서 지원하는 <a href="http://www.aihub.or.kr/node/223"><strong>AI 컴퓨팅 자원 지원 사업</strong></a>을 하고 있는데요.<br />
 그 사업에서 컴퓨팅 자원을 관리하는게 NIPA 입니다. 그래서 NIPA, NIPA 하죠..</p>
 
@@ -291,7 +326,7 @@ NIPA는 <a href="https://www.nipa.kr/"><strong>정보통신산업진흥원</stro
 
 <p><img src="https://jjerry-k.github.io/public/img/nipa_intro/Untitled.png" alt="Untitled.png" /></p>
 
-<p>더 간단하게 설명드리면 <strong><code class="highlighter-rouge">GPU서버 지원해드림 ㅇㅇ</code></strong> 이겁니다.</p>
+<p>더 간단하게 설명드리면 <strong><code class="language-plaintext highlighter-rouge">GPU서버 지원해드림 ㅇㅇ</code></strong> 이겁니다.</p>
 
 <p>어느 정도 사양이냐…</p>
 

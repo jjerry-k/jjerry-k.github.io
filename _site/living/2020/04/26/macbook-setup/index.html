@@ -2,57 +2,88 @@
 <html lang="en-us">
   <head>
   <head>
-  <link href="http://gmpg.org/xfn/11" rel="profile">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta http-equiv="content-type" content="text/html; charset=utf-8">
-
-  <!-- Enable responsiveness on mobile devices-->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-
-  <title>
+    <link href="http://gmpg.org/xfn/11" rel="profile">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  
+    <!-- Enable responsiveness on mobile devices-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+  
+    <title>
+      
+        개인적인 맥북 세팅법 &middot; Jerry's Blog
+      
+    </title>
+  
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
+    <link rel="stylesheet" href="/public/css/main.css">
+  
+    <!-- Icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-precomposed.png">
+    <link rel="shortcut icon" href="/public/favicon.ico">
+  
+    <!-- RSS -->
+    <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+  
+    <!-- scroll -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+      $( window ).scroll( function() {
+        if ( $( this ).scrollTop() > 500 ) {
+          $( '.top' ).fadeIn();
+        } else {
+          $( '.top' ).fadeOut();
+        }
+      } );
+      $( '.top' ).click( function() {
+        $( 'html, body' ).stop().animate( { scrollTop : 0 }, 100);
+        return false;
+      } );
+    </script>
     
-      개인적인 맥북 세팅법 &middot; Jerry's Blog
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+      (absbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-1054696837285307",
+          enable_page_level_ads: true
+      });
+    </script>
     
-  </title>
-
-  <!-- CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
-  <link rel="stylesheet" href="/public/css/main.css">
-
-  <!-- Icons -->
-  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-precomposed.png">
-  <link rel="shortcut icon" href="/public/favicon.ico">
-
-  <!-- RSS -->
-  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
-
-  <!-- scroll -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script>
-    $( window ).scroll( function() {
-      if ( $( this ).scrollTop() > 500 ) {
-        $( '.top' ).fadeIn();
-      } else {
-        $( '.top' ).fadeOut();
-      }
-    } );
-    $( '.top' ).click( function() {
-      $( 'html, body' ).stop().animate( { scrollTop : 0 }, 100);
-      return false;
-    } );
-  </script>
-  
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-  <script>
-    (absbygoogle = window.adsbygoogle || []).push({
-        google_ad_client: "ca-pub-1054696837285307",
-        enable_page_level_ads: true
-    });
-  </script>
-  
-  
+    <!-- 
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        //jax: ["input/TeX", "output/HTML-CSS"],
+        TeX: {
+          equationNumbers: {
+            autoNumber: "AMS"
+          }
+        },
+        tex2jax: {
+          inlineMath: [ ['$', '$'] ],
+          displayMath: [ ['$$', '$$'] ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+        //,
+        //displayAlign: "left",
+        //displayIndent: "2em"
+      });
+      MathJax.Hub.Register.MessageHook("Math Processing Error",function (message) {
+        alert("Math Processing Error: "+message[1]);
+      });
+    MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
+        alert("Math Processing Error: "+message[1]);
+      });
+    </script>
+    <script type="text/javascript" async
+      src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript">
+    </script>
+     -->
+    
+    
   <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
       //jax: ["input/TeX", "output/HTML-CSS"],
@@ -69,17 +100,21 @@
   </script>
   <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
   
-  
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <script src="/dest/simple-jekyll-search.js" type="text/javascript"></script>
-  <script type="text/javascript">
-  $(document).ready(function(){
-    document.search.searchinput.focus();
-  });
-  </script>
-</head>
 
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="/dest/simple-jekyll-search.js" type="text/javascript"></script>
+    <script type="text/javascript">
+    $(document).ready(function(){
+      document.search.searchinput.focus();
+    });
+    </script>
+  </head>
+  
   <style>blockquote {font-size: 1em; line-height: 1.4}</style>
+  
+  <!-- New line Start-->
+  <!--  -->
+  <!-- New line End -->
   </head>
   <body>
 
@@ -317,12 +352,12 @@
 
 <h2 id="2-install-brew">2. Install brew</h2>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/usr/bin/ruby <span class="nt">-e</span> <span class="s2">"</span><span class="k">$(</span>curl <span class="nt">-fsSL</span> https://raw.githubusercontent.com/Homebrew/install/master/install<span class="k">)</span><span class="s2">"</span>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/usr/bin/ruby <span class="nt">-e</span> <span class="s2">"</span><span class="si">$(</span>curl <span class="nt">-fsSL</span> https://raw.githubusercontent.com/Homebrew/install/master/install<span class="si">)</span><span class="s2">"</span>
 </code></pre></div></div>
 
 <h2 id="3-install-oh-my-zsh">3. Install oh-my-zsh</h2>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sh <span class="nt">-c</span> <span class="s2">"</span><span class="k">$(</span>curl <span class="nt">-fsSL</span> https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh<span class="k">)</span><span class="s2">"</span>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sh <span class="nt">-c</span> <span class="s2">"</span><span class="si">$(</span>curl <span class="nt">-fsSL</span> https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh<span class="si">)</span><span class="s2">"</span>
 </code></pre></div></div>
 
 <h2 id="4-install-pyenv">4. Install pyenv</h2>
@@ -434,11 +469,11 @@
 <span class="c"># Set pyenv</span>
 <span class="nb">export </span><span class="nv">PYENV_ROOT</span><span class="o">=</span><span class="s2">"</span><span class="k">${</span><span class="nv">HOME</span><span class="k">}</span><span class="s2">/.pyenv"</span>
 <span class="nb">export </span><span class="nv">PATH</span><span class="o">=</span><span class="s2">"</span><span class="k">${</span><span class="nv">PYENV_ROOT</span><span class="k">}</span><span class="s2">bin:</span><span class="nv">$PATH</span><span class="s2">"</span>
-<span class="nb">eval</span> <span class="s2">"</span><span class="k">$(</span>pyenv init -<span class="k">)</span><span class="s2">"</span>
+<span class="nb">eval</span> <span class="s2">"</span><span class="si">$(</span>pyenv init -<span class="si">)</span><span class="s2">"</span>
 
 <span class="c"># &gt;&gt;&gt; conda initialize &gt;&gt;&gt;</span>
 <span class="c"># !! Contents within this block are managed by 'conda init' !!</span>
-<span class="nv">__conda_setup</span><span class="o">=</span><span class="s2">"</span><span class="k">$(</span><span class="s1">'/Users/jerry/.pyenv/versions/miniconda3-latest/bin/conda'</span> <span class="s1">'shell.zsh'</span> <span class="s1">'hook'</span> 2&gt; /dev/null<span class="k">)</span><span class="s2">"</span>
+<span class="nv">__conda_setup</span><span class="o">=</span><span class="s2">"</span><span class="si">$(</span><span class="s1">'/Users/jerry/.pyenv/versions/miniconda3-latest/bin/conda'</span> <span class="s1">'shell.zsh'</span> <span class="s1">'hook'</span> 2&gt; /dev/null<span class="si">)</span><span class="s2">"</span>
 <span class="k">if</span> <span class="o">[</span> <span class="nv">$?</span> <span class="nt">-eq</span> 0 <span class="o">]</span><span class="p">;</span> <span class="k">then
     </span><span class="nb">eval</span> <span class="s2">"</span><span class="nv">$__conda_setup</span><span class="s2">"</span>
 <span class="k">else

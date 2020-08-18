@@ -1,6 +1,22 @@
 [
   
     {
+      "title"    : "RAPIDS!!!",
+      "category" : "DeepLearning",
+      "tags"     : "Tools",
+      "url"      : "/deeplearning/2020/08/19/rapids/",
+      "date"     : "2020-08-19 00:00:00 +0900"
+    } ,
+  
+    {
+      "title"    : "개인적인 Vim 설정",
+      "category" : "Living",
+      "tags"     : "Vim",
+      "url"      : "/living/2020/08/16/vimrc/",
+      "date"     : "2020-08-16 00:00:00 +0900"
+    } ,
+  
+    {
       "title"    : "Review: Cycle GAN",
       "category" : "DeepLearning",
       "tags"     : "Paper",

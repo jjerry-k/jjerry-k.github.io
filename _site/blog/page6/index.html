@@ -2,57 +2,88 @@
 <html lang="en-us">
   <head>
   <head>
-  <link href="http://gmpg.org/xfn/11" rel="profile">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta http-equiv="content-type" content="text/html; charset=utf-8">
-
-  <!-- Enable responsiveness on mobile devices-->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-
-  <title>
+    <link href="http://gmpg.org/xfn/11" rel="profile">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  
+    <!-- Enable responsiveness on mobile devices-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+  
+    <title>
+      
+        Blog &middot; Jerry's Blog
+      
+    </title>
+  
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
+    <link rel="stylesheet" href="/public/css/main.css">
+  
+    <!-- Icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-precomposed.png">
+    <link rel="shortcut icon" href="/public/favicon.ico">
+  
+    <!-- RSS -->
+    <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+  
+    <!-- scroll -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+      $( window ).scroll( function() {
+        if ( $( this ).scrollTop() > 500 ) {
+          $( '.top' ).fadeIn();
+        } else {
+          $( '.top' ).fadeOut();
+        }
+      } );
+      $( '.top' ).click( function() {
+        $( 'html, body' ).stop().animate( { scrollTop : 0 }, 100);
+        return false;
+      } );
+    </script>
     
-      Blog &middot; Jerry's Blog
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+      (absbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-1054696837285307",
+          enable_page_level_ads: true
+      });
+    </script>
     
-  </title>
-
-  <!-- CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
-  <link rel="stylesheet" href="/public/css/main.css">
-
-  <!-- Icons -->
-  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-precomposed.png">
-  <link rel="shortcut icon" href="/public/favicon.ico">
-
-  <!-- RSS -->
-  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
-
-  <!-- scroll -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script>
-    $( window ).scroll( function() {
-      if ( $( this ).scrollTop() > 500 ) {
-        $( '.top' ).fadeIn();
-      } else {
-        $( '.top' ).fadeOut();
-      }
-    } );
-    $( '.top' ).click( function() {
-      $( 'html, body' ).stop().animate( { scrollTop : 0 }, 100);
-      return false;
-    } );
-  </script>
-  
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-  <script>
-    (absbygoogle = window.adsbygoogle || []).push({
-        google_ad_client: "ca-pub-1054696837285307",
-        enable_page_level_ads: true
-    });
-  </script>
-  
-  
+    <!-- 
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        //jax: ["input/TeX", "output/HTML-CSS"],
+        TeX: {
+          equationNumbers: {
+            autoNumber: "AMS"
+          }
+        },
+        tex2jax: {
+          inlineMath: [ ['$', '$'] ],
+          displayMath: [ ['$$', '$$'] ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+        //,
+        //displayAlign: "left",
+        //displayIndent: "2em"
+      });
+      MathJax.Hub.Register.MessageHook("Math Processing Error",function (message) {
+        alert("Math Processing Error: "+message[1]);
+      });
+    MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
+        alert("Math Processing Error: "+message[1]);
+      });
+    </script>
+    <script type="text/javascript" async
+      src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript">
+    </script>
+     -->
+    
+    
   <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
       //jax: ["input/TeX", "output/HTML-CSS"],
@@ -69,17 +100,21 @@
   </script>
   <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
   
-  
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <script src="/dest/simple-jekyll-search.js" type="text/javascript"></script>
-  <script type="text/javascript">
-  $(document).ready(function(){
-    document.search.searchinput.focus();
-  });
-  </script>
-</head>
 
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="/dest/simple-jekyll-search.js" type="text/javascript"></script>
+    <script type="text/javascript">
+    $(document).ready(function(){
+      document.search.searchinput.focus();
+    });
+    </script>
+  </head>
+  
   <style>blockquote {font-size: 1em; line-height: 1.4}</style>
+  
+  <!-- New line Start-->
+  <!--  -->
+  <!-- New line End -->
   </head>
   <body>
 
@@ -276,6 +311,208 @@
   
   <div class="post">
     <h1 class="post-title">
+      <a href="/living/2020/04/20/rpi_transmission/">
+        Raspberry pi 4 에 Transmission 세팅하기
+      </a>
+    </h1>
+
+    <span class="post-date">20 Apr 2020</span>
+     | 
+    
+    <a href="/blog/tags/#hardware" class="post-tag">Hardware</a>
+    
+    
+
+    <h4 style="font-weight: 400; line-height: 1.8;"><article>
+      <h1 id="raspberry-pi-4--transmission-container">Raspberry pi 4 &amp; Transmission Container</h1>
+
+<hr />
+
+<h1 id="1-docker-install">1. Docker Install</h1>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl <span class="nt">-fsSL</span> get.docker.com <span class="nt">-o</span> get-docker.sh
+
+<span class="nb">sudo </span>bash get-docker.sh
+
+<span class="nb">sudo </span>usermod <span class="nt">-aG</span> docker pi
+</code></pre></div></div>
+<p>그리고 재부팅</p>
+
+<h1 id="2-pull-transmission-image">2. Pull Transmission Image</h1>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker pull linuxserver/transmission
+</code></pre></div></div>
+
+<h1 id="3-create-transmission-container">3. Create Transmission Container</h1>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker create <span class="se">\</span>
+    <span class="nt">--name</span><span class="o">=</span>transmission <span class="se">\</span>
+    <span class="nt">-e</span> <span class="nv">PUID</span><span class="o">=</span>1000 <span class="se">\</span>
+    <span class="nt">-e</span> <span class="nv">PGID</span><span class="o">=</span>1000 <span class="se">\</span>
+    <span class="nt">-e</span> <span class="nv">TZ</span><span class="o">=</span>Asia/Seoul <span class="se">\</span>
+    <span class="nt">-e</span> <span class="nv">USER</span><span class="o">={</span>username<span class="o">}</span> <span class="se">\</span>
+    <span class="nt">-e</span> <span class="nv">PASS</span><span class="o">={</span>password<span class="o">}</span> <span class="se">\</span>
+    <span class="nt">-p</span> 9091:9091 <span class="se">\</span>
+    <span class="nt">-p</span> 51413:51413 <span class="se">\</span>
+    <span class="nt">-p</span> 51413:51413/udp <span class="se">\</span>
+    <span class="nt">-v</span> <span class="o">{</span>path to data<span class="o">}</span>:/config <span class="se">\</span>
+    <span class="nt">-v</span> <span class="o">{</span>path to downloads<span class="o">}</span>:/downloads <span class="se">\</span>
+    <span class="nt">-v</span> <span class="o">{</span>path to watch folder<span class="o">}</span>:/watch <span class="se">\</span>
+    <span class="nt">--restart</span> unless-stopped <span class="se">\</span>
+    linuxserver/transmission
+</code></pre></div></div>
+
+<h1 id="4-run-container">4. Run Container</h1>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker start transmission
+</code></pre></div></div>
+
+    <article></h4>
+    <div class="post-more">
+      
+      <a href="/living/2020/04/20/rpi_transmission/#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
+      
+      <a href="/living/2020/04/20/rpi_transmission/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
+    </div>
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/deeplearning/2020/03/31/coral/">
+        Google Coral USB 사용기
+      </a>
+    </h1>
+
+    <span class="post-date">31 Mar 2020</span>
+     | 
+    
+    <a href="/blog/tags/#tools" class="post-tag">Tools</a>
+    
+    
+
+    <h4 style="font-weight: 400; line-height: 1.8;"><article>
+      <h1 id="raspberry-pi-4--google-coral-usb-accelerator">Raspberry pi 4 &amp; Google Coral USB Accelerator</h1>
+
+<p>평소에 라즈베리파이 4를 NAS로 사용하고 있었습니다.  <a href="https://jjerry-k.github.io/living/2018/07/10/Raspberry-Mini-PC/">이런 느낌으로..</a></p>
+
+<p>하지만…항상 마음 속에는 “흠….라즈베리파이로 딥러닝을 돌려보고 싶다…” 라는 생각을 하고 있었죠.</p>
+
+<p>평소와 같이 <del>평화로운 중고나라</del> 를 탐색하고 있었습니다. (모니터가 사고 싶어서 ….)</p>
+
+<p>근데 . . 갑자기 . . ? 왜 인지 모르겠지만 Google Coral USB Accelerator 를 검색하고 싶더군요.</p>
+
+<p>그래서 바로 검색을 했고 7마넌(나름 저렴)에 올라와있길래 일요일에 주문을 했습니다.</p>
+
+<p>그리고 오늘 집에 도착을 했죠.</p>
+
+<p>이제 사용을 해보려고 합니다.</p>
+
+<p>준비물을 소개하도록 하죠.</p>
+
+<h1 id="준비물">준비물</h1>
+
+<ul>
+  <li>라즈베리 파이</li>
+  <li>Coral Accelerator</li>
+  <li>Webcam</li>
+</ul>
+
+<p><img src="https://jjerry-k.github.io/public/img/coral/01.png" alt="01.jpg" /></p>
+
+<h1 id="step-1-연결">Step 1. 연결</h1>
+
+<p><img src="https://jjerry-k.github.io/public/img/coral/02.png" alt="02.jpg" /></p>
+
+<p><img src="https://jjerry-k.github.io/public/img/coral/03.png" alt="03.jpg" /></p>
+
+<p>모두 연결 후 라즈베리파이를 켜면 위 사진과 같이 USB에 흰색 불이 들어옵니다.</p>
+
+<h1 id="step-2-라즈베리파이-세팅">Step 2. 라즈베리파이 세팅</h1>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#!/bin/bash
+
+echo "deb https://packages.cloud.google.com/apt coral-edgetpu-stable main" | sudo tee /etc/apt/sources.list.d/coral-edgetpu.list
+
+curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
+
+sudo apt-get update
+
+sudo apt-get install libedgetpu1-std
+
+# Check Your Platform 
+# https://www.tensorflow.org/lite/guide/python
+sudo pip3 install https://dl.google.com/coral/python/tflite_runtime-2.1.0.post1-cp37-cp37m-linux_armv7l.whl
+
+#!/bin/bash
+
+git clone https://github.com/google-coral/examples-camera.git
+
+cd examples-camera
+
+sh download_models.sh
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">download_models.sh</code>를 실행하시면 다음과 같이  <code class="language-plaintext highlighter-rouge">all_models</code>라는 디렉토리 안에 각 데이터셋 별 labelmap.txt와 학습된 모델의 tflite 파일이 있습니다.</p>
+
+<p>여기서 밑줄 친 파일을 이용해서 object detection 을 해볼겁니다! 일단 그 다음 세팅으로 넘어가죠.</p>
+
+<p><img src="https://jjerry-k.github.io/public/img/coral/04.png" alt="04.png" /></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#!/bin/bash
+
+cd opencv
+
+sh install_requirements.sh
+</code></pre></div></div>
+
+<p>opencv를 이용한 스크립트를 사용하기 위해 필요한 것들을 설치합니다.</p>
+
+<h1 id="step-3-스크립트-실행">Step 3. 스크립트 실행</h1>
+
+<p>이제 opencv 디렉토리 안에 detect.py를 실행 시켜줄건데요. 옵션이 몇개 있습니다. 한번 살펴보도록 하죠.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>usage: detect.py [-h] [--model MODEL] [--labels LABELS] [--top_k TOP_K]
+                 [--camera_idx CAMERA_IDX] [--threshold THRESHOLD]
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --model MODEL         .tflite model path
+  --labels LABELS       label file path
+  --top_k TOP_K         number of categories with highest score to display
+  --camera_idx CAMERA_IDX
+                        Index of which video source to use.
+  --threshold THRESHOLD
+                        classifier score threshold
+</code></pre></div></div>
+
+<p>한번 다음과 같이 실행을 해보겠습니다.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python detect.py \
+--model ../all_models/mobilenet_ssd_v2_face_quant_postprocess_edgetpu.tflite \
+--labels ../all_models/coco_labels.txt \
+--top_k 3 \
+--threshold 0.7
+</code></pre></div></div>
+
+<p><img src="https://jjerry-k.github.io/public/img/coral/05.png" alt="05.png" /></p>
+
+<p>막 빠를 줄 알았는데 Webcam 의 한계라 그런지… FPS가 낮네요..</p>
+
+<p>추후에 카메라 모듈을 이용해서 해봐야겠습니다.</p>
+
+<p>그럼 간단한 이용기를 마치겠습니다.</p>
+
+    <article></h4>
+    <div class="post-more">
+      
+      <a href="/deeplearning/2020/03/31/coral/#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
+      
+      <a href="/deeplearning/2020/03/31/coral/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
+    </div>
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
       <a href="/deeplearning/2020/03/04/starganv2/">
         Review: StarGAN v2
       </a>
@@ -325,30 +562,30 @@ URL: https://arxiv.org/abs/1912.01865</p>
 
 <ul>
   <li>4개의 Network 로 구성.</li>
-  <li>Generator (<code class="highlighter-rouge">G</code>)
+  <li>Generator (<code class="language-plaintext highlighter-rouge">G</code>)
     <ul>
-      <li>Image <code class="highlighter-rouge">x</code>와 Style code <code class="highlighter-rouge">s</code>를 입력으로 받아 새로운 영상을 생성.</li>
+      <li>Image <code class="language-plaintext highlighter-rouge">x</code>와 Style code <code class="language-plaintext highlighter-rouge">s</code>를 입력으로 받아 새로운 영상을 생성.</li>
       <li><a href="https://arxiv.org/abs/1703.06868">adaptive instance normalization (AdaIN)</a> 사용.</li>
     </ul>
 
     <p><img src="https://jjerry-k.github.io/public/img/starganv2/Untitled_2.png" alt="https://jjerry-k.github.io/public/img/starganv2/Untitled_2.png" /></p>
   </li>
-  <li>Mapping network (<code class="highlighter-rouge">F</code>)
+  <li>Mapping network (<code class="language-plaintext highlighter-rouge">F</code>)
     <ul>
-      <li>Latent code <code class="highlighter-rouge">z</code>와 Domain code <code class="highlighter-rouge">y</code>를 입력으로 받아 Style code <code class="highlighter-rouge">s</code>생성.</li>
+      <li>Latent code <code class="language-plaintext highlighter-rouge">z</code>와 Domain code <code class="language-plaintext highlighter-rouge">y</code>를 입력으로 받아 Style code <code class="language-plaintext highlighter-rouge">s</code>생성.</li>
       <li>Multi Layer Perceptron 구조.</li>
     </ul>
 
     <p><img src="https://jjerry-k.github.io/public/img/starganv2/Untitled_3.png" alt="https://jjerry-k.github.io/public/img/starganv2/Untitled_3.png" /></p>
   </li>
-  <li>Style encoder (<code class="highlighter-rouge">E</code>)
+  <li>Style encoder (<code class="language-plaintext highlighter-rouge">E</code>)
     <ul>
-      <li>Image <code class="highlighter-rouge">x</code>와 Domain code <code class="highlighter-rouge">y</code>를 입력으로 받아 <code class="highlighter-rouge">x</code>에서 Style code <code class="highlighter-rouge">s</code>를 추출.</li>
+      <li>Image <code class="language-plaintext highlighter-rouge">x</code>와 Domain code <code class="language-plaintext highlighter-rouge">y</code>를 입력으로 받아 <code class="language-plaintext highlighter-rouge">x</code>에서 Style code <code class="language-plaintext highlighter-rouge">s</code>를 추출.</li>
     </ul>
   </li>
-  <li>Discriminator (<code class="highlighter-rouge">D</code>)
+  <li>Discriminator (<code class="language-plaintext highlighter-rouge">D</code>)
     <ul>
-      <li>Image <code class="highlighter-rouge">x</code>를 입력으로 받아 Domain code <code class="highlighter-rouge">y</code>와 Real/Fake 분류.</li>
+      <li>Image <code class="language-plaintext highlighter-rouge">x</code>를 입력으로 받아 Domain code <code class="language-plaintext highlighter-rouge">y</code>와 Real/Fake 분류.</li>
     </ul>
 
     <p><img src="https://jjerry-k.github.io/public/img/starganv2/Untitled_4.png" alt="https://jjerry-k.github.io/public/img/starganv2/Untitled_4.png" /></p>
@@ -365,46 +602,46 @@ URL: https://arxiv.org/abs/1912.01865</p>
   </li>
 </ul>
 
-<script type="math/tex; mode=display">\mathcal{L}_{adv}=\mathbb{E}_{\mathrm{x},y}[\log{D_y}(\mathrm{x})] + \mathbb{E}_{\mathrm{x}, \tilde{y}, \mathrm{z}}[\log{(1-D_{\tilde{y}}(G(\mathrm{x}, \tilde{\mathrm{s}})))}</script>
+<p>[\mathcal{L}<em>{adv}=\mathbb{E}</em>{\mathrm{x},y}[\log{D_y}(\mathrm{x})] + \mathbb{E}<em>{\mathrm{x}, \tilde{y}, \mathrm{z}}[\log{(1-D</em>{\tilde{y}}(G(\mathrm{x}, \tilde{\mathrm{s}})))}]</p>
 
 <ul>
   <li>Style reconstruction
     <ul>
-      <li><code class="highlighter-rouge">G(x, s)</code> 를 Style encoder <code class="highlighter-rouge">E</code> 에 넣어 <code class="highlighter-rouge">s</code> 추출 후 입력 <code class="highlighter-rouge">s</code>와 비교</li>
+      <li><code class="language-plaintext highlighter-rouge">G(x, s)</code> 를 Style encoder <code class="language-plaintext highlighter-rouge">E</code> 에 넣어 <code class="language-plaintext highlighter-rouge">s</code> 추출 후 입력 <code class="language-plaintext highlighter-rouge">s</code>와 비교</li>
     </ul>
   </li>
 </ul>
 
-<script type="math/tex; mode=display">\mathcal{L}_{sty}=\mathbb{E}_{\mathrm{x},\tilde{y}, \mathrm{z}}[\parallel\tilde{\mathrm{s}}-E_{\tilde{y}}(G(\mathrm{x}, \tilde{\mathrm{s}}))\parallel_1]</script>
+<p>[\mathcal{L}<em>{sty}=\mathbb{E}</em>{\mathrm{x},\tilde{y}, \mathrm{z}}[\parallel\tilde{\mathrm{s}}-E_{\tilde{y}}(G(\mathrm{x}, \tilde{\mathrm{s}}))\parallel_1]]</p>
 
 <ul>
   <li>Style diversification
     <ul>
-      <li><code class="highlighter-rouge">G</code>가 다양한 Image를 생성할 수 있도록 Regularization 하는 역할.</li>
-      <li><code class="highlighter-rouge">z1, z2</code> 가 <code class="highlighter-rouge">F</code>에 의해 생성된 <code class="highlighter-rouge">s1, s2</code>와 입력 <code class="highlighter-rouge">x</code>를 <code class="highlighter-rouge">G</code>의 입력으로 새로운 영상 생성.</li>
+      <li><code class="language-plaintext highlighter-rouge">G</code>가 다양한 Image를 생성할 수 있도록 Regularization 하는 역할.</li>
+      <li><code class="language-plaintext highlighter-rouge">z1, z2</code> 가 <code class="language-plaintext highlighter-rouge">F</code>에 의해 생성된 <code class="language-plaintext highlighter-rouge">s1, s2</code>와 입력 <code class="language-plaintext highlighter-rouge">x</code>를 <code class="language-plaintext highlighter-rouge">G</code>의 입력으로 새로운 영상 생성.</li>
       <li>L1 Norm 계산.</li>
     </ul>
   </li>
 </ul>
 
-<script type="math/tex; mode=display">\mathcal{L}_{ds}=\mathbb{E}_{\mathrm{x},\tilde{y}, \mathrm{z}_1, \mathrm{z}_2}[\parallel G(\mathrm{x}, \tilde{\mathrm{s}}_1) - G(\mathrm{x}, \tilde{\mathrm{s}}_2) \parallel_1]</script>
+<p>[\mathcal{L}<em>{ds}=\mathbb{E}</em>{\mathrm{x},\tilde{y}, \mathrm{z}_1, \mathrm{z}_2}[\parallel G(\mathrm{x}, \tilde{\mathrm{s}}_1) - G(\mathrm{x}, \tilde{\mathrm{s}}_2) \parallel_1]]</p>
 
 <ul>
   <li>Preserving source characteristics
     <ul>
       <li>Cycle GAN 의 cycle consistency loss.</li>
-      <li>target domain의 style 을 적용한 영상을 다시 <code class="highlighter-rouge">E(x)</code>로 추출된 s를 이용하여 <code class="highlighter-rouge">x'</code>로 reconstruction 한 후 L1 Norm 계산.</li>
+      <li>target domain의 style 을 적용한 영상을 다시 <code class="language-plaintext highlighter-rouge">E(x)</code>로 추출된 s를 이용하여 <code class="language-plaintext highlighter-rouge">x'</code>로 reconstruction 한 후 L1 Norm 계산.</li>
     </ul>
   </li>
 </ul>
 
-<script type="math/tex; mode=display">\mathcal{L}_{cyc}=\mathbb{E}_{\mathrm{x}, y, \tilde{y}, \mathrm{z}}[\parallel \mathrm{x} - G(G(\mathrm{x}, \tilde{\mathrm{s}}), \hat{\mathrm{s}})\parallel_1]</script>
+<p>[\mathcal{L}<em>{cyc}=\mathbb{E}</em>{\mathrm{x}, y, \tilde{y}, \mathrm{z}}[\parallel \mathrm{x} - G(G(\mathrm{x}, \tilde{\mathrm{s}}), \hat{\mathrm{s}})\parallel_1]]</p>
 
 <ul>
   <li>
     <p>Full objective</p>
 
-    <script type="math/tex; mode=display">\mathcal{L}_D = -\mathcal{L}_{adv} \\ \mathcal{L}_{F, G, E}=\mathcal{L}_{adv} + \lambda_{sty} \mathcal{L}_{sty} - \lambda_{ds} \mathcal{L}_{ds} + \lambda_{cyc} \mathcal{L}_{cyc}</script>
+\[\mathcal{L}_D = -\mathcal{L}_{adv} \\ \mathcal{L}_{F, G, E}=\mathcal{L}_{adv} + \lambda_{sty} \mathcal{L}_{sty} - \lambda_{ds} \mathcal{L}_{ds} + \lambda_{cyc} \mathcal{L}_{cyc}\]
 
     <ul>
       <li>About $\lambda$</li>
@@ -571,33 +808,47 @@ URL: https://arxiv.org/abs/1711.09020</p>
   <li>Adversarial Loss</li>
 </ul>
 
-<script type="math/tex; mode=display">\mathcal{L}_{adv} = \mathbb{E}_x [\log D_{src}(x)] + \mathbb{E}_{x, c} [\log (1-D_{src}(G(x,c)))] - \lambda_{gp}\mathbb{E}_{\hat{x}}[(\Vert \nabla_{\hat{x}}D_{src}(\hat{x})\Vert_2 -1)^2]</script>
+<p>[\mathcal{L}<em>{adv} = \mathbb{E}_x [\log D</em>{src}(x)] + \mathbb{E}<em>{x, c} [\log (1-D</em>{src}(G(x,c)))] - \lambda_{gp}\mathbb{E}<em>{\hat{x}}[(\Vert \nabla</em>{\hat{x}}D_{src}(\hat{x})\Vert_2 -1)^2]]</p>
 
-<script type="math/tex; mode=display">\lambda_{gp} = 10</script>
+<p>[\lambda_{gp} = 10]</p>
 
 <ul>
   <li>Domain Classification Loss</li>
 </ul>
 
-<script type="math/tex; mode=display">\mathcal{L}^r_{cls} = \mathbb{E}_{x, c'}[-\log D_{cls}(c'|x)]</script>
+<table>
+  <tbody>
+    <tr>
+      <td>[\mathcal{L}^r_{cls} = \mathbb{E}<em>{x, c’}[-\log D</em>{cls}(c’</td>
+      <td>x)]]</td>
+    </tr>
+  </tbody>
+</table>
 
-<script type="math/tex; mode=display">\mathcal{L}^f_{cls} = \mathbb{E}_{x, c'}[-\log D_{cls}(c|G(x, c)]</script>
+<table>
+  <tbody>
+    <tr>
+      <td>[\mathcal{L}^f_{cls} = \mathbb{E}<em>{x, c’}[-\log D</em>{cls}(c</td>
+      <td>G(x, c)]]</td>
+    </tr>
+  </tbody>
+</table>
 
 <ul>
   <li>Reconstruction Loss</li>
 </ul>
 
-<script type="math/tex; mode=display">\mathcal{L}_{rec} = \mathbb{E}_{x, c, c'}[\Vert x-G(G(x, c), c')\Vert_1]</script>
+<p>[\mathcal{L}<em>{rec} = \mathbb{E}</em>{x, c, c’}[\Vert x-G(G(x, c), c’)\Vert_1]]</p>
 
 <ul>
   <li>Full Objective</li>
 </ul>
 
-<script type="math/tex; mode=display">\mathcal{L}_D = -\mathcal{L}_{adv} + \lambda_{cls}\mathcal{L}^r_{cls}</script>
+<p>[\mathcal{L}<em>D = -\mathcal{L}</em>{adv} + \lambda_{cls}\mathcal{L}^r_{cls}]</p>
 
-<script type="math/tex; mode=display">\mathcal{L}_G = \mathcal{L}_{adv} + \lambda_{cls}\mathcal{L}^f_{cls}+\lambda_{rec}\mathcal{L}_{rec}</script>
+<p>[\mathcal{L}<em>G = \mathcal{L}</em>{adv} + \lambda_{cls}\mathcal{L}^f_{cls}+\lambda_{rec}\mathcal{L}_{rec}]</p>
 
-<script type="math/tex; mode=display">\lambda_{cls} = 1, \lambda_{rec} = 10</script>
+<p>[\lambda_{cls} = 1, \lambda_{rec} = 10]</p>
 
 <h1 id="result">Result</h1>
 
@@ -654,7 +905,7 @@ URL: https://arxiv.org/abs/1711.09020</p>
 
 <h1 id="패키지-설치">패키지 설치</h1>
 
-<p><code class="highlighter-rouge">wandb</code> 패키지를 먼저 설치해줍니다.</p>
+<p><code class="language-plaintext highlighter-rouge">wandb</code> 패키지를 먼저 설치해줍니다.</p>
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pip <span class="nb">install </span>wandb
 </code></pre></div></div>
 
@@ -686,7 +937,7 @@ URL: https://arxiv.org/abs/1711.09020</p>
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
 <span class="c1"># wandb initialization
 </span><span class="kn">import</span> <span class="nn">wandb</span>
-<span class="n">wandb</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">project</span><span class="o">=</span><span class="s">"test_project"</span><span class="p">)</span>
+<span class="n">wandb</span><span class="p">.</span><span class="n">init</span><span class="p">(</span><span class="n">project</span><span class="o">=</span><span class="s">"test_project"</span><span class="p">)</span>
 
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
@@ -703,24 +954,24 @@ URL: https://arxiv.org/abs/1711.09020</p>
 
 
 <span class="c1"># Data Loading
-</span><span class="p">(</span><span class="n">train_x</span><span class="p">,</span> <span class="n">train_y</span><span class="p">),</span> <span class="p">(</span><span class="n">test_x</span><span class="p">,</span> <span class="n">test_y</span><span class="p">)</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">mnist</span><span class="o">.</span><span class="n">load_data</span><span class="p">()</span>
-<span class="n">train_x</span><span class="p">,</span> <span class="n">test_x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">train_x</span><span class="o">/</span><span class="mf">255.</span><span class="p">,</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">784</span><span class="p">]),</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">test_x</span><span class="o">/</span><span class="mf">255.</span><span class="p">,</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">784</span><span class="p">])</span>
+</span><span class="p">(</span><span class="n">train_x</span><span class="p">,</span> <span class="n">train_y</span><span class="p">),</span> <span class="p">(</span><span class="n">test_x</span><span class="p">,</span> <span class="n">test_y</span><span class="p">)</span> <span class="o">=</span> <span class="n">datasets</span><span class="p">.</span><span class="n">mnist</span><span class="p">.</span><span class="n">load_data</span><span class="p">()</span>
+<span class="n">train_x</span><span class="p">,</span> <span class="n">test_x</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">train_x</span><span class="o">/</span><span class="mf">255.</span><span class="p">,</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">784</span><span class="p">]),</span> <span class="n">np</span><span class="p">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">test_x</span><span class="o">/</span><span class="mf">255.</span><span class="p">,</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">784</span><span class="p">])</span>
 
-<span class="k">print</span><span class="p">(</span><span class="s">"Train Data's Shape : "</span><span class="p">,</span> <span class="n">train_x</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">train_y</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s">"Test Data's Shape : "</span><span class="p">,</span> <span class="n">test_x</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">test_y</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"Train Data's Shape : "</span><span class="p">,</span> <span class="n">train_x</span><span class="p">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">train_y</span><span class="p">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"Test Data's Shape : "</span><span class="p">,</span> <span class="n">test_x</span><span class="p">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">test_y</span><span class="p">.</span><span class="n">shape</span><span class="p">)</span>
 
 <span class="c1"># Network Building
 ## Using Sequential
-</span><span class="n">mlp</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">Sequential</span><span class="p">()</span>
-<span class="n">mlp</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">256</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s">'relu'</span><span class="p">,</span> <span class="n">input_shape</span><span class="o">=</span><span class="p">(</span><span class="mi">784</span><span class="p">,)))</span>
-<span class="n">mlp</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s">'relu'</span><span class="p">))</span>
-<span class="n">mlp</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s">'softmax'</span><span class="p">))</span>
+</span><span class="n">mlp</span> <span class="o">=</span> <span class="n">models</span><span class="p">.</span><span class="n">Sequential</span><span class="p">()</span>
+<span class="n">mlp</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="n">layers</span><span class="p">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">256</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s">'relu'</span><span class="p">,</span> <span class="n">input_shape</span><span class="o">=</span><span class="p">(</span><span class="mi">784</span><span class="p">,)))</span>
+<span class="n">mlp</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="n">layers</span><span class="p">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s">'relu'</span><span class="p">))</span>
+<span class="n">mlp</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="n">layers</span><span class="p">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s">'softmax'</span><span class="p">))</span>
 
 <span class="k">print</span><span class="p">(</span><span class="s">"Network Built!"</span><span class="p">)</span>
 
-<span class="n">mlp</span><span class="o">.</span><span class="nb">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="n">optimizers</span><span class="o">.</span><span class="n">Adam</span><span class="p">(),</span> <span class="n">loss</span><span class="o">=</span><span class="n">losses</span><span class="o">.</span><span class="n">sparse_categorical_crossentropy</span><span class="p">,</span> <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s">'accuracy'</span><span class="p">])</span>
+<span class="n">mlp</span><span class="p">.</span><span class="nb">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="n">optimizers</span><span class="p">.</span><span class="n">Adam</span><span class="p">(),</span> <span class="n">loss</span><span class="o">=</span><span class="n">losses</span><span class="p">.</span><span class="n">sparse_categorical_crossentropy</span><span class="p">,</span> <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s">'accuracy'</span><span class="p">])</span>
 
-<span class="n">history</span> <span class="o">=</span> <span class="n">mlp</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">train_x</span><span class="p">,</span> <span class="n">train_y</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> 
+<span class="n">history</span> <span class="o">=</span> <span class="n">mlp</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">train_x</span><span class="p">,</span> <span class="n">train_y</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> 
                                     <span class="n">validation_data</span><span class="o">=</span><span class="p">(</span><span class="n">test_x</span><span class="p">,</span> <span class="n">test_y</span><span class="p">),</span> 
                                     <span class="n">callbacks</span><span class="o">=</span><span class="p">[</span><span class="n">WandbCallback</span><span class="p">()])</span> <span class="c1"># callbacks 에 Wandbcallback 추가
 </span></code></pre></div></div>
@@ -728,17 +979,17 @@ URL: https://arxiv.org/abs/1711.09020</p>
 <h1 id="check-training">Check training</h1>
 
 <p>해당 코드를 실행시키고 <a href="https://app.wandb.ai/home">W&amp;B</a> 에 접속을 하면 다음과 같은 화면이 나옵니다.<br />
-위에서 <code class="highlighter-rouge">test_project</code> 라는 프로젝트에 세팅을 했기 때문에 확인을 해봅니다.<br />
-하나의 프로젝트에서 한번 실행하면 뭔지 모를 조합의 <code class="highlighter-rouge">Name</code>으로 실행 상태를 보여줍니다.
-저는 한번만 했기 때문에 <code class="highlighter-rouge">lyric-dream-3</code> 라는 이름으로 하나만 생겨있습니다.</p>
+위에서 <code class="language-plaintext highlighter-rouge">test_project</code> 라는 프로젝트에 세팅을 했기 때문에 확인을 해봅니다.<br />
+하나의 프로젝트에서 한번 실행하면 뭔지 모를 조합의 <code class="language-plaintext highlighter-rouge">Name</code>으로 실행 상태를 보여줍니다.
+저는 한번만 했기 때문에 <code class="language-plaintext highlighter-rouge">lyric-dream-3</code> 라는 이름으로 하나만 생겨있습니다.</p>
 
 <p><img src="https://jjerry-k.github.io/public/img/wandb/Untitled_4.png" alt="https://jjerry-k.github.io/public/img/wandb/Untitled_4.png" /></p>
 
-<p><code class="highlighter-rouge">lyric-dream-3</code> 같이 이름을 클릭해서 무엇을 볼 수 있는지 살펴보겠습니다.</p>
+<p><code class="language-plaintext highlighter-rouge">lyric-dream-3</code> 같이 이름을 클릭해서 무엇을 볼 수 있는지 살펴보겠습니다.</p>
 
 <h2 id="chart-탭">Chart 탭</h2>
 
-<p>Chart 탭에선 loss, epoch, metric 등과 같은 학습 관련 지표를 볼 수 있는 <code class="highlighter-rouge">CHARTS</code>와 모델 학습에 사용된 시스템을 모니터링 할 수 있는 <code class="highlighter-rouge">SYSTEM</code>이 있습니다.</p>
+<p>Chart 탭에선 loss, epoch, metric 등과 같은 학습 관련 지표를 볼 수 있는 <code class="language-plaintext highlighter-rouge">CHARTS</code>와 모델 학습에 사용된 시스템을 모니터링 할 수 있는 <code class="language-plaintext highlighter-rouge">SYSTEM</code>이 있습니다.</p>
 
 <p><img src="https://jjerry-k.github.io/public/img/wandb/Untitled_5.png" alt="https://jjerry-k.github.io/public/img/wandb/Untitled_5.png" /></p>
 
@@ -751,7 +1002,7 @@ URL: https://arxiv.org/abs/1711.09020</p>
 <p><img src="https://jjerry-k.github.io/public/img/wandb/Untitled_9.png" alt="https://jjerry-k.github.io/public/img/wandb/Untitled_9.png" /></p>
 
 <h2 id="system-탭">System 탭</h2>
-<p>System 탭에서는 Chart 탭에서 <code class="highlighter-rouge">SYSTEM</code> 과 동일한 그래프를 보여주네요.
+<p>System 탭에서는 Chart 탭에서 <code class="language-plaintext highlighter-rouge">SYSTEM</code> 과 동일한 그래프를 보여주네요.
 <img src="https://jjerry-k.github.io/public/img/wandb/Untitled_10.png" alt="https://jjerry-k.github.io/public/img/wandb/Untitled_10.png" /></p>
 
 <h2 id="model-탭">Model 탭</h2>
@@ -766,7 +1017,7 @@ URL: https://arxiv.org/abs/1711.09020</p>
 <p>솔직히 보여주기만 해도 좋지만 저장도 해주면 좋겠죠.<br />
 Files 탭에는 현재 모델을 돌릴때 사용된 정보, 가장 성능이 좋았을 epoch 의 model, 돌리는 환경에 설치된 package 리스트 등의 정보가 저장됩니다.<br />
 물론 다운로드 가능!<br />
-<code class="highlighter-rouge">model-best.h5</code>는 graph 정보도 저장되어 있기 때문에 다운로드 후 load해서 바로 Inference 가능합니다!
+<code class="language-plaintext highlighter-rouge">model-best.h5</code>는 graph 정보도 저장되어 있기 때문에 다운로드 후 load해서 바로 Inference 가능합니다!
 <img src="https://jjerry-k.github.io/public/img/wandb/Untitled_13.png" alt="https://jjerry-k.github.io/public/img/wandb/Untitled_13.png" /></p>
 
 <p><a href="https://www.wandb.com/">Weights &amp; Biases</a> 에 대해 정~~~말 간단히 알아봤습니다.<br />
@@ -780,7 +1031,7 @@ Files 탭에는 현재 모델을 돌릴때 사용된 정보, 가장 성능이 �
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
 <span class="c1"># wandb initialization
 </span><span class="kn">import</span> <span class="nn">wandb</span>
-<span class="n">wandb</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">project</span><span class="o">=</span><span class="s">"test_project"</span><span class="p">)</span>
+<span class="n">wandb</span><span class="p">.</span><span class="n">init</span><span class="p">(</span><span class="n">project</span><span class="o">=</span><span class="s">"test_project"</span><span class="p">)</span>
 
 <span class="c1"># Importing Modules
 </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
@@ -794,43 +1045,43 @@ Files 탭에는 현재 모델을 돌릴때 사용된 정보, 가장 성능이 �
 <span class="c1"># Loading Data
 </span>
 <span class="c1"># MNIST dataset
-</span><span class="n">mnist_train</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">MNIST</span><span class="p">(</span><span class="n">root</span><span class="o">=</span><span class="s">'./'</span><span class="p">,</span>
+</span><span class="n">mnist_train</span> <span class="o">=</span> <span class="n">datasets</span><span class="p">.</span><span class="n">MNIST</span><span class="p">(</span><span class="n">root</span><span class="o">=</span><span class="s">'./'</span><span class="p">,</span>
                           <span class="n">train</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
-                          <span class="n">transform</span><span class="o">=</span><span class="n">transforms</span><span class="o">.</span><span class="n">ToTensor</span><span class="p">(),</span>
+                          <span class="n">transform</span><span class="o">=</span><span class="n">transforms</span><span class="p">.</span><span class="n">ToTensor</span><span class="p">(),</span>
                           <span class="n">download</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="s">"Downloading Train Data Done ! "</span><span class="p">)</span>
 
-<span class="n">mnist_test</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">MNIST</span><span class="p">(</span><span class="n">root</span><span class="o">=</span><span class="s">'./'</span><span class="p">,</span>
+<span class="n">mnist_test</span> <span class="o">=</span> <span class="n">datasets</span><span class="p">.</span><span class="n">MNIST</span><span class="p">(</span><span class="n">root</span><span class="o">=</span><span class="s">'./'</span><span class="p">,</span>
                          <span class="n">train</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>
-                         <span class="n">transform</span><span class="o">=</span><span class="n">transforms</span><span class="o">.</span><span class="n">ToTensor</span><span class="p">(),</span>
+                         <span class="n">transform</span><span class="o">=</span><span class="n">transforms</span><span class="p">.</span><span class="n">ToTensor</span><span class="p">(),</span>
                          <span class="n">download</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="s">"Downloading Test Data Done ! "</span><span class="p">)</span>
 
 <span class="c1"># Defining Model
 </span>
 <span class="c1"># our model
-</span><span class="k">class</span> <span class="nc">Model</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+</span><span class="k">class</span> <span class="nc">Model</span><span class="p">(</span><span class="n">nn</span><span class="p">.</span><span class="n">Module</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">(</span><span class="n">Model</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">linear1</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">784</span><span class="p">,</span> <span class="mi">256</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">linear2</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">256</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Model</span><span class="p">,</span> <span class="bp">self</span><span class="p">).</span><span class="n">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">linear1</span> <span class="o">=</span> <span class="n">nn</span><span class="p">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">784</span><span class="p">,</span> <span class="mi">256</span><span class="p">)</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">linear2</span> <span class="o">=</span> <span class="n">nn</span><span class="p">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">256</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
     
     <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">):</span>
-        <span class="n">X</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">relu</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">linear1</span><span class="p">(</span><span class="n">X</span><span class="p">)))</span>
-        <span class="n">X</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">linear2</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+        <span class="n">X</span> <span class="o">=</span> <span class="n">F</span><span class="p">.</span><span class="n">relu</span><span class="p">((</span><span class="bp">self</span><span class="p">.</span><span class="n">linear1</span><span class="p">(</span><span class="n">X</span><span class="p">)))</span>
+        <span class="n">X</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">linear2</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">X</span>
 
 <span class="n">model</span> <span class="o">=</span> <span class="n">Model</span><span class="p">()</span>
-<span class="n">criterion</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">CrossEntropyLoss</span><span class="p">()</span>
-<span class="n">optimizer</span> <span class="o">=</span> <span class="n">optim</span><span class="o">.</span><span class="n">Adam</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="mf">0.001</span><span class="p">)</span>
+<span class="n">criterion</span> <span class="o">=</span> <span class="n">nn</span><span class="p">.</span><span class="n">CrossEntropyLoss</span><span class="p">()</span>
+<span class="n">optimizer</span> <span class="o">=</span> <span class="n">optim</span><span class="p">.</span><span class="n">Adam</span><span class="p">(</span><span class="n">model</span><span class="p">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="mf">0.001</span><span class="p">)</span>
 
 <span class="c1"># Logging model, Gradient, parameters on dashboard
-</span><span class="n">wandb</span><span class="o">.</span><span class="n">watch</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+</span><span class="n">wandb</span><span class="p">.</span><span class="n">watch</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
 
 <span class="c1"># Training Phase
 </span><span class="n">batch_size</span> <span class="o">=</span> <span class="mi">100</span>
 
-<span class="n">data_iter</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">DataLoader</span><span class="p">(</span><span class="n">mnist_train</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">num_workers</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">data_iter</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">utils</span><span class="p">.</span><span class="n">data</span><span class="p">.</span><span class="n">DataLoader</span><span class="p">(</span><span class="n">mnist_train</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">num_workers</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 
 <span class="k">print</span><span class="p">(</span><span class="s">"Iteration maker Done !"</span><span class="p">)</span>
 
@@ -839,51 +1090,51 @@ Files 탭에는 현재 모델을 돌릴때 사용된 정보, 가장 성능이 �
     <span class="n">avg_loss</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="n">total_batch</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">mnist_train</span><span class="p">)</span> <span class="o">//</span> <span class="n">batch_size</span>
     <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">batch_img</span><span class="p">,</span> <span class="n">batch_lab</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">data_iter</span><span class="p">):</span>
-        <span class="n">X</span> <span class="o">=</span> <span class="n">batch_img</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">28</span><span class="o">*</span><span class="mi">28</span><span class="p">)</span>
+        <span class="n">X</span> <span class="o">=</span> <span class="n">batch_img</span><span class="p">.</span><span class="n">view</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">28</span><span class="o">*</span><span class="mi">28</span><span class="p">)</span>
         <span class="n">Y</span> <span class="o">=</span> <span class="n">batch_lab</span>
         
-        <span class="n">y_pred</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+        <span class="n">y_pred</span> <span class="o">=</span> <span class="n">model</span><span class="p">.</span><span class="n">forward</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
         
         <span class="n">loss</span> <span class="o">=</span> <span class="n">criterion</span><span class="p">(</span><span class="n">y_pred</span><span class="p">,</span> <span class="n">Y</span><span class="p">)</span>
         <span class="c1"># Zero gradients, perform a backward pass, and update the weights.
-</span>        <span class="n">optimizer</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span>
-        <span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
-        <span class="n">optimizer</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+</span>        <span class="n">optimizer</span><span class="p">.</span><span class="n">zero_grad</span><span class="p">()</span>
+        <span class="n">loss</span><span class="p">.</span><span class="n">backward</span><span class="p">()</span>
+        <span class="n">optimizer</span><span class="p">.</span><span class="n">step</span><span class="p">()</span>
         
         <span class="n">avg_loss</span> <span class="o">+=</span> <span class="n">loss</span>
         <span class="k">if</span> <span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">%</span><span class="mi">100</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">:</span>
-            <span class="k">print</span><span class="p">(</span><span class="s">"Epoch : "</span><span class="p">,</span> <span class="n">epoch</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="s">"Iteration : "</span><span class="p">,</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="s">" Loss : "</span><span class="p">,</span> <span class="n">avg_loss</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span><span class="o">/</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
+            <span class="k">print</span><span class="p">(</span><span class="s">"Epoch : "</span><span class="p">,</span> <span class="n">epoch</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="s">"Iteration : "</span><span class="p">,</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="s">" Loss : "</span><span class="p">,</span> <span class="n">avg_loss</span><span class="p">.</span><span class="n">data</span><span class="p">.</span><span class="n">numpy</span><span class="p">()</span><span class="o">/</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
 
     <span class="c1"># Logging metrics    
-</span>    <span class="n">wandb</span><span class="o">.</span><span class="n">log</span><span class="p">({</span><span class="s">'epoch'</span><span class="p">:</span> <span class="n">epoch</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="s">"loss"</span><span class="p">:</span> <span class="n">avg_loss</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span><span class="o">/</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)})</span>
+</span>    <span class="n">wandb</span><span class="p">.</span><span class="n">log</span><span class="p">({</span><span class="s">'epoch'</span><span class="p">:</span> <span class="n">epoch</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="s">"loss"</span><span class="p">:</span> <span class="n">avg_loss</span><span class="p">.</span><span class="n">data</span><span class="p">.</span><span class="n">numpy</span><span class="p">()</span><span class="o">/</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)})</span>
 
-    <span class="k">print</span><span class="p">(</span><span class="s">"Epoch : "</span><span class="p">,</span> <span class="n">epoch</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="s">" Loss : "</span><span class="p">,</span> <span class="n">avg_loss</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span><span class="o">/</span><span class="n">total_batch</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"Epoch : "</span><span class="p">,</span> <span class="n">epoch</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="s">" Loss : "</span><span class="p">,</span> <span class="n">avg_loss</span><span class="p">.</span><span class="n">data</span><span class="p">.</span><span class="n">numpy</span><span class="p">()</span><span class="o">/</span><span class="n">total_batch</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="s">"Training Done !"</span><span class="p">)</span>
 
 <span class="c1"># Save final model
-</span><span class="n">torch</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">state_dict</span><span class="p">(),</span> <span class="s">"model.h5"</span><span class="p">)</span>
-<span class="n">wandb</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s">'model.h5'</span><span class="p">)</span>
+</span><span class="n">torch</span><span class="p">.</span><span class="n">save</span><span class="p">(</span><span class="n">model</span><span class="p">.</span><span class="n">state_dict</span><span class="p">(),</span> <span class="s">"model.h5"</span><span class="p">)</span>
+<span class="n">wandb</span><span class="p">.</span><span class="n">save</span><span class="p">(</span><span class="s">'model.h5'</span><span class="p">)</span>
 
 <span class="c1"># Evaluation
 </span>
-<span class="n">test_img</span> <span class="o">=</span> <span class="n">mnist_test</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">28</span><span class="o">*</span><span class="mi">28</span><span class="p">)</span><span class="o">.</span><span class="nb">type</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">FloatTensor</span><span class="p">)</span>
-<span class="n">test_lab</span> <span class="o">=</span> <span class="n">mnist_test</span><span class="o">.</span><span class="n">targets</span>
-<span class="n">outputs</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="n">test_img</span><span class="p">)</span>
-<span class="n">pred_val</span><span class="p">,</span> <span class="n">pred_idx</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="nb">max</span><span class="p">(</span><span class="n">outputs</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-<span class="n">correct</span> <span class="o">=</span> <span class="p">(</span><span class="n">pred_idx</span> <span class="o">==</span> <span class="n">test_lab</span><span class="p">)</span><span class="o">.</span><span class="nb">sum</span><span class="p">()</span>
-<span class="k">print</span><span class="p">(</span><span class="s">'Accuracy : '</span><span class="p">,</span> <span class="n">correct</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">test_img</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">test_img</span> <span class="o">=</span> <span class="n">mnist_test</span><span class="p">.</span><span class="n">data</span><span class="p">.</span><span class="n">view</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">28</span><span class="o">*</span><span class="mi">28</span><span class="p">).</span><span class="nb">type</span><span class="p">(</span><span class="n">torch</span><span class="p">.</span><span class="n">FloatTensor</span><span class="p">)</span>
+<span class="n">test_lab</span> <span class="o">=</span> <span class="n">mnist_test</span><span class="p">.</span><span class="n">targets</span>
+<span class="n">outputs</span> <span class="o">=</span> <span class="n">model</span><span class="p">.</span><span class="n">forward</span><span class="p">(</span><span class="n">test_img</span><span class="p">)</span>
+<span class="n">pred_val</span><span class="p">,</span> <span class="n">pred_idx</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="nb">max</span><span class="p">(</span><span class="n">outputs</span><span class="p">.</span><span class="n">data</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">correct</span> <span class="o">=</span> <span class="p">(</span><span class="n">pred_idx</span> <span class="o">==</span> <span class="n">test_lab</span><span class="p">).</span><span class="nb">sum</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="s">'Accuracy : '</span><span class="p">,</span> <span class="n">correct</span><span class="p">.</span><span class="n">data</span><span class="p">.</span><span class="n">numpy</span><span class="p">()</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">test_img</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="p">)</span>
 
 <span class="c1"># Testing
 </span>
-<span class="n">r</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">mnist_test</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">X_single_data</span> <span class="o">=</span> <span class="n">mnist_test</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">r</span><span class="p">:</span><span class="n">r</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">28</span><span class="o">*</span><span class="mi">28</span><span class="p">)</span><span class="o">.</span><span class="nb">float</span><span class="p">()</span>
-<span class="n">Y_single_data</span> <span class="o">=</span> <span class="n">mnist_test</span><span class="o">.</span><span class="n">targets</span><span class="p">[</span><span class="n">r</span><span class="p">:</span><span class="n">r</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">mnist_test</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">X_single_data</span> <span class="o">=</span> <span class="n">mnist_test</span><span class="p">.</span><span class="n">data</span><span class="p">[</span><span class="n">r</span><span class="p">:</span><span class="n">r</span> <span class="o">+</span> <span class="mi">1</span><span class="p">].</span><span class="n">view</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">28</span><span class="o">*</span><span class="mi">28</span><span class="p">).</span><span class="nb">float</span><span class="p">()</span>
+<span class="n">Y_single_data</span> <span class="o">=</span> <span class="n">mnist_test</span><span class="p">.</span><span class="n">targets</span><span class="p">[</span><span class="n">r</span><span class="p">:</span><span class="n">r</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
 
 <span class="n">single_prediction</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">X_single_data</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">X_single_data</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="mi">28</span><span class="p">,</span><span class="mi">28</span><span class="p">)</span><span class="o">.</span><span class="n">numpy</span><span class="p">(),</span> <span class="n">cmap</span><span class="o">=</span><span class="s">'gray'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">X_single_data</span><span class="p">.</span><span class="n">data</span><span class="p">.</span><span class="n">view</span><span class="p">(</span><span class="mi">28</span><span class="p">,</span><span class="mi">28</span><span class="p">).</span><span class="n">numpy</span><span class="p">(),</span> <span class="n">cmap</span><span class="o">=</span><span class="s">'gray'</span><span class="p">)</span>
 
-<span class="k">print</span><span class="p">(</span><span class="s">'Label : '</span><span class="p">,</span> <span class="n">Y_single_data</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">numpy</span><span class="p">()[</span><span class="mi">0</span><span class="p">])</span>
-<span class="k">print</span><span class="p">(</span><span class="s">'Prediction : '</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="nb">max</span><span class="p">(</span><span class="n">single_prediction</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="mi">1</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">numpy</span><span class="p">()[</span><span class="mi">0</span><span class="p">])</span>
+<span class="k">print</span><span class="p">(</span><span class="s">'Label : '</span><span class="p">,</span> <span class="n">Y_single_data</span><span class="p">.</span><span class="n">data</span><span class="p">.</span><span class="n">numpy</span><span class="p">()[</span><span class="mi">0</span><span class="p">])</span>
+<span class="k">print</span><span class="p">(</span><span class="s">'Prediction : '</span><span class="p">,</span> <span class="n">torch</span><span class="p">.</span><span class="nb">max</span><span class="p">(</span><span class="n">single_prediction</span><span class="p">.</span><span class="n">data</span><span class="p">,</span> <span class="mi">1</span><span class="p">)[</span><span class="mi">1</span><span class="p">].</span><span class="n">numpy</span><span class="p">()[</span><span class="mi">0</span><span class="p">])</span>
 </code></pre></div></div>
 
     <article></h4>
@@ -892,419 +1143,6 @@ Files 탭에는 현재 모델을 돌릴때 사용된 정보, 가장 성능이 �
       <a href="/deeplearning/2020/03/01/wandb/#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
       
       <a href="/deeplearning/2020/03/01/wandb/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
-    </div>
-  </div>
-  
-  <div class="post">
-    <h1 class="post-title">
-      <a href="/deeplearning/2020/02/26/MobileNetV1/">
-        Review: MobileNet V1
-      </a>
-    </h1>
-
-    <span class="post-date">26 Feb 2020</span>
-     | 
-    
-    <a href="/blog/tags/#paper" class="post-tag">Paper</a>
-    
-    
-
-    <h4 style="font-weight: 400; line-height: 1.8;"><article>
-      <h1 id="mobilenets-efficient-convolutional-neural-networks-for-mobile-vision-applications">MobileNets: Efficient Convolutional Neural Networks for Mobile Vision Applications</h1>
-
-<p>Author: Andrew G. Howard, Menglong Zhu, Bo Chen, Dmitry Kalenichenko, Weijun Wang, Tobias Weyand, Marco Andreetto, Hartwig Adam<br />
-Date: Apr 17, 2017<br />
-URL: https://arxiv.org/abs/1704.04861</p>
-
-<h1 id="abstract"><strong>Abstract</strong></h1>
-
-<p>- 모바일, 임베디드에 적용할 수 있는 네트워크.</p>
-
-<p><img src="https://jjerry-k.github.io/public/img/mobilev1/Untitled.png" alt="https://jjerry-k.github.io/public/img/mobilev1/Untitled.png" /></p>
-
-<h1 id="1-introduction"><strong>1. Introduction</strong></h1>
-
-<ul>
-  <li>CNN 유명세 짱짱맨</li>
-  <li>좋은 성능(정확도)를 위해 연구가 계속 진행되었지만 속도와 메모리 측면에서 <strong>**비</strong>**효율적.</li>
-  <li>경량화, 효율화 필요!!</li>
-</ul>
-
-<h1 id="2-prior-work"><strong>2. Prior Work</strong></h1>
-
-<ul>
-  <li>최근 경량화, 효율적인 네트워크 개발에 초점.</li>
-  <li>Depthwse separable convolution,</li>
-</ul>
-
-<h1 id="3-mobilenetarchitecture"><strong>3. MobileNet Architecture</strong></h1>
-
-<ul>
-  <li>핵심적인 레이어 설명.</li>
-</ul>
-
-<h2 id="31-depthwiseseparableconvolution"><strong>3.1 Depthwise Separable Convolution</strong></h2>
-
-<ul>
-  <li>Depthwise Convolution 수행 후 Pointwise Convolution 수행.</li>
-</ul>
-
-<p><img src="https://jjerry-k.github.io/public/img/mobilev1/Untitled_1.png" alt="https://jjerry-k.github.io/public/img/mobilev1/Untitled_1.png" /></p>
-
-<p><img src="https://jjerry-k.github.io/public/img/mobilev1/Untitled_2.png" alt="https://jjerry-k.github.io/public/img/mobilev1/Untitled_2.png" /></p>
-
-<ul>
-  <li>MobileNet 에서는 3 x 3 의 Depthwise saparable convolution 사용.</li>
-  <li>연산량이 약 8~9 배로 크게 감소.</li>
-</ul>
-
-<h2 id="32-networkstructureandtraining"><strong>3.2 Network Structure and Training</strong></h2>
-
-<ul>
-  <li>총 28개의 레이어</li>
-</ul>
-
-<p><img src="https://jjerry-k.github.io/public/img/mobilev1/Untitled_3.png" alt="https://jjerry-k.github.io/public/img/mobilev1/Untitled_3.png" /></p>
-
-<ul>
-  <li>MobileNet의 Convolution Block 구조</li>
-</ul>
-
-<p><img src="https://jjerry-k.github.io/public/img/mobilev1/Untitled_4.png" alt="https://jjerry-k.github.io/public/img/mobilev1/Untitled_4.png" /></p>
-
-<ul>
-  <li>MobileNet의 대부분 파라미터, 연산 시간은 1x1 Conv</li>
-</ul>
-
-<p><img src="https://jjerry-k.github.io/public/img/mobilev1/Untitled_5.png" alt="https://jjerry-k.github.io/public/img/mobilev1/Untitled_5.png" /></p>
-
-<ul>
-  <li>RMSprop, asynchronous gradient descent 사용.</li>
-  <li>Tensorflow 로 구현.</li>
-</ul>
-
-<h2 id="33-widthmultiplierthinnermodels"><strong>3.3 Width Multiplier: Thinner Models</strong></h2>
-
-<ul>
-  <li>MobileNet의 기본 구조는 작고 빠르지만 더 작고 빠른 모델을 필요로 함.</li>
-  <li>Width multiplier 라는 파라미터 제안.</li>
-</ul>
-
-<h2 id="34-resolutionmultiplierreducedrepresentation"><strong>3.4 Resolution Multiplier: Reduced Representation</strong></h2>
-
-<p><img src="https://jjerry-k.github.io/public/img/mobilev1/Untitled_6.png" alt="https://jjerry-k.github.io/public/img/mobilev1/Untitled_6.png" /></p>
-
-<h1 id="4-experiments"><strong>4. Experiments</strong></h1>
-
-<ul>
-  <li><strong>효율적이다 라는</strong> 내용이 전부..</li>
-</ul>
-
-<h2 id="41-modelchoices"><strong>4.1 Model Choices</strong></h2>
-
-<p><img src="https://jjerry-k.github.io/public/img/mobilev1/Untitled_7.png" alt="https://jjerry-k.github.io/public/img/mobilev1/Untitled_7.png" /></p>
-
-<p><img src="https://jjerry-k.github.io/public/img/mobilev1/Untitled_8.png" alt="https://jjerry-k.github.io/public/img/mobilev1/Untitled_8.png" /></p>
-
-<h2 id="42-modelshrinkinghyperparemeters"><strong>4.2 Model Shrinking Hyperparemeters</strong></h2>
-
-<p><img src="https://jjerry-k.github.io/public/img/mobilev1/Untitled_9.png" alt="https://jjerry-k.github.io/public/img/mobilev1/Untitled_9.png" /></p>
-
-<p><img src="https://jjerry-k.github.io/public/img/mobilev1/Untitled_10.png" alt="https://jjerry-k.github.io/public/img/mobilev1/Untitled_10.png" /></p>
-
-<p><img src="https://jjerry-k.github.io/public/img/mobilev1/Untitled_11.png" alt="https://jjerry-k.github.io/public/img/mobilev1/Untitled_11.png" /></p>
-
-<p><img src="https://jjerry-k.github.io/public/img/mobilev1/Untitled_12.png" alt="https://jjerry-k.github.io/public/img/mobilev1/Untitled_12.png" /></p>
-
-<p><img src="https://jjerry-k.github.io/public/img/mobilev1/Untitled_13.png" alt="https://jjerry-k.github.io/public/img/mobilev1/Untitled_13.png" /></p>
-
-<p><img src="https://jjerry-k.github.io/public/img/mobilev1/Untitled_14.png" alt="https://jjerry-k.github.io/public/img/mobilev1/Untitled_14.png" /></p>
-
-<h2 id="43-finegrainedrecognition"><strong>4.3 Fine Grained Recognition</strong></h2>
-
-<p><img src="https://jjerry-k.github.io/public/img/mobilev1/Untitled_15.png" alt="https://jjerry-k.github.io/public/img/mobilev1/Untitled_15.png" /></p>
-
-<h2 id="44-largescalegeolocalization"><strong>4.4 Large Scale Geolocalization</strong></h2>
-
-<p><img src="https://jjerry-k.github.io/public/img/mobilev1/Untitled_16.png" alt="https://jjerry-k.github.io/public/img/mobilev1/Untitled_16.png" /></p>
-
-<h2 id="45-faceattributed"><strong>4.5 Face Attributed</strong></h2>
-
-<p><img src="https://jjerry-k.github.io/public/img/mobilev1/Untitled_17.png" alt="https://jjerry-k.github.io/public/img/mobilev1/Untitled_17.png" /></p>
-
-<p><img src="https://jjerry-k.github.io/public/img/mobilev1/Untitled_18.png" alt="https://jjerry-k.github.io/public/img/mobilev1/Untitled_18.png" /></p>
-
-<h2 id="46-objectdetection"><strong>4.6 Object Detection</strong></h2>
-
-<p><img src="https://jjerry-k.github.io/public/img/mobilev1/Untitled_19.png" alt="https://jjerry-k.github.io/public/img/mobilev1/Untitled_19.png" /></p>
-
-<p><img src="https://jjerry-k.github.io/public/img/mobilev1/Untitled_20.png" alt="https://jjerry-k.github.io/public/img/mobilev1/Untitled_20.png" /></p>
-
-<h2 id="47-faceembeddings"><strong>4.7 Face Embeddings</strong></h2>
-
-<p><img src="https://jjerry-k.github.io/public/img/mobilev1/Untitled_21.png" alt="https://jjerry-k.github.io/public/img/mobilev1/Untitled_21.png" /></p>
-
-<h1 id="5-conclusion"><strong>5. Conclusion</strong></h1>
-
-<ul>
-  <li>연산량이 적고 파라미터 수도 적음!</li>
-  <li>다양한 task 에 사용가능!</li>
-</ul>
-
-    <article></h4>
-    <div class="post-more">
-      
-      <a href="/deeplearning/2020/02/26/MobileNetV1/#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
-      
-      <a href="/deeplearning/2020/02/26/MobileNetV1/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
-    </div>
-  </div>
-  
-  <div class="post">
-    <h1 class="post-title">
-      <a href="/deeplearning/2020/02/16/Xception/">
-        Review: Xception
-      </a>
-    </h1>
-
-    <span class="post-date">16 Feb 2020</span>
-     | 
-    
-    <a href="/blog/tags/#paper" class="post-tag">Paper</a>
-    
-    
-
-    <h4 style="font-weight: 400; line-height: 1.8;"><article>
-      <h1 id="xception-deep-learning-with-depthwise-separable-convolution">Xception: Deep Learning with Depthwise Separable Convolution</h1>
-
-<p>Author: Franc¸ois Chollet<br />
-Date: Dec 19, 2016<br />
-URL: https://arxiv.org/abs/1610.02357</p>
-
-<hr />
-
-<h1 id="abstract">Abstract</h1>
-
-<ul>
-  <li>CNN 에서 많이 사용되는 Inception 은 Regular Convolution 과 Depthwise Separable Convolution 의 중간 단계.</li>
-  <li>Depthwise Separable Convolution 은 최대 개수의 타워를 가진 Inception module (?)</li>
-  <li>Inception module을 Depthwise Separable Convolution 으로 대체한 새로운 Deep Convolutional Neural Network 제안.</li>
-  <li>Xception 이라고 칭함.</li>
-  <li>ImageNet 으로 학습된 Inception V3 보다 살짝 성능이 좋고 350,000,000개의 이미지와 17,000개의 클래스로 구성된 Larger image dataset 에선 Inception V3 보다 월등히 뛰어난 성능을 보임.</li>
-  <li>Inception V3와 Xception 이 동일한 parameter 수를 가짐.</li>
-  <li>그러므로 연산량, 메모리의 증가가 아닌 모델 parameter를 효과적으로 사용해서 성능 향상이 된 것.</li>
-</ul>
-
-<h1 id="1introduction"><strong>1. Introduction</strong></h1>
-
-<ul>
-  <li>Convolutional Neural Network (이하 CNN) 은 Computer Vision 에서 가장 주요한 알고리즘이 되었고, 이를 설계하는 방법에 대해 개발하는데 많은 관심을 가지게 됨.</li>
-  <li>Lenet -&gt; AlexNet (2012) -&gt; ZFNet (2013) -&gt; VGG (2014) -&gt; Inception 종류 … -&gt; Inception-ResNet (2015)</li>
-  <li>Inception 스타일의 기본 구성 요소는 Inception module.</li>
-  <li>
-    <p>Figure 1은 Inception V3 의 표준 Inception Module.</p>
-
-    <p><img src="https://jjerry-k.github.io/public/img/xception/Untitled.png" alt="https://jjerry-k.github.io/public/img/xception/Untitled.png" /></p>
-  </li>
-  <li>Inception 모델은 위와 같은 모듈을 Stack 한 것. VGG-Style 네트워크는 단순히 Convolution layer를 Stack.</li>
-  <li>실험적으로 Inception-style 이 VGG-style보다 적은 parameter로 다양한, 많은 feature를 학습 할 수 있다는 것을 보임.</li>
-</ul>
-
-<h2 id="11theinceptionhypothesis"><strong>1.1 The Inception hypothesis</strong></h2>
-
-<ul>
-  <li>Convolution layer는 3차원 공간에서 filter를 학습하려고 함.</li>
-  <li>Single Convolution kernel 은 채널의 correlation과 공간의 correlation 을 동시에 mapping 함.</li>
-  <li>Inception 모듈은 채널, 공간의 correlation 을 독립적으로 나타낼 수 있도록 연산을 분해. -&gt; 쉽고 효율적인 프로세스를 만듦.</li>
-  <li>Inception의 가설은 채널 채널, 공간의 correlation 이 분리되어 있으므로 동시에 매핑하는 것은 좋지 않다는 것.</li>
-  <li>
-    <p>Figure 2는 3x3 conv와 1x1 conv만 사용한 단순화한 Inception 모듈.</p>
-
-    <p><img src="https://jjerry-k.github.io/public/img/xception/Untitled_1.png" alt="https://jjerry-k.github.io/public/img/xception/Untitled_1.png" /></p>
-  </li>
-  <li>
-    <p>Figure 3은 Figure 2의 Inception 모듈에서 하나의 큰 1x1 Convolution과 3x3 Convolution들로 재구성한 것.</p>
-
-    <p><img src="https://jjerry-k.github.io/public/img/xception/Untitled_2.png" alt="https://jjerry-k.github.io/public/img/xception/Untitled_2.png" /></p>
-  </li>
-  <li>이 방법이 Inception 의 가설보다 뛰어난 가설을 만드는 것이 합리적인 것일지, 채널과 공간을 독립적으로 매핑할 수 있는지 의문.</li>
-</ul>
-
-<h2 id="12thecontinuumbetweenconvolutionsandseparableconvolutions"><strong>1.2 The continuum between convolutions and separable convolutions</strong></h2>
-
-<ul>
-  <li>
-    <p>Figure 4 처럼 Inception 모듈 구성.</p>
-
-    <p><img src="https://jjerry-k.github.io/public/img/xception/Untitled_3.png" alt="https://jjerry-k.github.io/public/img/xception/Untitled_3.png" /></p>
-  </li>
-  <li>1x1 Convolution 적용하여 채널의 correlation 매핑, 그 후 각각의 channel별로 공간의 correlation 매핑</li>
-  <li>이를 <strong>An “extreme” version of an Inception module</strong> 이라고 칭함.</li>
-  <li>TensorFlow 프레임워크에 Depthwise Separable Convolution 연산과 거의 동일함.</li>
-  <li>TensorFlow나 Keras 프레임워크에 있는 Depthwise Separable Convolution (Separable Convolution 라고도 불림.) 은 각 channel 별로 3x3 Convolution 적용 후 채널간의 1x1 Convolution 적용.</li>
-  <li>영상처리 분야에서 사용하는 Separable Convolution 과 혼동하면 안됨, 이 연산은 공간적 분리를 하는 Convolution.</li>
-</ul>
-
-<table>
-  <thead>
-    <tr>
-      <th style="text-align: center">비교</th>
-      <th style="text-align: center">Extream</th>
-      <th style="text-align: center">Depthwise Separable</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align: center">연산순서</td>
-      <td style="text-align: center">pointwise–&gt;channelwise</td>
-      <td style="text-align: center">channelwise–&gt;pointwise</td>
-    </tr>
-    <tr>
-      <td style="text-align: center">비선형성</td>
-      <td style="text-align: center">Presence</td>
-      <td style="text-align: center">Absence</td>
-    </tr>
-  </tbody>
-</table>
-
-<h1 id="2priorwork"><strong>2. Prior work</strong></h1>
-
-<ul>
-  <li>VGG-16 과 같은 구조가 xception 과 유사.</li>
-  <li>Inception 구조는 가지치기의 이점을 보여줌.</li>
-  <li>Depthwise separable convolution는 경량화에도 적합.</li>
-  <li>TensorFlow에는 이미 구현되어있음.</li>
-  <li>Residual connection 을 광범위하게 사용.</li>
-</ul>
-
-<h1 id="3thexceptionarchitecture"><strong>3. The Xception architecture</strong></h1>
-
-<p><img src="https://jjerry-k.github.io/public/img/xception/Untitled_4.png" alt="https://jjerry-k.github.io/public/img/xception/Untitled_4.png" /></p>
-
-<ul>
-  <li>Figure 5 와 같은 구조 제안.</li>
-  <li>처음과 마지막을 제외하곤 linear residual module 사용.</li>
-  <li>총 36개의 convolution layer로 구성.</li>
-  <li>매우 단순한 구조.</li>
-</ul>
-
-<h1 id="4experimentalevaluation"><strong>4. Experimental evaluation</strong></h1>
-
-<ul>
-  <li>Xception과 Inceotion V3 비교.</li>
-  <li>Parameters가 비슷. 네트워크 규모에 대한 차이를 없애기 위함.</li>
-  <li>ImageNet과 JFT dataset 이용.</li>
-</ul>
-
-<h2 id="41thejftdataset"><strong>4.1 The JFT dataset</strong></h2>
-
-<ul>
-  <li>그냥…JFT 데이터 설명…</li>
-  <li>Google 데이터 중 하나</li>
-  <li>JFT 로 학습, FastEval14k dataset으로 성능 비교.</li>
-</ul>
-
-<h2 id="42optimizationconfiguration"><strong>4.2 Optimization configuration</strong></h2>
-
-<ul>
-  <li>각 방법에 대해서 다음과 같은 설정으로 Xception, Inception V3 모두 학습</li>
-  <li>On ImageNet
-    <ul>
-      <li>Optimizer: SGD</li>
-      <li>Momentum: 0.9</li>
-      <li>Initial learning rate: 0.045</li>
-      <li>Learning rate decay: 0.94 (every 2 epochs)</li>
-    </ul>
-  </li>
-  <li>On JFT
-    <ul>
-      <li>Optimizer: RMSprop</li>
-      <li>Momentum: 0.9</li>
-      <li>Initial learning rate: 0.001</li>
-      <li>Learning rate decay: 0.9 (every 3,000,000 samples)</li>
-    </ul>
-  </li>
-</ul>
-
-<h2 id="43regularizationconfiguration"><strong>4.3 Regularization configuration</strong></h2>
-
-<ul>
-  <li>Weight decay</li>
-  <li>Dropout</li>
-  <li>Auxiliary loss tower</li>
-</ul>
-
-<h2 id="44traininginfrastructure"><strong>4.4 Training infrastructure</strong></h2>
-
-<ul>
-  <li>80개의 NVIDIA K80 GPU ….</li>
-  <li>ImageNet 학습시 <strong>synchronous gradient descent</strong>을 적용하여 data parallelism 이용. → 3일 소요</li>
-  <li>JFT 학습시 <strong>asynchronous gradient descent</strong>을 적용하여 data parallelism 이용. →한달 소요</li>
-</ul>
-
-<h2 id="45comparisonwithinceptionv3"><strong>4.5 Comparison with Inception V3</strong></h2>
-
-<h3 id="451classificationperformance"><strong>4.5.1 Classification performance</strong></h3>
-
-<ul>
-  <li>
-    <p>두 데이터 모두 Xception이 좋은 성능을 보임.</p>
-
-    <p><img src="https://jjerry-k.github.io/public/img/xception/Untitled_5.png" alt="https://jjerry-k.github.io/public/img/xception/Untitled_5.png" /></p>
-
-    <p><img src="https://jjerry-k.github.io/public/img/xception/Untitled_6.png" alt="https://jjerry-k.github.io/public/img/xception/Untitled_6.png" /></p>
-
-    <p><img src="https://jjerry-k.github.io/public/img/xception/Untitled_7.png" alt="https://jjerry-k.github.io/public/img/xception/Untitled_7.png" /></p>
-
-    <p><img src="https://jjerry-k.github.io/public/img/xception/Untitled_8.png" alt="https://jjerry-k.github.io/public/img/xception/Untitled_8.png" /></p>
-
-    <p><img src="https://jjerry-k.github.io/public/img/xception/Untitled_9.png" alt="https://jjerry-k.github.io/public/img/xception/Untitled_9.png" /></p>
-  </li>
-</ul>
-
-<h3 id="452sizeandspeed"><strong>4.5.2 Size and speed</strong></h3>
-
-<ul>
-  <li>
-    <p>Parameter가 늘지 않으면서 성능 향상을 보이기에 Xception이 효율적인 모델.</p>
-
-    <p><img src="https://jjerry-k.github.io/public/img/xception/Untitled_10.png" alt="https://jjerry-k.github.io/public/img/xception/Untitled_10.png" /></p>
-  </li>
-</ul>
-
-<h3 id="46effectoftheresidualconnections"><strong>4.6 Effect of the residual connections</strong></h3>
-
-<ul>
-  <li>Residual connection에 대한 ablation study 진행.</li>
-  <li>Residual connection의 중요성을 보여줌.</li>
-</ul>
-
-<p><img src="https://jjerry-k.github.io/public/img/xception/Untitled_11.png" alt="https://jjerry-k.github.io/public/img/xception/Untitled_11.png" /></p>
-
-<h3 id="47effectofanintermediateactivationafterpointwiseconvolutions"><strong>4.7 Effect of an intermediate activation after point wise convolutions</strong></h3>
-
-<ul>
-  <li>Depthwise separable convolution은 depthwise → pointwise convolution으로 구성되어있음.</li>
-  <li>
-    <p>그 중간에 activation function에 대한 ablation study 진행.</p>
-
-    <p><img src="https://jjerry-k.github.io/public/img/xception/Untitled_12.png" alt="https://jjerry-k.github.io/public/img/xception/Untitled_12.png" /></p>
-  </li>
-  <li><a href="https://arxiv.org/pdf/1512.00567.pdf">Inception module에 대한 연구</a>와 반대되는 결과 도출.</li>
-</ul>
-
-<h1 id="5futuredirections"><strong>5. Future directions</strong></h1>
-
-<ul>
-  <li>Depthwise separble convolution 이 만능이라는 보장은 없음.</li>
-</ul>
-
-    <article></h4>
-    <div class="post-more">
-      
-      <a href="/deeplearning/2020/02/16/Xception/#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
-      
-      <a href="/deeplearning/2020/02/16/Xception/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
     </div>
   </div>
   

@@ -2,57 +2,88 @@
 <html lang="en-us">
   <head>
   <head>
-  <link href="http://gmpg.org/xfn/11" rel="profile">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta http-equiv="content-type" content="text/html; charset=utf-8">
-
-  <!-- Enable responsiveness on mobile devices-->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-
-  <title>
+    <link href="http://gmpg.org/xfn/11" rel="profile">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  
+    <!-- Enable responsiveness on mobile devices-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+  
+    <title>
+      
+        Review: BAM &middot; Jerry's Blog
+      
+    </title>
+  
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
+    <link rel="stylesheet" href="/public/css/main.css">
+  
+    <!-- Icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-precomposed.png">
+    <link rel="shortcut icon" href="/public/favicon.ico">
+  
+    <!-- RSS -->
+    <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+  
+    <!-- scroll -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+      $( window ).scroll( function() {
+        if ( $( this ).scrollTop() > 500 ) {
+          $( '.top' ).fadeIn();
+        } else {
+          $( '.top' ).fadeOut();
+        }
+      } );
+      $( '.top' ).click( function() {
+        $( 'html, body' ).stop().animate( { scrollTop : 0 }, 100);
+        return false;
+      } );
+    </script>
     
-      Review: BAM &middot; Jerry's Blog
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+      (absbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-1054696837285307",
+          enable_page_level_ads: true
+      });
+    </script>
     
-  </title>
-
-  <!-- CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
-  <link rel="stylesheet" href="/public/css/main.css">
-
-  <!-- Icons -->
-  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-precomposed.png">
-  <link rel="shortcut icon" href="/public/favicon.ico">
-
-  <!-- RSS -->
-  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
-
-  <!-- scroll -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script>
-    $( window ).scroll( function() {
-      if ( $( this ).scrollTop() > 500 ) {
-        $( '.top' ).fadeIn();
-      } else {
-        $( '.top' ).fadeOut();
-      }
-    } );
-    $( '.top' ).click( function() {
-      $( 'html, body' ).stop().animate( { scrollTop : 0 }, 100);
-      return false;
-    } );
-  </script>
-  
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-  <script>
-    (absbygoogle = window.adsbygoogle || []).push({
-        google_ad_client: "ca-pub-1054696837285307",
-        enable_page_level_ads: true
-    });
-  </script>
-  
-  
+    <!-- 
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        //jax: ["input/TeX", "output/HTML-CSS"],
+        TeX: {
+          equationNumbers: {
+            autoNumber: "AMS"
+          }
+        },
+        tex2jax: {
+          inlineMath: [ ['$', '$'] ],
+          displayMath: [ ['$$', '$$'] ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+        //,
+        //displayAlign: "left",
+        //displayIndent: "2em"
+      });
+      MathJax.Hub.Register.MessageHook("Math Processing Error",function (message) {
+        alert("Math Processing Error: "+message[1]);
+      });
+    MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
+        alert("Math Processing Error: "+message[1]);
+      });
+    </script>
+    <script type="text/javascript" async
+      src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript">
+    </script>
+     -->
+    
+    
   <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
       //jax: ["input/TeX", "output/HTML-CSS"],
@@ -69,17 +100,21 @@
   </script>
   <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
   
-  
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <script src="/dest/simple-jekyll-search.js" type="text/javascript"></script>
-  <script type="text/javascript">
-  $(document).ready(function(){
-    document.search.searchinput.focus();
-  });
-  </script>
-</head>
 
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="/dest/simple-jekyll-search.js" type="text/javascript"></script>
+    <script type="text/javascript">
+    $(document).ready(function(){
+      document.search.searchinput.focus();
+    });
+    </script>
+  </head>
+  
   <style>blockquote {font-size: 1em; line-height: 1.4}</style>
+  
+  <!-- New line Start-->
+  <!--  -->
+  <!-- New line End -->
   </head>
   <body>
 
@@ -331,13 +366,13 @@ URL: https://arxiv.org/abs/1807.06514</p>
   <li>BAM 의 구조는 다음 사진과 같음.</li>
 </ul>
 
-<script type="math/tex; mode=display">F: \text{Input feature map} \\ M(F): \text{Attention map} \\F' = F + F\bigotimes M(F) \\ M(F) = \sigma(M_c(F) + M_s(F))</script>
+\[F: \text{Input feature map} \\ M(F): \text{Attention map} \\F' = F + F\bigotimes M(F) \\ M(F) = \sigma(M_c(F) + M_s(F))\]
 
 <p><img src="https://jjerry-k.github.io/public/img/bam/Untitled_1.png" alt="https://jjerry-k.github.io/public/img/bam/Untitled_1.png" /></p>
 
 <h2 id="channel-attention-branch">Channel attention branch</h2>
 
-<script type="math/tex; mode=display">M_c(F) = BN(MLP(AvgPool(F))) \\ = BN(W_1(W_0AvgPool(F) + b_0)+b_1)</script>
+\[M_c(F) = BN(MLP(AvgPool(F))) \\ = BN(W_1(W_0AvgPool(F) + b_0)+b_1)\]
 
 <p>W0 의 output channel 크기: F의 채널 수 / reduction ratio(r)</p>
 
@@ -345,7 +380,7 @@ URL: https://arxiv.org/abs/1807.06514</p>
 
 <h2 id="spatial-attention-branch">Spatial attention branch</h2>
 
-<script type="math/tex; mode=display">M_s(F)=BN(f_3^{1\times1}(f_2^{3\times3}(f_1^{3\times3}(f_0^{1\times1}(F)))))</script>
+\[M_s(F)=BN(f_3^{1\times1}(f_2^{3\times3}(f_1^{3\times3}(f_0^{1\times1}(F)))))\]
 
 <ul>
   <li>모든 연산은 convolution 연산.</li>
@@ -356,7 +391,7 @@ URL: https://arxiv.org/abs/1807.06514</p>
 
 <h2 id="combine-two-attention-branches">Combine two attention branches</h2>
 
-<script type="math/tex; mode=display">M(F) = \sigma(M_c(F) + M_s(F))</script>
+\[M(F) = \sigma(M_c(F) + M_s(F))\]
 
 <ul>
   <li>Channel attention branch 출력: 1x1xR</li>

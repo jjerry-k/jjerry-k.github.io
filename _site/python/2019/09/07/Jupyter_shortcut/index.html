@@ -2,57 +2,88 @@
 <html lang="en-us">
   <head>
   <head>
-  <link href="http://gmpg.org/xfn/11" rel="profile">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta http-equiv="content-type" content="text/html; charset=utf-8">
-
-  <!-- Enable responsiveness on mobile devices-->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-
-  <title>
+    <link href="http://gmpg.org/xfn/11" rel="profile">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  
+    <!-- Enable responsiveness on mobile devices-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+  
+    <title>
+      
+        jupyter Lab 에서 단축키 설정하는 방법! &middot; Jerry's Blog
+      
+    </title>
+  
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
+    <link rel="stylesheet" href="/public/css/main.css">
+  
+    <!-- Icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-precomposed.png">
+    <link rel="shortcut icon" href="/public/favicon.ico">
+  
+    <!-- RSS -->
+    <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+  
+    <!-- scroll -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+      $( window ).scroll( function() {
+        if ( $( this ).scrollTop() > 500 ) {
+          $( '.top' ).fadeIn();
+        } else {
+          $( '.top' ).fadeOut();
+        }
+      } );
+      $( '.top' ).click( function() {
+        $( 'html, body' ).stop().animate( { scrollTop : 0 }, 100);
+        return false;
+      } );
+    </script>
     
-      jupyter Lab 에서 단축키 설정하는 방법! &middot; Jerry's Blog
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+      (absbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-1054696837285307",
+          enable_page_level_ads: true
+      });
+    </script>
     
-  </title>
-
-  <!-- CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
-  <link rel="stylesheet" href="/public/css/main.css">
-
-  <!-- Icons -->
-  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-precomposed.png">
-  <link rel="shortcut icon" href="/public/favicon.ico">
-
-  <!-- RSS -->
-  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
-
-  <!-- scroll -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script>
-    $( window ).scroll( function() {
-      if ( $( this ).scrollTop() > 500 ) {
-        $( '.top' ).fadeIn();
-      } else {
-        $( '.top' ).fadeOut();
-      }
-    } );
-    $( '.top' ).click( function() {
-      $( 'html, body' ).stop().animate( { scrollTop : 0 }, 100);
-      return false;
-    } );
-  </script>
-  
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-  <script>
-    (absbygoogle = window.adsbygoogle || []).push({
-        google_ad_client: "ca-pub-1054696837285307",
-        enable_page_level_ads: true
-    });
-  </script>
-  
-  
+    <!-- 
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        //jax: ["input/TeX", "output/HTML-CSS"],
+        TeX: {
+          equationNumbers: {
+            autoNumber: "AMS"
+          }
+        },
+        tex2jax: {
+          inlineMath: [ ['$', '$'] ],
+          displayMath: [ ['$$', '$$'] ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+        //,
+        //displayAlign: "left",
+        //displayIndent: "2em"
+      });
+      MathJax.Hub.Register.MessageHook("Math Processing Error",function (message) {
+        alert("Math Processing Error: "+message[1]);
+      });
+    MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
+        alert("Math Processing Error: "+message[1]);
+      });
+    </script>
+    <script type="text/javascript" async
+      src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript">
+    </script>
+     -->
+    
+    
   <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
       //jax: ["input/TeX", "output/HTML-CSS"],
@@ -69,17 +100,21 @@
   </script>
   <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
   
-  
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <script src="/dest/simple-jekyll-search.js" type="text/javascript"></script>
-  <script type="text/javascript">
-  $(document).ready(function(){
-    document.search.searchinput.focus();
-  });
-  </script>
-</head>
 
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="/dest/simple-jekyll-search.js" type="text/javascript"></script>
+    <script type="text/javascript">
+    $(document).ready(function(){
+      document.search.searchinput.focus();
+    });
+    </script>
+  </head>
+  
   <style>blockquote {font-size: 1em; line-height: 1.4}</style>
+  
+  <!-- New line Start-->
+  <!--  -->
+  <!-- New line End -->
   </head>
   <body>
 
@@ -282,7 +317,7 @@
   
   </h4>
   <h4 style="font-weight: 400; line-height: 1.8;"><article>
-    <p>파이썬, 딥러닝을 하시는 분들 중 Jupyter 부류를 이용하시는 분들이 꽤 많습니다. <code class="highlighter-rouge">Jupyter Notebook, Jupyter Lab,...</code><br />
+    <p>파이썬, 딥러닝을 하시는 분들 중 Jupyter 부류를 이용하시는 분들이 꽤 많습니다. <code class="language-plaintext highlighter-rouge">Jupyter Notebook, Jupyter Lab,...</code><br />
 저는 둘 다 사용해보긴 하지만 주로 <strong>Jupyter Lab</strong> 을 사용합니다.<br />
 이유는 그냥…좀 더 보기 편해서..?<br />
 두 환경의 차이는 다음 링크에서 확인해주세요.</p>
@@ -318,7 +353,7 @@ jupyter lab 1.0.2 버전에 extension을 설치하면 sidebar 부분이 깨지�
 <p>너무 많은 관계로 <strong><a href="https://github.com/jupyterlab/jupyterlab/blob/af548c2674427da79d54ad5c4b69bb175463e9a0/packages/notebook-extension/src/index.ts#L69-L197">링크</a></strong> 참고해주세요.</p>
 
 <p>이번 포스팅에선 예시로 
-<code class="highlighter-rouge">Restart and Clear</code> 에 대해서 shortcut을 설정해보겠습니다.</p>
+<code class="language-plaintext highlighter-rouge">Restart and Clear</code> 에 대해서 shortcut을 설정해보겠습니다.</p>
 
 <h2 id="설정-방법">설정 방법</h2>
 
@@ -336,7 +371,7 @@ jupyter lab 1.0.2 버전에 extension을 설치하면 sidebar 부분이 깨지�
 
 <p>여기서 왼쪽의 창은 default setting에 대한 설명이고 오른쪽을 Custom 을 위해 기입하는 부분입니다.</p>
 
-<p>그럼 예시대로 <code class="highlighter-rouge">Restart and Clear</code> 에 대해서 shortcut을 설정해보겠습니다.</p>
+<p>그럼 예시대로 <code class="language-plaintext highlighter-rouge">Restart and Clear</code> 에 대해서 shortcut을 설정해보겠습니다.</p>
 
 <p>위에 기능에 대해서 링크 올려드렸었죠? 그 깃헙에서 링크에 대한 내용을 먼저 찾아봅니다.</p>
 
@@ -348,11 +383,11 @@ jupyter lab 1.0.2 버전에 extension을 설치하면 sidebar 부분이 깨지�
 
 <p><img src="https://jjerry-k.github.io/public/img/shortcut/fig05.png" alt="fig5" /></p>
 
-<p>그리고 우측 상단에 저장버튼을 누르고 노트북에서 Shift + Command + C 를 눌렀을때 <code class="highlighter-rouge">Restart and Clear</code> 이 작동하게 됩니다.</p>
+<p>그리고 우측 상단에 저장버튼을 누르고 노트북에서 Shift + Command + C 를 눌렀을때 <code class="language-plaintext highlighter-rouge">Restart and Clear</code> 이 작동하게 됩니다.</p>
 
 <p>사진만 보고 따라 적으시기 귀찮으실테니 code block 으로 남깁니다.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>"shortcuts": [
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>"shortcuts": [
     {
         "command": "kernelmenu:restart-and-clear",
         "keys": ["Shift + Ctrl + C"],

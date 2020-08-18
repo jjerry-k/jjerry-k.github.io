@@ -11,7 +11,7 @@
   
     <title>
       
-        Blog &middot; Jerry's Blog
+        개인적인 Vim 설정 &middot; Jerry's Blog
       
     </title>
   
@@ -287,7 +287,7 @@
               <img src="https://jjerry-k.github.io/public/top.png" width="40" height="40" class="top" style="border-radius:5px; background-color: #000; margin-bottom:0; margin-right:7px; float:left;">
             </a>
             
-            <a href="/blog//">
+            <a href="/blog/living/">
               <img src="https://jjerry-k.github.io/public/contents.png" width="40" height="40" class="top" style="border-radius:5px; background-color: #000; margin-bottom:0; float:left;">
             </a>
           </div>
@@ -307,229 +307,121 @@
       </div>
 
       <div class="container content">
-        <div class="posts">
+        <div class="post">
+  <h1 class="post-title">개인적인 Vim 설정</h1>
+  <h4 style="margin-top:0;"><span class="post-date">16 Aug 2020</span>
+   |
   
-  <div class="post">
-    <h1 class="post-title">
-      <a href="/ubuntu/2019/02/14/docker/">
-        자주 사용하는 Docker Command 정리
-      </a>
-    </h1>
-
-    <span class="post-date">14 Feb 2019</span>
-     | 
-    
-    <a href="/blog/tags/#docker" class="post-tag">Docker</a>
-    
-    
-
-    <h4 style="font-weight: 400; line-height: 1.8;"><article>
-      <p>service nvidia-docker start (sudo 권한으로) : nvidia docker 서비스 시작.</p>
-
-<p>docker -i -t -rm -p 호스트포트:도커포트 -v 호스트경로:도커경로 IMAGE_NAME:tag bash : IMAGE_NAME 컨테이너를 실행.</p>
-
-<p>docker rm NAME : Docker 프로세스 제거</p>
-
-<p>docker rmi IMAGE_NAME : Docker Image 제거</p>
-
-<p>docker commit NAME 레포이름:태그 :</p>
-
-<p>CUDA_VISIBLE_DEVICES=0 jupyter notebook –ip=0.0.0.0 –port=포트번호 –allow-root</p>
-
-
-    <article></h4>
-    <div class="post-more">
-      
-      <a href="/ubuntu/2019/02/14/docker/#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
-      
-      <a href="/ubuntu/2019/02/14/docker/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
-    </div>
-  </div>
+    <a href="/blog/tags/#vim" class="post-tag">Vim</a>
   
-  <div class="post">
-    <h1 class="post-title">
-      <a href="/living/2019/02/01/keyboard/">
-        첫 기계식 키보드 !
-      </a>
-    </h1>
-
-    <span class="post-date">01 Feb 2019</span>
-     | 
-    
-    <a href="/blog/tags/#hardware" class="post-tag">Hardware</a>
-    
-    
-
-    <h4 style="font-weight: 400; line-height: 1.8;"><article>
-      <p>늦었지만 키보드 자랑…<br />
-바밀로 저소음<strong>흑축</strong> 108키 입니다.</p>
-
-<p>넘나 영롱하다…</p>
-
-<p><img src="https://jjerry-k.github.io/public/img/keyboard/vamilo.png" /></p>
-
-<p>이건 타건 영상입니다.</p>
-
-<iframe class="youtube" src="https://jjerry-k.github.io/public/img/keyboard/vamilo.mp4" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen=""></iframe>
-
-    <article></h4>
-    <div class="post-more">
-      
-      <a href="/living/2019/02/01/keyboard/#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
-      
-      <a href="/living/2019/02/01/keyboard/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
-    </div>
-  </div>
   
-  <div class="post">
-    <h1 class="post-title">
-      <a href="/python/2019/01/23/nifti/">
-        Python으로 NIfTI 영상을 읽어보자!
-      </a>
-    </h1>
+  </h4>
+  <h4 style="font-weight: 400; line-height: 1.8;"><article>
+    <h1 id="지극히-개인이-사용하기-위한-vimrc">지극히 개인이 사용하기 위한 vimrc</h1>
 
-    <span class="post-date">23 Jan 2019</span>
-     | 
-    
-    <a href="/blog/tags/#usage" class="post-tag">Usage</a>
-    
-    
+<hr />
 
-    <h4 style="font-weight: 400; line-height: 1.8;"><article>
-      <p>거의 한달 반…만에 글을 씁니다..!<br />
-이번에는 Python에서 <a href="https://nifti.nimh.nih.gov/">NIfTI</a> 포맷의 데이터를 load 하는 방법에 대한 포스팅을 해보려고 합니다.<br />
-저는 Anaconda를 사용중이기에..제 사용환경에 맞게 설명을 하겠습니다.</p>
+<ul>
+  <li>마음껏 편하신대로 Copy &amp; Paste 하세요!</li>
+</ul>
 
-<p>가장 먼저 관련 패키지인 <a href="http://nipy.org/nibabel/"><code class="language-plaintext highlighter-rouge">Nibabel</code></a> 을 설치를 해줍니다.</p>
+<div class="language-vim highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">call</span> plug#begin<span class="p">(</span><span class="s1">'~/.vim/plugged'</span><span class="p">)</span>
+Plug <span class="s1">'davidhalter/jedi-vim'</span>
+Plug <span class="s1">'preservim/nerdtree'</span>
+Plug <span class="s1">'jeetsukumaran/vim-pythonsense'</span>
+Plug <span class="s1">'jiangmiao/auto-pairs'</span>
+Plug <span class="s1">'Vimjas/vim-python-pep8-indent'</span>
+Plug <span class="s1">'dense-analysis/ale'</span>
+Plug <span class="s1">'neoclide/coc.nvim'</span><span class="p">,</span> <span class="p">{</span><span class="s1">'branch'</span><span class="p">:</span> <span class="s1">'release'</span><span class="p">}</span>"
+Plug <span class="s1">'liuchengxu/vista.vim'</span>
+Plug <span class="s1">'sheerun/vim-polyglot'</span>
+<span class="c">"Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop'  }</span>
+Plug <span class="s1">'junegunn/seoul256.vim'</span>
+<span class="k">call</span> plug#end<span class="p">()</span>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>conda <span class="nb">install</span> <span class="nt">-c</span> conda-forge nibabel
+<span class="c">" 세부 정보 출력</span>
+<span class="k">set</span> <span class="k">nu</span>
+<span class="k">set</span> <span class="nb">title</span>
+<span class="k">set</span> <span class="nb">showmatch</span>
+<span class="k">set</span> <span class="nb">ruler</span>
+
+<span class="c">" 구문 강조 사용</span>
+<span class="k">if</span> <span class="nb">has</span><span class="p">(</span><span class="s2">"syntax"</span><span class="p">)</span>
+        <span class="nb">syntax</span> <span class="k">on</span>
+<span class="k">endif</span>
+
+<span class="c">" 들여쓰기 설정</span>
+<span class="k">set</span> <span class="nb">autoindent</span>
+<span class="k">set</span> <span class="nb">smartindent</span>
+<span class="k">set</span> <span class="nb">tabstop</span><span class="p">=</span><span class="m">4</span>
+<span class="k">set</span> <span class="nb">shiftwidth</span><span class="p">=</span><span class="m">4</span>
+<span class="k">set</span> <span class="nb">softtabstop</span><span class="p">=</span><span class="m">4</span>
+<span class="k">set</span> <span class="nb">smarttab</span>
+<span class="k">set</span> <span class="nb">expandtab</span>
+
+<span class="c">" 한글 입력 설정</span>
+<span class="k">set</span> <span class="nb">encoding</span><span class="p">=</span>utf<span class="m">-8</span>
+<span class="k">set</span> <span class="nb">termencoding</span><span class="p">=</span>utf<span class="m">-8</span>
+<span class="c">" 커서가 있는 줄을 강조함</span>
+<span class="k">set</span> <span class="nb">cursorline</span>
+<span class="c">" 상태바 표시를 항상한다</span>
+<span class="k">set</span> <span class="nb">laststatus</span><span class="p">=</span><span class="m">2</span>
+<span class="k">set</span> <span class="nb">statusline</span><span class="p">=</span>\ %<span class="p">&lt;</span>%<span class="k">l</span><span class="p">:</span>%<span class="k">v</span>\ <span class="p">[</span>%P<span class="p">]</span>%<span class="p">=</span>%<span class="k">a</span>\ %<span class="k">h</span>%<span class="k">m</span>%<span class="k">r</span>\ %F\
+<span class="c">" 검색 설정</span>
+<span class="k">set</span> <span class="nb">ignorecase</span>
+<span class="c">" 마지막으로 수정된 곳에 커서를 위치함</span>
+<span class="k">au</span> <span class="nb">BufReadPost</span> *
+<span class="se">\</span> <span class="k">if</span> <span class="nb">line</span><span class="p">(</span><span class="s2">"'\""</span><span class="p">)</span> <span class="p">&gt;</span> <span class="m">0</span> &amp;&amp; <span class="nb">line</span><span class="p">(</span><span class="s2">"'\""</span><span class="p">)</span> <span class="p">&lt;=</span> <span class="nb">line</span><span class="p">(</span><span class="s2">"$"</span><span class="p">)</span> <span class="p">|</span>
+<span class="se">\</span> exe <span class="s2">"norm g`\""</span> <span class="p">|</span>
+<span class="se">\</span> <span class="k">endif</span>
+
+
+<span class="c">"seoul256</span>
+<span class="k">let</span> <span class="nv">g:seoul256_background</span> <span class="p">=</span> <span class="m">233</span>
+<span class="k">colo</span> seoul256
 </code></pre></div></div>
 
-<p>이러면 설치는 끝입니다.</p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-<span class="kn">import</span> <span class="nn">nibabel</span> <span class="k">as</span> <span class="n">nib</span>
-<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
-
-<span class="n">data</span> <span class="o">=</span> <span class="n">nib</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">".nii 경로"</span><span class="p">)</span>
-<span class="n">img</span> <span class="o">=</span> <span class="n">data</span><span class="p">.</span><span class="n">get_data</span><span class="p">()</span>
-
-<span class="c1">#plt.imshow(img)# 슬라이스 1장일 경우
-</span><span class="n">plt</span><span class="p">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img</span><span class="p">[:,:,</span><span class="s">"slice 번호"</span><span class="p">])</span>
-<span class="n">plt</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
-</code></pre></div></div>
-
-<p>이런 식으로 작성하시면 됩니다.</p>
-
-<p>예시를 보여드리면</p>
-
-<p><img src="https://jjerry-k.github.io/public/img/nifti/01.png" /></p>
-
-<p>이렇습니다!</p>
-
-<p>추후엔 DICOM 다루는 법에 대해서 업로드 해보겠습니다!</p>
-
-    <article></h4>
-    <div class="post-more">
-      
-      <a href="/python/2019/01/23/nifti/#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
-      
-      <a href="/python/2019/01/23/nifti/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
-    </div>
-  </div>
-  
-  <div class="post">
-    <h1 class="post-title">
-      <a href="/ubuntu/2018/12/08/scp/">
-        scp를 이용해서 파일 or 디렉토리 복사하기!
-      </a>
-    </h1>
-
-    <span class="post-date">08 Dec 2018</span>
-     | 
-    
-    <a href="/blog/tags/#command" class="post-tag">Command</a>
-    
-    
-
-    <h4 style="font-weight: 400; line-height: 1.8;"><article>
-      <p>대부분이 그렇겠지만 딥러닝, 머신러닝 하시는 분들은 우분투 서버를 이용합니다.<br />
-물론 저도 그렇구요. 가끔 파일을 로컬에 복사할 일이 있습니다.<br />
- <code class="language-plaintext highlighter-rouge">mobaXterm</code> 이라던가 <code class="language-plaintext highlighter-rouge">xshell</code> 같은 프로그램으로 옮길 수도 있지만 제 경험상 대용량이라던가 파일이 많다면 끊기더구요..<br />
- 그래서 CLI 환경에서 하는 방법을 찾아보다가 <code class="language-plaintext highlighter-rouge">scp</code> 라는 명령어가 있더군요.<br />
- 방법은 간단합니다.</p>
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>scp <span class="nt">-r</span> <span class="o">(</span>계정이름<span class="o">)</span>@<span class="o">(</span>IP<span class="o">)</span>:<span class="o">(</span>복사할 파일 경로<span class="o">)</span> <span class="o">(</span>저장할 경로<span class="o">)</span>
-</code></pre></div></div>
-
-<p>이렇게 하면 끝나더군요. scp에 대한 자세한 설명은 추후에 추가하겠습니다.</p>
-
-    <article></h4>
-    <div class="post-more">
-      
-      <a href="/ubuntu/2018/12/08/scp/#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
-      
-      <a href="/ubuntu/2018/12/08/scp/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
-    </div>
-  </div>
-  
-  <div class="post">
-    <h1 class="post-title">
-      <a href="/deeplearning/2018/11/18/anaconda_setting/">
-        Anaconda를 이용하여 TensorFlow 설치하기!
-      </a>
-    </h1>
-
-    <span class="post-date">18 Nov 2018</span>
-     | 
-    
-    <a href="/blog/tags/#tensorflow" class="post-tag">TensorFlow</a>
-    
-    
-
-    <h4 style="font-weight: 400; line-height: 1.8;"><article>
-      <p>안녕하세요!<br />
-오늘은 TensorFlow 설치 방법을 간단하게 알려드리려고 합니다.<br />
-CPU와 GPU 중에서도 <strong>GPU</strong> 버전 설치에 대해 알려드릴거에요!<br />
-매우 간단하니 놀라지마시기 바랍니다.</p>
-
-<ol>
-  <li>Anaconda 를 설치한다.</li>
-  <li>터미널 or CMD에 <code class="language-plaintext highlighter-rouge">conda install python=3.6</code> 라고 입력한다.
-    <ul>
-      <li>CMD에서 안될경우 Anaconda prompt에서 실행하세요.</li>
-    </ul>
-  </li>
-  <li>conda install tensorflow-gpu 라고 입력한다.</li>
-  <li>자신이 원하는 IDE로 코딩을 한다.</li>
-</ol>
-
-<p>이렇게 끝입니다.<br />
-Anaconda 이용시 로컬에 쿠다를 설치 안해줘도 됩니다.<br />
-참 쉽죠….? <br />
-문제가 있다면 댓글 남겨주시기 바랍니다!</p>
-
-    <article></h4>
-    <div class="post-more">
-      
-      <a href="/deeplearning/2018/11/18/anaconda_setting/#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
-      
-      <a href="/deeplearning/2018/11/18/anaconda_setting/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
-    </div>
-  </div>
-  
+  </article></h4>
 </div>
 
-<div class="pagination">
+
   
-    <a class="pagination-item older" href="/blog/page10">Older</a>
-  
-  
-    
-      <a class="pagination-item newer" href="/blog/page8">Newer</a>
-    
-  
+
+
+
+
+
+<div class="comments">
+  <h2>Comments</h2>
+  <div id="disqus_thread"></div>
+  <script>
+var disqus_config = function () {
+  this.page.url = 'http://localhost:4000/living/2020/08/16/vimrc/'; // Replace PAGE_URL with your page's canonical URL variable
+  this.page.identifier = '/living/2020/08/16/vimrc'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+(function() {
+  var d = document, s = d.createElement('script');
+  s.src = '//jerry.disqus.com/embed.js';
+  s.setAttribute('data-timestamp', +new Date());
+  (d.head || d.body).appendChild(s);
+})();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
 </div>
 
+
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- ad wide -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-1054696837285307"
+     data-ad-slot="7569282579"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
         </div>
     </div>

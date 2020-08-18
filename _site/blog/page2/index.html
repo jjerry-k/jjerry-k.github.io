@@ -2,57 +2,88 @@
 <html lang="en-us">
   <head>
   <head>
-  <link href="http://gmpg.org/xfn/11" rel="profile">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta http-equiv="content-type" content="text/html; charset=utf-8">
-
-  <!-- Enable responsiveness on mobile devices-->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-
-  <title>
+    <link href="http://gmpg.org/xfn/11" rel="profile">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  
+    <!-- Enable responsiveness on mobile devices-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+  
+    <title>
+      
+        Blog &middot; Jerry's Blog
+      
+    </title>
+  
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
+    <link rel="stylesheet" href="/public/css/main.css">
+  
+    <!-- Icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-precomposed.png">
+    <link rel="shortcut icon" href="/public/favicon.ico">
+  
+    <!-- RSS -->
+    <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+  
+    <!-- scroll -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+      $( window ).scroll( function() {
+        if ( $( this ).scrollTop() > 500 ) {
+          $( '.top' ).fadeIn();
+        } else {
+          $( '.top' ).fadeOut();
+        }
+      } );
+      $( '.top' ).click( function() {
+        $( 'html, body' ).stop().animate( { scrollTop : 0 }, 100);
+        return false;
+      } );
+    </script>
     
-      Blog &middot; Jerry's Blog
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+      (absbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-1054696837285307",
+          enable_page_level_ads: true
+      });
+    </script>
     
-  </title>
-
-  <!-- CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
-  <link rel="stylesheet" href="/public/css/main.css">
-
-  <!-- Icons -->
-  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-precomposed.png">
-  <link rel="shortcut icon" href="/public/favicon.ico">
-
-  <!-- RSS -->
-  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
-
-  <!-- scroll -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script>
-    $( window ).scroll( function() {
-      if ( $( this ).scrollTop() > 500 ) {
-        $( '.top' ).fadeIn();
-      } else {
-        $( '.top' ).fadeOut();
-      }
-    } );
-    $( '.top' ).click( function() {
-      $( 'html, body' ).stop().animate( { scrollTop : 0 }, 100);
-      return false;
-    } );
-  </script>
-  
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-  <script>
-    (absbygoogle = window.adsbygoogle || []).push({
-        google_ad_client: "ca-pub-1054696837285307",
-        enable_page_level_ads: true
-    });
-  </script>
-  
-  
+    <!-- 
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        //jax: ["input/TeX", "output/HTML-CSS"],
+        TeX: {
+          equationNumbers: {
+            autoNumber: "AMS"
+          }
+        },
+        tex2jax: {
+          inlineMath: [ ['$', '$'] ],
+          displayMath: [ ['$$', '$$'] ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+        //,
+        //displayAlign: "left",
+        //displayIndent: "2em"
+      });
+      MathJax.Hub.Register.MessageHook("Math Processing Error",function (message) {
+        alert("Math Processing Error: "+message[1]);
+      });
+    MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
+        alert("Math Processing Error: "+message[1]);
+      });
+    </script>
+    <script type="text/javascript" async
+      src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript">
+    </script>
+     -->
+    
+    
   <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
       //jax: ["input/TeX", "output/HTML-CSS"],
@@ -69,17 +100,21 @@
   </script>
   <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
   
-  
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <script src="/dest/simple-jekyll-search.js" type="text/javascript"></script>
-  <script type="text/javascript">
-  $(document).ready(function(){
-    document.search.searchinput.focus();
-  });
-  </script>
-</head>
 
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="/dest/simple-jekyll-search.js" type="text/javascript"></script>
+    <script type="text/javascript">
+    $(document).ready(function(){
+      document.search.searchinput.focus();
+    });
+    </script>
+  </head>
+  
   <style>blockquote {font-size: 1em; line-height: 1.4}</style>
+  
+  <!-- New line Start-->
+  <!--  -->
+  <!-- New line End -->
   </head>
   <body>
 
@@ -276,6 +311,301 @@
   
   <div class="post">
     <h1 class="post-title">
+      <a href="/deeplearning/2020/07/20/netron/">
+        Netron! Network 구조를 보여주세요!
+      </a>
+    </h1>
+
+    <span class="post-date">20 Jul 2020</span>
+     | 
+    
+    <a href="/blog/tags/#tools" class="post-tag">Tools</a>
+    
+    
+
+    <h4 style="font-weight: 400; line-height: 1.8;"><article>
+      <p>오늘은 <a href="https://github.com/lutzroeder/netron">netron</a> 이라는 Tool를 드리려 합니다.</p>
+
+<blockquote>
+  <p>본 포스팅은 <a href="https://github.com/lutzroeder/netron">https://github.com/lutzroeder/netron</a> 내용을 이용하여 작성하였습니다.</p>
+</blockquote>
+
+<p>간단히 말씀드리면 Neural network viewer 입니다.</p>
+
+<p>굉장히 많은 Framework들을 지원하고 있습니다.</p>
+
+<ul>
+  <li><strong>ONNX</strong> (<code class="language-plaintext highlighter-rouge">.onnx</code>, <code class="language-plaintext highlighter-rouge">.pb</code>, <code class="language-plaintext highlighter-rouge">.pbtxt</code>)</li>
+  <li><strong>Keras</strong> (<code class="language-plaintext highlighter-rouge">.h5</code>, <code class="language-plaintext highlighter-rouge">.keras</code>)</li>
+  <li><strong>Core ML</strong> (<code class="language-plaintext highlighter-rouge">.mlmodel</code>)</li>
+  <li><strong>Caffe</strong> (<code class="language-plaintext highlighter-rouge">.caffemodel</code>, <code class="language-plaintext highlighter-rouge">.prototxt</code>)</li>
+  <li><strong>Caffe2</strong> (<code class="language-plaintext highlighter-rouge">predict_net.pb</code>)</li>
+  <li><strong>Darknet</strong> (<code class="language-plaintext highlighter-rouge">.cfg</code>)</li>
+  <li><strong>MXNet</strong> (<code class="language-plaintext highlighter-rouge">.model</code>, <code class="language-plaintext highlighter-rouge">-symbol.json</code>)</li>
+  <li><strong>Barracuda</strong> (<code class="language-plaintext highlighter-rouge">.nn</code>)</li>
+  <li><strong>ncnn</strong> (<code class="language-plaintext highlighter-rouge">.param</code>)</li>
+  <li><strong>Tengine</strong> (<code class="language-plaintext highlighter-rouge">.tmfile</code>)</li>
+  <li><strong>TNN</strong> (<code class="language-plaintext highlighter-rouge">.tnnproto</code>)</li>
+  <li><strong>UFF</strong> (<code class="language-plaintext highlighter-rouge">.uff</code>)</li>
+  <li><strong>TensorFlow Lite</strong> (<code class="language-plaintext highlighter-rouge">.tflite</code>)</li>
+</ul>
+
+<p>이 외에도 불안정하지만 다음과 같은 Framework 도 지원합니다.</p>
+
+<ul>
+  <li><strong>TorchScript</strong> (<code class="language-plaintext highlighter-rouge">.pt</code>, <code class="language-plaintext highlighter-rouge">.pth</code>)</li>
+  <li><strong>PyTorch</strong> (<code class="language-plaintext highlighter-rouge">.pt</code>, <code class="language-plaintext highlighter-rouge">.pth</code>)</li>
+  <li><strong>Torch</strong> (<code class="language-plaintext highlighter-rouge">.t7</code>)</li>
+  <li><strong>Arm NN</strong> (<code class="language-plaintext highlighter-rouge">.armnn</code>)</li>
+  <li><strong>BigDL</strong> (<code class="language-plaintext highlighter-rouge">.bigdl</code>, <code class="language-plaintext highlighter-rouge">.model</code>)</li>
+  <li><strong>Chainer</strong> (<code class="language-plaintext highlighter-rouge">.npz</code>, <code class="language-plaintext highlighter-rouge">.h5</code>)</li>
+  <li><strong>CNTK</strong> (<code class="language-plaintext highlighter-rouge">.model</code>, <code class="language-plaintext highlighter-rouge">.cntk</code>)</li>
+  <li><strong>Deeplearning4j</strong> (<code class="language-plaintext highlighter-rouge">.zip</code>)</li>
+  <li><strong>MediaPipe</strong> (<code class="language-plaintext highlighter-rouge">.pbtxt</code>)</li>
+  <li><strong>ML.NET</strong> (<code class="language-plaintext highlighter-rouge">.zip</code>)</li>
+  <li><strong>MNN</strong> (<code class="language-plaintext highlighter-rouge">.mnn</code>)</li>
+  <li><strong>PaddlePaddle</strong> (<code class="language-plaintext highlighter-rouge">.zip</code>, <code class="language-plaintext highlighter-rouge">__model__</code>)</li>
+  <li><strong>OpenVINO</strong> (<code class="language-plaintext highlighter-rouge">.xml</code>)</li>
+  <li><strong>scikit-learn</strong> (<code class="language-plaintext highlighter-rouge">.pkl</code>)</li>
+  <li><strong>TensorFlow.js</strong> (<code class="language-plaintext highlighter-rouge">model.json</code>, <code class="language-plaintext highlighter-rouge">.pb</code>)</li>
+  <li><strong>TensorFlow</strong> (<code class="language-plaintext highlighter-rouge">.pb</code>, <code class="language-plaintext highlighter-rouge">.meta</code>, <code class="language-plaintext highlighter-rouge">.pbtxt</code>, <code class="language-plaintext highlighter-rouge">.ckpt</code>, <code class="language-plaintext highlighter-rouge">.index</code>)</li>
+</ul>
+
+<p>(솔직히 Torch, TensorFlow 종류는 왜 나눠서 설명하는지 잘 모르겠음…..하나로 합쳐 놓으면 안되나..)</p>
+
+<h2 id="설치-및-사용법">설치 및 사용법</h2>
+
+<p>netron은 PC에 설치해서 사용하거나 설치없이 Browser 버전으로 사용할 수도 있습니다.</p>
+
+<ul>
+  <li><strong>macOS</strong>: <strong><a href="https://github.com/lutzroeder/netron/releases/latest">Download</a></strong> the <code class="language-plaintext highlighter-rouge">.dmg</code> file or run <code class="language-plaintext highlighter-rouge">brew cask install netron</code></li>
+  <li><strong>Linux</strong>: <strong><a href="https://github.com/lutzroeder/netron/releases/latest">Download</a></strong> the <code class="language-plaintext highlighter-rouge">.AppImage</code> file or run <code class="language-plaintext highlighter-rouge">snap install netron</code></li>
+  <li><strong>Windows</strong>: <strong><a href="https://github.com/lutzroeder/netron/releases/latest">Download</a></strong> the <code class="language-plaintext highlighter-rouge">.exe</code> installer or run <code class="language-plaintext highlighter-rouge">winget install netron</code></li>
+  <li><strong>Python Server</strong>: Run <code class="language-plaintext highlighter-rouge">pip install netron</code> and <code class="language-plaintext highlighter-rouge">netron [FILE]</code> or <code class="language-plaintext highlighter-rouge">import netron; netron.start('[FILE]')</code></li>
+  <li><strong>Browser</strong>: <strong><a href="https://www.lutzroeder.com/ai/netron">Start</a></strong> the browser version.</li>
+</ul>
+
+<p>한번 브라우저 버전을 실행시켜 보았습니다.</p>
+
+<p><img src="https://github.com/jjerry-k/jjerry-k.github.io/blob/master/public/img/netron/Untitled.png?raw=true" alt="https://jjerry-k.github.io/public/img/netron/Untitled.png" /></p>
+
+<p><code class="language-plaintext highlighter-rouge">Open Model</code> 을 클릭 하신 후 보고 싶은 Network 저장 파일을 선택합니다.</p>
+
+<p><img src="https://github.com/jjerry-k/jjerry-k.github.io/blob/master/public/img/netron/Untitled_1.png?raw=true" alt="https://jjerry-k.github.io/public/img/netron/Untitled_1.png" /></p>
+
+<p>Network 구조가 차례로 보이네요.</p>
+
+<p><img src="https://github.com/jjerry-k/jjerry-k.github.io/blob/master/public/img/netron/Untitled_2.png?raw=true" alt="https://jjerry-k.github.io/public/img/netron/Untitled_2.png" /></p>
+
+<p>다음은 keras로 작성된 MobileNetV2 를 netron으로 띄운 후 앞 부분을 잘라낸 사진입니다.</p>
+
+<p><img src="https://github.com/jjerry-k/jjerry-k.github.io/blob/master/public/img/netron/Untitled_3.png?raw=true" alt="https://jjerry-k.github.io/public/img/netron/Untitled_3.png" /></p>
+
+<p>왼쪽에는 네트워크 구조를 볼 수 있고 만약 레이어를 선택하면 오른쪽에 Node(Layer)에 대한 세부 설정 값들을 확인할 수 있습니다.</p>
+
+<p>몇몇 프레임워크 별로 sample을 이렇게 제공해줍니다!</p>
+
+<p>open을 누르면 browser를 이용하여 볼 수 있네요!</p>
+
+<ul>
+  <li><strong>ONNX</strong>: <a href="https://raw.githubusercontent.com/onnx/tutorials/master/tutorials/assets/squeezenet.onnx">squeezenet</a> [<a href="https://lutzroeder.github.io/netron?url=https://raw.githubusercontent.com/onnx/tutorials/master/tutorials/assets/squeezenet.onnx">open</a>]</li>
+  <li><strong>CoreML</strong>: <a href="https://raw.githubusercontent.com/Lausbert/Exermote/master/ExermoteInference/ExermoteCoreML/ExermoteCoreML/Model/Exermote.mlmodel">exermote</a> [<a href="https://lutzroeder.github.io/netron?url=https://raw.githubusercontent.com/Lausbert/Exermote/master/ExermoteInference/ExermoteCoreML/ExermoteCoreML/Model/Exermote.mlmodel">open</a>]</li>
+  <li><strong>Darknet</strong>: <a href="https://raw.githubusercontent.com/AlexeyAB/darknet/master/cfg/yolo.cfg">yolo</a> [<a href="https://lutzroeder.github.io/netron?url=https://raw.githubusercontent.com/AlexeyAB/darknet/master/cfg/yolo.cfg">open</a>]</li>
+  <li><strong>Keras</strong>: <a href="https://raw.githubusercontent.com/aio-libs/aiohttp-demos/master/demos/imagetagger/tests/data/mobilenet.h5">mobilenet</a> [<a href="https://lutzroeder.github.io/netron?url=https://raw.githubusercontent.com/aio-libs/aiohttp-demos/master/demos/imagetagger/tests/data/mobilenet.h5">open</a>]</li>
+  <li><strong>MXNet</strong>: <a href="https://raw.githubusercontent.com/soeaver/mxnet-model/master/cls/inception/inception_v3-symbol.json">inception_v3</a> [<a href="https://lutzroeder.github.io/netron?url=https://raw.githubusercontent.com/soeaver/mxnet-model/master/cls/inception/inception_v3-symbol.json">open</a>]</li>
+  <li><strong>TensorFlow</strong>: <a href="https://raw.githubusercontent.com/srom/chessbot/master/model/chessbot.pb">chessbot</a> [<a href="https://lutzroeder.github.io/netron?url=https://raw.githubusercontent.com/srom/chessbot/master/model/chessbot.pb">open</a>]</li>
+  <li><strong>TensorFlow Lite</strong>: <a href="https://raw.githubusercontent.com/google/mediapipe/master/mediapipe/models/hair_segmentation.tflite">hair_segmentation</a> [<a href="https://lutzroeder.github.io/netron?url=https://raw.githubusercontent.com/google/mediapipe/master/mediapipe/models/hair_segmentation.tflite">open</a>]</li>
+  <li><strong>TorchScript</strong>: <a href="https://raw.githubusercontent.com/ApolloAuto/apollo/master/modules/prediction/data/traced_online_pred_layer.pt">traced_online_pred_layer</a> [<a href="https://lutzroeder.github.io/netron?url=https://raw.githubusercontent.com/ApolloAuto/apollo/master/modules/prediction/data/traced_online_pred_layer.pt">open</a>]</li>
+  <li><strong>Caffe</strong>: <a href="https://raw.githubusercontent.com/shicai/MobileNet-Caffe/master/mobilenet_v2.caffemodel">mobilenet_v2</a> [<a href="https://lutzroeder.github.io/netron?url=https://raw.githubusercontent.com/shicai/MobileNet-Caffe/master/mobilenet_v2.caffemodel">open</a>]</li>
+</ul>
+
+<h2 id="ps">P.S.</h2>
+<ul>
+  <li>피곤…</li>
+</ul>
+
+    <article></h4>
+    <div class="post-more">
+      
+      <a href="/deeplearning/2020/07/20/netron/#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
+      
+      <a href="/deeplearning/2020/07/20/netron/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
+    </div>
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/deeplearning/2020/07/15/nipa_vscode/">
+        NIPA x VScode !
+      </a>
+    </h1>
+
+    <span class="post-date">15 Jul 2020</span>
+     | 
+    
+    <a href="/blog/tags/#tools" class="post-tag">Tools</a>
+    
+    
+
+    <h4 style="font-weight: 400; line-height: 1.8;"><article>
+      <p>지금까지 <a href="https://jjerry-k.github.io/deeplearning/2020/06/28/nipa_docker">Docker(이하 도커) 세팅</a> 까지 포스팅을 했었습니다.</p>
+
+<p>Docker 까진 좋은데…연결을 항상 Terminal 혹은 CMD를 켜서 ssh로 해야하나..? 생각이 듭니다.</p>
+
+<p>그래서 이래저래 찾아봤습니다.</p>
+
+<p>Docker 공식 문서를 보니 <a href="https://docs.docker.com/engine/examples/running_ssh_service/">Dockerize an SSH service</a> 이런 글이 있더군요.</p>
+
+<p>이 글을 참고하여 image(이하 이미지)를 만들어 보기로 했습니다.</p>
+
+<p>그럼 빠르게 빠르게 진행하겠습니다.</p>
+
+<h2 id="1-dockerfile-생성-및-build">1. Dockerfile 생성 및 build</h2>
+
+<div class="language-docker highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">FROM</span><span class="s"> nvidia/cuda:10.1-cudnn7-runtime-ubuntu16.04</span>
+<span class="k">LABEL</span><span class="s"> maintainer "Jerry Kim &lt;jaeyeol2931@gmail.com&gt;"</span>
+<span class="k">ARG</span><span class="s"> PYTHON_VERSION=3.7</span>
+<span class="k">RUN </span>apt-get update
+<span class="k">RUN </span>apt-get <span class="nb">install</span> <span class="nt">-y</span> <span class="se">\
+</span>        build-essential <span class="se">\
+</span>        cmake <span class="se">\
+</span>        git <span class="se">\
+</span>        curl <span class="se">\
+</span>        wget <span class="se">\
+</span>        vim <span class="se">\
+</span>        unzip <span class="se">\
+</span>        ca-certificates <span class="se">\
+</span>        libjpeg-dev <span class="se">\
+</span>        libpng-dev <span class="se">\
+</span>        openssh-server
+
+<span class="k">RUN </span>apt-get update <span class="o">&amp;&amp;</span> apt-get <span class="nt">-y</span> upgrade
+
+<span class="c">#RUN mkdir /var/run/sshd</span>
+<span class="k">RUN </span><span class="nb">echo</span> <span class="s1">'root:{개인 비밀번호}'</span> | chpasswd
+<span class="k">RUN </span><span class="nb">sed</span> <span class="nt">-i</span> <span class="s1">'s/PermitRootLogin prohibit-password/PermitRootLogin yes/'</span> /etc/ssh/sshd_config
+
+<span class="c"># SSH login fix. Otherwise user is kicked off after login</span>
+<span class="k">RUN </span><span class="nb">sed</span> <span class="s1">'s@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so@g'</span> <span class="nt">-i</span> /etc/pam.d/sshd
+
+<span class="k">ENV</span><span class="s"> NOTVISIBLE "in users profile"</span>
+<span class="k">RUN </span><span class="nb">echo</span> <span class="s2">"export VISIBLE=now"</span> <span class="o">&gt;&gt;</span> /etc/profile
+
+<span class="k">EXPOSE</span><span class="s"> 22</span>
+<span class="k">CMD</span><span class="s"> ["/usr/sbin/sshd", "-D"]</span>
+
+<span class="k">RUN </span><span class="nb">rm</span> <span class="nt">-rf</span> /var/lib/apt/lists/<span class="k">*</span>
+
+<span class="k">RUN </span>curl https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh <span class="nt">-o</span> ~/miniconda.sh
+
+<span class="k">RUN </span><span class="nb">chmod</span> +x ~/miniconda.sh <span class="o">&amp;&amp;</span> <span class="se">\
+</span>    ~/miniconda.sh <span class="nt">-b</span> <span class="nt">-p</span> /opt/conda <span class="o">&amp;&amp;</span> <span class="se">\
+</span>    <span class="nb">rm</span> ~/miniconda.sh
+
+<span class="k">RUN </span>/opt/conda/bin/conda <span class="nb">install</span> <span class="nt">-y</span> <span class="nv">python</span><span class="o">=</span><span class="nv">$PYTHON_VERSION</span> numpy pyyaml scipy ipython mkl mkl-include ninja cython typing opencv matplotlib tqdm <span class="o">&amp;&amp;</span> <span class="se">\
+</span>    /opt/conda/bin/conda <span class="nb">install</span> <span class="nt">-y</span> jupyter jupyterlab seaborn pillow pandas pylint scikit-learn scikit-image tensorflow-gpu <span class="o">&amp;&amp;</span> <span class="se">\
+</span>    /opt/conda/bin/conda update <span class="nt">-y</span> <span class="nt">--all</span> <span class="o">&amp;&amp;</span> <span class="se">\
+</span>    /opt/conda/bin/conda clean <span class="nt">-ya</span>
+</code></pre></div></div>
+
+<p>중간에 <code class="language-plaintext highlighter-rouge">RUN echo 'root:{개인 비밀번호}' | chpasswd</code> 에서 ssh 접속시 사용할 비밀번호를 적어주세요!</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Example</span>
+RUN <span class="nb">echo</span> <span class="s1">'root:test'</span> | chpasswd
+</code></pre></div></div>
+
+<p>위 내용들을 vim이나 nano같은 에디터를 이용해서 Dockerfile을 만들어주세요!</p>
+
+<p><img src="https://jjerry-k.github.io/public/img/nipa_vscode/Untitled.png" alt="Phttps://jjerry-k.github.io/public/img/nipa_vscode/Untitled.png" /></p>
+
+<p>그리고 다음과 같이 커맨드를 입력하여 도커 이미지를 build 합니다.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker build <span class="nt">-t</span> <span class="o">{</span>이미지 이름<span class="o">}</span> <span class="nb">.</span>
+</code></pre></div></div>
+
+<p><img src="https://jjerry-k.github.io/public/img/nipa_vscode/Untitled_1.png" alt="Phttps://jjerry-k.github.io/public/img/nipa_vscode/Untitled_1.png" /></p>
+
+<p>뭐 이런 저런 Log 들이 촤라———라락 넘어갈겁니다. 계속 기다려 주세요….</p>
+
+<p><code class="language-plaintext highlighter-rouge">docker images</code> 를 입력하면 제대로 생성된 것을 볼 수 있습니다!</p>
+
+<p><img src="https://jjerry-k.github.io/public/img/nipa_vscode/Untitled_2.png" alt="Phttps://jjerry-k.github.io/public/img/nipa_vscode/Untitled_2.png" /></p>
+
+<h2 id="2-container-실행">2. Container 실행</h2>
+
+<p>이미지를 실행하여 container(이하 컨테이너) 만들어 줍니다.</p>
+
+<p>세부 옵션은 <strong>구.글.링</strong> 아시죠?</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker run <span class="nt">-d</span> <span class="nt">-P</span> <span class="nt">-v</span> /home/ubuntu/jerry/:/jerry <span class="nt">--name</span> <span class="o">{</span>컨테이너 이름<span class="o">}</span> <span class="o">{</span>이미지 이름<span class="o">}</span>
+
+docker port <span class="o">{</span>컨테이너 이름<span class="o">}</span> 22
+</code></pre></div></div>
+
+<p><img src="https://jjerry-k.github.io/public/img/nipa_vscode/Untitled_3.png" alt="Phttps://jjerry-k.github.io/public/img/nipa_vscode/Untitled_3.png" /></p>
+
+<p>컨테이너를 만들고 해당 컨테이너의 22번 포트 (ssh 포트)가 nipa의 몇번 포트와 연결되어 있는지 출력해줍니다.</p>
+
+<h2 id="3-vscode를-이용하여-접속">3. VSCode를 이용하여 접속</h2>
+
+<blockquote>
+  <p>vscode 에 Remote - SSH 플러그인이 설치가 되어 있다는 전제 하에 진행합니다.</p>
+</blockquote>
+
+<p>새로운 호스트를 추가해줍니다.</p>
+
+<p><img src="https://jjerry-k.github.io/public/img/nipa_vscode/Untitled_4.png" alt="Phttps://jjerry-k.github.io/public/img/nipa_vscode/Untitled_4.png" /></p>
+
+<p><code class="language-plaintext highlighter-rouge">ssh root@{NIPA IP} -p {포트 번호}</code> 라고 입력하고 엔터!</p>
+
+<p><img src="https://jjerry-k.github.io/public/img/nipa_vscode/Untitled_5.png" alt="Phttps://jjerry-k.github.io/public/img/nipa_vscode/Untitled_5.png" /></p>
+
+<p>그럼 우하단에 <code class="language-plaintext highlighter-rouge">Host를 추가했습니다!</code> 와 같이 알림이 뜹니다.</p>
+
+<p>추가를 했으니 이제 Host에 연결을 해봅니다.</p>
+
+<p>비밀번호는 맨 처음에 Dockerfile에서 썼던 비밀번호 입니다!</p>
+
+<p><img src="https://jjerry-k.github.io/public/img/nipa_vscode/Untitled_6.png" alt="Phttps://jjerry-k.github.io/public/img/nipa_vscode/Untitled_6.png" /></p>
+
+<p>아마 처음에는 세팅이 오래 걸릴겁니다. 우하단에 알림이 없어질 때까지 기다려주세요 !</p>
+
+<p>기초 세팅이 다 완료 되면 컨테이너의 vscode-server에 플러그인을 설치해야 합니다.</p>
+
+<p>저는 아래 4개 플러그인을 설치했어요.</p>
+
+<p><img src="https://jjerry-k.github.io/public/img/nipa_vscode/Untitled_7.png" alt="Phttps://jjerry-k.github.io/public/img/nipa_vscode/Untitled_7.png" /></p>
+
+<p>그 후에 테스트 코드를 돌려봅니다.</p>
+
+<p><img src="https://jjerry-k.github.io/public/img/nipa_vscode/Untitled_8.png" alt="Phttps://jjerry-k.github.io/public/img/nipa_vscode/Untitled_8.png" /></p>
+
+<p>정상적으로 잘 작동하네요!</p>
+
+<p>후…이제 Vim으로 코딩을 안할 수 있습니다.</p>
+
+<p>이번 포스팅은 정말 환경 구축이 처음이신 분들께는 불친절한 포스팅일 수도 있습니다.</p>
+
+<p>죄송합니다. 일단 제 일기처럼 쓰는 포스팅이라서요. 감안해서 읽어주세요.</p>
+
+<h2 id="ps">P.S.</h2>
+
+<ul>
+  <li>근데 막상 내가 NIPA를 …..주로 쓰지 않음…</li>
+  <li>나에게 NIPA는 환경 구축 포스팅을 적는 용도…</li>
+</ul>
+
+    <article></h4>
+    <div class="post-more">
+      
+      <a href="/deeplearning/2020/07/15/nipa_vscode/#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
+      
+      <a href="/deeplearning/2020/07/15/nipa_vscode/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
+    </div>
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
       <a href="/deeplearning/2020/07/13/colab_vscode/">
         Colab x VSCode !
       </a>
@@ -338,17 +668,17 @@
 <span class="err">!</span> <span class="n">echo</span> <span class="s">"PermitRootLogin yes"</span> <span class="o">&gt;&gt;</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">ssh</span><span class="o">/</span><span class="n">sshd_config</span>
 <span class="err">!</span> <span class="n">service</span> <span class="n">ssh</span> <span class="n">restart</span> <span class="o">&gt;</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">null</span>
 <span class="c1"># Download ngrok
-</span><span class="err">!</span> <span class="n">wget</span> <span class="o">-</span><span class="n">q</span> <span class="o">-</span><span class="n">c</span> <span class="o">-</span><span class="n">nc</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="nb">bin</span><span class="o">.</span><span class="n">equinox</span><span class="o">.</span><span class="n">io</span><span class="o">/</span><span class="n">c</span><span class="o">/</span><span class="mi">4</span><span class="n">VmDzA7iaHb</span><span class="o">/</span><span class="n">ngrok</span><span class="o">-</span><span class="n">stable</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">amd64</span><span class="o">.</span><span class="nb">zip</span>
-<span class="err">!</span> <span class="n">unzip</span> <span class="o">-</span><span class="n">qq</span> <span class="o">-</span><span class="n">n</span> <span class="n">ngrok</span><span class="o">-</span><span class="n">stable</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">amd64</span><span class="o">.</span><span class="nb">zip</span>
+</span><span class="err">!</span> <span class="n">wget</span> <span class="o">-</span><span class="n">q</span> <span class="o">-</span><span class="n">c</span> <span class="o">-</span><span class="n">nc</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="nb">bin</span><span class="p">.</span><span class="n">equinox</span><span class="p">.</span><span class="n">io</span><span class="o">/</span><span class="n">c</span><span class="o">/</span><span class="mi">4</span><span class="n">VmDzA7iaHb</span><span class="o">/</span><span class="n">ngrok</span><span class="o">-</span><span class="n">stable</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">amd64</span><span class="p">.</span><span class="nb">zip</span>
+<span class="err">!</span> <span class="n">unzip</span> <span class="o">-</span><span class="n">qq</span> <span class="o">-</span><span class="n">n</span> <span class="n">ngrok</span><span class="o">-</span><span class="n">stable</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">amd64</span><span class="p">.</span><span class="nb">zip</span>
 <span class="c1"># Run ngrok
 </span><span class="n">authtoken</span> <span class="o">=</span> <span class="o">**</span><span class="s">"PUT_YOUR_TOKEN_HERE"</span><span class="o">**</span>
-<span class="n">get_ipython</span><span class="p">()</span><span class="o">.</span><span class="n">system_raw</span><span class="p">(</span><span class="s">'./ngrok authtoken $authtoken &amp;&amp; ./ngrok tcp 22 &amp;'</span><span class="p">)</span>
+<span class="n">get_ipython</span><span class="p">().</span><span class="n">system_raw</span><span class="p">(</span><span class="s">'./ngrok authtoken $authtoken &amp;&amp; ./ngrok tcp 22 &amp;'</span><span class="p">)</span>
 <span class="err">!</span> <span class="n">sleep</span> <span class="mi">3</span>
 <span class="c1"># Get the address for SSH
 </span><span class="kn">import</span> <span class="nn">requests</span>
 <span class="kn">from</span> <span class="nn">re</span> <span class="kn">import</span> <span class="n">sub</span>
-<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">'http://localhost:4040/api/tunnels'</span><span class="p">)</span>
-<span class="n">str_ssh</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s">'tunnels'</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s">'public_url'</span><span class="p">]</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">'http://localhost:4040/api/tunnels'</span><span class="p">)</span>
+<span class="n">str_ssh</span> <span class="o">=</span> <span class="n">r</span><span class="p">.</span><span class="n">json</span><span class="p">()[</span><span class="s">'tunnels'</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s">'public_url'</span><span class="p">]</span>
 <span class="n">str_ssh</span> <span class="o">=</span> <span class="n">sub</span><span class="p">(</span><span class="s">"tcp://"</span><span class="p">,</span> <span class="s">""</span><span class="p">,</span> <span class="n">str_ssh</span><span class="p">)</span>
 <span class="n">str_ssh</span> <span class="o">=</span> <span class="n">sub</span><span class="p">(</span><span class="s">":"</span><span class="p">,</span> <span class="s">" -p "</span><span class="p">,</span> <span class="n">str_ssh</span><span class="p">)</span>
 <span class="n">str_ssh</span> <span class="o">=</span> <span class="s">"ssh root@"</span> <span class="o">+</span> <span class="n">str_ssh</span>
@@ -357,7 +687,7 @@
 
 <p><img src="https://jjerry-k.github.io/public/img/colab_vscode/Untitled_4.png" alt="https://jjerry-k.github.io/public/img/colab_vscode/Untitled_4.png" /></p>
 
-<p>출력으로 나온 커맨드를 이용하여 한번 터미널에서 테스트를 해봅니다. 비밀번호는 <code class="highlighter-rouge">carbonara</code> 입니다.</p>
+<p>출력으로 나온 커맨드를 이용하여 한번 터미널에서 테스트를 해봅니다. 비밀번호는 <code class="language-plaintext highlighter-rouge">carbonara</code> 입니다.</p>
 
 <p><img src="https://jjerry-k.github.io/public/img/colab_vscode/Untitled_5.png" alt="https://jjerry-k.github.io/public/img/colab_vscode/Untitled_5.png" /></p>
 
@@ -367,11 +697,11 @@
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Mount Google Drive and make some folders for vscode
 </span><span class="kn">from</span> <span class="nn">google.colab</span> <span class="kn">import</span> <span class="n">drive</span>
-<span class="n">drive</span><span class="o">.</span><span class="n">mount</span><span class="p">(</span><span class="s">'/googledrive'</span><span class="p">)</span>
+<span class="n">drive</span><span class="p">.</span><span class="n">mount</span><span class="p">(</span><span class="s">'/googledrive'</span><span class="p">)</span>
 <span class="err">!</span> <span class="n">mkdir</span> <span class="o">-</span><span class="n">p</span> <span class="o">/</span><span class="n">googledrive</span><span class="o">/</span><span class="n">My</span>\ <span class="n">Drive</span><span class="o">/</span><span class="n">colabdrive</span>
-<span class="err">!</span> <span class="n">mkdir</span> <span class="o">-</span><span class="n">p</span> <span class="o">/</span><span class="n">googledrive</span><span class="o">/</span><span class="n">My</span>\ <span class="n">Drive</span><span class="o">/</span><span class="n">colabdrive</span><span class="o">/</span><span class="n">root</span><span class="o">/.</span><span class="n">local</span><span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">code</span><span class="o">-</span><span class="n">server</span>
+<span class="err">!</span> <span class="n">mkdir</span> <span class="o">-</span><span class="n">p</span> <span class="o">/</span><span class="n">googledrive</span><span class="o">/</span><span class="n">My</span>\ <span class="n">Drive</span><span class="o">/</span><span class="n">colabdrive</span><span class="o">/</span><span class="n">root</span><span class="o">/</span><span class="p">.</span><span class="n">local</span><span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">code</span><span class="o">-</span><span class="n">server</span>
 <span class="err">!</span> <span class="n">ln</span> <span class="o">-</span><span class="n">s</span> <span class="o">/</span><span class="n">googledrive</span><span class="o">/</span><span class="n">My</span>\ <span class="n">Drive</span><span class="o">/</span><span class="n">colabdrive</span> <span class="o">/</span>
-<span class="err">!</span> <span class="n">ln</span> <span class="o">-</span><span class="n">s</span> <span class="o">/</span><span class="n">googledrive</span><span class="o">/</span><span class="n">My</span>\ <span class="n">Drive</span><span class="o">/</span><span class="n">colabdrive</span><span class="o">/</span><span class="n">root</span><span class="o">/.</span><span class="n">local</span><span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">code</span><span class="o">-</span><span class="n">server</span> <span class="o">/</span><span class="n">root</span><span class="o">/.</span><span class="n">local</span><span class="o">/</span><span class="n">share</span><span class="o">/</span>
+<span class="err">!</span> <span class="n">ln</span> <span class="o">-</span><span class="n">s</span> <span class="o">/</span><span class="n">googledrive</span><span class="o">/</span><span class="n">My</span>\ <span class="n">Drive</span><span class="o">/</span><span class="n">colabdrive</span><span class="o">/</span><span class="n">root</span><span class="o">/</span><span class="p">.</span><span class="n">local</span><span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">code</span><span class="o">-</span><span class="n">server</span> <span class="o">/</span><span class="n">root</span><span class="o">/</span><span class="p">.</span><span class="n">local</span><span class="o">/</span><span class="n">share</span><span class="o">/</span>
 </code></pre></div></div>
 
 <p><img src="https://jjerry-k.github.io/public/img/colab_vscode/Untitled_6.png" alt="https://jjerry-k.github.io/public/img/colab_vscode/Untitled_6.png" /></p>
@@ -402,7 +732,7 @@
 
 <p>이렇게 연결해서 사용이 가능합니다.</p>
 
-<p><code class="highlighter-rouge">htop</code>를 이용해서 리소스 모니터링도 가능하죠.</p>
+<p><code class="language-plaintext highlighter-rouge">htop</code>를 이용해서 리소스 모니터링도 가능하죠.</p>
 
 <p><img src="https://jjerry-k.github.io/public/img/colab_vscode/Untitled_11.png" alt="https://jjerry-k.github.io/public/img/colab_vscode/Untitled_11.png" /></p>
 
@@ -512,9 +842,9 @@
 
 <p>뭐야..이건 또 왜 안되는거야… 짜증이 났습니다.</p>
 
-<p>대충 <code class="highlighter-rouge">너무 옛날 버전의 conda니까 최소 4.8로 재설치 해주세요.</code> 라는 내용입니다.</p>
+<p>대충 <code class="language-plaintext highlighter-rouge">너무 옛날 버전의 conda니까 최소 4.8로 재설치 해주세요.</code> 라는 내용입니다.</p>
 
-<p><code class="highlighter-rouge">하....이건 좀 너무한데...그냥 Docker나 설치하자..</code> 라는 생각을 하게 되었습니다.</p>
+<p><code class="language-plaintext highlighter-rouge">하....이건 좀 너무한데...그냥 Docker나 설치하자..</code> 라는 생각을 하게 되었습니다.</p>
 
 <p>그럼 Docker 설치에 대해 포스팅 해보겠습니다.</p>
 
@@ -542,7 +872,7 @@ curl <span class="nt">-fsSL</span> https://download.docker.com/linux/ubuntu/gpg 
 
 <span class="nb">sudo </span>add-apt-repository <span class="se">\</span>
    <span class="s2">"deb [arch=amd64] https://download.docker.com/linux/ubuntu </span><span class="se">\</span><span class="s2">
-   </span><span class="k">$(</span>lsb_release <span class="nt">-cs</span><span class="k">)</span><span class="s2"> </span><span class="se">\</span><span class="s2">
+   </span><span class="si">$(</span>lsb_release <span class="nt">-cs</span><span class="si">)</span><span class="s2"> </span><span class="se">\</span><span class="s2">
    stable"</span>
 
 <span class="c"># INSTALL DOCKER ENGINE</span>
@@ -569,7 +899,7 @@ curl <span class="nt">-fsSL</span> https://download.docker.com/linux/ubuntu/gpg 
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Ubuntu 16.04/18.04/20.04, Debian Jessie/Stretch/Buster</span>
 <span class="c"># Add the package repositories</span>
-<span class="nv">distribution</span><span class="o">=</span><span class="k">$(</span><span class="nb">.</span> /etc/os-release<span class="p">;</span><span class="nb">echo</span> <span class="nv">$ID$VERSION_ID</span><span class="k">)</span>
+<span class="nv">distribution</span><span class="o">=</span><span class="si">$(</span><span class="nb">.</span> /etc/os-release<span class="p">;</span><span class="nb">echo</span> <span class="nv">$ID$VERSION_ID</span><span class="si">)</span>
 curl <span class="nt">-s</span> <span class="nt">-L</span> https://nvidia.github.io/nvidia-docker/gpgkey | <span class="nb">sudo </span>apt-key add -
 curl <span class="nt">-s</span> <span class="nt">-L</span> https://nvidia.github.io/nvidia-docker/<span class="nv">$distribution</span>/nvidia-docker.list | <span class="nb">sudo tee</span> /etc/apt/sources.list.d/nvidia-docker.list
 
@@ -580,7 +910,7 @@ curl <span class="nt">-s</span> <span class="nt">-L</span> https://nvidia.github
 docker run <span class="nt">--gpus</span> all nvidia/cuda:10.0-base nvidia-smi
 </code></pre></div></div>
 
-<p>이 또한 설치가 제대로 되었다면 마지막에 다음과 같이 <code class="highlighter-rouge">nvidia-smi</code> 출력이 나올 겁니다.</p>
+<p>이 또한 설치가 제대로 되었다면 마지막에 다음과 같이 <code class="language-plaintext highlighter-rouge">nvidia-smi</code> 출력이 나올 겁니다.</p>
 
 <p><img src="https://jjerry-k.github.io/public/img/nipa_docker/Untitled_5.png" alt="NIPA%20x%20Docker%20ef94d24dfbc64a6cae24a83a59bd352f/Untitled%205.png" /></p>
 
@@ -674,7 +1004,7 @@ docker run <span class="nt">--gpus</span> all nvidia/cuda:10.0-base nvidia-smi
 
 <p>신청서 작성 방법은 예시가 너무 잘 적혀있기 때문에 따로 설명을 드리지 않겠습니다. (궁금하신게 있다면 따로 댓글 남겨주세요!)</p>
 
-<p>신청서를 작성하신 후엔 AIHub 사이트 로그인을 하신 후 <code class="highlighter-rouge">이용신청</code> 으로 넘어갑니다.<br />
+<p>신청서를 작성하신 후엔 AIHub 사이트 로그인을 하신 후 <code class="language-plaintext highlighter-rouge">이용신청</code> 으로 넘어갑니다.<br />
 그럼 다음과 같은 화면이 나오는데 (수시 사용자 기준) <strong>1~8번 중 해당하는 부분 선택하</strong>고 <strong>개인 정보</strong> 채워주시면 됩니다!</p>
 
 <p><img src="https://jjerry-k.github.io/public/img/nipa_apply/Untitled_2.png" alt="Untitled_2.png" /></p>
@@ -698,396 +1028,6 @@ docker run <span class="nt">--gpus</span> all nvidia/cuda:10.0-base nvidia-smi
       <a href="/deeplearning/2020/06/27/nipa_apply/#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
       
       <a href="/deeplearning/2020/06/27/nipa_apply/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
-    </div>
-  </div>
-  
-  <div class="post">
-    <h1 class="post-title">
-      <a href="/deeplearning/2020/06/26/nipa_intro/">
-        NIPA...NIPA가 뭐죠..
-      </a>
-    </h1>
-
-    <span class="post-date">26 Jun 2020</span>
-     | 
-    
-    <a href="/blog/tags/#tools" class="post-tag">Tools</a>
-    
-    
-
-    <h4 style="font-weight: 400; line-height: 1.8;"><article>
-      <p>요즘 커뮤니티(V-AIS) 에선 NIPA에 대한 얘기가 많이 나옵니다.<br />
-NIPA는 <a href="https://www.nipa.kr/"><strong>정보통신산업진흥원</strong></a> 의 약자인데 <code class="highlighter-rouge">근데 그래서 이게 왜..?</code> 라는 의문을 가지실 겁니다. <br />
-지금 AI Hub에서 지원하는 <a href="http://www.aihub.or.kr/node/223"><strong>AI 컴퓨팅 자원 지원 사업</strong></a>을 하고 있는데요.<br />
-그 사업에서 컴퓨팅 자원을 관리하는게 NIPA 입니다. 그래서 NIPA, NIPA 하죠..</p>
-
-<p>간단하게 그림으로 보여드리면 이렇습니다.</p>
-
-<p><img src="https://jjerry-k.github.io/public/img/nipa_intro/Untitled.png" alt="Untitled.png" /></p>
-
-<p>더 간단하게 설명드리면 <strong><code class="highlighter-rouge">GPU서버 지원해드림 ㅇㅇ</code></strong> 이겁니다.</p>
-
-<p>어느 정도 사양이냐…</p>
-
-<p><img src="https://jjerry-k.github.io/public/img/nipa_intro/Untitled_1.png" alt="Untitled_1.png" /></p>
-
-<p><strong>일반 사용자</strong>와 <strong>수시 사용자</strong>로 나뉘는데요. 그 차이는 사이트에서 확인하시길..</p>
-
-<p>이렇게 보면 GPU로 뭐 쓰는지 잘 모르시겠죠. 그래서 가져왔습니다.</p>
-
-<p>제가 포스팅, 환경구축과 같은 자료를 만들기 위해 신청한 서버입니다.</p>
-
-<p><img src="https://jjerry-k.github.io/public/img/nipa_intro/Untitled_2.png" alt="Untitled_2.png" /></p>
-
-<p>위 GPU 사진은 <strong>수시 사용자</strong> 기준입니다. 일반 사용자면 V100 두개겠네요.</p>
-
-<p>뭐 이런 서버를 <strong>공짜</strong>로 제공을 해줍니다.</p>
-
-<p>집에 서버가 따로 없는 분들이라면 이보다 좋은 건 없겠죠. (게다가 VRAM이 32기가임….)</p>
-
-<table>
-  <thead>
-    <tr>
-      <th style="text-align: center"><strong>헤헿 겁나 좋군</strong></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align: center"><img src="https://jjerry-k.github.io/public/img/nipa_intro/good.png" alt="good.png" /></td>
-    </tr>
-  </tbody>
-</table>
-
-<p>다음엔 NIPA 신청 방법에 대한 포스팅은 간단히 해보겠습니다.</p>
-
-<p>그럼 모두 즐거운 딥러닝 공부, 연구하세요.</p>
-
-<h2 id="ps">P.S.</h2>
-<ul>
-  <li>수시 사용자의 경우 기본 10일 사용, 10일마다 사용 연장신청을 해야함.</li>
-  <li>당연하지만 신청해놓고 사용안하면 검열 후 강제 반납.</li>
-</ul>
-
-    <article></h4>
-    <div class="post-more">
-      
-      <a href="/deeplearning/2020/06/26/nipa_intro/#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
-      
-      <a href="/deeplearning/2020/06/26/nipa_intro/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
-    </div>
-  </div>
-  
-  <div class="post">
-    <h1 class="post-title">
-      <a href="/deeplearning/2020/06/14/tf2_multi_gpu/">
-        TensorFlow Multi GPU 사용법
-      </a>
-    </h1>
-
-    <span class="post-date">14 Jun 2020</span>
-     | 
-    
-    <a href="/blog/tags/#tensorflow" class="post-tag">TensorFlow</a>
-    
-    
-
-    <h4 style="font-weight: 400; line-height: 1.8;"><article>
-      <p>이번 포스팅은 Multi GPU 시스템에서 Google의 머신러닝 오픈 소스 플랫폼인 <a href="https://www.tensorflow.org/">TensorFlow</a>사용법에 관한 것입니다!<br />
-거두절미하고 바로 코딩으로 들어가겠습니다!</p>
-
-<h2 id="single-gpu-예시">Single GPU 예시</h2>
-<ul>
-  <li>다음 코드는 Single GPU를 이용하여 mnist data를 분류하는 코드입니다.</li>
-</ul>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Import Package
-</span><span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
-<span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="n">tf</span>
-<span class="kn">from</span> <span class="nn">tensorflow.keras</span> <span class="kn">import</span> <span class="n">layers</span><span class="p">,</span> <span class="n">models</span><span class="p">,</span> <span class="n">losses</span><span class="p">,</span> <span class="n">optimizers</span><span class="p">,</span> <span class="n">datasets</span><span class="p">,</span> <span class="n">utils</span>
-
-<span class="c1"># Data Prepare
-</span><span class="p">(</span><span class="n">train_x</span><span class="p">,</span> <span class="n">train_y</span><span class="p">),</span> <span class="p">(</span><span class="n">test_x</span><span class="p">,</span> <span class="n">test_y</span><span class="p">)</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">mnist</span><span class="o">.</span><span class="n">load_data</span><span class="p">()</span>
-<span class="n">train_x</span><span class="p">,</span> <span class="n">test_x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">expand_dims</span><span class="p">(</span><span class="n">train_x</span><span class="o">/</span><span class="mf">255.</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">expand_dims</span><span class="p">(</span><span class="n">test_x</span><span class="o">/</span><span class="mf">255.</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s">"Train Data's Shape : "</span><span class="p">,</span> <span class="n">train_x</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">train_y</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s">"Test Data's Shape : "</span><span class="p">,</span> <span class="n">test_x</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">test_y</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
-
-<span class="c1"># Build Network
-</span><span class="n">cnn</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">Sequential</span><span class="p">()</span>
-<span class="n">cnn</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">layers</span><span class="o">.</span><span class="n">Conv2D</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s">'relu'</span><span class="p">,</span> <span class="n">input_shape</span><span class="o">=</span><span class="p">(</span><span class="mi">28</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">1</span><span class="p">,)))</span>
-<span class="n">cnn</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">layers</span><span class="o">.</span><span class="n">MaxPool2D</span><span class="p">())</span>
-<span class="n">cnn</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">layers</span><span class="o">.</span><span class="n">Conv2D</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s">'relu'</span><span class="p">))</span>
-<span class="n">cnn</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">layers</span><span class="o">.</span><span class="n">MaxPool2D</span><span class="p">())</span>
-<span class="n">cnn</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">layers</span><span class="o">.</span><span class="n">Flatten</span><span class="p">())</span>
-<span class="n">cnn</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s">'softmax'</span><span class="p">))</span>
-
-<span class="n">cnn</span><span class="o">.</span><span class="nb">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="n">optimizers</span><span class="o">.</span><span class="n">Adam</span><span class="p">(),</span> <span class="n">loss</span><span class="o">=</span><span class="n">losses</span><span class="o">.</span><span class="n">sparse_categorical_crossentropy</span><span class="p">,</span> <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s">'accuracy'</span><span class="p">])</span>                
-<span class="k">print</span><span class="p">(</span><span class="s">"Network Built!"</span><span class="p">)</span>
-
-<span class="c1"># Training Network
-</span><span class="n">epochs</span><span class="o">=</span><span class="mi">10</span>
-<span class="n">batch_size</span> <span class="o">=</span> <span class="mi">4096</span>
-<span class="n">history</span> <span class="o">=</span> <span class="n">cnn</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">train_x</span><span class="p">,</span> <span class="n">train_y</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">validation_data</span><span class="o">=</span><span class="p">(</span><span class="n">test_x</span><span class="p">,</span> <span class="n">test_y</span><span class="p">))</span>
-</code></pre></div></div>
-
-<h2 id="multi-gpu-예시">Multi GPU 예시</h2>
-<ul>
-  <li>다음 코드는 Multi GPU를 이용한 코드입니다.</li>
-</ul>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Import Package
-</span><span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
-<span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="n">tf</span>
-<span class="kn">from</span> <span class="nn">tensorflow.keras</span> <span class="kn">import</span> <span class="n">layers</span><span class="p">,</span> <span class="n">models</span><span class="p">,</span> <span class="n">losses</span><span class="p">,</span> <span class="n">optimizers</span><span class="p">,</span> <span class="n">datasets</span><span class="p">,</span> <span class="n">utils</span>
-
-<span class="c1"># Data Prepare
-</span><span class="p">(</span><span class="n">train_x</span><span class="p">,</span> <span class="n">train_y</span><span class="p">),</span> <span class="p">(</span><span class="n">test_x</span><span class="p">,</span> <span class="n">test_y</span><span class="p">)</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">mnist</span><span class="o">.</span><span class="n">load_data</span><span class="p">()</span>
-<span class="n">train_x</span><span class="p">,</span> <span class="n">test_x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">expand_dims</span><span class="p">(</span><span class="n">train_x</span><span class="o">/</span><span class="mf">255.</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">expand_dims</span><span class="p">(</span><span class="n">test_x</span><span class="o">/</span><span class="mf">255.</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s">"Train Data's Shape : "</span><span class="p">,</span> <span class="n">train_x</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">train_y</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s">"Test Data's Shape : "</span><span class="p">,</span> <span class="n">test_x</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">test_y</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
-
-<span class="c1"># Build Network
-</span><span class="n">strategy</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">distribute</span><span class="o">.</span><span class="n">MirroredStrategy</span><span class="p">()</span>
-<span class="k">with</span> <span class="n">strategy</span><span class="o">.</span><span class="n">scope</span><span class="p">():</span>
-    <span class="n">cnn</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">Sequential</span><span class="p">()</span>
-    <span class="n">cnn</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">layers</span><span class="o">.</span><span class="n">Conv2D</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s">'relu'</span><span class="p">,</span> <span class="n">input_shape</span><span class="o">=</span><span class="p">(</span><span class="mi">28</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">1</span><span class="p">,)))</span>
-    <span class="n">cnn</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">layers</span><span class="o">.</span><span class="n">MaxPool2D</span><span class="p">())</span>
-    <span class="n">cnn</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">layers</span><span class="o">.</span><span class="n">Conv2D</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s">'relu'</span><span class="p">))</span>
-    <span class="n">cnn</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">layers</span><span class="o">.</span><span class="n">MaxPool2D</span><span class="p">())</span>
-    <span class="n">cnn</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">layers</span><span class="o">.</span><span class="n">Flatten</span><span class="p">())</span>
-    <span class="n">cnn</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s">'softmax'</span><span class="p">))</span>
-
-    <span class="n">cnn</span><span class="o">.</span><span class="nb">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="n">optimizers</span><span class="o">.</span><span class="n">Adam</span><span class="p">(),</span> <span class="n">loss</span><span class="o">=</span><span class="n">losses</span><span class="o">.</span><span class="n">sparse_categorical_crossentropy</span><span class="p">,</span> <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s">'accuracy'</span><span class="p">])</span>                
-<span class="k">print</span><span class="p">(</span><span class="s">"Network Built!"</span><span class="p">)</span>
-
-<span class="c1"># Training Network
-</span><span class="n">epochs</span><span class="o">=</span><span class="mi">10</span>
-<span class="n">batch_size_each_gpu</span> <span class="o">=</span> <span class="mi">4096</span>
-<span class="n">batch_size</span> <span class="o">=</span> <span class="n">batch_size_each_gpu</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">gpus</span><span class="p">)</span>
-
-<span class="n">history</span> <span class="o">=</span> <span class="n">cnn</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">train_x</span><span class="p">,</span> <span class="n">train_y</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">validation_data</span><span class="o">=</span><span class="p">(</span><span class="n">test_x</span><span class="p">,</span> <span class="n">test_y</span><span class="p">))</span>
-</code></pre></div></div>
-
-<p>어렵지 않습니다. <code class="highlighter-rouge">Build Network</code> 주석 부분과 <code class="highlighter-rouge">Training Network</code> 부분에 <code class="highlighter-rouge">batch_size</code>만 조금 수정해주시면 끝납니다!<br />
-<img src="https://jjerry-k.github.io/public/img/tf_multi_gpu/bob.png" alt="img" /></p>
-
-<p>하지만 이렇게 하면 무식하게 GPU의 모든 메모리를 할당합니다.<br />
-그렇기 떄문에 다음과 같이 코드를 추가하여 <code class="highlighter-rouge">필요한 만큼</code> 할당하도록 합니다.</p>
-
-<h2 id="필요한-만큼의-gpu-메모리만-사용하기">필요한 만큼의 GPU 메모리만 사용하기</h2>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Import Package
-</span><span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
-<span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="n">tf</span>
-<span class="kn">from</span> <span class="nn">tensorflow.keras</span> <span class="kn">import</span> <span class="n">layers</span><span class="p">,</span> <span class="n">models</span><span class="p">,</span> <span class="n">losses</span><span class="p">,</span> <span class="n">optimizers</span><span class="p">,</span> <span class="n">datasets</span><span class="p">,</span> <span class="n">utils</span>
-
-<span class="c1"># Data Prepare
-</span><span class="p">(</span><span class="n">train_x</span><span class="p">,</span> <span class="n">train_y</span><span class="p">),</span> <span class="p">(</span><span class="n">test_x</span><span class="p">,</span> <span class="n">test_y</span><span class="p">)</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">mnist</span><span class="o">.</span><span class="n">load_data</span><span class="p">()</span>
-<span class="n">train_x</span><span class="p">,</span> <span class="n">test_x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">expand_dims</span><span class="p">(</span><span class="n">train_x</span><span class="o">/</span><span class="mf">255.</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">expand_dims</span><span class="p">(</span><span class="n">test_x</span><span class="o">/</span><span class="mf">255.</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s">"Train Data's Shape : "</span><span class="p">,</span> <span class="n">train_x</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">train_y</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s">"Test Data's Shape : "</span><span class="p">,</span> <span class="n">test_x</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">test_y</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
-
-<span class="c1"># For Efficiency
-</span><span class="n">gpus</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">experimental</span><span class="o">.</span><span class="n">list_physical_devices</span><span class="p">(</span><span class="s">'GPU'</span><span class="p">)</span>
-<span class="k">if</span> <span class="n">gpus</span><span class="p">:</span>
-    <span class="k">try</span><span class="p">:</span>
-        <span class="k">for</span> <span class="n">gpu</span> <span class="ow">in</span> <span class="n">gpus</span><span class="p">:</span>
-            <span class="n">tf</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">experimental</span><span class="o">.</span><span class="n">set_memory_growth</span><span class="p">(</span><span class="n">gpu</span><span class="p">,</span> <span class="bp">True</span><span class="p">)</span>
-        <span class="n">logical_gpus</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">experimental</span><span class="o">.</span><span class="n">list_logical_devices</span><span class="p">(</span><span class="s">'GPU'</span><span class="p">)</span>
-        <span class="k">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">gpus</span><span class="p">),</span> <span class="s">"Physical GPUs,"</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">logical_gpus</span><span class="p">),</span> <span class="s">"Logical GPUs"</span><span class="p">)</span>
-    <span class="k">except</span> <span class="nb">RuntimeError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
-
-<span class="c1"># Build Network
-</span><span class="n">strategy</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">distribute</span><span class="o">.</span><span class="n">MirroredStrategy</span><span class="p">()</span>
-<span class="k">with</span> <span class="n">strategy</span><span class="o">.</span><span class="n">scope</span><span class="p">():</span>
-    <span class="n">cnn</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">Sequential</span><span class="p">()</span>
-    <span class="n">cnn</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">layers</span><span class="o">.</span><span class="n">Conv2D</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s">'relu'</span><span class="p">,</span> <span class="n">input_shape</span><span class="o">=</span><span class="p">(</span><span class="mi">28</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">1</span><span class="p">,)))</span>
-    <span class="n">cnn</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">layers</span><span class="o">.</span><span class="n">MaxPool2D</span><span class="p">())</span>
-    <span class="n">cnn</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">layers</span><span class="o">.</span><span class="n">Conv2D</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s">'relu'</span><span class="p">))</span>
-    <span class="n">cnn</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">layers</span><span class="o">.</span><span class="n">MaxPool2D</span><span class="p">())</span>
-    <span class="n">cnn</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">layers</span><span class="o">.</span><span class="n">Flatten</span><span class="p">())</span>
-    <span class="n">cnn</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s">'softmax'</span><span class="p">))</span>
-
-    <span class="n">cnn</span><span class="o">.</span><span class="nb">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="n">optimizers</span><span class="o">.</span><span class="n">Adam</span><span class="p">(),</span> <span class="n">loss</span><span class="o">=</span><span class="n">losses</span><span class="o">.</span><span class="n">sparse_categorical_crossentropy</span><span class="p">,</span> <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s">'accuracy'</span><span class="p">])</span>                
-<span class="k">print</span><span class="p">(</span><span class="s">"Network Built!"</span><span class="p">)</span>
-
-<span class="c1"># Training Network
-</span><span class="n">epochs</span><span class="o">=</span><span class="mi">10</span>
-<span class="n">batch_size_each_gpu</span> <span class="o">=</span> <span class="mi">4096</span>
-<span class="n">batch_size</span> <span class="o">=</span> <span class="n">batch_size_each_gpu</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">gpus</span><span class="p">)</span>
-
-<span class="n">history</span> <span class="o">=</span> <span class="n">cnn</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">train_x</span><span class="p">,</span> <span class="n">train_y</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">validation_data</span><span class="o">=</span><span class="p">(</span><span class="n">test_x</span><span class="p">,</span> <span class="n">test_y</span><span class="p">))</span>
-</code></pre></div></div>
-
-<p>기존 Multi GPU 코드와 달라진 점은</p>
-<ol>
-  <li><code class="highlighter-rouge">For Efficiency</code>라는 부분이 추가.</li>
-  <li><code class="highlighter-rouge">strategy = tf.distribute.MirroredStrategy()</code>을 <code class="highlighter-rouge">Build Network</code>에서 <code class="highlighter-rouge">For Efficiency</code>의 가장 첫번째 라인으로 이동.</li>
-</ol>
-
-<p>이렇게 변경 후 실행 후 nvidia-smi와 같은 모니터링 툴을 확인해보시면 이전과는 다르게 GPU 메모리를 필요한 만큼만 사용하는걸 보실 수 있습니다!</p>
-
-<h2 id="ps">P.S</h2>
-<ul>
-  <li>다음은 뭘로 포스팅하지…</li>
-</ul>
-
-<h2 id="번외편-using-gradient-tape">번외편 (Using gradient tape)</h2>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-<span class="c1"># %%
-# Import Package
-</span><span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
-<span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="n">tf</span>
-<span class="kn">from</span> <span class="nn">tensorflow.keras</span> <span class="kn">import</span> <span class="n">layers</span><span class="p">,</span> <span class="n">models</span><span class="p">,</span> <span class="n">losses</span><span class="p">,</span> <span class="n">optimizers</span><span class="p">,</span> <span class="n">datasets</span><span class="p">,</span> <span class="n">utils</span>
-
-<span class="n">gpus</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">experimental</span><span class="o">.</span><span class="n">list_physical_devices</span><span class="p">(</span><span class="s">'GPU'</span><span class="p">)</span>
-<span class="k">if</span> <span class="n">gpus</span><span class="p">:</span>
-    <span class="k">try</span><span class="p">:</span>
-        <span class="c1"># Currently, memory growth needs to be the same across GPUs
-</span>        <span class="k">for</span> <span class="n">gpu</span> <span class="ow">in</span> <span class="n">gpus</span><span class="p">:</span>
-            <span class="n">tf</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">experimental</span><span class="o">.</span><span class="n">set_memory_growth</span><span class="p">(</span><span class="n">gpu</span><span class="p">,</span> <span class="bp">True</span><span class="p">)</span>
-        <span class="n">logical_gpus</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">experimental</span><span class="o">.</span><span class="n">list_logical_devices</span><span class="p">(</span><span class="s">'GPU'</span><span class="p">)</span>
-        <span class="k">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">gpus</span><span class="p">),</span> <span class="s">"Physical GPUs,"</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">logical_gpus</span><span class="p">),</span> <span class="s">"Logical GPUs"</span><span class="p">)</span>
-    <span class="k">except</span> <span class="nb">RuntimeError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-        <span class="c1"># Memory growth must be set before GPUs have been initialized
-</span>        <span class="k">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
-
-<span class="c1"># %%
-# Data Prepare
-</span><span class="n">epochs</span><span class="o">=</span><span class="mi">10</span>
-<span class="n">batch_size_each_gpu</span> <span class="o">=</span> <span class="mi">4096</span>
-<span class="n">batch_size</span> <span class="o">=</span> <span class="n">batch_size_each_gpu</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">gpus</span><span class="p">)</span>
-
-<span class="p">(</span><span class="n">train_x</span><span class="p">,</span> <span class="n">train_y</span><span class="p">),</span> <span class="p">(</span><span class="n">test_x</span><span class="p">,</span> <span class="n">test_y</span><span class="p">)</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">mnist</span><span class="o">.</span><span class="n">load_data</span><span class="p">()</span>
-<span class="n">train_x</span><span class="p">,</span> <span class="n">test_x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">expand_dims</span><span class="p">(</span><span class="n">train_x</span><span class="o">/</span><span class="mf">255.</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">expand_dims</span><span class="p">(</span><span class="n">test_x</span><span class="o">/</span><span class="mf">255.</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
-
-<span class="k">print</span><span class="p">(</span><span class="s">"Train Data's Shape : "</span><span class="p">,</span> <span class="n">train_x</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">train_y</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s">"Test Data's Shape : "</span><span class="p">,</span> <span class="n">test_x</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">test_y</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
-
-<span class="c1"># %%
-# Build Network
-</span><span class="k">class</span> <span class="nc">build_model</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">(</span><span class="n">build_model</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">()</span>
-
-        <span class="bp">self</span><span class="o">.</span><span class="n">conv1</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Conv2D</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s">'relu'</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">pool1</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">MaxPool2D</span><span class="p">()</span>
-
-        <span class="bp">self</span><span class="o">.</span><span class="n">conv2</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Conv2D</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s">'relu'</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">pool2</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">MaxPool2D</span><span class="p">()</span>
-
-        <span class="bp">self</span><span class="o">.</span><span class="n">flatten</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Flatten</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">dense</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s">'softmax'</span><span class="p">)</span>
-    
-    <span class="k">def</span> <span class="nf">call</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
-        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">conv1</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pool1</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-
-        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">conv2</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pool2</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-
-        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">flatten</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">dense</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-
-<span class="k">print</span><span class="p">(</span><span class="s">"Network Built!"</span><span class="p">)</span>
-
-<span class="c1"># Set mirrored Strategy
-</span><span class="n">strategy</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">distribute</span><span class="o">.</span><span class="n">MirroredStrategy</span><span class="p">()</span>
-
-<span class="k">with</span> <span class="n">strategy</span><span class="o">.</span><span class="n">scope</span><span class="p">():</span>
-    
-    <span class="c1"># Prepare dataset 
-</span>    <span class="n">train_dataset</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">Dataset</span><span class="o">.</span><span class="n">from_tensor_slices</span><span class="p">((</span><span class="n">train_x</span><span class="p">,</span> <span class="n">train_y</span><span class="p">))</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">train_x</span><span class="p">))</span><span class="o">.</span><span class="n">batch</span><span class="p">(</span><span class="n">batch_size</span><span class="p">)</span> 
-    <span class="n">train_dist_dataset</span> <span class="o">=</span> <span class="n">strategy</span><span class="o">.</span><span class="n">experimental_distribute_dataset</span><span class="p">(</span><span class="n">train_dataset</span><span class="p">)</span>
-    
-    <span class="n">test_dataset</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">Dataset</span><span class="o">.</span><span class="n">from_tensor_slices</span><span class="p">((</span><span class="n">test_x</span><span class="p">,</span> <span class="n">test_y</span><span class="p">))</span><span class="o">.</span><span class="n">batch</span><span class="p">(</span><span class="n">batch_size</span><span class="p">)</span> 
-    <span class="n">test_dist_dataset</span> <span class="o">=</span> <span class="n">strategy</span><span class="o">.</span><span class="n">experimental_distribute_dataset</span><span class="p">(</span><span class="n">test_dataset</span><span class="p">)</span>
-
-    <span class="c1"># Make Network
-</span>    <span class="n">cnn</span> <span class="o">=</span> <span class="n">build_model</span><span class="p">()</span>
-
-    <span class="c1"># Set Loss &amp; Metric function
-</span>    <span class="n">loss_object</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">losses</span><span class="o">.</span><span class="n">SparseCategoricalCrossentropy</span><span class="p">(</span><span class="n">reduction</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">losses</span><span class="o">.</span><span class="n">Reduction</span><span class="o">.</span><span class="n">NONE</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">compute_loss</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">predictions</span><span class="p">):</span>
-        <span class="n">per_example_loss</span> <span class="o">=</span> <span class="n">loss_object</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">predictions</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">compute_average_loss</span><span class="p">(</span><span class="n">per_example_loss</span><span class="p">,</span> <span class="n">global_batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">)</span>
-        
-    <span class="n">test_loss</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">metrics</span><span class="o">.</span><span class="n">Mean</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s">'test_loss'</span><span class="p">)</span>
-
-    <span class="n">train_accuracy</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">metrics</span><span class="o">.</span><span class="n">SparseCategoricalAccuracy</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s">'train_accuracy'</span><span class="p">)</span>
-    <span class="n">test_accuracy</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">metrics</span><span class="o">.</span><span class="n">SparseCategoricalAccuracy</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s">'test_accuracy'</span><span class="p">)</span>
-
-    <span class="c1"># Set optimizer
-</span>    <span class="n">optimizer</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">optimizers</span><span class="o">.</span><span class="n">Adam</span><span class="p">()</span>
-
-    <span class="c1"># Define taining, test function
-</span>    <span class="k">def</span> <span class="nf">train_step</span><span class="p">(</span><span class="n">inputs</span><span class="p">):</span>
-        <span class="n">images</span><span class="p">,</span> <span class="n">labels</span> <span class="o">=</span> <span class="n">inputs</span>
-
-        <span class="k">with</span> <span class="n">tf</span><span class="o">.</span><span class="n">GradientTape</span><span class="p">()</span> <span class="k">as</span> <span class="n">tape</span><span class="p">:</span>
-            <span class="n">predictions</span> <span class="o">=</span> <span class="n">cnn</span><span class="p">(</span><span class="n">images</span><span class="p">,</span> <span class="n">training</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-            <span class="n">loss</span> <span class="o">=</span> <span class="n">compute_loss</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">predictions</span><span class="p">)</span>
-
-        <span class="n">gradients</span> <span class="o">=</span> <span class="n">tape</span><span class="o">.</span><span class="n">gradient</span><span class="p">(</span><span class="n">loss</span><span class="p">,</span> <span class="n">cnn</span><span class="o">.</span><span class="n">trainable_variables</span><span class="p">)</span>
-        <span class="n">optimizer</span><span class="o">.</span><span class="n">apply_gradients</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">gradients</span><span class="p">,</span> <span class="n">cnn</span><span class="o">.</span><span class="n">trainable_variables</span><span class="p">))</span>
-
-        <span class="n">train_accuracy</span><span class="o">.</span><span class="n">update_state</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">predictions</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">loss</span> 
-    
-    <span class="k">def</span> <span class="nf">test_step</span><span class="p">(</span><span class="n">inputs</span><span class="p">):</span>
-        <span class="n">images</span><span class="p">,</span> <span class="n">labels</span> <span class="o">=</span> <span class="n">inputs</span>
-
-        <span class="n">predictions</span> <span class="o">=</span> <span class="n">cnn</span><span class="p">(</span><span class="n">images</span><span class="p">,</span> <span class="n">training</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
-        <span class="n">t_loss</span> <span class="o">=</span> <span class="n">loss_object</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">predictions</span><span class="p">)</span>
-
-        <span class="n">test_loss</span><span class="o">.</span><span class="n">update_state</span><span class="p">(</span><span class="n">t_loss</span><span class="p">)</span>
-        <span class="n">test_accuracy</span><span class="o">.</span><span class="n">update_state</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">predictions</span><span class="p">)</span>
-
-    <span class="c1"># Define training, test function suitable for Mirrored Strategy 
-</span>    <span class="o">@</span><span class="n">tf</span><span class="o">.</span><span class="n">function</span>
-    <span class="k">def</span> <span class="nf">distributed_train_step</span><span class="p">(</span><span class="n">dataset_inputs</span><span class="p">):</span>
-        <span class="n">per_replica_losses</span> <span class="o">=</span> <span class="n">strategy</span><span class="o">.</span><span class="n">experimental_run_v2</span><span class="p">(</span><span class="n">train_step</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">dataset_inputs</span><span class="p">,))</span>
-        <span class="k">return</span> <span class="n">strategy</span><span class="o">.</span><span class="nb">reduce</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">distribute</span><span class="o">.</span><span class="n">ReduceOp</span><span class="o">.</span><span class="n">SUM</span><span class="p">,</span> <span class="n">per_replica_losses</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="bp">None</span><span class="p">)</span>
- 
-    <span class="o">@</span><span class="n">tf</span><span class="o">.</span><span class="n">function</span>
-    <span class="k">def</span> <span class="nf">distributed_test_step</span><span class="p">(</span><span class="n">dataset_inputs</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">strategy</span><span class="o">.</span><span class="n">experimental_run_v2</span><span class="p">(</span><span class="n">test_step</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">dataset_inputs</span><span class="p">,))</span>
-
-    <span class="c1"># Train Network
-</span>    <span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">epochs</span><span class="p">):</span>
-    
-        <span class="c1"># Training Loop
-</span>        <span class="n">total_loss</span> <span class="o">=</span> <span class="mf">0.0</span>
-        <span class="n">num_batches</span> <span class="o">=</span> <span class="mi">0</span>
-        <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">train_dist_dataset</span><span class="p">:</span>
-            <span class="n">total_loss</span> <span class="o">+=</span> <span class="n">distributed_train_step</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-            <span class="n">num_batches</span> <span class="o">+=</span> <span class="mi">1</span>
-        <span class="n">train_loss</span> <span class="o">=</span> <span class="n">total_loss</span> <span class="o">/</span> <span class="n">num_batches</span>
-
-        <span class="c1"># Test Loop
-</span>        <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">test_dist_dataset</span><span class="p">:</span>
-            <span class="n">distributed_test_step</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-
-        <span class="n">template</span> <span class="o">=</span> <span class="p">(</span><span class="s">"에포크 {}, 손실: {}, 정확도: {}, 테스트 손실: {}, 테스트 정확도: {}"</span><span class="p">)</span>
-        <span class="k">print</span> <span class="p">(</span><span class="n">template</span><span class="o">.</span><span class="nb">format</span><span class="p">(</span><span class="n">epoch</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">train_loss</span><span class="p">,</span> <span class="n">train_accuracy</span><span class="o">.</span><span class="n">result</span><span class="p">()</span><span class="o">*</span><span class="mi">100</span><span class="p">,</span> <span class="n">test_loss</span><span class="o">.</span><span class="n">result</span><span class="p">(),</span> <span class="n">test_accuracy</span><span class="o">.</span><span class="n">result</span><span class="p">()</span><span class="o">*</span><span class="mi">100</span><span class="p">))</span>
-
-        <span class="n">test_loss</span><span class="o">.</span><span class="n">reset_states</span><span class="p">()</span>
-        <span class="n">train_accuracy</span><span class="o">.</span><span class="n">reset_states</span><span class="p">()</span>
-        <span class="n">test_accuracy</span><span class="o">.</span><span class="n">reset_states</span><span class="p">()</span>
-</code></pre></div></div>
-
-    <article></h4>
-    <div class="post-more">
-      
-      <a href="/deeplearning/2020/06/14/tf2_multi_gpu/#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
-      
-      <a href="/deeplearning/2020/06/14/tf2_multi_gpu/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
     </div>
   </div>
   

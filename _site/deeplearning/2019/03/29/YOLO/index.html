@@ -2,57 +2,88 @@
 <html lang="en-us">
   <head>
   <head>
-  <link href="http://gmpg.org/xfn/11" rel="profile">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta http-equiv="content-type" content="text/html; charset=utf-8">
-
-  <!-- Enable responsiveness on mobile devices-->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-
-  <title>
+    <link href="http://gmpg.org/xfn/11" rel="profile">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  
+    <!-- Enable responsiveness on mobile devices-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+  
+    <title>
+      
+        Review: YOLO &middot; Jerry's Blog
+      
+    </title>
+  
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
+    <link rel="stylesheet" href="/public/css/main.css">
+  
+    <!-- Icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-precomposed.png">
+    <link rel="shortcut icon" href="/public/favicon.ico">
+  
+    <!-- RSS -->
+    <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+  
+    <!-- scroll -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+      $( window ).scroll( function() {
+        if ( $( this ).scrollTop() > 500 ) {
+          $( '.top' ).fadeIn();
+        } else {
+          $( '.top' ).fadeOut();
+        }
+      } );
+      $( '.top' ).click( function() {
+        $( 'html, body' ).stop().animate( { scrollTop : 0 }, 100);
+        return false;
+      } );
+    </script>
     
-      Review: YOLO &middot; Jerry's Blog
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+      (absbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-1054696837285307",
+          enable_page_level_ads: true
+      });
+    </script>
     
-  </title>
-
-  <!-- CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
-  <link rel="stylesheet" href="/public/css/main.css">
-
-  <!-- Icons -->
-  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-precomposed.png">
-  <link rel="shortcut icon" href="/public/favicon.ico">
-
-  <!-- RSS -->
-  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
-
-  <!-- scroll -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script>
-    $( window ).scroll( function() {
-      if ( $( this ).scrollTop() > 500 ) {
-        $( '.top' ).fadeIn();
-      } else {
-        $( '.top' ).fadeOut();
-      }
-    } );
-    $( '.top' ).click( function() {
-      $( 'html, body' ).stop().animate( { scrollTop : 0 }, 100);
-      return false;
-    } );
-  </script>
-  
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-  <script>
-    (absbygoogle = window.adsbygoogle || []).push({
-        google_ad_client: "ca-pub-1054696837285307",
-        enable_page_level_ads: true
-    });
-  </script>
-  
-  
+    <!-- 
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        //jax: ["input/TeX", "output/HTML-CSS"],
+        TeX: {
+          equationNumbers: {
+            autoNumber: "AMS"
+          }
+        },
+        tex2jax: {
+          inlineMath: [ ['$', '$'] ],
+          displayMath: [ ['$$', '$$'] ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+        //,
+        //displayAlign: "left",
+        //displayIndent: "2em"
+      });
+      MathJax.Hub.Register.MessageHook("Math Processing Error",function (message) {
+        alert("Math Processing Error: "+message[1]);
+      });
+    MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
+        alert("Math Processing Error: "+message[1]);
+      });
+    </script>
+    <script type="text/javascript" async
+      src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript">
+    </script>
+     -->
+    
+    
   <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
       //jax: ["input/TeX", "output/HTML-CSS"],
@@ -69,17 +100,21 @@
   </script>
   <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
   
-  
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <script src="/dest/simple-jekyll-search.js" type="text/javascript"></script>
-  <script type="text/javascript">
-  $(document).ready(function(){
-    document.search.searchinput.focus();
-  });
-  </script>
-</head>
 
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="/dest/simple-jekyll-search.js" type="text/javascript"></script>
+    <script type="text/javascript">
+    $(document).ready(function(){
+      document.search.searchinput.focus();
+    });
+    </script>
+  </head>
+  
   <style>blockquote {font-size: 1em; line-height: 1.4}</style>
+  
+  <!-- New line Start-->
+  <!--  -->
+  <!-- New line End -->
   </head>
   <body>
 
@@ -352,7 +387,7 @@
           <li>w, h : 이미지 크기에 대비한 상대적인 값.</li>
           <li>confidence score : bbox가 object를 가졌는지 box가 얼마나 정확히 예측했는지에 대한 score</li>
           <li>Confidence Score는 다음과 같이 정의.
-<script type="math/tex">{Confidence\; Score}= Pr(Object) * IOU^{truth}_{pred}</script></li>
+\({Confidence\; Score}= Pr(Object) * IOU^{truth}_{pred}\)</li>
           <li>No object의 경우
             <ul>
               <li>Confidence Score는 0 이어야함.</li>
@@ -366,7 +401,7 @@
           <li>C개의 class에 대한 conditional class probabilities, $Pr(Class_i \mid Object)$</li>
           <li>
             <p>Test 시에는 Conditional class probabilities와 individual box confidence score를 곱했다고 함.<br />
-<script type="math/tex">Pr(Class_i|Object) =  Pr(Object) * IOU^{truth}_{pred} = Pr(Class_i) * IOU^{truth}_{pred}</script></p>
+\(Pr(Class_i|Object) =  Pr(Object) * IOU^{truth}_{pred} = Pr(Class_i) * IOU^{truth}_{pred}\)</p>
           </li>
           <li>bbox 별로 class confidence score를 알 수 있음.</li>
         </ul>
@@ -403,8 +438,7 @@
   <li>다른 layer는 leaky ReLU 사용.</li>
 </ul>
 
-<script type="math/tex; mode=display">% <![CDATA[
-\phi(x) =\left\{\begin{array}{lcl}x, & if\;x > 0\\ {0.1}x, & otherwise\end{array} \right. %]]></script>
+\[\phi(x) =\left\{\begin{array}{lcl}x, &amp; if\;x &gt; 0\\ {0.1}x, &amp; otherwise\end{array} \right.\]
 
 <ul>
   <li>
@@ -420,11 +454,11 @@ $\lambda_{coord} = 5$ and $\lambda_{noobj} = 0.5$.</p>
   <li>large boxes 에 대해서 중요성을 반영하기 위해 width, height 는 square root 사용.</li>
 </ul>
 
-<script type="math/tex; mode=display">\lambda_{coord}\sum^{S^2}_{i=0}\sum^B_{j=0}\mathbb{I}^{obj}_{ij}(x_i-\hat{x}_i)^2 + (y_i-\hat{y}_i)^2 \\
+\[\lambda_{coord}\sum^{S^2}_{i=0}\sum^B_{j=0}\mathbb{I}^{obj}_{ij}(x_i-\hat{x}_i)^2 + (y_i-\hat{y}_i)^2 \\
 + \lambda_{coord}\sum^{S^2}_{i=0}\sum^B_{j=0}\mathbb{I}^{obj}_{ij}(\sqrt{w_i}-\sqrt{\hat{w}_i})^2 + (\sqrt{h_i}-\sqrt{\hat{h}_i})^2 \\
 + \sum^{S^2}_{i=0}\sum^B_{j=0}\mathbb{I}^{obj}_{ij}(C_i - \hat{C}_i)^2 \\
 + \lambda_{noobj}\sum^{S^2}_{i=0}\sum^B_{j=0}\mathbb{I}^{noobj}_{ij}(C_i - \hat{C}_i)^2 \\
-+ \sum^{S^2}_{i=0}\mathbb{I}^{obj}_{i}\sum^B_{c\in{classes}}(p_i(c) - \hat{p}_i(c))^2</script>
++ \sum^{S^2}_{i=0}\mathbb{I}^{obj}_{i}\sum^B_{c\in{classes}}(p_i(c) - \hat{p}_i(c))^2\]
 
 <ul>
   <li>$\mathbb{I}^{obj}_{i}$ : Object가 존재하는 Grid Cell i.</li>

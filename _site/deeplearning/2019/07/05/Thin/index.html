@@ -2,57 +2,88 @@
 <html lang="en-us">
   <head>
   <head>
-  <link href="http://gmpg.org/xfn/11" rel="profile">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta http-equiv="content-type" content="text/html; charset=utf-8">
-
-  <!-- Enable responsiveness on mobile devices-->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-
-  <title>
+    <link href="http://gmpg.org/xfn/11" rel="profile">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  
+    <!-- Enable responsiveness on mobile devices-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+  
+    <title>
+      
+        Review: MRI interpolation using Deep Learning &middot; Jerry's Blog
+      
+    </title>
+  
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
+    <link rel="stylesheet" href="/public/css/main.css">
+  
+    <!-- Icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-precomposed.png">
+    <link rel="shortcut icon" href="/public/favicon.ico">
+  
+    <!-- RSS -->
+    <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+  
+    <!-- scroll -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+      $( window ).scroll( function() {
+        if ( $( this ).scrollTop() > 500 ) {
+          $( '.top' ).fadeIn();
+        } else {
+          $( '.top' ).fadeOut();
+        }
+      } );
+      $( '.top' ).click( function() {
+        $( 'html, body' ).stop().animate( { scrollTop : 0 }, 100);
+        return false;
+      } );
+    </script>
     
-      Review: MRI interpolation using Deep Learning &middot; Jerry's Blog
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+      (absbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-1054696837285307",
+          enable_page_level_ads: true
+      });
+    </script>
     
-  </title>
-
-  <!-- CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
-  <link rel="stylesheet" href="/public/css/main.css">
-
-  <!-- Icons -->
-  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-precomposed.png">
-  <link rel="shortcut icon" href="/public/favicon.ico">
-
-  <!-- RSS -->
-  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
-
-  <!-- scroll -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script>
-    $( window ).scroll( function() {
-      if ( $( this ).scrollTop() > 500 ) {
-        $( '.top' ).fadeIn();
-      } else {
-        $( '.top' ).fadeOut();
-      }
-    } );
-    $( '.top' ).click( function() {
-      $( 'html, body' ).stop().animate( { scrollTop : 0 }, 100);
-      return false;
-    } );
-  </script>
-  
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-  <script>
-    (absbygoogle = window.adsbygoogle || []).push({
-        google_ad_client: "ca-pub-1054696837285307",
-        enable_page_level_ads: true
-    });
-  </script>
-  
-  
+    <!-- 
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        //jax: ["input/TeX", "output/HTML-CSS"],
+        TeX: {
+          equationNumbers: {
+            autoNumber: "AMS"
+          }
+        },
+        tex2jax: {
+          inlineMath: [ ['$', '$'] ],
+          displayMath: [ ['$$', '$$'] ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+        //,
+        //displayAlign: "left",
+        //displayIndent: "2em"
+      });
+      MathJax.Hub.Register.MessageHook("Math Processing Error",function (message) {
+        alert("Math Processing Error: "+message[1]);
+      });
+    MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
+        alert("Math Processing Error: "+message[1]);
+      });
+    </script>
+    <script type="text/javascript" async
+      src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript">
+    </script>
+     -->
+    
+    
   <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
       //jax: ["input/TeX", "output/HTML-CSS"],
@@ -69,17 +100,21 @@
   </script>
   <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
   
-  
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <script src="/dest/simple-jekyll-search.js" type="text/javascript"></script>
-  <script type="text/javascript">
-  $(document).ready(function(){
-    document.search.searchinput.focus();
-  });
-  </script>
-</head>
 
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="/dest/simple-jekyll-search.js" type="text/javascript"></script>
+    <script type="text/javascript">
+    $(document).ready(function(){
+      document.search.searchinput.focus();
+    });
+    </script>
+  </head>
+  
   <style>blockquote {font-size: 1em; line-height: 1.4}</style>
+  
+  <!-- New line Start-->
+  <!--  -->
+  <!-- New line End -->
   </head>
   <body>
 
@@ -453,7 +488,7 @@ and Molecular Medical Imaging, Fudan University, Shanghai 200433, China
   </li>
 </ul>
 
-<script type="math/tex; mode=display">L^G_{SC} = \frac{1}{rLWH}\sum_{x,y,z=1,1,1}^{L,W,rH}\sqrt{(I^{GT}_{x,y,z}-I^Y_{z,y,z})^2+\epsilon}\cdot\bigg(\frac{1}{2}+\frac{(I^{GT}_{x,y,z}-I^Y_{z,y,z})^2}{2max((I^{GT}-I^Y)^2)}\bigg)</script>
+\[L^G_{SC} = \frac{1}{rLWH}\sum_{x,y,z=1,1,1}^{L,W,rH}\sqrt{(I^{GT}_{x,y,z}-I^Y_{z,y,z})^2+\epsilon}\cdot\bigg(\frac{1}{2}+\frac{(I^{GT}_{x,y,z}-I^Y_{z,y,z})^2}{2max((I^{GT}-I^Y)^2)}\bigg)\]
 
 <ul>
   <li>3-D Gradient Correction Loss
@@ -464,7 +499,7 @@ and Molecular Medical Imaging, Fudan University, Shanghai 200433, China
   </li>
 </ul>
 
-<script type="math/tex; mode=display">L^G_{GC} = \mathbb{E}[(\nabla_{x}I^{GT}_{x,y,z} - \nabla_{x}I^Y_{x,y,z})^2] \\  + \mathbb{E}[(\nabla_{y}I^{GT}_{x,y,z} - \nabla_{y}I^Y_{x,y,z})]^2\\ + \mathbb{E}[(\nabla_{z}I^{GT}_{x,y,z} - \nabla_{z}I^Y_{x,y,z})^2]</script>
+\[L^G_{GC} = \mathbb{E}[(\nabla_{x}I^{GT}_{x,y,z} - \nabla_{x}I^Y_{x,y,z})^2] \\  + \mathbb{E}[(\nabla_{y}I^{GT}_{x,y,z} - \nabla_{y}I^Y_{x,y,z})]^2\\ + \mathbb{E}[(\nabla_{z}I^{GT}_{x,y,z} - \nabla_{z}I^Y_{x,y,z})^2]\]
 
 <ul>
   <li>Adversarial Loss
@@ -474,9 +509,9 @@ and Molecular Medical Imaging, Fudan University, Shanghai 200433, China
   </li>
 </ul>
 
-<script type="math/tex; mode=display">L^D=\frac{1}{2}\mathbb{E}[(D(I^{GT}, I^A, I^S)-1)^2+D(I^Y, I^A, I^S)^2]</script>
+\[L^D=\frac{1}{2}\mathbb{E}[(D(I^{GT}, I^A, I^S)-1)^2+D(I^Y, I^A, I^S)^2]\]
 
-<script type="math/tex; mode=display">L^G_{AD}=\mathbb{E}[(D(I^Y, I^A, I^S)-1)^2]</script>
+\[L^G_{AD}=\mathbb{E}[(D(I^Y, I^A, I^S)-1)^2]\]
 
 <ul>
   <li>$\ell_2$ Weight Regularization Loss
@@ -487,7 +522,7 @@ and Molecular Medical Imaging, Fudan University, Shanghai 200433, China
   </li>
 </ul>
 
-<script type="math/tex; mode=display">L^G_{WR} = \sum\Vert W_G\Vert^2_2</script>
+\[L^G_{WR} = \sum\Vert W_G\Vert^2_2\]
 
 <ul>
   <li>3D-Y-Net-GAN Loss
@@ -535,33 +570,33 @@ and Molecular Medical Imaging, Fudan University, Shanghai 200433, China
   </li>
 </ul>
 
-<script type="math/tex; mode=display">\begin{alignedat}{2}
+\[\begin{alignedat}{2}
 MAX_I = 255\\
 PSNR = 20\cdot\log_{10}\Bigg(\frac{MAX_I}{\sqrt{\frac{1}{rLWH}\sum_{x, y, z}(I^R_{x,y,z}-I^{GT}_{x,y,z})^2}}\Bigg)
-\end{alignedat}</script>
+\end{alignedat}\]
 
 <ul>
   <li>SSIM(Structural SIMilarity)</li>
 </ul>
 
-<script type="math/tex; mode=display">\begin{alignedat}{2}
+\[\begin{alignedat}{2}
 L : 255(\text{dynamic range})\\
 \mu : \text{Variance}\\
 \mu_{ab} : \text{Covariance}\\
 c_1 = (k_1L)^2\\
 c_2 = (k_2L)^2\\
 SSIM=\frac{(2\mu_a\mu_b+c_1)(2\sigma_{ab}+c_2)}{(\mu_a^2+\mu_b^2+c_1)(\sigma_a^2+\sigma_b^2+c_2)}
-\end{alignedat}</script>
+\end{alignedat}\]
 
 <ul>
   <li>NMI(Normalized Mutual Information)</li>
 </ul>
 
-<script type="math/tex; mode=display">\begin{alignedat}{2}
+\[\begin{alignedat}{2}
 H(X) = -\sum_{x_i}\in{X}p(x_i)\log{p(x_i)} \\
 H(X, Y) = -\sum_{y_i\in{Y}} \sum_{x_i\in{X}}p(x_i, y_i)\log{p(x_i, y_i)}\\
 NMI(X, Y) = 2\frac{H(X) + H(Y) - H(X, Y)}{H(X)+H(Y)}
-\end{alignedat}</script>
+\end{alignedat}\]
 
 <ul>
   <li>pixel 값을 [-1, 1]로 clipping -&gt; 다시 8-bit gray scale로 변환.</li>

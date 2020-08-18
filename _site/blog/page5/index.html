@@ -2,57 +2,88 @@
 <html lang="en-us">
   <head>
   <head>
-  <link href="http://gmpg.org/xfn/11" rel="profile">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta http-equiv="content-type" content="text/html; charset=utf-8">
-
-  <!-- Enable responsiveness on mobile devices-->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-
-  <title>
+    <link href="http://gmpg.org/xfn/11" rel="profile">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  
+    <!-- Enable responsiveness on mobile devices-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+  
+    <title>
+      
+        Blog &middot; Jerry's Blog
+      
+    </title>
+  
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
+    <link rel="stylesheet" href="/public/css/main.css">
+  
+    <!-- Icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-precomposed.png">
+    <link rel="shortcut icon" href="/public/favicon.ico">
+  
+    <!-- RSS -->
+    <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+  
+    <!-- scroll -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+      $( window ).scroll( function() {
+        if ( $( this ).scrollTop() > 500 ) {
+          $( '.top' ).fadeIn();
+        } else {
+          $( '.top' ).fadeOut();
+        }
+      } );
+      $( '.top' ).click( function() {
+        $( 'html, body' ).stop().animate( { scrollTop : 0 }, 100);
+        return false;
+      } );
+    </script>
     
-      Blog &middot; Jerry's Blog
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+      (absbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-1054696837285307",
+          enable_page_level_ads: true
+      });
+    </script>
     
-  </title>
-
-  <!-- CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
-  <link rel="stylesheet" href="/public/css/main.css">
-
-  <!-- Icons -->
-  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-precomposed.png">
-  <link rel="shortcut icon" href="/public/favicon.ico">
-
-  <!-- RSS -->
-  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
-
-  <!-- scroll -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script>
-    $( window ).scroll( function() {
-      if ( $( this ).scrollTop() > 500 ) {
-        $( '.top' ).fadeIn();
-      } else {
-        $( '.top' ).fadeOut();
-      }
-    } );
-    $( '.top' ).click( function() {
-      $( 'html, body' ).stop().animate( { scrollTop : 0 }, 100);
-      return false;
-    } );
-  </script>
-  
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-  <script>
-    (absbygoogle = window.adsbygoogle || []).push({
-        google_ad_client: "ca-pub-1054696837285307",
-        enable_page_level_ads: true
-    });
-  </script>
-  
-  
+    <!-- 
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        //jax: ["input/TeX", "output/HTML-CSS"],
+        TeX: {
+          equationNumbers: {
+            autoNumber: "AMS"
+          }
+        },
+        tex2jax: {
+          inlineMath: [ ['$', '$'] ],
+          displayMath: [ ['$$', '$$'] ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+        //,
+        //displayAlign: "left",
+        //displayIndent: "2em"
+      });
+      MathJax.Hub.Register.MessageHook("Math Processing Error",function (message) {
+        alert("Math Processing Error: "+message[1]);
+      });
+    MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
+        alert("Math Processing Error: "+message[1]);
+      });
+    </script>
+    <script type="text/javascript" async
+      src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript">
+    </script>
+     -->
+    
+    
   <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
       //jax: ["input/TeX", "output/HTML-CSS"],
@@ -69,17 +100,21 @@
   </script>
   <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
   
-  
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <script src="/dest/simple-jekyll-search.js" type="text/javascript"></script>
-  <script type="text/javascript">
-  $(document).ready(function(){
-    document.search.searchinput.focus();
-  });
-  </script>
-</head>
 
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="/dest/simple-jekyll-search.js" type="text/javascript"></script>
+    <script type="text/javascript">
+    $(document).ready(function(){
+      document.search.searchinput.focus();
+    });
+    </script>
+  </head>
+  
   <style>blockquote {font-size: 1em; line-height: 1.4}</style>
+  
+  <!-- New line Start-->
+  <!--  -->
+  <!-- New line End -->
   </head>
   <body>
 
@@ -276,6 +311,291 @@
   
   <div class="post">
     <h1 class="post-title">
+      <a href="/deeplearning/2020/04/30/CBAM/">
+        Review: CBAM
+      </a>
+    </h1>
+
+    <span class="post-date">30 Apr 2020</span>
+     | 
+    
+    <a href="/blog/tags/#paper" class="post-tag">Paper</a>
+    
+    
+
+    <h4 style="font-weight: 400; line-height: 1.8;"><article>
+      <h1 id="cbam-convolutional-block-attention-module">CBAM: Convolutional Block Attention Module</h1>
+
+<p>Author: Sanghyun Woo, Jongchan Park, Joon-Young Lee, In So Kweon<br />
+Date: Jul 17, 2018<br />
+URL: https://arxiv.org/abs/1807.06521</p>
+
+<h1 id="introduction">Introduction</h1>
+
+<ul>
+  <li>BAM 에서 설명한 것처럼 최근 CNN 성능 향상에 주로 연구되는 요소는 depth, width, cardinality.</li>
+  <li>본 논문에선 Convolutional Block Attention Module(CBAM) 제안.</li>
+  <li>Convolution을 이용하여 channel, spatial information 을 추출하고 섞어서 사용.</li>
+  <li>channel, spatial attention module은 각각 “what”, “where”에 대한 정보를 학습할 수 있음.</li>
+</ul>
+
+<p><img src="https://jjerry-k.github.io/public/img/cbam/Untitled.png" alt="https://jjerry-k.github.io/public/img/cbam/Untitled.png" /></p>
+
+<h1 id="convolutional-block-attention-module">Convolutional Block Attention Module</h1>
+
+<ul>
+  <li>CBAM 의 구조는 다음 사진과 같음.</li>
+</ul>
+
+<p>[F: \text{Input feature map} \ F’:\text{Channel attention module feature map} \ F’’: \text{Spatial attention module feature map} \ F’ = M_c(F)\bigotimes F \F’’ = M_s(F’)\bigotimes F’]</p>
+
+<p><img src="https://jjerry-k.github.io/public/img/cbam/Untitled_1.png" alt="https://jjerry-k.github.io/public/img/cbam/Untitled_1.png" /></p>
+
+<h2 id="channel-attention-branch">Channel attention branch</h2>
+
+<p>[M_c(F) = \sigma(MLP(AvgPool(F)) + MLP(MaxPool(F))) \ = \sigma(W1(W0(F^c_{avg})) + W1(W0(F^c_{max})))]</p>
+
+<p>W0 의 output channel 크기: F의 채널 수 / reduction ratio(r)</p>
+
+<p>W1 의 output channel 크기: F의 채널 수</p>
+
+<h2 id="spatial-attention-branch">Spatial attention branch</h2>
+
+<p>[M_s(F)=\sigma(f^{7\times7}([AvgPool(F); MaxPool(F)])) \ = \sigma(f^{7 \times 7}([F^s_{avg};F^s_{max}]))]</p>
+
+<ul>
+  <li>7x7 Convolution의 output channel 크기: 1</li>
+</ul>
+
+<h2 id="arrangement-of-attention-modules">Arrangement of attention modules</h2>
+
+<ul>
+  <li>두 branch의 순서를 어떻게 배열할지 고민.</li>
+  <li>실험적으로 Channel → Spatial 로 하기로 함.</li>
+</ul>
+
+<h1 id="ablation-study-using-imagenet-1k">Ablation study using ImageNet-1K</h1>
+
+<h2 id="channel-attention">Channel attention</h2>
+
+<ul>
+  <li>Pooling 기법별 성능 비교</li>
+</ul>
+
+<p><img src="https://jjerry-k.github.io/public/img/cbam/Untitled_2.png" alt="https://jjerry-k.github.io/public/img/cbam/Untitled_2.png" /></p>
+
+<h2 id="spatial-attention">Spatial attention</h2>
+
+<ul>
+  <li>Pooling, convolution kernel size 에 따른 성능 비교</li>
+</ul>
+
+<p><img src="https://jjerry-k.github.io/public/img/cbam/Untitled_3.png" alt="https://jjerry-k.github.io/public/img/cbam/Untitled_3.png" /></p>
+
+<h2 id="arrangement-of-the-channel-and-spatial-attention">Arrangement of the channel and spatial attention</h2>
+
+<ul>
+  <li>Attention module 순서에 따른 성능 비교</li>
+</ul>
+
+<p><img src="https://jjerry-k.github.io/public/img/cbam/Untitled_4.png" alt="https://jjerry-k.github.io/public/img/cbam/Untitled_4.png" /></p>
+
+<h1 id="result">Result</h1>
+
+<h3 id="classification-result-on-imagenet-1k">Classification Result on ImageNet-1K</h3>
+
+<p><img src="https://jjerry-k.github.io/public/img/cbam/Untitled_5.png" alt="https://jjerry-k.github.io/public/img/cbam/Untitled_5.png" /></p>
+
+<p><img src="https://jjerry-k.github.io/public/img/cbam/Untitled_6.png" alt="https://jjerry-k.github.io/public/img/cbam/Untitled_6.png" /></p>
+
+<p><img src="https://jjerry-k.github.io/public/img/cbam/Untitled_7.png" alt="https://jjerry-k.github.io/public/img/cbam/Untitled_7.png" /></p>
+
+<h3 id="object-detection-on-ms-coco-and-voc-2007">Object Detection on MS COCO and VOC 2007</h3>
+
+<p><img src="https://jjerry-k.github.io/public/img/cbam/Untitled_8.png" alt="https://jjerry-k.github.io/public/img/cbam/Untitled_8.png" /></p>
+
+<p><img src="https://jjerry-k.github.io/public/img/cbam/Untitled_9.png" alt="https://jjerry-k.github.io/public/img/cbam/Untitled_9.png" /></p>
+
+<h3 id="network-visualization-with-grad-cam">Network Visualization with Grad-CAM</h3>
+
+<p><img src="https://jjerry-k.github.io/public/img/cbam/Untitled_10.png" alt="https://jjerry-k.github.io/public/img/cbam/Untitled_10.png" /></p>
+
+<h2 id="ps">P.S</h2>
+
+<ul>
+  <li>BAM과 동일하게 Original Code가 있지만….논문과 다른 부분이 매우 많음.</li>
+</ul>
+
+    <article></h4>
+    <div class="post-more">
+      
+      <a href="/deeplearning/2020/04/30/CBAM/#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
+      
+      <a href="/deeplearning/2020/04/30/CBAM/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
+    </div>
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/deeplearning/2020/04/29/BAM/">
+        Review: BAM
+      </a>
+    </h1>
+
+    <span class="post-date">29 Apr 2020</span>
+     | 
+    
+    <a href="/blog/tags/#paper" class="post-tag">Paper</a>
+    
+    
+
+    <h4 style="font-weight: 400; line-height: 1.8;"><article>
+      <h1 id="bam-bottleneck-attention-module">BAM: Bottleneck Attention Module</h1>
+
+<p>Author: Jongchan Park, Sanghyun Woo, Joon-Young Lee, In So Kweon<br />
+Date: Jul 17, 2018<br />
+URL: https://arxiv.org/abs/1807.06514</p>
+
+<h1 id="introduction">Introduction</h1>
+
+<ul>
+  <li>
+    <p>DL은 Classification, Detection, Segmentation 등 많은 패턴 인식 분야에서 강력한 Tool로 사용.</p>
+  </li>
+  <li>
+    <p>성능을 올리기 위해서 좋은 backbone을 설계하는 것이 기본적인 접근법.</p>
+  </li>
+  <li>
+    <p>직관적인 방법은 더 깊게 설계하는 것.</p>
+  </li>
+  <li>
+    <p>VGGNet는 AlexNet 보다 두배 이상.</p>
+  </li>
+  <li>
+    <p>ResNet 은 VGGNet보다 22배 이상이면서 residual connections 사용하여 gradient flow 를 향상.</p>
+  </li>
+  <li>
+    <p>GoogLeNet 은 매우 깊고 같은 layer에서 다양한 feature를 사용하여 성능 향상.</p>
+  </li>
+  <li>
+    <p>DenseNet 이전 layer의 feature map 들을 concatenation 하여 사용.</p>
+  </li>
+  <li>
+    <p>WideResNet, PyramidNet layer의 channels 를 증가하여 성능 향상.</p>
+  </li>
+  <li>
+    <p>ResNeXt, Xception과 같은 backbone은 grouped convolutions을 이용하여 성능 향상.</p>
+  </li>
+  <li>
+    <p>본 논문에선 attention 의 효과를 보기 위해 기존의 architecture 에 사용하기 쉬운 가벼운 Bottle Attention Module(BAM) 제안</p>
+  </li>
+</ul>
+
+<p><img src="https://jjerry-k.github.io/public/img/bam/Untitled.png" alt="https://jjerry-k.github.io/public/img/bam/Untitled.png" /></p>
+
+<h1 id="bottleneck-attention-module">Bottleneck Attention Module</h1>
+
+<ul>
+  <li>BAM 의 구조는 다음 사진과 같음.</li>
+</ul>
+
+<p>[F: \text{Input feature map} \ M(F): \text{Attention map} \F’ = F + F\bigotimes M(F) \ M(F) = \sigma(M_c(F) + M_s(F))]</p>
+
+<p><img src="https://jjerry-k.github.io/public/img/bam/Untitled_1.png" alt="https://jjerry-k.github.io/public/img/bam/Untitled_1.png" /></p>
+
+<h2 id="channel-attention-branch">Channel attention branch</h2>
+
+<p>[M_c(F) = BN(MLP(AvgPool(F))) \ = BN(W_1(W_0AvgPool(F) + b_0)+b_1)]</p>
+
+<p>W0 의 output channel 크기: F의 채널 수 / reduction ratio(r)</p>
+
+<p>W1 의 output channel 크기: F의 채널 수</p>
+
+<h2 id="spatial-attention-branch">Spatial attention branch</h2>
+
+<p>[M_s(F)=BN(f_3^{1\times1}(f_2^{3\times3}(f_1^{3\times3}(f_0^{1\times1}(F)))))]</p>
+
+<ul>
+  <li>모든 연산은 convolution 연산.</li>
+  <li>3x3 Convolution 연산 수행시엔 dilation convolution 사용.</li>
+  <li>첫번째~세번째 Convolution 의 output channel 크기: F의 채널 수 / reduction ratio(r)</li>
+  <li>마지막 Convolution 의 output channel 크기: 1</li>
+</ul>
+
+<h2 id="combine-two-attention-branches">Combine two attention branches</h2>
+
+<p>[M(F) = \sigma(M_c(F) + M_s(F))]</p>
+
+<ul>
+  <li>Channel attention branch 출력: 1x1xR</li>
+  <li>Spatial attention branch 출력: HxWx1</li>
+  <li>두 attention branch를 합치는 방법으로 element-wise summation, multiplication, max operation 고려.</li>
+</ul>
+
+<h1 id="ablation-study-using-cifar-100">Ablation study using CIFAR-100</h1>
+
+<h2 id="dilation-value-and-reduction-ratio">Dilation value and Reduction ratio</h2>
+
+<ul>
+  <li>Dilation value와 Reduction ratio에 따른 성능 비교</li>
+  <li>Table 1 (a)</li>
+</ul>
+
+<h2 id="separate-or-combined-branches--combining-methods">Separate or Combined branches &amp; Combining methods</h2>
+
+<ul>
+  <li>두 attention branch 사용 방법에 따른 성능 비교</li>
+  <li>Table 1 (b)</li>
+</ul>
+
+<h2 id="comparison-with-placing-original-convblocks">Comparison with placing original convblocks</h2>
+
+<ul>
+  <li>BAM 사용 여부에 따른 성능 비교</li>
+  <li>Table 1 (c)</li>
+</ul>
+
+<p><img src="https://jjerry-k.github.io/public/img/bam/Untitled_2.png" alt="https://jjerry-k.github.io/public/img/bam/Untitled_2.png" /></p>
+
+<h2 id="bottleneck-the-efficient-point-to-place-bam">Bottleneck: The efficient point to place BAM</h2>
+
+<ul>
+  <li>BAM 사용 위치에 따른 성능 비교.</li>
+</ul>
+
+<p><img src="https://jjerry-k.github.io/public/img/bam/Untitled_3.png" alt="https://jjerry-k.github.io/public/img/bam/Untitled_3.png" /></p>
+
+<h1 id="result">Result</h1>
+
+<h2 id="classification-result-on-cifar-100-and-imagenet-1k">Classification Result on CIFAR-100 and ImageNet-1K</h2>
+
+<p><img src="https://jjerry-k.github.io/public/img/bam/Untitled_4.png" alt="https://jjerry-k.github.io/public/img/bam/Untitled_4.png" /></p>
+
+<h2 id="object-detection-on-ms-coco-and-voc-2007">Object Detection on MS COCO and VOC 2007</h2>
+
+<p><img src="https://jjerry-k.github.io/public/img/bam/Untitled_5.png" alt="https://jjerry-k.github.io/public/img/bam/Untitled_5.png" /></p>
+
+<h2 id="comparison-with-squeeze-and-excitation">Comparison with Squeeze-and-Excitation</h2>
+
+<p><img src="https://jjerry-k.github.io/public/img/bam/Untitled_6.png" alt="https://jjerry-k.github.io/public/img/bam/Untitled_6.png" /></p>
+
+<h3 id="ps">P.S</h3>
+
+<ul>
+  <li>Original Code가 있지만….논문과 다른 부분이 매우 많음.</li>
+</ul>
+
+    <article></h4>
+    <div class="post-more">
+      
+      <a href="/deeplearning/2020/04/29/BAM/#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
+      
+      <a href="/deeplearning/2020/04/29/BAM/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
+    </div>
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
       <a href="/deeplearning/2020/04/28/MobileNetV3/">
         Review: MobileNet V3
       </a>
@@ -359,7 +679,7 @@ URL: https://arxiv.org/abs/1905.02244</p>
   <li>
     <p>sigmoid → h-swish</p>
 
-    <script type="math/tex; mode=display">hard\text{-}swish(x) = x\frac{ReLU6(x + 3)}{6}</script>
+\[hard\text{-}swish(x) = x\frac{ReLU6(x + 3)}{6}\]
 
     <p><img src="https://jjerry-k.github.io/public/img/mobilev3/Untitled_2.png" alt="https://jjerry-k.github.io/public/img/mobilev3/Untitled_02.png" /></p>
   </li>
@@ -439,7 +759,7 @@ URL: https://arxiv.org/abs/1801.04381</p>
 <h1 id="preliminaries-discussion-and-intuition"><strong>Preliminaries, discussion and intuition</strong></h1>
 
 <ul>
-  <li>논문의 가장 큰 특징은 <code class="highlighter-rouge">Depthwise  Separable Convolution</code>, <code class="highlighter-rouge">Linear Bottlenecks</code>, <code class="highlighter-rouge">Inverted Residuals</code>.</li>
+  <li>논문의 가장 큰 특징은 <code class="language-plaintext highlighter-rouge">Depthwise  Separable Convolution</code>, <code class="language-plaintext highlighter-rouge">Linear Bottlenecks</code>, <code class="language-plaintext highlighter-rouge">Inverted Residuals</code>.</li>
 </ul>
 
 <h2 id="depthwiseseparableconvolutions"><strong>Depthwise Separable Convolutions</strong></h2>
@@ -452,7 +772,7 @@ URL: https://arxiv.org/abs/1801.04381</p>
 <h2 id="linear-bottlenecks"><strong>Linear Bottlenecks</strong></h2>
 
 <ul>
-  <li>MobileNetV1에서 computation 과 accuracy의 trade-off 를 비교하기 위해 <code class="highlighter-rouge">width multiplier parameter</code>를 사용.</li>
+  <li>MobileNetV1에서 computation 과 accuracy의 trade-off 를 비교하기 위해 <code class="language-plaintext highlighter-rouge">width multiplier parameter</code>를 사용.</li>
   <li>본 논문에선 1x1 Convolution 을 이용하여 dimension reduction 수행.</li>
 </ul>
 
@@ -548,12 +868,12 @@ URL: https://arxiv.org/abs/1801.04381</p>
 
 <h2 id="2-install-brew">2. Install brew</h2>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/usr/bin/ruby <span class="nt">-e</span> <span class="s2">"</span><span class="k">$(</span>curl <span class="nt">-fsSL</span> https://raw.githubusercontent.com/Homebrew/install/master/install<span class="k">)</span><span class="s2">"</span>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/usr/bin/ruby <span class="nt">-e</span> <span class="s2">"</span><span class="si">$(</span>curl <span class="nt">-fsSL</span> https://raw.githubusercontent.com/Homebrew/install/master/install<span class="si">)</span><span class="s2">"</span>
 </code></pre></div></div>
 
 <h2 id="3-install-oh-my-zsh">3. Install oh-my-zsh</h2>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sh <span class="nt">-c</span> <span class="s2">"</span><span class="k">$(</span>curl <span class="nt">-fsSL</span> https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh<span class="k">)</span><span class="s2">"</span>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sh <span class="nt">-c</span> <span class="s2">"</span><span class="si">$(</span>curl <span class="nt">-fsSL</span> https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh<span class="si">)</span><span class="s2">"</span>
 </code></pre></div></div>
 
 <h2 id="4-install-pyenv">4. Install pyenv</h2>
@@ -665,11 +985,11 @@ URL: https://arxiv.org/abs/1801.04381</p>
 <span class="c"># Set pyenv</span>
 <span class="nb">export </span><span class="nv">PYENV_ROOT</span><span class="o">=</span><span class="s2">"</span><span class="k">${</span><span class="nv">HOME</span><span class="k">}</span><span class="s2">/.pyenv"</span>
 <span class="nb">export </span><span class="nv">PATH</span><span class="o">=</span><span class="s2">"</span><span class="k">${</span><span class="nv">PYENV_ROOT</span><span class="k">}</span><span class="s2">bin:</span><span class="nv">$PATH</span><span class="s2">"</span>
-<span class="nb">eval</span> <span class="s2">"</span><span class="k">$(</span>pyenv init -<span class="k">)</span><span class="s2">"</span>
+<span class="nb">eval</span> <span class="s2">"</span><span class="si">$(</span>pyenv init -<span class="si">)</span><span class="s2">"</span>
 
 <span class="c"># &gt;&gt;&gt; conda initialize &gt;&gt;&gt;</span>
 <span class="c"># !! Contents within this block are managed by 'conda init' !!</span>
-<span class="nv">__conda_setup</span><span class="o">=</span><span class="s2">"</span><span class="k">$(</span><span class="s1">'/Users/jerry/.pyenv/versions/miniconda3-latest/bin/conda'</span> <span class="s1">'shell.zsh'</span> <span class="s1">'hook'</span> 2&gt; /dev/null<span class="k">)</span><span class="s2">"</span>
+<span class="nv">__conda_setup</span><span class="o">=</span><span class="s2">"</span><span class="si">$(</span><span class="s1">'/Users/jerry/.pyenv/versions/miniconda3-latest/bin/conda'</span> <span class="s1">'shell.zsh'</span> <span class="s1">'hook'</span> 2&gt; /dev/null<span class="si">)</span><span class="s2">"</span>
 <span class="k">if</span> <span class="o">[</span> <span class="nv">$?</span> <span class="nt">-eq</span> 0 <span class="o">]</span><span class="p">;</span> <span class="k">then
     </span><span class="nb">eval</span> <span class="s2">"</span><span class="nv">$__conda_setup</span><span class="s2">"</span>
 <span class="k">else
@@ -747,208 +1067,6 @@ conda deactivate
       <a href="/living/2020/04/26/macbook-setup/#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
       
       <a href="/living/2020/04/26/macbook-setup/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
-    </div>
-  </div>
-  
-  <div class="post">
-    <h1 class="post-title">
-      <a href="/living/2020/04/20/rpi_transmission/">
-        Raspberry pi 4 에 Transmission 세팅하기
-      </a>
-    </h1>
-
-    <span class="post-date">20 Apr 2020</span>
-     | 
-    
-    <a href="/blog/tags/#hardware" class="post-tag">Hardware</a>
-    
-    
-
-    <h4 style="font-weight: 400; line-height: 1.8;"><article>
-      <h1 id="raspberry-pi-4--transmission-container">Raspberry pi 4 &amp; Transmission Container</h1>
-
-<hr />
-
-<h1 id="1-docker-install">1. Docker Install</h1>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl <span class="nt">-fsSL</span> get.docker.com <span class="nt">-o</span> get-docker.sh
-
-<span class="nb">sudo </span>bash get-docker.sh
-
-<span class="nb">sudo </span>usermod <span class="nt">-aG</span> docker pi
-</code></pre></div></div>
-<p>그리고 재부팅</p>
-
-<h1 id="2-pull-transmission-image">2. Pull Transmission Image</h1>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker pull linuxserver/transmission
-</code></pre></div></div>
-
-<h1 id="3-create-transmission-container">3. Create Transmission Container</h1>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker create <span class="se">\</span>
-    <span class="nt">--name</span><span class="o">=</span>transmission <span class="se">\</span>
-    <span class="nt">-e</span> <span class="nv">PUID</span><span class="o">=</span>1000 <span class="se">\</span>
-    <span class="nt">-e</span> <span class="nv">PGID</span><span class="o">=</span>1000 <span class="se">\</span>
-    <span class="nt">-e</span> <span class="nv">TZ</span><span class="o">=</span>Asia/Seoul <span class="se">\</span>
-    <span class="nt">-e</span> <span class="nv">USER</span><span class="o">={</span>username<span class="o">}</span> <span class="se">\</span>
-    <span class="nt">-e</span> <span class="nv">PASS</span><span class="o">={</span>password<span class="o">}</span> <span class="se">\</span>
-    <span class="nt">-p</span> 9091:9091 <span class="se">\</span>
-    <span class="nt">-p</span> 51413:51413 <span class="se">\</span>
-    <span class="nt">-p</span> 51413:51413/udp <span class="se">\</span>
-    <span class="nt">-v</span> <span class="o">{</span>path to data<span class="o">}</span>:/config <span class="se">\</span>
-    <span class="nt">-v</span> <span class="o">{</span>path to downloads<span class="o">}</span>:/downloads <span class="se">\</span>
-    <span class="nt">-v</span> <span class="o">{</span>path to watch folder<span class="o">}</span>:/watch <span class="se">\</span>
-    <span class="nt">--restart</span> unless-stopped <span class="se">\</span>
-    linuxserver/transmission
-</code></pre></div></div>
-
-<h1 id="4-run-container">4. Run Container</h1>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker start transmission
-</code></pre></div></div>
-
-    <article></h4>
-    <div class="post-more">
-      
-      <a href="/living/2020/04/20/rpi_transmission/#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
-      
-      <a href="/living/2020/04/20/rpi_transmission/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
-    </div>
-  </div>
-  
-  <div class="post">
-    <h1 class="post-title">
-      <a href="/deeplearning/2020/03/31/coral/">
-        Google Coral USB 사용기
-      </a>
-    </h1>
-
-    <span class="post-date">31 Mar 2020</span>
-     | 
-    
-    <a href="/blog/tags/#tools" class="post-tag">Tools</a>
-    
-    
-
-    <h4 style="font-weight: 400; line-height: 1.8;"><article>
-      <h1 id="raspberry-pi-4--google-coral-usb-accelerator">Raspberry pi 4 &amp; Google Coral USB Accelerator</h1>
-
-<p>평소에 라즈베리파이 4를 NAS로 사용하고 있었습니다.  <a href="https://jjerry-k.github.io/living/2018/07/10/Raspberry-Mini-PC/">이런 느낌으로..</a></p>
-
-<p>하지만…항상 마음 속에는 “흠….라즈베리파이로 딥러닝을 돌려보고 싶다…” 라는 생각을 하고 있었죠.</p>
-
-<p>평소와 같이 <del>평화로운 중고나라</del> 를 탐색하고 있었습니다. (모니터가 사고 싶어서 ….)</p>
-
-<p>근데 . . 갑자기 . . ? 왜 인지 모르겠지만 Google Coral USB Accelerator 를 검색하고 싶더군요.</p>
-
-<p>그래서 바로 검색을 했고 7마넌(나름 저렴)에 올라와있길래 일요일에 주문을 했습니다.</p>
-
-<p>그리고 오늘 집에 도착을 했죠.</p>
-
-<p>이제 사용을 해보려고 합니다.</p>
-
-<p>준비물을 소개하도록 하죠.</p>
-
-<h1 id="준비물">준비물</h1>
-
-<ul>
-  <li>라즈베리 파이</li>
-  <li>Coral Accelerator</li>
-  <li>Webcam</li>
-</ul>
-
-<p><img src="https://jjerry-k.github.io/public/img/coral/01.png" alt="01.jpg" /></p>
-
-<h1 id="step-1-연결">Step 1. 연결</h1>
-
-<p><img src="https://jjerry-k.github.io/public/img/coral/02.png" alt="02.jpg" /></p>
-
-<p><img src="https://jjerry-k.github.io/public/img/coral/03.png" alt="03.jpg" /></p>
-
-<p>모두 연결 후 라즈베리파이를 켜면 위 사진과 같이 USB에 흰색 불이 들어옵니다.</p>
-
-<h1 id="step-2-라즈베리파이-세팅">Step 2. 라즈베리파이 세팅</h1>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#!/bin/bash</span>
-
-<span class="nb">echo</span> <span class="s2">"deb https://packages.cloud.google.com/apt coral-edgetpu-stable main"</span> | <span class="nb">sudo tee</span> /etc/apt/sources.list.d/coral-edgetpu.list
-
-curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | <span class="nb">sudo </span>apt-key add -
-
-<span class="nb">sudo </span>apt-get update
-
-<span class="nb">sudo </span>apt-get <span class="nb">install </span>libedgetpu1-std
-
-<span class="c"># Check Your Platform </span>
-<span class="c"># https://www.tensorflow.org/lite/guide/python</span>
-<span class="nb">sudo </span>pip3 <span class="nb">install </span>https://dl.google.com/coral/python/tflite_runtime-2.1.0.post1-cp37-cp37m-linux_armv7l.whl
-
-<span class="c">#!/bin/bash</span>
-
-git clone https://github.com/google-coral/examples-camera.git
-
-<span class="nb">cd </span>examples-camera
-
-sh download_models.sh
-</code></pre></div></div>
-
-<p><code class="highlighter-rouge">download_models.sh</code>를 실행하시면 다음과 같이  <code class="highlighter-rouge">all_models</code>라는 디렉토리 안에 각 데이터셋 별 labelmap.txt와 학습된 모델의 tflite 파일이 있습니다.</p>
-
-<p>여기서 밑줄 친 파일을 이용해서 object detection 을 해볼겁니다! 일단 그 다음 세팅으로 넘어가죠.</p>
-
-<p><img src="https://jjerry-k.github.io/public/img/coral/04.png" alt="04.png" /></p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#!/bin/bash</span>
-
-<span class="nb">cd </span>opencv
-
-sh install_requirements.sh
-</code></pre></div></div>
-
-<p>opencv를 이용한 스크립트를 사용하기 위해 필요한 것들을 설치합니다.</p>
-
-<h1 id="step-3-스크립트-실행">Step 3. 스크립트 실행</h1>
-
-<p>이제 opencv 디렉토리 안에 detect.py를 실행 시켜줄건데요. 옵션이 몇개 있습니다. 한번 살펴보도록 하죠.</p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>usage: detect.py [-h] [--model MODEL] [--labels LABELS] [--top_k TOP_K]
-                 [--camera_idx CAMERA_IDX] [--threshold THRESHOLD]
-
-optional arguments:
-  -h, --help            show this help message and exit
-  --model MODEL         .tflite model path
-  --labels LABELS       label file path
-  --top_k TOP_K         number of categories with highest score to display
-  --camera_idx CAMERA_IDX
-                        Index of which video source to use.
-  --threshold THRESHOLD
-                        classifier score threshold
-</code></pre></div></div>
-
-<p>한번 다음과 같이 실행을 해보겠습니다.</p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python detect.py \
---model ../all_models/mobilenet_ssd_v2_face_quant_postprocess_edgetpu.tflite \
---labels ../all_models/coco_labels.txt \
---top_k 3 \
---threshold 0.7
-</code></pre></div></div>
-
-<p><img src="https://jjerry-k.github.io/public/img/coral/05.png" alt="05.png" /></p>
-
-<p>막 빠를 줄 알았는데 Webcam 의 한계라 그런지… FPS가 낮네요..</p>
-
-<p>추후에 카메라 모듈을 이용해서 해봐야겠습니다.</p>
-
-<p>그럼 간단한 이용기를 마치겠습니다.</p>
-
-    <article></h4>
-    <div class="post-more">
-      
-      <a href="/deeplearning/2020/03/31/coral/#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
-      
-      <a href="/deeplearning/2020/03/31/coral/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
     </div>
   </div>
   

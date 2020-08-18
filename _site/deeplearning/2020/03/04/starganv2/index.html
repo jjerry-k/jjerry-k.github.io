@@ -2,57 +2,88 @@
 <html lang="en-us">
   <head>
   <head>
-  <link href="http://gmpg.org/xfn/11" rel="profile">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta http-equiv="content-type" content="text/html; charset=utf-8">
-
-  <!-- Enable responsiveness on mobile devices-->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-
-  <title>
+    <link href="http://gmpg.org/xfn/11" rel="profile">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  
+    <!-- Enable responsiveness on mobile devices-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+  
+    <title>
+      
+        Review: StarGAN v2 &middot; Jerry's Blog
+      
+    </title>
+  
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
+    <link rel="stylesheet" href="/public/css/main.css">
+  
+    <!-- Icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-precomposed.png">
+    <link rel="shortcut icon" href="/public/favicon.ico">
+  
+    <!-- RSS -->
+    <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+  
+    <!-- scroll -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+      $( window ).scroll( function() {
+        if ( $( this ).scrollTop() > 500 ) {
+          $( '.top' ).fadeIn();
+        } else {
+          $( '.top' ).fadeOut();
+        }
+      } );
+      $( '.top' ).click( function() {
+        $( 'html, body' ).stop().animate( { scrollTop : 0 }, 100);
+        return false;
+      } );
+    </script>
     
-      Review: StarGAN v2 &middot; Jerry's Blog
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+      (absbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-1054696837285307",
+          enable_page_level_ads: true
+      });
+    </script>
     
-  </title>
-
-  <!-- CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
-  <link rel="stylesheet" href="/public/css/main.css">
-
-  <!-- Icons -->
-  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-precomposed.png">
-  <link rel="shortcut icon" href="/public/favicon.ico">
-
-  <!-- RSS -->
-  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
-
-  <!-- scroll -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script>
-    $( window ).scroll( function() {
-      if ( $( this ).scrollTop() > 500 ) {
-        $( '.top' ).fadeIn();
-      } else {
-        $( '.top' ).fadeOut();
-      }
-    } );
-    $( '.top' ).click( function() {
-      $( 'html, body' ).stop().animate( { scrollTop : 0 }, 100);
-      return false;
-    } );
-  </script>
-  
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-  <script>
-    (absbygoogle = window.adsbygoogle || []).push({
-        google_ad_client: "ca-pub-1054696837285307",
-        enable_page_level_ads: true
-    });
-  </script>
-  
-  
+    <!-- 
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        //jax: ["input/TeX", "output/HTML-CSS"],
+        TeX: {
+          equationNumbers: {
+            autoNumber: "AMS"
+          }
+        },
+        tex2jax: {
+          inlineMath: [ ['$', '$'] ],
+          displayMath: [ ['$$', '$$'] ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+        //,
+        //displayAlign: "left",
+        //displayIndent: "2em"
+      });
+      MathJax.Hub.Register.MessageHook("Math Processing Error",function (message) {
+        alert("Math Processing Error: "+message[1]);
+      });
+    MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
+        alert("Math Processing Error: "+message[1]);
+      });
+    </script>
+    <script type="text/javascript" async
+      src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript">
+    </script>
+     -->
+    
+    
   <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
       //jax: ["input/TeX", "output/HTML-CSS"],
@@ -69,17 +100,21 @@
   </script>
   <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
   
-  
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <script src="/dest/simple-jekyll-search.js" type="text/javascript"></script>
-  <script type="text/javascript">
-  $(document).ready(function(){
-    document.search.searchinput.focus();
-  });
-  </script>
-</head>
 
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="/dest/simple-jekyll-search.js" type="text/javascript"></script>
+    <script type="text/javascript">
+    $(document).ready(function(){
+      document.search.searchinput.focus();
+    });
+    </script>
+  </head>
+  
   <style>blockquote {font-size: 1em; line-height: 1.4}</style>
+  
+  <!-- New line Start-->
+  <!--  -->
+  <!-- New line End -->
   </head>
   <body>
 
@@ -318,30 +353,30 @@ URL: https://arxiv.org/abs/1912.01865</p>
 
 <ul>
   <li>4개의 Network 로 구성.</li>
-  <li>Generator (<code class="highlighter-rouge">G</code>)
+  <li>Generator (<code class="language-plaintext highlighter-rouge">G</code>)
     <ul>
-      <li>Image <code class="highlighter-rouge">x</code>와 Style code <code class="highlighter-rouge">s</code>를 입력으로 받아 새로운 영상을 생성.</li>
+      <li>Image <code class="language-plaintext highlighter-rouge">x</code>와 Style code <code class="language-plaintext highlighter-rouge">s</code>를 입력으로 받아 새로운 영상을 생성.</li>
       <li><a href="https://arxiv.org/abs/1703.06868">adaptive instance normalization (AdaIN)</a> 사용.</li>
     </ul>
 
     <p><img src="https://jjerry-k.github.io/public/img/starganv2/Untitled_2.png" alt="https://jjerry-k.github.io/public/img/starganv2/Untitled_2.png" /></p>
   </li>
-  <li>Mapping network (<code class="highlighter-rouge">F</code>)
+  <li>Mapping network (<code class="language-plaintext highlighter-rouge">F</code>)
     <ul>
-      <li>Latent code <code class="highlighter-rouge">z</code>와 Domain code <code class="highlighter-rouge">y</code>를 입력으로 받아 Style code <code class="highlighter-rouge">s</code>생성.</li>
+      <li>Latent code <code class="language-plaintext highlighter-rouge">z</code>와 Domain code <code class="language-plaintext highlighter-rouge">y</code>를 입력으로 받아 Style code <code class="language-plaintext highlighter-rouge">s</code>생성.</li>
       <li>Multi Layer Perceptron 구조.</li>
     </ul>
 
     <p><img src="https://jjerry-k.github.io/public/img/starganv2/Untitled_3.png" alt="https://jjerry-k.github.io/public/img/starganv2/Untitled_3.png" /></p>
   </li>
-  <li>Style encoder (<code class="highlighter-rouge">E</code>)
+  <li>Style encoder (<code class="language-plaintext highlighter-rouge">E</code>)
     <ul>
-      <li>Image <code class="highlighter-rouge">x</code>와 Domain code <code class="highlighter-rouge">y</code>를 입력으로 받아 <code class="highlighter-rouge">x</code>에서 Style code <code class="highlighter-rouge">s</code>를 추출.</li>
+      <li>Image <code class="language-plaintext highlighter-rouge">x</code>와 Domain code <code class="language-plaintext highlighter-rouge">y</code>를 입력으로 받아 <code class="language-plaintext highlighter-rouge">x</code>에서 Style code <code class="language-plaintext highlighter-rouge">s</code>를 추출.</li>
     </ul>
   </li>
-  <li>Discriminator (<code class="highlighter-rouge">D</code>)
+  <li>Discriminator (<code class="language-plaintext highlighter-rouge">D</code>)
     <ul>
-      <li>Image <code class="highlighter-rouge">x</code>를 입력으로 받아 Domain code <code class="highlighter-rouge">y</code>와 Real/Fake 분류.</li>
+      <li>Image <code class="language-plaintext highlighter-rouge">x</code>를 입력으로 받아 Domain code <code class="language-plaintext highlighter-rouge">y</code>와 Real/Fake 분류.</li>
     </ul>
 
     <p><img src="https://jjerry-k.github.io/public/img/starganv2/Untitled_4.png" alt="https://jjerry-k.github.io/public/img/starganv2/Untitled_4.png" /></p>
@@ -358,46 +393,46 @@ URL: https://arxiv.org/abs/1912.01865</p>
   </li>
 </ul>
 
-<script type="math/tex; mode=display">\mathcal{L}_{adv}=\mathbb{E}_{\mathrm{x},y}[\log{D_y}(\mathrm{x})] + \mathbb{E}_{\mathrm{x}, \tilde{y}, \mathrm{z}}[\log{(1-D_{\tilde{y}}(G(\mathrm{x}, \tilde{\mathrm{s}})))}</script>
+\[\mathcal{L}_{adv}=\mathbb{E}_{\mathrm{x},y}[\log{D_y}(\mathrm{x})] + \mathbb{E}_{\mathrm{x}, \tilde{y}, \mathrm{z}}[\log{(1-D_{\tilde{y}}(G(\mathrm{x}, \tilde{\mathrm{s}})))}\]
 
 <ul>
   <li>Style reconstruction
     <ul>
-      <li><code class="highlighter-rouge">G(x, s)</code> 를 Style encoder <code class="highlighter-rouge">E</code> 에 넣어 <code class="highlighter-rouge">s</code> 추출 후 입력 <code class="highlighter-rouge">s</code>와 비교</li>
+      <li><code class="language-plaintext highlighter-rouge">G(x, s)</code> 를 Style encoder <code class="language-plaintext highlighter-rouge">E</code> 에 넣어 <code class="language-plaintext highlighter-rouge">s</code> 추출 후 입력 <code class="language-plaintext highlighter-rouge">s</code>와 비교</li>
     </ul>
   </li>
 </ul>
 
-<script type="math/tex; mode=display">\mathcal{L}_{sty}=\mathbb{E}_{\mathrm{x},\tilde{y}, \mathrm{z}}[\parallel\tilde{\mathrm{s}}-E_{\tilde{y}}(G(\mathrm{x}, \tilde{\mathrm{s}}))\parallel_1]</script>
+\[\mathcal{L}_{sty}=\mathbb{E}_{\mathrm{x},\tilde{y}, \mathrm{z}}[\parallel\tilde{\mathrm{s}}-E_{\tilde{y}}(G(\mathrm{x}, \tilde{\mathrm{s}}))\parallel_1]\]
 
 <ul>
   <li>Style diversification
     <ul>
-      <li><code class="highlighter-rouge">G</code>가 다양한 Image를 생성할 수 있도록 Regularization 하는 역할.</li>
-      <li><code class="highlighter-rouge">z1, z2</code> 가 <code class="highlighter-rouge">F</code>에 의해 생성된 <code class="highlighter-rouge">s1, s2</code>와 입력 <code class="highlighter-rouge">x</code>를 <code class="highlighter-rouge">G</code>의 입력으로 새로운 영상 생성.</li>
+      <li><code class="language-plaintext highlighter-rouge">G</code>가 다양한 Image를 생성할 수 있도록 Regularization 하는 역할.</li>
+      <li><code class="language-plaintext highlighter-rouge">z1, z2</code> 가 <code class="language-plaintext highlighter-rouge">F</code>에 의해 생성된 <code class="language-plaintext highlighter-rouge">s1, s2</code>와 입력 <code class="language-plaintext highlighter-rouge">x</code>를 <code class="language-plaintext highlighter-rouge">G</code>의 입력으로 새로운 영상 생성.</li>
       <li>L1 Norm 계산.</li>
     </ul>
   </li>
 </ul>
 
-<script type="math/tex; mode=display">\mathcal{L}_{ds}=\mathbb{E}_{\mathrm{x},\tilde{y}, \mathrm{z}_1, \mathrm{z}_2}[\parallel G(\mathrm{x}, \tilde{\mathrm{s}}_1) - G(\mathrm{x}, \tilde{\mathrm{s}}_2) \parallel_1]</script>
+\[\mathcal{L}_{ds}=\mathbb{E}_{\mathrm{x},\tilde{y}, \mathrm{z}_1, \mathrm{z}_2}[\parallel G(\mathrm{x}, \tilde{\mathrm{s}}_1) - G(\mathrm{x}, \tilde{\mathrm{s}}_2) \parallel_1]\]
 
 <ul>
   <li>Preserving source characteristics
     <ul>
       <li>Cycle GAN 의 cycle consistency loss.</li>
-      <li>target domain의 style 을 적용한 영상을 다시 <code class="highlighter-rouge">E(x)</code>로 추출된 s를 이용하여 <code class="highlighter-rouge">x'</code>로 reconstruction 한 후 L1 Norm 계산.</li>
+      <li>target domain의 style 을 적용한 영상을 다시 <code class="language-plaintext highlighter-rouge">E(x)</code>로 추출된 s를 이용하여 <code class="language-plaintext highlighter-rouge">x'</code>로 reconstruction 한 후 L1 Norm 계산.</li>
     </ul>
   </li>
 </ul>
 
-<script type="math/tex; mode=display">\mathcal{L}_{cyc}=\mathbb{E}_{\mathrm{x}, y, \tilde{y}, \mathrm{z}}[\parallel \mathrm{x} - G(G(\mathrm{x}, \tilde{\mathrm{s}}), \hat{\mathrm{s}})\parallel_1]</script>
+\[\mathcal{L}_{cyc}=\mathbb{E}_{\mathrm{x}, y, \tilde{y}, \mathrm{z}}[\parallel \mathrm{x} - G(G(\mathrm{x}, \tilde{\mathrm{s}}), \hat{\mathrm{s}})\parallel_1]\]
 
 <ul>
   <li>
     <p>Full objective</p>
 
-    <script type="math/tex; mode=display">\mathcal{L}_D = -\mathcal{L}_{adv} \\ \mathcal{L}_{F, G, E}=\mathcal{L}_{adv} + \lambda_{sty} \mathcal{L}_{sty} - \lambda_{ds} \mathcal{L}_{ds} + \lambda_{cyc} \mathcal{L}_{cyc}</script>
+\[\mathcal{L}_D = -\mathcal{L}_{adv} \\ \mathcal{L}_{F, G, E}=\mathcal{L}_{adv} + \lambda_{sty} \mathcal{L}_{sty} - \lambda_{ds} \mathcal{L}_{ds} + \lambda_{cyc} \mathcal{L}_{cyc}\]
 
     <ul>
       <li>About $\lambda$</li>

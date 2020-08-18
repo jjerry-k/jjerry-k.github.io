@@ -2,57 +2,88 @@
 <html lang="en-us">
   <head>
   <head>
-  <link href="http://gmpg.org/xfn/11" rel="profile">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta http-equiv="content-type" content="text/html; charset=utf-8">
-
-  <!-- Enable responsiveness on mobile devices-->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-
-  <title>
+    <link href="http://gmpg.org/xfn/11" rel="profile">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  
+    <!-- Enable responsiveness on mobile devices-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+  
+    <title>
+      
+        Neptune...? 은 또 뭐여.. &middot; Jerry's Blog
+      
+    </title>
+  
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
+    <link rel="stylesheet" href="/public/css/main.css">
+  
+    <!-- Icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-precomposed.png">
+    <link rel="shortcut icon" href="/public/favicon.ico">
+  
+    <!-- RSS -->
+    <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+  
+    <!-- scroll -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+      $( window ).scroll( function() {
+        if ( $( this ).scrollTop() > 500 ) {
+          $( '.top' ).fadeIn();
+        } else {
+          $( '.top' ).fadeOut();
+        }
+      } );
+      $( '.top' ).click( function() {
+        $( 'html, body' ).stop().animate( { scrollTop : 0 }, 100);
+        return false;
+      } );
+    </script>
     
-      Neptune...? 은 또 뭐여.. &middot; Jerry's Blog
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+      (absbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-1054696837285307",
+          enable_page_level_ads: true
+      });
+    </script>
     
-  </title>
-
-  <!-- CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
-  <link rel="stylesheet" href="/public/css/main.css">
-
-  <!-- Icons -->
-  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-precomposed.png">
-  <link rel="shortcut icon" href="/public/favicon.ico">
-
-  <!-- RSS -->
-  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
-
-  <!-- scroll -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script>
-    $( window ).scroll( function() {
-      if ( $( this ).scrollTop() > 500 ) {
-        $( '.top' ).fadeIn();
-      } else {
-        $( '.top' ).fadeOut();
-      }
-    } );
-    $( '.top' ).click( function() {
-      $( 'html, body' ).stop().animate( { scrollTop : 0 }, 100);
-      return false;
-    } );
-  </script>
-  
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-  <script>
-    (absbygoogle = window.adsbygoogle || []).push({
-        google_ad_client: "ca-pub-1054696837285307",
-        enable_page_level_ads: true
-    });
-  </script>
-  
-  
+    <!-- 
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        //jax: ["input/TeX", "output/HTML-CSS"],
+        TeX: {
+          equationNumbers: {
+            autoNumber: "AMS"
+          }
+        },
+        tex2jax: {
+          inlineMath: [ ['$', '$'] ],
+          displayMath: [ ['$$', '$$'] ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+        //,
+        //displayAlign: "left",
+        //displayIndent: "2em"
+      });
+      MathJax.Hub.Register.MessageHook("Math Processing Error",function (message) {
+        alert("Math Processing Error: "+message[1]);
+      });
+    MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
+        alert("Math Processing Error: "+message[1]);
+      });
+    </script>
+    <script type="text/javascript" async
+      src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript">
+    </script>
+     -->
+    
+    
   <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
       //jax: ["input/TeX", "output/HTML-CSS"],
@@ -69,17 +100,21 @@
   </script>
   <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
   
-  
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <script src="/dest/simple-jekyll-search.js" type="text/javascript"></script>
-  <script type="text/javascript">
-  $(document).ready(function(){
-    document.search.searchinput.focus();
-  });
-  </script>
-</head>
 
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="/dest/simple-jekyll-search.js" type="text/javascript"></script>
+    <script type="text/javascript">
+    $(document).ready(function(){
+      document.search.searchinput.focus();
+    });
+    </script>
+  </head>
+  
   <style>blockquote {font-size: 1em; line-height: 1.4}</style>
+  
+  <!-- New line Start-->
+  <!--  -->
+  <!-- New line End -->
   </head>
   <body>
 
@@ -335,7 +370,7 @@ conda <span class="nb">install </span>psutil matplotlib tensorflow-gpu <span cla
 
 <p><img src="https://github.com/jjerry-k/jjerry-k.github.io/blob/master/public/img/neptune/Untitled_1.png?raw=true" alt="https://github.com/jjerry-k/jjerry-k.github.io/blob/master/public/img/neptune/Untitled_1.png" /></p>
 
-<p>여기까지 하면 세팅은 끝납니다. 그 이후에 <code class="highlighter-rouge">Run script</code>, <code class="highlighter-rouge">Result in UI</code> 부분은 하고 싶으신 분만 해보세요!</p>
+<p>여기까지 하면 세팅은 끝납니다. 그 이후에 <code class="language-plaintext highlighter-rouge">Run script</code>, <code class="language-plaintext highlighter-rouge">Result in UI</code> 부분은 하고 싶으신 분만 해보세요!</p>
 
 <h2 id="3-mnist-를-이용한-실험">3. Mnist 를 이용한 실험</h2>
 
@@ -352,19 +387,19 @@ conda <span class="nb">install </span>psutil matplotlib tensorflow-gpu <span cla
 <span class="kn">from</span> <span class="nn">tensorflow.keras</span> <span class="kn">import</span> <span class="n">models</span><span class="p">,</span> <span class="n">layers</span><span class="p">,</span> <span class="n">optimizers</span><span class="p">,</span> <span class="n">callbacks</span><span class="p">,</span> <span class="n">datasets</span>
 
 <span class="c1"># For Efficiency
-</span><span class="n">gpus</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">experimental</span><span class="o">.</span><span class="n">list_physical_devices</span><span class="p">(</span><span class="s">'GPU'</span><span class="p">)</span>
+</span><span class="n">gpus</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">config</span><span class="p">.</span><span class="n">experimental</span><span class="p">.</span><span class="n">list_physical_devices</span><span class="p">(</span><span class="s">'GPU'</span><span class="p">)</span>
 <span class="k">if</span> <span class="n">gpus</span><span class="p">:</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="k">for</span> <span class="n">gpu</span> <span class="ow">in</span> <span class="n">gpus</span><span class="p">:</span>
-            <span class="n">tf</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">experimental</span><span class="o">.</span><span class="n">set_memory_growth</span><span class="p">(</span><span class="n">gpu</span><span class="p">,</span> <span class="bp">True</span><span class="p">)</span>
-        <span class="n">logical_gpus</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">experimental</span><span class="o">.</span><span class="n">list_logical_devices</span><span class="p">(</span><span class="s">'GPU'</span><span class="p">)</span>
+            <span class="n">tf</span><span class="p">.</span><span class="n">config</span><span class="p">.</span><span class="n">experimental</span><span class="p">.</span><span class="n">set_memory_growth</span><span class="p">(</span><span class="n">gpu</span><span class="p">,</span> <span class="bp">True</span><span class="p">)</span>
+        <span class="n">logical_gpus</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">config</span><span class="p">.</span><span class="n">experimental</span><span class="p">.</span><span class="n">list_logical_devices</span><span class="p">(</span><span class="s">'GPU'</span><span class="p">)</span>
         <span class="k">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">gpus</span><span class="p">),</span> <span class="s">"Physical GPUs,"</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">logical_gpus</span><span class="p">),</span> <span class="s">"Logical GPUs"</span><span class="p">)</span>
     <span class="k">except</span> <span class="nb">RuntimeError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
         <span class="k">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
         
     
 <span class="c1"># select project
-</span><span class="n">neptune</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="s">'jjerry-k/mnist'</span><span class="p">)</span>
+</span><span class="n">neptune</span><span class="p">.</span><span class="n">init</span><span class="p">(</span><span class="s">'jjerry-k/mnist'</span><span class="p">)</span>
 
 <span class="c1"># Define parameters
 </span><span class="n">PARAMS</span> <span class="o">=</span> <span class="p">{</span><span class="s">'batch_size'</span><span class="p">:</span> <span class="mi">64</span><span class="p">,</span>
@@ -376,99 +411,99 @@ conda <span class="nb">install </span>psutil matplotlib tensorflow-gpu <span cla
           <span class="p">}</span>
 
 <span class="c1"># Create experiment
-</span><span class="n">neptune</span><span class="o">.</span><span class="n">create_experiment</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s">'classification_example'</span><span class="p">,</span>
+</span><span class="n">neptune</span><span class="p">.</span><span class="n">create_experiment</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s">'classification_example'</span><span class="p">,</span>
                           <span class="n">tags</span><span class="o">=</span><span class="p">[</span><span class="s">'classification'</span><span class="p">,</span> <span class="s">'MNIST'</span><span class="p">],</span>
                           <span class="n">params</span><span class="o">=</span><span class="n">PARAMS</span><span class="p">)</span>
 
 <span class="c1"># Dataset
-</span><span class="n">mnist</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">mnist</span>
-<span class="p">(</span><span class="n">train_images</span><span class="p">,</span> <span class="n">train_labels</span><span class="p">),</span> <span class="p">(</span><span class="n">test_images</span><span class="p">,</span> <span class="n">test_labels</span><span class="p">)</span> <span class="o">=</span> <span class="n">mnist</span><span class="o">.</span><span class="n">load_data</span><span class="p">()</span>
+</span><span class="n">mnist</span> <span class="o">=</span> <span class="n">datasets</span><span class="p">.</span><span class="n">mnist</span>
+<span class="p">(</span><span class="n">train_images</span><span class="p">,</span> <span class="n">train_labels</span><span class="p">),</span> <span class="p">(</span><span class="n">test_images</span><span class="p">,</span> <span class="n">test_labels</span><span class="p">)</span> <span class="o">=</span> <span class="n">mnist</span><span class="p">.</span><span class="n">load_data</span><span class="p">()</span>
 <span class="n">train_images</span> <span class="o">=</span> <span class="n">train_images</span> <span class="o">/</span> <span class="mf">255.0</span>
 <span class="n">test_images</span> <span class="o">=</span> <span class="n">test_images</span> <span class="o">/</span> <span class="mf">255.0</span>
 
 <span class="n">class_names</span> <span class="o">=</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)]</span>
 
-<span class="n">neptune</span><span class="o">.</span><span class="n">set_property</span><span class="p">(</span><span class="s">'class_names'</span><span class="p">,</span> <span class="n">class_names</span><span class="p">)</span>
+<span class="n">neptune</span><span class="p">.</span><span class="n">set_property</span><span class="p">(</span><span class="s">'class_names'</span><span class="p">,</span> <span class="n">class_names</span><span class="p">)</span>
 
 <span class="k">for</span> <span class="n">j</span><span class="p">,</span> <span class="n">class_name</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">class_names</span><span class="p">):</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
-    <span class="n">label_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">train_labels</span> <span class="o">==</span> <span class="n">j</span><span class="p">)</span>
+    <span class="n">plt</span><span class="p">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+    <span class="n">label_</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">where</span><span class="p">(</span><span class="n">train_labels</span> <span class="o">==</span> <span class="n">j</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">9</span><span class="p">):</span>
-        <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
-        <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">([])</span>
-        <span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">([])</span>
-        <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>
-        <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">train_images</span><span class="p">[</span><span class="n">label_</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">i</span><span class="p">]],</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">binary</span><span class="p">)</span>
-        <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="n">class_names</span><span class="p">[</span><span class="n">j</span><span class="p">])</span>
-    <span class="n">neptune</span><span class="o">.</span><span class="n">log_image</span><span class="p">(</span><span class="s">'example_images'</span><span class="p">,</span> <span class="n">plt</span><span class="o">.</span><span class="n">gcf</span><span class="p">())</span>
+        <span class="n">plt</span><span class="p">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">plt</span><span class="p">.</span><span class="n">xticks</span><span class="p">([])</span>
+        <span class="n">plt</span><span class="p">.</span><span class="n">yticks</span><span class="p">([])</span>
+        <span class="n">plt</span><span class="p">.</span><span class="n">grid</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>
+        <span class="n">plt</span><span class="p">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">train_images</span><span class="p">[</span><span class="n">label_</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">i</span><span class="p">]],</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="p">.</span><span class="n">cm</span><span class="p">.</span><span class="n">binary</span><span class="p">)</span>
+        <span class="n">plt</span><span class="p">.</span><span class="n">xlabel</span><span class="p">(</span><span class="n">class_names</span><span class="p">[</span><span class="n">j</span><span class="p">])</span>
+    <span class="n">neptune</span><span class="p">.</span><span class="n">log_image</span><span class="p">(</span><span class="s">'example_images'</span><span class="p">,</span> <span class="n">plt</span><span class="p">.</span><span class="n">gcf</span><span class="p">())</span>
 
 <span class="k">def</span> <span class="nf">lr_scheduler</span><span class="p">(</span><span class="n">epoch</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">epoch</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">:</span>
         <span class="n">new_lr</span> <span class="o">=</span> <span class="n">PARAMS</span><span class="p">[</span><span class="s">'learning_rate'</span><span class="p">]</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="n">new_lr</span> <span class="o">=</span> <span class="n">PARAMS</span><span class="p">[</span><span class="s">'learning_rate'</span><span class="p">]</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="mf">0.1</span> <span class="o">*</span> <span class="p">((</span><span class="n">epoch</span><span class="o">//</span><span class="mi">50</span><span class="p">)</span><span class="o">*</span><span class="mi">50</span> <span class="o">-</span> <span class="n">epoch</span><span class="p">))</span>
+        <span class="n">new_lr</span> <span class="o">=</span> <span class="n">PARAMS</span><span class="p">[</span><span class="s">'learning_rate'</span><span class="p">]</span> <span class="o">*</span> <span class="n">np</span><span class="p">.</span><span class="n">exp</span><span class="p">(</span><span class="mf">0.1</span> <span class="o">*</span> <span class="p">((</span><span class="n">epoch</span><span class="o">//</span><span class="mi">50</span><span class="p">)</span><span class="o">*</span><span class="mi">50</span> <span class="o">-</span> <span class="n">epoch</span><span class="p">))</span>
 
-    <span class="n">neptune</span><span class="o">.</span><span class="n">log_metric</span><span class="p">(</span><span class="s">'learning_rate'</span><span class="p">,</span> <span class="n">new_lr</span><span class="p">)</span>
+    <span class="n">neptune</span><span class="p">.</span><span class="n">log_metric</span><span class="p">(</span><span class="s">'learning_rate'</span><span class="p">,</span> <span class="n">new_lr</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">new_lr</span>
 
 <span class="c1"># Model
-</span><span class="n">model</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">Sequential</span><span class="p">([</span>
-    <span class="n">layers</span><span class="o">.</span><span class="n">Flatten</span><span class="p">(</span><span class="n">input_shape</span><span class="o">=</span><span class="p">(</span><span class="mi">28</span><span class="p">,</span> <span class="mi">28</span><span class="p">)),</span>
-    <span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s">'relu'</span><span class="p">),</span>
-    <span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">class_names</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s">'softmax'</span><span class="p">)</span>
+</span><span class="n">model</span> <span class="o">=</span> <span class="n">models</span><span class="p">.</span><span class="n">Sequential</span><span class="p">([</span>
+    <span class="n">layers</span><span class="p">.</span><span class="n">Flatten</span><span class="p">(</span><span class="n">input_shape</span><span class="o">=</span><span class="p">(</span><span class="mi">28</span><span class="p">,</span> <span class="mi">28</span><span class="p">)),</span>
+    <span class="n">layers</span><span class="p">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s">'relu'</span><span class="p">),</span>
+    <span class="n">layers</span><span class="p">.</span><span class="n">Dense</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">class_names</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s">'softmax'</span><span class="p">)</span>
 <span class="p">])</span>
 
 <span class="k">if</span> <span class="n">PARAMS</span><span class="p">[</span><span class="s">'optimizer'</span><span class="p">]</span> <span class="o">==</span> <span class="s">'Adam'</span><span class="p">:</span>
-    <span class="n">optimizer</span> <span class="o">=</span> <span class="n">optimizers</span><span class="o">.</span><span class="n">Adam</span><span class="p">(</span>
+    <span class="n">optimizer</span> <span class="o">=</span> <span class="n">optimizers</span><span class="p">.</span><span class="n">Adam</span><span class="p">(</span>
         <span class="n">learning_rate</span><span class="o">=</span><span class="n">PARAMS</span><span class="p">[</span><span class="s">'learning_rate'</span><span class="p">],</span>
     <span class="p">)</span>
 <span class="k">elif</span> <span class="n">PARAMS</span><span class="p">[</span><span class="s">'optimizer'</span><span class="p">]</span> <span class="o">==</span> <span class="s">'Nadam'</span><span class="p">:</span>
-    <span class="n">optimizer</span> <span class="o">=</span> <span class="n">optimizers</span><span class="o">.</span><span class="n">Nadam</span><span class="p">(</span>
+    <span class="n">optimizer</span> <span class="o">=</span> <span class="n">optimizers</span><span class="p">.</span><span class="n">Nadam</span><span class="p">(</span>
         <span class="n">learning_rate</span><span class="o">=</span><span class="n">PARAMS</span><span class="p">[</span><span class="s">'learning_rate'</span><span class="p">],</span>
     <span class="p">)</span>
 <span class="k">elif</span> <span class="n">PARAMS</span><span class="p">[</span><span class="s">'optimizer'</span><span class="p">]</span> <span class="o">==</span> <span class="s">'SGD'</span><span class="p">:</span>
-    <span class="n">optimizer</span> <span class="o">=</span> <span class="n">optimizers</span><span class="o">.</span><span class="n">SGD</span><span class="p">(</span>
+    <span class="n">optimizer</span> <span class="o">=</span> <span class="n">optimizers</span><span class="p">.</span><span class="n">SGD</span><span class="p">(</span>
         <span class="n">learning_rate</span><span class="o">=</span><span class="n">PARAMS</span><span class="p">[</span><span class="s">'learning_rate'</span><span class="p">],</span>
     <span class="p">)</span>
 
-<span class="n">model</span><span class="o">.</span><span class="nb">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="n">optimizer</span><span class="p">,</span>
+<span class="n">model</span><span class="p">.</span><span class="nb">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="n">optimizer</span><span class="p">,</span>
               <span class="n">loss</span><span class="o">=</span><span class="s">'sparse_categorical_crossentropy'</span><span class="p">,</span>
               <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s">'accuracy'</span><span class="p">])</span>
 
 <span class="c1"># Log model summary
-</span><span class="n">model</span><span class="o">.</span><span class="n">summary</span><span class="p">(</span><span class="n">print_fn</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">neptune</span><span class="o">.</span><span class="n">log_text</span><span class="p">(</span><span class="s">'model_summary'</span><span class="p">,</span> <span class="n">x</span><span class="p">))</span>
+</span><span class="n">model</span><span class="p">.</span><span class="n">summary</span><span class="p">(</span><span class="n">print_fn</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">neptune</span><span class="p">.</span><span class="n">log_text</span><span class="p">(</span><span class="s">'model_summary'</span><span class="p">,</span> <span class="n">x</span><span class="p">))</span>
 
 <span class="k">def</span> <span class="nf">log_train_data</span><span class="p">(</span><span class="n">logs</span><span class="p">):</span>
-    <span class="n">neptune</span><span class="o">.</span><span class="n">log_metric</span><span class="p">(</span><span class="s">'epoch_acc'</span><span class="p">,</span> <span class="n">logs</span><span class="p">[</span><span class="s">'accuracy'</span><span class="p">])</span>
-    <span class="n">neptune</span><span class="o">.</span><span class="n">log_metric</span><span class="p">(</span><span class="s">'epoch_loss'</span><span class="p">,</span> <span class="n">logs</span><span class="p">[</span><span class="s">'loss'</span><span class="p">])</span>
+    <span class="n">neptune</span><span class="p">.</span><span class="n">log_metric</span><span class="p">(</span><span class="s">'epoch_acc'</span><span class="p">,</span> <span class="n">logs</span><span class="p">[</span><span class="s">'accuracy'</span><span class="p">])</span>
+    <span class="n">neptune</span><span class="p">.</span><span class="n">log_metric</span><span class="p">(</span><span class="s">'epoch_loss'</span><span class="p">,</span> <span class="n">logs</span><span class="p">[</span><span class="s">'loss'</span><span class="p">])</span>
 
 <span class="k">def</span> <span class="nf">log_val_data</span><span class="p">(</span><span class="n">logs</span><span class="p">):</span>
     <span class="c1"># Evaluate model
-</span>    <span class="n">eval_metrics</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">test_images</span><span class="p">,</span> <span class="n">test_labels</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</span>    <span class="n">eval_metrics</span> <span class="o">=</span> <span class="n">model</span><span class="p">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">test_images</span><span class="p">,</span> <span class="n">test_labels</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">j</span><span class="p">,</span> <span class="n">metric</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">eval_metrics</span><span class="p">):</span>
-        <span class="n">neptune</span><span class="o">.</span><span class="n">log_metric</span><span class="p">(</span><span class="s">'eval_'</span> <span class="o">+</span> <span class="n">model</span><span class="o">.</span><span class="n">metrics_names</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="n">metric</span><span class="p">)</span>
+        <span class="n">neptune</span><span class="p">.</span><span class="n">log_metric</span><span class="p">(</span><span class="s">'eval_'</span> <span class="o">+</span> <span class="n">model</span><span class="p">.</span><span class="n">metrics_names</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="n">metric</span><span class="p">)</span>
         
 <span class="c1"># Training Network
-</span><span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">train_images</span><span class="p">,</span> <span class="n">train_labels</span><span class="p">,</span>
+</span><span class="n">model</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">train_images</span><span class="p">,</span> <span class="n">train_labels</span><span class="p">,</span>
           <span class="n">batch_size</span><span class="o">=</span><span class="n">PARAMS</span><span class="p">[</span><span class="s">'batch_size'</span><span class="p">],</span>
           <span class="n">epochs</span><span class="o">=</span><span class="n">PARAMS</span><span class="p">[</span><span class="s">'n_epochs'</span><span class="p">],</span>
           <span class="n">shuffle</span><span class="o">=</span><span class="n">PARAMS</span><span class="p">[</span><span class="s">'shuffle'</span><span class="p">],</span>
           <span class="n">validation_data</span><span class="o">=</span><span class="p">[</span><span class="n">test_images</span><span class="p">,</span> <span class="n">test_labels</span><span class="p">]</span>
-          <span class="n">callbacks</span><span class="o">=</span><span class="p">[</span><span class="n">callbacks</span><span class="o">.</span><span class="n">LambdaCallback</span><span class="p">(</span><span class="n">on_epoch_end</span><span class="o">=</span><span class="k">lambda</span> <span class="n">epoch</span><span class="p">,</span> <span class="n">logs</span><span class="p">:</span> <span class="n">log_train_data</span><span class="p">(</span><span class="n">logs</span><span class="p">)),</span>
-                     <span class="n">callbacks</span><span class="o">.</span><span class="n">LambdaCallback</span><span class="p">(</span><span class="n">on_epoch_end</span><span class="o">=</span><span class="k">lambda</span> <span class="n">epoch</span><span class="p">,</span> <span class="n">logs</span><span class="p">:</span> <span class="n">log_valdata</span><span class="p">(</span><span class="n">logs</span><span class="p">)),</span>
-                     <span class="n">callbacks</span><span class="o">.</span><span class="n">EarlyStopping</span><span class="p">(</span><span class="n">patience</span><span class="o">=</span><span class="n">PARAMS</span><span class="p">[</span><span class="s">'early_stopping'</span><span class="p">],</span>
+          <span class="n">callbacks</span><span class="o">=</span><span class="p">[</span><span class="n">callbacks</span><span class="p">.</span><span class="n">LambdaCallback</span><span class="p">(</span><span class="n">on_epoch_end</span><span class="o">=</span><span class="k">lambda</span> <span class="n">epoch</span><span class="p">,</span> <span class="n">logs</span><span class="p">:</span> <span class="n">log_train_data</span><span class="p">(</span><span class="n">logs</span><span class="p">)),</span>
+                     <span class="n">callbacks</span><span class="p">.</span><span class="n">LambdaCallback</span><span class="p">(</span><span class="n">on_epoch_end</span><span class="o">=</span><span class="k">lambda</span> <span class="n">epoch</span><span class="p">,</span> <span class="n">logs</span><span class="p">:</span> <span class="n">log_valdata</span><span class="p">(</span><span class="n">logs</span><span class="p">)),</span>
+                     <span class="n">callbacks</span><span class="p">.</span><span class="n">EarlyStopping</span><span class="p">(</span><span class="n">patience</span><span class="o">=</span><span class="n">PARAMS</span><span class="p">[</span><span class="s">'early_stopping'</span><span class="p">],</span>
                                                    <span class="n">monitor</span><span class="o">=</span><span class="s">'accuracy'</span><span class="p">,</span>
                                                    <span class="n">restore_best_weights</span><span class="o">=</span><span class="bp">True</span><span class="p">),</span>
-                     <span class="n">callbacks</span><span class="o">.</span><span class="n">LearningRateScheduler</span><span class="p">(</span><span class="n">lr_scheduler</span><span class="p">)]</span>
+                     <span class="n">callbacks</span><span class="p">.</span><span class="n">LearningRateScheduler</span><span class="p">(</span><span class="n">lr_scheduler</span><span class="p">)]</span>
           <span class="p">)</span>
 
 <span class="c1"># Log model weights
-</span><span class="k">with</span> <span class="n">tempfile</span><span class="o">.</span><span class="n">TemporaryDirectory</span><span class="p">(</span><span class="nb">dir</span><span class="o">=</span><span class="s">'.'</span><span class="p">)</span> <span class="k">as</span> <span class="n">d</span><span class="p">:</span>
-    <span class="n">prefix</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="s">'model_weights'</span><span class="p">)</span>
-    <span class="n">model</span><span class="o">.</span><span class="n">save_weights</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">prefix</span><span class="p">,</span> <span class="s">'model'</span><span class="p">))</span>
-    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">prefix</span><span class="p">):</span>
-        <span class="n">neptune</span><span class="o">.</span><span class="n">log_artifact</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">prefix</span><span class="p">,</span> <span class="n">item</span><span class="p">),</span>
-                             <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s">'model_weights'</span><span class="p">,</span> <span class="n">item</span><span class="p">))</span>
+</span><span class="k">with</span> <span class="n">tempfile</span><span class="p">.</span><span class="n">TemporaryDirectory</span><span class="p">(</span><span class="nb">dir</span><span class="o">=</span><span class="s">'.'</span><span class="p">)</span> <span class="k">as</span> <span class="n">d</span><span class="p">:</span>
+    <span class="n">prefix</span> <span class="o">=</span> <span class="n">os</span><span class="p">.</span><span class="n">path</span><span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="s">'model_weights'</span><span class="p">)</span>
+    <span class="n">model</span><span class="p">.</span><span class="n">save_weights</span><span class="p">(</span><span class="n">os</span><span class="p">.</span><span class="n">path</span><span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="n">prefix</span><span class="p">,</span> <span class="s">'model'</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">os</span><span class="p">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">prefix</span><span class="p">):</span>
+        <span class="n">neptune</span><span class="p">.</span><span class="n">log_artifact</span><span class="p">(</span><span class="n">os</span><span class="p">.</span><span class="n">path</span><span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="n">prefix</span><span class="p">,</span> <span class="n">item</span><span class="p">),</span>
+                             <span class="n">os</span><span class="p">.</span><span class="n">path</span><span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="s">'model_weights'</span><span class="p">,</span> <span class="n">item</span><span class="p">))</span>
 </code></pre></div></div>
 
 <h2 id="4-결과-확인">4. 결과 확인</h2>
@@ -479,13 +514,13 @@ conda <span class="nb">install </span>psutil matplotlib tensorflow-gpu <span cla
 
 <h3 id="charts">Charts</h3>
 
-<p>여기에는 <code class="highlighter-rouge">neptune.log_metric()</code>을 사용한 변수들이 <strong>그래프</strong>로 기록됩니다.</p>
+<p>여기에는 <code class="language-plaintext highlighter-rouge">neptune.log_metric()</code>을 사용한 변수들이 <strong>그래프</strong>로 기록됩니다.</p>
 
 <p><img src="https://github.com/jjerry-k/jjerry-k.github.io/blob/master/public/img/neptune/Untitled_2.png?raw=true" alt="https://github.com/jjerry-k/jjerry-k.github.io/blob/master/public/img/neptune/Untitled_2.png" /></p>
 
 <h3 id="log">Log</h3>
 
-<p>Charts에 기록된 변수의 값이 기록되고 추가적으로 <code class="highlighter-rouge">neptune.log_image()</code>, <code class="highlighter-rouge">neptune.log_text()</code> 를 사용한 변수 또한 기록됩니다.</p>
+<p>Charts에 기록된 변수의 값이 기록되고 추가적으로 <code class="language-plaintext highlighter-rouge">neptune.log_image()</code>, <code class="language-plaintext highlighter-rouge">neptune.log_text()</code> 를 사용한 변수 또한 기록됩니다.</p>
 
 <p><img src="https://github.com/jjerry-k/jjerry-k.github.io/blob/master/public/img/neptune/Untitled_3.png?raw=true" alt="https://github.com/jjerry-k/jjerry-k.github.io/blob/master/public/img/neptune/Untitled_3.png" /></p>
 
@@ -515,7 +550,7 @@ conda <span class="nb">install </span>psutil matplotlib tensorflow-gpu <span cla
 
 <h3 id="detail">Detail</h3>
 
-<p>뭐…실험의 정보, 시간 등 기록이 되고 추가적으로 <code class="highlighter-rouge">neptune.set_property</code>를 이용하여 Properties 에 변수를 추가할 수 있어요!</p>
+<p>뭐…실험의 정보, 시간 등 기록이 되고 추가적으로 <code class="language-plaintext highlighter-rouge">neptune.set_property</code>를 이용하여 Properties 에 변수를 추가할 수 있어요!</p>
 
 <p><img src="https://github.com/jjerry-k/jjerry-k.github.io/blob/master/public/img/neptune/Untitled_8.png?raw=true" alt="https://github.com/jjerry-k/jjerry-k.github.io/blob/master/public/img/neptune/Untitled_8.png" /></p>
 

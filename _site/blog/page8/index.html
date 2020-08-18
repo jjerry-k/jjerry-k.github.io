@@ -2,57 +2,88 @@
 <html lang="en-us">
   <head>
   <head>
-  <link href="http://gmpg.org/xfn/11" rel="profile">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta http-equiv="content-type" content="text/html; charset=utf-8">
-
-  <!-- Enable responsiveness on mobile devices-->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-
-  <title>
+    <link href="http://gmpg.org/xfn/11" rel="profile">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  
+    <!-- Enable responsiveness on mobile devices-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+  
+    <title>
+      
+        Blog &middot; Jerry's Blog
+      
+    </title>
+  
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
+    <link rel="stylesheet" href="/public/css/main.css">
+  
+    <!-- Icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-precomposed.png">
+    <link rel="shortcut icon" href="/public/favicon.ico">
+  
+    <!-- RSS -->
+    <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+  
+    <!-- scroll -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+      $( window ).scroll( function() {
+        if ( $( this ).scrollTop() > 500 ) {
+          $( '.top' ).fadeIn();
+        } else {
+          $( '.top' ).fadeOut();
+        }
+      } );
+      $( '.top' ).click( function() {
+        $( 'html, body' ).stop().animate( { scrollTop : 0 }, 100);
+        return false;
+      } );
+    </script>
     
-      Blog &middot; Jerry's Blog
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+      (absbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-1054696837285307",
+          enable_page_level_ads: true
+      });
+    </script>
     
-  </title>
-
-  <!-- CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
-  <link rel="stylesheet" href="/public/css/main.css">
-
-  <!-- Icons -->
-  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-precomposed.png">
-  <link rel="shortcut icon" href="/public/favicon.ico">
-
-  <!-- RSS -->
-  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
-
-  <!-- scroll -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script>
-    $( window ).scroll( function() {
-      if ( $( this ).scrollTop() > 500 ) {
-        $( '.top' ).fadeIn();
-      } else {
-        $( '.top' ).fadeOut();
-      }
-    } );
-    $( '.top' ).click( function() {
-      $( 'html, body' ).stop().animate( { scrollTop : 0 }, 100);
-      return false;
-    } );
-  </script>
-  
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-  <script>
-    (absbygoogle = window.adsbygoogle || []).push({
-        google_ad_client: "ca-pub-1054696837285307",
-        enable_page_level_ads: true
-    });
-  </script>
-  
-  
+    <!-- 
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        //jax: ["input/TeX", "output/HTML-CSS"],
+        TeX: {
+          equationNumbers: {
+            autoNumber: "AMS"
+          }
+        },
+        tex2jax: {
+          inlineMath: [ ['$', '$'] ],
+          displayMath: [ ['$$', '$$'] ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+        //,
+        //displayAlign: "left",
+        //displayIndent: "2em"
+      });
+      MathJax.Hub.Register.MessageHook("Math Processing Error",function (message) {
+        alert("Math Processing Error: "+message[1]);
+      });
+    MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
+        alert("Math Processing Error: "+message[1]);
+      });
+    </script>
+    <script type="text/javascript" async
+      src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript">
+    </script>
+     -->
+    
+    
   <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
       //jax: ["input/TeX", "output/HTML-CSS"],
@@ -69,17 +100,21 @@
   </script>
   <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
   
-  
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <script src="/dest/simple-jekyll-search.js" type="text/javascript"></script>
-  <script type="text/javascript">
-  $(document).ready(function(){
-    document.search.searchinput.focus();
-  });
-  </script>
-</head>
 
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="/dest/simple-jekyll-search.js" type="text/javascript"></script>
+    <script type="text/javascript">
+    $(document).ready(function(){
+      document.search.searchinput.focus();
+    });
+    </script>
+  </head>
+  
   <style>blockquote {font-size: 1em; line-height: 1.4}</style>
+  
+  <!-- New line Start-->
+  <!--  -->
+  <!-- New line End -->
   </head>
   <body>
 
@@ -276,6 +311,575 @@
   
   <div class="post">
     <h1 class="post-title">
+      <a href="/deeplearning/2019/07/05/Thin/">
+        Review: MRI interpolation using Deep Learning
+      </a>
+    </h1>
+
+    <span class="post-date">05 Jul 2019</span>
+     | 
+    
+    <a href="/blog/tags/#paper" class="post-tag">Paper</a>
+    
+    
+
+    <h4 style="font-weight: 400; line-height: 1.8;"><article>
+      <h1 id="deep-generative-adversarial-networks-for-thin-section-infant-mr-image-reconstruction">Deep Generative Adversarial Networks for Thin-Section Infant MR Image Reconstruction</h1>
+
+<ul>
+  <li>Jiaqi Gu<sup>1</sup>, Zezu Li<sup>1</sup>, YuanYuan Wans<sup>1, 3</sup>, Haowei Yang<sup>2</sup>, Zhongwei Qiao<sup>2</sup>, and Jinhua Yu<sup>1, 3</sup></li>
+  <li><sup>1</sup>School of Information Science and Technology, Fudan University, Shanghai 200433, China<br />
+<sup>2</sup>The Children’s Hospital of Fudan University, Shanghai 201102, China<br />
+<sup>3</sup>Key Laboratory of Medical Imaging Computing and Computer Assisted Intervention of Shanghai, Department of Electronic Engineering, Institute of Functional
+and Molecular Medical Imaging, Fudan University, Shanghai 200433, China
+—</li>
+</ul>
+
+<h2 id="abstract">Abstract</h2>
+<ul>
+  <li>Thin section magnetic resonance images (<strong>Thin MRI</strong>) 는 뇌수술, 뇌 구조 분석에 좋은 영상.</li>
+  <li>하지만 Thick section magnetic resonance images (<strong>Thick MRI</strong>) 에 비해 imaging cost가 많이 들기 때문에 잘 사용되지 않음.</li>
+  <li>Thick MRI 2 Thin MRI 제안.</li>
+  <li>Two stage( GAN -&gt; CNN )로 구성하였고 Thick MRI의 Axial, Sigittal plane을 이용하여 Thin MRI의 Axial reconstruction.</li>
+  <li>3D-Y-Net-GAN 은 Axial, Sagittal Thick MRI 를 이용하여 Fusion.</li>
+  <li>3D-Dense U-Net은 Sagittal plane에 대해 세부적인 calibrations, structual correction 제공.</li>
+  <li>Loss function 은 structual detail을 Network가 capture 할 수 있도록 제안.</li>
+  <li>bicubic, sparse representation, 3D-SRU-Net 과 비교.</li>
+  <li>35번의 Cross-validation, 114개를 이용하여 두개의 testset 구성.
+    <ul>
+      <li>PSNR : 23.5 % 증가.</li>
+      <li>SSIM : 90.5 % 증가.</li>
+      <li>MMI : 21.5 % 증가.</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="introduction">Introduction</h2>
+<ul>
+  <li>Thin MRI 는 slice thickness가 1mm이고 sapcing gap이 0mm.</li>
+  <li>하지만 항상 Thin MRI를 사용할 수 없음.</li>
+  <li>일반적으로 사용하는 Thick MRI는 slice thickness가 4~6mm 이고 sapcing gap이 0.4~1mm.
+    <ul>
+      <li>해상도 : Thin MRI &gt; Thick MRI</li>
+    </ul>
+  </li>
+  <li>인간의 뇌 발달에 대한 insight를 주기 때문에 유아의 brain MR image는 어른의 brain MR image 보다 연구에 가치가 있음</li>
+  <li>하지만 유아의 MR image를 얻는게 쉽지 않음.</li>
+  <li>그래서 Thick to Thin 제안.</li>
+  <li>기존 traditional interpolation algorithm
+    <ul>
+      <li>시각적으로는 성능이 좋아보임. 하지만 성인의 brain 에 초점을 맞춤.</li>
+      <li><strong><a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4478865/pdf/JMI-001-034007.pdf">Interpolation-based super-resolution reconstruction: effects of slice thickness</a></strong></li>
+      <li><strong><a href="https://www.hindawi.com/journals/ijbi/2013/395915/">Evaluation of interpolation effects on upsampling and accuracy of cost functions-based optimized automatic image registration</a></strong></li>
+    </ul>
+  </li>
+  <li>Frame interpolation 방법과 같이 적용 가능.
+    <ul>
+      <li><strong><a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&amp;arnumber=8110374">Slice Interpolation in MRI Using a Decomposition-reconstruction Method</a></strong></li>
+    </ul>
+  </li>
+  <li>Super-resolution 문제로 적용할 수도 있음.
+    <ul>
+      <li><strong><a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&amp;arnumber=5466111">Image super-resolution via sparse representation</a></strong></li>
+    </ul>
+  </li>
+  <li>CNN, GAN 이 발전하면서 super-resolution 이 탄력을 받음.
+    <ul>
+      <li><strong>[<a href="https://link.springer.com/chapter/10.1007/978-3-319-67564-0_12">Context-Sensitive Super-Resolution for Fast Fetal Magnetic Resonance Imaging</a></strong>]</li>
+      <li><strong>[<a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=8417964">Deep Generative Adversarial Neural Networks for Compressive Sensing MRI</a>]</strong></li>
+    </ul>
+  </li>
+  <li>이전에 성인의 Thick MRI를 Thin MRI 로 reconstruction 하는 3D-SRGAN 제안했으나 axial plane만 고려했음. <strong>[<a href="https://link.springer.com/chapter/10.1007%2F978-3-319-67389-9_38">Reconstruction of Thin-Slice Medical Images Using Generative Adversarial Network</a>]</strong></li>
+  <li>Deep Learning 이 reconstruction performance 뿐 아니라 reconstruction time 감소에도 매우 효과적인걸 보임.</li>
+</ul>
+
+<h2 id="proposed-method">Proposed Method</h2>
+
+<h3 id="a-overview">A. Overview</h3>
+<ul>
+  <li>CNN은 기존에도 super-resolution에서 많이 사용됨.</li>
+  <li>하지만 최근까지 제안된 Network는 대부분 2D image에 대한 upscaling.</li>
+  <li>몇몇 Network는 3D image로 확장했지만 그렇게 효과를 보지 못했음.</li>
+  <li>이 논문의 Flow
+<img src="https://jjerry-k.github.io/public/img/thin/fig01.PNG" /></li>
+</ul>
+
+<p><img src="https://jjerry-k.github.io/public/img/thin/fig02.PNG" /></p>
+
+<h3 id="b-network-architecture">B. Network Architecture</h3>
+<ul>
+  <li>First stage는 3D-Y-Net-GAN 으로 Thick MRI를 Thin MRI로 생성 후 3D-DenseU-Net으로 recalibration.</li>
+</ul>
+
+<h4 id="3d-y-net-gan">3D-Y-Net-GAN</h4>
+<ul>
+  <li>Input : Axial, Sagittal Thick MRI</li>
+  <li>Output : Thin MRI</li>
+  <li>r : Upscaling Factor ( r = 8 일 경우의 예시 )</li>
+</ul>
+
+<p><img src="https://jjerry-k.github.io/public/img/thin/fig03.PNG" /></p>
+
+<ul>
+  <li>Feature Extraction Branches
+    <ul>
+      <li>각 input에 대한 feature 추출.</li>
+      <li>Maxpooling layer에서 [1, 2, 1], [2, 1, 1]의 다른 strides factor 적용.</li>
+      <li>3D convolutional layer 는 Convolution + Batch Normalization + Swish 로 구성.
+        <ul>
+          <li><a href="https://arxiv.org/pdf/1710.05941.pdf">Swish</a>는 Activation 의 종류로 ReLU로 인해 생기는 Dead neuron을 극복할 수 있음. <strong>-&gt; 근데 굳이 왜 swish일까…</strong></li>
+        </ul>
+      </li>
+      <li>layers 를 거친 후 shape 의 변화
+        <ul>
+          <li>Axial : [H, W, S, 1] -&gt; [H/2, W/2, S, 32]</li>
+          <li>Sagittal : [H, W, r*S, 1] -&gt; [H/2, W/2, S, 32]</li>
+        </ul>
+      </li>
+      <li>Axial과 Sagittal의 shape이 다르기 때문에 Sagittal 에 대해서 preprocessing으로 3개의 3d convolution layer 적용.</li>
+    </ul>
+  </li>
+  <li>Feature Fusion Branch
+    <ul>
+      <li>두 feature를 channel 방향으로 Concatanation.</li>
+      <li>W 방향으로 Upsampling 후 H 방향으로 Downsampling feature 를 Concatanation.</li>
+      <li>H 방향으로 Upsampling 후 첫번째 Block의 Feature map을 Concatanation</li>
+      <li>U-Net 에서 아이디어를 얻었고 structual alignment, gradient-vanishing 등을 완화.</li>
+    </ul>
+  </li>
+  <li>Reconstruction Branch
+    <ul>
+      <li>Figure 3 (b) 와 같은 구조.</li>
+      <li>Upsampling layer 3개를 연속으로 붙여서 8배 확장하는 구조 대신에 Multipath upscaling strategy 적용. <strong>-&gt; Artifact 완화 효과…?</strong></li>
+    </ul>
+  </li>
+  <li>
+    <p>Discriminator
+<img src="https://jjerry-k.github.io/public/img/thin/fig04.PNG" /></p>
+
+    <ul>
+      <li>Axial Image, Saggital Image, Combination Image 가 Real Pair인지 Fake Pair인지 감별.</li>
+      <li>Input : ($I^A$, $I^Y$, $I^S$), ($I^A$, $I^{GT}$, $I^S$)</li>
+      <li>Output : Real, Fake</li>
+    </ul>
+  </li>
+</ul>
+
+<h4 id="3d-denseu-net">3D-DenseU-Net</h4>
+<p><img src="https://jjerry-k.github.io/public/img/thin/fig05.PNG" /></p>
+
+<ul>
+  <li>전체적인 구조는 U-Net이지만 2개의 Enhanced residual block 을 적용하여 detail recalibration.</li>
+  <li>Input :  $I^Y$, $I^S$, $I^{YA}$ <strong>-&gt; 어떻게 3개가 input으로…?</strong></li>
+  <li>Output : Thin MR Image</li>
+  <li>$I^A$ 를 $I^Y$ 의 해당 위치에 insertion 하여 $I^{YA}$ 생성. -&gt; 아직 이해 X..
+    <ul>
+      <li>Axial Information 을 이용하여 정확한 axial 을 만들기 위해…</li>
+      <li>$I^S$ 를 $I^Y$ 에 insertion하게 되면 Sagittal 에 대한 information 이 과해지기 때문에 Reconstrtion Axial Image의 Quality 가 안좋아 질 것!</li>
+    </ul>
+  </li>
+  <li>End-to-End 가 아니라 각각 따로따로 학습. <strong>-&gt; Faster RCNN 과 같은 방식으로 할런지….?</strong></li>
+</ul>
+
+<h4 id="loss-function">Loss Function</h4>
+<ul>
+  <li>$G$ 는 generator 라는 의미.</li>
+  <li>Self-Adaptive Charbonnier Loss
+    <ul>
+      <li>일반적으로 많이 사용되는 $\ell2$ 전반적으로 Smoothing 하게 만들어지고 $\ell1$ 은 GT와 Prediction 의 차이로 indiscriminate 하게 학습.</li>
+      <li><a href="https://arxiv.org/pdf/1704.03915.pdf">Deep Laplacian Pyramid Networks for Fast and Accurate Super-Resolution</a>에 따르면 <strong>Charbonnier loss</strong>(미분가능한 $\ell1$의 분산)가 $\ell1$, $\ell2$ 보다 성능이 뛰어남.</li>
+      <li><a href="https://arxiv.org/pdf/1706.03142.pdf">Deep Learning for Isotropic Super-Resolution from Non-Isotropic 3D Electron Microscopy</a> 에 따르면 <strong>Cubic-weighted mean square error</strong> 가 Generated 영상과 Ground truth 간의 차이가 큰 “어려운” 부분의 성능을 강조.</li>
+      <li>다음과 같은 Loss 제안.</li>
+      <li>$\epsilon$ 은 default로 $10^{-6}$</li>
+    </ul>
+  </li>
+</ul>
+
+<p>[L^G_{SC} = \frac{1}{rLWH}\sum_{x,y,z=1,1,1}^{L,W,rH}\sqrt{(I^{GT}<em>{x,y,z}-I^Y</em>{z,y,z})^2+\epsilon}\cdot\bigg(\frac{1}{2}+\frac{(I^{GT}<em>{x,y,z}-I^Y</em>{z,y,z})^2}{2max((I^{GT}-I^Y)^2)}\bigg)]</p>
+
+<ul>
+  <li>3-D Gradient Correction Loss
+    <ul>
+      <li>Charbonnier Loss는 Pixelwise difference에 대한 Loss, Gradient에 대한 손실을 줄 수 있음.</li>
+      <li>다음과 같이 각 axis에 대한 Gradient 를 이용하여 Loss 제안.</li>
+    </ul>
+  </li>
+</ul>
+
+<p>[L^G_{GC} = \mathbb{E}[(\nabla_{x}I^{GT}<em>{x,y,z} - \nabla</em>{x}I^Y_{x,y,z})^2] \  + \mathbb{E}[(\nabla_{y}I^{GT}<em>{x,y,z} - \nabla</em>{y}I^Y_{x,y,z})]^2\ + \mathbb{E}[(\nabla_{z}I^{GT}<em>{x,y,z} - \nabla</em>{z}I^Y_{x,y,z})^2]]</p>
+
+<ul>
+  <li>Adversarial Loss
+    <ul>
+      <li>LSGAN Loss 사용.</li>
+    </ul>
+  </li>
+</ul>
+
+<p>[L^D=\frac{1}{2}\mathbb{E}[(D(I^{GT}, I^A, I^S)-1)^2+D(I^Y, I^A, I^S)^2]]</p>
+
+<p>[L^G_{AD}=\mathbb{E}[(D(I^Y, I^A, I^S)-1)^2]]</p>
+
+<ul>
+  <li>$\ell_2$ Weight Regularization Loss
+    <ul>
+      <li>(Loss는 아니지만…)</li>
+      <li>Overfitting을 방지하기 위해 사용.</li>
+    </ul>
+  </li>
+</ul>
+
+<p>[L^G_{WR} = \sum\Vert W_G\Vert^2_2]</p>
+
+<ul>
+  <li>3D-Y-Net-GAN Loss
+    <ul>
+      <li>$L_G = L^G_{SC} + \lambda_1L^G_{GC} + \lambda_2L^G_{AD} + \lambda_3L^G_{WR}$</li>
+    </ul>
+  </li>
+  <li>3D-DenseU-Net Loss
+    <ul>
+      <li>$L = L_{SC} + \lambda_1L_{GC} + \lambda_3L_{WR}$</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="experimental-result">Experimental Result</h2>
+<ul>
+  <li>Multiplanar 의 효율성을 검증하기 위해 다음과 같이 세 가지 경우로 나눔.
+    <ul>
+      <li>1) Axial, Sagittal 둘 다 이용.</li>
+      <li>2) Axial 만 이용.</li>
+      <li>3) Saigittal 만 이용.</li>
+    </ul>
+  </li>
+  <li>Loss function을 검증하기 위해 네 가지 경우로 나눔.
+    <ul>
+      <li>1) $\ell1norm + L_{GC} + L_{AD} + L_{WR}$ (pixelwise loss를 $\ell1norm$으로 대체.)</li>
+      <li>2) $L_{SC} + L_{GC} + L_{WR}$</li>
+      <li>3) $L_{SC} + L_{AD} + L_{WR}$</li>
+      <li>4) $L_{SC} + L_{GC} + L_{AD} + L_{WR}$</li>
+    </ul>
+  </li>
+  <li>Evalutaion Method 로는 아래와 같이 네 가지 기법과 자신들의 Network
+    <ul>
+      <li>1) <a href="https://ieeexplore.ieee.org/document/1163711">Bicubic interpolation</a></li>
+      <li>2) <a href="https://ieeexplore.ieee.org/document/5466111">Sparse representation</a></li>
+      <li>3) <a href="https://arxiv.org/abs/1706.03142">3D-SRU-Net</a></li>
+      <li>4) 3D-Y-Net-GAN</li>
+      <li>5) 3D-Y-Net-GAN + 3D-DenseU-Net</li>
+    </ul>
+  </li>
+  <li>Metrics으로는 다음 세 가지 사용.
+    <ul>
+      <li>PSNR(Peak Signal-to-Noise Ratio)</li>
+    </ul>
+  </li>
+</ul>
+
+<p>[\begin{alignedat}{2}
+MAX_I = 255<br />
+PSNR = 20\cdot\log_{10}\Bigg(\frac{MAX_I}{\sqrt{\frac{1}{rLWH}\sum_{x, y, z}(I^R_{x,y,z}-I^{GT}_{x,y,z})^2}}\Bigg)
+\end{alignedat}]</p>
+
+<ul>
+  <li>SSIM(Structural SIMilarity)</li>
+</ul>
+
+<p>[\begin{alignedat}{2}
+L : 255(\text{dynamic range})<br />
+\mu : \text{Variance}<br />
+\mu_{ab} : \text{Covariance}<br />
+c_1 = (k_1L)^2<br />
+c_2 = (k_2L)^2<br />
+SSIM=\frac{(2\mu_a\mu_b+c_1)(2\sigma_{ab}+c_2)}{(\mu_a^2+\mu_b^2+c_1)(\sigma_a^2+\sigma_b^2+c_2)}
+\end{alignedat}]</p>
+
+<ul>
+  <li>NMI(Normalized Mutual Information)</li>
+</ul>
+
+<p>[\begin{alignedat}{2}
+H(X) = -\sum_{x_i}\in{X}p(x_i)\log{p(x_i)} <br />
+H(X, Y) = -\sum_{y_i\in{Y}} \sum_{x_i\in{X}}p(x_i, y_i)\log{p(x_i, y_i)}<br />
+NMI(X, Y) = 2\frac{H(X) + H(Y) - H(X, Y)}{H(X)+H(Y)}
+\end{alignedat}]</p>
+
+<ul>
+  <li>pixel 값을 [-1, 1]로 clipping -&gt; 다시 8-bit gray scale로 변환.</li>
+  <li>Generated MR images 와 Ground truth가 비슷할 수록 높은 값을 가짐.</li>
+</ul>
+
+<h3 id="a-data-and-preprocessing">A. Data and Preprocessing</h3>
+
+<ul>
+  <li>총 154 samples의 2~5세 유아 Axial, Sagittal Thick MRI, Axial Thin MRI</li>
+</ul>
+
+<p><img src="https://jjerry-k.github.io/public/img/thin/tab01.PNG" /></p>
+
+<ul>
+  <li>Table 1. 과 같은 parameter 사용.</li>
+  <li>Dataset 분할
+    <ul>
+      <li>Cross Validation Dataset : 40 samples</li>
+      <li>Test 1 Dataset : 65 samples</li>
+      <li>Test 2 Dataset : 49 samples</li>
+    </ul>
+  </li>
+  <li>Preprocessing
+    <ul>
+      <li>각 영상별로 다른 parameter를 가지고 있고 intensities 도 다양하기 때문에 spatial misalignment, intensity imblance를 발견.</li>
+      <li>Registration을 위해 SPM12 를 이용하여 unified spatial normalization 수행.
+        <ul>
+          <li>
+            <ol>
+              <li>DICOM to NIfTI</li>
+            </ol>
+          </li>
+          <li>
+            <ol>
+              <li>Segment gray matter, white matter, cerebrospinal fluid, skull, scalp, and air mask.</li>
+            </ol>
+          </li>
+          <li>
+            <ol>
+              <li>Nonlinear deformation field</li>
+            </ol>
+          </li>
+          <li>
+            <ol>
+              <li>ICBM Asian brain template in affine regularization</li>
+            </ol>
+          </li>
+        </ul>
+      </li>
+      <li>Grayscale Normalization
+        <ul>
+          <li>MRI 는 16 bit..</li>
+          <li>단순 linear transformation 으로 [-1, 1]로 mapping.</li>
+        </ul>
+      </li>
+      <li>Histogram Matching
+        <ul>
+          <li>고정된 샘플을 reference로 histogram matching 적용.</li>
+          <li>histogram imbalance 제거.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Data Augmentation
+    <ul>
+      <li>Radial Transformation
+        <ul>
+          <li><strong><a href="https://arxiv.org/pdf/1708.04347.pdf">Image Augmentation using Radial Transform for Training Deep Neural Networks</a></strong></li>
+        </ul>
+      </li>
+      <li>Mirror Reflection</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="b-experimental-settings">B. Experimental Settings</h3>
+<ul>
+  <li>5-fold cross-validation 적용.</li>
+  <li>35 개중 랜덤으로 28:7로 training:validation . <strong>-&gt; 앞에선 40개라더니..?</strong></li>
+  <li>Training 3D-Y-Net-GAN
+    <ul>
+      <li>Batch Size : 16</li>
+      <li>Epochs : 200</li>
+      <li><a href="https://arxiv.org/pdf/1412.6980.pdf">Adam Optimizer Parameter</a>
+        <ul>
+          <li>$\beta_1$: 0.9</li>
+          <li>Learning rate schedule
+            <ul>
+              <li>Initial value : 5*10<sup>-4</sup></li>
+              <li>Decay Step : 252</li>
+              <li>Decay rate : 0.989</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>$\lambda_1, \lambda_2, \lambda_3$ : 0.2, 0.02, 0.1</li>
+      <li>He initializer</li>
+    </ul>
+  </li>
+  <li>Training 3D-DenseU-Net
+    <ul>
+      <li>Batch Size : 12</li>
+      <li>Epochs : 300</li>
+      <li>Adam Optimizer Parameter
+        <ul>
+          <li>$\beta_1$: 0.9</li>
+          <li>Learning rate schedule
+            <ul>
+              <li>Initial value : 5*10<sup>-4</sup></li>
+              <li>Decay Step : 373</li>
+              <li>Decay rate : 0.989</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>$\lambda_1, \lambda_3$ : 1, 0.001</li>
+      <li>He initializer</li>
+    </ul>
+  </li>
+  <li>SR Parameter
+    <ul>
+      <li>Dictionary size = 512</li>
+      <li>Patch number = 100,000</li>
+      <li>Patch size = 13 x 13</li>
+      <li>Sparsity Regularization = 0.15</li>
+      <li>Overlap = 12.</li>
+    </ul>
+  </li>
+  <li>Training 3D-SRU-Net
+    <ul>
+      <li>Batch Size : 32</li>
+      <li>Epochs : 300</li>
+      <li>Adam Optimizer Parameter
+        <ul>
+          <li>$\beta_1$: 0.9</li>
+          <li>Initial value : 5*10<sup>-4</sup></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h4 id="c-ablation-experiment-on-input-data">C. Ablation Experiment On Input Data</h4>
+<ul>
+  <li>Input을 변경하면서 실험 진행. 
+<img src="https://jjerry-k.github.io/public/img/thin/fig06.PNG" />
+<img src="https://jjerry-k.github.io/public/img/thin/tab02.PNG" /></li>
+  <li>Axial 과 Sagittal 을 같이 사용했을 때가 좀 더 세부적인 구조, 적은 왜곡을 보임.
+    <ul>
+      <li>두 축의 영상이 서로 조합하여 reconstruction task를 향상.</li>
+    </ul>
+  </li>
+  <li>Quantitive evaluation 에서도 더 높은 지표를 산출.</li>
+</ul>
+
+<h4 id="d-ablation-experiment-on-loss-function">D. Ablation Experiment On Loss Function</h4>
+<ul>
+  <li>Loss를 변경하면서 실험 진행.
+<img src="https://jjerry-k.github.io/public/img/thin/fig07.PNG" />
+<img src="https://jjerry-k.github.io/public/img/thin/tab03.PNG" /></li>
+  <li>Self-Adaptive Charbonnier Loss에 비해 $\ell1$ norm 이 흐린 영상을 생성.</li>
+  <li>Without Gradient Correction Loss
+    <ul>
+      <li>덜 선명한 영상을 생성.</li>
+    </ul>
+  </li>
+  <li>Without Adversarial Loss
+    <ul>
+      <li>덜 realistic 영상을 생성. <strong>-&gt; ?????그냥 쓴 말인가..</strong></li>
+    </ul>
+  </li>
+  <li><strong>Table3 …지표 좀 이상..</strong></li>
+</ul>
+
+<h4 id="e-comparison-with-other--methods">E. Comparison With Other  Methods</h4>
+<ul>
+  <li>다른 Method들과 비교.
+<img src="https://jjerry-k.github.io/public/img/thin/fig08.PNG" />
+<img src="https://jjerry-k.github.io/public/img/thin/tab04.PNG" /></li>
+  <li>제안한 method로 생성된 image가 가장 Realistic하고 Ground truth 와 가장 비슷하다고 함.</li>
+  <li>대부분 Quantitative evaluation 에서 제안한 method가 다른 것들을 다 뛰어넘음.</li>
+</ul>
+
+<h2 id="conclusion">Conclusion</h2>
+<ul>
+  <li><strong>제안한 Method 에선 Data preprocessing이 매우 중요하다……</strong></li>
+</ul>
+
+    <article></h4>
+    <div class="post-more">
+      
+      <a href="/deeplearning/2019/07/05/Thin/#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
+      
+      <a href="/deeplearning/2019/07/05/Thin/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
+    </div>
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/python/2019/06/30/conda_package/">
+        (개인적으로) 무.조.건 설치하는 Anaconda 패키지
+      </a>
+    </h1>
+
+    <span class="post-date">30 Jun 2019</span>
+     | 
+    
+    <a href="/blog/tags/#setting" class="post-tag">Setting</a>
+    
+    
+
+    <h4 style="font-weight: 400; line-height: 1.8;"><article>
+      <p>이번 포스팅은 제가 많이 쓰는 패키지들에 대해서 적어보려고 합니다. <br />
+추후에 포맷하고 다시 세팅할 수도 있으니까….<br />
+저는 Anaconda가 아닌 <strong>Miniconda</strong>를 사용하기 때문에 어지간하면 하나 하나 설치를 해줘야해요. 
+물론 머리로는 기억하고 있지만 커맨드 쓰기가 귀찮으니…적어놓으려고 합니다!<br />
+각각 설명은…생략할거에요. 보시는 분들 구글링 실력을 믿습니다.</p>
+
+<h4 id="scientific-uses">Scientific uses</h4>
+<ul>
+  <li>numpy, scipy, pandas</li>
+  <li><code class="language-plaintext highlighter-rouge">conda install numpy scipy pandas</code></li>
+</ul>
+
+<h4 id="visualization">Visualization</h4>
+<ul>
+  <li>matplotlib, seaborn</li>
+  <li><code class="language-plaintext highlighter-rouge">conda install matplotlib seaborn</code></li>
+</ul>
+
+<h4 id="image-processing">Image Processing</h4>
+<ul>
+  <li>pillow, scikit-image, opencv</li>
+  <li><code class="language-plaintext highlighter-rouge">conda install pillow scikit-image opencv</code></li>
+</ul>
+
+<h4 id="ml--dl">ML &amp; DL</h4>
+<ul>
+  <li>scikit-learn, tensorflow, pytorch (keras도 썼었는데…이번에 뺐어요..)</li>
+  <li><code class="language-plaintext highlighter-rouge">conda install scikit-learn tensorflow</code></li>
+  <li><code class="language-plaintext highlighter-rouge">conda install -c pytorch pytorch torchvision</code></li>
+</ul>
+
+<h4 id="medical-image-processing">Medical Image Processing</h4>
+<ul>
+  <li>pydicom, nibabel, simpleitk</li>
+  <li><code class="language-plaintext highlighter-rouge">conda install -c conda-forge pydicom nibabel</code></li>
+  <li><code class="language-plaintext highlighter-rouge">conda install -c SimpleITK SimpleITK</code></li>
+</ul>
+
+<h4 id="tools">Tools</h4>
+<ul>
+  <li>tqdm, jupyter, jupyter-lab</li>
+  <li><code class="language-plaintext highlighter-rouge">conda install  tqdm jupyter jupyterlab</code></li>
+</ul>
+
+<p>이….정도네요!<br />
+솔직히 제가 이렇게 포스팅을 하는 이유는….<br />
+이미 제 노트북을…한번 갈아엎었습니다…<br />
+conda 를 4.7.5 로 올리는 순간…모든게 날아갔거든요.<br />
+하…얼른 세팅하러 갑니다..</p>
+
+<p><strong>P.S</strong> conda 를 조심하세요…</p>
+
+    <article></h4>
+    <div class="post-more">
+      
+      <a href="/python/2019/06/30/conda_package/#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
+      
+      <a href="/python/2019/06/30/conda_package/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
+    </div>
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
       <a href="/python/2019/05/09/Part1A/">
         Seaborn Tutorial Part 1-A
       </a>
@@ -311,85 +915,85 @@
 </ul>
 
 <h2 id="a-visualizing-statistical-relationships">A. Visualizing statistical relationships</h2>
-<p>Relationships 시각화에선 <code class="highlighter-rouge">relplot()</code> 이라는걸 주로 사용합니다. 
-<code class="highlighter-rouge">relplot()</code> 에는 <code class="highlighter-rouge">kind</code>라는 옵션으로 <code class="highlighter-rouge">scatter</code>, <code class="highlighter-rouge">line</code> 을 그릴 수 있습니다.<br />
+<p>Relationships 시각화에선 <code class="language-plaintext highlighter-rouge">relplot()</code> 이라는걸 주로 사용합니다. 
+<code class="language-plaintext highlighter-rouge">relplot()</code> 에는 <code class="language-plaintext highlighter-rouge">kind</code>라는 옵션으로 <code class="language-plaintext highlighter-rouge">scatter</code>, <code class="language-plaintext highlighter-rouge">line</code> 을 그릴 수 있습니다.<br />
 일단! 다음과 같이 기본적인 패키지를 import 하고 진행하겠습니다!</p>
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
 <span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="n">sns</span>
-<span class="n">sns</span><span class="o">.</span><span class="nb">set</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="s">"darkgrid"</span><span class="p">)</span> <span class="c1"># 추후 Part 3 에서 다룰 내용!
+<span class="n">sns</span><span class="p">.</span><span class="nb">set</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="s">"darkgrid"</span><span class="p">)</span> <span class="c1"># 추후 Part 3 에서 다룰 내용!
 </span></code></pre></div></div>
 
 <h3 id="relating-variables-with-scatter-plots">Relating variables with scatter plots</h3>
 <p>Scatter plot을 해볼겁니다!<br />
-<code class="highlighter-rouge">scatterplot()</code>을 사용해도 되지만 <code class="highlighter-rouge">relplot()</code>을 사용해서 그려보겠습니다.<br />
+<code class="language-plaintext highlighter-rouge">scatterplot()</code>을 사용해도 되지만 <code class="language-plaintext highlighter-rouge">relplot()</code>을 사용해서 그려보겠습니다.<br />
 가장 먼저 … 사용할 데이터를 읽어오겠습니다.</p>
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">tips</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s">"tips"</span><span class="p">)</span>
-<span class="n">tips</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">tips</span> <span class="o">=</span> <span class="n">sns</span><span class="p">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s">"tips"</span><span class="p">)</span>
+<span class="n">tips</span><span class="p">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 </code></pre></div></div>
 <p>위를 실행하면 다음 사진과 같이 출력이 나옵니다.<br />
 <img src="https://jjerry-k.github.io/public/img/sb_part1a/001.png" /><br />
 정확히 무슨 데이터인지는 모르겠지만… 어떤 가게의 가계부…? 같습니다.
 총 금액, 팁, 성별, 흡연 여부, 요일, 시간대, 크기(…?) 등의 카테고리가 있네요.<br />
 그럼 한번 plot 해보겠습니다.</p>
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sns</span><span class="o">.</span><span class="n">relplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s">"total_bill"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">"tip"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">tips</span><span class="p">);</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sns</span><span class="p">.</span><span class="n">relplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s">"total_bill"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">"tip"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">tips</span><span class="p">);</span>
 </code></pre></div></div>
 <p><img src="https://jjerry-k.github.io/public/img/sb_part1a/002.png" /></p>
 
 <p>다음과 같은 figure가 나오네요!<br />
 x, y, data에 들어간 의미를 알아볼까요?
-<code class="highlighter-rouge">x=</code> 는 x축을 어떤 데이터로 할지 정하는 부분입니다.
-<code class="highlighter-rouge">y=</code> 는 당연히 y축이겠죠?
-<code class="highlighter-rouge">data=</code> 는 어떤 data를 plot에 사용할지 적는 부분입니다.<br />
+<code class="language-plaintext highlighter-rouge">x=</code> 는 x축을 어떤 데이터로 할지 정하는 부분입니다.
+<code class="language-plaintext highlighter-rouge">y=</code> 는 당연히 y축이겠죠?
+<code class="language-plaintext highlighter-rouge">data=</code> 는 어떤 data를 plot에 사용할지 적는 부분입니다.<br />
 그래서 plot하는 코드를 풀어서 얘기해보자면<br />
-<code class="highlighter-rouge">tips</code>라는 DataFrame에서 <code class="highlighter-rouge">total_bill</code>을 x축으로 <code class="highlighter-rouge">tip</code>을 y축으로 골라서 scatter plot 하라는 얘기입니다.<br />
+<code class="language-plaintext highlighter-rouge">tips</code>라는 DataFrame에서 <code class="language-plaintext highlighter-rouge">total_bill</code>을 x축으로 <code class="language-plaintext highlighter-rouge">tip</code>을 y축으로 골라서 scatter plot 하라는 얘기입니다.<br />
 좀 더 해볼까요?</p>
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sns</span><span class="o">.</span><span class="n">relplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s">"total_bill"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">"tip"</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s">"smoker"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">tips</span><span class="p">);</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sns</span><span class="p">.</span><span class="n">relplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s">"total_bill"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">"tip"</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s">"smoker"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">tips</span><span class="p">);</span>
 </code></pre></div></div>
 <p><img src="https://jjerry-k.github.io/public/img/sb_part1a/003.png" /></p>
 
-<p><code class="highlighter-rouge">x, y, data</code>는 위랑 다를게 없는데… <code class="highlighter-rouge">hue</code>라는 옵션이 추가가 되었습니다.<br />
-<code class="highlighter-rouge">hue='smoke'</code>라고 흡연 여부에 대해 색상으로 표시를 해줍니다!</p>
+<p><code class="language-plaintext highlighter-rouge">x, y, data</code>는 위랑 다를게 없는데… <code class="language-plaintext highlighter-rouge">hue</code>라는 옵션이 추가가 되었습니다.<br />
+<code class="language-plaintext highlighter-rouge">hue='smoke'</code>라고 흡연 여부에 대해 색상으로 표시를 해줍니다!</p>
 
 <p>하나 또 있습니다.</p>
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sns</span><span class="o">.</span><span class="n">relplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s">"total_bill"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">"tip"</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s">"smoker"</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s">"smoker"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">tips</span><span class="p">);</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sns</span><span class="p">.</span><span class="n">relplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s">"total_bill"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">"tip"</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s">"smoker"</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s">"smoker"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">tips</span><span class="p">);</span>
 </code></pre></div></div>
 <p><img src="https://jjerry-k.github.io/public/img/sb_part1a/004.png" /></p>
 
-<p><code class="highlighter-rouge">style</code> 옵션이 추가되었어요!
-<code class="highlighter-rouge">style='smoker'</code>를 추가해주면서 plot 스타일이 추가되었네요!<br />
-다음 사진은 <code class="highlighter-rouge">style="time"</code> 옵션을 준거에요!<br />
+<p><code class="language-plaintext highlighter-rouge">style</code> 옵션이 추가되었어요!
+<code class="language-plaintext highlighter-rouge">style='smoker'</code>를 추가해주면서 plot 스타일이 추가되었네요!<br />
+다음 사진은 <code class="language-plaintext highlighter-rouge">style="time"</code> 옵션을 준거에요!<br />
 <img src="https://jjerry-k.github.io/public/img/sb_part1a/005.png" /></p>
 
 <p><strong>색으로는 흡연여부</strong>를 표시하고 <strong>plot 스타일로는 시간대</strong>를 표시해주네요!</p>
 
-<p>자, <code class="highlighter-rouge">hue</code> 옵션의 또 다른 예시입니다.</p>
+<p>자, <code class="language-plaintext highlighter-rouge">hue</code> 옵션의 또 다른 예시입니다.</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sns</span><span class="o">.</span><span class="n">relplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s">"total_bill"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">"tip"</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s">"size"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">tips</span><span class="p">);</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sns</span><span class="p">.</span><span class="n">relplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s">"total_bill"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">"tip"</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s">"size"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">tips</span><span class="p">);</span>
 </code></pre></div></div>
 <p><img src="https://jjerry-k.github.io/public/img/sb_part1a/006.png" /></p>
 
 <p>이전 예시에선 <strong>Yes</strong> or <strong>No</strong> 였죠.<br />
 이번 수치에 대해 색별로 의미를 줬습니다!<br />
-다음과 같이 <code class="highlighter-rouge">pallette</code> 옵션을 줘서 색을 바꿀 수도 있어요!<br />
-<code class="highlighter-rouge">pallette</code>에 대한 자세한건 <strong>Part 3</strong> 에서 다루겠습니다.</p>
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sns</span><span class="o">.</span><span class="n">relplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s">"total_bill"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">"tip"</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s">"size"</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s">"ch:r=-.5,l=.75"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">tips</span><span class="p">);</span>
+다음과 같이 <code class="language-plaintext highlighter-rouge">pallette</code> 옵션을 줘서 색을 바꿀 수도 있어요!<br />
+<code class="language-plaintext highlighter-rouge">pallette</code>에 대한 자세한건 <strong>Part 3</strong> 에서 다루겠습니다.</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sns</span><span class="p">.</span><span class="n">relplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s">"total_bill"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">"tip"</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s">"size"</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s">"ch:r=-.5,l=.75"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">tips</span><span class="p">);</span>
 </code></pre></div></div>
 <p><img src="https://jjerry-k.github.io/public/img/sb_part1a/007.png" /></p>
 
 <p>오…scatter plot의 끝이 보여요…<br />
-<code class="highlighter-rouge">size</code> 옵션입니다.</p>
+<code class="language-plaintext highlighter-rouge">size</code> 옵션입니다.</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sns</span><span class="o">.</span><span class="n">relplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s">"total_bill"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">"tip"</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="s">"size"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">tips</span><span class="p">);</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sns</span><span class="p">.</span><span class="n">relplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s">"total_bill"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">"tip"</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="s">"size"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">tips</span><span class="p">);</span>
 </code></pre></div></div>
 <p><img src="https://jjerry-k.github.io/public/img/sb_part1a/008.png" /></p>
 
-<p><code class="highlighter-rouge">size="size"</code>라고 옵션을 줬어요!<br />
+<p><code class="language-plaintext highlighter-rouge">size="size"</code>라고 옵션을 줬어요!<br />
 plot의 크기에 따라 의미가 나뉘어졌습니다!<br />
-다음고 같이 <code class="highlighter-rouge">sizes</code>를 이용해서 크기 범위를 정해줄수도 있네요!</p>
+다음고 같이 <code class="language-plaintext highlighter-rouge">sizes</code>를 이용해서 크기 범위를 정해줄수도 있네요!</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sns</span><span class="o">.</span><span class="n">relplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s">"total_bill"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">"tip"</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="s">"size"</span><span class="p">,</span> <span class="n">sizes</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">200</span><span class="p">),</span> <span class="n">data</span><span class="o">=</span><span class="n">tips</span><span class="p">);</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sns</span><span class="p">.</span><span class="n">relplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s">"total_bill"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">"tip"</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="s">"size"</span><span class="p">,</span> <span class="n">sizes</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">200</span><span class="p">),</span> <span class="n">data</span><span class="o">=</span><span class="n">tips</span><span class="p">);</span>
 </code></pre></div></div>
 <p><img src="https://jjerry-k.github.io/public/img/sb_part1a/009.png" /></p>
 
@@ -398,21 +1002,21 @@ plot의 크기에 따라 의미가 나뉘어졌습니다!<br />
 <p>이 파트는 연속적인 값을 가진 데이터에 대한 plot입니다.<br />
 다음과 같이 DataFrame을 하나 만들어 봅시다!</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">500</span><span class="p">),</span> <span class="n">value</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">500</span><span class="p">)</span><span class="o">.</span><span class="n">cumsum</span><span class="p">()))</span>
-<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">np</span><span class="p">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">500</span><span class="p">),</span> <span class="n">value</span><span class="o">=</span><span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">500</span><span class="p">).</span><span class="n">cumsum</span><span class="p">()))</span>
+<span class="n">df</span><span class="p">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 </code></pre></div></div>
 <p>&lt;img src=’https://jjerry-k.github.io/public/img/sb_part1a/010.png’ height=50% width=50%&gt;</p>
 
 <p>결과는 사진과 다를 수 있어요!<br />
 time, value 를 가지고 있다는 거에 초점을 맞추시면 됩니다!<br />
 일별로 뭔가 값이 들어가 있네요.<br />
-이를 <code class="highlighter-rouge">relplot()</code> 을 이용하여 그려보겠습니다.
-<code class="highlighter-rouge">kind</code> 옵션에 <code class="highlighter-rouge">"line"</code> 라고 주면 됩니다!<br />
-<code class="highlighter-rouge">autofmt_xdata()</code> 라는건 이름에서 유추할 수 있듯이 x 축 레이블을 데이터에 맞게 format을 자동으로 맞춰주는거에요!<br />
+이를 <code class="language-plaintext highlighter-rouge">relplot()</code> 을 이용하여 그려보겠습니다.
+<code class="language-plaintext highlighter-rouge">kind</code> 옵션에 <code class="language-plaintext highlighter-rouge">"line"</code> 라고 주면 됩니다!<br />
+<code class="language-plaintext highlighter-rouge">autofmt_xdata()</code> 라는건 이름에서 유추할 수 있듯이 x 축 레이블을 데이터에 맞게 format을 자동으로 맞춰주는거에요!<br />
 지금은 x 축이 날짜니까 날짜에 대해선 x 축 레이블을 살짝쿵 기울인거에요!<br />
 이걸 쓰지 않으면 날짜가 겹쳐질거에요…(한번 해보세요..)</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>g = sns.relplot(x="time", y="value", kind="line", data=df)
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>g = sns.relplot(x="time", y="value", kind="line", data=df)
 g.fig.autofmt_xdate()
 </code></pre></div></div>
 <p><img src="https://jjerry-k.github.io/public/img/sb_part1a/011.png" /></p>
@@ -420,15 +1024,15 @@ g.fig.autofmt_xdate()
 <p>위 예시는 x 축이 연속적이지만 시계열 데이터였습니다!<br />
 만약 연속적이지만 이동경로와 같이 x, y 축 좌표만 가진 데이터라면?<br />
 예시를 들어볼게요! 다음과 같이 x, y 에 대한 데이터를 만듭니다.</p>
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">500</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s">"x"</span><span class="p">,</span> <span class="s">"y"</span><span class="p">])</span>
-<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">500</span><span class="p">,</span> <span class="mi">2</span><span class="p">).</span><span class="n">cumsum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s">"x"</span><span class="p">,</span> <span class="s">"y"</span><span class="p">])</span>
+<span class="n">df</span><span class="p">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 </code></pre></div></div>
 <p>&lt;img src=’https://jjerry-k.github.io/public/img/sb_part1a/012.png’ height=50% width=50%&gt;</p>
 
-<p>이런 위치에 대한 데이터는 <code class="highlighter-rouge">sort = False</code> 옵션을 줘야합니다!<br />
+<p>이런 위치에 대한 데이터는 <code class="language-plaintext highlighter-rouge">sort = False</code> 옵션을 줘야합니다!<br />
 그렇지 않으면 …. x 데이터를 자동으로 sorting 해서 plot 해버립니다..</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sns</span><span class="o">.</span><span class="n">relplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s">"x"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">"y"</span><span class="p">,</span> <span class="n">sort</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s">"line"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">);</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sns</span><span class="p">.</span><span class="n">relplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s">"x"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">"y"</span><span class="p">,</span> <span class="n">sort</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s">"line"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">);</span>
 </code></pre></div></div>
 <p><img src="https://jjerry-k.github.io/public/img/sb_part1a/013.png" /></p>
 
@@ -438,8 +1042,8 @@ g.fig.autofmt_xdate()
 <strong>seaborn</strong>은 기본 값으로 95% 신뢰구간을 표시해준다고 하녜요!<br />
 다음과 같이 데이터를 load 해줍니다!</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">fmri</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s">"fmri"</span><span class="p">)</span>
-<span class="n">fmri</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">fmri</span> <span class="o">=</span> <span class="n">sns</span><span class="p">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s">"fmri"</span><span class="p">)</span>
+<span class="n">fmri</span><span class="p">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 </code></pre></div></div>
 <p>&lt;img src=’https://jjerry-k.github.io/public/img/sb_part1a/014.png’ height=50% width=50%&gt;</p>
 
@@ -449,7 +1053,7 @@ g.fig.autofmt_xdate()
 뭔가 선이랑 범위(?)로 보이는 불투명한 부분이 생겼습니다!<br />
 선은 해당 timepoint 에서 signal 의 mean 값이고 불투명한 부분은 신뢰구간을 의미합니다!</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sns</span><span class="o">.</span><span class="n">relplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s">"timepoint"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">"signal"</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s">"line"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">fmri</span><span class="p">);</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sns</span><span class="p">.</span><span class="n">relplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s">"timepoint"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">"signal"</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s">"line"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">fmri</span><span class="p">);</span>
 </code></pre></div></div>
 <p><img src="https://jjerry-k.github.io/public/img/sb_part1a/015.png" /></p>
 
@@ -459,66 +1063,66 @@ g.fig.autofmt_xdate()
   </blockquote>
 </blockquote>
 
-<p>아닙니다. <code class="highlighter-rouge">ci</code>(Confidence Intervals) 옵션을 바꿔주면 됩니다!<br />
-<code class="highlighter-rouge">ci=None</code> 이라고 옵션을 주고 plot을 하면 신뢰구간이 표현이 안됩니다!</p>
+<p>아닙니다. <code class="language-plaintext highlighter-rouge">ci</code>(Confidence Intervals) 옵션을 바꿔주면 됩니다!<br />
+<code class="language-plaintext highlighter-rouge">ci=None</code> 이라고 옵션을 주고 plot을 하면 신뢰구간이 표현이 안됩니다!</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sns</span><span class="o">.</span><span class="n">relplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s">"timepoint"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">"signal"</span><span class="p">,</span> <span class="n">ci</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s">"line"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">fmri</span><span class="p">);</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sns</span><span class="p">.</span><span class="n">relplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s">"timepoint"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">"signal"</span><span class="p">,</span> <span class="n">ci</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s">"line"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">fmri</span><span class="p">);</span>
 </code></pre></div></div>
 <p><img src="https://jjerry-k.github.io/public/img/sb_part1a/016.png" /></p>
 
 <p>또 다른 옵션이 있습니다.<br />
-데이터가 매우 큰 경우! <code class="highlighter-rouge">ci</code> 옵션에 표준 편차를 넣어주면 각 timepoint 에서 분산을 표현해줍니다!</p>
+데이터가 매우 큰 경우! <code class="language-plaintext highlighter-rouge">ci</code> 옵션에 표준 편차를 넣어주면 각 timepoint 에서 분산을 표현해줍니다!</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sns</span><span class="o">.</span><span class="n">relplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s">"timepoint"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">"signal"</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s">"line"</span><span class="p">,</span> <span class="n">ci</span><span class="o">=</span><span class="s">"sd"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">fmri</span><span class="p">);</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sns</span><span class="p">.</span><span class="n">relplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s">"timepoint"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">"signal"</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s">"line"</span><span class="p">,</span> <span class="n">ci</span><span class="o">=</span><span class="s">"sd"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">fmri</span><span class="p">);</span>
 </code></pre></div></div>
 <p><img src="https://jjerry-k.github.io/public/img/sb_part1a/017.png" /></p>
 
 <p>마지막으로… 이런 집계말고 정말 원본 그대로 plot 해보고 싶다면!<br />
-<code class="highlighter-rouge">estimator=None</code>이라고 주면 됩니다.</p>
+<code class="language-plaintext highlighter-rouge">estimator=None</code>이라고 주면 됩니다.</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sns</span><span class="o">.</span><span class="n">relplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s">"timepoint"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">"signal"</span><span class="p">,</span> <span class="n">estimator</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s">"line"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">fmri</span><span class="p">);</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sns</span><span class="p">.</span><span class="n">relplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s">"timepoint"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">"signal"</span><span class="p">,</span> <span class="n">estimator</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s">"line"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">fmri</span><span class="p">);</span>
 </code></pre></div></div>
 <p><img src="https://jjerry-k.github.io/public/img/sb_part1a/018.png" /></p>
 
 <h4 id="plotting-subsets-of-data-with-semantic-mappings">Plotting subsets of data with semantic mappings</h4>
 
-<p>이 파트에선 <code class="highlighter-rouge">relplot()</code> 을 이용해서 scatter plot, line plot을 동시에 표현합니다.<br />
+<p>이 파트에선 <code class="language-plaintext highlighter-rouge">relplot()</code> 을 이용해서 scatter plot, line plot을 동시에 표현합니다.<br />
 데이터는 위 파트에서 썼던 <strong>fmri</strong> 데이터를 사용합니다!<br />
-그리고 위 파트와 같이 <code class="highlighter-rouge">relplot(kind="line")</code>을 쓰지만 <code class="highlighter-rouge">hue="event"</code>라는 옵션을 주도록합니다!<br />
+그리고 위 파트와 같이 <code class="language-plaintext highlighter-rouge">relplot(kind="line")</code>을 쓰지만 <code class="language-plaintext highlighter-rouge">hue="event"</code>라는 옵션을 주도록합니다!<br />
 한번에 scatter plot과 line plot이 표현되네요!</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sns</span><span class="o">.</span><span class="n">relplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s">"timepoint"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">"signal"</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s">"event"</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s">"line"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">fmri</span><span class="p">);</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sns</span><span class="p">.</span><span class="n">relplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s">"timepoint"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">"signal"</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s">"event"</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s">"line"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">fmri</span><span class="p">);</span>
 </code></pre></div></div>
 <p><img src="https://jjerry-k.github.io/public/img/sb_part1a/019.png" /></p>
 
-<p>그럼…<code class="highlighter-rouge">style</code>도 추가해보도록 하죠!<br />
-<code class="highlighter-rouge">hue="region", style="event"</code>라고 옵션을 줍니다! <br />
+<p>그럼…<code class="language-plaintext highlighter-rouge">style</code>도 추가해보도록 하죠!<br />
+<code class="language-plaintext highlighter-rouge">hue="region", style="event"</code>라고 옵션을 줍니다! <br />
 점점 표현해주는게 많아지죠?</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sns</span><span class="o">.</span><span class="n">relplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s">"timepoint"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">"signal"</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s">"region"</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s">"event"</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s">"line"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">fmri</span><span class="p">);</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sns</span><span class="p">.</span><span class="n">relplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s">"timepoint"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">"signal"</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s">"region"</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s">"event"</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s">"line"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">fmri</span><span class="p">);</span>
 </code></pre></div></div>
 <p><img src="https://jjerry-k.github.io/public/img/sb_part1a/020.png" /></p>
 
 <p>또한 선 스타일과 마커 옵션을 줄 수도 있어요!<br />
-<code class="highlighter-rouge">dashes=False, markers=True</code>를 추가해보세요!<br />
+<code class="language-plaintext highlighter-rouge">dashes=False, markers=True</code>를 추가해보세요!<br />
 점선이 모두 실선이 되었고 마커가 추가되었습니다!</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sns</span><span class="o">.</span><span class="n">relplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s">"timepoint"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">"signal"</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s">"region"</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s">"event"</span><span class="p">,</span> <span class="n">dashes</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">markers</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s">"line"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">fmri</span><span class="p">);</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sns</span><span class="p">.</span><span class="n">relplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s">"timepoint"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">"signal"</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s">"region"</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s">"event"</span><span class="p">,</span> <span class="n">dashes</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">markers</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s">"line"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">fmri</span><span class="p">);</span>
 </code></pre></div></div>
 <p><img src="https://jjerry-k.github.io/public/img/sb_part1a/021.png" /></p>
 
 <p>괜히 정보가 많아지면…해석이 겁나 어려워질 수 있습니다..<br />
 다음과 같이 단순화하는게 좋을 때도 있습니다!</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sns</span><span class="o">.</span><span class="n">relplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s">"timepoint"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">"signal"</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s">"event"</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s">"event"</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s">"line"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">fmri</span><span class="p">);</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sns</span><span class="p">.</span><span class="n">relplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s">"timepoint"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">"signal"</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s">"event"</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s">"event"</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s">"line"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">fmri</span><span class="p">);</span>
 </code></pre></div></div>
 <p><img src="https://jjerry-k.github.io/public/img/sb_part1a/022.png" /></p>
 
 <p>필요에 따라 모든 샘플 각각을 plot 해야하기도 하죠..<br />
-다음 예시는 <code class="highlighter-rouge">event</code>가 <strong>stim</strong> 인 데이터들을 <strong>subject</strong> 별로 plot을 합니다!<br />
+다음 예시는 <code class="language-plaintext highlighter-rouge">event</code>가 <strong>stim</strong> 인 데이터들을 <strong>subject</strong> 별로 plot을 합니다!<br />
 (저 plot이 되는 방법은 추후에 좀 더 자세히 설명을 적을게요!)</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sns</span><span class="o">.</span><span class="n">relplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s">"timepoint"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">"signal"</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s">"region"</span><span class="p">,</span> <span class="n">units</span><span class="o">=</span><span class="s">"subject"</span><span class="p">,</span> <span class="n">estimator</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s">"line"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">fmri</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s">"event == 'stim'"</span><span class="p">));</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sns</span><span class="p">.</span><span class="n">relplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s">"timepoint"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">"signal"</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s">"region"</span><span class="p">,</span> <span class="n">units</span><span class="o">=</span><span class="s">"subject"</span><span class="p">,</span> <span class="n">estimator</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s">"line"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">fmri</span><span class="p">.</span><span class="n">query</span><span class="p">(</span><span class="s">"event == 'stim'"</span><span class="p">));</span>
 </code></pre></div></div>
 <p><img src="https://jjerry-k.github.io/public/img/sb_part1a/023.png" /></p>
 
@@ -526,14 +1130,14 @@ g.fig.autofmt_xdate()
 다음과 같이 데이터를 load 합니다!<br />
 (뭔지는 모르겠습니다…)</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">dots</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s">"dots"</span><span class="p">)</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s">"align == 'dots'"</span><span class="p">)</span>
-<span class="n">dots</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">dots</span> <span class="o">=</span> <span class="n">sns</span><span class="p">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s">"dots"</span><span class="p">).</span><span class="n">query</span><span class="p">(</span><span class="s">"align == 'dots'"</span><span class="p">)</span>
+<span class="n">dots</span><span class="p">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 </code></pre></div></div>
 <p>&lt;img src=’https://jjerry-k.github.io/public/img/sb_part1a/024.png’ height=50% width=50%&gt;</p>
 
 <p>지금까지 해왔던거 처럼 plot을 해봅니다.</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sns</span><span class="o">.</span><span class="n">relplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s">"time"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">"firing_rate"</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s">"coherence"</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s">"choice"</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s">"line"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">dots</span><span class="p">);</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sns</span><span class="p">.</span><span class="n">relplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s">"time"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">"firing_rate"</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s">"coherence"</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s">"choice"</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s">"line"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">dots</span><span class="p">);</span>
 </code></pre></div></div>
 <p><img src="https://jjerry-k.github.io/public/img/sb_part1a/025.png" /></p>
 
@@ -541,8 +1145,8 @@ g.fig.autofmt_xdate()
 자세히 보시면 그려지는 실선, 점선은 각각 6개인데 표현된 색상은 4개네요…<br />
 다음과 같이 작성하면 pallette를 custom하여 색상을 6개로 늘릴 수 있습니다!</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">palette</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">cubehelix_palette</span><span class="p">(</span><span class="n">light</span><span class="o">=</span><span class="mf">.8</span><span class="p">,</span> <span class="n">n_colors</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">relplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s">"time"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">"firing_rate"</span><span class="p">,</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">palette</span> <span class="o">=</span> <span class="n">sns</span><span class="p">.</span><span class="n">cubehelix_palette</span><span class="p">(</span><span class="n">light</span><span class="o">=</span><span class="p">.</span><span class="mi">8</span><span class="p">,</span> <span class="n">n_colors</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
+<span class="n">sns</span><span class="p">.</span><span class="n">relplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s">"time"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">"firing_rate"</span><span class="p">,</span>
             <span class="n">hue</span><span class="o">=</span><span class="s">"coherence"</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s">"choice"</span><span class="p">,</span>
             <span class="n">palette</span><span class="o">=</span><span class="n">palette</span><span class="p">,</span>
             <span class="n">kind</span><span class="o">=</span><span class="s">"line"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">dots</span><span class="p">);</span>
@@ -552,26 +1156,26 @@ g.fig.autofmt_xdate()
 <p>또는 다음과 같이 Colormap을 Normalization 할 수도 있죠!</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">matplotlib.colors</span> <span class="kn">import</span> <span class="n">LogNorm</span>
-<span class="n">palette</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">cubehelix_palette</span><span class="p">(</span><span class="n">light</span><span class="o">=</span><span class="mf">.7</span><span class="p">,</span> <span class="n">n_colors</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">relplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s">"time"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">"firing_rate"</span><span class="p">,</span>
+<span class="n">palette</span> <span class="o">=</span> <span class="n">sns</span><span class="p">.</span><span class="n">cubehelix_palette</span><span class="p">(</span><span class="n">light</span><span class="o">=</span><span class="p">.</span><span class="mi">7</span><span class="p">,</span> <span class="n">n_colors</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
+<span class="n">sns</span><span class="p">.</span><span class="n">relplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s">"time"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">"firing_rate"</span><span class="p">,</span>
             <span class="n">hue</span><span class="o">=</span><span class="s">"coherence"</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s">"choice"</span><span class="p">,</span>
             <span class="n">hue_norm</span><span class="o">=</span><span class="n">LogNorm</span><span class="p">(),</span>
             <span class="n">kind</span><span class="o">=</span><span class="s">"line"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">dots</span><span class="p">);</span>
 </code></pre></div></div>
 <p><img src="https://jjerry-k.github.io/public/img/sb_part1a/027.png" /></p>
 
-<p>아니면… 다음과 같이 <code class="highlighter-rouge">size</code>에 의미를 부여할 수도 있겠죠.</p>
+<p>아니면… 다음과 같이 <code class="language-plaintext highlighter-rouge">size</code>에 의미를 부여할 수도 있겠죠.</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sns</span><span class="o">.</span><span class="n">relplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s">"time"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">"firing_rate"</span><span class="p">,</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sns</span><span class="p">.</span><span class="n">relplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s">"time"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">"firing_rate"</span><span class="p">,</span>
             <span class="n">size</span><span class="o">=</span><span class="s">"coherence"</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s">"choice"</span><span class="p">,</span>
             <span class="n">kind</span><span class="o">=</span><span class="s">"line"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">dots</span><span class="p">);</span>
 </code></pre></div></div>
 <p><img src="https://jjerry-k.github.io/public/img/sb_part1a/028.png" /></p>
 
 <p>여기선 Colormap 변경이 주요 내용이였습니다.<br />
-그럼 다음과 같이 Colormap도 주면서…<code class="highlighter-rouge">size</code>를 이용해서 의미를 부여하는 것도 가능하겠죠!?</p>
+그럼 다음과 같이 Colormap도 주면서…<code class="language-plaintext highlighter-rouge">size</code>를 이용해서 의미를 부여하는 것도 가능하겠죠!?</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sns</span><span class="o">.</span><span class="n">relplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s">"time"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">"firing_rate"</span><span class="p">,</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sns</span><span class="p">.</span><span class="n">relplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s">"time"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">"firing_rate"</span><span class="p">,</span>
            <span class="n">hue</span><span class="o">=</span><span class="s">"coherence"</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="s">"choice"</span><span class="p">,</span>
            <span class="n">palette</span><span class="o">=</span><span class="n">palette</span><span class="p">,</span>
            <span class="n">kind</span><span class="o">=</span><span class="s">"line"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">dots</span><span class="p">);</span>
@@ -580,20 +1184,20 @@ g.fig.autofmt_xdate()
 
 <h4 id="plotting-with-date-data">Plotting with date data</h4>
 
-<p>이전에 날짜 혹은 시간과 연관된 데이터를 사용할 경우 <code class="highlighter-rouge">autofmt_xdata()</code>라는 부분이 있었습니다.<br />
+<p>이전에 날짜 혹은 시간과 연관된 데이터를 사용할 경우 <code class="language-plaintext highlighter-rouge">autofmt_xdata()</code>라는 부분이 있었습니다.<br />
 이는 x축 레이블의 format을 자동으로 맞춰주는 부분이라고 했었는데요.<br />
 가령 포맷을 변경해야하는 상황이 발생한다면..?<br />
-<code class="highlighter-rouge">matplotlib</code> 문서를 참고하여 변경하셔야합니다..<br />
+<code class="language-plaintext highlighter-rouge">matplotlib</code> 문서를 참고하여 변경하셔야합니다..<br />
 왜냐하면 seaborn의 뼈대가 matplotlib 이니까요!</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="s">"2017-1-1"</span><span class="p">,</span> <span class="n">periods</span><span class="o">=</span><span class="mi">500</span><span class="p">),</span>
-                       <span class="n">value</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">500</span><span class="p">)</span><span class="o">.</span><span class="n">cumsum</span><span class="p">()))</span>
-<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">pd</span><span class="p">.</span><span class="n">date_range</span><span class="p">(</span><span class="s">"2017-1-1"</span><span class="p">,</span> <span class="n">periods</span><span class="o">=</span><span class="mi">500</span><span class="p">),</span>
+                       <span class="n">value</span><span class="o">=</span><span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">500</span><span class="p">).</span><span class="n">cumsum</span><span class="p">()))</span>
+<span class="n">df</span><span class="p">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 </code></pre></div></div>
 <p>&lt;img src=’https://jjerry-k.github.io/public/img/sb_part1a/030.png’ height=50% width=50%&gt;</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">g</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">relplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s">"time"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">"value"</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s">"line"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">)</span>
-<span class="n">g</span><span class="o">.</span><span class="n">fig</span><span class="o">.</span><span class="n">autofmt_xdate</span><span class="p">()</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">g</span> <span class="o">=</span> <span class="n">sns</span><span class="p">.</span><span class="n">relplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s">"time"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">"value"</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s">"line"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">)</span>
+<span class="n">g</span><span class="p">.</span><span class="n">fig</span><span class="p">.</span><span class="n">autofmt_xdate</span><span class="p">()</span>
 </code></pre></div></div>
 <p><img src="https://jjerry-k.github.io/public/img/sb_part1a/031.png" /></p>
 
@@ -602,27 +1206,27 @@ g.fig.autofmt_xdate()
 <p>지금까지는 단 1개의 figure 만 plot 했습니다!<br />
 하지만 보통..다수의 figure가 필요하죠..<br />
 이번엔 그 부분에 대한 내용입니다.<br />
-<a href="https://seaborn.pydata.org/generated/seaborn.relplot.html#seaborn.relplot"><code class="highlighter-rouge">relplot()</code></a>은 <a href="https://seaborn.pydata.org/generated/seaborn.FacetGrid.html#seaborn.FacetGrid">FacetGrid</a> 기반이기 때문에 쉽게 가능합니다.<br />
+<a href="https://seaborn.pydata.org/generated/seaborn.relplot.html#seaborn.relplot"><code class="language-plaintext highlighter-rouge">relplot()</code></a>은 <a href="https://seaborn.pydata.org/generated/seaborn.FacetGrid.html#seaborn.FacetGrid">FacetGrid</a> 기반이기 때문에 쉽게 가능합니다.<br />
 “facet” 이라는 단어가 나올텐데요.<br />
 이는 전체 figure 하나를 facet이라고 칭합니다.
 다음과 같이 데이터를 load 하고 plot 해주세요!
-<code class="highlighter-rouge">col="time"</code> 이라는 옵션을 추가함으로써 <strong>Lunch</strong>에 대한 figure와 <strong>Dinner</strong>에 대한 figure <strong>두 개</strong>가 plot 됩니다!<br />
+<code class="language-plaintext highlighter-rouge">col="time"</code> 이라는 옵션을 추가함으로써 <strong>Lunch</strong>에 대한 figure와 <strong>Dinner</strong>에 대한 figure <strong>두 개</strong>가 plot 됩니다!<br />
 여기선 1x2 facet 이라고 할 수 있어요!</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">tips</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s">"tips"</span><span class="p">)</span>
-<span class="n">tips</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">relplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s">"total_bill"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">"tip"</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s">"smoker"</span><span class="p">,</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">tips</span> <span class="o">=</span> <span class="n">sns</span><span class="p">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s">"tips"</span><span class="p">)</span>
+<span class="n">tips</span><span class="p">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">sns</span><span class="p">.</span><span class="n">relplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s">"total_bill"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">"tip"</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s">"smoker"</span><span class="p">,</span>
             <span class="n">col</span><span class="o">=</span><span class="s">"time"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">tips</span><span class="p">);</span>
 </code></pre></div></div>
 <p><img src="https://jjerry-k.github.io/public/img/sb_part1a/032.png" /></p>
 
 <p>또한 다음과 같이 두 변수에 대해 figure를 나눌 수도 있습니다.<br />
-<code class="highlighter-rouge">col="region", row="event"</code>라고 하면 <strong>행</strong>은 <strong>“event”</strong>를 기준으로 <strong>열</strong>은 <strong>“region”</strong>으로 총 4개가 plot 됩니다!<br />
+<code class="language-plaintext highlighter-rouge">col="region", row="event"</code>라고 하면 <strong>행</strong>은 <strong>“event”</strong>를 기준으로 <strong>열</strong>은 <strong>“region”</strong>으로 총 4개가 plot 됩니다!<br />
 이건 2x2 facet!</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">fmri</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s">"fmri"</span><span class="p">)</span>
-<span class="n">fmri</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">relplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s">"timepoint"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">"signal"</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s">"subject"</span><span class="p">,</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">fmri</span> <span class="o">=</span> <span class="n">sns</span><span class="p">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s">"fmri"</span><span class="p">)</span>
+<span class="n">fmri</span><span class="p">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">sns</span><span class="p">.</span><span class="n">relplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s">"timepoint"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">"signal"</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s">"subject"</span><span class="p">,</span>
             <span class="n">col</span><span class="o">=</span><span class="s">"region"</span><span class="p">,</span> <span class="n">row</span><span class="o">=</span><span class="s">"event"</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
             <span class="n">kind</span><span class="o">=</span><span class="s">"line"</span><span class="p">,</span> <span class="n">estimator</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">fmri</span><span class="p">);</span>
 </code></pre></div></div>
@@ -631,15 +1235,15 @@ g.fig.autofmt_xdate()
 <p><strong>fmri</strong> 데이터의 경우 여러 subject가 있었습니다.<br />
 그 각각 subject 별로 figure를 만들고 싶을땐…?<br />
 다음과 같이 작성합니다.<br />
-<code class="highlighter-rouge">col="subject", col_wrap=5</code> 는 열을 <strong>subject</strong>를 기준으로 5개씩 끊어서 plot 하겠다는 의미입니다.<br />
-<code class="highlighter-rouge">height</code>는 facet의 높이(인치)를 정합니다.<br />
-<code class="highlighter-rouge">aspect</code>는 <code class="highlighter-rouge">height</code>에 맞춰 비율을 정하구요.<br />
+<code class="language-plaintext highlighter-rouge">col="subject", col_wrap=5</code> 는 열을 <strong>subject</strong>를 기준으로 5개씩 끊어서 plot 하겠다는 의미입니다.<br />
+<code class="language-plaintext highlighter-rouge">height</code>는 facet의 높이(인치)를 정합니다.<br />
+<code class="language-plaintext highlighter-rouge">aspect</code>는 <code class="language-plaintext highlighter-rouge">height</code>에 맞춰 비율을 정하구요.<br />
 그럼 총 14개의 figure가 plot되고 3x5 facet이 생성됩니다!</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sns</span><span class="o">.</span><span class="n">relplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s">"timepoint"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">"signal"</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s">"event"</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s">"event"</span><span class="p">,</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sns</span><span class="p">.</span><span class="n">relplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s">"timepoint"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">"signal"</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s">"event"</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s">"event"</span><span class="p">,</span>
             <span class="n">col</span><span class="o">=</span><span class="s">"subject"</span><span class="p">,</span> <span class="n">col_wrap</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
-            <span class="n">height</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="mf">.75</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">2.5</span><span class="p">,</span>
-            <span class="n">kind</span><span class="o">=</span><span class="s">"line"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">fmri</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s">"region == 'frontal'"</span><span class="p">));</span>
+            <span class="n">height</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="p">.</span><span class="mi">75</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">2.5</span><span class="p">,</span>
+            <span class="n">kind</span><span class="o">=</span><span class="s">"line"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">fmri</span><span class="p">.</span><span class="n">query</span><span class="p">(</span><span class="s">"region == 'frontal'"</span><span class="p">));</span>
 </code></pre></div></div>
 <p><img src="https://jjerry-k.github.io/public/img/sb_part1a/034.png" /></p>
 
@@ -677,11 +1281,11 @@ g.fig.autofmt_xdate()
 
 <ol>
   <li>Applications 디렉토리에서 <strong>Atom</strong>을 지운다.</li>
-  <li>home 디렉토리에서 <code class="highlighter-rouge">.atom</code> 디렉토리를 지운다.</li>
-  <li><code class="highlighter-rouge">/usr/local/bin/atom</code> 을 지운다.</li>
-  <li><code class="highlighter-rouge">/usr/local/bin/apm</code> 을 지운다.</li>
-  <li><code class="highlighter-rouge">~/Library/Preferences/com.github.atom.plist</code> 을 지운다.</li>
-  <li><code class="highlighter-rouge">~/Library/Preferences/com.github.atom.helper.plist</code> 을 지운다.</li>
+  <li>home 디렉토리에서 <code class="language-plaintext highlighter-rouge">.atom</code> 디렉토리를 지운다.</li>
+  <li><code class="language-plaintext highlighter-rouge">/usr/local/bin/atom</code> 을 지운다.</li>
+  <li><code class="language-plaintext highlighter-rouge">/usr/local/bin/apm</code> 을 지운다.</li>
+  <li><code class="language-plaintext highlighter-rouge">~/Library/Preferences/com.github.atom.plist</code> 을 지운다.</li>
+  <li><code class="language-plaintext highlighter-rouge">~/Library/Preferences/com.github.atom.helper.plist</code> 을 지운다.</li>
 </ol>
 
 <p>끝입니다..</p>
@@ -785,7 +1389,7 @@ g.fig.autofmt_xdate()
           <li>w, h : 이미지 크기에 대비한 상대적인 값.</li>
           <li>confidence score : bbox가 object를 가졌는지 box가 얼마나 정확히 예측했는지에 대한 score</li>
           <li>Confidence Score는 다음과 같이 정의.
-<script type="math/tex">{Confidence\; Score}= Pr(Object) * IOU^{truth}_{pred}</script></li>
+\({Confidence\; Score}= Pr(Object) * IOU^{truth}_{pred}\)</li>
           <li>No object의 경우
             <ul>
               <li>Confidence Score는 0 이어야함.</li>
@@ -799,7 +1403,7 @@ g.fig.autofmt_xdate()
           <li>C개의 class에 대한 conditional class probabilities, $Pr(Class_i \mid Object)$</li>
           <li>
             <p>Test 시에는 Conditional class probabilities와 individual box confidence score를 곱했다고 함.<br />
-<script type="math/tex">Pr(Class_i|Object) =  Pr(Object) * IOU^{truth}_{pred} = Pr(Class_i) * IOU^{truth}_{pred}</script></p>
+\(Pr(Class_i|Object) =  Pr(Object) * IOU^{truth}_{pred} = Pr(Class_i) * IOU^{truth}_{pred}\)</p>
           </li>
           <li>bbox 별로 class confidence score를 알 수 있음.</li>
         </ul>
@@ -836,8 +1440,7 @@ g.fig.autofmt_xdate()
   <li>다른 layer는 leaky ReLU 사용.</li>
 </ul>
 
-<script type="math/tex; mode=display">% <![CDATA[
-\phi(x) =\left\{\begin{array}{lcl}x, & if\;x > 0\\ {0.1}x, & otherwise\end{array} \right. %]]></script>
+<p>[\phi(x) =\left{\begin{array}{lcl}x, &amp; if\;x &gt; 0\ {0.1}x, &amp; otherwise\end{array} \right.]</p>
 
 <ul>
   <li>
@@ -853,11 +1456,13 @@ $\lambda_{coord} = 5$ and $\lambda_{noobj} = 0.5$.</p>
   <li>large boxes 에 대해서 중요성을 반영하기 위해 width, height 는 square root 사용.</li>
 </ul>
 
-<script type="math/tex; mode=display">\lambda_{coord}\sum^{S^2}_{i=0}\sum^B_{j=0}\mathbb{I}^{obj}_{ij}(x_i-\hat{x}_i)^2 + (y_i-\hat{y}_i)^2 \\
-+ \lambda_{coord}\sum^{S^2}_{i=0}\sum^B_{j=0}\mathbb{I}^{obj}_{ij}(\sqrt{w_i}-\sqrt{\hat{w}_i})^2 + (\sqrt{h_i}-\sqrt{\hat{h}_i})^2 \\
-+ \sum^{S^2}_{i=0}\sum^B_{j=0}\mathbb{I}^{obj}_{ij}(C_i - \hat{C}_i)^2 \\
-+ \lambda_{noobj}\sum^{S^2}_{i=0}\sum^B_{j=0}\mathbb{I}^{noobj}_{ij}(C_i - \hat{C}_i)^2 \\
-+ \sum^{S^2}_{i=0}\mathbb{I}^{obj}_{i}\sum^B_{c\in{classes}}(p_i(c) - \hat{p}_i(c))^2</script>
+<p>[\lambda_{coord}\sum^{S^2}<em>{i=0}\sum^B</em>{j=0}\mathbb{I}^{obj}_{ij}(x_i-\hat{x}_i)^2 + (y_i-\hat{y}_i)^2 \</p>
+<ul>
+  <li>\lambda_{coord}\sum^{S^2}<em>{i=0}\sum^B</em>{j=0}\mathbb{I}^{obj}_{ij}(\sqrt{w_i}-\sqrt{\hat{w}_i})^2 + (\sqrt{h_i}-\sqrt{\hat{h}_i})^2 \</li>
+  <li>\sum^{S^2}<em>{i=0}\sum^B</em>{j=0}\mathbb{I}^{obj}_{ij}(C_i - \hat{C}_i)^2 \</li>
+  <li>\lambda_{noobj}\sum^{S^2}<em>{i=0}\sum^B</em>{j=0}\mathbb{I}^{noobj}_{ij}(C_i - \hat{C}_i)^2 \</li>
+  <li>\sum^{S^2}<em>{i=0}\mathbb{I}^{obj}</em>{i}\sum^B_{c\in{classes}}(p_i(c) - \hat{p}_i(c))^2]</li>
+</ul>
 
 <ul>
   <li>$\mathbb{I}^{obj}_{i}$ : Object가 존재하는 Grid Cell i.</li>
@@ -947,78 +1552,6 @@ $\lambda_{coord} = 5$ and $\lambda_{noobj} = 0.5$.</p>
       <a href="/deeplearning/2019/03/29/YOLO/#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
       
       <a href="/deeplearning/2019/03/29/YOLO/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
-    </div>
-  </div>
-  
-  <div class="post">
-    <h1 class="post-title">
-      <a href="/ubuntu/2019/02/14/docker/">
-        자주 사용하는 Docker Command 정리
-      </a>
-    </h1>
-
-    <span class="post-date">14 Feb 2019</span>
-     | 
-    
-    <a href="/blog/tags/#docker" class="post-tag">Docker</a>
-    
-    
-
-    <h4 style="font-weight: 400; line-height: 1.8;"><article>
-      <p>service nvidia-docker start (sudo 권한으로) : nvidia docker 서비스 시작.</p>
-
-<p>docker -i -t -rm -p 호스트포트:도커포트 -v 호스트경로:도커경로 IMAGE_NAME:tag bash : IMAGE_NAME 컨테이너를 실행.</p>
-
-<p>docker rm NAME : Docker 프로세스 제거</p>
-
-<p>docker rmi IMAGE_NAME : Docker Image 제거</p>
-
-<p>docker commit NAME 레포이름:태그 :</p>
-
-<p>CUDA_VISIBLE_DEVICES=0 jupyter notebook –ip=0.0.0.0 –port=포트번호 –allow-root</p>
-
-
-    <article></h4>
-    <div class="post-more">
-      
-      <a href="/ubuntu/2019/02/14/docker/#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
-      
-      <a href="/ubuntu/2019/02/14/docker/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
-    </div>
-  </div>
-  
-  <div class="post">
-    <h1 class="post-title">
-      <a href="/living/2019/02/01/keyboard/">
-        첫 기계식 키보드 !
-      </a>
-    </h1>
-
-    <span class="post-date">01 Feb 2019</span>
-     | 
-    
-    <a href="/blog/tags/#hardware" class="post-tag">Hardware</a>
-    
-    
-
-    <h4 style="font-weight: 400; line-height: 1.8;"><article>
-      <p>늦었지만 키보드 자랑…<br />
-바밀로 저소음<strong>흑축</strong> 108키 입니다.</p>
-
-<p>넘나 영롱하다…</p>
-
-<p><img src="https://jjerry-k.github.io/public/img/keyboard/vamilo.png" /></p>
-
-<p>이건 타건 영상입니다.</p>
-
-<iframe class="youtube" src="https://jjerry-k.github.io/public/img/keyboard/vamilo.mp4" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen=""></iframe>
-
-    <article></h4>
-    <div class="post-more">
-      
-      <a href="/living/2019/02/01/keyboard/#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
-      
-      <a href="/living/2019/02/01/keyboard/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
     </div>
   </div>
   

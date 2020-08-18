@@ -2,57 +2,88 @@
 <html lang="en-us">
   <head>
   <head>
-  <link href="http://gmpg.org/xfn/11" rel="profile">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta http-equiv="content-type" content="text/html; charset=utf-8">
-
-  <!-- Enable responsiveness on mobile devices-->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-
-  <title>
+    <link href="http://gmpg.org/xfn/11" rel="profile">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  
+    <!-- Enable responsiveness on mobile devices-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+  
+    <title>
+      
+        Netron! Network 구조를 보여주세요! &middot; Jerry's Blog
+      
+    </title>
+  
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
+    <link rel="stylesheet" href="/public/css/main.css">
+  
+    <!-- Icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-precomposed.png">
+    <link rel="shortcut icon" href="/public/favicon.ico">
+  
+    <!-- RSS -->
+    <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+  
+    <!-- scroll -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+      $( window ).scroll( function() {
+        if ( $( this ).scrollTop() > 500 ) {
+          $( '.top' ).fadeIn();
+        } else {
+          $( '.top' ).fadeOut();
+        }
+      } );
+      $( '.top' ).click( function() {
+        $( 'html, body' ).stop().animate( { scrollTop : 0 }, 100);
+        return false;
+      } );
+    </script>
     
-      Netron! Network 구조를 보여주세요! &middot; Jerry's Blog
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+      (absbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-1054696837285307",
+          enable_page_level_ads: true
+      });
+    </script>
     
-  </title>
-
-  <!-- CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
-  <link rel="stylesheet" href="/public/css/main.css">
-
-  <!-- Icons -->
-  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-precomposed.png">
-  <link rel="shortcut icon" href="/public/favicon.ico">
-
-  <!-- RSS -->
-  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
-
-  <!-- scroll -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script>
-    $( window ).scroll( function() {
-      if ( $( this ).scrollTop() > 500 ) {
-        $( '.top' ).fadeIn();
-      } else {
-        $( '.top' ).fadeOut();
-      }
-    } );
-    $( '.top' ).click( function() {
-      $( 'html, body' ).stop().animate( { scrollTop : 0 }, 100);
-      return false;
-    } );
-  </script>
-  
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-  <script>
-    (absbygoogle = window.adsbygoogle || []).push({
-        google_ad_client: "ca-pub-1054696837285307",
-        enable_page_level_ads: true
-    });
-  </script>
-  
-  
+    <!-- 
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        //jax: ["input/TeX", "output/HTML-CSS"],
+        TeX: {
+          equationNumbers: {
+            autoNumber: "AMS"
+          }
+        },
+        tex2jax: {
+          inlineMath: [ ['$', '$'] ],
+          displayMath: [ ['$$', '$$'] ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+        //,
+        //displayAlign: "left",
+        //displayIndent: "2em"
+      });
+      MathJax.Hub.Register.MessageHook("Math Processing Error",function (message) {
+        alert("Math Processing Error: "+message[1]);
+      });
+    MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
+        alert("Math Processing Error: "+message[1]);
+      });
+    </script>
+    <script type="text/javascript" async
+      src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript">
+    </script>
+     -->
+    
+    
   <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
       //jax: ["input/TeX", "output/HTML-CSS"],
@@ -69,17 +100,21 @@
   </script>
   <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
   
-  
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <script src="/dest/simple-jekyll-search.js" type="text/javascript"></script>
-  <script type="text/javascript">
-  $(document).ready(function(){
-    document.search.searchinput.focus();
-  });
-  </script>
-</head>
 
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="/dest/simple-jekyll-search.js" type="text/javascript"></script>
+    <script type="text/javascript">
+    $(document).ready(function(){
+      document.search.searchinput.focus();
+    });
+    </script>
+  </head>
+  
   <style>blockquote {font-size: 1em; line-height: 1.4}</style>
+  
+  <!-- New line Start-->
+  <!--  -->
+  <!-- New line End -->
   </head>
   <body>
 
@@ -293,40 +328,40 @@
 <p>굉장히 많은 Framework들을 지원하고 있습니다.</p>
 
 <ul>
-  <li><strong>ONNX</strong> (<code class="highlighter-rouge">.onnx</code>, <code class="highlighter-rouge">.pb</code>, <code class="highlighter-rouge">.pbtxt</code>)</li>
-  <li><strong>Keras</strong> (<code class="highlighter-rouge">.h5</code>, <code class="highlighter-rouge">.keras</code>)</li>
-  <li><strong>Core ML</strong> (<code class="highlighter-rouge">.mlmodel</code>)</li>
-  <li><strong>Caffe</strong> (<code class="highlighter-rouge">.caffemodel</code>, <code class="highlighter-rouge">.prototxt</code>)</li>
-  <li><strong>Caffe2</strong> (<code class="highlighter-rouge">predict_net.pb</code>)</li>
-  <li><strong>Darknet</strong> (<code class="highlighter-rouge">.cfg</code>)</li>
-  <li><strong>MXNet</strong> (<code class="highlighter-rouge">.model</code>, <code class="highlighter-rouge">-symbol.json</code>)</li>
-  <li><strong>Barracuda</strong> (<code class="highlighter-rouge">.nn</code>)</li>
-  <li><strong>ncnn</strong> (<code class="highlighter-rouge">.param</code>)</li>
-  <li><strong>Tengine</strong> (<code class="highlighter-rouge">.tmfile</code>)</li>
-  <li><strong>TNN</strong> (<code class="highlighter-rouge">.tnnproto</code>)</li>
-  <li><strong>UFF</strong> (<code class="highlighter-rouge">.uff</code>)</li>
-  <li><strong>TensorFlow Lite</strong> (<code class="highlighter-rouge">.tflite</code>)</li>
+  <li><strong>ONNX</strong> (<code class="language-plaintext highlighter-rouge">.onnx</code>, <code class="language-plaintext highlighter-rouge">.pb</code>, <code class="language-plaintext highlighter-rouge">.pbtxt</code>)</li>
+  <li><strong>Keras</strong> (<code class="language-plaintext highlighter-rouge">.h5</code>, <code class="language-plaintext highlighter-rouge">.keras</code>)</li>
+  <li><strong>Core ML</strong> (<code class="language-plaintext highlighter-rouge">.mlmodel</code>)</li>
+  <li><strong>Caffe</strong> (<code class="language-plaintext highlighter-rouge">.caffemodel</code>, <code class="language-plaintext highlighter-rouge">.prototxt</code>)</li>
+  <li><strong>Caffe2</strong> (<code class="language-plaintext highlighter-rouge">predict_net.pb</code>)</li>
+  <li><strong>Darknet</strong> (<code class="language-plaintext highlighter-rouge">.cfg</code>)</li>
+  <li><strong>MXNet</strong> (<code class="language-plaintext highlighter-rouge">.model</code>, <code class="language-plaintext highlighter-rouge">-symbol.json</code>)</li>
+  <li><strong>Barracuda</strong> (<code class="language-plaintext highlighter-rouge">.nn</code>)</li>
+  <li><strong>ncnn</strong> (<code class="language-plaintext highlighter-rouge">.param</code>)</li>
+  <li><strong>Tengine</strong> (<code class="language-plaintext highlighter-rouge">.tmfile</code>)</li>
+  <li><strong>TNN</strong> (<code class="language-plaintext highlighter-rouge">.tnnproto</code>)</li>
+  <li><strong>UFF</strong> (<code class="language-plaintext highlighter-rouge">.uff</code>)</li>
+  <li><strong>TensorFlow Lite</strong> (<code class="language-plaintext highlighter-rouge">.tflite</code>)</li>
 </ul>
 
 <p>이 외에도 불안정하지만 다음과 같은 Framework 도 지원합니다.</p>
 
 <ul>
-  <li><strong>TorchScript</strong> (<code class="highlighter-rouge">.pt</code>, <code class="highlighter-rouge">.pth</code>)</li>
-  <li><strong>PyTorch</strong> (<code class="highlighter-rouge">.pt</code>, <code class="highlighter-rouge">.pth</code>)</li>
-  <li><strong>Torch</strong> (<code class="highlighter-rouge">.t7</code>)</li>
-  <li><strong>Arm NN</strong> (<code class="highlighter-rouge">.armnn</code>)</li>
-  <li><strong>BigDL</strong> (<code class="highlighter-rouge">.bigdl</code>, <code class="highlighter-rouge">.model</code>)</li>
-  <li><strong>Chainer</strong> (<code class="highlighter-rouge">.npz</code>, <code class="highlighter-rouge">.h5</code>)</li>
-  <li><strong>CNTK</strong> (<code class="highlighter-rouge">.model</code>, <code class="highlighter-rouge">.cntk</code>)</li>
-  <li><strong>Deeplearning4j</strong> (<code class="highlighter-rouge">.zip</code>)</li>
-  <li><strong>MediaPipe</strong> (<code class="highlighter-rouge">.pbtxt</code>)</li>
-  <li><strong>ML.NET</strong> (<code class="highlighter-rouge">.zip</code>)</li>
-  <li><strong>MNN</strong> (<code class="highlighter-rouge">.mnn</code>)</li>
-  <li><strong>PaddlePaddle</strong> (<code class="highlighter-rouge">.zip</code>, <code class="highlighter-rouge">__model__</code>)</li>
-  <li><strong>OpenVINO</strong> (<code class="highlighter-rouge">.xml</code>)</li>
-  <li><strong>scikit-learn</strong> (<code class="highlighter-rouge">.pkl</code>)</li>
-  <li><strong>TensorFlow.js</strong> (<code class="highlighter-rouge">model.json</code>, <code class="highlighter-rouge">.pb</code>)</li>
-  <li><strong>TensorFlow</strong> (<code class="highlighter-rouge">.pb</code>, <code class="highlighter-rouge">.meta</code>, <code class="highlighter-rouge">.pbtxt</code>, <code class="highlighter-rouge">.ckpt</code>, <code class="highlighter-rouge">.index</code>)</li>
+  <li><strong>TorchScript</strong> (<code class="language-plaintext highlighter-rouge">.pt</code>, <code class="language-plaintext highlighter-rouge">.pth</code>)</li>
+  <li><strong>PyTorch</strong> (<code class="language-plaintext highlighter-rouge">.pt</code>, <code class="language-plaintext highlighter-rouge">.pth</code>)</li>
+  <li><strong>Torch</strong> (<code class="language-plaintext highlighter-rouge">.t7</code>)</li>
+  <li><strong>Arm NN</strong> (<code class="language-plaintext highlighter-rouge">.armnn</code>)</li>
+  <li><strong>BigDL</strong> (<code class="language-plaintext highlighter-rouge">.bigdl</code>, <code class="language-plaintext highlighter-rouge">.model</code>)</li>
+  <li><strong>Chainer</strong> (<code class="language-plaintext highlighter-rouge">.npz</code>, <code class="language-plaintext highlighter-rouge">.h5</code>)</li>
+  <li><strong>CNTK</strong> (<code class="language-plaintext highlighter-rouge">.model</code>, <code class="language-plaintext highlighter-rouge">.cntk</code>)</li>
+  <li><strong>Deeplearning4j</strong> (<code class="language-plaintext highlighter-rouge">.zip</code>)</li>
+  <li><strong>MediaPipe</strong> (<code class="language-plaintext highlighter-rouge">.pbtxt</code>)</li>
+  <li><strong>ML.NET</strong> (<code class="language-plaintext highlighter-rouge">.zip</code>)</li>
+  <li><strong>MNN</strong> (<code class="language-plaintext highlighter-rouge">.mnn</code>)</li>
+  <li><strong>PaddlePaddle</strong> (<code class="language-plaintext highlighter-rouge">.zip</code>, <code class="language-plaintext highlighter-rouge">__model__</code>)</li>
+  <li><strong>OpenVINO</strong> (<code class="language-plaintext highlighter-rouge">.xml</code>)</li>
+  <li><strong>scikit-learn</strong> (<code class="language-plaintext highlighter-rouge">.pkl</code>)</li>
+  <li><strong>TensorFlow.js</strong> (<code class="language-plaintext highlighter-rouge">model.json</code>, <code class="language-plaintext highlighter-rouge">.pb</code>)</li>
+  <li><strong>TensorFlow</strong> (<code class="language-plaintext highlighter-rouge">.pb</code>, <code class="language-plaintext highlighter-rouge">.meta</code>, <code class="language-plaintext highlighter-rouge">.pbtxt</code>, <code class="language-plaintext highlighter-rouge">.ckpt</code>, <code class="language-plaintext highlighter-rouge">.index</code>)</li>
 </ul>
 
 <p>(솔직히 Torch, TensorFlow 종류는 왜 나눠서 설명하는지 잘 모르겠음…..하나로 합쳐 놓으면 안되나..)</p>
@@ -336,10 +371,10 @@
 <p>netron은 PC에 설치해서 사용하거나 설치없이 Browser 버전으로 사용할 수도 있습니다.</p>
 
 <ul>
-  <li><strong>macOS</strong>: <strong><a href="https://github.com/lutzroeder/netron/releases/latest">Download</a></strong> the <code class="highlighter-rouge">.dmg</code> file or run <code class="highlighter-rouge">brew cask install netron</code></li>
-  <li><strong>Linux</strong>: <strong><a href="https://github.com/lutzroeder/netron/releases/latest">Download</a></strong> the <code class="highlighter-rouge">.AppImage</code> file or run <code class="highlighter-rouge">snap install netron</code></li>
-  <li><strong>Windows</strong>: <strong><a href="https://github.com/lutzroeder/netron/releases/latest">Download</a></strong> the <code class="highlighter-rouge">.exe</code> installer or run <code class="highlighter-rouge">winget install netron</code></li>
-  <li><strong>Python Server</strong>: Run <code class="highlighter-rouge">pip install netron</code> and <code class="highlighter-rouge">netron [FILE]</code> or <code class="highlighter-rouge">import netron; netron.start('[FILE]')</code></li>
+  <li><strong>macOS</strong>: <strong><a href="https://github.com/lutzroeder/netron/releases/latest">Download</a></strong> the <code class="language-plaintext highlighter-rouge">.dmg</code> file or run <code class="language-plaintext highlighter-rouge">brew cask install netron</code></li>
+  <li><strong>Linux</strong>: <strong><a href="https://github.com/lutzroeder/netron/releases/latest">Download</a></strong> the <code class="language-plaintext highlighter-rouge">.AppImage</code> file or run <code class="language-plaintext highlighter-rouge">snap install netron</code></li>
+  <li><strong>Windows</strong>: <strong><a href="https://github.com/lutzroeder/netron/releases/latest">Download</a></strong> the <code class="language-plaintext highlighter-rouge">.exe</code> installer or run <code class="language-plaintext highlighter-rouge">winget install netron</code></li>
+  <li><strong>Python Server</strong>: Run <code class="language-plaintext highlighter-rouge">pip install netron</code> and <code class="language-plaintext highlighter-rouge">netron [FILE]</code> or <code class="language-plaintext highlighter-rouge">import netron; netron.start('[FILE]')</code></li>
   <li><strong>Browser</strong>: <strong><a href="https://www.lutzroeder.com/ai/netron">Start</a></strong> the browser version.</li>
 </ul>
 
@@ -347,7 +382,7 @@
 
 <p><img src="https://github.com/jjerry-k/jjerry-k.github.io/blob/master/public/img/netron/Untitled.png?raw=true" alt="https://jjerry-k.github.io/public/img/netron/Untitled.png" /></p>
 
-<p><code class="highlighter-rouge">Open Model</code> 을 클릭 하신 후 보고 싶은 Network 저장 파일을 선택합니다.</p>
+<p><code class="language-plaintext highlighter-rouge">Open Model</code> 을 클릭 하신 후 보고 싶은 Network 저장 파일을 선택합니다.</p>
 
 <p><img src="https://github.com/jjerry-k/jjerry-k.github.io/blob/master/public/img/netron/Untitled_1.png?raw=true" alt="https://jjerry-k.github.io/public/img/netron/Untitled_1.png" /></p>
 

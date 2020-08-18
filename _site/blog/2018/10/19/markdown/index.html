@@ -2,57 +2,88 @@
 <html lang="en-us">
   <head>
   <head>
-  <link href="http://gmpg.org/xfn/11" rel="profile">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta http-equiv="content-type" content="text/html; charset=utf-8">
-
-  <!-- Enable responsiveness on mobile devices-->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-
-  <title>
+    <link href="http://gmpg.org/xfn/11" rel="profile">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  
+    <!-- Enable responsiveness on mobile devices-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+  
+    <title>
+      
+        Markdown 사용법 &middot; Jerry's Blog
+      
+    </title>
+  
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
+    <link rel="stylesheet" href="/public/css/main.css">
+  
+    <!-- Icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-precomposed.png">
+    <link rel="shortcut icon" href="/public/favicon.ico">
+  
+    <!-- RSS -->
+    <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+  
+    <!-- scroll -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+      $( window ).scroll( function() {
+        if ( $( this ).scrollTop() > 500 ) {
+          $( '.top' ).fadeIn();
+        } else {
+          $( '.top' ).fadeOut();
+        }
+      } );
+      $( '.top' ).click( function() {
+        $( 'html, body' ).stop().animate( { scrollTop : 0 }, 100);
+        return false;
+      } );
+    </script>
     
-      Markdown 사용법 &middot; Jerry's Blog
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+      (absbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-1054696837285307",
+          enable_page_level_ads: true
+      });
+    </script>
     
-  </title>
-
-  <!-- CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
-  <link rel="stylesheet" href="/public/css/main.css">
-
-  <!-- Icons -->
-  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-precomposed.png">
-  <link rel="shortcut icon" href="/public/favicon.ico">
-
-  <!-- RSS -->
-  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
-
-  <!-- scroll -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script>
-    $( window ).scroll( function() {
-      if ( $( this ).scrollTop() > 500 ) {
-        $( '.top' ).fadeIn();
-      } else {
-        $( '.top' ).fadeOut();
-      }
-    } );
-    $( '.top' ).click( function() {
-      $( 'html, body' ).stop().animate( { scrollTop : 0 }, 100);
-      return false;
-    } );
-  </script>
-  
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-  <script>
-    (absbygoogle = window.adsbygoogle || []).push({
-        google_ad_client: "ca-pub-1054696837285307",
-        enable_page_level_ads: true
-    });
-  </script>
-  
-  
+    <!-- 
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        //jax: ["input/TeX", "output/HTML-CSS"],
+        TeX: {
+          equationNumbers: {
+            autoNumber: "AMS"
+          }
+        },
+        tex2jax: {
+          inlineMath: [ ['$', '$'] ],
+          displayMath: [ ['$$', '$$'] ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+        //,
+        //displayAlign: "left",
+        //displayIndent: "2em"
+      });
+      MathJax.Hub.Register.MessageHook("Math Processing Error",function (message) {
+        alert("Math Processing Error: "+message[1]);
+      });
+    MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
+        alert("Math Processing Error: "+message[1]);
+      });
+    </script>
+    <script type="text/javascript" async
+      src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript">
+    </script>
+     -->
+    
+    
   <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
       //jax: ["input/TeX", "output/HTML-CSS"],
@@ -69,17 +100,21 @@
   </script>
   <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
   
-  
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <script src="/dest/simple-jekyll-search.js" type="text/javascript"></script>
-  <script type="text/javascript">
-  $(document).ready(function(){
-    document.search.searchinput.focus();
-  });
-  </script>
-</head>
 
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="/dest/simple-jekyll-search.js" type="text/javascript"></script>
+    <script type="text/javascript">
+    $(document).ready(function(){
+      document.search.searchinput.focus();
+    });
+    </script>
+  </head>
+  
   <style>blockquote {font-size: 1em; line-height: 1.4}</style>
+  
+  <!-- New line Start-->
+  <!--  -->
+  <!-- New line End -->
   </head>
   <body>
 
@@ -363,11 +398,11 @@
 
 <h2 id="headings">Headings</h2>
 
-<p>Heading 은 <code class="highlighter-rouge">h1</code> 부터 <code class="highlighter-rouge">h6</code> 까지 있고 <code class="highlighter-rouge">#</code> 의  개수로 단계가 정해집니다.</p>
+<p>Heading 은 <code class="language-plaintext highlighter-rouge">h1</code> 부터 <code class="language-plaintext highlighter-rouge">h6</code> 까지 있고 <code class="language-plaintext highlighter-rouge">#</code> 의  개수로 단계가 정해집니다.</p>
 
 <p>사용법 :</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># h1 Heading
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># h1 Heading
 ## h2 Heading
 ### h3 Heading
 #### h4 Heading
@@ -391,7 +426,7 @@
 
 <p>사용법 :</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;p&gt;이 문장은 첫번째 문단의 첫번째 문장입니다.&lt;/p&gt;
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;p&gt;이 문장은 첫번째 문단의 첫번째 문장입니다.&lt;/p&gt;
 &lt;p&gt;이 문장은 두번째 문단의 첫번째 문장입니다. 이 문장은 두번째 문단의 두번째 문장입니다.&lt;/p&gt;
 </code></pre></div></div>
 
@@ -404,12 +439,12 @@
 
 <h2 id="newline">Newline</h2>
 
-<p><code class="highlighter-rouge">공백 두칸 후 엔터</code>, <code class="highlighter-rouge">&lt;br&gt;</code>을 이용하여 개행을 할 수 있습니다.<br />
-(<code class="highlighter-rouge">&lt;br&gt;</code>은 굳이….)</p>
+<p><code class="language-plaintext highlighter-rouge">공백 두칸 후 엔터</code>, <code class="language-plaintext highlighter-rouge">&lt;br&gt;</code>을 이용하여 개행을 할 수 있습니다.<br />
+(<code class="language-plaintext highlighter-rouge">&lt;br&gt;</code>은 굳이….)</p>
 
 <p>사용법 :</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>test1`공백 두칸 후 엔터`
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>test1`공백 두칸 후 엔터`
 test2
 
 test1&lt;br&gt;test2
@@ -427,7 +462,7 @@ test2</p>
 <p>Markdown 문서에 수평선을 추가 할 수 있습니다.</p>
 
 <p>사용법 :</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>`___`: 밑줄(_) 3개
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>`___`: 밑줄(_) 3개
 
 `---`: 대쉬(-) 3개
 
@@ -450,7 +485,7 @@ test2</p>
 
 <p>볼드체 적용도 가능합니다.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>**이렇게 하면 볼드체!**
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>**이렇게 하면 볼드체!**
 </code></pre></div></div>
 
 <p>적용 후 :</p>
@@ -461,7 +496,7 @@ test2</p>
 
 <p>이텔릭체 적용도 가능합니다.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>_이렇게 하면 이텔릭체!_
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>_이렇게 하면 이텔릭체!_
 </code></pre></div></div>
 
 <p>적용 후 :</p>
@@ -472,12 +507,12 @@ test2</p>
 
 <h2 id="blockquotes">Blockquotes</h2>
 
-<p>블럭인용은 <code class="highlighter-rouge">&gt;</code> 으로 합니다.<br />
-Heading과 처럼 <code class="highlighter-rouge">&gt;</code> 개수로 인용 안에 인용을 추가 할 수 있습니다.</p>
+<p>블럭인용은 <code class="language-plaintext highlighter-rouge">&gt;</code> 으로 합니다.<br />
+Heading과 처럼 <code class="language-plaintext highlighter-rouge">&gt;</code> 개수로 인용 안에 인용을 추가 할 수 있습니다.</p>
 
 <p>사용법 :</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt; 이것은 인용구에요.
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt; 이것은 인용구에요.
 </code></pre></div></div>
 
 <p>적용 후 :</p>
@@ -488,7 +523,7 @@ Heading과 처럼 <code class="highlighter-rouge">&gt;</code> 개수로 인용 �
 
 <p>다중 인용 사용법 :</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt; 이것은 첫번째 인용이에요.
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt; 이것은 첫번째 인용이에요.
 &gt;&gt; 이것은 두번째 인용이에요.
 &gt;&gt;&gt; 이것은 세번째 인용이에요.
 </code></pre></div></div>
@@ -513,11 +548,11 @@ Heading과 처럼 <code class="highlighter-rouge">&gt;</code> 개수로 인용 �
 
 <h3 id="unordered">Unordered</h3>
 
-<p>순서가 없는 목록은 <code class="highlighter-rouge">*</code>, <code class="highlighter-rouge">-</code>, <code class="highlighter-rouge">+</code> 로 사용할 수 있습니다.</p>
+<p>순서가 없는 목록은 <code class="language-plaintext highlighter-rouge">*</code>, <code class="language-plaintext highlighter-rouge">-</code>, <code class="language-plaintext highlighter-rouge">+</code> 로 사용할 수 있습니다.</p>
 
 <p>사용법 :</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+ 음식
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+ 음식
 + 가구
 + 운동
   - 농구
@@ -542,7 +577,7 @@ Heading과 처럼 <code class="highlighter-rouge">&gt;</code> 개수로 인용 �
 
 <p>사용법 :</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>- 신체
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>- 신체
   - 머리
   - 상체
   - 하체
@@ -577,7 +612,7 @@ Heading과 처럼 <code class="highlighter-rouge">&gt;</code> 개수로 인용 �
 
 <p>순서가 있는 목록을 만들 때는 번호를 매기면 됩니다.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1. 노트북을 켠다.
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1. 노트북을 켠다.
 2. Atom 에디터를 켠다.
 3. 프로젝트 폴더를 연다.
 4. 코딩을 한다.
@@ -594,9 +629,9 @@ Heading과 처럼 <code class="highlighter-rouge">&gt;</code> 개수로 인용 �
 <h3 id="time-saving-tip">Time-saving Tip</h3>
 
 <p>순서가 있는 목록에서 시간을 아끼는 방법입니다.<br />
-<code class="highlighter-rouge">1.</code>, <code class="highlighter-rouge">2.</code>,… 라고 적을 필요 없이 <code class="highlighter-rouge">1.</code> 만 적으면 자동으로 번호를 매깁니다.</p>
+<code class="language-plaintext highlighter-rouge">1.</code>, <code class="language-plaintext highlighter-rouge">2.</code>,… 라고 적을 필요 없이 <code class="language-plaintext highlighter-rouge">1.</code> 만 적으면 자동으로 번호를 매깁니다.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1. 노트북을 켠다.
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1. 노트북을 켠다.
 1. Atom 에디터를 켠다.
 1. 프로젝트 폴더를 연다.
 1. 코딩을 한다.
@@ -619,12 +654,12 @@ Heading과 처럼 <code class="highlighter-rouge">&gt;</code> 개수로 인용 �
 
 <p>문장 중간에 <code>` `</code>를 이용하여 code를 넣을 수 있습니다.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>파이썬에서 모듈을 쓰려면 `import '모듈명'` 이라고 하면 됩니다.
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>파이썬에서 모듈을 쓰려면 `import '모듈명'` 이라고 하면 됩니다.
 </code></pre></div></div>
 
 <p>적용 후 :</p>
 
-<p>파이썬에서 모듈을 쓰려면 <code class="highlighter-rouge">import '모듈명'</code> 이라고 하면 됩니다.</p>
+<p>파이썬에서 모듈을 쓰려면 <code class="language-plaintext highlighter-rouge">import '모듈명'</code> 이라고 하면 됩니다.</p>
 
 <h3 id="fenced-code-block">“Fenced” code block</h3>
 
@@ -649,13 +684,13 @@ import sys
 하지만 별로 추천하는 방법은 아닙니다.<br />
 왜냐하면 <strong>syntax highlighting</strong>이 안됩니다.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    import sys
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    import sys
     impot os
 </code></pre></div></div>
 
 <p>적용 후 :</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import sys
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import sys
 impot os
 </code></pre></div></div>
 
@@ -693,14 +728,14 @@ print(a + b)
 
 <h2 id="links">Links</h2>
 
-<p>링크를 거는 방법은 <code class="highlighter-rouge">Autolinks</code>, <code class="highlighter-rouge">Inline links</code>, <code class="highlighter-rouge">Link titles</code>, ‘Named Anchors’ 이렇게 네 가지가 있습니다.<br />
-이 포스팅에선 <code class="highlighter-rouge">Autolinks</code>, <code class="highlighter-rouge">Inline links</code> 이 두 가지를 설명하겠습니다.</p>
+<p>링크를 거는 방법은 <code class="language-plaintext highlighter-rouge">Autolinks</code>, <code class="language-plaintext highlighter-rouge">Inline links</code>, <code class="language-plaintext highlighter-rouge">Link titles</code>, ‘Named Anchors’ 이렇게 네 가지가 있습니다.<br />
+이 포스팅에선 <code class="language-plaintext highlighter-rouge">Autolinks</code>, <code class="language-plaintext highlighter-rouge">Inline links</code> 이 두 가지를 설명하겠습니다.</p>
 
 <h3 id="autolinks">Autolinks</h3>
 
-<p><code class="highlighter-rouge">&lt;</code>, <code class="highlighter-rouge">&gt;</code> 사이에 링크를 적으면 자동으로 링크가 생성됩니다.</p>
+<p><code class="language-plaintext highlighter-rouge">&lt;</code>, <code class="language-plaintext highlighter-rouge">&gt;</code> 사이에 링크를 적으면 자동으로 링크가 생성됩니다.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;https://jjerry-k.github.io&gt;
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;https://jjerry-k.github.io&gt;
 </code></pre></div></div>
 
 <p>적용 후 :</p>
@@ -711,7 +746,7 @@ print(a + b)
 
 <p>문장 안에 링크를 생성할 수 있습니다.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[Jerry's Blog](https://jjerry-k.github.io)
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[Jerry's Blog](https://jjerry-k.github.io)
 </code></pre></div></div>
 
 <p>적용 후 :</p>
@@ -724,7 +759,7 @@ print(a + b)
 
 <p>이미지를 올리는 방법입니다.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>첫번째 방법
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>첫번째 방법
 ![Minion](http://octodex.github.com/images/minion.png)
 </code></pre></div></div>
 
@@ -732,7 +767,7 @@ print(a + b)
 
 <p><img src="http://octodex.github.com/images/minion.png" alt="Minion" /></p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>두번째 방법
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>두번째 방법
 ![Alt text](http://octodex.github.com/images/stormtroopocat.jpg "The Stormtroopocat")
 </code></pre></div></div>
 
@@ -741,9 +776,9 @@ print(a + b)
 <p><img src="http://octodex.github.com/images/stormtroopocat.jpg" alt="Alt text" title="The Stormtroopocat" /></p>
 
 <p>위 두 방법은 이미지 사이즈 조절을 할 수 없습니다.<br />
-만약 사이즈 조절이 필요하다면 <code class="highlighter-rouge">&lt;img src="" height="" width=""&gt;를 이용하면 됩니다.</code></p>
+만약 사이즈 조절이 필요하다면 <code class="language-plaintext highlighter-rouge">&lt;img src="" height="" width=""&gt;를 이용하면 됩니다.</code></p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;img src="http://octodex.github.com/images/dojocat.jpg" height="100" width="100"&gt;
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;img src="http://octodex.github.com/images/dojocat.jpg" height="100" width="100"&gt;
 </code></pre></div></div>
 
 <p>적용 후 :
@@ -755,7 +790,7 @@ print(a + b)
 
 <p>이미지에서 HTML 문법을 쓸 수 있다는걸 확인했다시피 Markdown 에서 HTML 문법을 사용할 수 있습니다.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>여기가 **&lt;a href="https://jjerry-k.github.io"&gt;Jerry의 블로그&lt;/a&gt;**입니다.
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>여기가 **&lt;a href="https://jjerry-k.github.io"&gt;Jerry의 블로그&lt;/a&gt;**입니다.
 
 여기가 **[Jerry의 블로그](https://jjerry-k.github.io)**입니다.
 </code></pre></div></div>
@@ -770,9 +805,9 @@ print(a + b)
 
 <h2 id="escaping-with-backslashes">Escaping with backslashes</h2>
 
-<p><code class="highlighter-rouge">\</code> 를 이용하여 문장안에 기호를 사용할 수 있습니다.</p>
+<p><code class="language-plaintext highlighter-rouge">\</code> 를 이용하여 문장안에 기호를 사용할 수 있습니다.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>\*를 문장에 쓰고 싶다!
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>\*를 문장에 쓰고 싶다!
 </code></pre></div></div>
 
 <p>적용 후 :</p>
@@ -787,7 +822,7 @@ print(a + b)
 
 <p>문장에 줄을 그을 수 있습니다.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~~블로그....귀찮다....~~
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~~블로그....귀찮다....~~
 </code></pre></div></div>
 
 <p>적용 후 :</p>
@@ -799,9 +834,9 @@ print(a + b)
 <h2 id="tables">Tables</h2>
 
 <p>표를 만들 수 있습니다.
-<code class="highlighter-rouge">|</code>, <code class="highlighter-rouge">-</code>를 이용하여 작성합니다.</p>
+<code class="language-plaintext highlighter-rouge">|</code>, <code class="language-plaintext highlighter-rouge">-</code>를 이용하여 작성합니다.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>| 이름 | 학점 |
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>| 이름 | 학점 |
 | --- | --- |
 | 제리 |  B+ |
 |  톰  | C+ |
@@ -835,14 +870,14 @@ print(a + b)
 
 <h3 id="aligning-cells">Aligning cells</h3>
 
-<p>셀 정렬은 <code class="highlighter-rouge">:</code>를 이용합니다.<br />
-왼쪽 정렬은 <code class="highlighter-rouge">:</code>을 사용하지 않으면 됩니다.</p>
+<p>셀 정렬은 <code class="language-plaintext highlighter-rouge">:</code>를 이용합니다.<br />
+왼쪽 정렬은 <code class="language-plaintext highlighter-rouge">:</code>을 사용하지 않으면 됩니다.</p>
 
 <p><strong>Center text in a column</strong></p>
 
 <p>중앙 정렬은 다음과 같이 합니다.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>| 이름 | 학점 |
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>| 이름 | 학점 |
 | :-: | :-: |
 | 제리 |  B+ |
 |  톰  | C+ |
@@ -876,7 +911,7 @@ print(a + b)
 
 <p>오른쪽 정렬은 다음과 같이 합니다.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>| 이름 | 학점 |
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>| 이름 | 학점 |
 | --: | --: |
 | 제리 |  B+ |
 |  톰  | C+ |
