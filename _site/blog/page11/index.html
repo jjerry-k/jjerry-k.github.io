@@ -311,6 +311,139 @@
   
   <div class="post">
     <h1 class="post-title">
+      <a href="/python/2018/10/23/anaconda/">
+        Anaconda 간단하게 사용하기!
+      </a>
+    </h1>
+
+    <span class="post-date">23 Oct 2018</span>
+     | 
+    
+    <a href="/blog/tags/#setting" class="post-tag">Setting</a>
+    
+    
+
+    <h4 style="font-weight: 400; line-height: 1.8;"><article>
+      <p>저번 <a href="https://jjerry-k.github.io/python/2018/09/27/python4mac/"><strong>Python 설치 포스팅</strong></a>에서 pyenv로 설치 하는 법을 포스팅 했었습니다.<br />
+이번에는 제가 pyenv 로 어떤 버전을 설치했고 무슨 패키지를 설치했는지 포스팅 하려고 합니다.<br />
+먼저 설치할 버전의 이름을 정확히 알아야하므로 설치 가능한 버전들을 봅니다.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pyenv <span class="nb">install</span> <span class="nt">--list</span>
+</code></pre></div></div>
+<p>이렇게 터미널에 입력을 하면</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Available versions:
+  2.1.3
+  2.2.3
+  2.3.7
+  ...
+  중략
+  ...
+  stackless-3.4.2
+  stackless-3.4.7
+  stackless-3.5.4
+</code></pre></div></div>
+
+<p>이런식으로 굉~~~장히 많은 버전이 있습니다. (약 340개?)<br />
+그중에서 저는 <code class="language-plaintext highlighter-rouge">anaconda3-5.2.0</code>을 설치했습니다.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pyenv <span class="nb">install </span>anaconda3-5.2.0
+
+pyenv global anaconda3-5.2.0
+</code></pre></div></div>
+
+<p>아나콘다 환경 설치 끝..<br />
+이제 제가 사용하는 파이썬 패키지를 설치해야겠죠.<br />
+보통 python 이라면 pip를 쓰겠지만 저는 아나콘다를 설치했죠.<br />
+그래서 <code class="language-plaintext highlighter-rouge">conda</code>를 이용해서 설치했습니다.<br />
+제가 설치 할 패키지는 pytorch, tensorflow, keras, tqdm 입니다.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>conda <span class="nb">install </span>tqdm <span class="c"># progress bar 패키지</span>
+conda <span class="nb">install </span>keras tensorflow <span class="c"># machine learning 패키지</span>
+conda <span class="nb">install </span>pytorch torchvision <span class="nt">-c</span> pytorch <span class="c"># machine learning 패키지</span>
+</code></pre></div></div>
+
+<p>이렇게 하면 끝입니다.<br />
+ <code class="language-plaintext highlighter-rouge">numpy, scipy, matplotlib, ...</code>등 패키지는 anaconda를 설치하면서 자동으로 설치가 됩니다 ㅎㅎ</p>
+
+<p>만약 저 환경을 삭제하고 싶다?</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> pyenv uninstall anaconda3-5.2.0
+</code></pre></div></div>
+<p>이라고 하시면 바로 삭제됩니다.</p>
+
+<p>많은 분들께 도움이 되었으면 좋겠습니다!</p>
+
+<p>감사합니다~!</p>
+
+    <article></h4>
+    <div class="post-more">
+      
+      <a href="/python/2018/10/23/anaconda/#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
+      
+      <a href="/python/2018/10/23/anaconda/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
+    </div>
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/deeplearning/2018/10/19/warning/">
+        Python 3.6 에서 이 경고 보기 싫어요..
+      </a>
+    </h1>
+
+    <span class="post-date">19 Oct 2018</span>
+     | 
+    
+    <a href="/blog/tags/#tensorflow" class="post-tag">TensorFlow</a>
+    
+    
+
+    <h4 style="font-weight: 400; line-height: 1.8;"><article>
+      <p>안녕하세요! Jerry 입니다!</p>
+
+<p>어제 <a href="https://jjerry-k.github.io/deeplearning/2018/10/18/condavspip/"><strong>pip 로 설치하지 말라구요!?</strong></a> 라는 포스팅을 했죠?<br />
+포스팅을 하고 갑자기 확 꽂혀서 anaconda 환경을 지웠습니다.<br />
+Setting 을 다시 하기 위해서요! 핳핳핳<br />
+그래서 지우고 다시 구축했죠.<br />
+제가 사용하는 방법은 <a href="https://jjerry-k.github.io/deeplearning/2018/09/27/python4mac/"><strong>Python Installation for mac</strong></a> 에 적혀있습니다!<br />
+아나콘다 환경 설치 후에 이제 python package를 설치해야겠죠?<br />
+pip 가 아닌 conda로 전부 설치했습니다.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>conda <span class="nb">install </span>tensorflow
+conda <span class="nb">install </span>pytorch torchvision <span class="nt">-c</span> pytorch
+conda <span class="nb">install </span>keras
+</code></pre></div></div>
+<p>그 후에 테스트를 하고자 터미널에서 tensorflow를 import 해봤습니다.</p>
+
+<pre><code class="language-python3">import tensorflow
+</code></pre>
+<p>그 후에 나온 warning 입니다.</p>
+
+<p>/Users/jerry/.pyenv/versions/anaconda3-5.2.0/lib/python3.6/site-packages/h5py/<strong>init</strong>.py:36: FutureWarning: Conversion of the second argument of issubdtype from <code class="language-plaintext highlighter-rouge">float</code> to <code class="language-plaintext highlighter-rouge">np.floating</code> is deprecated. In future, it will be treated as <code class="language-plaintext highlighter-rouge">np.float64 == np.dtype(float).type</code>.</p>
+
+<p>라고 나오더군요.<br />
+이게 굉장히 거슬리는 분들 계실겁니다..<br />
+보통 h5py 라는 python 패키지가 2.8.0 미만이면 이 warning이 발생해요!<br />
+해결책은 간단합니다!</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pip <span class="nb">install</span> <span class="nt">--upgrade</span> h5py
+</code></pre></div></div>
+
+<p>이것만 해주시면 됩니다!</p>
+
+<p>그럼 즐거운 코딩!</p>
+
+    <article></h4>
+    <div class="post-more">
+      
+      <a href="/deeplearning/2018/10/19/warning/#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
+      
+      <a href="/deeplearning/2018/10/19/warning/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
+    </div>
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
       <a href="/blog/2018/10/19/markdown/">
         Markdown 사용법
       </a>
@@ -1052,110 +1185,6 @@ GPU가 여러 대인 상황에서 아무 옵션도 주지 않고 (스크립트�
       <a href="/ubuntu/2018/10/10/GPU_Masking/#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
       
       <a href="/ubuntu/2018/10/10/GPU_Masking/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
-    </div>
-  </div>
-  
-  <div class="post">
-    <h1 class="post-title">
-      <a href="/python/2018/09/27/python4mac/">
-        Python Installation for mac
-      </a>
-    </h1>
-
-    <span class="post-date">27 Sep 2018</span>
-     | 
-    
-    <a href="/blog/tags/#setting" class="post-tag">Setting</a>
-    
-    
-
-    <h4 style="font-weight: 400; line-height: 1.8;"><article>
-      <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># brew 설치.</span>
-/usr/bin/ruby <span class="nt">-e</span> <span class="s2">"</span><span class="si">$(</span>curl <span class="nt">-fsSL</span> https://raw.githubusercontent.com/Homebrew/install/master/install<span class="si">)</span><span class="s2">"</span>
-
-<span class="c"># wget 설치.</span>
-brew <span class="nb">install </span>wget
-
-<span class="c">#pyenv 설치.</span>
-brew <span class="nb">install </span>pyenv
-
-<span class="c"># bash_profile 에 경로 추가.</span>
-<span class="nb">echo</span> <span class="s1">'export PYENV_ROOT="${HOME}/.pyenv"'</span> <span class="o">&gt;&gt;</span> ~/.zshrc
-
-<span class="nb">echo</span> <span class="s1">'export PATH="${PYENV_ROOT}bin:$PATH"'</span> <span class="o">&gt;&gt;</span> ~/.zshrc
-
-<span class="nb">echo</span> <span class="s1">'eval "$(pyenv init -)"'</span> <span class="o">&gt;&gt;</span> ~/.zshrc
-
-<span class="nb">exec</span> <span class="nv">$SHELL</span>
-
-<span class="c"># 설치할 수 있는 환경 보여줌.</span>
-pyenv <span class="nb">install</span> <span class="nt">--list</span>
-
-<span class="c"># 위에서 환경 확인 후 원하는 버전 입력.</span>
-pyenv <span class="nb">install</span> &lt;버전 이름&gt;
-
-<span class="c"># system  과 &lt;버전 이름&gt; 두 환경이 존재.</span>
-pyenv versions
-
-<span class="c"># &lt;버전 이름&gt;으로 default version 변경.</span>
-pyenv global &lt;버전 이름&gt;
-
-pyenv versions
-
-
-<span class="c"># tmp 폴더 에선 system 이라는 버전으로 사용.</span>
-<span class="nb">mkdir </span>tmp
-
-<span class="nb">cd </span>tmp
-
-pyenv <span class="nb">local </span>system
-
-</code></pre></div></div>
-
-<p><strong>pyenv</strong> 를 사용하면 특정 폴더에서는 python2 로 작동하고 그 외에는 python3 로 작동하게 할 수 있습니다!</p>
-
-<p>감사합니다!</p>
-
-    <article></h4>
-    <div class="post-more">
-      
-      <a href="/python/2018/09/27/python4mac/#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
-      
-      <a href="/python/2018/09/27/python4mac/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
-    </div>
-  </div>
-  
-  <div class="post">
-    <h1 class="post-title">
-      <a href="/deeplearning/2018/09/12/TFOD/">
-        Object Detection API
-      </a>
-    </h1>
-
-    <span class="post-date">12 Sep 2018</span>
-     | 
-    
-    <a href="/blog/tags/#tensorflow" class="post-tag">TensorFlow</a>
-    
-    
-
-    <h4 style="font-weight: 400; line-height: 1.8;"><article>
-      <p>이번에 V.ais에서 TensorFlow Object Detection API 사용 매뉴얼을 작성해봤습니다.</p>
-
-<p><a href="https://github.com/V-AIS/tensorflow"><strong>https://github.com/V-AIS/tensorflow</strong></a></p>
-
-<p>아직 완벽하게 정리된건 아니지만…</p>
-
-<p>TensorFlow Object Detection API를 처음 접하시는 분이라면 쉽게 따라할 수 있도록 적어봤습니다.</p>
-
-<p>수정됬으면 하는 부분이 있으면 댓글 남겨주세요!</p>
-
-    <article></h4>
-    <div class="post-more">
-      
-      <a href="/deeplearning/2018/09/12/TFOD/#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
-      
-      <a href="/deeplearning/2018/09/12/TFOD/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
     </div>
   </div>
   

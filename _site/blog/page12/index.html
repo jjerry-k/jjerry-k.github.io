@@ -311,6 +311,110 @@
   
   <div class="post">
     <h1 class="post-title">
+      <a href="/python/2018/09/27/python4mac/">
+        Python Installation for mac
+      </a>
+    </h1>
+
+    <span class="post-date">27 Sep 2018</span>
+     | 
+    
+    <a href="/blog/tags/#setting" class="post-tag">Setting</a>
+    
+    
+
+    <h4 style="font-weight: 400; line-height: 1.8;"><article>
+      <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># brew 설치.</span>
+/usr/bin/ruby <span class="nt">-e</span> <span class="s2">"</span><span class="si">$(</span>curl <span class="nt">-fsSL</span> https://raw.githubusercontent.com/Homebrew/install/master/install<span class="si">)</span><span class="s2">"</span>
+
+<span class="c"># wget 설치.</span>
+brew <span class="nb">install </span>wget
+
+<span class="c">#pyenv 설치.</span>
+brew <span class="nb">install </span>pyenv
+
+<span class="c"># bash_profile 에 경로 추가.</span>
+<span class="nb">echo</span> <span class="s1">'export PYENV_ROOT="${HOME}/.pyenv"'</span> <span class="o">&gt;&gt;</span> ~/.zshrc
+
+<span class="nb">echo</span> <span class="s1">'export PATH="${PYENV_ROOT}bin:$PATH"'</span> <span class="o">&gt;&gt;</span> ~/.zshrc
+
+<span class="nb">echo</span> <span class="s1">'eval "$(pyenv init -)"'</span> <span class="o">&gt;&gt;</span> ~/.zshrc
+
+<span class="nb">exec</span> <span class="nv">$SHELL</span>
+
+<span class="c"># 설치할 수 있는 환경 보여줌.</span>
+pyenv <span class="nb">install</span> <span class="nt">--list</span>
+
+<span class="c"># 위에서 환경 확인 후 원하는 버전 입력.</span>
+pyenv <span class="nb">install</span> &lt;버전 이름&gt;
+
+<span class="c"># system  과 &lt;버전 이름&gt; 두 환경이 존재.</span>
+pyenv versions
+
+<span class="c"># &lt;버전 이름&gt;으로 default version 변경.</span>
+pyenv global &lt;버전 이름&gt;
+
+pyenv versions
+
+
+<span class="c"># tmp 폴더 에선 system 이라는 버전으로 사용.</span>
+<span class="nb">mkdir </span>tmp
+
+<span class="nb">cd </span>tmp
+
+pyenv <span class="nb">local </span>system
+
+</code></pre></div></div>
+
+<p><strong>pyenv</strong> 를 사용하면 특정 폴더에서는 python2 로 작동하고 그 외에는 python3 로 작동하게 할 수 있습니다!</p>
+
+<p>감사합니다!</p>
+
+    <article></h4>
+    <div class="post-more">
+      
+      <a href="/python/2018/09/27/python4mac/#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
+      
+      <a href="/python/2018/09/27/python4mac/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
+    </div>
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/deeplearning/2018/09/12/TFOD/">
+        Object Detection API
+      </a>
+    </h1>
+
+    <span class="post-date">12 Sep 2018</span>
+     | 
+    
+    <a href="/blog/tags/#tensorflow" class="post-tag">TensorFlow</a>
+    
+    
+
+    <h4 style="font-weight: 400; line-height: 1.8;"><article>
+      <p>이번에 V.ais에서 TensorFlow Object Detection API 사용 매뉴얼을 작성해봤습니다.</p>
+
+<p><a href="https://github.com/V-AIS/tensorflow"><strong>https://github.com/V-AIS/tensorflow</strong></a></p>
+
+<p>아직 완벽하게 정리된건 아니지만…</p>
+
+<p>TensorFlow Object Detection API를 처음 접하시는 분이라면 쉽게 따라할 수 있도록 적어봤습니다.</p>
+
+<p>수정됬으면 하는 부분이 있으면 댓글 남겨주세요!</p>
+
+    <article></h4>
+    <div class="post-more">
+      
+      <a href="/deeplearning/2018/09/12/TFOD/#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
+      
+      <a href="/deeplearning/2018/09/12/TFOD/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
+    </div>
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
       <a href="/living/2018/09/07/Vacation/">
         휴가
       </a>
@@ -566,237 +670,6 @@ https://www.raspberrypi.org/products/raspberry-pi-3-model-b-plus/</p>
       <a href="/living/2018/07/10/Raspberry-Mini-PC/#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
       
       <a href="/living/2018/07/10/Raspberry-Mini-PC/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
-    </div>
-  </div>
-  
-  <div class="post">
-    <h1 class="post-title">
-      <a href="/living/2017/08/04/Desktop/">
-        데스크탑 조립기
-      </a>
-    </h1>
-
-    <span class="post-date">04 Aug 2017</span>
-     | 
-    
-    <a href="/blog/tags/#hardware" class="post-tag">Hardware</a>
-    
-    
-
-    <h4 style="font-weight: 400; line-height: 1.8;"><article>
-      <h1 id="building-desktop">Building Desktop</h1>
-
-<p>학부생 연구원으로 연구실에서 공부와 연구를 하고 있지만..<br />
-개인용 데스크탑이 없어서 노트북이 굉장히 고생을 많이 했습니다..<br />
-1차 피해자 Dell Inspiron 15 7559..<br />
-현재는 다른 주인에게로 넘어간 상태..<br />
-2차 피해자 Lenovo yoga 2 pro..<br />
-근래에 고생하다가 친구한테 넘어감..</p>
-
-<p>결국!<br />
-어짜피 나중에 집에서 쓸 데스크탑을 맞춘다고 생각하고!<br />
-부품을 각각 사서 조립을 하기로 했습니다!!</p>
-
-<p>CPU : 인텔 i5-7600<br />
-메인보드 : 기가바이트 Z270N-WIFI 듀러블에디션<br />
-메모리 : 커세어 VENGEANCE PC4-21300 8G x 2<br />
-VGA : EVGA GeForce GTX 1050ti sc gaming<br />
-SSD : 삼성 850 EVO M.2 (256GB)<br />
-HDD : Toshiba 1TB MQ01ABD100<br />
-케이스 : Fractal Design node 202<br />
-파워 : 커세어 SF450 80PLUS GOLD</p>
-
-<p>오자마자 포스팅 생각없이 조립을 해버림…</p>
-
-<p><img src="https://jjerry-k.github.io/public/img/desktop/01.jpg" /></p>
-
-<p>커세어의 위엄…..번쩍번쩍 램….이쁘다…</p>
-
-<p><img src="https://jjerry-k.github.io/public/img/desktop/02.jpg" /></p>
-
-<p>사이트에는 Fractal 로고가 위로 올라오게 해놨지만…</p>
-
-<p>그렇게하면 파워의 위치가 위가 되버려서 난 반대로 로고가 아래로 내려가게 했습니다.</p>
-
-<p>후기</p>
-
-<ul>
-  <li>
-    <p>데스크탑을 사용만 해봤지 조립은 처음이였음..</p>
-  </li>
-  <li>
-    <p>괜히 작은 케이스로 해서 선정리가 힘들었음..</p>
-  </li>
-  <li>
-    <p>살 수 있는건 중고나라를 이용해서 미개봉품을 싸게 삼.</p>
-  </li>
-  <li>
-    <p>25만원 정도 절약함.</p>
-  </li>
-  <li>
-    <p>내 눈에만 이쁘면 됬음.</p>
-  </li>
-  <li>
-    <p>아.. ITX 케이스를 조립할 땐 대부분 SFX 규격을 쓰지만.. <br />
-같은 SFX라도 크기를 고려해야함 . .</p>
-  </li>
-</ul>
-
-    <article></h4>
-    <div class="post-more">
-      
-      <a href="/living/2017/08/04/Desktop/#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
-      
-      <a href="/living/2017/08/04/Desktop/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
-    </div>
-  </div>
-  
-  <div class="post">
-    <h1 class="post-title">
-      <a href="/ubuntu/2016/09/08/CUDA/">
-        Ubuntu CUDA & Cudnn 설치하기
-      </a>
-    </h1>
-
-    <span class="post-date">08 Sep 2016</span>
-     | 
-    
-    <a href="/blog/tags/#setting" class="post-tag">Setting</a>
-    
-    
-
-    <h4 style="font-weight: 400; line-height: 1.8;"><article>
-      <h1 id="환경-구축">환경 구축….</h1>
-
-<p>Deep Learning을 하는데 GPU를 사용해야하니 CUDA와 cuDNN을 설치하기로 하죠.</p>
-
-<h2 id="1-nvidia-그래픽-드라이버-설치">1. NVIDIA 그래픽 드라이버 설치</h2>
-
-<p>Ubuntu 14.04 에선 그래픽 드라이버를 설치하는데 굉장히…<br />
-많은 고난과 역경을 겪었습니다…<br />
-(그래서 결국 설치 못해봄..)<br />
-하지만 16.04에선 어렵지 않음!!!!!!<br />
-(갈아탄 결정적인 이유…)<br />
-그렇다면 설치를 시작해보겠습니다.</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>add-apt-repository ppa:graphics-drivers/ppa
-
-<span class="nb">sudo </span>apt-get update
-
-<span class="nb">sudo </span>apt-get <span class="nb">install </span>nvidia-364
-</code></pre></div></div>
-
-<p>(제 노트북은 GTX 960m 이므로..)<br />
-그냥 터미널에 입력하시면 되요.<br />
-NVIDIA 사이트에서 GPU 버전이랑 맞는걸로!!<br />
-그게 나을 듯합니다.<br />
-그 후 로그아웃을 하고 다시 로그인을 하려고 하면 무한 로그인이 될 거에요.<br />
-(안그러면 좋고..)<br />
-Ctrl + Alt + F1을 눌러 tty1으로 들어가서 로그인 후 reboot을 실행해줍시다.<br />
-로그인 후 NVIDIA X Server Settings 를 켜면</p>
-
-<p><img src="https://jjerry-k.github.io/public/img/CUDA/01.png" /></p>
-
-<p>요래 설치 된걸 확인할 수 있습니다.</p>
-
-<h2 id="2-cuda-설치">2. CUDA 설치</h2>
-
-<p>NVIDIA 드라이버를 설치 했으니 이제 CUDA를 설치해보도록 하죠.</p>
-
-<p><a href="https://developer.nvidia.com/cuda-downloads">https://developer.nvidia.com/cuda-downloads</a> 에 들어가시면 요로코롬 뜨는데요.</p>
-
-<p><img src="https://jjerry-k.github.io/public/img/CUDA/02.png" /></p>
-
-<p>각자의 환경에 맞춰서 선택한 후 다운로드 하시면 됩니다.<br />
-run 파일을 다운을 받은 후에 터미널을 여시고 run 파일이 다운로드된 디렉토리로 이동합니다.<br />
-그리고 파일의 권한을 모든  사용자가 사용할 수 있도록 변경합니다.<br />
-그리고 실행!</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd </span>Downloads
-<span class="nb">sudo chmod </span>a+r cuda_7.5.18_linux.run
-<span class="nb">sudo</span> ./cuda_7.5.18_linux.run <span class="nt">--override</span>
-or
-<span class="nb">sudo </span>sh cuda_7.5.18_linux.run <span class="nt">--override</span>
-</code></pre></div></div>
-
-<p>16.04는 gcc, g++ 버전이 5.x 라 override 를 해줘야합니다..<br />
-실행하면 어쩌고 저쩌고 약관 내용..? 이 나오는데요…<br />
-살포시 q 를 눌러줍니다.<br />
-그러면…사용자 정의 설치라고 할까요??<br />
-이것 저것 물어봅니다.</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Do you accept the previously <span class="nb">read </span>EULA? <span class="o">(</span>accept/decline/quit<span class="o">)</span>: accept
-
-You are attempting to <span class="nb">install </span>on an unsupported configuration. Do you wish to <span class="k">continue</span>? <span class="o">((</span>y<span class="o">)</span>es/<span class="o">(</span>n<span class="o">)</span>o<span class="o">)</span> <span class="o">[</span> default is no <span class="o">]</span>: <span class="nb">yes
-
-</span>Install NVIDIA Accelerated Graphics Driver <span class="k">for </span>Linux-x86_64 352.39? <span class="o">((</span>y<span class="o">)</span>es/<span class="o">(</span>n<span class="o">)</span>o/<span class="o">(</span>q<span class="o">)</span>uit<span class="o">)</span>: no
-
-Install the CUDA 7.5 Toolkit? <span class="o">((</span>y<span class="o">)</span>es/<span class="o">(</span>n<span class="o">)</span>o/<span class="o">(</span>q<span class="o">)</span>uit<span class="o">)</span>: <span class="nb">yes
-
-</span>Enter Toolkit Location <span class="o">[</span> default is /usr/local/cuda-7.5 <span class="o">]</span>: 그냥 엔터
-
-Do you want to <span class="nb">install </span>a symbolic <span class="nb">link </span>at /usr/local/cuda? <span class="o">((</span>y<span class="o">)</span>es/<span class="o">(</span>n<span class="o">)</span>o/<span class="o">(</span>q<span class="o">)</span>uit<span class="o">)</span>: <span class="nb">yes
-
-</span>Install the CUDA 7.5 Samples? <span class="o">((</span>y<span class="o">)</span>es/<span class="o">(</span>n<span class="o">)</span>o/<span class="o">(</span>q<span class="o">)</span>uit<span class="o">)</span>: no
-</code></pre></div></div>
-
-<p>이런식으로 세팅을 해줍니다. <br />
-그리고 그저 기다리고 기다림…. <br />
-설치가 다 되었으면 뭐 따로 실행할 건 없습니다.<br />
-바로 cuDNN 설치를 하죠.<br />
-이건 설치….는 아니고 그냥 cuda 디렉토리에 파일을 파일 복사? 하는거에요.</p>
-
-<h2 id="3-cudnn-설치">3. cuDNN 설치</h2>
-
-<p>먼저 cuDNN 파일을 받으셔야하는데요.</p>
-
-<p><a href="https://developer.nvidia.com/rdp/cudnn-download">https://developer.nvidia.com/rdp/cudnn-download</a></p>
-
-<p>여기에 들어가셔서 계정 만드시고….<br />
-사용 용도… 사용 할 라이브러리.. 등등 선택하시고 원하시는 버전 download 하시면 됩니다.<br />
-저는 4.0으로 했어요.<br />
-Tensorflow라는 라이브러리를 사용할 것이기 때문에…
-그리고 나서 터미널을 켜고</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd</span> /usr/local
-<span class="nb">sudo tar </span>zxf ~/Downloads/cudnn-7.0-linux-x64-v4.0-prod.tgz
-</code></pre></div></div>
-
-<p>이렇게 하시거나 아니면</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd </span>cudnn 다운로드경로
-<span class="nb">sudo tar </span>zxf cudnn-7.0-linux-x64-v4.0-prod.tgz
-<span class="nb">sudo cp </span>cuda/include/cudnn.h /usr/local/cuda/include
-<span class="nb">sudo cp </span>cuda/lib64/libcudnn<span class="k">*</span> /usr/local/cuda/lib64
-</code></pre></div></div>
-
-<p>이렇게 해주시구요.<br />
-환경변수를 설정해줘야 합니다.
-터미널을 껐다가 다시 켜주시고</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>gedit ~/.bashrc
-</code></pre></div></div>
-
-<p>그려면 어떤 메모장? 문서 파일이 열립니다.
-매~~~~앤 아래 부분에</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">export </span><span class="nv">PATH</span><span class="o">=</span>/usr/local/cuda-7.5/bin:<span class="nv">$PATH</span>
-<span class="nb">export </span><span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span>/usr/local/cuda-7.5/lib64:<span class="nv">$LD_LIBRARY_PATH</span>
-</code></pre></div></div>
-
-<p>를 추가해주세요.</p>
-
-<p>이렇게 GPU 설정이 끝났습니다…<br />
-이제 caffe와 tensorflow를 설치해야겠군요..<br />
-험난허다…<br />
-개강이라 죽겠는데..</p>
-
-    <article></h4>
-    <div class="post-more">
-      
-      <a href="/ubuntu/2016/09/08/CUDA/#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
-      
-      <a href="/ubuntu/2016/09/08/CUDA/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
     </div>
   </div>
   

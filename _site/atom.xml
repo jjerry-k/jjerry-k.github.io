@@ -4,13 +4,395 @@
  <title>Jerry's Blog</title>
  <link href="http://localhost:4000/atom.xml" rel="self"/>
  <link href="http://localhost:4000/"/>
- <updated>2020-08-19T00:54:27+09:00</updated>
+ <updated>2020-08-21T00:44:27+09:00</updated>
  <id>http://localhost:4000</id>
  <author>
    <name>Jerry</name>
    <email></email>
  </author>
 
+ 
+ <entry>
+   <title>Paper Reading Roadmap</title>
+   <link href="http://localhost:4000/deeplearning/2020/08/21/paper_roadmap/"/>
+   <updated>2020-08-21T00:00:00+09:00</updated>
+   <id>http://localhost:4000/deeplearning/2020/08/21/paper_roadmap</id>
+   <content type="html">&lt;blockquote&gt;
+  &lt;p&gt;본 포스팅은 &lt;a href=&quot;http://dsba.korea.ac.kr&quot;&gt;고려대학교 산업경영공학부 Data Science &amp;amp; Business Analytics 연구실&lt;/a&gt;의 &lt;a href=&quot;https://www.facebook.com/groups/TensorFlowKR/permalink/1275047779502944/&quot;&gt;강필성 교수님의 자료&lt;/a&gt;를 정리한 포스팅입니다.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;contents-of-posting&quot;&gt;Contents of Posting&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;#paper-reading-roadmap&quot;&gt;Paper Reading Roadmap&lt;/a&gt;
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#ml-basics&quot;&gt;ML Basics&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#data-mining&quot;&gt;Data Mining&lt;/a&gt;
+        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#general&quot;&gt;General&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#patter-mining&quot;&gt;Patter Mining&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#clustering&quot;&gt;Clustering&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#artificial-intelligence&quot;&gt;Artificial Intelligence&lt;/a&gt;
+        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#general-1&quot;&gt;General&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#reinforcement-learning&quot;&gt;Reinforcement Learning&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#transfer-learning&quot;&gt;Transfer Learning&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#supervised-learning&quot;&gt;Supervised Learning&lt;/a&gt;
+        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#kernel-machines&quot;&gt;Kernel Machines&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#ensemble&quot;&gt;Ensemble&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#semi-supervvised-learning&quot;&gt;Semi-supervvised Learning&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#unsupervised-learning&quot;&gt;Unsupervised Learning&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#neural-network&quot;&gt;Neural Network&lt;/a&gt;
+        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#general-2&quot;&gt;General&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#structure&quot;&gt;Structure&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#learning-strategies&quot;&gt;Learning Strategies&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#nlp&quot;&gt;NLP&lt;/a&gt;
+        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#general-3&quot;&gt;General&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#topic-modeling&quot;&gt;Topic Modeling&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#repersentation-learning&quot;&gt;Repersentation Learning&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#classification&quot;&gt;Classification&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#summarization&quot;&gt;Summarization&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#machine-translation&quot;&gt;Machine Translation&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#question-answering&quot;&gt;Question Answering&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#vision&quot;&gt;Vision&lt;/a&gt;
+        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#classification-1&quot;&gt;Classification&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#object-detection&quot;&gt;Object Detection&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#localization--segmentation&quot;&gt;Localization &amp;amp; Segmentation&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;paper-reading-roadmap&quot;&gt;Paper Reading Roadmap&lt;/h1&gt;
+
+&lt;h2 id=&quot;ml-basics&quot;&gt;ML Basics&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;The matrix calculus you need for deep learning&lt;/li&gt;
+  &lt;li&gt;Statistical Modeling: The Two Cultures&lt;/li&gt;
+  &lt;li&gt;Machine learning: Trends, perspectives, and prospects&lt;/li&gt;
+  &lt;li&gt;An introduction to ROC analysis&lt;/li&gt;
+  &lt;li&gt;Learning from imbalanced data&lt;/li&gt;
+  &lt;li&gt;Variational inference: A review for statisticians&lt;/li&gt;
+  &lt;li&gt;The expectation-maximization algorithm&lt;/li&gt;
+  &lt;li&gt;Dimension Reduction: A Guided Tour&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;data-mining&quot;&gt;Data Mining&lt;/h2&gt;
+
+&lt;h3 id=&quot;general&quot;&gt;General&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://dl.acm.org/doi/10.1145/1132960.1132963&quot;&gt;Interestingness Measures for Data Mining: A Survey&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://ilpubs.stanford.edu:8090/422/1/1999-66.pdf&quot;&gt;The PageRank citation ranking: Bringing order to the web&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://link.springer.com/content/pdf/10.1007/978-3-642-28108-2_19.pdf&quot;&gt;Process Mining Manifesto&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.jmlr.org/papers/volume3/guyon03a/guyon03a.pdf&quot;&gt;An Introduction to Variable and Feature Selection&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;patter-mining&quot;&gt;Patter Mining&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://web.stanford.edu/class/cs345d-01/rl/ar-mining.pdf&quot;&gt;Fast Algorithm for Mining Association Rules&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://dl.acm.org/doi/10.1145/3314107&quot;&gt;A survey of sequential pattern mining&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://arxiv.org/pdf/1805.10515.pdf&quot;&gt;A Survey of Parallel Sequential Pattern Mining&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;clustering&quot;&gt;Clustering&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.aaai.org/Papers/KDD/1996/KDD96-037.pdf&quot;&gt;A density-based algorithm for discovering clusters in large spatial databases with noise&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://users.eecs.northwestern.edu/~yingliu/datamining_papers/survey.pdf&quot;&gt;Data Clustering: A Review&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://cs.nju.edu.cn/zhouzh/zhouzh.files/course/dm/reading/reading06/grabmeier_dmkd02.pdf&quot;&gt;Techniques of Cluster Algorithms in Data Mining&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.cc.gatech.edu/~isbell/reading/papers/berkhin02survey.pdf&quot;&gt;Survey of Clustering Data Mining Techniques&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://web.itu.edu.tr/sgunduz/courses/verimaden/paper/validity_survey.pdf&quot;&gt;On Clustering Validation Techniques&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://cran.r-project.org/web/packages/clValid/vignettes/clValid.pdf&quot;&gt;clValid: An R Package for Cluster Validation&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;artificial-intelligence&quot;&gt;Artificial Intelligence&lt;/h2&gt;
+
+&lt;h3 id=&quot;general-1&quot;&gt;General&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.iro.umontreal.ca/~lisa/pointeurs/TR1312.pdf&quot;&gt;Learning Deep Architectures for AI&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://arxiv.org/pdf/1206.5538.pdf&quot;&gt;Representation learning: A review and new perspectives&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://papers.nips.cc/paper/5423-generative-adversarial-nets.pdf&quot;&gt;Generative Adversarial Networks&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.nature.com/articles/nature14544&quot;&gt;From evolutionary computation to the evolution of things&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.nature.com/articles/nature14541&quot;&gt;Probabilistic machine learning and artificial intelligence&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://arxiv.org/pdf/1908.00709.pdf&quot;&gt;AutoML: A Survey of the State-of-the-Art&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;reinforcement-learning&quot;&gt;Reinforcement Learning&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://deepmind.com/research/publications/human-level-control-through-deep-reinforcement-learning&quot;&gt;Human-level control through deep reinforcement&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://deepmind.com/research/publications/mastering-game-go-deep-neural-networks-tree-search&quot;&gt;Mastering the game of Go with deep neural networks and tree search&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://arxiv.org/pdf/1811.12560.pdf&quot;&gt;An Introduction to Deep Reinforcement Learning&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://arxiv.org/pdf/1803.10122.pdf&quot;&gt;World Models&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;transfer-learning&quot;&gt;Transfer Learning&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://papers.nips.cc/paper/5027-zero-shot-learning-through-cross-modal-transfer.pdf&quot;&gt;Zero-shot learning through cross-modal transfer&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://arxiv.org/pdf/1708.01547.pdf&quot;&gt;Lifelong Learning with Dynamically Expandable Networks&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;supervised-learning&quot;&gt;Supervised Learning&lt;/h2&gt;
+
+&lt;h3 id=&quot;kernel-machines&quot;&gt;Kernel Machines&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;An Introduction to Kernel-based Learning Algorithms&lt;/li&gt;
+  &lt;li&gt;A Tutorial on Support Vector Machine for Pattern Recognition&lt;/li&gt;
+  &lt;li&gt;A Tutorial on Support Vector Regression&lt;/li&gt;
+  &lt;li&gt;A Tutorial on nu-Support Vector Machines&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;ensemble&quot;&gt;Ensemble&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;Bagging Predictors&lt;/li&gt;
+  &lt;li&gt;Random Forests&lt;/li&gt;
+  &lt;li&gt;A short introduction to boosting&lt;/li&gt;
+  &lt;li&gt;Greedy Function Approximation: A Gradient Boosting Machine&lt;/li&gt;
+  &lt;li&gt;Gradient Boosting Machine, A Tutorial&lt;/li&gt;
+  &lt;li&gt;XGBoost: A Scalable Tree Boosting System&lt;/li&gt;
+  &lt;li&gt;LightGBM: A Highly Efficient Gradient Boosting Decision Tree&lt;/li&gt;
+  &lt;li&gt;CatBoost : unbiased boosting with categorical features&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;semi-supervvised-learning&quot;&gt;Semi-supervvised Learning&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;Combining Labeled and Unlabeled Data with Co-Training&lt;/li&gt;
+  &lt;li&gt;Semi-supervised Learning with Deep Generative Models&lt;/li&gt;
+  &lt;li&gt;Semi-Supervised Classification with Graph Convolutional Networks&lt;/li&gt;
+  &lt;li&gt;MixMatch: A Holistic Approach to Semi-Supervised Learning&lt;/li&gt;
+  &lt;li&gt;ReMixMatch: Semi-Supervised Learning with Distribution Alignment and Augmentation Anchoring&lt;/li&gt;
+  &lt;li&gt;FixMatch: Simplifying Semi-Supervised Learning with Consistency and Confidence&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;unsupervised-learning&quot;&gt;Unsupervised Learning&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;Anomaly Detection: A Survey&lt;/li&gt;
+  &lt;li&gt;Deep Learning for Anomaly Detection: A Survey&lt;/li&gt;
+  &lt;li&gt;A Review of Novelty Detection&lt;/li&gt;
+  &lt;li&gt;LOF: Identifying Density-Based Local Outliers&lt;/li&gt;
+  &lt;li&gt;Support Vector Data Description&lt;/li&gt;
+  &lt;li&gt;Isolation Forest&lt;/li&gt;
+  &lt;li&gt;Isolation-based Anomaly Detection&lt;/li&gt;
+  &lt;li&gt;DeepLog: Anomaly Detection and Diagnosis from System Logs through Deep Learning&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;neural-network&quot;&gt;Neural Network&lt;/h2&gt;
+
+&lt;h3 id=&quot;general-2&quot;&gt;General&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;Deep learning&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;structure&quot;&gt;Structure&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;Long Short-Term Memory&lt;/li&gt;
+  &lt;li&gt;LSTM: A Search Space Odyssey&lt;/li&gt;
+  &lt;li&gt;Empirical Evaluation of Gated Recurrent Neural Networks on Sequence Modeling Sequence to sequence learning with neural networks&lt;/li&gt;
+  &lt;li&gt;Memory Networks&lt;/li&gt;
+  &lt;li&gt;End-To-End Memory Networks&lt;/li&gt;
+  &lt;li&gt;WaveNet: A Generative Model for Raw Audio&lt;/li&gt;
+  &lt;li&gt;An Introduction to Variational Autoencoders&lt;/li&gt;
+  &lt;li&gt;A Comprehensive Survey on Graph Neural Networks&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;learning-strategies&quot;&gt;Learning Strategies&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift&lt;/li&gt;
+  &lt;li&gt;Dropout: A Simple Way to Prevent Neural Networks from Overtting&lt;/li&gt;
+  &lt;li&gt;ADAM: A Method for Stochastic Optimization&lt;/li&gt;
+  &lt;li&gt;An overview of gradient descent optimization algorithms&lt;/li&gt;
+  &lt;li&gt;Layer normalization Group normalization&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;nlp&quot;&gt;NLP&lt;/h2&gt;
+
+&lt;h3 id=&quot;general-3&quot;&gt;General&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;Natural Language Processing (Almost) from Scratch&lt;/li&gt;
+  &lt;li&gt;Advances in natural language processing&lt;/li&gt;
+  &lt;li&gt;Recent trends in deep learning based natural language processing&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;topic-modeling&quot;&gt;Topic Modeling&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;An introduction to latent semantic analysis&lt;/li&gt;
+  &lt;li&gt;Probabilistic latent semantic analysis&lt;/li&gt;
+  &lt;li&gt;Probabilistic topic models&lt;/li&gt;
+  &lt;li&gt;Latent Dirichlet Allocation&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;repersentation-learning&quot;&gt;Repersentation Learning&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;A Neural Probabilistic Language Model&lt;/li&gt;
+  &lt;li&gt;Distributed representations of words and phrases and their compositionality&lt;/li&gt;
+  &lt;li&gt;Efficient Estimation of Word Representations in Vector Space&lt;/li&gt;
+  &lt;li&gt;Glove: Global vectors for word representation&lt;/li&gt;
+  &lt;li&gt;Learning Phrase Representations using RNN Encoder–Decoder for Statistical Machine Translation Enriching word vectors with subword information&lt;/li&gt;
+  &lt;li&gt;Bert: Pre-training of deep bidirectional transformers for language understanding&lt;/li&gt;
+  &lt;li&gt;Deep contextualized word representations&lt;/li&gt;
+  &lt;li&gt;Improving language understanding by generative pre-training&lt;/li&gt;
+  &lt;li&gt;Language models are unsupervised multitask learners&lt;/li&gt;
+  &lt;li&gt;Language Models are Few-Shot LearnersA Neural Probabilistic Language Model&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;classification&quot;&gt;Classification&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;Convolutional neural networks for sentence classification&lt;/li&gt;
+  &lt;li&gt;Deep learning for sentiment analysis: A survey&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;summarization&quot;&gt;Summarization&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;TextRank: Bringing Order into Texts&lt;/li&gt;
+  &lt;li&gt;A Neural Attention Model for Abstractive Sentence Summarization&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;machine-translation&quot;&gt;Machine Translation&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;On the Properties of Neural Machine Translation: Encoder-Decoder Approaches&lt;/li&gt;
+  &lt;li&gt;Effective Approaches to Attention-based Neural Machine Translation&lt;/li&gt;
+  &lt;li&gt;Neural Machine Translation by Jointly Learning to Aligh and Translate&lt;/li&gt;
+  &lt;li&gt;Google’s Neural Machine Translation System: Bridging the Gap between Human and Machine Translation&lt;/li&gt;
+  &lt;li&gt;Attention is all you need&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;question-answering&quot;&gt;Question Answering&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;VQA: Visual Question Answering&lt;/li&gt;
+  &lt;li&gt;Ask Me Anything: Dynamic Memory Networks for Natural Language Processing&lt;/li&gt;
+  &lt;li&gt;Squad: 100,000+ questions for machine comprehension of text&lt;/li&gt;
+  &lt;li&gt;Know what you don’t know: Unanswerable questions for SQuAD&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;vision&quot;&gt;Vision&lt;/h2&gt;
+
+&lt;h3 id=&quot;classification-1&quot;&gt;Classification&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://papers.nips.cc/paper/4824-imagenet-classification-with-deep-convolutional-neural-networks.pdf&quot;&gt;Imagenet classification with deep convolutional neural networks&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://arxiv.org/pdf/1311.2901.pdf&quot;&gt;Visualizing and understanding convolutional networks&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://arxiv.org/pdf/1409.1556.pdf&quot;&gt;Very Deep Convolutional Networks for Large-Scale Image Recognition&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://arxiv.org/pdf/1409.4842.pdf&quot;&gt;Going deeper with convolutions&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://arxiv.org/pdf/1512.03385.pdf&quot;&gt;Deep residual learning for image recognition&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://arxiv.org/pdf/1608.06993.pdf&quot;&gt;Densely Connected Convolutional Networks&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;object-detection&quot;&gt;Object Detection&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://arxiv.org/pdf/1312.6229.pdf&quot;&gt;Overfeat: Integrated recognition, localization and detection using convolutional networks&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://arxiv.org/pdf/1311.2524.pdf&quot;&gt;Rich feature hierarchies for accurate object detection and semantic segmentation&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://arxiv.org/pdf/1504.08083.pdf&quot;&gt;Fast R-CNN&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://arxiv.org/pdf/1506.01497.pdf&quot;&gt;Faster R-CNN: Towards Real-Time Object Detection with Region Proposal Networks&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://arxiv.org/pdf/1506.02640.pdf&quot;&gt;You Only Look Once: Unified, Real-Time Object Detection&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://arxiv.org/pdf/1612.08242.pdf&quot;&gt;YOLO9000: Better, Faster, Stronger&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://arxiv.org/pdf/1804.02767.pdf&quot;&gt;YOLOv3: An Incremental Improvement&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://arxiv.org/pdf/2004.10934.pdf&quot;&gt;YOLOv4: Optimal Speed and Accuracy of Object Detection&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;localization--segmentation&quot;&gt;Localization &amp;amp; Segmentation&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://arxiv.org/pdf/1505.04597.pdf&quot;&gt;U-Net: Convolutional Networks for Biomedical Image Segmentation&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://arxiv.org/pdf/1512.04150.pdf&quot;&gt;Learning deep features for discriminative localization&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://arxiv.org/pdf/1610.02391.pdf&quot;&gt;Grad-CAM: Visual Explanations from Deep Networks via Gradient-based Localization&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>RAPIDS APIs ( cuML )</title>
+   <link href="http://localhost:4000/deeplearning/2020/08/20/rapids-cuml/"/>
+   <updated>2020-08-20T00:00:00+09:00</updated>
+   <id>http://localhost:4000/deeplearning/2020/08/20/rapids-cuml</id>
+   <content type="html">&lt;p&gt;어제는 &lt;a href=&quot;https://jjerry-k.github.io/deeplearning/2020/08/19/rapids/&quot;&gt;RAPIDS에 대한 소개와 RAPIDS APIs 중 cuDF 에 대한 예제에 대한 포스팅&lt;/a&gt;을 했습니다.&lt;/p&gt;
+
+&lt;p&gt;오늘은 RAPIDS APIS 중 &lt;a href=&quot;https://docs.rapids.ai/api/cuml/stable/&quot;&gt;cuML&lt;/a&gt; 에 대한 예제 포스팅을 간.단.하.게 해보겠습니다.&lt;/p&gt;
+
+&lt;p&gt;비교를 위해 KNN Classifier를 준비하였고 성능 비교를 위해 &lt;a href=&quot;https://scikit-learn.org/stable/&quot;&gt;Scikit-learn&lt;/a&gt; 을 사용하였습니다.&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&lt;span class=&quot;c1&quot;&gt;# %%
+# RAPIDS cuML kNN model
+&lt;/span&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;time&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;cudf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cuml&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;pandas&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pd&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;cuml.neighbors&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;KNeighborsClassifier&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cuKNeighbors&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sklearn.neighbors&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;KNeighborsClassifier&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;skKNeighbors&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;========================================&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;========================================&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;============= Using cuML ===============&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;========================================&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;========================================&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;train&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cudf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;read_csv&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'./mnist/train.csv'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;test&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cudf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;read_csv&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'./mnist/test.csv'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;start&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;time&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;time&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;model&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cuKNeighbors&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n_neighbors&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;7&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;model&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;train&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;iloc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[:,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;785&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;train&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;iloc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[:,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# y_hat = model.predict(test) # Exception occured (version 0.14.0) 
+&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;f&quot;Elapsed Time: &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;time&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;time&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;start&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;========================================&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;========================================&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;========== Using Scikit-learn ==========&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;========================================&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;========================================&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;train&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;read_csv&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'./mnist/train.csv'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;test&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;read_csv&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'./mnist/test.csv'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;start&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;time&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;time&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;model&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;skKNeighbors&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n_neighbors&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;7&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;model&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;train&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;iloc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[:,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;785&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;train&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;iloc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[:,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# y_hat = model.predict(test)
+&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;f&quot;Elapsed Time: &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;time&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;time&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;start&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&lt;span class=&quot;o&quot;&gt;========================================&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;========================================&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;=============&lt;/span&gt; Using cuML &lt;span class=&quot;o&quot;&gt;===============&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;========================================&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;========================================&lt;/span&gt;
+Elapsed Time: 0.3921339511871338
+
+&lt;span class=&quot;o&quot;&gt;========================================&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;========================================&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;==========&lt;/span&gt; Using Scikit-learn &lt;span class=&quot;o&quot;&gt;==========&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;========================================&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;========================================&lt;/span&gt;
+Elapsed Time: 23.88076663017273
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Test 시 성능도 비교하려했으나 cuML 버전 에러로 인해 테스트는 못했습니다.&lt;/p&gt;
+
+&lt;p&gt;그래도 fit 부분에서 매우 큰 차이를 보입니다!&lt;/p&gt;
+
+&lt;p&gt;역시나….GPU네요!&lt;/p&gt;
+
+&lt;h2 id=&quot;ps&quot;&gt;P.S&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;너무 간단하게 테스트하는건가…&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+ </entry>
  
  <entry>
    <title>RAPIDS!!!</title>

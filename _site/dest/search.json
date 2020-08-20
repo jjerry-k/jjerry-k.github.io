@@ -1,6 +1,22 @@
 [
   
     {
+      "title"    : "Paper Reading Roadmap",
+      "category" : "DeepLearning",
+      "tags"     : "Paper",
+      "url"      : "/deeplearning/2020/08/21/paper_roadmap/",
+      "date"     : "2020-08-21 00:00:00 +0900"
+    } ,
+  
+    {
+      "title"    : "RAPIDS APIs ( cuML )",
+      "category" : "DeepLearning",
+      "tags"     : "Tools",
+      "url"      : "/deeplearning/2020/08/20/rapids-cuml/",
+      "date"     : "2020-08-20 00:00:00 +0900"
+    } ,
+  
+    {
       "title"    : "RAPIDS!!!",
       "category" : "DeepLearning",
       "tags"     : "Tools",

@@ -311,6 +311,146 @@
   
   <div class="post">
     <h1 class="post-title">
+      <a href="/python/2019/07/10/Multiple_Kernel/">
+        jupyter (ipython) 여러 커널 사용하기!
+      </a>
+    </h1>
+
+    <span class="post-date">10 Jul 2019</span>
+     | 
+    
+    <a href="/blog/tags/#setting" class="post-tag">Setting</a>
+    
+    
+
+    <h4 style="font-weight: 400; line-height: 1.8;"><article>
+      <p>Anaconda 를 사용하다보면 여러 가상환경을 만들게 됩니다. (아닐수도 있구요…)<br />
+그 후에 jupyter 를 사용하시는 분들이라면 대부분 이렇게 사용하실 겁니다.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>conda activate 환경이름
+jupyter notebook
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">conda activate 환경이름</code> 이라는걸 <strong>무.조.건</strong> 써줘야하죠..<br />
+이게 매우 귀찮았습니다…</p>
+<blockquote>
+  <p>“activate 없이 base에서 <code class="language-plaintext highlighter-rouge">jupyter notebook</code>을 실행해도 가상환경을 잡을 수 있는 방법이 없나..”</p>
+</blockquote>
+
+<p>이런 생각 많이들 하실 것 같습니다.<br />
+당연히 방법이 있습니다!<br />
+그 방법에 대해 알려드리겠습니다.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>conda activate <span class="o">{</span>환경이름<span class="o">}</span>
+python <span class="nt">-m</span> ipykernel <span class="nb">install</span> <span class="nt">--user</span> <span class="nt">--name</span> <span class="o">{</span>환경이름<span class="o">}</span> <span class="nt">--display-name</span> <span class="o">{</span>Jupyter에 표시될 이름<span class="o">}</span>
+</code></pre></div></div>
+
+<p>이렇게 하시면 됩니다. 예시를 직접 보여드리겠습니다.</p>
+
+<p><img src="https://jjerry-k.github.io/public/img/multi_kernel/01.png" /></p>
+
+<p>저는 base 환경만 썼습니다. 가상환경을 가볍게 하나 만들도록 할게요!</p>
+
+<p><img src="https://jjerry-k.github.io/public/img/multi_kernel/02.png" /></p>
+
+<p><code class="language-plaintext highlighter-rouge">test</code>라는 가상환경을 만들었습니다. 먼저 <strong>kernel을 추가하지 않고</strong> jupyter notebook을 실행해보겠습니다.</p>
+
+<p><img src="https://jjerry-k.github.io/public/img/multi_kernel/03.png" />
+<img src="https://jjerry-k.github.io/public/img/multi_kernel/04.png" /></p>
+
+<p>첫번째 사진을 보시면 <strong>Python 3</strong> 만 나오는걸 보실 수 있습니다. 저 <strong>Python 3</strong> 는 base의 Python을 가리킵니다.<br />
+base에는 제가 tensorflow를 설치해놨기 때문에 import 가 잘 작동하는군요..<br />
+그럼 kernel을 추가해보겠습니다.  (일단 test 환경에 ipython 이 안깔려있어서 설치함..)</p>
+
+<p><img src="https://jjerry-k.github.io/public/img/multi_kernel/05.png" />
+<img src="https://jjerry-k.github.io/public/img/multi_kernel/06.png" /></p>
+
+<p>커널을 추가하고 나면 <code class="language-plaintext highlighter-rouge">Installed ~~~~</code> 라는 메세지를 보실 수 있어요!<br />
+그럼 다시 base로 돌아가서 jupyter notebook을 실행해보겠습니다.</p>
+
+<p><img src="https://jjerry-k.github.io/public/img/multi_kernel/07.png" />
+<img src="https://jjerry-k.github.io/public/img/multi_kernel/08.png" /></p>
+
+<p>첫번째 사진을 보시면 추가하기 전과는 다르게 <strong>test</strong> 라는 항목이 추가되었습니다!<br />
+실행을 해봐도 tensorflow 모듈이 없다고 나오는걸 확인하실 수 있습니다!<br />
+앞으로는 <code class="language-plaintext highlighter-rouge">conda activate ~~</code>를 안하셔도 되요! (뿌듯)</p>
+
+<p>이번 포스팅은 여기까지 입니다.<br />
+많은 분들께 도움이 되었으면 좋겠네요!</p>
+
+<p><strong>PS. jupyter notebook 우측 상단쪽에 어떤 커널로 실행하고 있는지 표시가 됩니다.  (<code class="language-plaintext highlighter-rouge">Logout</code> 아래)</strong></p>
+
+    <article></h4>
+    <div class="post-more">
+      
+      <a href="/python/2019/07/10/Multiple_Kernel/#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
+      
+      <a href="/python/2019/07/10/Multiple_Kernel/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
+    </div>
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/python/2019/07/06/DICOM/">
+        Python으로 DICOM 영상을 읽어보자!
+      </a>
+    </h1>
+
+    <span class="post-date">06 Jul 2019</span>
+     | 
+    
+    <a href="/blog/tags/#usage" class="post-tag">Usage</a>
+    
+    
+
+    <h4 style="font-weight: 400; line-height: 1.8;"><article>
+      <p>예~~전에 <a href="https://jjerry-k.github.io/python/2019/01/23/nifti/">NIfTI</a> 파일을 load 하는 방법을 올렸었습니다! <br />
+이번에는 Python에서 <a href="https://www.dicomstandard.org">DICOM</a> 포맷의 데이터를 load 하는 방법에 대한 포스팅을 해보려고 합니다.</p>
+
+<p>가장 먼저 관련 패키지인 <a href="https://pydicom.github.io/pydicom/stable/index.html"><code class="language-plaintext highlighter-rouge">Pydicom</code></a> 을 설치를 해줍니다.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>conda <span class="nb">install</span> <span class="nt">-c</span> conda-forge pydicom
+</code></pre></div></div>
+
+<p>저번과 똑같이 단순한 설치방법!</p>
+
+<p>이제 코딩으로 읽어보겠습니다.<br />
+예시 데이터로 다음 <a href="https://github.com/pydicom/pydicom/blob/master/pydicom/data/test_files/MR_small.dcm">링크</a>에 있는 영상을 이용하였습니다.</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="kn">import</span> <span class="nn">pydicom</span> <span class="k">as</span> <span class="n">di</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">di</span><span class="p">.</span><span class="n">read_file</span><span class="p">(</span><span class="s">".dcm 경로"</span><span class="p">)</span>
+<span class="c1">#data = di.dcmread(".dcm 경로") # 편한거 쓰시면 됩니다.
+</span>
+<span class="n">img</span> <span class="o">=</span> <span class="n">data</span><span class="p">.</span><span class="n">pixel_array</span>
+
+<span class="n">plt</span><span class="p">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img</span><span class="p">)</span> <span class="c1"># 슬라이스 1장일 경우
+#plt.imshow(img[:,:,"slice 번호"]) # 슬라이스가 여러 장일 경우
+</span><span class="n">plt</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>이런 식으로 작성하시면 됩니다.<br />
+ 예시를 보여드리면</p>
+
+<p><img src="https://jjerry-k.github.io/public/img/dicom/01.png" /></p>
+
+<p>예시 영상이 좀 작네요…<br />
+어쨌든 이런 식으로 읽습니다.</p>
+
+<p>흠….NIfTI와 DICOM을 했으니…다음엔 <strong>Insight Meta-Image</strong> 를 해보겠습니다!</p>
+
+    <article></h4>
+    <div class="post-more">
+      
+      <a href="/python/2019/07/06/DICOM/#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
+      
+      <a href="/python/2019/07/06/DICOM/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
+    </div>
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
       <a href="/deeplearning/2019/07/05/Thin/">
         Review: MRI interpolation using Deep Learning
       </a>
@@ -1257,301 +1397,6 @@ g.fig.autofmt_xdate()
       <a href="/python/2019/05/09/Part1A/#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
       
       <a href="/python/2019/05/09/Part1A/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
-    </div>
-  </div>
-  
-  <div class="post">
-    <h1 class="post-title">
-      <a href="/living/2019/04/14/macbook_auto_start/">
-        맥북 Atom 완벽 제거
-      </a>
-    </h1>
-
-    <span class="post-date">14 Apr 2019</span>
-     | 
-    
-    <a href="/blog/tags/#macbook" class="post-tag">Macbook</a>
-    
-    
-
-    <h4 style="font-weight: 400; line-height: 1.8;"><article>
-      <p>안녕하세요! Jerry 입니다!</p>
-
-<p>오늘은 .. Atom 에디터를 <strong>완벽히</strong> 지우는 법에 대해 간단 포스팅을 하려고 합니다.</p>
-
-<ol>
-  <li>Applications 디렉토리에서 <strong>Atom</strong>을 지운다.</li>
-  <li>home 디렉토리에서 <code class="language-plaintext highlighter-rouge">.atom</code> 디렉토리를 지운다.</li>
-  <li><code class="language-plaintext highlighter-rouge">/usr/local/bin/atom</code> 을 지운다.</li>
-  <li><code class="language-plaintext highlighter-rouge">/usr/local/bin/apm</code> 을 지운다.</li>
-  <li><code class="language-plaintext highlighter-rouge">~/Library/Preferences/com.github.atom.plist</code> 을 지운다.</li>
-  <li><code class="language-plaintext highlighter-rouge">~/Library/Preferences/com.github.atom.helper.plist</code> 을 지운다.</li>
-</ol>
-
-<p>끝입니다..</p>
-
-<p>Atom 에 대한 모~~든걸 지운거에요!</p>
-
-<p>감사합니다!</p>
-
-    <article></h4>
-    <div class="post-more">
-      
-      <a href="/living/2019/04/14/macbook_auto_start/#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
-      
-      <a href="/living/2019/04/14/macbook_auto_start/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
-    </div>
-  </div>
-  
-  <div class="post">
-    <h1 class="post-title">
-      <a href="/deeplearning/2019/03/29/YOLO/">
-        Review: YOLO
-      </a>
-    </h1>
-
-    <span class="post-date">29 Mar 2019</span>
-     | 
-    
-    <a href="/blog/tags/#paper" class="post-tag">Paper</a>
-    
-    
-
-    <h4 style="font-weight: 400; line-height: 1.8;"><article>
-      <h1 id="you-only-look-once-unified-real-time-object-detection">You Only Look Once: Unified, Real-Time, Object detection</h1>
-<hr />
-
-<blockquote>
-  <p>편의상 bounding box -&gt; bbox</p>
-  <h2 id="abstract">Abstract</h2>
-</blockquote>
-
-<ul>
-  <li>Object detection을 bboxes, class probabilities regression 문제로 접근.</li>
-  <li>Single Neural Network 로 bboxes와 class probabilities 둘 다 예측.</li>
-  <li>Localization Error가 다소 높지만 background error가 낮음.</li>
-  <li>End-to-End, Extremely fast</li>
-</ul>
-
-<h2 id="1-introduction">1. Introduction</h2>
-
-<ul>
-  <li>Current Detection 시스템
-    <ul>
-      <li>DPM : Sliding Window 방식</li>
-      <li>R-CNN 계열 : potential bboxes 추출 -&gt; image 에서 bboxes 부분 다시 classify -&gt; Post-processing</li>
-    </ul>
-  </li>
-  <li>Slow, Hard to optimize(각 요소별로 따로따로 학습을 해야함. RPN -&gt; Classifier -&gt; RPN -&gt; …)</li>
-</ul>
-
-<p><img src="https://jjerry-k.github.io/public/img/yolo/fig01.png" /></p>
-
-<ul>
-  <li>복잡하지 않은 pipeline과 빠른 inferenc time.
-    <ul>
-      <li>45 fps on a Titan X .</li>
-    </ul>
-  </li>
-  <li>이미지 전체를 이용한 prediction
-    <ul>
-      <li>Fast R-CNN 보다 적은 background error</li>
-    </ul>
-  </li>
-  <li>Object의 general한 representations 학습.
-    <ul>
-      <li>natural image로 학습하고 art works로 test 했을 때 기존의 DPM 이나 R-CNN 보다 성능이 좋았다.</li>
-      <li>새로운 도메인이나 뭔가 모를 입력에 대해 일반화 할 수 있다.</li>
-    </ul>
-  </li>
-</ul>
-
-<h2 id="2-unfied-detection">2. Unfied Detection</h2>
-
-<ul>
-  <li>Single Neural Network로 통합.</li>
-  <li>이미지 전체를 이용해서 각각의 bbox 예측.</li>
-</ul>
-
-<p><img src="https://jjerry-k.github.io/public/img/yolo/fig02.png" /></p>
-
-<ul>
-  <li>입력 이미지를 S x S grid로 나눔.
-    <ul>
-      <li>Feature map이 S x S 라고 이해하면 됨.</li>
-    </ul>
-  </li>
-  <li>각 grid cell은 B개의 bbox의 정보(x, y, w, h, confidence score), 해당 grid cell의 Class probabilities 정보를 가짐.
-    <ul>
-      <li>bbox의 정보
-        <ul>
-          <li>x, y : bbox의 center 좌표</li>
-          <li>w, h : 이미지 크기에 대비한 상대적인 값.</li>
-          <li>confidence score : bbox가 object를 가졌는지 box가 얼마나 정확히 예측했는지에 대한 score</li>
-          <li>Confidence Score는 다음과 같이 정의.
-\({Confidence\; Score}= Pr(Object) * IOU^{truth}_{pred}\)</li>
-          <li>No object의 경우
-            <ul>
-              <li>Confidence Score는 0 이어야함.</li>
-            </ul>
-          </li>
-          <li>Confidence Score가 IOU와 같아지길 원함.</li>
-        </ul>
-      </li>
-      <li>Class Probabilities 정보
-        <ul>
-          <li>C개의 class에 대한 conditional class probabilities, $Pr(Class_i \mid Object)$</li>
-          <li>
-            <p>Test 시에는 Conditional class probabilities와 individual box confidence score를 곱했다고 함.<br />
-\(Pr(Class_i|Object) =  Pr(Object) * IOU^{truth}_{pred} = Pr(Class_i) * IOU^{truth}_{pred}\)</p>
-          </li>
-          <li>bbox 별로 class confidence score를 알 수 있음.</li>
-        </ul>
-      </li>
-    </ul>
-  </li>
-  <li>PASCAL VOC 로 평가. S = 7, B = 2, C = 20</li>
-  <li>최종 출력은  7 x 7 x 30 의 tensor.</li>
-</ul>
-
-<h3 id="21-design">2.1 Design</h3>
-
-<ul>
-  <li>24개의 Convolution layer, 2개의 Fully Connected layer.</li>
-  <li>GoogLeNet의 inception 모듈 대신에 <span style="color:skyblue">1 x 1 Convolution layer를 이용하여 reduction.</span>
-<img src="https://jjerry-k.github.io/public/img/yolo/fig03_1.png" /></li>
-  <li>Tiny model은 9개의 Convolution layer, 2개의 Fully Connected layer.</li>
-</ul>
-
-<h3 id="22-training">2.2 Training</h3>
-<ul>
-  <li>앞 단의 20개의 Convolution layer(Feature Extractor)를 ImageNet 1000-class competition 데이터(224 x 224)로 Pretrain.</li>
-  <li>20번째 Convolution layer 뒤에 Average Pooling, Fully Connected Layer.</li>
-  <li>
-    <p>ImageNet 2012 validation set으로 top-5 accuracy 88% 정도..
-<img src="https://jjerry-k.github.io/public/img/yolo/fig03_2.png" /></p>
-  </li>
-  <li>
-    <p>Pretrain 후 Detector 부분 추가 후 입력 크기를 448 x 448 로 높여서 학습 진행.</p>
-  </li>
-  <li>Bounding Box의 width, height 값은 이미지의 width, height로 normalize 하여 0 ~ 1 사이 값을 같도록 함.</li>
-  <li>Bounding Box의 x, y 값은 특정 grid cell의 left top으로부터 offset 값. 0 ~ 1 사이 값을 같도록 함.</li>
-  <li>마지막 layer는 linear activation function 사용.</li>
-  <li>다른 layer는 leaky ReLU 사용.</li>
-</ul>
-
-<p>[\phi(x) =\left{\begin{array}{lcl}x, &amp; if\;x &gt; 0\ {0.1}x, &amp; otherwise\end{array} \right.]</p>
-
-<ul>
-  <li>
-    <p>Optimization이 쉬운 Sum-Squared Error 를 사용.</p>
-  </li>
-  <li>이미지의 대부분 grid cell이 object 를 가지고 있지 않기 때문에 Confidence Score가 0 에 수렴.</li>
-  <li>이 상황에선 object를 가지고 있는 grid cell의 gradient를 압도할 수 있음.</li>
-  <li>
-    <p>이를 해결하기 위해 Bbox coordinate loss와 No object의 confidence loss 에 대해 weight 를 부여.<br />
-$\lambda_{coord} = 5$ and $\lambda_{noobj} = 0.5$.</p>
-  </li>
-  <li>Sum-Squared Error는 large boxes와 small boxes 를 동일하게 평가.</li>
-  <li>large boxes 에 대해서 중요성을 반영하기 위해 width, height 는 square root 사용.</li>
-</ul>
-
-<p>[\lambda_{coord}\sum^{S^2}<em>{i=0}\sum^B</em>{j=0}\mathbb{I}^{obj}_{ij}(x_i-\hat{x}_i)^2 + (y_i-\hat{y}_i)^2 \</p>
-<ul>
-  <li>\lambda_{coord}\sum^{S^2}<em>{i=0}\sum^B</em>{j=0}\mathbb{I}^{obj}_{ij}(\sqrt{w_i}-\sqrt{\hat{w}_i})^2 + (\sqrt{h_i}-\sqrt{\hat{h}_i})^2 \</li>
-  <li>\sum^{S^2}<em>{i=0}\sum^B</em>{j=0}\mathbb{I}^{obj}_{ij}(C_i - \hat{C}_i)^2 \</li>
-  <li>\lambda_{noobj}\sum^{S^2}<em>{i=0}\sum^B</em>{j=0}\mathbb{I}^{noobj}_{ij}(C_i - \hat{C}_i)^2 \</li>
-  <li>\sum^{S^2}<em>{i=0}\mathbb{I}^{obj}</em>{i}\sum^B_{c\in{classes}}(p_i(c) - \hat{p}_i(c))^2]</li>
-</ul>
-
-<ul>
-  <li>$\mathbb{I}^{obj}_{i}$ : Object가 존재하는 Grid Cell i.</li>
-  <li>
-    <p>$\mathbb{I}^{obj}_{ij}$ : Object가 존재하는 Grid Cell i의 Bounding Box j.</p>
-  </li>
-  <li>Train 관련 Parameter
-    <ul>
-      <li>Batch Szie : 64</li>
-      <li>Momentum : 0.9</li>
-      <li>Decay : 0.0005</li>
-      <li>Learning rate
-        <ul>
-          <li>$10^{-3}$ 부터 $10^{-2}$ 까지 천천히 증가.</li>
-          <li>$10^{-2}$ 로 75 epochs 학습.</li>
-          <li>$10^{-3}$ 로 줄여서 30 epochs 학습.</li>
-          <li>$10^{-4}$ 로 줄여서 30 epochs 학습.</li>
-        </ul>
-      </li>
-      <li>Dropout : 0.5</li>
-      <li>Data Augmentation
-        <ul>
-          <li>Random Scaling, Translation of up to 20% of the original image size.</li>
-          <li>Random adjustment exposure and saturation</li>
-        </ul>
-      </li>
-    </ul>
-  </li>
-</ul>
-
-<h3 id="23-inference">2.3 Inference</h3>
-<ul>
-  <li>Large Object 나 여러 grid cell에 걸쳐있는 object는 여러 셀에 predict 될 수 있음.</li>
-  <li>Non-maximal suppression 사용하여 해결.</li>
-</ul>
-
-<h3 id="24-limitations-of-yolo">2.4 Limitations of YOLO</h3>
-<ul>
-  <li>각 Grid Cell은 하나의 클래스만 가질 수 있기 때문에 Grid Cell 하나에 작은 object가 여러 개 있을때 제대로 예측하지 못할 수 있다.</li>
-  <li>예상치 못한 aspect ratio나 configuration을 가진 객체를 일반화 하는데 어려움.</li>
-  <li>Large box와 Small box를 동일하게 처리.</li>
-  <li>Large box의 small error보다 Small box의 small error가 IOU에 훨씬 큰 영향을 끼침.</li>
-</ul>
-
-<h2 id="3-comparison-to-other-detection-systems">3. Comparison to Other Detection Systems</h2>
-<ul>
-  <li>생략</li>
-</ul>
-
-<h2 id="4-experiments">4. Experiments</h2>
-
-<h3 id="41-comparison-to-other-realtime-systems">4.1. Comparison to Other RealTime Systems</h3>
-<ul>
-  <li>Fast Yolo는 가장 빠른 속도를 보여줌.</li>
-  <li>YOLO 는 real-time 성능을 보여주면서 mAP도 뛰어난걸 확인할 수 있음.
-<img src="https://jjerry-k.github.io/public/img/yolo/fig04_1.png" /></li>
-</ul>
-
-<h3 id="42-voc-2007-error-analysis">4.2. VOC 2007 Error Analysis</h3>
-<ul>
-  <li>Object Localization은 Fast R-CNN이 더 뛰어남.</li>
-  <li>But, Background Error(False Positive)가 훨씬 높음.
-<img src="https://jjerry-k.github.io/public/img/yolo/fig04_2.png" /></li>
-</ul>
-
-<h3 id="43-combining-fast-rcnn-and-yolo">4.3. Combining Fast RCNN and YOLO</h3>
-<ul>
-  <li>Fast R-CNN과 YOLO를 앙상블 한 모델이 성능이 가장 좋음. 
-<img src="https://jjerry-k.github.io/public/img/yolo/fig04_3.png" /></li>
-</ul>
-
-<h3 id="44-voc-2012-results">4.4. VOC 2012 Results</h3>
-<p><img src="https://jjerry-k.github.io/public/img/yolo/fig04_4.png" /></p>
-
-<h3 id="45-generalizability">4.5 Generalizability</h3>
-<ul>
-  <li>새로운 도메인, 예상치 못한 입력이 들어왔을때 일반화 성능이 뛰어남.</li>
-  <li>Picasso Dataset 과 People-Art Dataset을 이용하여 다른 모델들과 일반화 성능 비교.</li>
-  <li>YOLO가 가장 성능이 좋은것을 보여줌. 
-<img src="https://jjerry-k.github.io/public/img/yolo/fig05_1.png" />
-<img src="https://jjerry-k.github.io/public/img/yolo/fig05_2.png" /></li>
-</ul>
-
-    <article></h4>
-    <div class="post-more">
-      
-      <a href="/deeplearning/2019/03/29/YOLO/#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
-      
-      <a href="/deeplearning/2019/03/29/YOLO/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
     </div>
   </div>
   

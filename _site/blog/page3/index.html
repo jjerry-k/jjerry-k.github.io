@@ -311,6 +311,267 @@
   
   <div class="post">
     <h1 class="post-title">
+      <a href="/deeplearning/2020/06/28/nipa_docker/">
+        NIPA x Docker !
+      </a>
+    </h1>
+
+    <span class="post-date">28 Jun 2020</span>
+     | 
+    
+    <a href="/blog/tags/#tools" class="post-tag">Tools</a>
+    
+    
+
+    <h4 style="font-weight: 400; line-height: 1.8;"><article>
+      <blockquote>
+  <p>원래 NIPA GPU 서버를 대여받은 후에 포트 포워딩을 먼저 해줘야 합니다.
+하지만 그 부분에 대해선 보안적인 부분이 있기 때문에 생략하겠습니다.</p>
+</blockquote>
+
+<p>이번엔 NIPA 내 개인 환경 세팅에 대해 포스팅을 해보려 합니다.</p>
+
+<p>개인마다 원하는 환경이 다르기 때문에 정말 필요하죠.</p>
+
+<p>물론 기본적으로 설치된 Anaconda  환경으로도 충분할 수 있지만 살짝쿵 문제가 있습니다.</p>
+
+<p>문제에 대해 살펴보겠습니다.</p>
+
+<p>NIPA GPU 서버에 접속을 하면 다음과 같은 화면이 출력됩니다.</p>
+
+<p><img src="https://jjerry-k.github.io/public/img/nipa_docker/Untitled.png" alt="Untitled.png" /></p>
+
+<p>먼저 말씀드렸던 conda 환경으로 기본적으로 다양한 환경이 제공되네요.</p>
+
+<p>저의 경우 이번에 tf-nightly가 필요했습니다.</p>
+
+<p>그래서 TensorFlow2, python3.6 환경을 activate  한 후 설치를 시도했죠.</p>
+
+<p><img src="https://jjerry-k.github.io/public/img/nipa_docker/Untitled_1.png" alt="NIPA%20x%20Docker%20ef94d24dfbc64a6cae24a83a59bd352f/Untitled%201.png" /></p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">what…?</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center"><img src="https://jjerry-k.github.io/public/img/nipa_docker/Untitled_2.png" alt="NIPA%20x%20Docker%20ef94d24dfbc64a6cae24a83a59bd352f/Untitled%202.png" /></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>음….conda 버전의 문제인가 싶어서 base conda를 update  하려 했습니다.</p>
+
+<p><img src="https://jjerry-k.github.io/public/img/nipa_docker/Untitled_3.png" alt="NIPA%20x%20Docker%20ef94d24dfbc64a6cae24a83a59bd352f/Untitled%203.png" /></p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">what…?</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center"><img src="https://jjerry-k.github.io/public/img/nipa_docker/Untitled_2.png" alt="NIPA%20x%20Docker%20ef94d24dfbc64a6cae24a83a59bd352f/Untitled%202.png" /></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>뭐야..이건 또 왜 안되는거야… 짜증이 났습니다.</p>
+
+<p>대충 <code class="language-plaintext highlighter-rouge">너무 옛날 버전의 conda니까 최소 4.8로 재설치 해주세요.</code> 라는 내용입니다.</p>
+
+<p><code class="language-plaintext highlighter-rouge">하....이건 좀 너무한데...그냥 Docker나 설치하자..</code> 라는 생각을 하게 되었습니다.</p>
+
+<p>그럼 Docker 설치에 대해 포스팅 해보겠습니다.</p>
+
+<p>Docker 에 대한 자세한 설명은 하지 않을 겁니다.</p>
+
+<p>홈페이지 혹은 Docker 에 대한 포스팅을 참고하시기 바랍니다.</p>
+
+<p>간단히 말씀드리면 OS 단계까지 가상환경을 만드는 겁니다.</p>
+
+<p>그럼 설치 방법에 대해 적겠습니다.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># SET UP THE REPOSITORY</span>
+<span class="nb">sudo </span>apt-get update
+
+<span class="nb">sudo </span>apt-get <span class="nb">install</span> <span class="se">\</span>
+    apt-transport-https <span class="se">\</span>
+    ca-certificates <span class="se">\</span>
+    curl <span class="se">\</span>
+    gnupg-agent <span class="se">\</span>
+    software-properties-common
+
+curl <span class="nt">-fsSL</span> https://download.docker.com/linux/ubuntu/gpg | <span class="nb">sudo </span>apt-key add -
+
+<span class="nb">sudo </span>apt-key fingerprint 0EBFCD88
+
+<span class="nb">sudo </span>add-apt-repository <span class="se">\</span>
+   <span class="s2">"deb [arch=amd64] https://download.docker.com/linux/ubuntu </span><span class="se">\</span><span class="s2">
+   </span><span class="si">$(</span>lsb_release <span class="nt">-cs</span><span class="si">)</span><span class="s2"> </span><span class="se">\</span><span class="s2">
+   stable"</span>
+
+<span class="c"># INSTALL DOCKER ENGINE</span>
+<span class="nb">sudo </span>apt-get update
+<span class="nb">sudo </span>apt-get <span class="nb">install </span>docker-ce docker-ce-cli containerd.io
+
+<span class="c"># VERIFY THAT DOCKER ENGINE IS INSTALLED CORRECTLY</span>
+<span class="nb">sudo </span>docker run hello-world
+</code></pre></div></div>
+
+<p>만약에 제대로 설치 되었다면 마지막에 다음과 같은 출력이 남습니다</p>
+
+<p><img src="https://jjerry-k.github.io/public/img/nipa_docker/Untitled_4.png" alt="NIPA%20x%20Docker%20ef94d24dfbc64a6cae24a83a59bd352f/Untitled%204.png" /></p>
+
+<p>여기까지 하시면 기본 Docker 설치는 끝났습니다.</p>
+
+<p>하지만 이것만 설치하면 GPU 는 사용하지 못합니다.</p>
+
+<p>GPU를 쓰기 위해선 <a href="https://github.com/NVIDIA/nvidia-docker">nvidia-docker</a>를 설치를 해야 합니다.</p>
+
+<p>nvidia-docker는 간단히 말하면 docker 에서 데스크탑의 GPU를 사용할 수 있도록 nvidia에서 만든(?)것입니다.</p>
+
+<p>설치법은 다음과 같습니다.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Ubuntu 16.04/18.04/20.04, Debian Jessie/Stretch/Buster</span>
+<span class="c"># Add the package repositories</span>
+<span class="nv">distribution</span><span class="o">=</span><span class="si">$(</span><span class="nb">.</span> /etc/os-release<span class="p">;</span><span class="nb">echo</span> <span class="nv">$ID$VERSION_ID</span><span class="si">)</span>
+curl <span class="nt">-s</span> <span class="nt">-L</span> https://nvidia.github.io/nvidia-docker/gpgkey | <span class="nb">sudo </span>apt-key add -
+curl <span class="nt">-s</span> <span class="nt">-L</span> https://nvidia.github.io/nvidia-docker/<span class="nv">$distribution</span>/nvidia-docker.list | <span class="nb">sudo tee</span> /etc/apt/sources.list.d/nvidia-docker.list
+
+<span class="nb">sudo </span>apt-get update <span class="o">&amp;&amp;</span> <span class="nb">sudo </span>apt-get <span class="nb">install</span> <span class="nt">-y</span> nvidia-container-toolkit
+<span class="nb">sudo </span>systemctl restart docker
+
+<span class="c"># Test nvidia-docker</span>
+docker run <span class="nt">--gpus</span> all nvidia/cuda:10.0-base nvidia-smi
+</code></pre></div></div>
+
+<p>이 또한 설치가 제대로 되었다면 마지막에 다음과 같이 <code class="language-plaintext highlighter-rouge">nvidia-smi</code> 출력이 나올 겁니다.</p>
+
+<p><img src="https://jjerry-k.github.io/public/img/nipa_docker/Untitled_5.png" alt="NIPA%20x%20Docker%20ef94d24dfbc64a6cae24a83a59bd352f/Untitled%205.png" /></p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">하….편안….</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center"><img src="https://jjerry-k.github.io/public/img/nipa_docker/Untitled_6.png" alt="NIPA%20x%20Docker%20ef94d24dfbc64a6cae24a83a59bd352f/Untitled%206.png" /></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>이번엔 NIPA에 Docker 설치하는 과정을 포스팅 해봤습니다.</p>
+
+<p>공짜로 빌려주는 건 좋으나 환경 구축은 역시나….해야 하네요.</p>
+
+<p>제가 쓰는 Docker image는 <a href="https://jjerry-k.github.io/living/2020/05/05/dockerfile/">개인적인 도커 파일</a> 에 있으니 참고하세요!</p>
+
+    <article></h4>
+    <div class="post-more">
+      
+      <a href="/deeplearning/2020/06/28/nipa_docker/#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
+      
+      <a href="/deeplearning/2020/06/28/nipa_docker/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
+    </div>
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/deeplearning/2020/06/27/nipa_apply/">
+        NIPA 컴퓨팅 자원 신청 방법 !
+      </a>
+    </h1>
+
+    <span class="post-date">27 Jun 2020</span>
+     | 
+    
+    <a href="/blog/tags/#tools" class="post-tag">Tools</a>
+    
+    
+
+    <h4 style="font-weight: 400; line-height: 1.8;"><article>
+      <p><a href="https://jjerry-k.github.io/deeplearning/2020/06/26/nipa_intro/">저번 포스팅</a>에 이어 이번엔 NIPA 컴퓨팅 자원 이용 신청에 관한 포스팅을 해보려 합니다!</p>
+
+<p>내용 출처: <a href="http://www.aihub.or.kr/node/254">http://www.aihub.or.kr/node/254</a></p>
+
+<h3 id="이용-절차">이용 절차</h3>
+
+<ul>
+  <li>일반 사용자
+    <ul>
+      <li>신청 대상: AI 제품·서비스를 연구·개발하고자 하는 국내 중소·벤처 기업, 스타트업, 공공기관, 대학교(원), 일반 협·단체</li>
+      <li>신청 기간: 2020. 1. 6.(월) ∼ 2. 7.(금)※ 추가 모집 : 2020.5.25.(월) ~ 11.30.(월)</li>
+      <li>신청 절차: 이용 신청서 작성 → 온라인 신청 사이트에 제출 → 서면 심사 → 선정결과 발표<br />
+  ※ 선정기준 : 지원 자격요건, AI 연구‧개발대상 여부, 사용계획서(목적, 연구‧개발분야, 사용내용, 필요성 등)를 중심으로 심사‧평가<br />
+  ※ 모집 규모 대비 초과 신청 시 중소·벤처기업, 공공기관, 대학교(원)에 자원이 우선 할당될 수 있음</li>
+    </ul>
+  </li>
+  <li>수시 사용자
+    <ul>
+      <li>신청 대상: 일반 사용자와 개발자, 학생 등 개인</li>
+      <li>신청 기간: 2020.4.10.(금) ~ 2020.12.21.(월)</li>
+      <li>신청 절차: 이용신청 작성‧제출 → AI 연구‧개발대상 여부 확인 → 여유 자원 확인 → 서비스 이용</li>
+    </ul>
+  </li>
+</ul>
+
+<p>각각의 신청서 양식은 다음과 같습니다.</p>
+
+<h3 id="일반-사용자용-신청서">일반 사용자용 신청서</h3>
+
+<ul>
+  <li><a href="http://www.aihub.or.kr/sites/default/files/2020-05/[일반">다운로드 링크</a></li>
+</ul>
+
+<p><img src="https://jjerry-k.github.io/public/img/nipa_apply/Untitled.png" alt="Untitled.png" /></p>
+
+<h3 id="수시-사용자용-신청서">수시 사용자용 신청서</h3>
+
+<ul>
+  <li><a href="http://www.aihub.or.kr/sites/default/files/2020-05/[%EC%88%98%EC%8B%9C%20%EC%82%AC%EC%9A%A9%EC%9E%90%EC%9A%A9]%20%EA%B3%A0%EC%84%B1%EB%8A%A5%20%EC%BB%B4%ED%93%A8%ED%8C%85%20%EC%9E%90%EC%9B%90%20%EC%9D%B4%EC%9A%A9%20%EC%8B%A0%EC%B2%AD%EC%84%9C.hwp">다운로드 링크</a></li>
+</ul>
+
+<p><img src="https://jjerry-k.github.io/public/img/nipa_apply/Untitled_1.png" alt="Untitled_1.png" /></p>
+
+<p>당연한거지만 일반 사용자가 수시 사용자에 비해 작성해야할 것이 많습니다.</p>
+
+<p>신청서 작성 방법은 예시가 너무 잘 적혀있기 때문에 따로 설명을 드리지 않겠습니다. (궁금하신게 있다면 따로 댓글 남겨주세요!)</p>
+
+<p>신청서를 작성하신 후엔 AIHub 사이트 로그인을 하신 후 <code class="language-plaintext highlighter-rouge">이용신청</code> 으로 넘어갑니다.<br />
+그럼 다음과 같은 화면이 나오는데 (수시 사용자 기준) <strong>1~8번 중 해당하는 부분 선택하</strong>고 <strong>개인 정보</strong> 채워주시면 됩니다!</p>
+
+<p><img src="https://jjerry-k.github.io/public/img/nipa_apply/Untitled_2.png" alt="Untitled_2.png" /></p>
+
+<p>다 채운 후 이용신청을 누르시면 한…. 하루, 이틀? 정도 후에 메일과 핸드폰으로 문자 안내가 옵니다!<br />
+메일에는 NIPA 서버 사용방법, 문자에는 관리 페이지 이용 안내가 옵니다. <br />
+신청이 어렵지 않으니 많이 많이 신청하시고 즐거운 딥러닝 공부, 연구하세요! (홍보 아님)</p>
+
+<p><img src="https://jjerry-k.github.io/public/img/nipa_apply/go.png" alt="go.png" /></p>
+
+<h2 id="ps">P.S.</h2>
+<ul>
+  <li>중요! ! ! <strong>수시 사용자는 계속 사용하려면 10일마다 연장 신청 해야함. 꼭! 반드시!</strong></li>
+  <li><strong>위 내용을 지키지 않으면 서버 초기화되서 내용들 다 사라짐!!!</strong></li>
+  <li>너무 대충 포스팅을…하는걸까…</li>
+</ul>
+
+    <article></h4>
+    <div class="post-more">
+      
+      <a href="/deeplearning/2020/06/27/nipa_apply/#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
+      
+      <a href="/deeplearning/2020/06/27/nipa_apply/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
+    </div>
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
       <a href="/deeplearning/2020/06/26/nipa_intro/">
         NIPA...NIPA가 뭐죠..
       </a>
@@ -851,354 +1112,6 @@ URL: https://ai.facebook.com/research/publications/end-to-end-object-detection-w
       <a href="/deeplearning/2020/06/13/DETR/#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
       
       <a href="/deeplearning/2020/06/13/DETR/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
-    </div>
-  </div>
-  
-  <div class="post">
-    <h1 class="post-title">
-      <a href="/living/2020/05/31/Dlink_ddns/">
-        D-Link ddns 서비스 종료
-      </a>
-    </h1>
-
-    <span class="post-date">31 May 2020</span>
-     | 
-    
-    <a href="/blog/tags/#hardware" class="post-tag">Hardware</a>
-    
-    
-
-    <h4 style="font-weight: 400; line-height: 1.8;"><article>
-      <p><a href="https://eu.dlink.com/uk/en/products/dir-850l-wireless-ac1200-dual-band-gigabit-cloud-router">D-Link의 DIR-815L</a> 을 잘 쓰고 있었습니다…<br />
-라즈베리파이와 연결하여 DDNS 도해놓고..<br />
-근데 어느 날 다음과 같은 글이 메일, 공지로 올라오더군요.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>안녕하세요. D-Link Korea 입니다. 저희 dlink 제품군에서 제공되었던 무료 dlinkddns 서비스 종료에 관한 안내 말씀드립니다. 죄송합니다만, dlinkddns 무료 서비스는 기존에 오라클사의 dyn ddns 와의 계약만료일인 2020년 7월 2일 종료될 예정입니다. 이후에는 정상적인 무료 ddns서비스 이용이 불가하니 계속해서 dlinkddns 서비스를 이용하기를 원하실 경우에는 유료상품으로 전환하시기 바랍니다. ■ 유료전환 http://dlinkddns.com 사이트 접속시 유료전환은 안내 팝업과 함께 결재시 50% 할인 메뉴 클릭하여 진행합니다. 이외에 관련해서 궁금한 점이 있으신 분은 D-Link Korea 고객센터(1899-3540)로 문의하시기 바랍니다. 기존 무료로 지원되던 dlinkddns 서비스 종료에, 앞으로 더욱 나은 서비스로 보답하겠습니다. 감사합니다.
-</code></pre></div></div>
-
-<p>What the…?<br />
-후… 공유기를 새로 사던 DDNS 서비스를 이용하던 해야겠네요.<br />
-디자인이랑 DDNS 때문에 샀는데.. 젠장.. 앞으론 그냥 Iptime 쓸래요.</p>
-
-    <article></h4>
-    <div class="post-more">
-      
-      <a href="/living/2020/05/31/Dlink_ddns/#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
-      
-      <a href="/living/2020/05/31/Dlink_ddns/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
-    </div>
-  </div>
-  
-  <div class="post">
-    <h1 class="post-title">
-      <a href="/deeplearning/2020/05/09/ShuffleNetV2/">
-        Review: ShuffleNetV2
-      </a>
-    </h1>
-
-    <span class="post-date">09 May 2020</span>
-     | 
-    
-    <a href="/blog/tags/#paper" class="post-tag">Paper</a>
-    
-    
-
-    <h4 style="font-weight: 400; line-height: 1.8;"><article>
-      <h1 id="shufflenet-v2-practical-guidelines-for-efficient-cnn-architecture-design">ShuffleNet V2: Practical Guidelines for Efficient CNN Architecture Design</h1>
-
-<p>Author: Ningning Ma, Xiangyu Zhang, Hai-Tao Zheng, Jian Sun<br />
-Date: Jul 30, 2018<br />
-URL: https://arxiv.org/abs/1807.11164</p>
-
-<h1 id="introduction">Introduction</h1>
-
-<ul>
-  <li>CNN 계열이 AlexNet 부터 정확도, 속도가 많이 발전하고 있음.</li>
-  <li>실제로는 제한된 컴퓨팅 파워에서(Mobile과 같은) 최고의 성능을 내는데 목표로 하고 있음.</li>
-  <li>이로 인해 Xception, MobileNet, ShuffleNet 등이 개발 되었음.</li>
-  <li>지금까지는 모델의 연산량을 이용하여 모델의 효율성을 판단하였으나 적합한 지표가 아님을 주장.</li>
-  <li>FLOPs와 speed 간의 성능 비교가 옳지 않은 주요 이유가 두 가지.
-    <ul>
-      <li>memory access cost(MAC): 메모리 접근량(사용량)</li>
-      <li>depending on the platform</li>
-    </ul>
-  </li>
-</ul>
-
-<p><img src="https://jjerry-k.github.io/public/img/shufflenetv2/Untitled.png" alt="https://jjerry-k.github.io/public/img/shufflenetv2/Untitled.png" /></p>
-
-<h1 id="practical-guidelines-for-ecient-network-design">Practical Guidelines for Ecient Network Design</h1>
-
-<ul>
-  <li>본 연구는 GPU 하드웨어(1080ti), ARM 하드웨어(Snapdragon 810) 이 두 가지 환경에서 실험.</li>
-  <li>모델의 Runtime을 쪼개보면 다음과 같은 차트가 그려짐.</li>
-  <li>FLOPs는 Convolution 에 대해 설명하기 떄문에 비교 지표로 적절하지 못함을 강조.</li>
-</ul>
-
-<p><img src="https://jjerry-k.github.io/public/img/shufflenetv2/Untitled_1.png" alt="https://jjerry-k.github.io/public/img/shufflenetv2/Untitled_1.png" /></p>
-
-<ul>
-  <li>위 문제를 근거로 다음과 같이 여러 개의 가이드 라인을 제시.</li>
-</ul>
-
-<h2 id="g1-equal-channel-width-minimizes-memory-access-cost-mac">G1) Equal channel width minimizes memory access cost (MAC)</h2>
-
-<ul>
-  <li>근래에 많이 사용되는 depthwise separable convoltuion에서 연산량의 대부분은 pointwise convolution 이 차지.</li>
-  <li>1x1 convolution 이 차지하는 연산량은 다음과 같음.</li>
-</ul>
-
-<p>[h, w: \text{the spatial size of the input feature map} \ c_1, c_2: \text{Number of channels about input and output } \ B=hwc_1c_2, \text{ FLOPs of the }1 \times 1 \text{ convolution}]</p>
-
-<ul>
-  <li>현 상황에서 MAC의 수식은 다음과 같음.</li>
-</ul>
-
-<p>[MAC = hw(c_1+c_2) +c_1c_2 = hwc_1 + hwc_2 + c_1c_2 \ hwc_1: \text{Number of input feature map’s element} \ hwc_2: \text{Number of output feature map’s element} \ c_1c_2: \text{Number of filter’s element}]</p>
-
-<ul>
-  <li>MAC의 lower bound 는 다음과 같음.</li>
-</ul>
-
-<p>[MAC \ge 2\sqrt{hwB} + \frac{B}{hw} \to 2hw\sqrt{c_1c_2} + c_1c_2]</p>
-
-<ul>
-  <li>$c_1 = c_2$ 이면 MAC가 최소.</li>
-  <li>전체 연산량은 고정해놓고 $c_1:c_2$의 비율을 바꿔가면서 runtime 비교.</li>
-  <li>1:1일때가 가장 빠른 성능을 보임.</li>
-</ul>
-
-<p><img src="https://jjerry-k.github.io/public/img/shufflenetv2/Untitled_2.png" alt="https://jjerry-k.github.io/public/img/shufflenetv2/Untitled_2.png" /></p>
-
-<blockquote>
-  <p><em>It reaches the lower bound when the numbers of input and output channels are equal.</em></p>
-</blockquote>
-
-<h2 id="g2-excessive-group-convolution-increases-mac">G2) Excessive group convolution increases MAC</h2>
-
-<ul>
-  <li>Group convolution 이 많은 네트워크의 핵심이지만 Groups가 커지면 MAC을 증가시킴. → 안쓸 수는 없으니 적당히 쓰는게 좋다.</li>
-  <li>그룹에 따라 연산량이 줄어들기 때문에 B는 다음과 같음.</li>
-</ul>
-
-<p>[B=hwc_1c_2/g]</p>
-
-<p>[MAC = hw(c_1+c_2) + \frac{c_1c_2}{g} \ = hwc_1 + hwc_2 + \frac{c_1c_2}{g} \ = hwc_1 + \frac{Bg}{c_1} + \frac{B}{hw}]</p>
-
-<ul>
-  <li>Groups 에 따라 runtime 비교.</li>
-</ul>
-
-<p><img src="https://jjerry-k.github.io/public/img/shufflenetv2/Untitled_3.png" alt="https://jjerry-k.github.io/public/img/shufflenetv2/Untitled_3.png" /></p>
-
-<blockquote>
-  <p><em>The group number should be carefully chosen based on the target platform and task. It is unwise to use a large group number simply because this may enable using more channels, because the benet of accuracy increase can easily be outweighed by the rapidly increasing computational cost.</em></p>
-</blockquote>
-
-<h2 id="g3-network-fragmentation-reduces-degree-of-parallelism">G3) Network fragmentation reduces degree of parallelism</h2>
-
-<ul>
-  <li>Inception 과 같이 여러 branch를 parallel하게 구성할 경우 성능은 좋아졌지만 효율성은 감소시킴. → GPU 같은 자원에는 어울리지 않음.</li>
-  <li>Fragmentation 에 따른 runtime 비교.</li>
-</ul>
-
-<p><img src="https://jjerry-k.github.io/public/img/shufflenetv2/Untitled_4.png" alt="https://jjerry-k.github.io/public/img/shufflenetv2/Untitled_4.png" /></p>
-
-<p><img src="https://jjerry-k.github.io/public/img/shufflenetv2/Untitled_5.png" alt="https://jjerry-k.github.io/public/img/shufflenetv2/Untitled_5.png" /></p>
-
-<blockquote>
-  <p><em>Fragmented structure has been shown benecial for accuracy, it could decrease eciency because it is unfriendly for devices with strong parallel computing powers like GPU. It also introduces extra overheads such as kernel launching and synchronization.</em></p>
-</blockquote>
-
-<h2 id="g4-element-wise-operations-are-non-negligible">G4) Element-wise operations are non-negligible</h2>
-
-<ul>
-  <li>Activation, Add 와 같은 Element-wise operation들의 비율이 꽤 존재. Figure 2 참고</li>
-  <li>이 연산은 FLOPs는 적지만 상대적으로 MAC은 큼.</li>
-  <li>
-    <p>Depthwise convolution 또한 element-wise 여서 MAC/FLOPs 가 클 것이라 생각.</p>
-  </li>
-  <li>각 상황에 대한 runtime 비교.</li>
-</ul>
-
-<p><img src="https://jjerry-k.github.io/public/img/shufflenetv2/Untitled_6.png" alt="https://jjerry-k.github.io/public/img/shufflenetv2/Untitled_6.png" /></p>
-
-<blockquote>
-  <p><em>We observe around 20% speedup is obtained on both GPU and ARM, after ReLU and shortcut are removed.</em></p>
-</blockquote>
-
-<h2 id="conclusion-and-discussions">Conclusion and Discussions</h2>
-
-<ol>
-  <li>use “balanced convolutions (equal channel width);</li>
-  <li>be aware of the cost of using group convolution;</li>
-  <li>reduce the degree of fragmentation;</li>
-  <li>reduce element-wise operations.</li>
-</ol>
-
-<ul>
-  <li>다른 네트워크들에 대한 고찰
-    <ul>
-      <li>ShuffleNet V1
-        <ul>
-          <li>Heavily group convolutions → G2</li>
-          <li>Bottleneck-like building blocks → G1</li>
-          <li>Residual Block → G3</li>
-          <li>Element-wise operation→ G4</li>
-        </ul>
-      </li>
-      <li>MobileNet V2
-        <ul>
-          <li>Inverted bottleneck structure → G1</li>
-        </ul>
-      </li>
-      <li>Depthwise convolution &amp; ReLU
-        <ul>
-          <li>Element-wise operation → G4</li>
-        </ul>
-      </li>
-      <li>NAS
-        <ul>
-          <li>Highly fragmentation → G3</li>
-        </ul>
-      </li>
-    </ul>
-  </li>
-</ul>
-
-<h1 id="shuenet-v2-an-ecient-architecture">ShueNet V2: an Ecient Architecture</h1>
-
-<h2 id="review-of-shuenet-v1">Review of ShueNet v1</h2>
-
-<ul>
-  <li>G1, G2, G3, G4 모두 지키지 않음.</li>
-  <li>이를 해결한 구조가 ShuffleNet V2 의 유닛 (Fig 3 (c), Fig 3 (d))</li>
-</ul>
-
-<p><img src="https://jjerry-k.github.io/public/img/shufflenetv2/Untitled_7.png" alt="https://jjerry-k.github.io/public/img/shufflenetv2/Untitled_7.png" /></p>
-
-<h2 id="channel-split-and-shuenet-v2">Channel Split and ShueNet V2</h2>
-
-<ul>
-  <li>Fig 3 (c)
-    <ul>
-      <li>Input feature 을 절반으로 나눠 두개의 branch 생성.</li>
-      <li>Left branch는 아무 연산도 진행 X. → G3 에 대한 회피법.</li>
-      <li>Right branch는 동일한 Number of filter로 1x1 Conv → 3x3 DWConv → 1x1 Conv 수행. → G1에 대한 회피법.</li>
-      <li>1x1 Conv 는 Group 을 나누지 않음 → G2에 대한 회피법.</li>
-      <li>Residual Block의 Add operation 을 Concatenate 로 변경 → G4에 대한 회피법.</li>
-    </ul>
-  </li>
-  <li>Fig 3 (d)
-    <ul>
-      <li>Downsampling block</li>
-      <li>Input feature 그대로 두개의 branch 생성.</li>
-      <li>Number of filter는 모두 동일</li>
-    </ul>
-  </li>
-  <li>네트워크 구조</li>
-</ul>
-
-<p><img src="https://jjerry-k.github.io/public/img/shufflenetv2/Untitled_8.png" alt="https://jjerry-k.github.io/public/img/shufflenetv2/Untitled_8.png" /></p>
-
-<h2 id="analysis-of-network-accuracy">Analysis of Network Accuracy</h2>
-
-<ul>
-  <li>ShuffleNet V2는 효율적이며 성능도 좋음.
-    <ul>
-      <li>더 많은 channel, 더 큰 network를 만들 수 있음.</li>
-      <li>DenseNet 이나 CondenseNet 처럼 feature reuse 과 매우 유사함.</li>
-    </ul>
-  </li>
-  <li>DenseNet의 feature reuse 패턴과 ShuffleNet V2의 feature reuse 패턴 비교.</li>
-  <li>붉을 수록 Source layer와 Target layer의 연결성이 강하다는 의미.</li>
-  <li>DenseNet과 같이 ShuffleNet V2에서도 Target layer가 멀어질 수록 연결성이 약함.</li>
-</ul>
-
-<p><img src="https://jjerry-k.github.io/public/img/shufflenetv2/Untitled_9.png" alt="https://jjerry-k.github.io/public/img/shufflenetv2/Untitled_9.png" /></p>
-
-<h1 id="experiment">Experiment</h1>
-
-<ul>
-  <li>총 4개의 모델과 비교.
-    <ul>
-      <li>ShuffleNet V1</li>
-      <li>MobileNet V2</li>
-      <li>Xception</li>
-      <li>DenseNet</li>
-    </ul>
-  </li>
-</ul>
-
-<p><img src="https://jjerry-k.github.io/public/img/shufflenetv2/Untitled_10.png" alt="https://jjerry-k.github.io/public/img/shufflenetv2/Untitled_10.png" /></p>
-
-<h3 id="accuracy-vs-flops">Accuracy vs. FLOPs</h3>
-
-<ul>
-  <li>연산량을 40 MFLOPs 로 고정시키고 Network 를 구성한 후 성능 비교. (Table 8 상단)</li>
-</ul>
-
-<h3 id="inference-speed-vs-flopsaccuracy">Inference Speed vs. FLOPs/Accuracy</h3>
-
-<ul>
-  <li>연산량을 특정 값 범위로 고정시키고 runtime 비교. (Fig 1 참조)</li>
-</ul>
-
-<p><img src="https://jjerry-k.github.io/public/img/shufflenetv2/Untitled_11.png" alt="https://jjerry-k.github.io/public/img/shufflenetv2/Untitled_11.png" /></p>
-
-<h3 id="compared-with-mobilenet-v1">Compared with MobileNet v1</h3>
-
-<ul>
-  <li>MobileNet V1의 경우 Accuracy가 좋지 않으나  GPU runtime은 가장 빠름.</li>
-  <li>이는 위에서 제시한 가이드 라인을 어느 정도 가장 잘 만족하기 때문.</li>
-</ul>
-
-<h3 id="compared-automatic-model-search">Compared automatic model search</h3>
-
-<ul>
-  <li>NAS 는 매우 느리지만 제시한 가이드 라인을 만족하고 speed에 대한 metric을 사용한다면 충분히 좋은 성능을 보일 것.</li>
-</ul>
-
-<h3 id="compatibility-with-other-methods">Compatibility with other methods</h3>
-
-<ul>
-  <li>Squeeze-and-excitation 과 같은 module과 같이 사용할 수 있음.</li>
-  <li>속도는 떨어지나 정확도는 상승. (Table 8 하단)</li>
-</ul>
-
-<h3 id="generalization-to-large-models">Generalization to Large Models</h3>
-
-<ul>
-  <li>2GFLOPs 이상의 큰 모델을 생성할 수 있음.</li>
-  <li>50개의 레이어를 가진 모델을 생성해도 ResNet-50 과 비교하여 적은 연산량, 뛰어난 성능을 보임. (Table 6 상단)</li>
-  <li>SE module, residual block을 사용하여 더욱 깊게 만들어도 상대적으로 연산량이 적으면서 뛰어난 성능을 보임. (Table 6 하단)</li>
-</ul>
-
-<p><img src="https://jjerry-k.github.io/public/img/shufflenetv2/Untitled_12.png" alt="https://jjerry-k.github.io/public/img/shufflenetv2/Untitled_12.png" /></p>
-
-<h3 id="object-detection">Object Detection</h3>
-
-<ul>
-  <li><a href="https://arxiv.org/abs/1711.07264">Light-Head RCNN</a> 사용.</li>
-  <li>Classification 에서 성능이 별로였던 Xception 이 Detection 에선 성능이 좋음. → Receptive Field가 크기 때문이라고 생각.</li>
-  <li>3x3 depthwise convolution 을 추가하여 Receptive Field를 키워보니 (ShuffleNet V2*) runtime은 늘었으나 성능이 증가함.</li>
-</ul>
-
-<p><img src="https://jjerry-k.github.io/public/img/shufflenetv2/Untitled_13.png" alt="https://jjerry-k.github.io/public/img/shufflenetv2/Untitled_13.png" /></p>
-
-<h2 id="ps">P.S</h2>
-
-<ul>
-  <li>어려웠다.</li>
-  <li>항상 가이드 라인을 지키면서 모델을 설계할 수 있을까?</li>
-</ul>
-
-    <article></h4>
-    <div class="post-more">
-      
-      <a href="/deeplearning/2020/05/09/ShuffleNetV2/#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
-      
-      <a href="/deeplearning/2020/05/09/ShuffleNetV2/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
     </div>
   </div>
   

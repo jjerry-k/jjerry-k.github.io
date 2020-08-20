@@ -311,6 +311,480 @@
   
   <div class="post">
     <h1 class="post-title">
+      <a href="/deeplearning/2020/08/10/pix2pix/">
+        Review: Pix2Pix
+      </a>
+    </h1>
+
+    <span class="post-date">10 Aug 2020</span>
+     | 
+    
+    <a href="/blog/tags/#paper" class="post-tag">Paper</a>
+    
+    
+
+    <h4 style="font-weight: 400; line-height: 1.8;"><article>
+      <h1 id="image-to-image-translation-with-conditional-adversarial-networks">Image-to-Image Translation with Conditional Adversarial Networks</h1>
+
+<p>Author: Phillip Isola, Jun-Yan Zhu, Tinghui Zhou, Alexei A. Efros
+Date: Nov 26, 2018
+URL: https://arxiv.org/abs/1611.07004</p>
+
+<p>GAN을 이용한 Image translation 의 시초에 가까운 Pix2Pix를 알아보려고 합니다.</p>
+
+<p>자세하게 리뷰하진 않을 겁니다.</p>
+
+<h1 id="introduction">Introduction</h1>
+
+<ul>
+  <li>이 논문의 main contribution은 다양한 문제에서 Conditional GAN이 합리적인 결과를 생성한다는 것을 입증하는 것.</li>
+  <li>이를 위해 Image-to-Image translation 으로 연구 진행.</li>
+</ul>
+
+<p><img src="https://jjerry-k.github.io/public/img/pix2pix/Untitled.png" alt="https://jjerry-k.github.io/public/img/pix2pix/Untitled.png" /></p>
+
+<h1 id="method">Method</h1>
+
+<ul>
+  <li>정말 간단한 구조</li>
+  <li>다음 사진은 Edge(Sketch) 영상을 Photo 영상으로 만드는 예시.</li>
+</ul>
+
+<p><img src="https://jjerry-k.github.io/public/img/pix2pix/Untitled_1.png" alt="https://jjerry-k.github.io/public/img/pix2pix/Untitled_1.png" /></p>
+
+<h2 id="objective">Objective</h2>
+
+<p>[\mathcal{L}<em>{cGAN}(G, D) = \mathbb{E}</em>{x, y}[\log D(x, y)] + \mathbb{E}_{x, z}[\log (1-D(x, G(x, z))]]</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>[\mathcal{L}<em>{L1}(G) = \mathbb{E}</em>{x, y, z}[</td>
+      <td> </td>
+      <td>y-G(x,z)</td>
+      <td> </td>
+      <td>_1]]</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>[G^* = argmin_Gmax_D\mathcal{L}<em>{cGAN}(G, D) + \lambda\mathcal{L}</em>{L1}(G)]</p>
+
+<h2 id="network-architectures">Network architectures</h2>
+
+<ul>
+  <li>DCGAN 에서 제안한 방법으로 각 block을 구성.
+    <ul>
+      <li>Convolution → BatchNorm → ReLU</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="generator-with-skips">Generator with skips</h3>
+
+<ul>
+  <li>U-Net 과 비슷하나 Concatenate를 Add로 변경.</li>
+</ul>
+
+<p><img src="https://jjerry-k.github.io/public/img/pix2pix/Untitled_2.png" alt="https://jjerry-k.github.io/public/img/pix2pix/Untitled_2.png" /></p>
+
+<h3 id="markovian-discriminator-patchgan">Markovian discriminator (PatchGAN)</h3>
+
+<ul>
+  <li>L1, L2 만 사용하면 blurry result가 만들어진다는 것은 많이 알려진 사항.</li>
+  <li>Low frequency 부분에 대한 부분은 L1 loss로 High frequency는 GAN loss 가 담당.</li>
+  <li>좀 더 다양한 High frequency 에 적합하도록 하기 위해 local image patch 에 대해 discriminator를 적용. (PatchGAN)</li>
+  <li>NxN patch 에 대해 각각 real/fake를 판별.</li>
+</ul>
+
+<p><img src="https://jjerry-k.github.io/public/img/pix2pix/Untitled_3.png" alt="https://jjerry-k.github.io/public/img/pix2pix/Untitled_3.png" /></p>
+
+<h2 id="optimization-and-inference">Optimization and Inference</h2>
+
+<ul>
+  <li>D → G 와 같은 순서로 학습 진행</li>
+  <li>Optimizer: Adam
+    <ul>
+      <li>Learning rate: 0.0002</li>
+      <li>Momentum $\beta_1$: 0.5</li>
+      <li>Momentum $\beta_2$: 0.999</li>
+    </ul>
+  </li>
+  <li>Batch size: 1~10</li>
+</ul>
+
+<h1 id="experimants">Experimants</h1>
+
+<ul>
+  <li><em>Semantic labels ↔photo</em></li>
+  <li><em>Architectural labels</em>→<em>photo</em></li>
+  <li><em>Map</em>↔<em>aerial photo</em></li>
+  <li><em>BW</em>→<em>color photos</em></li>
+  <li><em>Edges</em>→<em>photo</em></li>
+  <li><em>Sketch</em>→<em>photo</em></li>
+  <li><em>Day</em>→<em>night</em></li>
+  <li><em>Thermal</em>→<em>color photos</em></li>
+  <li><em>Photo with missing pixels</em>→*inpainted photo*</li>
+</ul>
+
+<h2 id="evaluation-metrics">Evaluation metrics</h2>
+
+<ul>
+  <li>Amazon Mechanical Turk (AMT)</li>
+  <li>FCN-score</li>
+</ul>
+
+<h2 id="analysis-of-the--objective-function">Analysis of the  objective function</h2>
+
+<p><img src="https://jjerry-k.github.io/public/img/pix2pix/Untitled_3.png" alt="https://jjerry-k.github.io/public/img/pix2pix/Untitled_3.png" /></p>
+
+<p><img src="https://jjerry-k.github.io/public/img/pix2pix/Untitled_4.png" alt="https://jjerry-k.github.io/public/img/pix2pix/Untitled_4.png" /></p>
+
+<h2 id="analysis-of-the-generator-architecture">Analysis of the generator architecture</h2>
+
+<ul>
+  <li>U-Net 기반의 구조로 했을 때가 훨씬 좋음.</li>
+</ul>
+
+<p><img src="https://jjerry-k.github.io/public/img/pix2pix/Untitled_5.png" alt="https://jjerry-k.github.io/public/img/pix2pix/Untitled_5.png" /></p>
+
+<p><img src="https://jjerry-k.github.io/public/img/pix2pix/Untitled_6.png" alt="https://jjerry-k.github.io/public/img/pix2pix/Untitled_6.png" /></p>
+
+<h2 id="from-pixelgans-to-patchgans-to-imagegans">From PixelGANs to PatchGANs to ImageGANs</h2>
+
+<ul>
+  <li>Discriminator의 출력을 1x1, 16x16, 70x70, 286x286과 같이 차례로 키우면서 실험.</li>
+</ul>
+
+<p><img src="https://jjerry-k.github.io/public/img/pix2pix/Untitled_7.png" alt="https://jjerry-k.github.io/public/img/pix2pix/Untitled_7.png" /></p>
+
+<p><img src="https://jjerry-k.github.io/public/img/pix2pix/Untitled_8.png" alt="https://jjerry-k.github.io/public/img/pix2pix/Untitled_8.png" /></p>
+
+<h2 id="perceptual-validation">Perceptual validation</h2>
+
+<ul>
+  <li>사람이 보기에도 L1 + cGAN이 좋음.</li>
+</ul>
+
+<p><img src="https://jjerry-k.github.io/public/img/pix2pix/Untitled_9.png" alt="https://jjerry-k.github.io/public/img/pix2pix/Untitled_9.png" /></p>
+
+<ul>
+  <li>Colorization에서는 좀 떨어짐.</li>
+</ul>
+
+<p><img src="https://jjerry-k.github.io/public/img/pix2pix/Untitled_10.png" alt="https://jjerry-k.github.io/public/img/pix2pix/Untitled_10.png" /></p>
+
+<h2 id="semantic-segmentation">Semantic segmentation</h2>
+
+<ul>
+  <li>해당 task 에서는 오히려 L1과 같은 reconstruction loss만을 이용한 구조가 적합해 보임.</li>
+</ul>
+
+<p><img src="https://jjerry-k.github.io/public/img/pix2pix/Untitled_11.png" alt="https://jjerry-k.github.io/public/img/pix2pix/Untitled_11.png" /></p>
+
+<p><img src="https://jjerry-k.github.io/public/img/pix2pix/Untitled_12.png" alt="https://jjerry-k.github.io/public/img/pix2pix/Untitled_12.png" /></p>
+
+<h2 id="community-driven-research">Community-driven Research</h2>
+
+<ul>
+  <li>Twitter 에 공개한 후 다른 연구자들의 실험.</li>
+</ul>
+
+<p><img src="https://jjerry-k.github.io/public/img/pix2pix/Untitled_13.png" alt="https://jjerry-k.github.io/public/img/pix2pix/Untitled_13.png" /></p>
+
+<p><img src="https://jjerry-k.github.io/public/img/pix2pix/Untitled_14.png" alt="https://jjerry-k.github.io/public/img/pix2pix/Untitled_14.png" /></p>
+
+<h2 id="ps">P.S</h2>
+<ul>
+  <li>장마철… 물 조심하세요..</li>
+</ul>
+
+    <article></h4>
+    <div class="post-more">
+      
+      <a href="/deeplearning/2020/08/10/pix2pix/#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
+      
+      <a href="/deeplearning/2020/08/10/pix2pix/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
+    </div>
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/deeplearning/2020/07/23/neptune/">
+        Neptune...? 은 또 뭐여..
+      </a>
+    </h1>
+
+    <span class="post-date">23 Jul 2020</span>
+     | 
+    
+    <a href="/blog/tags/#tools" class="post-tag">Tools</a>
+    
+    
+
+    <h4 style="font-weight: 400; line-height: 1.8;"><article>
+      <p>오늘은 <a href="https://neptune.ai/">neptune.ai</a> 라는 툴을 소개시켜 드리려 합니다.</p>
+
+<p>Jupyter는 아는데…. Neptune은 또 뭐여…. 암튼 이 분야는 참.. 태양계를 좋아하는 듯합니다.</p>
+
+<p>이는 NN 실험을 편하고 효율적으로 할 수 있게 도와주는 툴입니다.</p>
+
+<p>각 실험 세팅 별로 Hyper parameter, Metrics를 기록하고 시각화하여 비교할 수 있습니다.</p>
+
+<p>그리고 개인에겐 <strong>100GB의 저장소를 제공</strong>하기 때문에 타인과 공유도 가능해요!</p>
+
+<p>어찌보면 <a href="https://jjerry-k.github.io/deeplearning/2020/03/01/wandb/">Weights &amp; Biases</a> 랑 비슷하죠.</p>
+
+<p>다음은 <a href="https://docs.neptune.ai/">Neptune docs</a> 에서 가져온 Neptune의 특징입니다.</p>
+
+<ul>
+  <li>data exploration and analysis → decision science → machine learning and deep learning 와 같은  과정을 수행하는데 적합.</li>
+  <li>Python, Jupyter Notebook, R 에서 동작.</li>
+  <li><a href="https://docs.neptune.ai/integrations/keras.html">Keras</a>, <a href="https://docs.neptune.ai/integrations/pytorch_lightning.html">PyTorch Lightning</a>, <a href="https://docs.neptune.ai/integrations/xgboost.html">XGBoost</a>, <a href="https://docs.neptune.ai/integrations/matplotlib.html">Matplotlib</a> 와 같은 ML, DL에 사용되는 Python 라이브러리를 연동(통합).</li>
+  <li><a href="https://docs.neptune.ai/integrations/mlflow.html#">MLflow</a>, <a href="https://docs.neptune.ai/integrations/tensorboard.html#">TensorBoard</a> , <a href="https://docs.neptune.ai/integrations/sacred.html">Sacred</a> 와 같은 Tracking tool 과 연동(통합) 가능.</li>
+  <li>AWS, GCP, Kubernetes, Azure 와 같은 Cloud 와도 원활히 작동.</li>
+</ul>
+
+<p>그럼 실제로 한번 써보도록 하겠습니다.</p>
+
+<blockquote>
+  <p>Sign up 은 넘어갑니다.</p>
+</blockquote>
+
+<h2 id="1-기본-환경-구축">1. 기본 환경 구축</h2>
+
+<p>기존 환경에서 쓰실 분들은 쓰셔도 됩니다.</p>
+
+<p>저는 따로 환경을 만들어서 테스트를 했습니다.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>conda create <span class="nt">-n</span> neptune <span class="nv">python</span><span class="o">=</span>3.7
+
+conda activate neptune
+
+conda <span class="nb">install </span>psutil matplotlib tensorflow-gpu <span class="c"># 혹은 tensorflow</span>
+</code></pre></div></div>
+
+<h2 id="2-neptune-설정">2. Neptune 설정</h2>
+
+<p>Neptune을 설치합니다.</p>
+
+<p>conda를 쓰시는 분들께 보통 conda install 로 설치하라고 말씀을 드리지만.. 이번엔 특별히 pip install로 설치를 추천드립니다.</p>
+
+<p><img src="https://github.com/jjerry-k/jjerry-k.github.io/blob/master/public/img/neptune/Untitled.png?raw=true" alt="https://github.com/jjerry-k/jjerry-k.github.io/blob/master/public/img/neptune/Untitled.png" /></p>
+
+<p>설치 후 자신이 사용하는 OS에 맞춰서 API token을 PC에 기입(?) 해주세요.</p>
+
+<p><img src="https://github.com/jjerry-k/jjerry-k.github.io/blob/master/public/img/neptune/Untitled_1.png?raw=true" alt="https://github.com/jjerry-k/jjerry-k.github.io/blob/master/public/img/neptune/Untitled_1.png" /></p>
+
+<p>여기까지 하면 세팅은 끝납니다. 그 이후에 <code class="language-plaintext highlighter-rouge">Run script</code>, <code class="language-plaintext highlighter-rouge">Result in UI</code> 부분은 하고 싶으신 분만 해보세요!</p>
+
+<h2 id="3-mnist-를-이용한-실험">3. Mnist 를 이용한 실험</h2>
+
+<p>다음과 같은 코드를 작성합니다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">hashlib</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">tempfile</span>
+
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">import</span> <span class="nn">neptune</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="n">tf</span>
+<span class="kn">from</span> <span class="nn">tensorflow.keras</span> <span class="kn">import</span> <span class="n">models</span><span class="p">,</span> <span class="n">layers</span><span class="p">,</span> <span class="n">optimizers</span><span class="p">,</span> <span class="n">callbacks</span><span class="p">,</span> <span class="n">datasets</span>
+
+<span class="c1"># For Efficiency
+</span><span class="n">gpus</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">config</span><span class="p">.</span><span class="n">experimental</span><span class="p">.</span><span class="n">list_physical_devices</span><span class="p">(</span><span class="s">'GPU'</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">gpus</span><span class="p">:</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">gpu</span> <span class="ow">in</span> <span class="n">gpus</span><span class="p">:</span>
+            <span class="n">tf</span><span class="p">.</span><span class="n">config</span><span class="p">.</span><span class="n">experimental</span><span class="p">.</span><span class="n">set_memory_growth</span><span class="p">(</span><span class="n">gpu</span><span class="p">,</span> <span class="bp">True</span><span class="p">)</span>
+        <span class="n">logical_gpus</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">config</span><span class="p">.</span><span class="n">experimental</span><span class="p">.</span><span class="n">list_logical_devices</span><span class="p">(</span><span class="s">'GPU'</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">gpus</span><span class="p">),</span> <span class="s">"Physical GPUs,"</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">logical_gpus</span><span class="p">),</span> <span class="s">"Logical GPUs"</span><span class="p">)</span>
+    <span class="k">except</span> <span class="nb">RuntimeError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+        
+    
+<span class="c1"># select project
+</span><span class="n">neptune</span><span class="p">.</span><span class="n">init</span><span class="p">(</span><span class="s">'jjerry-k/mnist'</span><span class="p">)</span>
+
+<span class="c1"># Define parameters
+</span><span class="n">PARAMS</span> <span class="o">=</span> <span class="p">{</span><span class="s">'batch_size'</span><span class="p">:</span> <span class="mi">64</span><span class="p">,</span>
+          <span class="s">'n_epochs'</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span>
+          <span class="s">'shuffle'</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span>
+          <span class="s">'learning_rate'</span><span class="p">:</span> <span class="mf">0.001</span><span class="p">,</span>
+          <span class="s">'early_stopping'</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+          <span class="s">'optimizer'</span><span class="p">:</span> <span class="s">'Adam'</span><span class="p">,</span>
+          <span class="p">}</span>
+
+<span class="c1"># Create experiment
+</span><span class="n">neptune</span><span class="p">.</span><span class="n">create_experiment</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s">'classification_example'</span><span class="p">,</span>
+                          <span class="n">tags</span><span class="o">=</span><span class="p">[</span><span class="s">'classification'</span><span class="p">,</span> <span class="s">'MNIST'</span><span class="p">],</span>
+                          <span class="n">params</span><span class="o">=</span><span class="n">PARAMS</span><span class="p">)</span>
+
+<span class="c1"># Dataset
+</span><span class="n">mnist</span> <span class="o">=</span> <span class="n">datasets</span><span class="p">.</span><span class="n">mnist</span>
+<span class="p">(</span><span class="n">train_images</span><span class="p">,</span> <span class="n">train_labels</span><span class="p">),</span> <span class="p">(</span><span class="n">test_images</span><span class="p">,</span> <span class="n">test_labels</span><span class="p">)</span> <span class="o">=</span> <span class="n">mnist</span><span class="p">.</span><span class="n">load_data</span><span class="p">()</span>
+<span class="n">train_images</span> <span class="o">=</span> <span class="n">train_images</span> <span class="o">/</span> <span class="mf">255.0</span>
+<span class="n">test_images</span> <span class="o">=</span> <span class="n">test_images</span> <span class="o">/</span> <span class="mf">255.0</span>
+
+<span class="n">class_names</span> <span class="o">=</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)]</span>
+
+<span class="n">neptune</span><span class="p">.</span><span class="n">set_property</span><span class="p">(</span><span class="s">'class_names'</span><span class="p">,</span> <span class="n">class_names</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">j</span><span class="p">,</span> <span class="n">class_name</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">class_names</span><span class="p">):</span>
+    <span class="n">plt</span><span class="p">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+    <span class="n">label_</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">where</span><span class="p">(</span><span class="n">train_labels</span> <span class="o">==</span> <span class="n">j</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">9</span><span class="p">):</span>
+        <span class="n">plt</span><span class="p">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">plt</span><span class="p">.</span><span class="n">xticks</span><span class="p">([])</span>
+        <span class="n">plt</span><span class="p">.</span><span class="n">yticks</span><span class="p">([])</span>
+        <span class="n">plt</span><span class="p">.</span><span class="n">grid</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>
+        <span class="n">plt</span><span class="p">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">train_images</span><span class="p">[</span><span class="n">label_</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">i</span><span class="p">]],</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="p">.</span><span class="n">cm</span><span class="p">.</span><span class="n">binary</span><span class="p">)</span>
+        <span class="n">plt</span><span class="p">.</span><span class="n">xlabel</span><span class="p">(</span><span class="n">class_names</span><span class="p">[</span><span class="n">j</span><span class="p">])</span>
+    <span class="n">neptune</span><span class="p">.</span><span class="n">log_image</span><span class="p">(</span><span class="s">'example_images'</span><span class="p">,</span> <span class="n">plt</span><span class="p">.</span><span class="n">gcf</span><span class="p">())</span>
+
+<span class="k">def</span> <span class="nf">lr_scheduler</span><span class="p">(</span><span class="n">epoch</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">epoch</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">:</span>
+        <span class="n">new_lr</span> <span class="o">=</span> <span class="n">PARAMS</span><span class="p">[</span><span class="s">'learning_rate'</span><span class="p">]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">new_lr</span> <span class="o">=</span> <span class="n">PARAMS</span><span class="p">[</span><span class="s">'learning_rate'</span><span class="p">]</span> <span class="o">*</span> <span class="n">np</span><span class="p">.</span><span class="n">exp</span><span class="p">(</span><span class="mf">0.1</span> <span class="o">*</span> <span class="p">((</span><span class="n">epoch</span><span class="o">//</span><span class="mi">50</span><span class="p">)</span><span class="o">*</span><span class="mi">50</span> <span class="o">-</span> <span class="n">epoch</span><span class="p">))</span>
+
+    <span class="n">neptune</span><span class="p">.</span><span class="n">log_metric</span><span class="p">(</span><span class="s">'learning_rate'</span><span class="p">,</span> <span class="n">new_lr</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">new_lr</span>
+
+<span class="c1"># Model
+</span><span class="n">model</span> <span class="o">=</span> <span class="n">models</span><span class="p">.</span><span class="n">Sequential</span><span class="p">([</span>
+    <span class="n">layers</span><span class="p">.</span><span class="n">Flatten</span><span class="p">(</span><span class="n">input_shape</span><span class="o">=</span><span class="p">(</span><span class="mi">28</span><span class="p">,</span> <span class="mi">28</span><span class="p">)),</span>
+    <span class="n">layers</span><span class="p">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s">'relu'</span><span class="p">),</span>
+    <span class="n">layers</span><span class="p">.</span><span class="n">Dense</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">class_names</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s">'softmax'</span><span class="p">)</span>
+<span class="p">])</span>
+
+<span class="k">if</span> <span class="n">PARAMS</span><span class="p">[</span><span class="s">'optimizer'</span><span class="p">]</span> <span class="o">==</span> <span class="s">'Adam'</span><span class="p">:</span>
+    <span class="n">optimizer</span> <span class="o">=</span> <span class="n">optimizers</span><span class="p">.</span><span class="n">Adam</span><span class="p">(</span>
+        <span class="n">learning_rate</span><span class="o">=</span><span class="n">PARAMS</span><span class="p">[</span><span class="s">'learning_rate'</span><span class="p">],</span>
+    <span class="p">)</span>
+<span class="k">elif</span> <span class="n">PARAMS</span><span class="p">[</span><span class="s">'optimizer'</span><span class="p">]</span> <span class="o">==</span> <span class="s">'Nadam'</span><span class="p">:</span>
+    <span class="n">optimizer</span> <span class="o">=</span> <span class="n">optimizers</span><span class="p">.</span><span class="n">Nadam</span><span class="p">(</span>
+        <span class="n">learning_rate</span><span class="o">=</span><span class="n">PARAMS</span><span class="p">[</span><span class="s">'learning_rate'</span><span class="p">],</span>
+    <span class="p">)</span>
+<span class="k">elif</span> <span class="n">PARAMS</span><span class="p">[</span><span class="s">'optimizer'</span><span class="p">]</span> <span class="o">==</span> <span class="s">'SGD'</span><span class="p">:</span>
+    <span class="n">optimizer</span> <span class="o">=</span> <span class="n">optimizers</span><span class="p">.</span><span class="n">SGD</span><span class="p">(</span>
+        <span class="n">learning_rate</span><span class="o">=</span><span class="n">PARAMS</span><span class="p">[</span><span class="s">'learning_rate'</span><span class="p">],</span>
+    <span class="p">)</span>
+
+<span class="n">model</span><span class="p">.</span><span class="nb">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="n">optimizer</span><span class="p">,</span>
+              <span class="n">loss</span><span class="o">=</span><span class="s">'sparse_categorical_crossentropy'</span><span class="p">,</span>
+              <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s">'accuracy'</span><span class="p">])</span>
+
+<span class="c1"># Log model summary
+</span><span class="n">model</span><span class="p">.</span><span class="n">summary</span><span class="p">(</span><span class="n">print_fn</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">neptune</span><span class="p">.</span><span class="n">log_text</span><span class="p">(</span><span class="s">'model_summary'</span><span class="p">,</span> <span class="n">x</span><span class="p">))</span>
+
+<span class="k">def</span> <span class="nf">log_train_data</span><span class="p">(</span><span class="n">logs</span><span class="p">):</span>
+    <span class="n">neptune</span><span class="p">.</span><span class="n">log_metric</span><span class="p">(</span><span class="s">'epoch_acc'</span><span class="p">,</span> <span class="n">logs</span><span class="p">[</span><span class="s">'accuracy'</span><span class="p">])</span>
+    <span class="n">neptune</span><span class="p">.</span><span class="n">log_metric</span><span class="p">(</span><span class="s">'epoch_loss'</span><span class="p">,</span> <span class="n">logs</span><span class="p">[</span><span class="s">'loss'</span><span class="p">])</span>
+
+<span class="k">def</span> <span class="nf">log_val_data</span><span class="p">(</span><span class="n">logs</span><span class="p">):</span>
+    <span class="c1"># Evaluate model
+</span>    <span class="n">eval_metrics</span> <span class="o">=</span> <span class="n">model</span><span class="p">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">test_images</span><span class="p">,</span> <span class="n">test_labels</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">j</span><span class="p">,</span> <span class="n">metric</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">eval_metrics</span><span class="p">):</span>
+        <span class="n">neptune</span><span class="p">.</span><span class="n">log_metric</span><span class="p">(</span><span class="s">'eval_'</span> <span class="o">+</span> <span class="n">model</span><span class="p">.</span><span class="n">metrics_names</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="n">metric</span><span class="p">)</span>
+        
+<span class="c1"># Training Network
+</span><span class="n">model</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">train_images</span><span class="p">,</span> <span class="n">train_labels</span><span class="p">,</span>
+          <span class="n">batch_size</span><span class="o">=</span><span class="n">PARAMS</span><span class="p">[</span><span class="s">'batch_size'</span><span class="p">],</span>
+          <span class="n">epochs</span><span class="o">=</span><span class="n">PARAMS</span><span class="p">[</span><span class="s">'n_epochs'</span><span class="p">],</span>
+          <span class="n">shuffle</span><span class="o">=</span><span class="n">PARAMS</span><span class="p">[</span><span class="s">'shuffle'</span><span class="p">],</span>
+          <span class="n">validation_data</span><span class="o">=</span><span class="p">[</span><span class="n">test_images</span><span class="p">,</span> <span class="n">test_labels</span><span class="p">]</span>
+          <span class="n">callbacks</span><span class="o">=</span><span class="p">[</span><span class="n">callbacks</span><span class="p">.</span><span class="n">LambdaCallback</span><span class="p">(</span><span class="n">on_epoch_end</span><span class="o">=</span><span class="k">lambda</span> <span class="n">epoch</span><span class="p">,</span> <span class="n">logs</span><span class="p">:</span> <span class="n">log_train_data</span><span class="p">(</span><span class="n">logs</span><span class="p">)),</span>
+                     <span class="n">callbacks</span><span class="p">.</span><span class="n">LambdaCallback</span><span class="p">(</span><span class="n">on_epoch_end</span><span class="o">=</span><span class="k">lambda</span> <span class="n">epoch</span><span class="p">,</span> <span class="n">logs</span><span class="p">:</span> <span class="n">log_valdata</span><span class="p">(</span><span class="n">logs</span><span class="p">)),</span>
+                     <span class="n">callbacks</span><span class="p">.</span><span class="n">EarlyStopping</span><span class="p">(</span><span class="n">patience</span><span class="o">=</span><span class="n">PARAMS</span><span class="p">[</span><span class="s">'early_stopping'</span><span class="p">],</span>
+                                                   <span class="n">monitor</span><span class="o">=</span><span class="s">'accuracy'</span><span class="p">,</span>
+                                                   <span class="n">restore_best_weights</span><span class="o">=</span><span class="bp">True</span><span class="p">),</span>
+                     <span class="n">callbacks</span><span class="p">.</span><span class="n">LearningRateScheduler</span><span class="p">(</span><span class="n">lr_scheduler</span><span class="p">)]</span>
+          <span class="p">)</span>
+
+<span class="c1"># Log model weights
+</span><span class="k">with</span> <span class="n">tempfile</span><span class="p">.</span><span class="n">TemporaryDirectory</span><span class="p">(</span><span class="nb">dir</span><span class="o">=</span><span class="s">'.'</span><span class="p">)</span> <span class="k">as</span> <span class="n">d</span><span class="p">:</span>
+    <span class="n">prefix</span> <span class="o">=</span> <span class="n">os</span><span class="p">.</span><span class="n">path</span><span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="s">'model_weights'</span><span class="p">)</span>
+    <span class="n">model</span><span class="p">.</span><span class="n">save_weights</span><span class="p">(</span><span class="n">os</span><span class="p">.</span><span class="n">path</span><span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="n">prefix</span><span class="p">,</span> <span class="s">'model'</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">os</span><span class="p">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">prefix</span><span class="p">):</span>
+        <span class="n">neptune</span><span class="p">.</span><span class="n">log_artifact</span><span class="p">(</span><span class="n">os</span><span class="p">.</span><span class="n">path</span><span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="n">prefix</span><span class="p">,</span> <span class="n">item</span><span class="p">),</span>
+                             <span class="n">os</span><span class="p">.</span><span class="n">path</span><span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="s">'model_weights'</span><span class="p">,</span> <span class="n">item</span><span class="p">))</span>
+</code></pre></div></div>
+
+<h2 id="4-결과-확인">4. 결과 확인</h2>
+
+<p>neptune에는 총 7개의 탭이 있습니다.</p>
+
+<p>각각 예시를 보시면 역할을 이해하실 수 있습니다.</p>
+
+<h3 id="charts">Charts</h3>
+
+<p>여기에는 <code class="language-plaintext highlighter-rouge">neptune.log_metric()</code>을 사용한 변수들이 <strong>그래프</strong>로 기록됩니다.</p>
+
+<p><img src="https://github.com/jjerry-k/jjerry-k.github.io/blob/master/public/img/neptune/Untitled_2.png?raw=true" alt="https://github.com/jjerry-k/jjerry-k.github.io/blob/master/public/img/neptune/Untitled_2.png" /></p>
+
+<h3 id="log">Log</h3>
+
+<p>Charts에 기록된 변수의 값이 기록되고 추가적으로 <code class="language-plaintext highlighter-rouge">neptune.log_image()</code>, <code class="language-plaintext highlighter-rouge">neptune.log_text()</code> 를 사용한 변수 또한 기록됩니다.</p>
+
+<p><img src="https://github.com/jjerry-k/jjerry-k.github.io/blob/master/public/img/neptune/Untitled_3.png?raw=true" alt="https://github.com/jjerry-k/jjerry-k.github.io/blob/master/public/img/neptune/Untitled_3.png" /></p>
+
+<h3 id="monitoring">Monitoring</h3>
+
+<p>리소스 모니터링과 standard error, standard output을 볼 수 있어요.</p>
+
+<p><img src="https://github.com/jjerry-k/jjerry-k.github.io/blob/master/public/img/neptune/Untitled_4.png?raw=true" alt="https://github.com/jjerry-k/jjerry-k.github.io/blob/master/public/img/neptune/Untitled_4.png" /></p>
+
+<h3 id="artifacts">Artifacts</h3>
+
+<p>neptune에 원하는 파일을 전송하여 저장할 수 있습니다.</p>
+
+<p><img src="https://github.com/jjerry-k/jjerry-k.github.io/blob/master/public/img/neptune/Untitled_5.png?raw=true" alt="https://github.com/jjerry-k/jjerry-k.github.io/blob/master/public/img/neptune/Untitled_5.png" /></p>
+
+<h3 id="source-code">Source code</h3>
+
+<p>생략</p>
+
+<p><img src="https://github.com/jjerry-k/jjerry-k.github.io/blob/master/public/img/neptune/Untitled_6.png?raw=true" alt="https://github.com/jjerry-k/jjerry-k.github.io/blob/master/public/img/neptune/Untitled_6.png" /></p>
+
+<h3 id="parameters">Parameters</h3>
+
+<p>코드 상단에 적은 PARAMS 가 기록이 됩니다.</p>
+
+<p><img src="https://github.com/jjerry-k/jjerry-k.github.io/blob/master/public/img/neptune/Untitled_7.png?raw=true" alt="https://github.com/jjerry-k/jjerry-k.github.io/blob/master/public/img/neptune/Untitled_7.png" /></p>
+
+<h3 id="detail">Detail</h3>
+
+<p>뭐…실험의 정보, 시간 등 기록이 되고 추가적으로 <code class="language-plaintext highlighter-rouge">neptune.set_property</code>를 이용하여 Properties 에 변수를 추가할 수 있어요!</p>
+
+<p><img src="https://github.com/jjerry-k/jjerry-k.github.io/blob/master/public/img/neptune/Untitled_8.png?raw=true" alt="https://github.com/jjerry-k/jjerry-k.github.io/blob/master/public/img/neptune/Untitled_8.png" /></p>
+
+<p>wandb와 비슷한 역할을 하는 neptune.ai라는 tool에 대해 다루었습니다.</p>
+
+<p>음….솔직히 wandb가 더 편한 듯 하네요. (코드가 짧아서)</p>
+
+<p>뭐 좀 더 다양하게 사용하면 이게 더 나을…수도?</p>
+
+<p>선택은 개인의 몫입니다.</p>
+
+<h2 id="ps">P.S.</h2>
+
+<ul>
+  <li>점점…포스팅 주제 고갈…</li>
+</ul>
+
+    <article></h4>
+    <div class="post-more">
+      
+      <a href="/deeplearning/2020/07/23/neptune/#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
+      
+      <a href="/deeplearning/2020/07/23/neptune/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
+    </div>
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
       <a href="/deeplearning/2020/07/20/netron/">
         Netron! Network 구조를 보여주세요!
       </a>
@@ -767,267 +1241,6 @@ docker port <span class="o">{</span>컨테이너 이름<span class="o">}</span> 
       <a href="/deeplearning/2020/07/13/colab_vscode/#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
       
       <a href="/deeplearning/2020/07/13/colab_vscode/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
-    </div>
-  </div>
-  
-  <div class="post">
-    <h1 class="post-title">
-      <a href="/deeplearning/2020/06/28/nipa_docker/">
-        NIPA x Docker !
-      </a>
-    </h1>
-
-    <span class="post-date">28 Jun 2020</span>
-     | 
-    
-    <a href="/blog/tags/#tools" class="post-tag">Tools</a>
-    
-    
-
-    <h4 style="font-weight: 400; line-height: 1.8;"><article>
-      <blockquote>
-  <p>원래 NIPA GPU 서버를 대여받은 후에 포트 포워딩을 먼저 해줘야 합니다.
-하지만 그 부분에 대해선 보안적인 부분이 있기 때문에 생략하겠습니다.</p>
-</blockquote>
-
-<p>이번엔 NIPA 내 개인 환경 세팅에 대해 포스팅을 해보려 합니다.</p>
-
-<p>개인마다 원하는 환경이 다르기 때문에 정말 필요하죠.</p>
-
-<p>물론 기본적으로 설치된 Anaconda  환경으로도 충분할 수 있지만 살짝쿵 문제가 있습니다.</p>
-
-<p>문제에 대해 살펴보겠습니다.</p>
-
-<p>NIPA GPU 서버에 접속을 하면 다음과 같은 화면이 출력됩니다.</p>
-
-<p><img src="https://jjerry-k.github.io/public/img/nipa_docker/Untitled.png" alt="Untitled.png" /></p>
-
-<p>먼저 말씀드렸던 conda 환경으로 기본적으로 다양한 환경이 제공되네요.</p>
-
-<p>저의 경우 이번에 tf-nightly가 필요했습니다.</p>
-
-<p>그래서 TensorFlow2, python3.6 환경을 activate  한 후 설치를 시도했죠.</p>
-
-<p><img src="https://jjerry-k.github.io/public/img/nipa_docker/Untitled_1.png" alt="NIPA%20x%20Docker%20ef94d24dfbc64a6cae24a83a59bd352f/Untitled%201.png" /></p>
-
-<table>
-  <thead>
-    <tr>
-      <th style="text-align: center">what…?</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align: center"><img src="https://jjerry-k.github.io/public/img/nipa_docker/Untitled_2.png" alt="NIPA%20x%20Docker%20ef94d24dfbc64a6cae24a83a59bd352f/Untitled%202.png" /></td>
-    </tr>
-  </tbody>
-</table>
-
-<p>음….conda 버전의 문제인가 싶어서 base conda를 update  하려 했습니다.</p>
-
-<p><img src="https://jjerry-k.github.io/public/img/nipa_docker/Untitled_3.png" alt="NIPA%20x%20Docker%20ef94d24dfbc64a6cae24a83a59bd352f/Untitled%203.png" /></p>
-
-<table>
-  <thead>
-    <tr>
-      <th style="text-align: center">what…?</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align: center"><img src="https://jjerry-k.github.io/public/img/nipa_docker/Untitled_2.png" alt="NIPA%20x%20Docker%20ef94d24dfbc64a6cae24a83a59bd352f/Untitled%202.png" /></td>
-    </tr>
-  </tbody>
-</table>
-
-<p>뭐야..이건 또 왜 안되는거야… 짜증이 났습니다.</p>
-
-<p>대충 <code class="language-plaintext highlighter-rouge">너무 옛날 버전의 conda니까 최소 4.8로 재설치 해주세요.</code> 라는 내용입니다.</p>
-
-<p><code class="language-plaintext highlighter-rouge">하....이건 좀 너무한데...그냥 Docker나 설치하자..</code> 라는 생각을 하게 되었습니다.</p>
-
-<p>그럼 Docker 설치에 대해 포스팅 해보겠습니다.</p>
-
-<p>Docker 에 대한 자세한 설명은 하지 않을 겁니다.</p>
-
-<p>홈페이지 혹은 Docker 에 대한 포스팅을 참고하시기 바랍니다.</p>
-
-<p>간단히 말씀드리면 OS 단계까지 가상환경을 만드는 겁니다.</p>
-
-<p>그럼 설치 방법에 대해 적겠습니다.</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># SET UP THE REPOSITORY</span>
-<span class="nb">sudo </span>apt-get update
-
-<span class="nb">sudo </span>apt-get <span class="nb">install</span> <span class="se">\</span>
-    apt-transport-https <span class="se">\</span>
-    ca-certificates <span class="se">\</span>
-    curl <span class="se">\</span>
-    gnupg-agent <span class="se">\</span>
-    software-properties-common
-
-curl <span class="nt">-fsSL</span> https://download.docker.com/linux/ubuntu/gpg | <span class="nb">sudo </span>apt-key add -
-
-<span class="nb">sudo </span>apt-key fingerprint 0EBFCD88
-
-<span class="nb">sudo </span>add-apt-repository <span class="se">\</span>
-   <span class="s2">"deb [arch=amd64] https://download.docker.com/linux/ubuntu </span><span class="se">\</span><span class="s2">
-   </span><span class="si">$(</span>lsb_release <span class="nt">-cs</span><span class="si">)</span><span class="s2"> </span><span class="se">\</span><span class="s2">
-   stable"</span>
-
-<span class="c"># INSTALL DOCKER ENGINE</span>
-<span class="nb">sudo </span>apt-get update
-<span class="nb">sudo </span>apt-get <span class="nb">install </span>docker-ce docker-ce-cli containerd.io
-
-<span class="c"># VERIFY THAT DOCKER ENGINE IS INSTALLED CORRECTLY</span>
-<span class="nb">sudo </span>docker run hello-world
-</code></pre></div></div>
-
-<p>만약에 제대로 설치 되었다면 마지막에 다음과 같은 출력이 남습니다</p>
-
-<p><img src="https://jjerry-k.github.io/public/img/nipa_docker/Untitled_4.png" alt="NIPA%20x%20Docker%20ef94d24dfbc64a6cae24a83a59bd352f/Untitled%204.png" /></p>
-
-<p>여기까지 하시면 기본 Docker 설치는 끝났습니다.</p>
-
-<p>하지만 이것만 설치하면 GPU 는 사용하지 못합니다.</p>
-
-<p>GPU를 쓰기 위해선 <a href="https://github.com/NVIDIA/nvidia-docker">nvidia-docker</a>를 설치를 해야 합니다.</p>
-
-<p>nvidia-docker는 간단히 말하면 docker 에서 데스크탑의 GPU를 사용할 수 있도록 nvidia에서 만든(?)것입니다.</p>
-
-<p>설치법은 다음과 같습니다.</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Ubuntu 16.04/18.04/20.04, Debian Jessie/Stretch/Buster</span>
-<span class="c"># Add the package repositories</span>
-<span class="nv">distribution</span><span class="o">=</span><span class="si">$(</span><span class="nb">.</span> /etc/os-release<span class="p">;</span><span class="nb">echo</span> <span class="nv">$ID$VERSION_ID</span><span class="si">)</span>
-curl <span class="nt">-s</span> <span class="nt">-L</span> https://nvidia.github.io/nvidia-docker/gpgkey | <span class="nb">sudo </span>apt-key add -
-curl <span class="nt">-s</span> <span class="nt">-L</span> https://nvidia.github.io/nvidia-docker/<span class="nv">$distribution</span>/nvidia-docker.list | <span class="nb">sudo tee</span> /etc/apt/sources.list.d/nvidia-docker.list
-
-<span class="nb">sudo </span>apt-get update <span class="o">&amp;&amp;</span> <span class="nb">sudo </span>apt-get <span class="nb">install</span> <span class="nt">-y</span> nvidia-container-toolkit
-<span class="nb">sudo </span>systemctl restart docker
-
-<span class="c"># Test nvidia-docker</span>
-docker run <span class="nt">--gpus</span> all nvidia/cuda:10.0-base nvidia-smi
-</code></pre></div></div>
-
-<p>이 또한 설치가 제대로 되었다면 마지막에 다음과 같이 <code class="language-plaintext highlighter-rouge">nvidia-smi</code> 출력이 나올 겁니다.</p>
-
-<p><img src="https://jjerry-k.github.io/public/img/nipa_docker/Untitled_5.png" alt="NIPA%20x%20Docker%20ef94d24dfbc64a6cae24a83a59bd352f/Untitled%205.png" /></p>
-
-<table>
-  <thead>
-    <tr>
-      <th style="text-align: center">하….편안….</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align: center"><img src="https://jjerry-k.github.io/public/img/nipa_docker/Untitled_6.png" alt="NIPA%20x%20Docker%20ef94d24dfbc64a6cae24a83a59bd352f/Untitled%206.png" /></td>
-    </tr>
-  </tbody>
-</table>
-
-<p>이번엔 NIPA에 Docker 설치하는 과정을 포스팅 해봤습니다.</p>
-
-<p>공짜로 빌려주는 건 좋으나 환경 구축은 역시나….해야 하네요.</p>
-
-<p>제가 쓰는 Docker image는 <a href="https://jjerry-k.github.io/living/2020/05/05/dockerfile/">개인적인 도커 파일</a> 에 있으니 참고하세요!</p>
-
-    <article></h4>
-    <div class="post-more">
-      
-      <a href="/deeplearning/2020/06/28/nipa_docker/#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
-      
-      <a href="/deeplearning/2020/06/28/nipa_docker/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
-    </div>
-  </div>
-  
-  <div class="post">
-    <h1 class="post-title">
-      <a href="/deeplearning/2020/06/27/nipa_apply/">
-        NIPA 컴퓨팅 자원 신청 방법 !
-      </a>
-    </h1>
-
-    <span class="post-date">27 Jun 2020</span>
-     | 
-    
-    <a href="/blog/tags/#tools" class="post-tag">Tools</a>
-    
-    
-
-    <h4 style="font-weight: 400; line-height: 1.8;"><article>
-      <p><a href="https://jjerry-k.github.io/deeplearning/2020/06/26/nipa_intro/">저번 포스팅</a>에 이어 이번엔 NIPA 컴퓨팅 자원 이용 신청에 관한 포스팅을 해보려 합니다!</p>
-
-<p>내용 출처: <a href="http://www.aihub.or.kr/node/254">http://www.aihub.or.kr/node/254</a></p>
-
-<h3 id="이용-절차">이용 절차</h3>
-
-<ul>
-  <li>일반 사용자
-    <ul>
-      <li>신청 대상: AI 제품·서비스를 연구·개발하고자 하는 국내 중소·벤처 기업, 스타트업, 공공기관, 대학교(원), 일반 협·단체</li>
-      <li>신청 기간: 2020. 1. 6.(월) ∼ 2. 7.(금)※ 추가 모집 : 2020.5.25.(월) ~ 11.30.(월)</li>
-      <li>신청 절차: 이용 신청서 작성 → 온라인 신청 사이트에 제출 → 서면 심사 → 선정결과 발표<br />
-  ※ 선정기준 : 지원 자격요건, AI 연구‧개발대상 여부, 사용계획서(목적, 연구‧개발분야, 사용내용, 필요성 등)를 중심으로 심사‧평가<br />
-  ※ 모집 규모 대비 초과 신청 시 중소·벤처기업, 공공기관, 대학교(원)에 자원이 우선 할당될 수 있음</li>
-    </ul>
-  </li>
-  <li>수시 사용자
-    <ul>
-      <li>신청 대상: 일반 사용자와 개발자, 학생 등 개인</li>
-      <li>신청 기간: 2020.4.10.(금) ~ 2020.12.21.(월)</li>
-      <li>신청 절차: 이용신청 작성‧제출 → AI 연구‧개발대상 여부 확인 → 여유 자원 확인 → 서비스 이용</li>
-    </ul>
-  </li>
-</ul>
-
-<p>각각의 신청서 양식은 다음과 같습니다.</p>
-
-<h3 id="일반-사용자용-신청서">일반 사용자용 신청서</h3>
-
-<ul>
-  <li><a href="http://www.aihub.or.kr/sites/default/files/2020-05/[일반">다운로드 링크</a></li>
-</ul>
-
-<p><img src="https://jjerry-k.github.io/public/img/nipa_apply/Untitled.png" alt="Untitled.png" /></p>
-
-<h3 id="수시-사용자용-신청서">수시 사용자용 신청서</h3>
-
-<ul>
-  <li><a href="http://www.aihub.or.kr/sites/default/files/2020-05/[%EC%88%98%EC%8B%9C%20%EC%82%AC%EC%9A%A9%EC%9E%90%EC%9A%A9]%20%EA%B3%A0%EC%84%B1%EB%8A%A5%20%EC%BB%B4%ED%93%A8%ED%8C%85%20%EC%9E%90%EC%9B%90%20%EC%9D%B4%EC%9A%A9%20%EC%8B%A0%EC%B2%AD%EC%84%9C.hwp">다운로드 링크</a></li>
-</ul>
-
-<p><img src="https://jjerry-k.github.io/public/img/nipa_apply/Untitled_1.png" alt="Untitled_1.png" /></p>
-
-<p>당연한거지만 일반 사용자가 수시 사용자에 비해 작성해야할 것이 많습니다.</p>
-
-<p>신청서 작성 방법은 예시가 너무 잘 적혀있기 때문에 따로 설명을 드리지 않겠습니다. (궁금하신게 있다면 따로 댓글 남겨주세요!)</p>
-
-<p>신청서를 작성하신 후엔 AIHub 사이트 로그인을 하신 후 <code class="language-plaintext highlighter-rouge">이용신청</code> 으로 넘어갑니다.<br />
-그럼 다음과 같은 화면이 나오는데 (수시 사용자 기준) <strong>1~8번 중 해당하는 부분 선택하</strong>고 <strong>개인 정보</strong> 채워주시면 됩니다!</p>
-
-<p><img src="https://jjerry-k.github.io/public/img/nipa_apply/Untitled_2.png" alt="Untitled_2.png" /></p>
-
-<p>다 채운 후 이용신청을 누르시면 한…. 하루, 이틀? 정도 후에 메일과 핸드폰으로 문자 안내가 옵니다!<br />
-메일에는 NIPA 서버 사용방법, 문자에는 관리 페이지 이용 안내가 옵니다. <br />
-신청이 어렵지 않으니 많이 많이 신청하시고 즐거운 딥러닝 공부, 연구하세요! (홍보 아님)</p>
-
-<p><img src="https://jjerry-k.github.io/public/img/nipa_apply/go.png" alt="go.png" /></p>
-
-<h2 id="ps">P.S.</h2>
-<ul>
-  <li>중요! ! ! <strong>수시 사용자는 계속 사용하려면 10일마다 연장 신청 해야함. 꼭! 반드시!</strong></li>
-  <li><strong>위 내용을 지키지 않으면 서버 초기화되서 내용들 다 사라짐!!!</strong></li>
-  <li>너무 대충 포스팅을…하는걸까…</li>
-</ul>
-
-    <article></h4>
-    <div class="post-more">
-      
-      <a href="/deeplearning/2020/06/27/nipa_apply/#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
-      
-      <a href="/deeplearning/2020/06/27/nipa_apply/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
     </div>
   </div>
   
