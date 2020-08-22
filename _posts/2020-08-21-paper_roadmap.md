@@ -12,6 +12,7 @@ changefreq : daily
 ---
 
 # Contents of Posting
+- [Contents of Posting](#contents-of-posting)
 - [Paper Reading Roadmap](#paper-reading-roadmap)
   - [ML Basics](#ml-basics)
   - [Data Mining](#data-mining)
@@ -100,107 +101,109 @@ changefreq : daily
 ## Supervised Learning
 
 ### Kernel Machines
-- An Introduction to Kernel-based Learning Algorithms 
-- A Tutorial on Support Vector Machine for Pattern Recognition 
-- A Tutorial on Support Vector Regression 
-- A Tutorial on nu-Support Vector Machines
+- [An Introduction to Kernel-based Learning Algorithms](https://pdfs.semanticscholar.org/2eb2/ca05a79d1d81033237aad416ad4a1ce90a70.pdf)
+- [A Tutorial on Support Vector Machine for Pattern Recognition](https://www.di.ens.fr/~mallat/papiers/svmtutorial.pdf)
+- [A Tutorial on Support Vector Regression](https://alex.smola.org/papers/2003/SmoSch03b.pdf)
+- [A Tutorial on nu-Support Vector Machines](http://is.tuebingen.mpg.de/fileadmin/user_upload/files/publications/pdf3353.pdf)
 
 ### Ensemble
-- Bagging Predictors 
-- Random Forests 
-- A short introduction to boosting 
-- Greedy Function Approximation: A Gradient Boosting Machine 
-- Gradient Boosting Machine, A Tutorial 
-- XGBoost: A Scalable Tree Boosting System 
-- LightGBM: A Highly Efficient Gradient Boosting Decision Tree 
-- CatBoost : unbiased boosting with categorical features
+- [Bagging Predictors](https://www.stat.berkeley.edu/~breiman/bagging.pdf)
+- [Random Forests](https://www.stat.berkeley.edu/~breiman/randomforest2001.pdf)
+- [A short introduction to boosting](https://cseweb.ucsd.edu/~yfreund/papers/IntroToBoosting.pdf)
+- [Greedy Function Approximation: A Gradient Boosting Machine](https://statweb.stanford.edu/~jhf/ftp/trebst.pdf)
+- [Gradient Boosting Machine, A Tutorial](https://www.frontiersin.org/articles/10.3389/fnbot.2013.00021/full)
+- [XGBoost: A Scalable Tree Boosting System](https://arxiv.org/pdf/1603.02754.pdf)
+- [LightGBM: A Highly Efficient Gradient Boosting Decision Tree](https://papers.nips.cc/paper/6907-lightgbm-a-highly-efficient-gradient-boosting-decision-tree.pdf) 
+- [CatBoost : unbiased boosting with categorical features](https://papers.nips.cc/paper/7898-catboost-unbiased-boosting-with-categorical-features.pdf)
 
 ## Semi-supervvised Learning
-- Combining Labeled and Unlabeled Data with Co-Training 
-- Semi-supervised Learning with Deep Generative Models 
-- Semi-Supervised Classification with Graph Convolutional Networks 
-- MixMatch: A Holistic Approach to Semi-Supervised Learning 
-- ReMixMatch: Semi-Supervised Learning with Distribution Alignment and Augmentation Anchoring 
-- FixMatch: Simplifying Semi-Supervised Learning with Consistency and Confidence
+- [Combining Labeled and Unlabeled Data with Co-Training](https://www.cs.cmu.edu/~avrim/Papers/cotrain.pdf)
+- [Semi-supervised Learning with Deep Generative Models](https://papers.nips.cc/paper/5352-semi-supervised-learning-with-deep-generative-models.pdf) 
+- [Semi-Supervised Classification with Graph Convolutional Networks](https://arxiv.org/pdf/1609.02907.pdf)
+- [MixMatch: A Holistic Approach to Semi-Supervised Learning](https://papers.nips.cc/paper/8749-mixmatch-a-holistic-approach-to-semi-supervised-learning.pdf)
+- [ReMixMatch: Semi-Supervised Learning with Distribution Alignment and Augmentation Anchoring](https://arxiv.org/pdf/1911.09785.pdf)
+- [FixMatch: Simplifying Semi-Supervised Learning with Consistency and Confidence](https://arxiv.org/pdf/2001.07685.pdf)
 
 ## Unsupervised Learning
-- Anomaly Detection: A Survey 
-- Deep Learning for Anomaly Detection: A Survey 
-- A Review of Novelty Detection 
-- LOF: Identifying Density-Based Local Outliers 
-- Support Vector Data Description 
-- Isolation Forest 
-- Isolation-based Anomaly Detection 
-- DeepLog: Anomaly Detection and Diagnosis from System Logs through Deep Learning
-  
+- [Anomaly Detection: A Survey](http://cucis.ece.northwestern.edu/projects/DMS/publications/AnomalyDetection.pdf)
+- [Deep Learning for Anomaly Detection: A Survey](https://arxiv.org/pdf/1901.03407.pdf)
+- [A Review of Novelty Detection](https://www.sciencedirect.com/science/article/abs/pii/S016516841300515X)
+- [LOF: Identifying Density-Based Local Outliers](https://www.dbs.ifi.lmu.de/Publikationen/Papers/LOF.pdf)
+- [Support Vector Data Description](http://homepage.tudelft.nl/a9p19/papers/ML_SVDD_04.pdf)
+- [Isolation Forest](https://cs.nju.edu.cn/zhouzh/zhouzh.files/publication/icdm08b.pdf?q=isolation-forest)
+- [Isolation-based Anomaly Detection](https://cs.nju.edu.cn/zhouzh/zhouzh.files/publication/tkdd11.pdf)
+- [DeepLog: Anomaly Detection and Diagnosis from System Logs through Deep Learning](https://www.cs.utah.edu/~lifeifei/papers/deeplog.pdf)
+
 ## Neural Network
 
 ### General
-- Deep learning
+- [Deep learning](https://www.cs.toronto.edu/~hinton/absps/NatureDeepReview.pdf)
 
 ### Structure
-- Long Short-Term Memory
-- LSTM: A Search Space Odyssey
-- Empirical Evaluation of Gated Recurrent Neural Networks on Sequence Modeling Sequence to sequence learning with neural networks
-- Memory Networks
-- End-To-End Memory Networks
-- WaveNet: A Generative Model for Raw Audio
-- An Introduction to Variational Autoencoders
-- A Comprehensive Survey on Graph Neural Networks
+- [Long Short-Term Memory](https://www.bioinf.jku.at/publications/older/2604.pdf)
+- [LSTM: A Search Space Odyssey](https://arxiv.org/pdf/1503.04069.pdf)
+- [Empirical Evaluation of Gated Recurrent Neural Networks on Sequence Modeling Sequence to sequence learning with neural networks](https://arxiv.org/pdf/1412.3555.pdf)
+- [Memory Networks](https://arxiv.org/pdf/1410.3916.pdf)
+- [End-To-End Memory Networks](https://papers.nips.cc/paper/5846-end-to-end-memory-networks.pdf)
+- [WaveNet: A Generative Model for Raw Audio](https://deepmind.com/blog/article/wavenet-generative-model-raw-audio)
+- [An Introduction to Variational Autoencoders](https://arxiv.org/pdf/1906.02691.pdf)
+- [A Comprehensive Survey on Graph Neural Networks](https://arxiv.org/pdf/1901.00596.pdf)
 
 ### Learning Strategies
-- Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift 
-- Dropout: A Simple Way to Prevent Neural Networks from Overtting
-- ADAM: A Method for Stochastic Optimization
-- An overview of gradient descent optimization algorithms
-- Layer normalization Group normalization
+- [Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift](https://arxiv.org/pdf/1502.03167.pdf)
+- [Dropout: A Simple Way to Prevent Neural Networks from Overtting](https://jmlr.org/papers/volume15/srivastava14a.old/srivastava14a.pdf)
+- [ADAM: A Method for Stochastic Optimization](https://arxiv.org/pdf/1412.6980.pdf)
+- [An overview of gradient descent optimization algorithms](https://arxiv.org/pdf/1609.04747.pdf)
+- [Layer normalization](https://arxiv.org/pdf/1607.06450.pdf)
+- [Group normalization](https://openaccess.thecvf.com/content_ECCV_2018/papers/Yuxin_Wu_Group_Normalization_ECCV_2018_paper.pdf)
 
 ## NLP
 
 ### General
-- Natural Language Processing (Almost) from Scratch
-- Advances in natural language processing
-- Recent trends in deep learning based natural language processing
+- [Natural Language Processing (Almost) from Scratch](https://www.jmlr.org/papers/volume12/collobert11a/collobert11a.pdf)
+- [Advances in natural language processing](https://science.sciencemag.org/content/349/6245/261)
+- [Recent trends in deep learning based natural language processing](https://arxiv.org/pdf/1708.02709.pdf)
 
 ### Topic Modeling
 - An introduction to latent semantic analysis 
 - Probabilistic latent semantic analysis 
 - Probabilistic topic models
-- Latent Dirichlet Allocation
+- [Latent Dirichlet Allocation](https://www.jmlr.org/papers/volume3/blei03a/blei03a.pdf)
 
 ### Repersentation Learning
-- A Neural Probabilistic Language Model
-- Distributed representations of words and phrases and their compositionality
-- Efficient Estimation of Word Representations in Vector Space
-- Glove: Global vectors for word representation
-- Learning Phrase Representations using RNN Encoder–Decoder for Statistical Machine Translation Enriching word vectors with subword information
-- Bert: Pre-training of deep bidirectional transformers for language understanding
-- Deep contextualized word representations
-- Improving language understanding by generative pre-training
-- Language models are unsupervised multitask learners
-- Language Models are Few-Shot LearnersA Neural Probabilistic Language Model
+- [A Neural Probabilistic Language Model](https://www.jmlr.org/papers/volume3/bengio03a/bengio03a.pdf)
+- [Distributed representations of words and phrases and their compositionality](https://papers.nips.cc/paper/5021-distributed-representations-of-words-and-phrases-and-their-compositionality.pdf)
+- [Efficient Estimation of Word Representations in Vector Space](https://arxiv.org/pdf/1301.3781.pdf)
+- [Glove: Global vectors for word representation](https://nlp.stanford.edu/pubs/glove.pdf)
+- [Learning Phrase Representations using RNN Encoder–Decoder for Statistical Machine Translation](https://arxiv.org/pdf/1406.1078.pdf)
+- [Enriching word vectors with subword information](https://arxiv.org/pdf/1607.04606.pdf)
+- [Bert: Pre-training of deep bidirectional transformers for language understanding](https://arxiv.org/pdf/1810.04805.pdf)
+- [Deep contextualized word representations](https://arxiv.org/pdf/1802.05365.pdf)
+- [Improving language understanding by generative pre-training](https://cdn.openai.com/research-covers/language-unsupervised/language_understanding_paper.pdf)
+- [Language models are unsupervised multitask learners](https://cdn.openai.com/better-language-models/language_models_are_unsupervised_multitask_learners.pdf)
+- [Language Models are Few-Shot Learners](https://arxiv.org/pdf/2005.14165.pdf)
 
 ### Classification
-- Convolutional neural networks for sentence classification 
-- Deep learning for sentiment analysis: A survey
+- [Convolutional neural networks for sentence classification](https://arxiv.org/pdf/1408.5882.pdf)
+- [Deep learning for sentiment analysis: A survey](https://arxiv.org/pdf/1801.07883.pdf)
 
 ### Summarization
-- TextRank: Bringing Order into Texts
-- A Neural Attention Model for Abstractive Sentence Summarization
+- [TextRank: Bringing Order into Texts](https://web.eecs.umich.edu/~mihalcea/papers/mihalcea.emnlp04.pdf)
+- [A Neural Attention Model for Abstractive Sentence Summarization](https://arxiv.org/pdf/1509.00685.pdf)
 
 
 ### Machine Translation
-- On the Properties of Neural Machine Translation: Encoder-Decoder Approaches
-- Effective Approaches to Attention-based Neural Machine Translation
-- Neural Machine Translation by Jointly Learning to Aligh and Translate
-- Google's Neural Machine Translation System: Bridging the Gap between Human and Machine Translation 
-- Attention is all you need
+- [On the Properties of Neural Machine Translation: Encoder-Decoder Approaches](https://arxiv.org/pdf/1409.1259.pdf)
+- [Effective Approaches to Attention-based Neural Machine Translation](https://www-nlp.stanford.edu/pubs/emnlp15_attn.pdf)
+- [Neural Machine Translation by Jointly Learning to Aligh and Translate](https://arxiv.org/pdf/1409.0473.pdf)
+- [Google's Neural Machine Translation System: Bridging the Gap between Human and Machine Translation](https://arxiv.org/pdf/1609.08144.pdf)
+- [Attention is all you need](https://papers.nips.cc/paper/7181-attention-is-all-you-need.pdf)
 
 ### Question Answering
-- VQA: Visual Question Answering
-- Ask Me Anything: Dynamic Memory Networks for Natural Language Processing 
-- Squad: 100,000+ questions for machine comprehension of text
-- Know what you don't know: Unanswerable questions for SQuAD
+- [VQA: Visual Question Answering](https://arxiv.org/pdf/1505.00468.pdf)
+- [Ask Me Anything: Dynamic Memory Networks for Natural Language Processing](https://arxiv.org/pdf/1506.07285.pdf)
+- [Squad: 100,000+ questions for machine comprehension of text](https://arxiv.org/pdf/1606.05250.pdf)
+- [Know what you don't know: Unanswerable questions for SQuAD](https://arxiv.org/pdf/1806.03822.pdf)
 
 ## Vision
 
