@@ -5,116 +5,82 @@
     <link href="http://gmpg.org/xfn/11" rel="profile">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
-  
+
     <!-- Enable responsiveness on mobile devices-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-  
+
     <title>
-      
+        
         Blog &middot; Jerry's Blog
-      
+        
     </title>
-  
+
     <!-- CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
     <link rel="stylesheet" href="/public/css/main.css">
-  
+
     <!-- Icons -->
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144"
+        href="/public/apple-touch-icon-precomposed.png">
     <link rel="shortcut icon" href="/public/favicon.ico">
-  
+
     <!-- RSS -->
     <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
-  
+
     <!-- scroll -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script>
-      $( window ).scroll( function() {
-        if ( $( this ).scrollTop() > 500 ) {
-          $( '.top' ).fadeIn();
-        } else {
-          $( '.top' ).fadeOut();
-        }
-      } );
-      $( '.top' ).click( function() {
-        $( 'html, body' ).stop().animate( { scrollTop : 0 }, 100);
-        return false;
-      } );
+        $(window).scroll(function () {
+            if ($(this).scrollTop() > 500) {
+                $('.top').fadeIn();
+            } else {
+                $('.top').fadeOut();
+            }
+        });
+        $('.top').click(function () {
+            $('html, body').stop().animate({ scrollTop: 0 }, 100);
+            return false;
+        });
     </script>
-    
+
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     <script>
-      (absbygoogle = window.adsbygoogle || []).push({
-          google_ad_client: "ca-pub-1054696837285307",
-          enable_page_level_ads: true
-      });
+        (absbygoogle = window.adsbygoogle || []).push({
+            google_ad_client: "ca-pub-1054696837285307",
+            enable_page_level_ads: true
+        });
     </script>
+
     
-    <!-- 
     <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-        //jax: ["input/TeX", "output/HTML-CSS"],
-        TeX: {
-          equationNumbers: {
-            autoNumber: "AMS"
-          }
-        },
-        tex2jax: {
-          inlineMath: [ ['$', '$'] ],
-          displayMath: [ ['$$', '$$'] ],
-          processEscapes: true,
-          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-        }
-        //,
-        //displayAlign: "left",
-        //displayIndent: "2em"
-      });
-      MathJax.Hub.Register.MessageHook("Math Processing Error",function (message) {
-        alert("Math Processing Error: "+message[1]);
-      });
-    MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
-        alert("Math Processing Error: "+message[1]);
-      });
-    </script>
-    <script type="text/javascript" async
-      src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript">
-    </script>
-     -->
+            MathJax.Hub.Config({
+              //jax: ["input/TeX", "output/HTML-CSS"],
+              tex2jax: {
+                inlineMath: [ ['$', '$'] ],
+                displayMath: [ ['$$', '$$'] ],
+                processEscapes: true,
+                skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+              }
+              //,
+              //displayAlign: "left",
+              //displayIndent: "2em"
+            });
+          </script>
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
     
-    
-  <script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-      //jax: ["input/TeX", "output/HTML-CSS"],
-      tex2jax: {
-        inlineMath: [ ['$', '$'] ],
-        displayMath: [ ['$$', '$$'] ],
-        processEscapes: true,
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-      }
-      //,
-      //displayAlign: "left",
-      //displayIndent: "2em"
-    });
-  </script>
-  <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
-  
 
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="/dest/simple-jekyll-search.js" type="text/javascript"></script>
     <script type="text/javascript">
-    $(document).ready(function(){
-      document.search.searchinput.focus();
-    });
+        $(document).ready(function () {
+            document.search.searchinput.focus();
+        });
     </script>
-  </head>
-  
+</head>
+
   <style>blockquote {font-size: 1em; line-height: 1.4}</style>
-  
-  <!-- New line Start-->
-  <!--  -->
-  <!-- New line End -->
   </head>
   <body>
 
@@ -308,6 +274,257 @@
 
       <div class="container content">
         <div class="posts">
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/deeplearning/2020/03/04/starganv2/">
+        Review: StarGAN v2
+      </a>
+    </h1>
+
+    <span class="post-date">04 Mar 2020</span>
+     | 
+    
+    <a href="/blog/tags/#paper" class="post-tag">Paper</a>
+    
+    
+
+    <h4 style="font-weight: 400; line-height: 1.8;"><article>
+      <h1 id="stargan-v2-diverse-image-synthessis-for-multiple-domains">StarGAN v2: Diverse Image Synthessis for Multiple Domains</h1>
+
+<p>Author: Yunjey Choi, Youngjung Uh, Jaejun Yoo, Jung-Woo Ha<br />
+Date: Dec 04, 2019<br />
+URL: https://arxiv.org/abs/1912.01865</p>
+
+<h1 id="abstract">Abstract</h1>
+
+<ul>
+  <li>Image translation 을 잘 하는 Model을 학습하려면 다음 사항을 만족해야함
+    <ul>
+      <li>Diversity of generated images</li>
+      <li>Scalability over multiple domains</li>
+    </ul>
+  </li>
+  <li>기존의 방법들은 limited diversity, multiple models(networks)를 다룸.</li>
+  <li>StarGAN v2는 두 조건 모두 만족.</li>
+</ul>
+
+<h1 id="introduction">Introduction</h1>
+
+<ul>
+  <li>Domain: 시각적으로 구별되는 범주</li>
+  <li>Style: 각 영상이 가지는 독특한 외관적 특성</li>
+</ul>
+
+<p><img src="https://jjerry-k.github.io/public/img/starganv2/Untitled.png" alt="https://jjerry-k.github.io/public/img/starganv2/Untitled.png" /></p>
+
+<h1 id="stargan-v2">StarGAN v2</h1>
+
+<h2 id="proposed-framework">Proposed framework</h2>
+
+<p><img src="https://jjerry-k.github.io/public/img/starganv2/Untitled_1.png" alt="https://jjerry-k.github.io/public/img/starganv2/Untitled_1.png" /></p>
+
+<ul>
+  <li>4개의 Network 로 구성.</li>
+  <li>Generator (<code class="language-plaintext highlighter-rouge">G</code>)
+    <ul>
+      <li>Image <code class="language-plaintext highlighter-rouge">x</code>와 Style code <code class="language-plaintext highlighter-rouge">s</code>를 입력으로 받아 새로운 영상을 생성.</li>
+      <li><a href="https://arxiv.org/abs/1703.06868">adaptive instance normalization (AdaIN)</a> 사용.</li>
+    </ul>
+
+    <p><img src="https://jjerry-k.github.io/public/img/starganv2/Untitled_2.png" alt="https://jjerry-k.github.io/public/img/starganv2/Untitled_2.png" /></p>
+  </li>
+  <li>Mapping network (<code class="language-plaintext highlighter-rouge">F</code>)
+    <ul>
+      <li>Latent code <code class="language-plaintext highlighter-rouge">z</code>와 Domain code <code class="language-plaintext highlighter-rouge">y</code>를 입력으로 받아 Style code <code class="language-plaintext highlighter-rouge">s</code>생성.</li>
+      <li>Multi Layer Perceptron 구조.</li>
+    </ul>
+
+    <p><img src="https://jjerry-k.github.io/public/img/starganv2/Untitled_3.png" alt="https://jjerry-k.github.io/public/img/starganv2/Untitled_3.png" /></p>
+  </li>
+  <li>Style encoder (<code class="language-plaintext highlighter-rouge">E</code>)
+    <ul>
+      <li>Image <code class="language-plaintext highlighter-rouge">x</code>와 Domain code <code class="language-plaintext highlighter-rouge">y</code>를 입력으로 받아 <code class="language-plaintext highlighter-rouge">x</code>에서 Style code <code class="language-plaintext highlighter-rouge">s</code>를 추출.</li>
+    </ul>
+  </li>
+  <li>Discriminator (<code class="language-plaintext highlighter-rouge">D</code>)
+    <ul>
+      <li>Image <code class="language-plaintext highlighter-rouge">x</code>를 입력으로 받아 Domain code <code class="language-plaintext highlighter-rouge">y</code>와 Real/Fake 분류.</li>
+    </ul>
+
+    <p><img src="https://jjerry-k.github.io/public/img/starganv2/Untitled_4.png" alt="https://jjerry-k.github.io/public/img/starganv2/Untitled_4.png" /></p>
+  </li>
+</ul>
+
+<h2 id="training-objectives">Training objectives</h2>
+
+<ul>
+  <li>Adversarial objective
+    <ul>
+      <li>GAN 에서 기본적으로 사용되는 Loss</li>
+    </ul>
+  </li>
+</ul>
+
+<p>[\mathcal{L}<em>{adv}=\mathbb{E}</em>{\mathrm{x},y}[\log{D_y}(\mathrm{x})] + \mathbb{E}<em>{\mathrm{x}, \tilde{y}, \mathrm{z}}[\log{(1-D</em>{\tilde{y}}(G(\mathrm{x}, \tilde{\mathrm{s}})))}]</p>
+
+<ul>
+  <li>Style reconstruction
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">G(x, s)</code> 를 Style encoder <code class="language-plaintext highlighter-rouge">E</code> 에 넣어 <code class="language-plaintext highlighter-rouge">s</code> 추출 후 입력 <code class="language-plaintext highlighter-rouge">s</code>와 비교</li>
+    </ul>
+  </li>
+</ul>
+
+<p>[\mathcal{L}<em>{sty}=\mathbb{E}</em>{\mathrm{x},\tilde{y}, \mathrm{z}}[\parallel\tilde{\mathrm{s}}-E_{\tilde{y}}(G(\mathrm{x}, \tilde{\mathrm{s}}))\parallel_1]]</p>
+
+<ul>
+  <li>Style diversification
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">G</code>가 다양한 Image를 생성할 수 있도록 Regularization 하는 역할.</li>
+      <li><code class="language-plaintext highlighter-rouge">z1, z2</code> 가 <code class="language-plaintext highlighter-rouge">F</code>에 의해 생성된 <code class="language-plaintext highlighter-rouge">s1, s2</code>와 입력 <code class="language-plaintext highlighter-rouge">x</code>를 <code class="language-plaintext highlighter-rouge">G</code>의 입력으로 새로운 영상 생성.</li>
+      <li>L1 Norm 계산.</li>
+    </ul>
+  </li>
+</ul>
+
+<p>[\mathcal{L}<em>{ds}=\mathbb{E}</em>{\mathrm{x},\tilde{y}, \mathrm{z}_1, \mathrm{z}_2}[\parallel G(\mathrm{x}, \tilde{\mathrm{s}}_1) - G(\mathrm{x}, \tilde{\mathrm{s}}_2) \parallel_1]]</p>
+
+<ul>
+  <li>Preserving source characteristics
+    <ul>
+      <li>Cycle GAN 의 cycle consistency loss.</li>
+      <li>target domain의 style 을 적용한 영상을 다시 <code class="language-plaintext highlighter-rouge">E(x)</code>로 추출된 s를 이용하여 <code class="language-plaintext highlighter-rouge">x'</code>로 reconstruction 한 후 L1 Norm 계산.</li>
+    </ul>
+  </li>
+</ul>
+
+<p>[\mathcal{L}<em>{cyc}=\mathbb{E}</em>{\mathrm{x}, y, \tilde{y}, \mathrm{z}}[\parallel \mathrm{x} - G(G(\mathrm{x}, \tilde{\mathrm{s}}), \hat{\mathrm{s}})\parallel_1]]</p>
+
+<ul>
+  <li>
+    <p>Full objective</p>
+
+\[\mathcal{L}_D = -\mathcal{L}_{adv} \\ \mathcal{L}_{F, G, E}=\mathcal{L}_{adv} + \lambda_{sty} \mathcal{L}_{sty} - \lambda_{ds} \mathcal{L}_{ds} + \lambda_{cyc} \mathcal{L}_{cyc}\]
+
+    <ul>
+      <li>About $\lambda$</li>
+    </ul>
+  </li>
+</ul>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">Dataset</th>
+      <th style="text-align: center">sty</th>
+      <th style="text-align: center">ds</th>
+      <th style="text-align: center">cyc</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">CelebA-HQ</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">1</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">AFHQ</td>
+      <td style="text-align: center">0.3</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">0.1</td>
+    </tr>
+  </tbody>
+</table>
+
+<h1 id="experiments">Experiments</h1>
+
+<ul>
+  <li>Baselines
+    <ul>
+      <li><a href="https://arxiv.org/abs/1804.04732">MUNIT</a></li>
+      <li><a href="https://arxiv.org/abs/1808.00948">DRIT</a></li>
+      <li><a href="https://arxiv.org/abs/1903.05628">MSGAN</a></li>
+      <li><a href="https://arxiv.org/abs/1711.09020">StarGAN</a></li>
+    </ul>
+  </li>
+  <li>Datasets
+    <ul>
+      <li><a href="http://mmlab.ie.cuhk.edu.hk/projects/CelebA.html">CelebA-HQ</a></li>
+      <li><a href="https://github.com/clovaai/stargan-v2/blob/master/download.sh">AFHQ</a></li>
+    </ul>
+  </li>
+  <li>Evaluation metrics
+    <ul>
+      <li><a href="https://arxiv.org/abs/1706.08500">Frechet inception distance (FID)</a></li>
+      <li><a href="https://arxiv.org/abs/1801.03924">Learned perceptual image patch similarity (LPIPS)</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="analysis-of-individual-components">Analysis of individual components</h2>
+
+<ul>
+  <li>StarGAN에서 본 연구에서 제안하는 방법들을 하나하나 넣어가면서 성능 실험.</li>
+  <li>정량적 평가를 보면 추가할 때마다 좋아지는 것을 볼 수 있음.</li>
+</ul>
+
+<p><img src="https://jjerry-k.github.io/public/img/starganv2/Untitled_5.png" alt="https://jjerry-k.github.io/public/img/starganv2/Untitled_5.png" /></p>
+
+<ul>
+  <li>각 단계별 생성한 영상의 결과</li>
+</ul>
+
+<p><img src="https://jjerry-k.github.io/public/img/starganv2/Untitled_6.png" alt="https://jjerry-k.github.io/public/img/starganv2/Untitled_6.png" /></p>
+
+<h2 id="comparison-on-diverse-image-synthesis">Comparison on diverse image synthesis</h2>
+
+<ul>
+  <li>다른 방법들과 비교</li>
+  <li>Latent-guided synthesis ( Latent code 만을 이용하여 생성 )</li>
+</ul>
+
+<p><img src="https://jjerry-k.github.io/public/img/starganv2/Untitled_7.png" alt="https://jjerry-k.github.io/public/img/starganv2/Untitled_7.png" /></p>
+
+<p><img src="https://jjerry-k.github.io/public/img/starganv2/Untitled_8.png" alt="https://jjerry-k.github.io/public/img/starganv2/Untitled_8.png" /></p>
+
+<ul>
+  <li>Referenc-guided synthesis ( Style code 를 이용한 생성 )</li>
+</ul>
+
+<p><img src="https://jjerry-k.github.io/public/img/starganv2/Untitled_9.png" alt="https://jjerry-k.github.io/public/img/starganv2/Untitled_9.png" /></p>
+
+<p><img src="https://jjerry-k.github.io/public/img/starganv2/Untitled_10.png" alt="https://jjerry-k.github.io/public/img/starganv2/Untitled_10.png" /></p>
+
+<ul>
+  <li>Human evaluation
+    <ul>
+      <li>방법 별로 100개의 sample 생성 후 사람이 판단.</li>
+    </ul>
+  </li>
+</ul>
+
+<p><img src="https://jjerry-k.github.io/public/img/starganv2/Untitled_11.png" alt="https://jjerry-k.github.io/public/img/starganv2/Untitled_11.png" /></p>
+
+<h1 id="result">Result</h1>
+
+<ul>
+  <li>겁나….잘 생성함…</li>
+</ul>
+
+<p><img src="https://jjerry-k.github.io/public/img/starganv2/Untitled_12.png" alt="https://jjerry-k.github.io/public/img/starganv2/Untitled_12.png" /></p>
+
+<p><img src="https://jjerry-k.github.io/public/img/starganv2/Untitled_13.png" alt="https://jjerry-k.github.io/public/img/starganv2/Untitled_13.png" /></p>
+
+    <article></h4>
+    <div class="post-more">
+      
+      <a href="/deeplearning/2020/03/04/starganv2/#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
+      
+      <a href="/deeplearning/2020/03/04/starganv2/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
+    </div>
+  </div>
   
   <div class="post">
     <h1 class="post-title">
@@ -1103,125 +1320,6 @@ URL: https://arxiv.org/abs/1610.02357</p>
       <a href="/deeplearning/2020/02/16/Xception/#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
       
       <a href="/deeplearning/2020/02/16/Xception/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
-    </div>
-  </div>
-  
-  <div class="post">
-    <h1 class="post-title">
-      <a href="/python/2019/09/07/Jupyter_shortcut/">
-        jupyter Lab 에서 단축키 설정하는 방법!
-      </a>
-    </h1>
-
-    <span class="post-date">07 Sep 2019</span>
-     | 
-    
-    <a href="/blog/tags/#setting" class="post-tag">Setting</a>
-    
-    
-
-    <h4 style="font-weight: 400; line-height: 1.8;"><article>
-      <p>파이썬, 딥러닝을 하시는 분들 중 Jupyter 부류를 이용하시는 분들이 꽤 많습니다. <code class="language-plaintext highlighter-rouge">Jupyter Notebook, Jupyter Lab,...</code><br />
-저는 둘 다 사용해보긴 하지만 주로 <strong>Jupyter Lab</strong> 을 사용합니다.<br />
-이유는 그냥…좀 더 보기 편해서..?<br />
-두 환경의 차이는 다음 링크에서 확인해주세요.</p>
-<ul>
-  <li><a href="https://jupyter.readthedocs.io/en/latest/running.html#running">Jupyter Notebook</a></li>
-  <li><a href="https://jupyterlab.readthedocs.io/en/stable/index.html">Jupyter Lab</a></li>
-</ul>
-
-<h4 id="참고사항">참고사항</h4>
-<p>https://github.com/jupyterlab/jupyterlab/issues/7122<br />
-며칠 전 이슈에 올라온 상황입니다.<br />
-jupyter lab 1.0.2 버전에 extension을 설치하면 sidebar 부분이 깨지는 버그가 있네요…<br />
-1.1.1 에선 고쳐졌다고 합니다.</p>
-
-<p><strong><span style="font-size:25pt;">자, 다시 본론으로 돌아가봅니다.</span></strong></p>
-
-<p>Jupyter Lab 에서 단축키로 설정할 수 있는 기능들은 다음과 같습니다.</p>
-
-<p>‘notebook:create-new’<br />
-‘notebook:interrupt-kernel’<br />
-‘notebook:restart-kernel’<br />
-‘notebook:restart-clear-output’<br />
-‘notebook:restart-run-all’<br />
-‘notebook:reconnect-to-kernel’<br />
-‘notebook:change-kernel’<br />
-… (너무 많다….)<br />
-‘notebook:hide-all-cell-outputs’<br />
-‘notebook:show-all-cell-outputs’<br />
-‘notebook:enable-output-scrolling’<br />
-‘notebook:disable-output-scrolling’<br />
-‘notebook:save-with-view’</p>
-
-<p>너무 많은 관계로 <strong><a href="https://github.com/jupyterlab/jupyterlab/blob/af548c2674427da79d54ad5c4b69bb175463e9a0/packages/notebook-extension/src/index.ts#L69-L197">링크</a></strong> 참고해주세요.</p>
-
-<p>이번 포스팅에선 예시로 
-<code class="language-plaintext highlighter-rouge">Restart and Clear</code> 에 대해서 shortcut을 설정해보겠습니다.</p>
-
-<h2 id="설정-방법">설정 방법</h2>
-
-<p>먼저 Jupyter Lab 을 실행시켜주세요.</p>
-
-<p><img src="https://jjerry-k.github.io/public/img/shortcut/fig01.png" alt="fig1" /></p>
-
-<p><strong>Advanced Setting Editor</strong> 를 클릭해주세요.</p>
-
-<p><img src="https://jjerry-k.github.io/public/img/shortcut/fig02.png" alt="fig2" /></p>
-
-<p>좌측에 <strong>Keyboard Shortuts</strong> 를 선택해주세요.</p>
-
-<p><img src="https://jjerry-k.github.io/public/img/shortcut/fig03.png" alt="fig3" /></p>
-
-<p>여기서 왼쪽의 창은 default setting에 대한 설명이고 오른쪽을 Custom 을 위해 기입하는 부분입니다.</p>
-
-<p>그럼 예시대로 <code class="language-plaintext highlighter-rouge">Restart and Clear</code> 에 대해서 shortcut을 설정해보겠습니다.</p>
-
-<p>위에 기능에 대해서 링크 올려드렸었죠? 그 깃헙에서 링크에 대한 내용을 먼저 찾아봅니다.</p>
-
-<p><img src="https://jjerry-k.github.io/public/img/shortcut/fig04.png" alt="fig4" /></p>
-
-<p>거기서 ‘{기능 이름}’ 부분을 복사해주세요.</p>
-
-<p>그리고 다음과 같이 기입해줍니다.</p>
-
-<p><img src="https://jjerry-k.github.io/public/img/shortcut/fig05.png" alt="fig5" /></p>
-
-<p>그리고 우측 상단에 저장버튼을 누르고 노트북에서 Shift + Command + C 를 눌렀을때 <code class="language-plaintext highlighter-rouge">Restart and Clear</code> 이 작동하게 됩니다.</p>
-
-<p>사진만 보고 따라 적으시기 귀찮으실테니 code block 으로 남깁니다.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>"shortcuts": [
-    {
-        "command": "kernelmenu:restart-and-clear",
-        "keys": ["Shift + Ctrl + C"],
-        "selector": "[data-jp-kernel-user]:focus"
-        }]
-</code></pre></div></div>
-
-<p>과정을 요약해드리면 (Jupyter Lab 켜기 ~ Editor 열기 까지는 생략)</p>
-<ol>
-  <li>기능에 대한 링크에서 자신이 원하는 기능 찾기</li>
-  <li>위에 code block 에서 “command”: 부분에 ‘{기능 이름}’ 기입</li>
-  <li>“keys”: 에 원하는 커맨드 넣기 (복수개 가능)</li>
-  <li>“selector”: 에 .jp-Notebook:focus” 혹은 “[data-jp-kernel-user]:focus” 기입</li>
-  <li>저장 후 즐겁게 사용!</li>
-</ol>
-
-<p>shortcut 설정은 여기까지 입니다.<br />
-혹시 이외에 다른 설정에 대해 궁금한거 있으시면 comment 남겨주세요!</p>
-
-<h3 id="참고사항-1">참고사항</h3>
-<blockquote>
-  <p>만약 <strong>A 기능은 Shift + Alt + C</strong> 이고 <strong>B 기능은 Alt + Shift + C</strong> 일때… 전체적으로 보면 같은 키 입력이지만 순서가 다르기 때문에 <strong>별개의 shortcut으로 작동</strong>합니다.</p>
-</blockquote>
-
-    <article></h4>
-    <div class="post-more">
-      
-      <a href="/python/2019/09/07/Jupyter_shortcut/#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
-      
-      <a href="/python/2019/09/07/Jupyter_shortcut/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
     </div>
   </div>
   

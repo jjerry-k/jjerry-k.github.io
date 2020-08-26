@@ -5,116 +5,82 @@
     <link href="http://gmpg.org/xfn/11" rel="profile">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
-  
+
     <!-- Enable responsiveness on mobile devices-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-  
+
     <title>
-      
+        
         Paper Reading Roadmap &middot; Jerry's Blog
-      
+        
     </title>
-  
+
     <!-- CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
     <link rel="stylesheet" href="/public/css/main.css">
-  
+
     <!-- Icons -->
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144"
+        href="/public/apple-touch-icon-precomposed.png">
     <link rel="shortcut icon" href="/public/favicon.ico">
-  
+
     <!-- RSS -->
     <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
-  
+
     <!-- scroll -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script>
-      $( window ).scroll( function() {
-        if ( $( this ).scrollTop() > 500 ) {
-          $( '.top' ).fadeIn();
-        } else {
-          $( '.top' ).fadeOut();
-        }
-      } );
-      $( '.top' ).click( function() {
-        $( 'html, body' ).stop().animate( { scrollTop : 0 }, 100);
-        return false;
-      } );
+        $(window).scroll(function () {
+            if ($(this).scrollTop() > 500) {
+                $('.top').fadeIn();
+            } else {
+                $('.top').fadeOut();
+            }
+        });
+        $('.top').click(function () {
+            $('html, body').stop().animate({ scrollTop: 0 }, 100);
+            return false;
+        });
     </script>
-    
+
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     <script>
-      (absbygoogle = window.adsbygoogle || []).push({
-          google_ad_client: "ca-pub-1054696837285307",
-          enable_page_level_ads: true
-      });
+        (absbygoogle = window.adsbygoogle || []).push({
+            google_ad_client: "ca-pub-1054696837285307",
+            enable_page_level_ads: true
+        });
     </script>
+
     
-    <!-- 
     <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-        //jax: ["input/TeX", "output/HTML-CSS"],
-        TeX: {
-          equationNumbers: {
-            autoNumber: "AMS"
-          }
-        },
-        tex2jax: {
-          inlineMath: [ ['$', '$'] ],
-          displayMath: [ ['$$', '$$'] ],
-          processEscapes: true,
-          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-        }
-        //,
-        //displayAlign: "left",
-        //displayIndent: "2em"
-      });
-      MathJax.Hub.Register.MessageHook("Math Processing Error",function (message) {
-        alert("Math Processing Error: "+message[1]);
-      });
-    MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
-        alert("Math Processing Error: "+message[1]);
-      });
-    </script>
-    <script type="text/javascript" async
-      src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript">
-    </script>
-     -->
+            MathJax.Hub.Config({
+              //jax: ["input/TeX", "output/HTML-CSS"],
+              tex2jax: {
+                inlineMath: [ ['$', '$'] ],
+                displayMath: [ ['$$', '$$'] ],
+                processEscapes: true,
+                skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+              }
+              //,
+              //displayAlign: "left",
+              //displayIndent: "2em"
+            });
+          </script>
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
     
-    
-  <script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-      //jax: ["input/TeX", "output/HTML-CSS"],
-      tex2jax: {
-        inlineMath: [ ['$', '$'] ],
-        displayMath: [ ['$$', '$$'] ],
-        processEscapes: true,
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-      }
-      //,
-      //displayAlign: "left",
-      //displayIndent: "2em"
-    });
-  </script>
-  <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
-  
 
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="/dest/simple-jekyll-search.js" type="text/javascript"></script>
     <script type="text/javascript">
-    $(document).ready(function(){
-      document.search.searchinput.focus();
-    });
+        $(document).ready(function () {
+            document.search.searchinput.focus();
+        });
     </script>
-  </head>
-  
+</head>
+
   <style>blockquote {font-size: 1em; line-height: 1.4}</style>
-  
-  <!-- New line Start-->
-  <!--  -->
-  <!-- New line End -->
   </head>
   <body>
 
@@ -325,6 +291,7 @@
 
 <h1 id="contents-of-posting">Contents of Posting</h1>
 <ul>
+  <li><a href="#contents-of-posting">Contents of Posting</a></li>
   <li><a href="#paper-reading-roadmap">Paper Reading Roadmap</a>
     <ul>
       <li><a href="#ml-basics">ML Basics</a></li>
@@ -450,81 +417,82 @@
 
 <h3 id="kernel-machines">Kernel Machines</h3>
 <ul>
-  <li>An Introduction to Kernel-based Learning Algorithms</li>
-  <li>A Tutorial on Support Vector Machine for Pattern Recognition</li>
-  <li>A Tutorial on Support Vector Regression</li>
-  <li>A Tutorial on nu-Support Vector Machines</li>
+  <li><a href="https://pdfs.semanticscholar.org/2eb2/ca05a79d1d81033237aad416ad4a1ce90a70.pdf">An Introduction to Kernel-based Learning Algorithms</a></li>
+  <li><a href="https://www.di.ens.fr/~mallat/papiers/svmtutorial.pdf">A Tutorial on Support Vector Machine for Pattern Recognition</a></li>
+  <li><a href="https://alex.smola.org/papers/2003/SmoSch03b.pdf">A Tutorial on Support Vector Regression</a></li>
+  <li><a href="http://is.tuebingen.mpg.de/fileadmin/user_upload/files/publications/pdf3353.pdf">A Tutorial on nu-Support Vector Machines</a></li>
 </ul>
 
 <h3 id="ensemble">Ensemble</h3>
 <ul>
-  <li>Bagging Predictors</li>
-  <li>Random Forests</li>
-  <li>A short introduction to boosting</li>
-  <li>Greedy Function Approximation: A Gradient Boosting Machine</li>
-  <li>Gradient Boosting Machine, A Tutorial</li>
-  <li>XGBoost: A Scalable Tree Boosting System</li>
-  <li>LightGBM: A Highly Efficient Gradient Boosting Decision Tree</li>
-  <li>CatBoost : unbiased boosting with categorical features</li>
+  <li><a href="https://www.stat.berkeley.edu/~breiman/bagging.pdf">Bagging Predictors</a></li>
+  <li><a href="https://www.stat.berkeley.edu/~breiman/randomforest2001.pdf">Random Forests</a></li>
+  <li><a href="https://cseweb.ucsd.edu/~yfreund/papers/IntroToBoosting.pdf">A short introduction to boosting</a></li>
+  <li><a href="https://statweb.stanford.edu/~jhf/ftp/trebst.pdf">Greedy Function Approximation: A Gradient Boosting Machine</a></li>
+  <li><a href="https://www.frontiersin.org/articles/10.3389/fnbot.2013.00021/full">Gradient Boosting Machine, A Tutorial</a></li>
+  <li><a href="https://arxiv.org/pdf/1603.02754.pdf">XGBoost: A Scalable Tree Boosting System</a></li>
+  <li><a href="https://papers.nips.cc/paper/6907-lightgbm-a-highly-efficient-gradient-boosting-decision-tree.pdf">LightGBM: A Highly Efficient Gradient Boosting Decision Tree</a></li>
+  <li><a href="https://papers.nips.cc/paper/7898-catboost-unbiased-boosting-with-categorical-features.pdf">CatBoost : unbiased boosting with categorical features</a></li>
 </ul>
 
 <h2 id="semi-supervvised-learning">Semi-supervvised Learning</h2>
 <ul>
-  <li>Combining Labeled and Unlabeled Data with Co-Training</li>
-  <li>Semi-supervised Learning with Deep Generative Models</li>
-  <li>Semi-Supervised Classification with Graph Convolutional Networks</li>
-  <li>MixMatch: A Holistic Approach to Semi-Supervised Learning</li>
-  <li>ReMixMatch: Semi-Supervised Learning with Distribution Alignment and Augmentation Anchoring</li>
-  <li>FixMatch: Simplifying Semi-Supervised Learning with Consistency and Confidence</li>
+  <li><a href="https://www.cs.cmu.edu/~avrim/Papers/cotrain.pdf">Combining Labeled and Unlabeled Data with Co-Training</a></li>
+  <li><a href="https://papers.nips.cc/paper/5352-semi-supervised-learning-with-deep-generative-models.pdf">Semi-supervised Learning with Deep Generative Models</a></li>
+  <li><a href="https://arxiv.org/pdf/1609.02907.pdf">Semi-Supervised Classification with Graph Convolutional Networks</a></li>
+  <li><a href="https://papers.nips.cc/paper/8749-mixmatch-a-holistic-approach-to-semi-supervised-learning.pdf">MixMatch: A Holistic Approach to Semi-Supervised Learning</a></li>
+  <li><a href="https://arxiv.org/pdf/1911.09785.pdf">ReMixMatch: Semi-Supervised Learning with Distribution Alignment and Augmentation Anchoring</a></li>
+  <li><a href="https://arxiv.org/pdf/2001.07685.pdf">FixMatch: Simplifying Semi-Supervised Learning with Consistency and Confidence</a></li>
 </ul>
 
 <h2 id="unsupervised-learning">Unsupervised Learning</h2>
 <ul>
-  <li>Anomaly Detection: A Survey</li>
-  <li>Deep Learning for Anomaly Detection: A Survey</li>
-  <li>A Review of Novelty Detection</li>
-  <li>LOF: Identifying Density-Based Local Outliers</li>
-  <li>Support Vector Data Description</li>
-  <li>Isolation Forest</li>
-  <li>Isolation-based Anomaly Detection</li>
-  <li>DeepLog: Anomaly Detection and Diagnosis from System Logs through Deep Learning</li>
+  <li><a href="http://cucis.ece.northwestern.edu/projects/DMS/publications/AnomalyDetection.pdf">Anomaly Detection: A Survey</a></li>
+  <li><a href="https://arxiv.org/pdf/1901.03407.pdf">Deep Learning for Anomaly Detection: A Survey</a></li>
+  <li><a href="https://www.sciencedirect.com/science/article/abs/pii/S016516841300515X">A Review of Novelty Detection</a></li>
+  <li><a href="https://www.dbs.ifi.lmu.de/Publikationen/Papers/LOF.pdf">LOF: Identifying Density-Based Local Outliers</a></li>
+  <li><a href="http://homepage.tudelft.nl/a9p19/papers/ML_SVDD_04.pdf">Support Vector Data Description</a></li>
+  <li><a href="https://cs.nju.edu.cn/zhouzh/zhouzh.files/publication/icdm08b.pdf?q=isolation-forest">Isolation Forest</a></li>
+  <li><a href="https://cs.nju.edu.cn/zhouzh/zhouzh.files/publication/tkdd11.pdf">Isolation-based Anomaly Detection</a></li>
+  <li><a href="https://www.cs.utah.edu/~lifeifei/papers/deeplog.pdf">DeepLog: Anomaly Detection and Diagnosis from System Logs through Deep Learning</a></li>
 </ul>
 
 <h2 id="neural-network">Neural Network</h2>
 
 <h3 id="general-2">General</h3>
 <ul>
-  <li>Deep learning</li>
+  <li><a href="https://www.cs.toronto.edu/~hinton/absps/NatureDeepReview.pdf">Deep learning</a></li>
 </ul>
 
 <h3 id="structure">Structure</h3>
 <ul>
-  <li>Long Short-Term Memory</li>
-  <li>LSTM: A Search Space Odyssey</li>
-  <li>Empirical Evaluation of Gated Recurrent Neural Networks on Sequence Modeling Sequence to sequence learning with neural networks</li>
-  <li>Memory Networks</li>
-  <li>End-To-End Memory Networks</li>
-  <li>WaveNet: A Generative Model for Raw Audio</li>
-  <li>An Introduction to Variational Autoencoders</li>
-  <li>A Comprehensive Survey on Graph Neural Networks</li>
+  <li><a href="https://www.bioinf.jku.at/publications/older/2604.pdf">Long Short-Term Memory</a></li>
+  <li><a href="https://arxiv.org/pdf/1503.04069.pdf">LSTM: A Search Space Odyssey</a></li>
+  <li><a href="https://arxiv.org/pdf/1412.3555.pdf">Empirical Evaluation of Gated Recurrent Neural Networks on Sequence Modeling Sequence to sequence learning with neural networks</a></li>
+  <li><a href="https://arxiv.org/pdf/1410.3916.pdf">Memory Networks</a></li>
+  <li><a href="https://papers.nips.cc/paper/5846-end-to-end-memory-networks.pdf">End-To-End Memory Networks</a></li>
+  <li><a href="https://deepmind.com/blog/article/wavenet-generative-model-raw-audio">WaveNet: A Generative Model for Raw Audio</a></li>
+  <li><a href="https://arxiv.org/pdf/1906.02691.pdf">An Introduction to Variational Autoencoders</a></li>
+  <li><a href="https://arxiv.org/pdf/1901.00596.pdf">A Comprehensive Survey on Graph Neural Networks</a></li>
 </ul>
 
 <h3 id="learning-strategies">Learning Strategies</h3>
 <ul>
-  <li>Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift</li>
-  <li>Dropout: A Simple Way to Prevent Neural Networks from Overtting</li>
-  <li>ADAM: A Method for Stochastic Optimization</li>
-  <li>An overview of gradient descent optimization algorithms</li>
-  <li>Layer normalization Group normalization</li>
+  <li><a href="https://arxiv.org/pdf/1502.03167.pdf">Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift</a></li>
+  <li><a href="https://jmlr.org/papers/volume15/srivastava14a.old/srivastava14a.pdf">Dropout: A Simple Way to Prevent Neural Networks from Overtting</a></li>
+  <li><a href="https://arxiv.org/pdf/1412.6980.pdf">ADAM: A Method for Stochastic Optimization</a></li>
+  <li><a href="https://arxiv.org/pdf/1609.04747.pdf">An overview of gradient descent optimization algorithms</a></li>
+  <li><a href="https://arxiv.org/pdf/1607.06450.pdf">Layer normalization</a></li>
+  <li><a href="https://openaccess.thecvf.com/content_ECCV_2018/papers/Yuxin_Wu_Group_Normalization_ECCV_2018_paper.pdf">Group normalization</a></li>
 </ul>
 
 <h2 id="nlp">NLP</h2>
 
 <h3 id="general-3">General</h3>
 <ul>
-  <li>Natural Language Processing (Almost) from Scratch</li>
-  <li>Advances in natural language processing</li>
-  <li>Recent trends in deep learning based natural language processing</li>
+  <li><a href="https://www.jmlr.org/papers/volume12/collobert11a/collobert11a.pdf">Natural Language Processing (Almost) from Scratch</a></li>
+  <li><a href="https://science.sciencemag.org/content/349/6245/261">Advances in natural language processing</a></li>
+  <li><a href="https://arxiv.org/pdf/1708.02709.pdf">Recent trends in deep learning based natural language processing</a></li>
 </ul>
 
 <h3 id="topic-modeling">Topic Modeling</h3>
@@ -532,50 +500,51 @@
   <li>An introduction to latent semantic analysis</li>
   <li>Probabilistic latent semantic analysis</li>
   <li>Probabilistic topic models</li>
-  <li>Latent Dirichlet Allocation</li>
+  <li><a href="https://www.jmlr.org/papers/volume3/blei03a/blei03a.pdf">Latent Dirichlet Allocation</a></li>
 </ul>
 
 <h3 id="repersentation-learning">Repersentation Learning</h3>
 <ul>
-  <li>A Neural Probabilistic Language Model</li>
-  <li>Distributed representations of words and phrases and their compositionality</li>
-  <li>Efficient Estimation of Word Representations in Vector Space</li>
-  <li>Glove: Global vectors for word representation</li>
-  <li>Learning Phrase Representations using RNN Encoder–Decoder for Statistical Machine Translation Enriching word vectors with subword information</li>
-  <li>Bert: Pre-training of deep bidirectional transformers for language understanding</li>
-  <li>Deep contextualized word representations</li>
-  <li>Improving language understanding by generative pre-training</li>
-  <li>Language models are unsupervised multitask learners</li>
-  <li>Language Models are Few-Shot LearnersA Neural Probabilistic Language Model</li>
+  <li><a href="https://www.jmlr.org/papers/volume3/bengio03a/bengio03a.pdf">A Neural Probabilistic Language Model</a></li>
+  <li><a href="https://papers.nips.cc/paper/5021-distributed-representations-of-words-and-phrases-and-their-compositionality.pdf">Distributed representations of words and phrases and their compositionality</a></li>
+  <li><a href="https://arxiv.org/pdf/1301.3781.pdf">Efficient Estimation of Word Representations in Vector Space</a></li>
+  <li><a href="https://nlp.stanford.edu/pubs/glove.pdf">Glove: Global vectors for word representation</a></li>
+  <li><a href="https://arxiv.org/pdf/1406.1078.pdf">Learning Phrase Representations using RNN Encoder–Decoder for Statistical Machine Translation</a></li>
+  <li><a href="https://arxiv.org/pdf/1607.04606.pdf">Enriching word vectors with subword information</a></li>
+  <li><a href="https://arxiv.org/pdf/1810.04805.pdf">Bert: Pre-training of deep bidirectional transformers for language understanding</a></li>
+  <li><a href="https://arxiv.org/pdf/1802.05365.pdf">Deep contextualized word representations</a></li>
+  <li><a href="https://cdn.openai.com/research-covers/language-unsupervised/language_understanding_paper.pdf">Improving language understanding by generative pre-training</a></li>
+  <li><a href="https://cdn.openai.com/better-language-models/language_models_are_unsupervised_multitask_learners.pdf">Language models are unsupervised multitask learners</a></li>
+  <li><a href="https://arxiv.org/pdf/2005.14165.pdf">Language Models are Few-Shot Learners</a></li>
 </ul>
 
 <h3 id="classification">Classification</h3>
 <ul>
-  <li>Convolutional neural networks for sentence classification</li>
-  <li>Deep learning for sentiment analysis: A survey</li>
+  <li><a href="https://arxiv.org/pdf/1408.5882.pdf">Convolutional neural networks for sentence classification</a></li>
+  <li><a href="https://arxiv.org/pdf/1801.07883.pdf">Deep learning for sentiment analysis: A survey</a></li>
 </ul>
 
 <h3 id="summarization">Summarization</h3>
 <ul>
-  <li>TextRank: Bringing Order into Texts</li>
-  <li>A Neural Attention Model for Abstractive Sentence Summarization</li>
+  <li><a href="https://web.eecs.umich.edu/~mihalcea/papers/mihalcea.emnlp04.pdf">TextRank: Bringing Order into Texts</a></li>
+  <li><a href="https://arxiv.org/pdf/1509.00685.pdf">A Neural Attention Model for Abstractive Sentence Summarization</a></li>
 </ul>
 
 <h3 id="machine-translation">Machine Translation</h3>
 <ul>
-  <li>On the Properties of Neural Machine Translation: Encoder-Decoder Approaches</li>
-  <li>Effective Approaches to Attention-based Neural Machine Translation</li>
-  <li>Neural Machine Translation by Jointly Learning to Aligh and Translate</li>
-  <li>Google’s Neural Machine Translation System: Bridging the Gap between Human and Machine Translation</li>
-  <li>Attention is all you need</li>
+  <li><a href="https://arxiv.org/pdf/1409.1259.pdf">On the Properties of Neural Machine Translation: Encoder-Decoder Approaches</a></li>
+  <li><a href="https://www-nlp.stanford.edu/pubs/emnlp15_attn.pdf">Effective Approaches to Attention-based Neural Machine Translation</a></li>
+  <li><a href="https://arxiv.org/pdf/1409.0473.pdf">Neural Machine Translation by Jointly Learning to Aligh and Translate</a></li>
+  <li><a href="https://arxiv.org/pdf/1609.08144.pdf">Google’s Neural Machine Translation System: Bridging the Gap between Human and Machine Translation</a></li>
+  <li><a href="https://papers.nips.cc/paper/7181-attention-is-all-you-need.pdf">Attention is all you need</a></li>
 </ul>
 
 <h3 id="question-answering">Question Answering</h3>
 <ul>
-  <li>VQA: Visual Question Answering</li>
-  <li>Ask Me Anything: Dynamic Memory Networks for Natural Language Processing</li>
-  <li>Squad: 100,000+ questions for machine comprehension of text</li>
-  <li>Know what you don’t know: Unanswerable questions for SQuAD</li>
+  <li><a href="https://arxiv.org/pdf/1505.00468.pdf">VQA: Visual Question Answering</a></li>
+  <li><a href="https://arxiv.org/pdf/1506.07285.pdf">Ask Me Anything: Dynamic Memory Networks for Natural Language Processing</a></li>
+  <li><a href="https://arxiv.org/pdf/1606.05250.pdf">Squad: 100,000+ questions for machine comprehension of text</a></li>
+  <li><a href="https://arxiv.org/pdf/1806.03822.pdf">Know what you don’t know: Unanswerable questions for SQuAD</a></li>
 </ul>
 
 <h2 id="vision">Vision</h2>

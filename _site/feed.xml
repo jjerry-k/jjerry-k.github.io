@@ -5,9 +5,74 @@
     <description></description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 21 Aug 2020 00:44:27 +0900</pubDate>
-    <lastBuildDate>Fri, 21 Aug 2020 00:44:27 +0900</lastBuildDate>
+    <pubDate>Thu, 27 Aug 2020 00:07:12 +0900</pubDate>
+    <lastBuildDate>Thu, 27 Aug 2020 00:07:12 +0900</lastBuildDate>
     <generator>Jekyll v3.9.0</generator>
+    
+      <item>
+        <title>Weights &amp; Biases Usage - [1]</title>
+        <description>&lt;p&gt;이번 포스팅은 &lt;a href=&quot;https://www.wandb.com&quot;&gt;Weights &amp;amp; Biases&lt;/a&gt; 를 활용하여 Network 성능 비교 예시를 하려고 합니다.&lt;/p&gt;
+
+&lt;p&gt;어려운 글이 아니기 때문에 금방 금방 따라하실 수 있을 것 같습니다!&lt;/p&gt;
+
+&lt;h3 id=&quot;task&quot;&gt;Task&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Flower classification
+    &lt;ul&gt;
+      &lt;li&gt;daisy, roses, dandelion, sunflowers, tulips&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;List of pretrained-model
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;https://www.tensorflow.org/versions/r2.2/api_docs/python/tf/keras/applications&quot;&gt;tf.keras.applications&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Detail of training
+    &lt;ul&gt;
+      &lt;li&gt;Image size: 150x150x3&lt;/li&gt;
+      &lt;li&gt;Epochs: 5&lt;/li&gt;
+      &lt;li&gt;Batch size: 256&lt;/li&gt;
+      &lt;li&gt;Freezing: True&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;자세한 코드는 &lt;a href=&quot;https://github.com/jjerry-k/for_wandb&quot;&gt;for_wandb 라는 repository&lt;/a&gt;에 올려놨으니 확인하시면 됩니다.&lt;/p&gt;
+
+&lt;p&gt;train.sh를 실행하게 되면 위에 적혀있는 pretrined model 만 변경해서 classification 을 수행하게 됩니다!&lt;/p&gt;
+
+&lt;p&gt;그 후 weights &amp;amp; biases 화면을 가서 확인해 보면…&lt;/p&gt;
+
+&lt;p&gt;각 모델별 loss, acc, val_loss, val_acc graph를 확인할 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/wandb_usage_1/Untitled.png&quot; alt=&quot;https://jjerry-k.github.io/public/img/wandb_usage_1/Untitled.png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;좌측 상단에 Run 옆을 보시면 테이블 모양 아이콘이 있는데 이를 누르면 다음과 같이 테이블로 정리되어 있는 것을 확인 하실 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/wandb_usage_1/Untitled_1.png&quot; alt=&quot;https://jjerry-k.github.io/public/img/wandb_usage_1/Untitled_1.png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;이번 포스팅은 Weights &amp;amp; Biases를 이용하여 모델 별 성능 비교를 해보았습니다.&lt;/p&gt;
+
+&lt;p&gt;조만간…Sweep 이라는 Hyperparameter search and model optimization 방법에 대해 포스팅을 해보려 합니다!&lt;/p&gt;
+
+&lt;h2 id=&quot;ps&quot;&gt;P.S&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;마스크 답답…..&lt;/li&gt;
+  &lt;li&gt;날씨 후덥지근, 짜증….&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Thu, 27 Aug 2020 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/deeplearning/2020/08/27/wandb_usage_1/</link>
+        <guid isPermaLink="true">http://localhost:4000/deeplearning/2020/08/27/wandb_usage_1/</guid>
+        
+        <category>Tools</category>
+        
+        
+        <category>DeepLearning</category>
+        
+      </item>
     
       <item>
         <title>Paper Reading Roadmap</title>
@@ -19,6 +84,7 @@
 
 &lt;h1 id=&quot;contents-of-posting&quot;&gt;Contents of Posting&lt;/h1&gt;
 &lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;#contents-of-posting&quot;&gt;Contents of Posting&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#paper-reading-roadmap&quot;&gt;Paper Reading Roadmap&lt;/a&gt;
     &lt;ul&gt;
       &lt;li&gt;&lt;a href=&quot;#ml-basics&quot;&gt;ML Basics&lt;/a&gt;&lt;/li&gt;
@@ -144,81 +210,82 @@
 
 &lt;h3 id=&quot;kernel-machines&quot;&gt;Kernel Machines&lt;/h3&gt;
 &lt;ul&gt;
-  &lt;li&gt;An Introduction to Kernel-based Learning Algorithms&lt;/li&gt;
-  &lt;li&gt;A Tutorial on Support Vector Machine for Pattern Recognition&lt;/li&gt;
-  &lt;li&gt;A Tutorial on Support Vector Regression&lt;/li&gt;
-  &lt;li&gt;A Tutorial on nu-Support Vector Machines&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://pdfs.semanticscholar.org/2eb2/ca05a79d1d81033237aad416ad4a1ce90a70.pdf&quot;&gt;An Introduction to Kernel-based Learning Algorithms&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.di.ens.fr/~mallat/papiers/svmtutorial.pdf&quot;&gt;A Tutorial on Support Vector Machine for Pattern Recognition&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://alex.smola.org/papers/2003/SmoSch03b.pdf&quot;&gt;A Tutorial on Support Vector Regression&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://is.tuebingen.mpg.de/fileadmin/user_upload/files/publications/pdf3353.pdf&quot;&gt;A Tutorial on nu-Support Vector Machines&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h3 id=&quot;ensemble&quot;&gt;Ensemble&lt;/h3&gt;
 &lt;ul&gt;
-  &lt;li&gt;Bagging Predictors&lt;/li&gt;
-  &lt;li&gt;Random Forests&lt;/li&gt;
-  &lt;li&gt;A short introduction to boosting&lt;/li&gt;
-  &lt;li&gt;Greedy Function Approximation: A Gradient Boosting Machine&lt;/li&gt;
-  &lt;li&gt;Gradient Boosting Machine, A Tutorial&lt;/li&gt;
-  &lt;li&gt;XGBoost: A Scalable Tree Boosting System&lt;/li&gt;
-  &lt;li&gt;LightGBM: A Highly Efficient Gradient Boosting Decision Tree&lt;/li&gt;
-  &lt;li&gt;CatBoost : unbiased boosting with categorical features&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.stat.berkeley.edu/~breiman/bagging.pdf&quot;&gt;Bagging Predictors&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.stat.berkeley.edu/~breiman/randomforest2001.pdf&quot;&gt;Random Forests&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://cseweb.ucsd.edu/~yfreund/papers/IntroToBoosting.pdf&quot;&gt;A short introduction to boosting&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://statweb.stanford.edu/~jhf/ftp/trebst.pdf&quot;&gt;Greedy Function Approximation: A Gradient Boosting Machine&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.frontiersin.org/articles/10.3389/fnbot.2013.00021/full&quot;&gt;Gradient Boosting Machine, A Tutorial&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://arxiv.org/pdf/1603.02754.pdf&quot;&gt;XGBoost: A Scalable Tree Boosting System&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://papers.nips.cc/paper/6907-lightgbm-a-highly-efficient-gradient-boosting-decision-tree.pdf&quot;&gt;LightGBM: A Highly Efficient Gradient Boosting Decision Tree&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://papers.nips.cc/paper/7898-catboost-unbiased-boosting-with-categorical-features.pdf&quot;&gt;CatBoost : unbiased boosting with categorical features&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&quot;semi-supervvised-learning&quot;&gt;Semi-supervvised Learning&lt;/h2&gt;
 &lt;ul&gt;
-  &lt;li&gt;Combining Labeled and Unlabeled Data with Co-Training&lt;/li&gt;
-  &lt;li&gt;Semi-supervised Learning with Deep Generative Models&lt;/li&gt;
-  &lt;li&gt;Semi-Supervised Classification with Graph Convolutional Networks&lt;/li&gt;
-  &lt;li&gt;MixMatch: A Holistic Approach to Semi-Supervised Learning&lt;/li&gt;
-  &lt;li&gt;ReMixMatch: Semi-Supervised Learning with Distribution Alignment and Augmentation Anchoring&lt;/li&gt;
-  &lt;li&gt;FixMatch: Simplifying Semi-Supervised Learning with Consistency and Confidence&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.cs.cmu.edu/~avrim/Papers/cotrain.pdf&quot;&gt;Combining Labeled and Unlabeled Data with Co-Training&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://papers.nips.cc/paper/5352-semi-supervised-learning-with-deep-generative-models.pdf&quot;&gt;Semi-supervised Learning with Deep Generative Models&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://arxiv.org/pdf/1609.02907.pdf&quot;&gt;Semi-Supervised Classification with Graph Convolutional Networks&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://papers.nips.cc/paper/8749-mixmatch-a-holistic-approach-to-semi-supervised-learning.pdf&quot;&gt;MixMatch: A Holistic Approach to Semi-Supervised Learning&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://arxiv.org/pdf/1911.09785.pdf&quot;&gt;ReMixMatch: Semi-Supervised Learning with Distribution Alignment and Augmentation Anchoring&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://arxiv.org/pdf/2001.07685.pdf&quot;&gt;FixMatch: Simplifying Semi-Supervised Learning with Consistency and Confidence&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&quot;unsupervised-learning&quot;&gt;Unsupervised Learning&lt;/h2&gt;
 &lt;ul&gt;
-  &lt;li&gt;Anomaly Detection: A Survey&lt;/li&gt;
-  &lt;li&gt;Deep Learning for Anomaly Detection: A Survey&lt;/li&gt;
-  &lt;li&gt;A Review of Novelty Detection&lt;/li&gt;
-  &lt;li&gt;LOF: Identifying Density-Based Local Outliers&lt;/li&gt;
-  &lt;li&gt;Support Vector Data Description&lt;/li&gt;
-  &lt;li&gt;Isolation Forest&lt;/li&gt;
-  &lt;li&gt;Isolation-based Anomaly Detection&lt;/li&gt;
-  &lt;li&gt;DeepLog: Anomaly Detection and Diagnosis from System Logs through Deep Learning&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://cucis.ece.northwestern.edu/projects/DMS/publications/AnomalyDetection.pdf&quot;&gt;Anomaly Detection: A Survey&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://arxiv.org/pdf/1901.03407.pdf&quot;&gt;Deep Learning for Anomaly Detection: A Survey&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.sciencedirect.com/science/article/abs/pii/S016516841300515X&quot;&gt;A Review of Novelty Detection&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.dbs.ifi.lmu.de/Publikationen/Papers/LOF.pdf&quot;&gt;LOF: Identifying Density-Based Local Outliers&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://homepage.tudelft.nl/a9p19/papers/ML_SVDD_04.pdf&quot;&gt;Support Vector Data Description&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://cs.nju.edu.cn/zhouzh/zhouzh.files/publication/icdm08b.pdf?q=isolation-forest&quot;&gt;Isolation Forest&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://cs.nju.edu.cn/zhouzh/zhouzh.files/publication/tkdd11.pdf&quot;&gt;Isolation-based Anomaly Detection&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.cs.utah.edu/~lifeifei/papers/deeplog.pdf&quot;&gt;DeepLog: Anomaly Detection and Diagnosis from System Logs through Deep Learning&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&quot;neural-network&quot;&gt;Neural Network&lt;/h2&gt;
 
 &lt;h3 id=&quot;general-2&quot;&gt;General&lt;/h3&gt;
 &lt;ul&gt;
-  &lt;li&gt;Deep learning&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.cs.toronto.edu/~hinton/absps/NatureDeepReview.pdf&quot;&gt;Deep learning&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h3 id=&quot;structure&quot;&gt;Structure&lt;/h3&gt;
 &lt;ul&gt;
-  &lt;li&gt;Long Short-Term Memory&lt;/li&gt;
-  &lt;li&gt;LSTM: A Search Space Odyssey&lt;/li&gt;
-  &lt;li&gt;Empirical Evaluation of Gated Recurrent Neural Networks on Sequence Modeling Sequence to sequence learning with neural networks&lt;/li&gt;
-  &lt;li&gt;Memory Networks&lt;/li&gt;
-  &lt;li&gt;End-To-End Memory Networks&lt;/li&gt;
-  &lt;li&gt;WaveNet: A Generative Model for Raw Audio&lt;/li&gt;
-  &lt;li&gt;An Introduction to Variational Autoencoders&lt;/li&gt;
-  &lt;li&gt;A Comprehensive Survey on Graph Neural Networks&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.bioinf.jku.at/publications/older/2604.pdf&quot;&gt;Long Short-Term Memory&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://arxiv.org/pdf/1503.04069.pdf&quot;&gt;LSTM: A Search Space Odyssey&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://arxiv.org/pdf/1412.3555.pdf&quot;&gt;Empirical Evaluation of Gated Recurrent Neural Networks on Sequence Modeling Sequence to sequence learning with neural networks&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://arxiv.org/pdf/1410.3916.pdf&quot;&gt;Memory Networks&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://papers.nips.cc/paper/5846-end-to-end-memory-networks.pdf&quot;&gt;End-To-End Memory Networks&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://deepmind.com/blog/article/wavenet-generative-model-raw-audio&quot;&gt;WaveNet: A Generative Model for Raw Audio&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://arxiv.org/pdf/1906.02691.pdf&quot;&gt;An Introduction to Variational Autoencoders&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://arxiv.org/pdf/1901.00596.pdf&quot;&gt;A Comprehensive Survey on Graph Neural Networks&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h3 id=&quot;learning-strategies&quot;&gt;Learning Strategies&lt;/h3&gt;
 &lt;ul&gt;
-  &lt;li&gt;Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift&lt;/li&gt;
-  &lt;li&gt;Dropout: A Simple Way to Prevent Neural Networks from Overtting&lt;/li&gt;
-  &lt;li&gt;ADAM: A Method for Stochastic Optimization&lt;/li&gt;
-  &lt;li&gt;An overview of gradient descent optimization algorithms&lt;/li&gt;
-  &lt;li&gt;Layer normalization Group normalization&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://arxiv.org/pdf/1502.03167.pdf&quot;&gt;Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://jmlr.org/papers/volume15/srivastava14a.old/srivastava14a.pdf&quot;&gt;Dropout: A Simple Way to Prevent Neural Networks from Overtting&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://arxiv.org/pdf/1412.6980.pdf&quot;&gt;ADAM: A Method for Stochastic Optimization&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://arxiv.org/pdf/1609.04747.pdf&quot;&gt;An overview of gradient descent optimization algorithms&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://arxiv.org/pdf/1607.06450.pdf&quot;&gt;Layer normalization&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://openaccess.thecvf.com/content_ECCV_2018/papers/Yuxin_Wu_Group_Normalization_ECCV_2018_paper.pdf&quot;&gt;Group normalization&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&quot;nlp&quot;&gt;NLP&lt;/h2&gt;
 
 &lt;h3 id=&quot;general-3&quot;&gt;General&lt;/h3&gt;
 &lt;ul&gt;
-  &lt;li&gt;Natural Language Processing (Almost) from Scratch&lt;/li&gt;
-  &lt;li&gt;Advances in natural language processing&lt;/li&gt;
-  &lt;li&gt;Recent trends in deep learning based natural language processing&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.jmlr.org/papers/volume12/collobert11a/collobert11a.pdf&quot;&gt;Natural Language Processing (Almost) from Scratch&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://science.sciencemag.org/content/349/6245/261&quot;&gt;Advances in natural language processing&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://arxiv.org/pdf/1708.02709.pdf&quot;&gt;Recent trends in deep learning based natural language processing&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h3 id=&quot;topic-modeling&quot;&gt;Topic Modeling&lt;/h3&gt;
@@ -226,50 +293,51 @@
   &lt;li&gt;An introduction to latent semantic analysis&lt;/li&gt;
   &lt;li&gt;Probabilistic latent semantic analysis&lt;/li&gt;
   &lt;li&gt;Probabilistic topic models&lt;/li&gt;
-  &lt;li&gt;Latent Dirichlet Allocation&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.jmlr.org/papers/volume3/blei03a/blei03a.pdf&quot;&gt;Latent Dirichlet Allocation&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h3 id=&quot;repersentation-learning&quot;&gt;Repersentation Learning&lt;/h3&gt;
 &lt;ul&gt;
-  &lt;li&gt;A Neural Probabilistic Language Model&lt;/li&gt;
-  &lt;li&gt;Distributed representations of words and phrases and their compositionality&lt;/li&gt;
-  &lt;li&gt;Efficient Estimation of Word Representations in Vector Space&lt;/li&gt;
-  &lt;li&gt;Glove: Global vectors for word representation&lt;/li&gt;
-  &lt;li&gt;Learning Phrase Representations using RNN Encoder–Decoder for Statistical Machine Translation Enriching word vectors with subword information&lt;/li&gt;
-  &lt;li&gt;Bert: Pre-training of deep bidirectional transformers for language understanding&lt;/li&gt;
-  &lt;li&gt;Deep contextualized word representations&lt;/li&gt;
-  &lt;li&gt;Improving language understanding by generative pre-training&lt;/li&gt;
-  &lt;li&gt;Language models are unsupervised multitask learners&lt;/li&gt;
-  &lt;li&gt;Language Models are Few-Shot LearnersA Neural Probabilistic Language Model&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.jmlr.org/papers/volume3/bengio03a/bengio03a.pdf&quot;&gt;A Neural Probabilistic Language Model&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://papers.nips.cc/paper/5021-distributed-representations-of-words-and-phrases-and-their-compositionality.pdf&quot;&gt;Distributed representations of words and phrases and their compositionality&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://arxiv.org/pdf/1301.3781.pdf&quot;&gt;Efficient Estimation of Word Representations in Vector Space&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://nlp.stanford.edu/pubs/glove.pdf&quot;&gt;Glove: Global vectors for word representation&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://arxiv.org/pdf/1406.1078.pdf&quot;&gt;Learning Phrase Representations using RNN Encoder–Decoder for Statistical Machine Translation&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://arxiv.org/pdf/1607.04606.pdf&quot;&gt;Enriching word vectors with subword information&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://arxiv.org/pdf/1810.04805.pdf&quot;&gt;Bert: Pre-training of deep bidirectional transformers for language understanding&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://arxiv.org/pdf/1802.05365.pdf&quot;&gt;Deep contextualized word representations&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://cdn.openai.com/research-covers/language-unsupervised/language_understanding_paper.pdf&quot;&gt;Improving language understanding by generative pre-training&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://cdn.openai.com/better-language-models/language_models_are_unsupervised_multitask_learners.pdf&quot;&gt;Language models are unsupervised multitask learners&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://arxiv.org/pdf/2005.14165.pdf&quot;&gt;Language Models are Few-Shot Learners&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h3 id=&quot;classification&quot;&gt;Classification&lt;/h3&gt;
 &lt;ul&gt;
-  &lt;li&gt;Convolutional neural networks for sentence classification&lt;/li&gt;
-  &lt;li&gt;Deep learning for sentiment analysis: A survey&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://arxiv.org/pdf/1408.5882.pdf&quot;&gt;Convolutional neural networks for sentence classification&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://arxiv.org/pdf/1801.07883.pdf&quot;&gt;Deep learning for sentiment analysis: A survey&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h3 id=&quot;summarization&quot;&gt;Summarization&lt;/h3&gt;
 &lt;ul&gt;
-  &lt;li&gt;TextRank: Bringing Order into Texts&lt;/li&gt;
-  &lt;li&gt;A Neural Attention Model for Abstractive Sentence Summarization&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://web.eecs.umich.edu/~mihalcea/papers/mihalcea.emnlp04.pdf&quot;&gt;TextRank: Bringing Order into Texts&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://arxiv.org/pdf/1509.00685.pdf&quot;&gt;A Neural Attention Model for Abstractive Sentence Summarization&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h3 id=&quot;machine-translation&quot;&gt;Machine Translation&lt;/h3&gt;
 &lt;ul&gt;
-  &lt;li&gt;On the Properties of Neural Machine Translation: Encoder-Decoder Approaches&lt;/li&gt;
-  &lt;li&gt;Effective Approaches to Attention-based Neural Machine Translation&lt;/li&gt;
-  &lt;li&gt;Neural Machine Translation by Jointly Learning to Aligh and Translate&lt;/li&gt;
-  &lt;li&gt;Google’s Neural Machine Translation System: Bridging the Gap between Human and Machine Translation&lt;/li&gt;
-  &lt;li&gt;Attention is all you need&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://arxiv.org/pdf/1409.1259.pdf&quot;&gt;On the Properties of Neural Machine Translation: Encoder-Decoder Approaches&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www-nlp.stanford.edu/pubs/emnlp15_attn.pdf&quot;&gt;Effective Approaches to Attention-based Neural Machine Translation&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://arxiv.org/pdf/1409.0473.pdf&quot;&gt;Neural Machine Translation by Jointly Learning to Aligh and Translate&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://arxiv.org/pdf/1609.08144.pdf&quot;&gt;Google’s Neural Machine Translation System: Bridging the Gap between Human and Machine Translation&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://papers.nips.cc/paper/7181-attention-is-all-you-need.pdf&quot;&gt;Attention is all you need&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h3 id=&quot;question-answering&quot;&gt;Question Answering&lt;/h3&gt;
 &lt;ul&gt;
-  &lt;li&gt;VQA: Visual Question Answering&lt;/li&gt;
-  &lt;li&gt;Ask Me Anything: Dynamic Memory Networks for Natural Language Processing&lt;/li&gt;
-  &lt;li&gt;Squad: 100,000+ questions for machine comprehension of text&lt;/li&gt;
-  &lt;li&gt;Know what you don’t know: Unanswerable questions for SQuAD&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://arxiv.org/pdf/1505.00468.pdf&quot;&gt;VQA: Visual Question Answering&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://arxiv.org/pdf/1506.07285.pdf&quot;&gt;Ask Me Anything: Dynamic Memory Networks for Natural Language Processing&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://arxiv.org/pdf/1606.05250.pdf&quot;&gt;Squad: 100,000+ questions for machine comprehension of text&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://arxiv.org/pdf/1806.03822.pdf&quot;&gt;Know what you don’t know: Unanswerable questions for SQuAD&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&quot;vision&quot;&gt;Vision&lt;/h2&gt;
@@ -4433,246 +4501,6 @@ optional arguments:
         <guid isPermaLink="true">http://localhost:4000/deeplearning/2020/03/31/coral/</guid>
         
         <category>Tools</category>
-        
-        
-        <category>DeepLearning</category>
-        
-      </item>
-    
-      <item>
-        <title>Review: StarGAN v2</title>
-        <description>&lt;h1 id=&quot;stargan-v2-diverse-image-synthessis-for-multiple-domains&quot;&gt;StarGAN v2: Diverse Image Synthessis for Multiple Domains&lt;/h1&gt;
-
-&lt;p&gt;Author: Yunjey Choi, Youngjung Uh, Jaejun Yoo, Jung-Woo Ha&lt;br /&gt;
-Date: Dec 04, 2019&lt;br /&gt;
-URL: https://arxiv.org/abs/1912.01865&lt;/p&gt;
-
-&lt;h1 id=&quot;abstract&quot;&gt;Abstract&lt;/h1&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Image translation 을 잘 하는 Model을 학습하려면 다음 사항을 만족해야함
-    &lt;ul&gt;
-      &lt;li&gt;Diversity of generated images&lt;/li&gt;
-      &lt;li&gt;Scalability over multiple domains&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;기존의 방법들은 limited diversity, multiple models(networks)를 다룸.&lt;/li&gt;
-  &lt;li&gt;StarGAN v2는 두 조건 모두 만족.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h1 id=&quot;introduction&quot;&gt;Introduction&lt;/h1&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Domain: 시각적으로 구별되는 범주&lt;/li&gt;
-  &lt;li&gt;Style: 각 영상이 가지는 독특한 외관적 특성&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/starganv2/Untitled.png&quot; alt=&quot;https://jjerry-k.github.io/public/img/starganv2/Untitled.png&quot; /&gt;&lt;/p&gt;
-
-&lt;h1 id=&quot;stargan-v2&quot;&gt;StarGAN v2&lt;/h1&gt;
-
-&lt;h2 id=&quot;proposed-framework&quot;&gt;Proposed framework&lt;/h2&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/starganv2/Untitled_1.png&quot; alt=&quot;https://jjerry-k.github.io/public/img/starganv2/Untitled_1.png&quot; /&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;4개의 Network 로 구성.&lt;/li&gt;
-  &lt;li&gt;Generator (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;G&lt;/code&gt;)
-    &lt;ul&gt;
-      &lt;li&gt;Image &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;x&lt;/code&gt;와 Style code &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;s&lt;/code&gt;를 입력으로 받아 새로운 영상을 생성.&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;https://arxiv.org/abs/1703.06868&quot;&gt;adaptive instance normalization (AdaIN)&lt;/a&gt; 사용.&lt;/li&gt;
-    &lt;/ul&gt;
-
-    &lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/starganv2/Untitled_2.png&quot; alt=&quot;https://jjerry-k.github.io/public/img/starganv2/Untitled_2.png&quot; /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;Mapping network (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;F&lt;/code&gt;)
-    &lt;ul&gt;
-      &lt;li&gt;Latent code &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;z&lt;/code&gt;와 Domain code &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;y&lt;/code&gt;를 입력으로 받아 Style code &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;s&lt;/code&gt;생성.&lt;/li&gt;
-      &lt;li&gt;Multi Layer Perceptron 구조.&lt;/li&gt;
-    &lt;/ul&gt;
-
-    &lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/starganv2/Untitled_3.png&quot; alt=&quot;https://jjerry-k.github.io/public/img/starganv2/Untitled_3.png&quot; /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;Style encoder (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;E&lt;/code&gt;)
-    &lt;ul&gt;
-      &lt;li&gt;Image &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;x&lt;/code&gt;와 Domain code &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;y&lt;/code&gt;를 입력으로 받아 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;x&lt;/code&gt;에서 Style code &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;s&lt;/code&gt;를 추출.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;Discriminator (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;D&lt;/code&gt;)
-    &lt;ul&gt;
-      &lt;li&gt;Image &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;x&lt;/code&gt;를 입력으로 받아 Domain code &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;y&lt;/code&gt;와 Real/Fake 분류.&lt;/li&gt;
-    &lt;/ul&gt;
-
-    &lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/starganv2/Untitled_4.png&quot; alt=&quot;https://jjerry-k.github.io/public/img/starganv2/Untitled_4.png&quot; /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;training-objectives&quot;&gt;Training objectives&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Adversarial objective
-    &lt;ul&gt;
-      &lt;li&gt;GAN 에서 기본적으로 사용되는 Loss&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-\[\mathcal{L}_{adv}=\mathbb{E}_{\mathrm{x},y}[\log{D_y}(\mathrm{x})] + \mathbb{E}_{\mathrm{x}, \tilde{y}, \mathrm{z}}[\log{(1-D_{\tilde{y}}(G(\mathrm{x}, \tilde{\mathrm{s}})))}\]
-
-&lt;ul&gt;
-  &lt;li&gt;Style reconstruction
-    &lt;ul&gt;
-      &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;G(x, s)&lt;/code&gt; 를 Style encoder &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;E&lt;/code&gt; 에 넣어 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;s&lt;/code&gt; 추출 후 입력 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;s&lt;/code&gt;와 비교&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-\[\mathcal{L}_{sty}=\mathbb{E}_{\mathrm{x},\tilde{y}, \mathrm{z}}[\parallel\tilde{\mathrm{s}}-E_{\tilde{y}}(G(\mathrm{x}, \tilde{\mathrm{s}}))\parallel_1]\]
-
-&lt;ul&gt;
-  &lt;li&gt;Style diversification
-    &lt;ul&gt;
-      &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;G&lt;/code&gt;가 다양한 Image를 생성할 수 있도록 Regularization 하는 역할.&lt;/li&gt;
-      &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;z1, z2&lt;/code&gt; 가 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;F&lt;/code&gt;에 의해 생성된 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;s1, s2&lt;/code&gt;와 입력 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;x&lt;/code&gt;를 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;G&lt;/code&gt;의 입력으로 새로운 영상 생성.&lt;/li&gt;
-      &lt;li&gt;L1 Norm 계산.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-\[\mathcal{L}_{ds}=\mathbb{E}_{\mathrm{x},\tilde{y}, \mathrm{z}_1, \mathrm{z}_2}[\parallel G(\mathrm{x}, \tilde{\mathrm{s}}_1) - G(\mathrm{x}, \tilde{\mathrm{s}}_2) \parallel_1]\]
-
-&lt;ul&gt;
-  &lt;li&gt;Preserving source characteristics
-    &lt;ul&gt;
-      &lt;li&gt;Cycle GAN 의 cycle consistency loss.&lt;/li&gt;
-      &lt;li&gt;target domain의 style 을 적용한 영상을 다시 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;E(x)&lt;/code&gt;로 추출된 s를 이용하여 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;x'&lt;/code&gt;로 reconstruction 한 후 L1 Norm 계산.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-\[\mathcal{L}_{cyc}=\mathbb{E}_{\mathrm{x}, y, \tilde{y}, \mathrm{z}}[\parallel \mathrm{x} - G(G(\mathrm{x}, \tilde{\mathrm{s}}), \hat{\mathrm{s}})\parallel_1]\]
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;Full objective&lt;/p&gt;
-
-\[\mathcal{L}_D = -\mathcal{L}_{adv} \\ \mathcal{L}_{F, G, E}=\mathcal{L}_{adv} + \lambda_{sty} \mathcal{L}_{sty} - \lambda_{ds} \mathcal{L}_{ds} + \lambda_{cyc} \mathcal{L}_{cyc}\]
-
-    &lt;ul&gt;
-      &lt;li&gt;About $\lambda$&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;Dataset&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;sty&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;ds&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;cyc&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;CelebA-HQ&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;AFHQ&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;0.3&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;0.1&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;h1 id=&quot;experiments&quot;&gt;Experiments&lt;/h1&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Baselines
-    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;https://arxiv.org/abs/1804.04732&quot;&gt;MUNIT&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;https://arxiv.org/abs/1808.00948&quot;&gt;DRIT&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;https://arxiv.org/abs/1903.05628&quot;&gt;MSGAN&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;https://arxiv.org/abs/1711.09020&quot;&gt;StarGAN&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;Datasets
-    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;http://mmlab.ie.cuhk.edu.hk/projects/CelebA.html&quot;&gt;CelebA-HQ&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;https://github.com/clovaai/stargan-v2/blob/master/download.sh&quot;&gt;AFHQ&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;Evaluation metrics
-    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;https://arxiv.org/abs/1706.08500&quot;&gt;Frechet inception distance (FID)&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;https://arxiv.org/abs/1801.03924&quot;&gt;Learned perceptual image patch similarity (LPIPS)&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;analysis-of-individual-components&quot;&gt;Analysis of individual components&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;StarGAN에서 본 연구에서 제안하는 방법들을 하나하나 넣어가면서 성능 실험.&lt;/li&gt;
-  &lt;li&gt;정량적 평가를 보면 추가할 때마다 좋아지는 것을 볼 수 있음.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/starganv2/Untitled_5.png&quot; alt=&quot;https://jjerry-k.github.io/public/img/starganv2/Untitled_5.png&quot; /&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;각 단계별 생성한 영상의 결과&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/starganv2/Untitled_6.png&quot; alt=&quot;https://jjerry-k.github.io/public/img/starganv2/Untitled_6.png&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;comparison-on-diverse-image-synthesis&quot;&gt;Comparison on diverse image synthesis&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;다른 방법들과 비교&lt;/li&gt;
-  &lt;li&gt;Latent-guided synthesis ( Latent code 만을 이용하여 생성 )&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/starganv2/Untitled_7.png&quot; alt=&quot;https://jjerry-k.github.io/public/img/starganv2/Untitled_7.png&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/starganv2/Untitled_8.png&quot; alt=&quot;https://jjerry-k.github.io/public/img/starganv2/Untitled_8.png&quot; /&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Referenc-guided synthesis ( Style code 를 이용한 생성 )&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/starganv2/Untitled_9.png&quot; alt=&quot;https://jjerry-k.github.io/public/img/starganv2/Untitled_9.png&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/starganv2/Untitled_10.png&quot; alt=&quot;https://jjerry-k.github.io/public/img/starganv2/Untitled_10.png&quot; /&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Human evaluation
-    &lt;ul&gt;
-      &lt;li&gt;방법 별로 100개의 sample 생성 후 사람이 판단.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/starganv2/Untitled_11.png&quot; alt=&quot;https://jjerry-k.github.io/public/img/starganv2/Untitled_11.png&quot; /&gt;&lt;/p&gt;
-
-&lt;h1 id=&quot;result&quot;&gt;Result&lt;/h1&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;겁나….잘 생성함…&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/starganv2/Untitled_12.png&quot; alt=&quot;https://jjerry-k.github.io/public/img/starganv2/Untitled_12.png&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/starganv2/Untitled_13.png&quot; alt=&quot;https://jjerry-k.github.io/public/img/starganv2/Untitled_13.png&quot; /&gt;&lt;/p&gt;
-</description>
-        <pubDate>Wed, 04 Mar 2020 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/deeplearning/2020/03/04/starganv2/</link>
-        <guid isPermaLink="true">http://localhost:4000/deeplearning/2020/03/04/starganv2/</guid>
-        
-        <category>Paper</category>
         
         
         <category>DeepLearning</category>

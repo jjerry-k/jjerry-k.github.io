@@ -5,116 +5,82 @@
     <link href="http://gmpg.org/xfn/11" rel="profile">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
-  
+
     <!-- Enable responsiveness on mobile devices-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-  
+
     <title>
-      
+        
         Blog &middot; Jerry's Blog
-      
+        
     </title>
-  
+
     <!-- CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
     <link rel="stylesheet" href="/public/css/main.css">
-  
+
     <!-- Icons -->
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144"
+        href="/public/apple-touch-icon-precomposed.png">
     <link rel="shortcut icon" href="/public/favicon.ico">
-  
+
     <!-- RSS -->
     <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
-  
+
     <!-- scroll -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script>
-      $( window ).scroll( function() {
-        if ( $( this ).scrollTop() > 500 ) {
-          $( '.top' ).fadeIn();
-        } else {
-          $( '.top' ).fadeOut();
-        }
-      } );
-      $( '.top' ).click( function() {
-        $( 'html, body' ).stop().animate( { scrollTop : 0 }, 100);
-        return false;
-      } );
+        $(window).scroll(function () {
+            if ($(this).scrollTop() > 500) {
+                $('.top').fadeIn();
+            } else {
+                $('.top').fadeOut();
+            }
+        });
+        $('.top').click(function () {
+            $('html, body').stop().animate({ scrollTop: 0 }, 100);
+            return false;
+        });
     </script>
-    
+
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     <script>
-      (absbygoogle = window.adsbygoogle || []).push({
-          google_ad_client: "ca-pub-1054696837285307",
-          enable_page_level_ads: true
-      });
+        (absbygoogle = window.adsbygoogle || []).push({
+            google_ad_client: "ca-pub-1054696837285307",
+            enable_page_level_ads: true
+        });
     </script>
+
     
-    <!-- 
     <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-        //jax: ["input/TeX", "output/HTML-CSS"],
-        TeX: {
-          equationNumbers: {
-            autoNumber: "AMS"
-          }
-        },
-        tex2jax: {
-          inlineMath: [ ['$', '$'] ],
-          displayMath: [ ['$$', '$$'] ],
-          processEscapes: true,
-          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-        }
-        //,
-        //displayAlign: "left",
-        //displayIndent: "2em"
-      });
-      MathJax.Hub.Register.MessageHook("Math Processing Error",function (message) {
-        alert("Math Processing Error: "+message[1]);
-      });
-    MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
-        alert("Math Processing Error: "+message[1]);
-      });
-    </script>
-    <script type="text/javascript" async
-      src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript">
-    </script>
-     -->
+            MathJax.Hub.Config({
+              //jax: ["input/TeX", "output/HTML-CSS"],
+              tex2jax: {
+                inlineMath: [ ['$', '$'] ],
+                displayMath: [ ['$$', '$$'] ],
+                processEscapes: true,
+                skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+              }
+              //,
+              //displayAlign: "left",
+              //displayIndent: "2em"
+            });
+          </script>
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
     
-    
-  <script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-      //jax: ["input/TeX", "output/HTML-CSS"],
-      tex2jax: {
-        inlineMath: [ ['$', '$'] ],
-        displayMath: [ ['$$', '$$'] ],
-        processEscapes: true,
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-      }
-      //,
-      //displayAlign: "left",
-      //displayIndent: "2em"
-    });
-  </script>
-  <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
-  
 
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="/dest/simple-jekyll-search.js" type="text/javascript"></script>
     <script type="text/javascript">
-    $(document).ready(function(){
-      document.search.searchinput.focus();
-    });
+        $(document).ready(function () {
+            document.search.searchinput.focus();
+        });
     </script>
-  </head>
-  
+</head>
+
   <style>blockquote {font-size: 1em; line-height: 1.4}</style>
-  
-  <!-- New line Start-->
-  <!--  -->
-  <!-- New line End -->
   </head>
   <body>
 
@@ -308,6 +274,172 @@
 
       <div class="container content">
         <div class="posts">
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/deeplearning/2020/07/13/colab_vscode/">
+        Colab x VSCode !
+      </a>
+    </h1>
+
+    <span class="post-date">13 Jul 2020</span>
+     | 
+    
+    <a href="/blog/tags/#tools" class="post-tag">Tools</a>
+    
+    
+
+    <h4 style="font-weight: 400; line-height: 1.8;"><article>
+      <blockquote>
+  <p>본 포스팅은 <a href="https://towardsdatascience.com/colab-free-gpu-ssh-visual-studio-code-server-36fe1d3c5243">Colab on steroids: free GPU instances with SSH access and Visual Studio Code Server</a> 내용을 (많이) 참고하여 작성하였습니다.</p>
+</blockquote>
+
+<p>많은 분들이 Google Colaboratory (코랩) 를 사용하실겁니다. (무료니까…)</p>
+
+<p>무료로 고성능(?)의 하드웨어를 쓸 수 있다는 건 참 좋은 것입니다!</p>
+
+<p>하지만…문제는 Jupyter Notebook 형식으로 써야한다는거…아 물론 편하신 분들도 있겠죠!?</p>
+
+<p>전 개인적으로 별로 안좋아합니다. (물론 애초에 안쓰기도 함.)</p>
+
+<p>근데 SSH, VSCode Server를 이용해서 Colab에 접속을…하는 포스팅이 있더군요.</p>
+
+<p>갑자기 실험쥐 정신이 튀어나와서 진행을 해봤습니다.</p>
+
+<p>뻘소리 그만하고 간단 간단 설명 시작하겠습니다.</p>
+
+<h2 id="1-ngrok으로-token-만들기">1. ngrok으로 token 만들기</h2>
+
+<p>ngrok은 대충 로컬 웹 서버를 SSH 접속이나 모바일 테스트 할 수 있도록 공공 URL로 접근 가능토록 해주는 것입니다.  가격은 걱정하지 마세요. 1개는 무료거든요.</p>
+
+<p><img src="https://jjerry-k.github.io/public/img/colab_vscode/Untitled.png" alt="https://jjerry-k.github.io/public/img/colab_vscode/Untitled.png" /></p>
+
+<p>어쨌든 가입을 하고 token을 생성 해줍니다.</p>
+
+<p><img src="https://jjerry-k.github.io/public/img/colab_vscode/Untitled_1.png" alt="https://jjerry-k.github.io/public/img/colab_vscode/Untitled_1.png" /></p>
+
+<p><img src="https://jjerry-k.github.io/public/img/colab_vscode/Untitled_2.png" alt="https://jjerry-k.github.io/public/img/colab_vscode/Untitled_2.png" /></p>
+
+<h2 id="2-colab에-ngrok-설치-및-실행">2. Colab에 ngrok 설치 및 실행</h2>
+
+<p>노트북 설정을 먼저 해주세요. (ex) CPU, GPU, TPU</p>
+
+<p><img src="https://jjerry-k.github.io/public/img/colab_vscode/Untitled_3.png" alt="https://jjerry-k.github.io/public/img/colab_vscode/Untitled_3.png" /></p>
+
+<p>그리고 셀에 다음과 같이 코드를 실행합니다.</p>
+
+<p>아래 authtoken 에는 ngrok의 Authtoken을 적어주세요. (당연하지만 스트링으로)</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Install useful stuff
+</span><span class="err">!</span> <span class="n">apt</span> <span class="n">install</span> <span class="o">--</span><span class="n">yes</span> <span class="n">ssh</span> <span class="n">screen</span> <span class="n">nano</span> <span class="n">htop</span> <span class="n">ranger</span> <span class="n">git</span> <span class="o">&gt;</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">null</span>
+<span class="c1"># SSH setting
+</span><span class="err">!</span> <span class="n">echo</span> <span class="s">"root:carbonara"</span> <span class="o">|</span> <span class="n">chpasswd</span>
+<span class="err">!</span> <span class="n">echo</span> <span class="s">"PasswordAuthentication yes"</span> <span class="o">&gt;</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">ssh</span><span class="o">/</span><span class="n">sshd_config</span>
+<span class="err">!</span> <span class="n">echo</span> <span class="s">"PermitUserEnvironment yes"</span> <span class="o">&gt;&gt;</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">ssh</span><span class="o">/</span><span class="n">sshd_config</span>
+<span class="err">!</span> <span class="n">echo</span> <span class="s">"PermitRootLogin yes"</span> <span class="o">&gt;&gt;</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">ssh</span><span class="o">/</span><span class="n">sshd_config</span>
+<span class="err">!</span> <span class="n">service</span> <span class="n">ssh</span> <span class="n">restart</span> <span class="o">&gt;</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">null</span>
+<span class="c1"># Download ngrok
+</span><span class="err">!</span> <span class="n">wget</span> <span class="o">-</span><span class="n">q</span> <span class="o">-</span><span class="n">c</span> <span class="o">-</span><span class="n">nc</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="nb">bin</span><span class="p">.</span><span class="n">equinox</span><span class="p">.</span><span class="n">io</span><span class="o">/</span><span class="n">c</span><span class="o">/</span><span class="mi">4</span><span class="n">VmDzA7iaHb</span><span class="o">/</span><span class="n">ngrok</span><span class="o">-</span><span class="n">stable</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">amd64</span><span class="p">.</span><span class="nb">zip</span>
+<span class="err">!</span> <span class="n">unzip</span> <span class="o">-</span><span class="n">qq</span> <span class="o">-</span><span class="n">n</span> <span class="n">ngrok</span><span class="o">-</span><span class="n">stable</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">amd64</span><span class="p">.</span><span class="nb">zip</span>
+<span class="c1"># Run ngrok
+</span><span class="n">authtoken</span> <span class="o">=</span> <span class="o">**</span><span class="s">"PUT_YOUR_TOKEN_HERE"</span><span class="o">**</span>
+<span class="n">get_ipython</span><span class="p">().</span><span class="n">system_raw</span><span class="p">(</span><span class="s">'./ngrok authtoken $authtoken &amp;&amp; ./ngrok tcp 22 &amp;'</span><span class="p">)</span>
+<span class="err">!</span> <span class="n">sleep</span> <span class="mi">3</span>
+<span class="c1"># Get the address for SSH
+</span><span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">from</span> <span class="nn">re</span> <span class="kn">import</span> <span class="n">sub</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">'http://localhost:4040/api/tunnels'</span><span class="p">)</span>
+<span class="n">str_ssh</span> <span class="o">=</span> <span class="n">r</span><span class="p">.</span><span class="n">json</span><span class="p">()[</span><span class="s">'tunnels'</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s">'public_url'</span><span class="p">]</span>
+<span class="n">str_ssh</span> <span class="o">=</span> <span class="n">sub</span><span class="p">(</span><span class="s">"tcp://"</span><span class="p">,</span> <span class="s">""</span><span class="p">,</span> <span class="n">str_ssh</span><span class="p">)</span>
+<span class="n">str_ssh</span> <span class="o">=</span> <span class="n">sub</span><span class="p">(</span><span class="s">":"</span><span class="p">,</span> <span class="s">" -p "</span><span class="p">,</span> <span class="n">str_ssh</span><span class="p">)</span>
+<span class="n">str_ssh</span> <span class="o">=</span> <span class="s">"ssh root@"</span> <span class="o">+</span> <span class="n">str_ssh</span>
+<span class="k">print</span><span class="p">(</span><span class="n">str_ssh</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><img src="https://jjerry-k.github.io/public/img/colab_vscode/Untitled_4.png" alt="https://jjerry-k.github.io/public/img/colab_vscode/Untitled_4.png" /></p>
+
+<p>출력으로 나온 커맨드를 이용하여 한번 터미널에서 테스트를 해봅니다. 비밀번호는 <code class="language-plaintext highlighter-rouge">carbonara</code> 입니다.</p>
+
+<p><img src="https://jjerry-k.github.io/public/img/colab_vscode/Untitled_5.png" alt="https://jjerry-k.github.io/public/img/colab_vscode/Untitled_5.png" /></p>
+
+<h2 id="3-vscode에서-실행하기">3. VSCode에서 실행하기</h2>
+
+<p>먼저 Colab 화면에서 다음 코드를 실행해서 Google Drive를 마운트 해줍니다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Mount Google Drive and make some folders for vscode
+</span><span class="kn">from</span> <span class="nn">google.colab</span> <span class="kn">import</span> <span class="n">drive</span>
+<span class="n">drive</span><span class="p">.</span><span class="n">mount</span><span class="p">(</span><span class="s">'/googledrive'</span><span class="p">)</span>
+<span class="err">!</span> <span class="n">mkdir</span> <span class="o">-</span><span class="n">p</span> <span class="o">/</span><span class="n">googledrive</span><span class="o">/</span><span class="n">My</span>\ <span class="n">Drive</span><span class="o">/</span><span class="n">colabdrive</span>
+<span class="err">!</span> <span class="n">mkdir</span> <span class="o">-</span><span class="n">p</span> <span class="o">/</span><span class="n">googledrive</span><span class="o">/</span><span class="n">My</span>\ <span class="n">Drive</span><span class="o">/</span><span class="n">colabdrive</span><span class="o">/</span><span class="n">root</span><span class="o">/</span><span class="p">.</span><span class="n">local</span><span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">code</span><span class="o">-</span><span class="n">server</span>
+<span class="err">!</span> <span class="n">ln</span> <span class="o">-</span><span class="n">s</span> <span class="o">/</span><span class="n">googledrive</span><span class="o">/</span><span class="n">My</span>\ <span class="n">Drive</span><span class="o">/</span><span class="n">colabdrive</span> <span class="o">/</span>
+<span class="err">!</span> <span class="n">ln</span> <span class="o">-</span><span class="n">s</span> <span class="o">/</span><span class="n">googledrive</span><span class="o">/</span><span class="n">My</span>\ <span class="n">Drive</span><span class="o">/</span><span class="n">colabdrive</span><span class="o">/</span><span class="n">root</span><span class="o">/</span><span class="p">.</span><span class="n">local</span><span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">code</span><span class="o">-</span><span class="n">server</span> <span class="o">/</span><span class="n">root</span><span class="o">/</span><span class="p">.</span><span class="n">local</span><span class="o">/</span><span class="n">share</span><span class="o">/</span>
+</code></pre></div></div>
+
+<p><img src="https://jjerry-k.github.io/public/img/colab_vscode/Untitled_6.png" alt="https://jjerry-k.github.io/public/img/colab_vscode/Untitled_6.png" /></p>
+
+<p>VSCode를 켜고 ssh로 접속을 해봅니다.</p>
+
+<p><img src="https://jjerry-k.github.io/public/img/colab_vscode/Untitled_7.png" alt="https://jjerry-k.github.io/public/img/colab_vscode/Untitled_7.png" /></p>
+
+<p>접속해서 Colab Notebooks 디렉토리에 접근한 화면입니다. Google Drive랑 동일한 것을 확인할 수 있죠!</p>
+
+<p><img src="https://jjerry-k.github.io/public/img/colab_vscode/Untitled_8.png" alt="https://jjerry-k.github.io/public/img/colab_vscode/Untitled_8.png" /></p>
+
+<h2 id="4-코드-작성-및-실행">4. 코드 작성 및 실행</h2>
+
+<p>코드 실행 여부를 테스트 해보겠습니다.</p>
+
+<p>일단 Colab 에는 VSCode 플러그인이 설치 되어 있지 않기 때문에 python이나 개인적으로 필요한 플러그인들을 설치해줍니다.</p>
+
+<p>저는 테스트이니 아래 세 가지만 설치했습니다.</p>
+
+<p><img src="https://jjerry-k.github.io/public/img/colab_vscode/Untitled_9.png" alt="https://jjerry-k.github.io/public/img/colab_vscode/Untitled_9.png" /></p>
+
+<p>그럼 한번 실행해보죠.</p>
+
+<p><img src="https://jjerry-k.github.io/public/img/colab_vscode/Untitled_10.png" alt="https://jjerry-k.github.io/public/img/colab_vscode/Untitled_10.png" /></p>
+
+<p>오…..신기…</p>
+
+<p>이렇게 연결해서 사용이 가능합니다.</p>
+
+<p><code class="language-plaintext highlighter-rouge">htop</code>를 이용해서 리소스 모니터링도 가능하죠.</p>
+
+<p><img src="https://jjerry-k.github.io/public/img/colab_vscode/Untitled_11.png" alt="https://jjerry-k.github.io/public/img/colab_vscode/Untitled_11.png" /></p>
+
+<p>여기까지 Colab x VSCode 포스팅입니다. 뭐….어떤 면에선 편할 것 같지만 막…편할 것 같진 않네요.</p>
+
+<p>아직 이 상황을 겪지 않아서 모르겠지만 원래 코랩의 큰 문제가 있죠. Session timeout….</p>
+
+<p>일정 시간동안 동작이 없으면 연결이 끊겨서 다시 실행을 시켜야하는….상황이 오죠.</p>
+
+<p><img src="https://jjerry-k.github.io/public/img/colab_vscode/Untitled_12.png" alt="https://jjerry-k.github.io/public/img/colab_vscode/Untitled_12.png" /></p>
+
+<p>나한테 왜 그래…</p>
+
+<p>그 상황이 왔을 때 느낌으로는 VSCode의 SSH 접속이 끊길 것 같네요. 흠…. 실험 후에 추가로 적어 보겠습니다.</p>
+
+<h2 id="ps">P.S</h2>
+
+<p>끊겼습니다.</p>
+
+<p><img src="https://github.com/jjerry-k/jjerry-k.github.io/blob/master/public/img/colab_vscode/Untitled_13.png?raw=true" alt="https://jjerry-k.github.io/public/img/colab_vscode/Untitled_13.png" /></p>
+
+<p>VSCode 를 봐도..</p>
+
+<p><img src="https://github.com/jjerry-k/jjerry-k.github.io/blob/master/public/img/colab_vscode/Untitled_14.png?raw=true" alt="https://jjerry-k.github.io/public/img/colab_vscode/Untitled_14.png" /></p>
+
+<p>그렇습니다. 제 생각대로 Colab의 Session time이 끝나면…끊기네요..ㅎㅎ
+편하게 쓰기는 힘들 듯…</p>
+
+    <article></h4>
+    <div class="post-more">
+      
+      <a href="/deeplearning/2020/07/13/colab_vscode/#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
+      
+      <a href="/deeplearning/2020/07/13/colab_vscode/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
+    </div>
+  </div>
   
   <div class="post">
     <h1 class="post-title">
@@ -957,161 +1089,6 @@ NIPA는 <a href="https://www.nipa.kr/"><strong>정보통신산업진흥원</stro
       <a href="/deeplearning/2020/06/14/tf2_multi_gpu/#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
       
       <a href="/deeplearning/2020/06/14/tf2_multi_gpu/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
-    </div>
-  </div>
-  
-  <div class="post">
-    <h1 class="post-title">
-      <a href="/deeplearning/2020/06/13/DETR/">
-        Review: DETR
-      </a>
-    </h1>
-
-    <span class="post-date">13 Jun 2020</span>
-     | 
-    
-    <a href="/blog/tags/#paper" class="post-tag">Paper</a>
-    
-    
-
-    <h4 style="font-weight: 400; line-height: 1.8;"><article>
-      <h1 id="end-to-end-object-detection-with-transformers">End-to-End Object Detection with Transformers</h1>
-
-<p>Author: Nicolas Carion, Francisco Massa, Gabriel Synnaeve, Nicolas Usunier, Alexander Kirillov, and Sergey Zagoruyko
-Date: May 27, 2020
-URL: https://ai.facebook.com/research/publications/end-to-end-object-detection-with-transformers</p>
-
-<h1 id="introduction">Introduction</h1>
-
-<ul>
-  <li>현재 Object detection model들은 Input부터 Output (bounding bos, category label) 까지 Direct 하지 못함.  Post processing 이 영향을 끼치기 때문에…</li>
-  <li>본 논문에선 Direct prediction approach 제안.</li>
-  <li>이전에도 몇몇 실험이 있었으나 그 당시에는 prior knowledge를 준다거나 성능이 별로 좋지 못했음.</li>
-  <li><a href="https://arxiv.org/abs/1706.03762">Transformer</a> 를 사용.</li>
-  <li>새로운 Loss function 도입.</li>
-</ul>
-
-<p><img src="https://jjerry-k.github.io/public/img/DETR/Untitled.png" alt="jjerry-k.github.io/public/img/DETR/Untitled.png" /></p>
-
-<h1 id="related-works">Related Works</h1>
-
-<h2 id="set-prediction">Set Prediction</h2>
-
-<ul>
-  <li>현재까지 Direct로 set(box, class)을 prediction 하는 방법이 없음.</li>
-  <li>Post processing 이 없는 model 제안.</li>
-  <li>이를 위해 Hungarian algorithm 기반의 loss 설계.</li>
-</ul>
-
-<h2 id="transformers-and-parallel-decoding">Transformers and Parallel Decoding</h2>
-
-<ul>
-  <li>다른 RNN 계열보다 Long sequence 에 적합한 model</li>
-  <li>auto-regressive model</li>
-</ul>
-
-<h2 id="object-detection">Object detection</h2>
-
-<h3 id="set-based-loss">Set-based loss</h3>
-
-<ul>
-  <li>기존에 bipatite matching loss 를 사용했지만  NMS 를 사용해야 성능이 향상되었음.</li>
-  <li>그 후 Learnable NMS 를 사용한 방법이 제시 되었으나 hand-crafted context feature 를 사용 하기에 효율적이지 못함.</li>
-</ul>
-
-<h3 id="recurrent-detectors">Recurrent detectors</h3>
-
-<ul>
-  <li>이름에서 알 수 있듯 RNN 계열을 도입한 Object detection</li>
-  <li>기존 방법에선 Small dataset을 이용했고 RNN 계열을 이용했기에 parallel 구조를 가져가지 못했음.</li>
-</ul>
-
-<h1 id="the-detr-model">The DETR model</h1>
-
-<ul>
-  <li>DETR은 크게 두 개의 장점이 있음. → a set prediction loss, a architecture</li>
-</ul>
-
-<p><img src="https://jjerry-k.github.io/public/img/DETR/Untitled_1.png" alt="jjerry-k.github.io/public/img/DETR/Untitled_1.png" /></p>
-
-<h2 id="object-detection-set-prediction-loss">Object detection set prediction loss</h2>
-
-<p>[\hat{\sigma} = {argmin}<em>{\sigma \in \mathfrak{S}_N} \sum^N_i \mathcal{L}</em>{match}(y_i, \hat{y}_{\sigma(i)})]</p>
-
-<p>[\mathcal{L}<em>{match}(y_i, \hat{y}</em>{\sigma(i)}) = -1<em>{c_i \neq \phi}\hat{p}</em>{\sigma(i)}(c_i) +1<em>{c_i \neq \phi}\mathcal{L}</em>{box}(b_i, \hat{b}_{\sigma(i)})]</p>
-
-<p>[\mathcal{L}<em>{Hungarian}(y, \hat{y}) = \sum^N_i[-\log\hat{p}</em>{\hat{\sigma}(i)}(c_i) +1<em>{c_i \neq \phi}\mathcal{L}</em>{box}(b_i, \hat{b}_{\hat{\sigma}(i)})]]</p>
-
-<h3 id="bounding-box-loss">Bounding box loss</h3>
-
-<p>[\lambda_{iou}\mathcal{L}<em>{iou}(b_i, \hat{b}</em>{\sigma(i)}) + \lambda_{\mathrm{L}1}|b_i - \hat{b}_{\sigma(i)}|_1]</p>
-
-<h2 id="detr-architecture">DETR architecture</h2>
-
-<h3 id="backbone">Backbone</h3>
-
-<ul>
-  <li>일반적인 Backbone 사용.</li>
-  <li>마지막 feataure map은 원본 사이즈 H, W 에 비해 32분의 1 downsampling, C는 2048</li>
-</ul>
-
-<h3 id="transformer-encoder">Transformer encoder</h3>
-
-<ul>
-  <li>Attention is all you need의 Transformer의 encoder와 동일한 구조.</li>
-  <li>Fixed positional encodings 으로 인하여 permutation-invariant 한 구조!</li>
-</ul>
-
-<h3 id="transformer-decoder">Transformer decoder</h3>
-
-<ul>
-  <li>Attention is all you need의 Transformer의 decoder와 동일한 구조.</li>
-  <li>기존 Transformer와 차이는</li>
-</ul>
-
-<h3 id="prediction-feed-forward-networks-ffns">Prediction feed-forward networks (FFNs)</h3>
-
-<ul>
-  <li>ReLU를 사용하는 d dimension의 linear layer 3 개 사용.</li>
-  <li>한 branch 에서는 Normalized center coordinate, height, width 를 예측.</li>
-  <li>다른 하나의 branch는 class label을 softmax를 이용하여 예측.</li>
-  <li>DETR은 항상 N개의 box에 대해 예측. 하지만 실제 object 수가 적을때는 나머지 box들을 no object 로 처리.</li>
-</ul>
-
-<h3 id="auxiliary-decoding-losses">Auxiliary decoding losses</h3>
-
-<ul>
-  <li>Transformer decoder에  Auxiliary loss 를 추가.</li>
-</ul>
-
-<h1 id="experiment">Experiment</h1>
-
-<h2 id="comparison-with-faster-r-cnn">Comparison with Faster R-CNN</h2>
-
-<p><img src="https://jjerry-k.github.io/public/img/DETR/Untitled_2.png" alt="jjerry-k.github.io/public/img/DETR/Untitled_2.png" /></p>
-
-<h2 id="ablations">Ablations</h2>
-
-<p><img src="https://jjerry-k.github.io/public/img/DETR/Untitled_3.png" alt="jjerry-k.github.io/public/img/DETR/Untitled_3.png" /></p>
-
-<p><img src="https://jjerry-k.github.io/public/img/DETR/Untitled_4.png" alt="jjerry-k.github.io/public/img/DETR/Untitled_4.png" /></p>
-
-<h2 id="panoptic-segmentation">Panoptic segmentation</h2>
-
-<p><img src="https://jjerry-k.github.io/public/img/DETR/Untitled_5.png" alt="jjerry-k.github.io/public/img/DETR/Untitled_5.png" /></p>
-
-<h2 id="ps">P.S</h2>
-<ul>
-  <li>내용 보충 예정.</li>
-  <li>신박한 컨셉.</li>
-</ul>
-
-    <article></h4>
-    <div class="post-more">
-      
-      <a href="/deeplearning/2020/06/13/DETR/#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
-      
-      <a href="/deeplearning/2020/06/13/DETR/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
     </div>
   </div>
   

@@ -1,6 +1,14 @@
 [
   
     {
+      "title"    : "Weights &amp; Biases Usage - [1]",
+      "category" : "DeepLearning",
+      "tags"     : "Tools",
+      "url"      : "/deeplearning/2020/08/27/wandb_usage_1/",
+      "date"     : "2020-08-27 00:00:00 +0900"
+    } ,
+  
+    {
       "title"    : "Paper Reading Roadmap",
       "category" : "DeepLearning",
       "tags"     : "Paper",

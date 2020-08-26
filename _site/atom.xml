@@ -4,13 +4,72 @@
  <title>Jerry's Blog</title>
  <link href="http://localhost:4000/atom.xml" rel="self"/>
  <link href="http://localhost:4000/"/>
- <updated>2020-08-21T00:44:27+09:00</updated>
+ <updated>2020-08-27T00:07:12+09:00</updated>
  <id>http://localhost:4000</id>
  <author>
    <name>Jerry</name>
    <email></email>
  </author>
 
+ 
+ <entry>
+   <title>Weights & Biases Usage - [1]</title>
+   <link href="http://localhost:4000/deeplearning/2020/08/27/wandb_usage_1/"/>
+   <updated>2020-08-27T00:00:00+09:00</updated>
+   <id>http://localhost:4000/deeplearning/2020/08/27/wandb_usage_1</id>
+   <content type="html">&lt;p&gt;이번 포스팅은 &lt;a href=&quot;https://www.wandb.com&quot;&gt;Weights &amp;amp; Biases&lt;/a&gt; 를 활용하여 Network 성능 비교 예시를 하려고 합니다.&lt;/p&gt;
+
+&lt;p&gt;어려운 글이 아니기 때문에 금방 금방 따라하실 수 있을 것 같습니다!&lt;/p&gt;
+
+&lt;h3 id=&quot;task&quot;&gt;Task&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Flower classification
+    &lt;ul&gt;
+      &lt;li&gt;daisy, roses, dandelion, sunflowers, tulips&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;List of pretrained-model
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;https://www.tensorflow.org/versions/r2.2/api_docs/python/tf/keras/applications&quot;&gt;tf.keras.applications&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Detail of training
+    &lt;ul&gt;
+      &lt;li&gt;Image size: 150x150x3&lt;/li&gt;
+      &lt;li&gt;Epochs: 5&lt;/li&gt;
+      &lt;li&gt;Batch size: 256&lt;/li&gt;
+      &lt;li&gt;Freezing: True&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;자세한 코드는 &lt;a href=&quot;https://github.com/jjerry-k/for_wandb&quot;&gt;for_wandb 라는 repository&lt;/a&gt;에 올려놨으니 확인하시면 됩니다.&lt;/p&gt;
+
+&lt;p&gt;train.sh를 실행하게 되면 위에 적혀있는 pretrined model 만 변경해서 classification 을 수행하게 됩니다!&lt;/p&gt;
+
+&lt;p&gt;그 후 weights &amp;amp; biases 화면을 가서 확인해 보면…&lt;/p&gt;
+
+&lt;p&gt;각 모델별 loss, acc, val_loss, val_acc graph를 확인할 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/wandb_usage_1/Untitled.png&quot; alt=&quot;https://jjerry-k.github.io/public/img/wandb_usage_1/Untitled.png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;좌측 상단에 Run 옆을 보시면 테이블 모양 아이콘이 있는데 이를 누르면 다음과 같이 테이블로 정리되어 있는 것을 확인 하실 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://jjerry-k.github.io/public/img/wandb_usage_1/Untitled_1.png&quot; alt=&quot;https://jjerry-k.github.io/public/img/wandb_usage_1/Untitled_1.png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;이번 포스팅은 Weights &amp;amp; Biases를 이용하여 모델 별 성능 비교를 해보았습니다.&lt;/p&gt;
+
+&lt;p&gt;조만간…Sweep 이라는 Hyperparameter search and model optimization 방법에 대해 포스팅을 해보려 합니다!&lt;/p&gt;
+
+&lt;h2 id=&quot;ps&quot;&gt;P.S&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;마스크 답답…..&lt;/li&gt;
+  &lt;li&gt;날씨 후덥지근, 짜증….&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+ </entry>
  
  <entry>
    <title>Paper Reading Roadmap</title>
@@ -25,6 +84,7 @@
 
 &lt;h1 id=&quot;contents-of-posting&quot;&gt;Contents of Posting&lt;/h1&gt;
 &lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;#contents-of-posting&quot;&gt;Contents of Posting&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#paper-reading-roadmap&quot;&gt;Paper Reading Roadmap&lt;/a&gt;
     &lt;ul&gt;
       &lt;li&gt;&lt;a href=&quot;#ml-basics&quot;&gt;ML Basics&lt;/a&gt;&lt;/li&gt;
@@ -150,81 +210,82 @@
 
 &lt;h3 id=&quot;kernel-machines&quot;&gt;Kernel Machines&lt;/h3&gt;
 &lt;ul&gt;
-  &lt;li&gt;An Introduction to Kernel-based Learning Algorithms&lt;/li&gt;
-  &lt;li&gt;A Tutorial on Support Vector Machine for Pattern Recognition&lt;/li&gt;
-  &lt;li&gt;A Tutorial on Support Vector Regression&lt;/li&gt;
-  &lt;li&gt;A Tutorial on nu-Support Vector Machines&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://pdfs.semanticscholar.org/2eb2/ca05a79d1d81033237aad416ad4a1ce90a70.pdf&quot;&gt;An Introduction to Kernel-based Learning Algorithms&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.di.ens.fr/~mallat/papiers/svmtutorial.pdf&quot;&gt;A Tutorial on Support Vector Machine for Pattern Recognition&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://alex.smola.org/papers/2003/SmoSch03b.pdf&quot;&gt;A Tutorial on Support Vector Regression&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://is.tuebingen.mpg.de/fileadmin/user_upload/files/publications/pdf3353.pdf&quot;&gt;A Tutorial on nu-Support Vector Machines&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h3 id=&quot;ensemble&quot;&gt;Ensemble&lt;/h3&gt;
 &lt;ul&gt;
-  &lt;li&gt;Bagging Predictors&lt;/li&gt;
-  &lt;li&gt;Random Forests&lt;/li&gt;
-  &lt;li&gt;A short introduction to boosting&lt;/li&gt;
-  &lt;li&gt;Greedy Function Approximation: A Gradient Boosting Machine&lt;/li&gt;
-  &lt;li&gt;Gradient Boosting Machine, A Tutorial&lt;/li&gt;
-  &lt;li&gt;XGBoost: A Scalable Tree Boosting System&lt;/li&gt;
-  &lt;li&gt;LightGBM: A Highly Efficient Gradient Boosting Decision Tree&lt;/li&gt;
-  &lt;li&gt;CatBoost : unbiased boosting with categorical features&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.stat.berkeley.edu/~breiman/bagging.pdf&quot;&gt;Bagging Predictors&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.stat.berkeley.edu/~breiman/randomforest2001.pdf&quot;&gt;Random Forests&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://cseweb.ucsd.edu/~yfreund/papers/IntroToBoosting.pdf&quot;&gt;A short introduction to boosting&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://statweb.stanford.edu/~jhf/ftp/trebst.pdf&quot;&gt;Greedy Function Approximation: A Gradient Boosting Machine&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.frontiersin.org/articles/10.3389/fnbot.2013.00021/full&quot;&gt;Gradient Boosting Machine, A Tutorial&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://arxiv.org/pdf/1603.02754.pdf&quot;&gt;XGBoost: A Scalable Tree Boosting System&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://papers.nips.cc/paper/6907-lightgbm-a-highly-efficient-gradient-boosting-decision-tree.pdf&quot;&gt;LightGBM: A Highly Efficient Gradient Boosting Decision Tree&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://papers.nips.cc/paper/7898-catboost-unbiased-boosting-with-categorical-features.pdf&quot;&gt;CatBoost : unbiased boosting with categorical features&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&quot;semi-supervvised-learning&quot;&gt;Semi-supervvised Learning&lt;/h2&gt;
 &lt;ul&gt;
-  &lt;li&gt;Combining Labeled and Unlabeled Data with Co-Training&lt;/li&gt;
-  &lt;li&gt;Semi-supervised Learning with Deep Generative Models&lt;/li&gt;
-  &lt;li&gt;Semi-Supervised Classification with Graph Convolutional Networks&lt;/li&gt;
-  &lt;li&gt;MixMatch: A Holistic Approach to Semi-Supervised Learning&lt;/li&gt;
-  &lt;li&gt;ReMixMatch: Semi-Supervised Learning with Distribution Alignment and Augmentation Anchoring&lt;/li&gt;
-  &lt;li&gt;FixMatch: Simplifying Semi-Supervised Learning with Consistency and Confidence&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.cs.cmu.edu/~avrim/Papers/cotrain.pdf&quot;&gt;Combining Labeled and Unlabeled Data with Co-Training&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://papers.nips.cc/paper/5352-semi-supervised-learning-with-deep-generative-models.pdf&quot;&gt;Semi-supervised Learning with Deep Generative Models&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://arxiv.org/pdf/1609.02907.pdf&quot;&gt;Semi-Supervised Classification with Graph Convolutional Networks&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://papers.nips.cc/paper/8749-mixmatch-a-holistic-approach-to-semi-supervised-learning.pdf&quot;&gt;MixMatch: A Holistic Approach to Semi-Supervised Learning&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://arxiv.org/pdf/1911.09785.pdf&quot;&gt;ReMixMatch: Semi-Supervised Learning with Distribution Alignment and Augmentation Anchoring&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://arxiv.org/pdf/2001.07685.pdf&quot;&gt;FixMatch: Simplifying Semi-Supervised Learning with Consistency and Confidence&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&quot;unsupervised-learning&quot;&gt;Unsupervised Learning&lt;/h2&gt;
 &lt;ul&gt;
-  &lt;li&gt;Anomaly Detection: A Survey&lt;/li&gt;
-  &lt;li&gt;Deep Learning for Anomaly Detection: A Survey&lt;/li&gt;
-  &lt;li&gt;A Review of Novelty Detection&lt;/li&gt;
-  &lt;li&gt;LOF: Identifying Density-Based Local Outliers&lt;/li&gt;
-  &lt;li&gt;Support Vector Data Description&lt;/li&gt;
-  &lt;li&gt;Isolation Forest&lt;/li&gt;
-  &lt;li&gt;Isolation-based Anomaly Detection&lt;/li&gt;
-  &lt;li&gt;DeepLog: Anomaly Detection and Diagnosis from System Logs through Deep Learning&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://cucis.ece.northwestern.edu/projects/DMS/publications/AnomalyDetection.pdf&quot;&gt;Anomaly Detection: A Survey&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://arxiv.org/pdf/1901.03407.pdf&quot;&gt;Deep Learning for Anomaly Detection: A Survey&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.sciencedirect.com/science/article/abs/pii/S016516841300515X&quot;&gt;A Review of Novelty Detection&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.dbs.ifi.lmu.de/Publikationen/Papers/LOF.pdf&quot;&gt;LOF: Identifying Density-Based Local Outliers&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://homepage.tudelft.nl/a9p19/papers/ML_SVDD_04.pdf&quot;&gt;Support Vector Data Description&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://cs.nju.edu.cn/zhouzh/zhouzh.files/publication/icdm08b.pdf?q=isolation-forest&quot;&gt;Isolation Forest&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://cs.nju.edu.cn/zhouzh/zhouzh.files/publication/tkdd11.pdf&quot;&gt;Isolation-based Anomaly Detection&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.cs.utah.edu/~lifeifei/papers/deeplog.pdf&quot;&gt;DeepLog: Anomaly Detection and Diagnosis from System Logs through Deep Learning&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&quot;neural-network&quot;&gt;Neural Network&lt;/h2&gt;
 
 &lt;h3 id=&quot;general-2&quot;&gt;General&lt;/h3&gt;
 &lt;ul&gt;
-  &lt;li&gt;Deep learning&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.cs.toronto.edu/~hinton/absps/NatureDeepReview.pdf&quot;&gt;Deep learning&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h3 id=&quot;structure&quot;&gt;Structure&lt;/h3&gt;
 &lt;ul&gt;
-  &lt;li&gt;Long Short-Term Memory&lt;/li&gt;
-  &lt;li&gt;LSTM: A Search Space Odyssey&lt;/li&gt;
-  &lt;li&gt;Empirical Evaluation of Gated Recurrent Neural Networks on Sequence Modeling Sequence to sequence learning with neural networks&lt;/li&gt;
-  &lt;li&gt;Memory Networks&lt;/li&gt;
-  &lt;li&gt;End-To-End Memory Networks&lt;/li&gt;
-  &lt;li&gt;WaveNet: A Generative Model for Raw Audio&lt;/li&gt;
-  &lt;li&gt;An Introduction to Variational Autoencoders&lt;/li&gt;
-  &lt;li&gt;A Comprehensive Survey on Graph Neural Networks&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.bioinf.jku.at/publications/older/2604.pdf&quot;&gt;Long Short-Term Memory&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://arxiv.org/pdf/1503.04069.pdf&quot;&gt;LSTM: A Search Space Odyssey&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://arxiv.org/pdf/1412.3555.pdf&quot;&gt;Empirical Evaluation of Gated Recurrent Neural Networks on Sequence Modeling Sequence to sequence learning with neural networks&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://arxiv.org/pdf/1410.3916.pdf&quot;&gt;Memory Networks&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://papers.nips.cc/paper/5846-end-to-end-memory-networks.pdf&quot;&gt;End-To-End Memory Networks&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://deepmind.com/blog/article/wavenet-generative-model-raw-audio&quot;&gt;WaveNet: A Generative Model for Raw Audio&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://arxiv.org/pdf/1906.02691.pdf&quot;&gt;An Introduction to Variational Autoencoders&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://arxiv.org/pdf/1901.00596.pdf&quot;&gt;A Comprehensive Survey on Graph Neural Networks&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h3 id=&quot;learning-strategies&quot;&gt;Learning Strategies&lt;/h3&gt;
 &lt;ul&gt;
-  &lt;li&gt;Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift&lt;/li&gt;
-  &lt;li&gt;Dropout: A Simple Way to Prevent Neural Networks from Overtting&lt;/li&gt;
-  &lt;li&gt;ADAM: A Method for Stochastic Optimization&lt;/li&gt;
-  &lt;li&gt;An overview of gradient descent optimization algorithms&lt;/li&gt;
-  &lt;li&gt;Layer normalization Group normalization&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://arxiv.org/pdf/1502.03167.pdf&quot;&gt;Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://jmlr.org/papers/volume15/srivastava14a.old/srivastava14a.pdf&quot;&gt;Dropout: A Simple Way to Prevent Neural Networks from Overtting&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://arxiv.org/pdf/1412.6980.pdf&quot;&gt;ADAM: A Method for Stochastic Optimization&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://arxiv.org/pdf/1609.04747.pdf&quot;&gt;An overview of gradient descent optimization algorithms&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://arxiv.org/pdf/1607.06450.pdf&quot;&gt;Layer normalization&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://openaccess.thecvf.com/content_ECCV_2018/papers/Yuxin_Wu_Group_Normalization_ECCV_2018_paper.pdf&quot;&gt;Group normalization&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&quot;nlp&quot;&gt;NLP&lt;/h2&gt;
 
 &lt;h3 id=&quot;general-3&quot;&gt;General&lt;/h3&gt;
 &lt;ul&gt;
-  &lt;li&gt;Natural Language Processing (Almost) from Scratch&lt;/li&gt;
-  &lt;li&gt;Advances in natural language processing&lt;/li&gt;
-  &lt;li&gt;Recent trends in deep learning based natural language processing&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.jmlr.org/papers/volume12/collobert11a/collobert11a.pdf&quot;&gt;Natural Language Processing (Almost) from Scratch&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://science.sciencemag.org/content/349/6245/261&quot;&gt;Advances in natural language processing&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://arxiv.org/pdf/1708.02709.pdf&quot;&gt;Recent trends in deep learning based natural language processing&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h3 id=&quot;topic-modeling&quot;&gt;Topic Modeling&lt;/h3&gt;
@@ -232,50 +293,51 @@
   &lt;li&gt;An introduction to latent semantic analysis&lt;/li&gt;
   &lt;li&gt;Probabilistic latent semantic analysis&lt;/li&gt;
   &lt;li&gt;Probabilistic topic models&lt;/li&gt;
-  &lt;li&gt;Latent Dirichlet Allocation&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.jmlr.org/papers/volume3/blei03a/blei03a.pdf&quot;&gt;Latent Dirichlet Allocation&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h3 id=&quot;repersentation-learning&quot;&gt;Repersentation Learning&lt;/h3&gt;
 &lt;ul&gt;
-  &lt;li&gt;A Neural Probabilistic Language Model&lt;/li&gt;
-  &lt;li&gt;Distributed representations of words and phrases and their compositionality&lt;/li&gt;
-  &lt;li&gt;Efficient Estimation of Word Representations in Vector Space&lt;/li&gt;
-  &lt;li&gt;Glove: Global vectors for word representation&lt;/li&gt;
-  &lt;li&gt;Learning Phrase Representations using RNN Encoder–Decoder for Statistical Machine Translation Enriching word vectors with subword information&lt;/li&gt;
-  &lt;li&gt;Bert: Pre-training of deep bidirectional transformers for language understanding&lt;/li&gt;
-  &lt;li&gt;Deep contextualized word representations&lt;/li&gt;
-  &lt;li&gt;Improving language understanding by generative pre-training&lt;/li&gt;
-  &lt;li&gt;Language models are unsupervised multitask learners&lt;/li&gt;
-  &lt;li&gt;Language Models are Few-Shot LearnersA Neural Probabilistic Language Model&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.jmlr.org/papers/volume3/bengio03a/bengio03a.pdf&quot;&gt;A Neural Probabilistic Language Model&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://papers.nips.cc/paper/5021-distributed-representations-of-words-and-phrases-and-their-compositionality.pdf&quot;&gt;Distributed representations of words and phrases and their compositionality&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://arxiv.org/pdf/1301.3781.pdf&quot;&gt;Efficient Estimation of Word Representations in Vector Space&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://nlp.stanford.edu/pubs/glove.pdf&quot;&gt;Glove: Global vectors for word representation&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://arxiv.org/pdf/1406.1078.pdf&quot;&gt;Learning Phrase Representations using RNN Encoder–Decoder for Statistical Machine Translation&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://arxiv.org/pdf/1607.04606.pdf&quot;&gt;Enriching word vectors with subword information&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://arxiv.org/pdf/1810.04805.pdf&quot;&gt;Bert: Pre-training of deep bidirectional transformers for language understanding&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://arxiv.org/pdf/1802.05365.pdf&quot;&gt;Deep contextualized word representations&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://cdn.openai.com/research-covers/language-unsupervised/language_understanding_paper.pdf&quot;&gt;Improving language understanding by generative pre-training&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://cdn.openai.com/better-language-models/language_models_are_unsupervised_multitask_learners.pdf&quot;&gt;Language models are unsupervised multitask learners&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://arxiv.org/pdf/2005.14165.pdf&quot;&gt;Language Models are Few-Shot Learners&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h3 id=&quot;classification&quot;&gt;Classification&lt;/h3&gt;
 &lt;ul&gt;
-  &lt;li&gt;Convolutional neural networks for sentence classification&lt;/li&gt;
-  &lt;li&gt;Deep learning for sentiment analysis: A survey&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://arxiv.org/pdf/1408.5882.pdf&quot;&gt;Convolutional neural networks for sentence classification&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://arxiv.org/pdf/1801.07883.pdf&quot;&gt;Deep learning for sentiment analysis: A survey&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h3 id=&quot;summarization&quot;&gt;Summarization&lt;/h3&gt;
 &lt;ul&gt;
-  &lt;li&gt;TextRank: Bringing Order into Texts&lt;/li&gt;
-  &lt;li&gt;A Neural Attention Model for Abstractive Sentence Summarization&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://web.eecs.umich.edu/~mihalcea/papers/mihalcea.emnlp04.pdf&quot;&gt;TextRank: Bringing Order into Texts&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://arxiv.org/pdf/1509.00685.pdf&quot;&gt;A Neural Attention Model for Abstractive Sentence Summarization&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h3 id=&quot;machine-translation&quot;&gt;Machine Translation&lt;/h3&gt;
 &lt;ul&gt;
-  &lt;li&gt;On the Properties of Neural Machine Translation: Encoder-Decoder Approaches&lt;/li&gt;
-  &lt;li&gt;Effective Approaches to Attention-based Neural Machine Translation&lt;/li&gt;
-  &lt;li&gt;Neural Machine Translation by Jointly Learning to Aligh and Translate&lt;/li&gt;
-  &lt;li&gt;Google’s Neural Machine Translation System: Bridging the Gap between Human and Machine Translation&lt;/li&gt;
-  &lt;li&gt;Attention is all you need&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://arxiv.org/pdf/1409.1259.pdf&quot;&gt;On the Properties of Neural Machine Translation: Encoder-Decoder Approaches&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www-nlp.stanford.edu/pubs/emnlp15_attn.pdf&quot;&gt;Effective Approaches to Attention-based Neural Machine Translation&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://arxiv.org/pdf/1409.0473.pdf&quot;&gt;Neural Machine Translation by Jointly Learning to Aligh and Translate&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://arxiv.org/pdf/1609.08144.pdf&quot;&gt;Google’s Neural Machine Translation System: Bridging the Gap between Human and Machine Translation&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://papers.nips.cc/paper/7181-attention-is-all-you-need.pdf&quot;&gt;Attention is all you need&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h3 id=&quot;question-answering&quot;&gt;Question Answering&lt;/h3&gt;
 &lt;ul&gt;
-  &lt;li&gt;VQA: Visual Question Answering&lt;/li&gt;
-  &lt;li&gt;Ask Me Anything: Dynamic Memory Networks for Natural Language Processing&lt;/li&gt;
-  &lt;li&gt;Squad: 100,000+ questions for machine comprehension of text&lt;/li&gt;
-  &lt;li&gt;Know what you don’t know: Unanswerable questions for SQuAD&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://arxiv.org/pdf/1505.00468.pdf&quot;&gt;VQA: Visual Question Answering&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://arxiv.org/pdf/1506.07285.pdf&quot;&gt;Ask Me Anything: Dynamic Memory Networks for Natural Language Processing&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://arxiv.org/pdf/1606.05250.pdf&quot;&gt;Squad: 100,000+ questions for machine comprehension of text&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://arxiv.org/pdf/1806.03822.pdf&quot;&gt;Know what you don’t know: Unanswerable questions for SQuAD&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&quot;vision&quot;&gt;Vision&lt;/h2&gt;

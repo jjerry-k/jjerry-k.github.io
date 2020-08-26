@@ -5,116 +5,82 @@
     <link href="http://gmpg.org/xfn/11" rel="profile">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
-  
+
     <!-- Enable responsiveness on mobile devices-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-  
+
     <title>
-      
+        
         Blog &middot; Jerry's Blog
-      
+        
     </title>
-  
+
     <!-- CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
     <link rel="stylesheet" href="/public/css/main.css">
-  
+
     <!-- Icons -->
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144"
+        href="/public/apple-touch-icon-precomposed.png">
     <link rel="shortcut icon" href="/public/favicon.ico">
-  
+
     <!-- RSS -->
     <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
-  
+
     <!-- scroll -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script>
-      $( window ).scroll( function() {
-        if ( $( this ).scrollTop() > 500 ) {
-          $( '.top' ).fadeIn();
-        } else {
-          $( '.top' ).fadeOut();
-        }
-      } );
-      $( '.top' ).click( function() {
-        $( 'html, body' ).stop().animate( { scrollTop : 0 }, 100);
-        return false;
-      } );
+        $(window).scroll(function () {
+            if ($(this).scrollTop() > 500) {
+                $('.top').fadeIn();
+            } else {
+                $('.top').fadeOut();
+            }
+        });
+        $('.top').click(function () {
+            $('html, body').stop().animate({ scrollTop: 0 }, 100);
+            return false;
+        });
     </script>
-    
+
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     <script>
-      (absbygoogle = window.adsbygoogle || []).push({
-          google_ad_client: "ca-pub-1054696837285307",
-          enable_page_level_ads: true
-      });
+        (absbygoogle = window.adsbygoogle || []).push({
+            google_ad_client: "ca-pub-1054696837285307",
+            enable_page_level_ads: true
+        });
     </script>
+
     
-    <!-- 
     <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-        //jax: ["input/TeX", "output/HTML-CSS"],
-        TeX: {
-          equationNumbers: {
-            autoNumber: "AMS"
-          }
-        },
-        tex2jax: {
-          inlineMath: [ ['$', '$'] ],
-          displayMath: [ ['$$', '$$'] ],
-          processEscapes: true,
-          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-        }
-        //,
-        //displayAlign: "left",
-        //displayIndent: "2em"
-      });
-      MathJax.Hub.Register.MessageHook("Math Processing Error",function (message) {
-        alert("Math Processing Error: "+message[1]);
-      });
-    MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
-        alert("Math Processing Error: "+message[1]);
-      });
-    </script>
-    <script type="text/javascript" async
-      src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript">
-    </script>
-     -->
+            MathJax.Hub.Config({
+              //jax: ["input/TeX", "output/HTML-CSS"],
+              tex2jax: {
+                inlineMath: [ ['$', '$'] ],
+                displayMath: [ ['$$', '$$'] ],
+                processEscapes: true,
+                skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+              }
+              //,
+              //displayAlign: "left",
+              //displayIndent: "2em"
+            });
+          </script>
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
     
-    
-  <script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-      //jax: ["input/TeX", "output/HTML-CSS"],
-      tex2jax: {
-        inlineMath: [ ['$', '$'] ],
-        displayMath: [ ['$$', '$$'] ],
-        processEscapes: true,
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-      }
-      //,
-      //displayAlign: "left",
-      //displayIndent: "2em"
-    });
-  </script>
-  <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
-  
 
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="/dest/simple-jekyll-search.js" type="text/javascript"></script>
     <script type="text/javascript">
-    $(document).ready(function(){
-      document.search.searchinput.focus();
-    });
+        $(document).ready(function () {
+            document.search.searchinput.focus();
+        });
     </script>
-  </head>
-  
+</head>
+
   <style>blockquote {font-size: 1em; line-height: 1.4}</style>
-  
-  <!-- New line Start-->
-  <!--  -->
-  <!-- New line End -->
   </head>
   <body>
 
@@ -308,6 +274,120 @@
 
       <div class="container content">
         <div class="posts">
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/living/2018/07/10/Raspberry-Mini-PC/">
+        라즈베리파이로 미니 PC 만들기!
+      </a>
+    </h1>
+
+    <span class="post-date">10 Jul 2018</span>
+     | 
+    
+    <a href="/blog/tags/#hardware" class="post-tag">Hardware</a>
+    
+    
+
+    <h4 style="font-weight: 400; line-height: 1.8;"><article>
+      <p>근래에 라즈베리파이로 미니 PC를 만들었습니다!</p>
+
+<p>그래서 만드는 과정에 대해 글을 써보려고 합니다!</p>
+
+<p>제가 사용한 보드는….
+https://www.raspberrypi.org/products/raspberry-pi-3-model-b-plus/</p>
+
+<p>올해 출시한 라즈베리파이 3 B+ 입니다!(개인적으로 라즈베리를 처음 써봅니다…)</p>
+
+<p>방열판도 붙여줬지요!</p>
+
+<p><img src="https://jjerry-k.github.io/public/img/pi/01.jpg" /></p>
+
+<p>아래 사진은 제가 HDD를 장착 할 것이기 때문에….SATA 확장보드…그리고 케이스, 어댑터 구매 내역입니다!</p>
+
+<p><img src="https://jjerry-k.github.io/public/img/pi/02.jpg" /></p>
+
+<p>솔직히…부품들 뚝딱 뚝딱 제작(조립이 맞을 듯…)하는 것 보다 알리발 상품들 기다리는게 더 힘들었어요…. 쥬륵….</p>
+
+<p>7일 정도 기다린것 같네요…..</p>
+
+<p>박스 오자마자 정말 광속으로 뜯었습니다…..</p>
+
+<p>케이스
+<img src="https://jjerry-k.github.io/public/img/pi/03.jpg" /></p>
+
+<p>SATA 확장보드
+<img src="https://jjerry-k.github.io/public/img/pi/04.jpg" /></p>
+
+<p>전용 어댑터 (5V 4A)
+<img src="https://jjerry-k.github.io/public/img/pi/05.jpg" /></p>
+
+<p>넘나…감동…</p>
+
+<p>금방 조립했습니다..</p>
+
+<p><img src="https://jjerry-k.github.io/public/img/pi/06.jpg" /></p>
+
+<p>조립하는데 집중해서 사진을 잘 안찍었어요…쥬륵…</p>
+
+<p><img src="https://jjerry-k.github.io/public/img/pi/07.jpg" /></p>
+
+<p>아…저 맨 아래에 다리는 안달아도 되는거였어요….</p>
+
+<p><img src="https://jjerry-k.github.io/public/img/pi/08.jpg" /></p>
+
+<p>케이스를 분리하면 이렇게 생겼어요…(누가봐도 팬이 달릴 부분..)</p>
+
+<p><img src="https://jjerry-k.github.io/public/img/pi/09.jpg" /></p>
+
+<p>달아줍니다..</p>
+
+<p><img src="https://jjerry-k.github.io/public/img/pi/10.jpg" /></p>
+
+<p>차례 차례 전원 연결…</p>
+
+<p><img src="https://jjerry-k.github.io/public/img/pi/11.jpg" /></p>
+
+<p>뒷판을 조립하고!</p>
+
+<p><img src="https://jjerry-k.github.io/public/img/pi/12.jpg" /></p>
+
+<p>브릿지? 를 연결!</p>
+
+<p><img src="https://jjerry-k.github.io/public/img/pi/13.jpg" /></p>
+
+<p>어댑터 연결 후 켜시면 됩니다…
+좀 더 정확한 크기 확인을 위해 사진을 좀 찍어봤어요!</p>
+
+<p><img src="https://jjerry-k.github.io/public/img/pi/14.jpg" /></p>
+
+<p>제 주먹이랑 한 컷…</p>
+
+<p><img src="https://jjerry-k.github.io/public/img/pi/15.jpg" /></p>
+
+<p>마지막으로 제 12인치 맥북이랑 한컷….</p>
+
+<p><img src="https://jjerry-k.github.io/public/img/pi/16.jpg" /></p>
+
+<p>처음으로 라즈베리파이를 사용해보면서…정말 재밌고 신기하네요 ㅎㅎㅎ
+(물론 가끔 설정하다가 뻑나면…짜증….)</p>
+
+<p>나중엔 캠을 달아서 사물인식 같은 걸 해볼까 합니다!</p>
+
+<p>너무….불친절한 글 같네요….</p>
+
+<p>나중에 또 뭔가 재미난걸 하면 올리겠습니다!</p>
+
+<p>감사합니다!</p>
+
+    <article></h4>
+    <div class="post-more">
+      
+      <a href="/living/2018/07/10/Raspberry-Mini-PC/#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
+      
+      <a href="/living/2018/07/10/Raspberry-Mini-PC/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
+    </div>
+  </div>
   
   <div class="post">
     <h1 class="post-title">

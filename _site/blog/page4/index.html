@@ -5,116 +5,82 @@
     <link href="http://gmpg.org/xfn/11" rel="profile">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
-  
+
     <!-- Enable responsiveness on mobile devices-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-  
+
     <title>
-      
+        
         Blog &middot; Jerry's Blog
-      
+        
     </title>
-  
+
     <!-- CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
     <link rel="stylesheet" href="/public/css/main.css">
-  
+
     <!-- Icons -->
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144"
+        href="/public/apple-touch-icon-precomposed.png">
     <link rel="shortcut icon" href="/public/favicon.ico">
-  
+
     <!-- RSS -->
     <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
-  
+
     <!-- scroll -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script>
-      $( window ).scroll( function() {
-        if ( $( this ).scrollTop() > 500 ) {
-          $( '.top' ).fadeIn();
-        } else {
-          $( '.top' ).fadeOut();
-        }
-      } );
-      $( '.top' ).click( function() {
-        $( 'html, body' ).stop().animate( { scrollTop : 0 }, 100);
-        return false;
-      } );
+        $(window).scroll(function () {
+            if ($(this).scrollTop() > 500) {
+                $('.top').fadeIn();
+            } else {
+                $('.top').fadeOut();
+            }
+        });
+        $('.top').click(function () {
+            $('html, body').stop().animate({ scrollTop: 0 }, 100);
+            return false;
+        });
     </script>
-    
+
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     <script>
-      (absbygoogle = window.adsbygoogle || []).push({
-          google_ad_client: "ca-pub-1054696837285307",
-          enable_page_level_ads: true
-      });
+        (absbygoogle = window.adsbygoogle || []).push({
+            google_ad_client: "ca-pub-1054696837285307",
+            enable_page_level_ads: true
+        });
     </script>
+
     
-    <!-- 
     <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-        //jax: ["input/TeX", "output/HTML-CSS"],
-        TeX: {
-          equationNumbers: {
-            autoNumber: "AMS"
-          }
-        },
-        tex2jax: {
-          inlineMath: [ ['$', '$'] ],
-          displayMath: [ ['$$', '$$'] ],
-          processEscapes: true,
-          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-        }
-        //,
-        //displayAlign: "left",
-        //displayIndent: "2em"
-      });
-      MathJax.Hub.Register.MessageHook("Math Processing Error",function (message) {
-        alert("Math Processing Error: "+message[1]);
-      });
-    MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
-        alert("Math Processing Error: "+message[1]);
-      });
-    </script>
-    <script type="text/javascript" async
-      src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript">
-    </script>
-     -->
+            MathJax.Hub.Config({
+              //jax: ["input/TeX", "output/HTML-CSS"],
+              tex2jax: {
+                inlineMath: [ ['$', '$'] ],
+                displayMath: [ ['$$', '$$'] ],
+                processEscapes: true,
+                skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+              }
+              //,
+              //displayAlign: "left",
+              //displayIndent: "2em"
+            });
+          </script>
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
     
-    
-  <script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-      //jax: ["input/TeX", "output/HTML-CSS"],
-      tex2jax: {
-        inlineMath: [ ['$', '$'] ],
-        displayMath: [ ['$$', '$$'] ],
-        processEscapes: true,
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-      }
-      //,
-      //displayAlign: "left",
-      //displayIndent: "2em"
-    });
-  </script>
-  <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
-  
 
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="/dest/simple-jekyll-search.js" type="text/javascript"></script>
     <script type="text/javascript">
-    $(document).ready(function(){
-      document.search.searchinput.focus();
-    });
+        $(document).ready(function () {
+            document.search.searchinput.focus();
+        });
     </script>
-  </head>
-  
+</head>
+
   <style>blockquote {font-size: 1em; line-height: 1.4}</style>
-  
-  <!-- New line Start-->
-  <!--  -->
-  <!-- New line End -->
   </head>
   <body>
 
@@ -308,6 +274,161 @@
 
       <div class="container content">
         <div class="posts">
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/deeplearning/2020/06/13/DETR/">
+        Review: DETR
+      </a>
+    </h1>
+
+    <span class="post-date">13 Jun 2020</span>
+     | 
+    
+    <a href="/blog/tags/#paper" class="post-tag">Paper</a>
+    
+    
+
+    <h4 style="font-weight: 400; line-height: 1.8;"><article>
+      <h1 id="end-to-end-object-detection-with-transformers">End-to-End Object Detection with Transformers</h1>
+
+<p>Author: Nicolas Carion, Francisco Massa, Gabriel Synnaeve, Nicolas Usunier, Alexander Kirillov, and Sergey Zagoruyko
+Date: May 27, 2020
+URL: https://ai.facebook.com/research/publications/end-to-end-object-detection-with-transformers</p>
+
+<h1 id="introduction">Introduction</h1>
+
+<ul>
+  <li>현재 Object detection model들은 Input부터 Output (bounding bos, category label) 까지 Direct 하지 못함.  Post processing 이 영향을 끼치기 때문에…</li>
+  <li>본 논문에선 Direct prediction approach 제안.</li>
+  <li>이전에도 몇몇 실험이 있었으나 그 당시에는 prior knowledge를 준다거나 성능이 별로 좋지 못했음.</li>
+  <li><a href="https://arxiv.org/abs/1706.03762">Transformer</a> 를 사용.</li>
+  <li>새로운 Loss function 도입.</li>
+</ul>
+
+<p><img src="https://jjerry-k.github.io/public/img/DETR/Untitled.png" alt="jjerry-k.github.io/public/img/DETR/Untitled.png" /></p>
+
+<h1 id="related-works">Related Works</h1>
+
+<h2 id="set-prediction">Set Prediction</h2>
+
+<ul>
+  <li>현재까지 Direct로 set(box, class)을 prediction 하는 방법이 없음.</li>
+  <li>Post processing 이 없는 model 제안.</li>
+  <li>이를 위해 Hungarian algorithm 기반의 loss 설계.</li>
+</ul>
+
+<h2 id="transformers-and-parallel-decoding">Transformers and Parallel Decoding</h2>
+
+<ul>
+  <li>다른 RNN 계열보다 Long sequence 에 적합한 model</li>
+  <li>auto-regressive model</li>
+</ul>
+
+<h2 id="object-detection">Object detection</h2>
+
+<h3 id="set-based-loss">Set-based loss</h3>
+
+<ul>
+  <li>기존에 bipatite matching loss 를 사용했지만  NMS 를 사용해야 성능이 향상되었음.</li>
+  <li>그 후 Learnable NMS 를 사용한 방법이 제시 되었으나 hand-crafted context feature 를 사용 하기에 효율적이지 못함.</li>
+</ul>
+
+<h3 id="recurrent-detectors">Recurrent detectors</h3>
+
+<ul>
+  <li>이름에서 알 수 있듯 RNN 계열을 도입한 Object detection</li>
+  <li>기존 방법에선 Small dataset을 이용했고 RNN 계열을 이용했기에 parallel 구조를 가져가지 못했음.</li>
+</ul>
+
+<h1 id="the-detr-model">The DETR model</h1>
+
+<ul>
+  <li>DETR은 크게 두 개의 장점이 있음. → a set prediction loss, a architecture</li>
+</ul>
+
+<p><img src="https://jjerry-k.github.io/public/img/DETR/Untitled_1.png" alt="jjerry-k.github.io/public/img/DETR/Untitled_1.png" /></p>
+
+<h2 id="object-detection-set-prediction-loss">Object detection set prediction loss</h2>
+
+<p>[\hat{\sigma} = {argmin}<em>{\sigma \in \mathfrak{S}_N} \sum^N_i \mathcal{L}</em>{match}(y_i, \hat{y}_{\sigma(i)})]</p>
+
+<p>[\mathcal{L}<em>{match}(y_i, \hat{y}</em>{\sigma(i)}) = -1<em>{c_i \neq \phi}\hat{p}</em>{\sigma(i)}(c_i) +1<em>{c_i \neq \phi}\mathcal{L}</em>{box}(b_i, \hat{b}_{\sigma(i)})]</p>
+
+<p>[\mathcal{L}<em>{Hungarian}(y, \hat{y}) = \sum^N_i[-\log\hat{p}</em>{\hat{\sigma}(i)}(c_i) +1<em>{c_i \neq \phi}\mathcal{L}</em>{box}(b_i, \hat{b}_{\hat{\sigma}(i)})]]</p>
+
+<h3 id="bounding-box-loss">Bounding box loss</h3>
+
+<p>[\lambda_{iou}\mathcal{L}<em>{iou}(b_i, \hat{b}</em>{\sigma(i)}) + \lambda_{\mathrm{L}1}|b_i - \hat{b}_{\sigma(i)}|_1]</p>
+
+<h2 id="detr-architecture">DETR architecture</h2>
+
+<h3 id="backbone">Backbone</h3>
+
+<ul>
+  <li>일반적인 Backbone 사용.</li>
+  <li>마지막 feataure map은 원본 사이즈 H, W 에 비해 32분의 1 downsampling, C는 2048</li>
+</ul>
+
+<h3 id="transformer-encoder">Transformer encoder</h3>
+
+<ul>
+  <li>Attention is all you need의 Transformer의 encoder와 동일한 구조.</li>
+  <li>Fixed positional encodings 으로 인하여 permutation-invariant 한 구조!</li>
+</ul>
+
+<h3 id="transformer-decoder">Transformer decoder</h3>
+
+<ul>
+  <li>Attention is all you need의 Transformer의 decoder와 동일한 구조.</li>
+  <li>기존 Transformer와 차이는</li>
+</ul>
+
+<h3 id="prediction-feed-forward-networks-ffns">Prediction feed-forward networks (FFNs)</h3>
+
+<ul>
+  <li>ReLU를 사용하는 d dimension의 linear layer 3 개 사용.</li>
+  <li>한 branch 에서는 Normalized center coordinate, height, width 를 예측.</li>
+  <li>다른 하나의 branch는 class label을 softmax를 이용하여 예측.</li>
+  <li>DETR은 항상 N개의 box에 대해 예측. 하지만 실제 object 수가 적을때는 나머지 box들을 no object 로 처리.</li>
+</ul>
+
+<h3 id="auxiliary-decoding-losses">Auxiliary decoding losses</h3>
+
+<ul>
+  <li>Transformer decoder에  Auxiliary loss 를 추가.</li>
+</ul>
+
+<h1 id="experiment">Experiment</h1>
+
+<h2 id="comparison-with-faster-r-cnn">Comparison with Faster R-CNN</h2>
+
+<p><img src="https://jjerry-k.github.io/public/img/DETR/Untitled_2.png" alt="jjerry-k.github.io/public/img/DETR/Untitled_2.png" /></p>
+
+<h2 id="ablations">Ablations</h2>
+
+<p><img src="https://jjerry-k.github.io/public/img/DETR/Untitled_3.png" alt="jjerry-k.github.io/public/img/DETR/Untitled_3.png" /></p>
+
+<p><img src="https://jjerry-k.github.io/public/img/DETR/Untitled_4.png" alt="jjerry-k.github.io/public/img/DETR/Untitled_4.png" /></p>
+
+<h2 id="panoptic-segmentation">Panoptic segmentation</h2>
+
+<p><img src="https://jjerry-k.github.io/public/img/DETR/Untitled_5.png" alt="jjerry-k.github.io/public/img/DETR/Untitled_5.png" /></p>
+
+<h2 id="ps">P.S</h2>
+<ul>
+  <li>내용 보충 예정.</li>
+  <li>신박한 컨셉.</li>
+</ul>
+
+    <article></h4>
+    <div class="post-more">
+      
+      <a href="/deeplearning/2020/06/13/DETR/#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
+      
+      <a href="/deeplearning/2020/06/13/DETR/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
+    </div>
+  </div>
   
   <div class="post">
     <h1 class="post-title">
@@ -944,203 +1065,6 @@ URL: https://arxiv.org/abs/1707.01083</p>
       <a href="/deeplearning/2020/05/07/ShuffleNetV1/#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
       
       <a href="/deeplearning/2020/05/07/ShuffleNetV1/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
-    </div>
-  </div>
-  
-  <div class="post">
-    <h1 class="post-title">
-      <a href="/deeplearning/2020/05/06/CutMix/">
-        Review: CutMix
-      </a>
-    </h1>
-
-    <span class="post-date">06 May 2020</span>
-     | 
-    
-    <a href="/blog/tags/#paper" class="post-tag">Paper</a>
-    
-    
-
-    <h4 style="font-weight: 400; line-height: 1.8;"><article>
-      <h1 id="cutmix-regularization-strategy-to-train-strong-classifiers-with-localizable-features">CutMix: Regularization Strategy to Train Strong Classifiers with Localizable Features</h1>
-
-<p>Author: Sangdoo Yun, Dongyoon Han, Seong Joon Oh, Sanghyuk Chun, Junsuk Choe, Youngjoon Yoo<br />
-Date: May 13, 2019<br />
-URL: https://arxiv.org/abs/1905.04899</p>
-
-<h1 id="introduction">Introduction</h1>
-
-<ul>
-  <li>CNN 은 computer vision 문제에 많이 사용되고 있음.</li>
-  <li>효율적이고 높은 성능을 위해 data augmentation, regularization 등 기법을 적용.</li>
-  <li>특정 부분에 overfitting(?) 되는 것을 방지하기 위해 dropout, regional dropout 과 같은 방법 사용.</li>
-  <li>그 외에도 일부분을 0으로 채운다거나 노이즈로 채우는 방법, 정보가 있는 부분의 pixel을 줄이는 방법 등이 성능 향상을 보였으나 CNN은 데이터가 많이 고픈데….데이터를 없앤다..? 라는 부분에서 의문을 가짐.</li>
-  <li>영상의 일부를 자르고 다른 영상으로 대체하는 CutMix 를 제안.</li>
-</ul>
-
-<p><img src="https://jjerry-k.github.io/public/img/cutmix/Untitled.png" alt="https://jjerry-k.github.io/public/img/cutmix/Untitled.png" /></p>
-
-<h1 id="cutmix">CutMix</h1>
-
-<h2 id="algorithm">Algorithm</h2>
-
-<ul>
-  <li>A, B 두개의 클래스만 존재.</li>
-</ul>
-
-<p>[(x, y): \text{Training image, label} \ (A, B): \text{Training class} \ (x_A, y_A), (x_B, y_B): \text{Training sample}]</p>
-
-<ul>
-  <li>어느 부분을 섞을 것인지 binary mask (M) 생성</li>
-  <li>생성된 mask를 통해 섞을 비율 lambda 추출.</li>
-  <li>Label의 경우 비율에 One-hot encoding이 합친 후 영상에서의 각 클래스의 비율로 변경.</li>
-</ul>
-
-<p>[\mathrm{M}: \text{Binary mask where to drop out and fill} \ \lambda: \text{Combination ratio} \ \tilde{x} = \mathrm{M} \bigodot x_A + (1 - \mathrm{M}) \bigodot x_B \ \tilde{y} = \lambda{y_A} + (1 - \lambda)y_B]</p>
-
-<ul>
-  <li>M에서 bounding box 좌표 (B) 추출.</li>
-  <li>x, y 좌표는 Uniform distribution.</li>
-  <li>$x_B$에서 B 를 매칭시켜서 crop 후 B에 매칭되는 $x_A$ 의 부분에 paste.</li>
-</ul>
-
-<p>[\mathrm{B}: \text{Bounding box coordinates }  (r_x, r_y, r_w, r_h) \ r_x \sim \text{Unif }(0, W), r_w = W\sqrt{1-\lambda}, \ r_y \sim \text{Unif } (0, H), r_h = H\sqrt{1-\lambda}]</p>
-
-<h2 id="discussion">Discussion</h2>
-
-<ul>
-  <li>CutMix를 이용했을 때 CNN이 어느 부분을 학습하는지 확인.</li>
-</ul>
-
-<p><img src="https://jjerry-k.github.io/public/img/cutmix/Untitled_1.png" alt="https://jjerry-k.github.io/public/img/cutmix/Untitled_1.png" /></p>
-
-<ul>
-  <li>다른 method와 비교하여 CutMix의 주요 차이점.</li>
-</ul>
-
-<p><img src="https://jjerry-k.github.io/public/img/cutmix/Untitled_2.png" alt="https://jjerry-k.github.io/public/img/cutmix/Untitled_2.png" /></p>
-
-<ul>
-  <li>Validation Error를 비교했을 때 기존의 모델에 비해 CutMix 적용시 Error가 낮음.</li>
-</ul>
-
-<p><img src="https://jjerry-k.github.io/public/img/cutmix/Untitled_3.png" alt="https://jjerry-k.github.io/public/img/cutmix/Untitled_3.png" /></p>
-
-<h1 id="experiments">Experiments</h1>
-
-<h2 id="image-classification">Image Classification</h2>
-
-<h3 id="imagenet-classification">ImageNet Classification</h3>
-
-<ul>
-  <li>Baseline, 다른 augmentation method와 비교</li>
-</ul>
-
-<p><img src="https://jjerry-k.github.io/public/img/cutmix/Untitled_4.png" alt="https://jjerry-k.github.io/public/img/cutmix/Untitled_4.png" /></p>
-
-<ul>
-  <li>두 Model에 CutMix를 적용하여 성능 비교.</li>
-</ul>
-
-<p><img src="https://jjerry-k.github.io/public/img/cutmix/Untitled_5.png" alt="https://jjerry-k.github.io/public/img/cutmix/Untitled_5.png" /></p>
-
-<h3 id="cifar-classification">CIFAR Classification</h3>
-
-<ul>
-  <li>다른 Regularization 들과 비교.</li>
-</ul>
-
-<p><img src="https://jjerry-k.github.io/public/img/cutmix/Untitled_6.png" alt="https://jjerry-k.github.io/public/img/cutmix/Untitled_6.png" /></p>
-
-<ul>
-  <li>가벼운 Model 에 적용하여 비교.</li>
-</ul>
-
-<p><img src="https://jjerry-k.github.io/public/img/cutmix/Untitled_7.png" alt="https://jjerry-k.github.io/public/img/cutmix/Untitled_7.png" /></p>
-
-<ul>
-  <li>CIFAR-10에 적용한 결과.</li>
-</ul>
-
-<p><img src="https://jjerry-k.github.io/public/img/cutmix/Untitled_8.png" alt="https://jjerry-k.github.io/public/img/cutmix/Untitled_8.png" /></p>
-
-<h3 id="ablation-studies">Ablation Studies</h3>
-
-<ul>
-  <li><strong>CutMix 에서 alpha가 뭐지…….</strong></li>
-</ul>
-
-<p><img src="https://jjerry-k.github.io/public/img/cutmix/Untitled_9.png" alt="https://jjerry-k.github.io/public/img/cutmix/Untitled_9.png" /></p>
-
-<ul>
-  <li>CutMix하는 방법을 다양하게 적용했을 때 성능 비교</li>
-  <li>Center Gaussian: Uniform distribution → Gaussian distribution</li>
-  <li>Fixed-size: 16 x 16 ( $\lambda = 0.75$ )로 고정</li>
-  <li>Scheduled: 학습이 진행될 수록 CutMix 확률을 0부터 1까지 증가</li>
-  <li>One-hot: 패치 비율에 따라 Portion label이 아닌 One-hot encoding으로 적용</li>
-  <li>Complete-label: lambda 를 고려하지 않고 $y = 0.5y_A + 0.5y_B$로 적용</li>
-</ul>
-
-<p><img src="https://jjerry-k.github.io/public/img/cutmix/Untitled_10.png" alt="https://jjerry-k.github.io/public/img/cutmix/Untitled_10.png" /></p>
-
-<h2 id="weakly-supervised-object-localization">Weakly Supervised Object Localization</h2>
-
-<ul>
-  <li>Localization 부분에 대해 다른 방법들과 비교.</li>
-  <li>학습 후 CAM을 이용해서 bounding box를 그린 것으로 보임.</li>
-</ul>
-
-<p><img src="https://jjerry-k.github.io/public/img/cutmix/Untitled_11.png" alt="https://jjerry-k.github.io/public/img/cutmix/Untitled_11.png" /></p>
-
-<p><img src="https://jjerry-k.github.io/public/img/cutmix/Untitled_12.png" alt="https://jjerry-k.github.io/public/img/cutmix/Untitled_12.png" /></p>
-
-<h2 id="transfer-learning-of-pretrained-model">Transfer Learning of Pretrained Model</h2>
-
-<ul>
-  <li>Object detection, Image captioning 에 적용하여 성능 비교.</li>
-</ul>
-
-<p><img src="https://jjerry-k.github.io/public/img/cutmix/Untitled_13.png" alt="https://jjerry-k.github.io/public/img/cutmix/Untitled_13.png" /></p>
-
-<h2 id="robustness-and-uncertainty">Robustness and Uncertainty</h2>
-
-<ul>
-  <li>Adversarial attack 에 대해 Accuracy 비교.</li>
-  <li><a href="https://arxiv.org/abs/1412.6572">Fast Gradient Sign Method (FGSM)</a>을 이용하여 adversarial perturbation 생성.</li>
-</ul>
-
-<p><img src="https://jjerry-k.github.io/public/img/cutmix/Untitled_14.png" alt="https://jjerry-k.github.io/public/img/cutmix/Untitled_14.png" /></p>
-
-<ul>
-  <li>Occlusion 상황에 대해서 성능 비교.</li>
-  <li>가운데 부분 혹은 Boundary 에 0~224 크기 사이의 hole을 생성.</li>
-</ul>
-
-<p><img src="https://jjerry-k.github.io/public/img/cutmix/Untitled_15.png" alt="https://jjerry-k.github.io/public/img/cutmix/Untitled_15.png" /></p>
-
-<ul>
-  <li>Uncertainty</li>
-</ul>
-
-<p><img src="https://jjerry-k.github.io/public/img/cutmix/Untitled_16.png" alt="https://jjerry-k.github.io/public/img/cutmix/Untitled_16.png" /></p>
-
-<h2 id="cutmix-algorithm">CutMix Algorithm</h2>
-
-<p><img src="https://jjerry-k.github.io/public/img/cutmix/Untitled_17.png" alt="https://jjerry-k.github.io/public/img/cutmix/Untitled_17.png" /></p>
-
-<h2 id="ps">P.S</h2>
-
-<ul>
-  <li>Appendix에 내용이 더 있지만… 간단히 정리하려니 넣기 좀 힘듦.</li>
-  <li>당연한 얘기지만 모든 데이터에 적용하기엔 어려움이 있을 것으로 보임.</li>
-</ul>
-
-    <article></h4>
-    <div class="post-more">
-      
-      <a href="/deeplearning/2020/05/06/CutMix/#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
-      
-      <a href="/deeplearning/2020/05/06/CutMix/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
     </div>
   </div>
   
