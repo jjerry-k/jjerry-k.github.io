@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 개인적인 도커 파일
-category: [Living]
+category: [Ubuntu]
 tags: [Docker]
 sitemap :
 changefreq : daily
