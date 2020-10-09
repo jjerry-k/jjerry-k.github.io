@@ -30,13 +30,13 @@ changefreq : daily
 
 ### 일반 사용자용 신청서
 
-- [다운로드 링크](http://www.aihub.or.kr/sites/default/files/2020-05/[일반)
+- [다운로드 링크](https://aihub.or.kr/sites/default/files/hwp/nomal.hwp)
 
 ![Untitled.png](https://jjerry-k.github.io/public/img/nipa_apply/Untitled.png)
 
 ### 수시 사용자용 신청서
 
-- [다운로드 링크](http://www.aihub.or.kr/sites/default/files/2020-05/[%EC%88%98%EC%8B%9C%20%EC%82%AC%EC%9A%A9%EC%9E%90%EC%9A%A9]%20%EA%B3%A0%EC%84%B1%EB%8A%A5%20%EC%BB%B4%ED%93%A8%ED%8C%85%20%EC%9E%90%EC%9B%90%20%EC%9D%B4%EC%9A%A9%20%EC%8B%A0%EC%B2%AD%EC%84%9C.hwp)
+- [다운로드 링크](https://aihub.or.kr/sites/default/files/hwp/always.hwp)
 
 ![Untitled_1.png](https://jjerry-k.github.io/public/img/nipa_apply/Untitled_1.png)
 
@@ -59,3 +59,5 @@ changefreq : daily
 - 중요! ! ! **수시 사용자는 계속 사용하려면 10일마다 연장 신청 해야함. 꼭! 반드시!**
 - **위 내용을 지키지 않으면 서버 초기화되서 내용들 다 사라짐!!!**
 - 너무 대충 포스팅을...하는걸까...
+- 2020.10.10 내용 추가
+  - 서식 링크 변경

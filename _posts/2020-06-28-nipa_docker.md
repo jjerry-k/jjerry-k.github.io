@@ -59,6 +59,9 @@ Docker 에 대한 자세한 설명은 하지 않을 겁니다.
 그럼 설치 방법에 대해 적겠습니다. 
 
 ```bash
+# 2020.10.10 추가 사항
+conda uninstall curl
+
 # SET UP THE REPOSITORY
 sudo apt-get update
 
@@ -111,7 +114,7 @@ sudo apt-get update && sudo apt-get install -y nvidia-container-toolkit
 sudo systemctl restart docker
 
 # Test nvidia-docker
-docker run --gpus all nvidia/cuda:10.0-base nvidia-smi
+sudo docker run --gpus all nvidia/cuda:10.0-base nvidia-smi
 ```
 
 이 또한 설치가 제대로 되었다면 마지막에 다음과 같이 `nvidia-smi` 출력이 나올 겁니다. 
@@ -127,3 +130,7 @@ docker run --gpus all nvidia/cuda:10.0-base nvidia-smi
 공짜로 빌려주는 건 좋으나 환경 구축은 역시나....해야 하네요.
 
 제가 쓰는 Docker image는 [개인적인 도커 파일](https://jjerry-k.github.io/living/2020/05/05/dockerfile/) 에 있으니 참고하세요!
+
+## P.S
+- 2020.10.10 내용 추가
+  - sudo usermod -aG docker {유저명} 을 수행하시면 sudo 명령어가 필요 없습니다!
