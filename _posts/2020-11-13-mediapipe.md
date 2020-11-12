@@ -23,7 +23,118 @@ MediaPipe is a framework for building multimodal (eg. video, audio, any time ser
 
 먼저 지원하는 항목입니다. 
 
-[Solution list](https://www.notion.so/937469b533d842a8a7de18d38086fefd)
+## Solution list
+
+<div class="table-wrapper">
+<table> <thead> <tr> 
+<th style="text-align: left"><a href=""></a></th> 
+<th style="text-align: center">Android</th> 
+<th style="text-align: center">iOS</th> 
+<th style="text-align: center">Desktop</th> 
+<th style="text-align: center">Python</th> 
+<th style="text-align: center">Web</th> 
+<th style="text-align: center">Coral</th> </tr> </thead>
+ <tbody> <tr> <td style="text-align: left"><a href="https://google.github.io/mediapipe/solutions/face_detection">Face Detection</a></td> 
+ <td style="text-align: center">✅</td> 
+ <td style="text-align: center">✅</td> 
+ <td style="text-align: center">✅</td> 
+ <td style="text-align: center">&nbsp;</td> 
+ <td style="text-align: center">✅</td> 
+ <td style="text-align: center">✅</td> </tr> 
+ <tr> <td style="text-align: left"><a href="https://google.github.io/mediapipe/solutions/face_mesh">Face Mesh</a></td> 
+ <td style="text-align: center">✅</td> 
+ <td style="text-align: center">✅</td> 
+ <td style="text-align: center">✅</td> 
+ <td style="text-align: center">✅</td> 
+ <td style="text-align: center">&nbsp;</td> 
+ <td style="text-align: center">&nbsp;</td> </tr> 
+ <tr> <td style="text-align: left"><a href="https://google.github.io/mediapipe/solutions/iris">Iris</a></td> 
+ <td style="text-align: center">✅</td> 
+ <td style="text-align: center">✅</td> 
+ <td style="text-align: center">✅</td> 
+ <td style="text-align: center">&nbsp;</td> 
+ <td style="text-align: center">✅</td> 
+ <td style="text-align: center">&nbsp;</td> </tr> 
+ <tr> <td style="text-align: left"><a href="https://google.github.io/mediapipe/solutions/hands">Hands</a></td> 
+ <td style="text-align: center">✅</td> 
+ <td style="text-align: center">✅</td> 
+ <td style="text-align: center">✅</td> 
+ <td style="text-align: center">✅</td> 
+ <td style="text-align: center">✅</td> 
+ <td style="text-align: center">&nbsp;</td> </tr> 
+ <tr> <td style="text-align: left"><a href="https://google.github.io/mediapipe/solutions/pose">Pose</a></td> 
+ <td style="text-align: center">✅</td> 
+ <td style="text-align: center">✅</td> 
+ <td style="text-align: center">✅</td> 
+ <td style="text-align: center">✅</td> 
+ <td style="text-align: center">✅</td> 
+ <td style="text-align: center">&nbsp;</td> </tr> 
+ <tr> <td style="text-align: left"><a href="https://google.github.io/mediapipe/solutions/hair_segmentation">Hair Segmentation</a></td> 
+ <td style="text-align: center">✅</td> 
+ <td style="text-align: center">&nbsp;</td> 
+ <td style="text-align: center">✅</td> 
+ <td style="text-align: center">&nbsp;</td> 
+ <td style="text-align: center">✅</td> 
+ <td style="text-align: center">&nbsp;</td> </tr> 
+ <tr> <td style="text-align: left"><a href="https://google.github.io/mediapipe/solutions/object_detection">Object Detection</a></td> 
+ <td style="text-align: center">✅</td> 
+ <td style="text-align: center">✅</td> 
+ <td style="text-align: center">✅</td> 
+ <td style="text-align: center">&nbsp;</td> 
+ <td style="text-align: center">&nbsp;</td> 
+ <td style="text-align: center">✅</td> </tr> 
+ <tr> <td style="text-align: left"><a href="https://google.github.io/mediapipe/solutions/box_tracking">Box Tracking</a></td> 
+ <td style="text-align: center">✅</td> 
+ <td style="text-align: center">✅</td> 
+ <td style="text-align: center">✅</td> 
+ <td style="text-align: center">&nbsp;</td> 
+ <td style="text-align: center">&nbsp;</td> 
+ <td style="text-align: center">&nbsp;</td> </tr> 
+ <tr> <td style="text-align: left"><a href="https://google.github.io/mediapipe/solutions/instant_motion_tracking">Instant Motion Tracking</a></td> 
+ <td style="text-align: center">✅</td> 
+ <td style="text-align: center">&nbsp;</td> 
+ <td style="text-align: center">&nbsp;</td> 
+ <td style="text-align: center">&nbsp;</td> 
+ <td style="text-align: center">&nbsp;</td> 
+ <td style="text-align: center">&nbsp;</td> </tr> 
+ <tr> <td style="text-align: left"><a href="https://google.github.io/mediapipe/solutions/objectron">Objectron</a></td> 
+ <td style="text-align: center">✅</td> 
+ <td style="text-align: center">&nbsp;</td> 
+ <td style="text-align: center">&nbsp;</td> 
+ <td style="text-align: center">&nbsp;</td> 
+ <td style="text-align: center">&nbsp;</td> 
+ <td style="text-align: center">&nbsp;</td> </tr> 
+ <tr> <td style="text-align: left"><a href="https://google.github.io/mediapipe/solutions/knift">KNIFT</a></td> 
+ <td style="text-align: center">✅</td> 
+ <td style="text-align: center">&nbsp;</td> 
+ <td style="text-align: center">&nbsp;</td> 
+ <td style="text-align: center">&nbsp;</td> 
+ <td style="text-align: center">&nbsp;</td> 
+ <td style="text-align: center">&nbsp;</td> </tr> 
+ <tr> <td style="text-align: left"><a href="https://google.github.io/mediapipe/solutions/autoflip">AutoFlip</a></td> 
+ <td style="text-align: center">&nbsp;</td> 
+ <td style="text-align: center">&nbsp;</td> 
+ <td style="text-align: center">✅</td> 
+ <td style="text-align: center">&nbsp;</td> 
+ <td style="text-align: center">&nbsp;</td> 
+ <td style="text-align: center">&nbsp;</td> </tr> 
+ <tr> <td style="text-align: left"><a href="https://google.github.io/mediapipe/solutions/media_sequence">MediaSequence</a></td> 
+ <td style="text-align: center">&nbsp;</td> 
+ <td style="text-align: center">&nbsp;</td> 
+ <td style="text-align: center">✅</td> 
+ <td style="text-align: center">&nbsp;</td> 
+ <td style="text-align: center">&nbsp;</td> 
+ <td style="text-align: center">&nbsp;</td> </tr> 
+ <tr> <td style="text-align: left"><a href="https://google.github.io/mediapipe/solutions/youtube_8m">YouTube 8M</a></td> 
+ <td style="text-align: center">&nbsp;</td> 
+ <td style="text-align: center">&nbsp;</td> 
+ <td style="text-align: center">✅</td> 
+ <td style="text-align: center">&nbsp;</td> 
+ <td style="text-align: center">&nbsp;</td> 
+ <td style="text-align: center">&nbsp;</td> </tr> 
+ </tbody> </table></div>
+
+
 
 이번 포스팅에선 Face Mesh를 테스트 해보겠습니다. 
 
