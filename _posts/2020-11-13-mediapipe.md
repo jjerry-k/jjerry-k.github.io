@@ -1,6 +1,6 @@
 ---
 layout: post
-title: MediaPipe
+title: MediaPipe - (1)
 category: [DeepLearning]
 tags: [Tools]
 sitemap :
