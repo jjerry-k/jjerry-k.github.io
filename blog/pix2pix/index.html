@@ -184,8 +184,8 @@ URL: <a href="https://arxiv.org/abs/1611.07004">https://arxiv.org/abs/1611.07004
 </figure>
 
 <h2 id="objective">Objective</h2>
-<p>$$\mathcal{L}<em>{cGAN}(G, D) = \mathbb{E}</em>{x, y}[\log D(x, y)] + \mathbb{E}_{x, z}[\log (1-D(x, G(x, z))]$$</p>
-<p>$$\mathcal{L}<em>{L1}(G) = \mathbb{E}</em>{x, y, z}[||y-G(x,z)||_1]$$</p>
+<p>$$\mathcal{L}_{cGAN}(G, D) = \mathbb{E}_{x, y}[\log D(x, y)] + \mathbb{E}_{x, z}[\log (1-D(x, G(x, z))]$$</p>
+<p>$$\mathcal{L}_{L1}(G) = \mathbb{E}_{x, y, z}[||y-G(x,z)||_1]$$</p>
 <p>$$G^* = argmin_Gmax_D\mathcal{L}_{cGAN}(G, D) + \lambda\mathcal{L}_{L1}(G)$$</p>
 <h2 id="network-architectures">Network architectures</h2>
 <ul>
@@ -220,8 +220,8 @@ URL: <a href="https://arxiv.org/abs/1611.07004">https://arxiv.org/abs/1611.07004
 <li>Optimizer: Adam
 <ul>
 <li>Learning rate: 0.0002</li>
-<li>Momentum $\beta_1$: 0.5</li>
-<li>Momentum $\beta_2$: 0.999</li>
+<li>Momentum \(\beta_1\): 0.5</li>
+<li>Momentum \(\beta_2\): 0.999</li>
 </ul>
 </li>
 <li>Batch size: 1~10</li>
@@ -323,51 +323,15 @@ URL: <a href="https://arxiv.org/abs/1611.07004">https://arxiv.org/abs/1611.07004
         </div>
 
         
-        <div id="disqus_thread"></div>
-<script type="application/javascript">
-    var disqus_config = function () {
-    
-    
-    
-    };
-    (function() {
-        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
-            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
-            return;
-        }
-        var d = document, s = d.createElement('script'); s.async = true;
-        s.src = '//' + "jjerry_k" + '.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
-    })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+        
+        
+        <script id="dsq-count-scr" src="//jjerry-k.disqus.com/count.js" async></script>
+        
       </div>
     </div>
   </div>
 </section>
 
-
-<section class="section-sm">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-8 mx-auto text-center">
-        <h2>Join Our Newsletter</h2>
-        <p class="text-light px-md-5 py-4 border-left border-right border-primary">
-          뉴스레터 작동 안합니다..</p>
-        <form action="#" class="row justify-content-center">
-          <div class="input-group col-md-8">
-            <input type="text" class="form-control" placeholder="Your Email Address">
-            <div class="input-group-append">
-              <button class="input-group-text btn btn-primary">Subscribe</button>
-            </div>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-</section>
 
 
 <footer>
@@ -475,46 +439,46 @@ URL: <a href="https://arxiv.org/abs/1611.07004">https://arxiv.org/abs/1611.07004
 <script src="https://jjerry-k.github.io/js/script.min.js"></script>
 
 
+// 
+// 
+// <script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.2.1/js.cookie.min.js"></script>
+// <div id="js-cookie-box" class="cookie-box cookie-box-hide">
+// 	This site uses cookies. By continuing to use this website, you agree to their use. <span id="js-cookie-button" class="btn btn-sm btn-primary ml-2">I Accept</span>
+// </div>
+// <script>
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.2.1/js.cookie.min.js"></script>
-<div id="js-cookie-box" class="cookie-box cookie-box-hide">
-	This site uses cookies. By continuing to use this website, you agree to their use. <span id="js-cookie-button" class="btn btn-sm btn-primary ml-2">I Accept</span>
-</div>
-<script>
-	(function ($) {
-		const cookieBox = document.getElementById('js-cookie-box');
-		const cookieButton = document.getElementById('js-cookie-button');
-		if (!Cookies.get('cookie-box')) {
-			cookieBox.classList.remove('cookie-box-hide');
-			cookieButton.onclick = function () {
-				Cookies.set('cookie-box', true, {
-					expires:  2 
-				});
-				cookieBox.classList.add('cookie-box-hide');
-			};
-		}
-	})(jQuery);
+
+
+
+
+
+
+
+
+
+
+
 </script>
 
+// 
+// <style>
 
-<style>
-.cookie-box {
-  position: fixed;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  text-align: center;
-  z-index: 9999;
-  padding: 1rem 2rem;
-  background: rgb(71, 71, 71);
-  transition: all .75s cubic-bezier(.19, 1, .22, 1);
-  color: #fdfdfd;
-}
 
-.cookie-box-hide {
-  display: none;
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </style>
-</body>
+// </body>
 </html>
