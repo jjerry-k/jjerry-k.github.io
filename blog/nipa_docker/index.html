@@ -28,6 +28,7 @@
   <link rel="shortcut icon" href="https://jjerry-k.github.io/images/favicon.png " type="image/x-icon">
   <link rel="icon" href="https://jjerry-k.github.io/images/favicon.png " type="image/x-icon">
 
+  
   <!-- google analitycs -->
   <script>
     (function (i, s, o, g, r, a, m) {
@@ -296,9 +297,23 @@ sudo docker run --gpus all nvidia/cuda:10.0-base nvidia-smi
 
         
         
-        
-        <script id="dsq-count-scr" src="//jjerry-k.disqus.com/count.js" async></script>
-        
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+
+(function() {
+    
+    
+    if (window.location.hostname == "localhost")
+        return;
+
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    var disqus_shortname = 'jjerry-k';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
       </div>
     </div>
   </div>
@@ -408,49 +423,5 @@ sudo docker run --gpus all nvidia/cuda:10.0-base nvidia-smi
 
 <!-- Main Script -->
 
-<script src="https://jjerry-k.github.io/js/script.min.js"></script>
-
-
-// 
-// 
-// <script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.2.1/js.cookie.min.js"></script>
-// <div id="js-cookie-box" class="cookie-box cookie-box-hide">
-// 	This site uses cookies. By continuing to use this website, you agree to their use. <span id="js-cookie-button" class="btn btn-sm btn-primary ml-2">I Accept</span>
-// </div>
-// <script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-</script>
-
-// 
-// <style>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</style>
-// </body>
+<script src="https://jjerry-k.github.io/js/script.min.js"></script></body>
 </html>
