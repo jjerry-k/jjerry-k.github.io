@@ -214,8 +214,8 @@ hugo new site <span style="color:#f92672">{</span>프로젝트 이름<span style
 </figure>
 
 <h4 id="3-테마-설치">3. 테마 설치</h4>
-<p>프로젝트 디렉토리에 themes 디렉토리가 보입니다.
-themes 디렉토리로 이동하여 위에서 골랐던 테마를 다운로드 합니다.
+<p>프로젝트 디렉토리에 themes 디렉토리가 보입니다.</p>
+<p>themes 디렉토리로 이동하여 위에서 골랐던 테마를 다운로드 합니다.
 저는 <a href="https://github.com/themefisher/liva-hugo">liva-hugo</a> 를 사용했습니다.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cd blog_source
 cd themes
@@ -228,8 +228,8 @@ git clone https://github.com/themefisher/liva-hugo.git
     <img src="/images/post/hugo-blog/img_04.png"/> 
 </figure>
 
-<p>liva-hugo 는 이해가 쉽도록 exampleSite를 이용해보려고 합니다.
-blog_source/themes/liva-hugo/exampleSite 에 있는 content, static, config.toml 을 blog_source 에 있는 위치에 복사해줍니다.</p>
+<p>liva-hugo 는 이해가 쉽도록 exampleSite를 이용해보려고 합니다.</p>
+<p>blog_source/themes/liva-hugo/exampleSite 에 있는 content, static, config.toml 을 blog_source 에 있는 위치에 복사해줍니다.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cp -r themes/liva-hugo/exampleSite/content/* ./content
 cp -r themes/liva-hugo/exampleSite/static/* ./static
 cp themes/liva-hugo/exampleSite/config.toml ./
@@ -245,16 +245,16 @@ hugo server -p <span style="color:#f92672">{</span>원하는 포트 번호<span 
     <img src="/images/post/hugo-blog/img_06.png"/> 
 </figure>
 
-<p>그리고 localhost:1313 로 접속을 하면 예시를 사이트 양식을 가져왔기 때문에 다음과 같이 나옵니다.
+<p>그리고 localhost:1313 로 접속을 하면 예시를 사이트 양식을 가져왔기 때문에 다음과 같이 나옵니다.</p>
 <figure>
     <img src="/images/post/hugo-blog/img_07.png"/> 
 </figure>
-</p>
-<p>포스팅을 하기 전에 다른 포스팅을 확인해봅니다.
+
+<p>포스팅을 하기 전에 다른 포스팅을 확인해봅니다.</p>
 <figure>
     <img src="/images/post/hugo-blog/img_08.png"/> 
 </figure>
-</p>
+
 <p>liva-hugo는 이러한 템플릿을 바탕으로 포스팅을 작성해야합니다.</p>
 <p>세부 내용은 직접 사용하시면서 익히시길&hellip;.</p>
 <p>자 그럼 포스팅을 한번 써보도록 합시다.</p>
@@ -380,6 +380,9 @@ git push
       <div class="col-lg-3 col-sm-6 mb-5">
         <h6 class="mb-4">Categories</h6>
         <ul class="list-unstyled">
+          <li class="mb-3"><a class="text-dark"
+              href="/categories/"></a>
+          </li>
           <li class="mb-3"><a class="text-dark"
               href="/categories/blog">Blog</a>
           </li>

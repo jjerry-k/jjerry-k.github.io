@@ -145,61 +145,50 @@
     <div class="row">
       <div class="col-lg-8 mx-auto">
         
-        <a href="/categories/python"
-          class="text-primary">Python</a>
+        <a href="/categories/"
+          class="text-primary"></a>
         
-        <h2>Python Installation for mac</h2>
+        <h2>TensorFlow 모델 로드 에러..</h2>
         <div class="mb-3 post-meta">
           <span>By Jerry Kim</span>
           
           <span class="border-bottom border-primary px-2 mx-1"></span>
-          <span>27 September 2018</span>
+          <span>28 November 2020</span>
           
         </div>
         
+        <img src="https://jjerry-k.github.io/images/post/tensorflow_model_load/Untitled.png" class="img-fluid w-100 mb-4" alt="TensorFlow 모델 로드 에러..">
+        
         <div class="content mb-5">
-          <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># brew 설치.</span>
-/usr/bin/ruby -e <span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span>curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span>
+          <p>TensorFlow를 쓰다보면 종종 model load 할때 error 가 발생할때가 있습니다.</p>
+<p>에러에 따라  대처법을 적어보려고 합니다.</p>
+<p><strong>해당 방법은 모델을 json 으로 저장했을때 유효한 방법입니다!</strong></p>
+<h2 id="value-errorunknown-layer--functional">Value error:unknown layer : functional</h2>
+<p>json 안에 내용이</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{<span style="color:#f92672">&#34;class_name&#34;</span>: <span style="color:#e6db74">&#34;Functional&#34;</span>, 
+  <span style="color:#f92672">&#34;config&#34;</span>: {
+    <span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;functional_1&#34;</span>, 
+    <span style="color:#f92672">&#34;layers&#34;</span>: [{<span style="color:#f92672">&#34;class_name&#34;</span>: <span style="color:#e6db74">&#34;InputLayer&#34;</span> <span style="color:#960050;background-color:#1e0010">...</span>
+</code></pre></div><p>이렇게 되어있다면</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{<span style="color:#f92672">&#34;class_name&#34;</span>: <span style="color:#e6db74">&#34;Model&#34;</span>, 
+  <span style="color:#f92672">&#34;config&#34;</span>: {
+    <span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;model_1&#34;</span>, 
+    <span style="color:#f92672">&#34;layers&#34;</span>: [{<span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;input_1&#34;</span>, <span style="color:#f92672">&#34;class_name&#34;</span>: <span style="color:#e6db74">&#34;InputLayer&#34;</span> <span style="color:#960050;background-color:#1e0010">...</span>
+</code></pre></div><p>이렇게 <code>&quot;Functional&quot; 을 &quot;Model&quot;</code>로 <code>&quot;functional_1&quot;을 &quot;model_1&quot;</code>으로 변경 후 싫행하시면 됩니다.</p>
+<h2 id="typeerror-keyword-argument-not-understood-groups">TypeError: (&lsquo;Keyword argument not understood:&rsquo;, &lsquo;groups&rsquo;)</h2>
+<p>json 에서 &lsquo;groups&rsquo; 라는 내용을 찾아봅니다.</p>
+<p>다음과 같이 있네요.</p>
+<figure>
+    <img src="/images/post/tensorflow_model_load/Untitled.png"/> 
+</figure>
 
-<span style="color:#75715e"># wget 설치.</span>
-brew install wget
-
-<span style="color:#75715e">#pyenv 설치.</span>
-brew install pyenv
-
-<span style="color:#75715e"># bash_profile 에 경로 추가.</span>
-echo <span style="color:#e6db74">&#39;export PYENV_ROOT=&#34;${HOME}/.pyenv&#34;&#39;</span> &gt;&gt; ~/.zshrc
-
-echo <span style="color:#e6db74">&#39;export PATH=&#34;${PYENV_ROOT}bin:$PATH&#34;&#39;</span> &gt;&gt; ~/.zshrc
-
-echo <span style="color:#e6db74">&#39;eval &#34;$(pyenv init -)&#34;&#39;</span> &gt;&gt; ~/.zshrc
-
-exec $SHELL
-
-<span style="color:#75715e"># 설치할 수 있는 환경 보여줌.</span>
-pyenv install --list
-
-<span style="color:#75715e"># 위에서 환경 확인 후 원하는 버전 입력.</span>
-pyenv install &lt;버전 이름&gt;
-
-<span style="color:#75715e"># system  과 &lt;버전 이름&gt; 두 환경이 존재.</span>
-pyenv versions
-
-<span style="color:#75715e"># &lt;버전 이름&gt;으로 default version 변경.</span>
-pyenv global &lt;버전 이름&gt;
-
-pyenv versions
-
-
-<span style="color:#75715e"># tmp 폴더 에선 system 이라는 버전으로 사용.</span>
-mkdir tmp
-
-cd tmp
-
-pyenv local system
-
-</code></pre></div><p><strong>pyenv</strong> 를 사용하면 특정 폴더에서는 python2 로 작동하고 그 외에는 python3 로 작동하게 할 수 있습니다!</p>
-<p>감사합니다!</p>
+<p>단순히 json 안에 모든 <code>&quot;groups&quot;: ,</code> 를 지워주세요.</p>
+<p>그 후 실행하시면 됩니다!</p>
+<h2 id="ps">P.S</h2>
+<ul>
+<li>간단 포스팅 끝.</li>
+<li>TF 2.4 에선 해결되려나&hellip;</li>
+</ul>
 
         </div>
 
