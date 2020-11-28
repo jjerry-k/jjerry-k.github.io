@@ -6,7 +6,16 @@
     <description>Recent content in TensorFlow on Jerry&#39;s DevLog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 12 Sep 2020 18:30:46 +0600</lastBuildDate><atom:link href="https://jjerry-k.github.io/tags/tensorflow/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 28 Nov 2020 11:45:10 +0900</lastBuildDate><atom:link href="https://jjerry-k.github.io/tags/tensorflow/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>TensorFlow 모델 로드 에러..</title>
+      <link>https://jjerry-k.github.io/blog/tensorflow_model_load/</link>
+      <pubDate>Sat, 28 Nov 2020 11:45:10 +0900</pubDate>
+      
+      <guid>https://jjerry-k.github.io/blog/tensorflow_model_load/</guid>
+      <description>TensorFlow를 쓰다보면 종종 model load 할때 error 가 발생할때가 있습니다.</description>
+    </item>
+    
     <item>
       <title>Seed 가 뭐길래..</title>
       <link>https://jjerry-k.github.io/blog/seed/</link>
