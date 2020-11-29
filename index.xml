@@ -175,7 +175,7 @@ Jupyter는 아는데&amp;hellip;. Neptune은 또 뭐여&amp;hellip;.</descriptio
     </item>
     
     <item>
-      <title>Netron! Network 구조를 보여주세요!</title>
+      <title>Netron! Network 구조를 한번 볼까요?</title>
       <link>https://jjerry-k.github.io/blog/netron/</link>
       <pubDate>Mon, 20 Jul 2020 18:30:46 +0600</pubDate>
       
@@ -692,6 +692,15 @@ https://github.com/V-AIS/tensorflow</description>
       <guid>https://jjerry-k.github.io/blog/dualboot/</guid>
       <description>Deep Learning을 하기 위해 windows를 사용할 수도 있겠지만&amp;hellip;
 저는 Ubuntu를 사용하기로 했습니다.</description>
+    </item>
+    
+    <item>
+      <title>About</title>
+      <link>https://jjerry-k.github.io/about/about/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://jjerry-k.github.io/about/about/</guid>
+      <description>안녕하세요! 실험쥐처럼 이것 저것 해보는 것을 즐기는 김재열입니다. 카카오톡 오픈채팅방 Vision &amp;amp; A.</description>
     </item>
     
   </channel>
