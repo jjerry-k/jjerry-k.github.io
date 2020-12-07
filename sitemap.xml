@@ -4,17 +4,37 @@
   
   <url>
     <loc>https://jjerry-k.github.io/blog/</loc>
-    <lastmod>2020-11-30T22:37:59+09:00</lastmod>
+    <lastmod>2020-12-08T00:24:48+09:00</lastmod>
   </url>
   
   <url>
     <loc>https://jjerry-k.github.io/categories/</loc>
-    <lastmod>2020-11-30T22:37:59+09:00</lastmod>
+    <lastmod>2020-12-08T00:24:48+09:00</lastmod>
   </url>
   
   <url>
     <loc>https://jjerry-k.github.io/</loc>
-    <lastmod>2020-11-30T22:37:59+09:00</lastmod>
+    <lastmod>2020-12-08T00:24:48+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://jjerry-k.github.io/tags/jupyter/</loc>
+    <lastmod>2020-12-08T00:24:48+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://jjerry-k.github.io/blog/jupyter_image_viewer/</loc>
+    <lastmod>2020-12-08T00:24:48+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://jjerry-k.github.io/categories/python/</loc>
+    <lastmod>2020-12-08T00:24:48+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://jjerry-k.github.io/tags/</loc>
+    <lastmod>2020-12-08T00:24:48+09:00</lastmod>
   </url>
   
   <url>
@@ -29,11 +49,6 @@
   
   <url>
     <loc>https://jjerry-k.github.io/blog/talk/</loc>
-    <lastmod>2020-11-30T22:37:59+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://jjerry-k.github.io/tags/</loc>
     <lastmod>2020-11-30T22:37:59+09:00</lastmod>
   </url>
   
@@ -334,11 +349,6 @@
   
   <url>
     <loc>https://jjerry-k.github.io/blog/jupyter_shortcut/</loc>
-    <lastmod>2019-09-07T18:30:46+06:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://jjerry-k.github.io/categories/python/</loc>
     <lastmod>2019-09-07T18:30:46+06:00</lastmod>
   </url>
   

@@ -6,7 +6,17 @@
     <description>Recent content on Jerry&#39;s DevLog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 30 Nov 2020 22:37:59 +0900</lastBuildDate><atom:link href="https://jjerry-k.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 08 Dec 2020 00:24:48 +0900</lastBuildDate><atom:link href="https://jjerry-k.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Jupyter_image_viewer</title>
+      <link>https://jjerry-k.github.io/blog/jupyter_image_viewer/</link>
+      <pubDate>Tue, 08 Dec 2020 00:24:48 +0900</pubDate>
+      
+      <guid>https://jjerry-k.github.io/blog/jupyter_image_viewer/</guid>
+      <description>Jupyter 많이 쓰시죠.
+이번 포스팅에선 Jupyter에서 ipywidgets 를 이용하여 썸네일과 같은 Image Viewer를 만들어보겠습니다.</description>
+    </item>
+    
     <item>
       <title>Small Talk</title>
       <link>https://jjerry-k.github.io/blog/talk/</link>
