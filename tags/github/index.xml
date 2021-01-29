@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Github on Jerry&#39;s DevLog</title>
+    <link>https://jjerry-k.github.io/tags/github/</link>
+    <description>Recent content in Github on Jerry&#39;s DevLog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 30 Jan 2021 02:27:00 +0900</lastBuildDate><atom:link href="https://jjerry-k.github.io/tags/github/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Daily Commit</title>
+      <link>https://jjerry-k.github.io/blog/daily_commit/</link>
+      <pubDate>Sat, 30 Jan 2021 02:27:00 +0900</pubDate>
+      
+      <guid>https://jjerry-k.github.io/blog/daily_commit/</guid>
+      <description>작년 1월&amp;hellip;
+곧 졸업을 앞두고 조금 막막했습니다.
+모든 석사가 이런 경험을 하는지는 모르겠으나.</description>
+    </item>
+    
+  </channel>
+</rss>
