@@ -6,7 +6,16 @@
     <description>Recent content in Tags on Jerry&#39;s DevLog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 30 Jan 2021 02:27:00 +0900</lastBuildDate><atom:link href="https://jjerry-k.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 31 Jan 2021 20:56:18 +0900</lastBuildDate><atom:link href="https://jjerry-k.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Usage</title>
+      <link>https://jjerry-k.github.io/tags/usage/</link>
+      <pubDate>Sun, 31 Jan 2021 20:56:18 +0900</pubDate>
+      
+      <guid>https://jjerry-k.github.io/tags/usage/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>Github</title>
       <link>https://jjerry-k.github.io/tags/github/</link>
@@ -112,15 +121,6 @@
       <pubDate>Sun, 26 Apr 2020 18:30:46 +0600</pubDate>
       
       <guid>https://jjerry-k.github.io/tags/macbook/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Usage</title>
-      <link>https://jjerry-k.github.io/tags/usage/</link>
-      <pubDate>Sat, 06 Jul 2019 18:30:46 +0600</pubDate>
-      
-      <guid>https://jjerry-k.github.io/tags/usage/</guid>
       <description></description>
     </item>
     
