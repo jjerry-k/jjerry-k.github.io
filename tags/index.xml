@@ -6,7 +6,16 @@
     <description>Recent content in Tags on Jerry&#39;s DevLog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 31 Jan 2021 20:56:18 +0900</lastBuildDate><atom:link href="https://jjerry-k.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 10 Feb 2021 00:46:48 +0900</lastBuildDate><atom:link href="https://jjerry-k.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Hashlib</title>
+      <link>https://jjerry-k.github.io/tags/hashlib/</link>
+      <pubDate>Wed, 10 Feb 2021 00:46:48 +0900</pubDate>
+      
+      <guid>https://jjerry-k.github.io/tags/hashlib/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>Usage</title>
       <link>https://jjerry-k.github.io/tags/usage/</link>
