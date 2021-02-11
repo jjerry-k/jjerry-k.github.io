@@ -6,7 +6,16 @@
     <description>Recent content in Blogs on Jerry&#39;s DevLog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 10 Feb 2021 00:46:48 +0900</lastBuildDate><atom:link href="https://jjerry-k.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 10 Feb 2021 20:43:43 +0900</lastBuildDate><atom:link href="https://jjerry-k.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>M1 Macbook Pro 열흘 사용기</title>
+      <link>https://jjerry-k.github.io/blog/silicon_mac/</link>
+      <pubDate>Wed, 10 Feb 2021 20:43:43 +0900</pubDate>
+      
+      <guid>https://jjerry-k.github.io/blog/silicon_mac/</guid>
+      <description>약 한달? 전 회사에 여분의 맥북 프로 신형이 생겨서 CTO님께 넌지시 말씀을 드렸습니다.</description>
+    </item>
+    
     <item>
       <title>Python hashlib</title>
       <link>https://jjerry-k.github.io/blog/python_hash/</link>
