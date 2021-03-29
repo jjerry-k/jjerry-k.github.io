@@ -6,7 +6,16 @@
     <description>Recent content in Living on Jerry&#39;s DevLog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 28 Mar 2021 01:41:53 +0900</lastBuildDate><atom:link href="https://jjerry-k.github.io/categories/living/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 29 Mar 2021 23:19:59 +0900</lastBuildDate><atom:link href="https://jjerry-k.github.io/categories/living/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Smart Mirror Customizing</title>
+      <link>https://jjerry-k.github.io/blog/smartmirror2/</link>
+      <pubDate>Mon, 29 Mar 2021 23:19:59 +0900</pubDate>
+      
+      <guid>https://jjerry-k.github.io/blog/smartmirror2/</guid>
+      <description>저번 포스팅에선 Raspberry Pi 와 LCD, MagicMirror를 이용하여 Smart Mirror 초기 세팅을 했습니다!</description>
+    </item>
+    
     <item>
       <title>Raspberry Pi를 이용한 Smart Mirror 만들기</title>
       <link>https://jjerry-k.github.io/blog/smartmirror/</link>
