@@ -162,6 +162,8 @@
         <div class="content mb-5">
           <p>지극히 개인이 사용하기 위한 vimrc</p>
 <p>마음껏 편하신대로 Copy &amp; Paste 하세요!</p>
+<p>추가적으로 vim-plug 링크&hellip;<br>
+<a href="https://github.com/junegunn/vim-plug">https://github.com/junegunn/vim-plug</a></p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-vim" data-lang="vim"><span style="color:#a6e22e">call</span> <span style="color:#a6e22e">plug</span>#<span style="color:#a6e22e">begin</span>(<span style="color:#e6db74">&#39;~/.vim/plugged&#39;</span>)<span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#a6e22e">Plug</span> <span style="color:#e6db74">&#39;davidhalter/jedi-vim&#39;</span><span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#a6e22e">Plug</span> <span style="color:#e6db74">&#39;preservim/nerdtree&#39;</span><span style="color:#960050;background-color:#1e0010">
@@ -169,10 +171,10 @@
 </span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#a6e22e">Plug</span> <span style="color:#e6db74">&#39;jiangmiao/auto-pairs&#39;</span><span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#a6e22e">Plug</span> <span style="color:#e6db74">&#39;Vimjas/vim-python-pep8-indent&#39;</span><span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#a6e22e">Plug</span> <span style="color:#e6db74">&#39;dense-analysis/ale&#39;</span><span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#a6e22e">Plug</span> <span style="color:#e6db74">&#39;neoclide/coc.nvim&#39;</span>, {<span style="color:#e6db74">&#39;branch&#39;</span>: <span style="color:#e6db74">&#39;release&#39;</span>}&#34;<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e">&#34; Plug &#39;neoclide/coc.nvim&#39;, {&#39;branch&#39;: &#39;release&#39;}</span><span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#a6e22e">Plug</span> <span style="color:#e6db74">&#39;liuchengxu/vista.vim&#39;</span><span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#a6e22e">Plug</span> <span style="color:#e6db74">&#39;sheerun/vim-polyglot&#39;</span><span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e">&#34;Plug &#39;python-mode/python-mode&#39;, { &#39;for&#39;: &#39;python&#39;, &#39;branch&#39;: &#39;develop&#39;  }</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e">&#34; Plug &#39;python-mode/python-mode&#39;, { &#39;for&#39;: &#39;python&#39;, &#39;branch&#39;: &#39;develop&#39;  }</span><span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#a6e22e">Plug</span> <span style="color:#e6db74">&#39;junegunn/seoul256.vim&#39;</span><span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#a6e22e">call</span> <span style="color:#a6e22e">plug</span>#<span style="color:#a6e22e">end</span>()<span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e">
@@ -212,8 +214,11 @@
 </span><span style="color:#960050;background-color:#1e0010"></span>\ <span style="color:#a6e22e">exe</span> <span style="color:#e6db74">&#34;norm g`\&#34;&#34;</span> |<span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span>\ <span style="color:#66d9ef">endif</span><span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e">
-</span><span style="color:#75715e">
-</span><span style="color:#75715e">&#34;seoul256</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#75715e">&#34; Python 실행 커맨드</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#a6e22e">autocmd</span> <span style="color:#a6e22e">FileType</span> <span style="color:#a6e22e">python</span> <span style="color:#a6e22e">map</span> &lt;<span style="color:#a6e22e">buffer</span>&gt; &lt;<span style="color:#a6e22e">F9</span>&gt; :<span style="color:#a6e22e">w</span>&lt;<span style="color:#a6e22e">CR</span>&gt;:<span style="color:#a6e22e">exec</span> <span style="color:#e6db74">&#39;!python3&#39;</span> <span style="color:#a6e22e">shellescape</span>(@%, <span style="color:#ae81ff">1</span>)&lt;<span style="color:#a6e22e">CR</span>&gt;<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#a6e22e">autocmd</span> <span style="color:#a6e22e">FileType</span> <span style="color:#a6e22e">python</span> <span style="color:#a6e22e">imap</span> &lt;<span style="color:#a6e22e">buffer</span>&gt; &lt;<span style="color:#a6e22e">F9</span>&gt; &lt;<span style="color:#a6e22e">esc</span>&gt;:<span style="color:#a6e22e">w</span>&lt;<span style="color:#a6e22e">CR</span>&gt;:<span style="color:#a6e22e">exec</span> <span style="color:#e6db74">&#39;!python3&#39;</span> <span style="color:#a6e22e">shellescape</span>(@%, <span style="color:#ae81ff">1</span>)&lt;<span style="color:#a6e22e">CR</span>&gt;<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e">
+</span><span style="color:#75715e">&#34; seoul256 테마 설정</span><span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">g</span>:<span style="color:#a6e22e">seoul256_background</span> = <span style="color:#ae81ff">233</span><span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#a6e22e">colo</span> <span style="color:#a6e22e">seoul256</span><span style="color:#960050;background-color:#1e0010">
 </span></code></pre></div>
