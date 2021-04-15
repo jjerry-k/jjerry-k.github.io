@@ -6,7 +6,17 @@
     <description>Recent content in Tools on Jerry&#39;s DevLog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 12 Jan 2021 01:14:36 +0900</lastBuildDate><atom:link href="https://jjerry-k.github.io/tags/tools/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 15 Apr 2021 23:47:36 +0900</lastBuildDate><atom:link href="https://jjerry-k.github.io/tags/tools/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title> IPad 에서 VSCode 사용하기</title>
+      <link>https://jjerry-k.github.io/blog/codeserver/</link>
+      <pubDate>Thu, 15 Apr 2021 23:47:36 +0900</pubDate>
+      
+      <guid>https://jjerry-k.github.io/blog/codeserver/</guid>
+      <description>근래에 12인치 맥북과 아이패드 프로 9.7인치를 중고로 팔았습니다.
+그리고 아이패드 프로 11인치 1세대를 구매했죠&amp;hellip;(포기할 수 없었다.</description>
+    </item>
+    
     <item>
       <title>MediaPipe - (4)</title>
       <link>https://jjerry-k.github.io/blog/mediapipe_4/</link>
