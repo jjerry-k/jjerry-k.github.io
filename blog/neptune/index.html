@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="this is meta description">
   <meta name="author" content="Jerry Kim">
-  <meta name="generator" content="Hugo 0.82.0" />
+  <meta name="generator" content="Hugo 0.83.1" />
 
   <!-- plugins -->
   
@@ -189,13 +189,11 @@ conda install psutil matplotlib tensorflow-gpu <span style="color:#75715e"># 혹
 </code></pre></div><h2 id="2-neptune-설정">2. Neptune 설정</h2>
 <p>Neptune을 설치합니다.</p>
 <p>conda를 쓰시는 분들께 보통 conda install 로 설치하라고 말씀을 드리지만.. 이번엔 특별히 pip install로 설치를 추천드립니다.</p>
-<figure>
-    <img src="/images/post/neptune/Untitled.png"/> 
+<figure><img src="/images/post/neptune/Untitled.png"/>
 </figure>
 
 <p>설치 후 자신이 사용하는 OS에 맞춰서 API token을 PC에 기입(?) 해주세요.</p>
-<figure>
-    <img src="/images/post/neptune/Untitled_1.png"/> 
+<figure><img src="/images/post/neptune/Untitled_1.png"/>
 </figure>
 
 <p>여기까지 하면 세팅은 끝납니다. 그 이후에 <code>Run script</code>, <code>Result in UI</code> 부분은 하고 싶으신 분만 해보세요!</p>
@@ -334,44 +332,37 @@ model<span style="color:#f92672">.</span>fit(train_images, train_labels,
 <p>각각 예시를 보시면 역할을 이해하실 수 있습니다.</p>
 <h3 id="charts">Charts</h3>
 <p>여기에는 <code>neptune.log_metric()</code>을 사용한 변수들이 <strong>그래프</strong>로 기록됩니다.</p>
-<figure>
-    <img src="/images/post/neptune/Untitled_2.png"/> 
+<figure><img src="/images/post/neptune/Untitled_2.png"/>
 </figure>
 
 <h3 id="log">Log</h3>
 <p>Charts에 기록된 변수의 값이 기록되고 추가적으로 <code>neptune.log_image()</code>, <code>neptune.log_text()</code> 를 사용한 변수 또한 기록됩니다.</p>
-<figure>
-    <img src="/images/post/neptune/Untitled_3.png"/> 
+<figure><img src="/images/post/neptune/Untitled_3.png"/>
 </figure>
 
 <h3 id="monitoring">Monitoring</h3>
 <p>리소스 모니터링과 standard error, standard output을 볼 수 있어요.</p>
-<figure>
-    <img src="/images/post/neptune/Untitled_4.png"/> 
+<figure><img src="/images/post/neptune/Untitled_4.png"/>
 </figure>
 
 <h3 id="artifacts">Artifacts</h3>
 <p>neptune에 원하는 파일을 전송하여 저장할 수 있습니다.</p>
-<figure>
-    <img src="/images/post/neptune/Untitled_5.png"/> 
+<figure><img src="/images/post/neptune/Untitled_5.png"/>
 </figure>
 
 <h3 id="source-code">Source code</h3>
 <p>생략</p>
-<figure>
-    <img src="/images/post/neptune/Untitled_6.png"/> 
+<figure><img src="/images/post/neptune/Untitled_6.png"/>
 </figure>
 
 <h3 id="parameters">Parameters</h3>
 <p>코드 상단에 적은 PARAMS 가 기록이 됩니다.</p>
-<figure>
-    <img src="/images/post/neptune/Untitled_7.png"/> 
+<figure><img src="/images/post/neptune/Untitled_7.png"/>
 </figure>
 
 <h3 id="detail">Detail</h3>
 <p>뭐&hellip;실험의 정보, 시간 등 기록이 되고 추가적으로 <code>neptune.set_property</code>를 이용하여 Properties 에 변수를 추가할 수 있어요!</p>
-<figure>
-    <img src="/images/post/neptune/Untitled_8.png"/> 
+<figure><img src="/images/post/neptune/Untitled_8.png"/>
 </figure>
 
 <p>wandb와 비슷한 역할을 하는 neptune.ai라는 tool에 대해 다루었습니다.</p>

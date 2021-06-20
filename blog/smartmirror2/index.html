@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="this is meta description">
   <meta name="author" content="Jerry Kim">
-  <meta name="generator" content="Hugo 0.82.0" />
+  <meta name="generator" content="Hugo 0.83.1" />
 
   <!-- plugins -->
   
@@ -166,8 +166,7 @@
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cd ~/MagicMirror/config
 </code></pre></div><p>거기엔 다음과 같이 <code>config.js</code>, <code>config.js.sample</code>이 있습니다!<br>
 여기서 <code>config.js</code> 가 화면을 구성하는 정보들이 들어가있는 파일이고 <code>config.js.sample</code>는 이름 그대로 sample 파일입니다!</p>
-<figure>
-    <img src="/images/post/smartmirror_custom/00.png"/> 
+<figure><img src="/images/post/smartmirror_custom/00.png"/>
 </figure>
 
 <p>그럼 config.js 를 한번 보겠습니다!</p>
@@ -299,16 +298,13 @@
 <h3 id="currentweather-weatherforecast">currentweather, weatherforecast</h3>
 <p>이 두 가지는 <a href="https://openweathermap.org">https://openweathermap.org</a> 라는 사이트의 API를 사용합니다!<br>
 일단 가입하시고 API Key를 복사해주세요!<br>
-<figure>
-    <img src="/images/post/smartmirror_custom/01.png"/> 
+<figure><img src="/images/post/smartmirror_custom/01.png"/>
 </figure>
 
-<figure>
-    <img src="/images/post/smartmirror_custom/02.png"/> 
+<figure><img src="/images/post/smartmirror_custom/02.png"/>
 </figure>
 
-<figure>
-    <img src="/images/post/smartmirror_custom/03.png"/> 
+<figure><img src="/images/post/smartmirror_custom/03.png"/>
 </figure>
 </p>
 <p><code>location</code>과 <code>locationID</code>는 주석에 적혀있듯이 압축파일을 다운로드 &amp; 해제하여 찾으시면 됩니다!<br>
@@ -337,18 +333,15 @@
 <p>달력의 경우에는 Google calendar와 연동을 했습니다!<br>
 연동하는 방법은 간단히 말하면 구글 캘린더의 iCal format 주소를 넣으면 됩니다!<br>
 사진을 참고하세요!</p>
-<p><figure>
-    <img src="/images/post/smartmirror_custom/04.png"/> 
+<p><figure><img src="/images/post/smartmirror_custom/04.png"/>
 </figure>
 
 아래 사진에서 개인 캘린더의 경우 iCal 주소는 가려져 있습니다!<br>
 오른쪽에 복사 버튼 누르셔도 되고 가리기 해제 하셔도 상관없어요!
-<figure>
-    <img src="/images/post/smartmirror_custom/05.png"/> 
+<figure><img src="/images/post/smartmirror_custom/05.png"/>
 </figure>
 
-<figure>
-    <img src="/images/post/smartmirror_custom/06.png"/> 
+<figure><img src="/images/post/smartmirror_custom/06.png"/>
 </figure>
 </p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">    { 
@@ -414,8 +407,7 @@ JTBC랑 Google news 둘 다 보려했는데 JTBC 밖에 안나오는 느낌&hell
 		}
 </code></pre></div><p>이렇게 config.js를 수정하고 나면 다음과 같은 화면을 볼 수 있습니다!<br>
 <strong>아! 이 화면은 Raspberry Pi 의 8080 포트와 로컬의 8080 포트를 터널링하면 볼 수 있습니다!</strong>
-<figure>
-    <img src="/images/post/smartmirror_custom/result.png"/> 
+<figure><img src="/images/post/smartmirror_custom/result.png"/>
 </figure>
 </p>
 <p>후&hellip;정말 간단한 Customizing 이 끝났네요..<br>

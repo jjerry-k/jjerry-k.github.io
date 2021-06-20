@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="this is meta description">
   <meta name="author" content="Jerry Kim">
-  <meta name="generator" content="Hugo 0.82.0" />
+  <meta name="generator" content="Hugo 0.83.1" />
 
   <!-- plugins -->
   
@@ -322,19 +322,16 @@ model<span style="color:#f92672">.</span>fit(x<span style="color:#f92672">=</spa
 </code></pre></div><h3 id="2-기본-값으로-학습-진행">2. 기본 값으로 학습 진행.</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">python train<span style="color:#f92672">.</span>py
 </code></pre></div><p>그 후에 Weights &amp; Biases 로 가보면 다음과 같이 프로젝트가 만들어진 것을 확인 할 수 있습니다.</p>
-<figure>
-    <img src="/images/post/sweep/Untitled.png"/> 
+<figure><img src="/images/post/sweep/Untitled.png"/>
 </figure>
 
 <h3 id="3-sweep-configuration">3. sweep configuration</h3>
 <p>프로젝트 창에서 왼쪽에 <strong>빗자루 모양 아이콘</strong>을 누른 후에 오른쪽 상단에 <strong>Create sweep</strong> 를 눌러줍니다. ****</p>
-<figure>
-    <img src="/images/post/sweep/Untitled_1.png"/> 
+<figure><img src="/images/post/sweep/Untitled_1.png"/>
 </figure>
 
 <p>그러면 다음과 같은 창이 나오는데요. 이제 hyper parameter search를 어떻게 할건지 세팅하는 단계입니다.</p>
-<figure>
-    <img src="/images/post/sweep/Untitled_2.png"/> 
+<figure><img src="/images/post/sweep/Untitled_2.png"/>
 </figure>
 
 <p>저는 다음과 같이 세팅을 했습니다.</p>
@@ -361,8 +358,7 @@ model<span style="color:#f92672">.</span>fit(x<span style="color:#f92672">=</spa
   <span style="color:#f92672">learning_rate</span>:
     <span style="color:#f92672">values</span>: [<span style="color:#ae81ff">0.001</span>, <span style="color:#ae81ff">0.005</span>, <span style="color:#ae81ff">0.0005</span>]
 </code></pre></div><p>그리고 Initialize Sweep 를 눌러줍니다! 그러면 다음과 같은 화면이 나올거에요!</p>
-<figure>
-    <img src="/images/post/sweep/Untitled_3.png"/> 
+<figure><img src="/images/post/sweep/Untitled_3.png"/>
 </figure>
 
 <h3 id="4-sweep-실행">4. Sweep 실행</h3>
@@ -370,8 +366,7 @@ model<span style="color:#f92672">.</span>fit(x<span style="color:#f92672">=</spa
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">wandb agent <span style="color:#f92672">{</span>sweep-id<span style="color:#f92672">}</span>
 </code></pre></div><p>그러면 터미널에 wandb: Starting wandb agent 🕵️ 이런 문구와 함께 세팅대로 Network를 학습하게 됩니다!</p>
 <p>이제 잠시 티타임을&hellip;가집니다.. (잠깐이 아닐 수도 있음..)</p>
-<figure>
-    <img src="/images/post/sweep/Untitled_4.png"/> 
+<figure><img src="/images/post/sweep/Untitled_4.png"/>
 </figure>
 
 <h3 id="5-결과-확인">5. 결과 확인</h3>
@@ -384,8 +379,7 @@ model<span style="color:#f92672">.</span>fit(x<span style="color:#f92672">=</spa
 <li>hyper parameter와 목표 값( 저는 loss ) 간의 중요도, 상관관계</li>
 <li>각 학습 별 Parallel graph</li>
 </ul>
-<figure>
-    <img src="/images/post/sweep/Untitled_5.png"/> 
+<figure><img src="/images/post/sweep/Untitled_5.png"/>
 </figure>
 
 <p>이번엔 Hyper parameter tuning을 편하게 할 수 있는 Weighs &amp; Biases의 Sweep에 대해 알아봤습니다.</p>

@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="this is meta description">
   <meta name="author" content="Jerry Kim">
-  <meta name="generator" content="Hugo 0.82.0" />
+  <meta name="generator" content="Hugo 0.83.1" />
 
   <!-- plugins -->
   
@@ -213,20 +213,17 @@
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># Example</span>
 RUN echo <span style="color:#e6db74">&#39;root:test&#39;</span> | chpasswd
 </code></pre></div><p>위 내용들을 vim이나 nano같은 에디터를 이용해서 Dockerfile을 만들어주세요!</p>
-<figure>
-    <img src="/images/post/nipa_vscode/Untitled.png"/> 
+<figure><img src="/images/post/nipa_vscode/Untitled.png"/>
 </figure>
 
 <p>그리고 다음과 같이 커맨드를 입력하여 도커 이미지를 build 합니다.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker build -t <span style="color:#f92672">{</span>이미지 이름<span style="color:#f92672">}</span> .
-</code></pre></div><figure>
-    <img src="/images/post/nipa_vscode/Untitled_1.png"/> 
+</code></pre></div><figure><img src="/images/post/nipa_vscode/Untitled_1.png"/>
 </figure>
 
 <p>뭐 이런 저런 Log 들이 촤라———라락 넘어갈겁니다. 계속 기다려 주세요&hellip;.</p>
 <p><code>docker images</code> 를 입력하면 제대로 생성된 것을 볼 수 있습니다!</p>
-<figure>
-    <img src="/images/post/nipa_vscode/Untitled_2.png"/> 
+<figure><img src="/images/post/nipa_vscode/Untitled_2.png"/>
 </figure>
 
 <h2 id="2-container-실행">2. Container 실행</h2>
@@ -235,8 +232,7 @@ RUN echo <span style="color:#e6db74">&#39;root:test&#39;</span> | chpasswd
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker run -d -P -v /home/ubuntu/jerry/:/jerry --name <span style="color:#f92672">{</span>컨테이너 이름<span style="color:#f92672">}</span> <span style="color:#f92672">{</span>이미지 이름<span style="color:#f92672">}</span>
 
 docker port <span style="color:#f92672">{</span>컨테이너 이름<span style="color:#f92672">}</span> <span style="color:#ae81ff">22</span>
-</code></pre></div><figure>
-    <img src="/images/post/nipa_vscode/Untitled_3.png"/> 
+</code></pre></div><figure><img src="/images/post/nipa_vscode/Untitled_3.png"/>
 </figure>
 
 <p>컨테이너를 만들고 해당 컨테이너의 22번 포트 (ssh 포트)가 nipa의 몇번 포트와 연결되어 있는지 출력해줍니다.</p>
@@ -245,32 +241,27 @@ docker port <span style="color:#f92672">{</span>컨테이너 이름<span style="
 <p>vscode 에 Remote - SSH 플러그인이 설치가 되어 있다는 전제 하에 진행합니다.</p>
 </blockquote>
 <p>새로운 호스트를 추가해줍니다.</p>
-<figure>
-    <img src="/images/post/nipa_vscode/Untitled_4.png"/> 
+<figure><img src="/images/post/nipa_vscode/Untitled_4.png"/>
 </figure>
 
 <p><code>ssh root@{NIPA IP} -p {포트 번호}</code> 라고 입력하고 엔터!</p>
-<figure>
-    <img src="/images/post/nipa_vscode/Untitled_5.png"/> 
+<figure><img src="/images/post/nipa_vscode/Untitled_5.png"/>
 </figure>
 
 <p>그럼 우하단에 <code>Host를 추가했습니다!</code> 와 같이 알림이 뜹니다.</p>
 <p>추가를 했으니 이제 Host에 연결을 해봅니다.</p>
 <p>비밀번호는 맨 처음에 Dockerfile에서 썼던 비밀번호 입니다!</p>
-<figure>
-    <img src="/images/post/nipa_vscode/Untitled_6.png"/> 
+<figure><img src="/images/post/nipa_vscode/Untitled_6.png"/>
 </figure>
 
 <p>아마 처음에는 세팅이 오래 걸릴겁니다. 우하단에 알림이 없어질 때까지 기다려주세요 !</p>
 <p>기초 세팅이 다 완료 되면 컨테이너의 vscode-server에 플러그인을 설치해야 합니다.</p>
 <p>저는 아래 4개 플러그인을 설치했어요.</p>
-<figure>
-    <img src="/images/post/nipa_vscode/Untitled_7.png"/> 
+<figure><img src="/images/post/nipa_vscode/Untitled_7.png"/>
 </figure>
 
 <p>그 후에 테스트 코드를 돌려봅니다.</p>
-<figure>
-    <img src="/images/post/nipa_vscode/Untitled_8.png"/> 
+<figure><img src="/images/post/nipa_vscode/Untitled_8.png"/>
 </figure>
 
 <p>정상적으로 잘 작동하네요!</p>

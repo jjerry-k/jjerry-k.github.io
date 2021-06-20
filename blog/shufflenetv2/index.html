@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="this is meta description">
   <meta name="author" content="Jerry Kim">
-  <meta name="generator" content="Hugo 0.82.0" />
+  <meta name="generator" content="Hugo 0.83.1" />
 
   <!-- plugins -->
   
@@ -175,8 +175,7 @@ URL: <a href="https://arxiv.org/abs/1807.11164">https://arxiv.org/abs/1807.11164
 </ul>
 </li>
 </ul>
-<figure>
-    <img src="/images/post/shufflenetv2/Untitled.png"/> 
+<figure><img src="/images/post/shufflenetv2/Untitled.png"/>
 </figure>
 
 <h1 id="practical-guidelines-for-ecient-network-design">Practical Guidelines for Ecient Network Design</h1>
@@ -185,8 +184,7 @@ URL: <a href="https://arxiv.org/abs/1807.11164">https://arxiv.org/abs/1807.11164
 <li>모델의 Runtime을 쪼개보면 다음과 같은 차트가 그려짐.</li>
 <li>FLOPs는 Convolution 에 대해 설명하기 떄문에 비교 지표로 적절하지 못함을 강조.</li>
 </ul>
-<figure>
-    <img src="/images/post/shufflenetv2/Untitled_1.png"/> 
+<figure><img src="/images/post/shufflenetv2/Untitled_1.png"/>
 </figure>
 
 <ul>
@@ -216,8 +214,7 @@ $$c_1c_2: \text{Number of filter&rsquo;s element}$$</p>
 <li>전체 연산량은 고정해놓고 \(c_1:c_2\)의 비율을 바꿔가면서 runtime 비교.</li>
 <li>1:1일때가 가장 빠른 성능을 보임.</li>
 </ul>
-<figure>
-    <img src="/images/post/shufflenetv2/Untitled_2.png"/> 
+<figure><img src="/images/post/shufflenetv2/Untitled_2.png"/>
 </figure>
 
 <blockquote>
@@ -235,8 +232,7 @@ $$ = hwc_1 + \frac{Bg}{c_1} + \frac{B}{hw}$$</p>
 <ul>
 <li>Groups 에 따라 runtime 비교.</li>
 </ul>
-<figure>
-    <img src="/images/post/shufflenetv2/Untitled_3.png"/> 
+<figure><img src="/images/post/shufflenetv2/Untitled_3.png"/>
 </figure>
 
 <blockquote>
@@ -247,12 +243,10 @@ $$ = hwc_1 + \frac{Bg}{c_1} + \frac{B}{hw}$$</p>
 <li>Inception 과 같이 여러 branch를 parallel하게 구성할 경우 성능은 좋아졌지만 효율성은 감소시킴. → GPU 같은 자원에는 어울리지 않음.</li>
 <li>Fragmentation 에 따른 runtime 비교.</li>
 </ul>
-<figure>
-    <img src="/images/post/shufflenetv2/Untitled_4.png"/> 
+<figure><img src="/images/post/shufflenetv2/Untitled_4.png"/>
 </figure>
 
-<figure>
-    <img src="/images/post/shufflenetv2/Untitled_5.png"/> 
+<figure><img src="/images/post/shufflenetv2/Untitled_5.png"/>
 </figure>
 
 <blockquote>
@@ -273,8 +267,7 @@ $$ = hwc_1 + \frac{Bg}{c_1} + \frac{B}{hw}$$</p>
 <p>각 상황에 대한 runtime 비교.</p>
 </li>
 </ul>
-<figure>
-    <img src="/images/post/shufflenetv2/Untitled_6.png"/> 
+<figure><img src="/images/post/shufflenetv2/Untitled_6.png"/>
 </figure>
 
 <blockquote>
@@ -326,8 +319,7 @@ $$ = hwc_1 + \frac{Bg}{c_1} + \frac{B}{hw}$$</p>
 <li>G1, G2, G3, G4 모두 지키지 않음.</li>
 <li>이를 해결한 구조가 ShuffleNet V2 의 유닛 (Fig 3 (c), Fig 3 (d))</li>
 </ul>
-<figure>
-    <img src="/images/post/shufflenetv2/Untitled_7.png"/> 
+<figure><img src="/images/post/shufflenetv2/Untitled_7.png"/>
 </figure>
 
 <h2 id="channel-split-and-shuenet-v2">Channel Split and ShueNet V2</h2>
@@ -354,8 +346,7 @@ $$ = hwc_1 + \frac{Bg}{c_1} + \frac{B}{hw}$$</p>
 <p>네트워크 구조</p>
 </li>
 </ul>
-<figure>
-    <img src="/images/post/shufflenetv2/Untitled_8.png"/> 
+<figure><img src="/images/post/shufflenetv2/Untitled_8.png"/>
 </figure>
 
 <h2 id="analysis-of-network-accuracy">Analysis of Network Accuracy</h2>
@@ -370,8 +361,7 @@ $$ = hwc_1 + \frac{Bg}{c_1} + \frac{B}{hw}$$</p>
 <li>붉을 수록 Source layer와 Target layer의 연결성이 강하다는 의미.</li>
 <li>DenseNet과 같이 ShuffleNet V2에서도 Target layer가 멀어질 수록 연결성이 약함.</li>
 </ul>
-<figure>
-    <img src="/images/post/shufflenetv2/Untitled_9.png"/> 
+<figure><img src="/images/post/shufflenetv2/Untitled_9.png"/>
 </figure>
 
 <h1 id="experiment">Experiment</h1>
@@ -385,8 +375,7 @@ $$ = hwc_1 + \frac{Bg}{c_1} + \frac{B}{hw}$$</p>
 </ul>
 </li>
 </ul>
-<figure>
-    <img src="/images/post/shufflenetv2/Untitled_10.png"/> 
+<figure><img src="/images/post/shufflenetv2/Untitled_10.png"/>
 </figure>
 
 <h3 id="accuracy-vs-flops">Accuracy vs. FLOPs</h3>
@@ -397,8 +386,7 @@ $$ = hwc_1 + \frac{Bg}{c_1} + \frac{B}{hw}$$</p>
 <ul>
 <li>연산량을 특정 값 범위로 고정시키고 runtime 비교. (Fig 1 참조)</li>
 </ul>
-<figure>
-    <img src="/images/post/shufflenetv2/Untitled_11.png"/> 
+<figure><img src="/images/post/shufflenetv2/Untitled_11.png"/>
 </figure>
 
 <h3 id="compared-with-mobilenet-v1">Compared with MobileNet v1</h3>
@@ -421,8 +409,7 @@ $$ = hwc_1 + \frac{Bg}{c_1} + \frac{B}{hw}$$</p>
 <li>50개의 레이어를 가진 모델을 생성해도 ResNet-50 과 비교하여 적은 연산량, 뛰어난 성능을 보임. (Table 6 상단)</li>
 <li>SE module, residual block을 사용하여 더욱 깊게 만들어도 상대적으로 연산량이 적으면서 뛰어난 성능을 보임. (Table 6 하단)</li>
 </ul>
-<figure>
-    <img src="/images/post/shufflenetv2/Untitled_12.png"/> 
+<figure><img src="/images/post/shufflenetv2/Untitled_12.png"/>
 </figure>
 
 <h3 id="object-detection">Object Detection</h3>
@@ -431,8 +418,7 @@ $$ = hwc_1 + \frac{Bg}{c_1} + \frac{B}{hw}$$</p>
 <li>Classification 에서 성능이 별로였던 Xception 이 Detection 에선 성능이 좋음. → Receptive Field가 크기 때문이라고 생각.</li>
 <li>3x3 depthwise convolution 을 추가하여 Receptive Field를 키워보니 (ShuffleNet V2*) runtime은 늘었으나 성능이 증가함.</li>
 </ul>
-<figure>
-    <img src="/images/post/shufflenetv2/Untitled_13.png"/> 
+<figure><img src="/images/post/shufflenetv2/Untitled_13.png"/>
 </figure>
 
 <h2 id="ps">P.S</h2>

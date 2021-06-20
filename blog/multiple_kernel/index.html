@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="this is meta description">
   <meta name="author" content="Jerry Kim">
-  <meta name="generator" content="Hugo 0.82.0" />
+  <meta name="generator" content="Hugo 0.83.1" />
 
   <!-- plugins -->
   
@@ -173,43 +173,35 @@ jupyter notebook
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">conda activate <span style="color:#f92672">{</span>환경이름<span style="color:#f92672">}</span>
 python -m ipykernel install --user --name <span style="color:#f92672">{</span>환경이름<span style="color:#f92672">}</span> --display-name <span style="color:#f92672">{</span>Jupyter에 표시될 이름<span style="color:#f92672">}</span>
 </code></pre></div><p>이렇게 하시면 됩니다. 예시를 직접 보여드리겠습니다.</p>
-<figure>
-    <img src="/images/post/multi_kernel/01.png"/> 
+<figure><img src="/images/post/multi_kernel/01.png"/>
 </figure>
 
 <p>저는 base 환경만 썼습니다. 가상환경을 가볍게 하나 만들도록 할게요!</p>
-<figure>
-    <img src="/images/post/multi_kernel/02.png"/> 
+<figure><img src="/images/post/multi_kernel/02.png"/>
 </figure>
 
 <p><code>test</code>라는 가상환경을 만들었습니다. 먼저 <strong>kernel을 추가하지 않고</strong> jupyter notebook을 실행해보겠습니다.</p>
-<p><figure>
-    <img src="/images/post/multi_kernel/03.png"/> 
+<p><figure><img src="/images/post/multi_kernel/03.png"/>
 </figure>
 
-<figure>
-    <img src="/images/post/multi_kernel/04.png"/> 
+<figure><img src="/images/post/multi_kernel/04.png"/>
 </figure>
 </p>
 <p>첫번째 사진을 보시면 <strong>Python 3</strong> 만 나오는걸 보실 수 있습니다. 저 <strong>Python 3</strong> 는 base의 Python을 가리킵니다.<br>
 base에는 제가 tensorflow를 설치해놨기 때문에 import 가 잘 작동하는군요..<br>
 그럼 kernel을 추가해보겠습니다.  (일단 test 환경에 ipython 이 안깔려있어서 설치함..)</p>
-<p><figure>
-    <img src="/images/post/multi_kernel/05.png"/> 
+<p><figure><img src="/images/post/multi_kernel/05.png"/>
 </figure>
 
-<figure>
-    <img src="/images/post/multi_kernel/06.png"/> 
+<figure><img src="/images/post/multi_kernel/06.png"/>
 </figure>
 </p>
 <p>커널을 추가하고 나면 <code>Installed ~~~~</code> 라는 메세지를 보실 수 있어요!<br>
 그럼 다시 base로 돌아가서 jupyter notebook을 실행해보겠습니다.</p>
-<p><figure>
-    <img src="/images/post/multi_kernel/07.png"/> 
+<p><figure><img src="/images/post/multi_kernel/07.png"/>
 </figure>
 
-<figure>
-    <img src="/images/post/multi_kernel/08.png"/> 
+<figure><img src="/images/post/multi_kernel/08.png"/>
 </figure>
 </p>
 <p>첫번째 사진을 보시면 추가하기 전과는 다르게 <strong>test</strong> 라는 항목이 추가되었습니다!<br>

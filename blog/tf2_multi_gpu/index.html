@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="this is meta description">
   <meta name="author" content="Jerry Kim">
-  <meta name="generator" content="Hugo 0.82.0" />
+  <meta name="generator" content="Hugo 0.83.1" />
 
   <!-- plugins -->
   
@@ -229,8 +229,7 @@ batch_size <span style="color:#f92672">=</span> batch_size_each_gpu<span style="
 
 history <span style="color:#f92672">=</span> cnn<span style="color:#f92672">.</span>fit(train_x, train_y, epochs<span style="color:#f92672">=</span><span style="color:#ae81ff">10</span>, batch_size<span style="color:#f92672">=</span>batch_size, validation_data<span style="color:#f92672">=</span>(test_x, test_y))
 </code></pre></div><p>어렵지 않습니다. <code>Build Network</code> 주석 부분과 <code>Training Network</code> 부분에 <code>batch_size</code>만 조금 수정해주시면 끝납니다!<br>
-<figure>
-    <img src="/images/post/tf_multi_gpu/bob.png"/> 
+<figure><img src="/images/post/tf_multi_gpu/bob.png"/>
 </figure>
 </p>
 <p>하지만 이렇게 하면 무식하게 GPU의 모든 메모리를 할당합니다.<br>

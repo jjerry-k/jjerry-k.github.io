@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="this is meta description">
   <meta name="author" content="Jerry Kim">
-  <meta name="generator" content="Hugo 0.82.0" />
+  <meta name="generator" content="Hugo 0.83.1" />
 
   <!-- plugins -->
   
@@ -175,17 +175,14 @@
 <li>Coral Accelerator</li>
 <li>Webcam</li>
 </ul>
-<figure>
-    <img src="/images/post/coral/01.png"/> 
+<figure><img src="/images/post/coral/01.png"/>
 </figure>
 
 <h1 id="step-1-연결">Step 1. 연결</h1>
-<figure>
-    <img src="/images/post/coral/02.png"/> 
+<figure><img src="/images/post/coral/02.png"/>
 </figure>
 
-<figure>
-    <img src="/images/post/coral/03.png"/> 
+<figure><img src="/images/post/coral/03.png"/>
 </figure>
 
 <p>모두 연결 후 라즈베리파이를 켜면 위 사진과 같이 USB에 흰색 불이 들어옵니다.</p>
@@ -214,8 +211,7 @@ sh download_models.sh
 </code></pre>
 <p><code>download_models.sh</code>를 실행하시면 다음과 같이  <code>all_models</code>라는 디렉토리 안에 각 데이터셋 별 labelmap.txt와 학습된 모델의 tflite 파일이 있습니다.</p>
 <p>여기서 밑줄 친 파일을 이용해서 object detection 을 해볼겁니다! 일단 그 다음 세팅으로 넘어가죠.</p>
-<figure>
-    <img src="/images/post/coral/04.png"/> 
+<figure><img src="/images/post/coral/04.png"/>
 </figure>
 
 <pre><code>#!/bin/bash
@@ -247,8 +243,7 @@ optional arguments:
 --top_k 3 \
 --threshold 0.7
 </code></pre>
-<figure>
-    <img src="/images/post/coral/05.png"/> 
+<figure><img src="/images/post/coral/05.png"/>
 </figure>
 
 <p>막 빠를 줄 알았는데 Webcam 의 한계라 그런지&hellip; FPS가 낮네요..</p>
