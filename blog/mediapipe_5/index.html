@@ -206,9 +206,102 @@ MASK_COLOR <span style="color:#f92672">=</span> (<span style="color:#ae81ff">1</
 예시 사진이 너무 단순한 사진이다 보니&hellip;<br>
 굉장히 변별력이 없는 듯하군요&hellip;<br>
 웹캠이 준비되는 대로 다시 올려봐야겠습니다.</p>
+<h1 id="20210621-추가-내용">2021.06.21 추가 내용</h1>
+<p>허헛 동영상으로&hellip;해보았습니다&hellip;<br>
+여기엔 두개의 모드가 있습니다. 하나는 Base mode, 다른 하나는 Landscape mode.<br>
+약&mdash;-간 차이가 있어요 ㅋㅋㅋ</p>
+<h2 id="실행-코드-1">실행 코드</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> cv2 <span style="color:#f92672">as</span> cv
+<span style="color:#f92672">import</span> numpy <span style="color:#f92672">as</span> np
+<span style="color:#f92672">import</span> mediapipe <span style="color:#f92672">as</span> mp
+mp_drawing <span style="color:#f92672">=</span> mp<span style="color:#f92672">.</span>solutions<span style="color:#f92672">.</span>drawing_utils
+mp_selfie_segmentation <span style="color:#f92672">=</span> mp<span style="color:#f92672">.</span>solutions<span style="color:#f92672">.</span>selfie_segmentation
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">change_background</span>(frame, background, mode<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>, threshold<span style="color:#f92672">=</span><span style="color:#ae81ff">0.1</span>):
+    <span style="color:#e6db74">&#34;&#34;&#34;
+</span><span style="color:#e6db74">    frame: [H, W, C]
+</span><span style="color:#e6db74">    background: [H, W, C]
+</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">    모두 BGR 컬러
+</span><span style="color:#e6db74">    &#34;&#34;&#34;</span>
+    BG_COLOR <span style="color:#f92672">=</span> (<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>) <span style="color:#75715e"># gray</span>
+    MASK_COLOR <span style="color:#f92672">=</span> (<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>) <span style="color:#75715e"># white</span>
+    <span style="color:#66d9ef">with</span> mp_selfie_segmentation<span style="color:#f92672">.</span>SelfieSegmentation(model_selection<span style="color:#f92672">=</span>mode) <span style="color:#66d9ef">as</span> selfie_segmentation:
+        <span style="color:#75715e"># model_selection</span>
+        <span style="color:#75715e"># 0: basic model, 1: landscape model</span>
+        results <span style="color:#f92672">=</span> selfie_segmentation<span style="color:#f92672">.</span>process(cv<span style="color:#f92672">.</span>cvtColor(frame, cv<span style="color:#f92672">.</span>COLOR_BGR2RGB))
+        condition <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>stack((results<span style="color:#f92672">.</span>segmentation_mask,) <span style="color:#f92672">*</span> <span style="color:#ae81ff">3</span>, axis<span style="color:#f92672">=-</span><span style="color:#ae81ff">1</span>) <span style="color:#f92672">&gt;</span> threshold
+        fg_image <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>zeros(frame<span style="color:#f92672">.</span>shape, dtype<span style="color:#f92672">=</span>np<span style="color:#f92672">.</span>uint8)
+        fg_image[:] <span style="color:#f92672">=</span> MASK_COLOR
+        bg_image <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>zeros(frame<span style="color:#f92672">.</span>shape, dtype<span style="color:#f92672">=</span>np<span style="color:#f92672">.</span>uint8)
+        bg_image[:] <span style="color:#f92672">=</span> BG_COLOR
+        mask <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>where(condition, fg_image, bg_image)
+        output_image <span style="color:#f92672">=</span> frame<span style="color:#f92672">*</span>mask <span style="color:#f92672">+</span> background<span style="color:#f92672">*</span>(<span style="color:#ae81ff">1</span><span style="color:#f92672">-</span>mask)
+    <span style="color:#66d9ef">return</span> output_image
+
+video_path <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;./selfie_input.mp4&#39;</span>
+bg_path <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;./background.jpg&#39;</span>
+
+cap <span style="color:#f92672">=</span> cv<span style="color:#f92672">.</span>VideoCapture(video_path)
+bg_img <span style="color:#f92672">=</span> cv<span style="color:#f92672">.</span>imread(bg_path)
+
+H <span style="color:#f92672">=</span> int(cap<span style="color:#f92672">.</span>get(cv<span style="color:#f92672">.</span>CAP_PROP_FRAME_HEIGHT))
+W <span style="color:#f92672">=</span> int(cap<span style="color:#f92672">.</span>get(cv<span style="color:#f92672">.</span>CAP_PROP_FRAME_WIDTH))
+bg_img <span style="color:#f92672">=</span> cv<span style="color:#f92672">.</span>resize(bg_img, (W, H))
+
+
+fourcc <span style="color:#f92672">=</span> cv<span style="color:#f92672">.</span>VideoWriter_fourcc(<span style="color:#f92672">*</span><span style="color:#e6db74">&#39;DIVX&#39;</span>)
+out <span style="color:#f92672">=</span> cv<span style="color:#f92672">.</span>VideoWriter(f<span style="color:#e6db74">&#39;selfie_output.mp4&#39;</span>, fourcc, <span style="color:#ae81ff">30.0</span>, (int(W), int(H)))    
+
+frame_idx <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+<span style="color:#66d9ef">while</span>(cap<span style="color:#f92672">.</span>isOpened()):
+    
+    ret, frame <span style="color:#f92672">=</span> cap<span style="color:#f92672">.</span>read()
+    <span style="color:#66d9ef">if</span> ret <span style="color:#f92672">==</span> False:
+        <span style="color:#66d9ef">break</span>
+    frame <span style="color:#f92672">=</span> change_background(frame, bg_img, mode<span style="color:#f92672">=</span>idx, threshold<span style="color:#f92672">=</span><span style="color:#ae81ff">0.4</span>)
+    out<span style="color:#f92672">.</span>write(frame)
+</code></pre></div><table>
+<thead>
+<tr>
+<th style="text-align:center">설명</th>
+<th style="text-align:center">영상</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Input</td>
+<td style="text-align:center">
+ 
+<video width=50% autoplay loop>
+    <source src="/images/post/mediapipe/selfie_input.mp4" type="video/mp4">
+</video> 
+</td>
+</tr>
+<tr>
+<td style="text-align:center">Base model</td>
+<td style="text-align:center">
+ 
+<video width=50% autoplay loop>
+    <source src="/images/post/mediapipe/selfie_output_base.mp4" type="video/mp4">
+</video> 
+</td>
+</tr>
+<tr>
+<td style="text-align:center">Landscape model</td>
+<td style="text-align:center">
+ 
+<video width=50% autoplay loop>
+    <source src="/images/post/mediapipe/selfie_output_landscape.mp4" type="video/mp4">
+</video>
+</td>
+</tr>
+</tbody>
+</table>
 <h2 id="ps">P.S</h2>
 <ul>
-<li>추후에 배경 캠 + 배경변경 코드를 올려보겠습니다!</li>
+<li><del>추후에 배경 캠 + 배경변경 코드를 올려보겠습니다!</del></li>
+<li>점점 뭔가 쉽게 만들 수 있을 듯&hellip;</li>
 </ul>
 
         </div>
