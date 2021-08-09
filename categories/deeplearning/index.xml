@@ -6,7 +6,16 @@
     <description>Recent content in DeepLearning on Jerry&#39;s DevLog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 21 Jun 2021 00:06:14 +0900</lastBuildDate><atom:link href="https://jjerry-k.github.io/categories/deeplearning/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 08 Aug 2021 23:05:38 +0900</lastBuildDate><atom:link href="https://jjerry-k.github.io/categories/deeplearning/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>쉽고 빠르게 결과를 확인해보자. Streamlit</title>
+      <link>https://jjerry-k.github.io/blog/streamlit/</link>
+      <pubDate>Sun, 08 Aug 2021 23:05:38 +0900</pubDate>
+      
+      <guid>https://jjerry-k.github.io/blog/streamlit/</guid>
+      <description>동일한 task에서 Deep learning model 들을 이래저래 학습을 하다보면 매우 귀찮은 상황이 발생하곤 합니다&amp;hellip;.</description>
+    </item>
+    
     <item>
       <title>MediaPipe - (6)</title>
       <link>https://jjerry-k.github.io/blog/mediapipe_6/</link>

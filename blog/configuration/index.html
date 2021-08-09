@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="en-us"><head>
   <meta charset="utf-8">
+  <!--  google adsense -->
+  <script data-ad-client="ca-pub-1054696837285307" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
   <title>Jerry&#39;s DevLog</title>
 
   <!-- mobile responsive meta -->
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="this is meta description">
   <meta name="author" content="Jerry Kim">
-  <meta name="generator" content="Hugo 0.83.1" />
+  <meta name="generator" content="Hugo 0.85.0" />
 
   <!-- plugins -->
   
@@ -184,8 +186,8 @@
 <span style="color:#66d9ef">with</span> open(<span style="color:#e6db74">&#34;config.json&#34;</span>) <span style="color:#66d9ef">as</span> json_data_file:
     data <span style="color:#f92672">=</span> json<span style="color:#f92672">.</span>load(json_data_file)
 
-<span style="color:#66d9ef">print</span>(type(data)) <span style="color:#75715e"># &lt;class &#39;dict&#39;&gt;</span>
-<span style="color:#66d9ef">print</span>(data)
+print(type(data)) <span style="color:#75715e"># &lt;class &#39;dict&#39;&gt;</span>
+print(data)
 <span style="color:#75715e"># {&#39;name&#39;: &#39;Jerry&#39;, </span>
 <span style="color:#75715e"># &#39;github&#39;: &#39;jjerry-k&#39;, </span>
 <span style="color:#75715e"># &#39;blog_url&#39;: &#39;jjerry-k.github.io&#39;, </span>
@@ -212,8 +214,8 @@
 <span style="color:#66d9ef">with</span> open(<span style="color:#e6db74">&#34;config.yml&#34;</span>, <span style="color:#e6db74">&#34;r&#34;</span>) <span style="color:#66d9ef">as</span> ymlfile:
     data <span style="color:#f92672">=</span> yaml<span style="color:#f92672">.</span>load(ymlfile)
 
-<span style="color:#66d9ef">print</span>(type(data)) <span style="color:#75715e"># &lt;class &#39;dict&#39;&gt;</span>
-<span style="color:#66d9ef">print</span>(data)
+print(type(data)) <span style="color:#75715e"># &lt;class &#39;dict&#39;&gt;</span>
+print(data)
 <span style="color:#75715e"># {&#39;name&#39;: &#39;Jerry&#39;, </span>
 <span style="color:#75715e"># &#39;github&#39;: &#39;jjerry-k&#39;, </span>
 <span style="color:#75715e"># &#39;blog_url&#39;: &#39;jjerry-k.github.io&#39;, </span>
@@ -236,17 +238,17 @@
         <span style="color:#f92672">&lt;li&gt;</span>DIY<span style="color:#f92672">&lt;/li&gt;</span>
     <span style="color:#f92672">&lt;/favorite&gt;</span>
 <span style="color:#f92672">&lt;/config&gt;</span>
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> xml.etree.ElementTree <span style="color:#f92672">as</span> ET
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> xml.etree.ElementTree <span style="color:#66d9ef">as</span> ET
 root <span style="color:#f92672">=</span> ET<span style="color:#f92672">.</span>parse(<span style="color:#e6db74">&#39;config.xml&#39;</span>)<span style="color:#f92672">.</span>getroot()
 
-<span style="color:#66d9ef">print</span>(type(root)) <span style="color:#75715e"># &lt;class &#39;xml.etree.ElementTree.Element&#39;&gt;</span>
+print(type(root)) <span style="color:#75715e"># &lt;class &#39;xml.etree.ElementTree.Element&#39;&gt;</span>
 elem_list <span style="color:#f92672">=</span> list(root)
 <span style="color:#66d9ef">for</span> elem <span style="color:#f92672">in</span> elem_list:
     sub_elem_list <span style="color:#f92672">=</span> list(elem)
     <span style="color:#66d9ef">if</span> sub_elem_list:
         <span style="color:#66d9ef">for</span> sub_elem <span style="color:#f92672">in</span> sub_elem_list:
-            <span style="color:#66d9ef">print</span>(f<span style="color:#e6db74">&#34;{elem.tag}, {sub_elem.tag}: {sub_elem.text}&#34;</span>)
-    <span style="color:#66d9ef">else</span>: <span style="color:#66d9ef">print</span>(f<span style="color:#e6db74">&#34;{elem.tag}: {elem.text}&#34;</span>)
+            print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span>elem<span style="color:#f92672">.</span>tag<span style="color:#e6db74">}</span><span style="color:#e6db74">, </span><span style="color:#e6db74">{</span>sub_elem<span style="color:#f92672">.</span>tag<span style="color:#e6db74">}</span><span style="color:#e6db74">: </span><span style="color:#e6db74">{</span>sub_elem<span style="color:#f92672">.</span>text<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+    <span style="color:#66d9ef">else</span>: print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span>elem<span style="color:#f92672">.</span>tag<span style="color:#e6db74">}</span><span style="color:#e6db74">: </span><span style="color:#e6db74">{</span>elem<span style="color:#f92672">.</span>text<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
 
 <span style="color:#75715e"># name: Jerry</span>
 <span style="color:#75715e"># github: jjerry-k</span>
@@ -273,11 +275,11 @@ elem_list <span style="color:#f92672">=</span> list(root)
 config <span style="color:#f92672">=</span> configparser<span style="color:#f92672">.</span>ConfigParser()
 config<span style="color:#f92672">.</span>read(<span style="color:#e6db74">&#39;config.cfg&#39;</span>)
 
-<span style="color:#66d9ef">print</span>(type(config)) <span style="color:#75715e"># &lt;class &#39;configparser.ConfigParser&#39;&gt;</span>
+print(type(config)) <span style="color:#75715e"># &lt;class &#39;configparser.ConfigParser&#39;&gt;</span>
 
 <span style="color:#66d9ef">for</span> section <span style="color:#f92672">in</span> config<span style="color:#f92672">.</span>sections():
     <span style="color:#66d9ef">for</span> option <span style="color:#f92672">in</span> config<span style="color:#f92672">.</span>options(section):
-        <span style="color:#66d9ef">print</span>(f<span style="color:#e6db74">&#34;{section}, {option}, {config.get(section, option)}&#34;</span>)
+        print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span>section<span style="color:#e6db74">}</span><span style="color:#e6db74">, </span><span style="color:#e6db74">{</span>option<span style="color:#e6db74">}</span><span style="color:#e6db74">, </span><span style="color:#e6db74">{</span>config<span style="color:#f92672">.</span>get(section, option)<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
 
 <span style="color:#75715e"># defaults, name, Jerry</span>
 <span style="color:#75715e"># defaults, github, jjeryr-k</span>
@@ -304,7 +306,7 @@ configuration file 만드는거나&hellip;parsing 하는거나&hellip;<br>
             <img src="https://jjerry-k.github.io/images/promotion.png" alt="donaricano-btn"
             style="height: 100px !important;width: 100px !important;" />
           </br>
-            <span class="caption">도움이 되셨다면 몰랑이에게 카페인을 주세요! </br> 더 다양한 포스팅으로 채워집니다!</span>
+            <span class="caption">도움이 되셨다면 몰랑이에게 밀크티를...! </br> 더 다양한 포스팅을 채우도록 노력할게요!</span>
           </a>
         </div>
         
