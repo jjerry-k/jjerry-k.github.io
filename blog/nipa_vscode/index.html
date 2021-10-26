@@ -9,7 +9,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="this is meta description">
   <meta name="author" content="Jerry Kim">
-  <meta name="generator" content="Hugo 0.85.0" />
+  <meta name="generator" content="Hugo 0.54.0" />
 
   <!-- plugins -->
   
@@ -160,117 +160,177 @@
         </div>
         
         <div class="content mb-5">
-          <p>지금까지 <a href="https://jjerry-k.github.io/deeplearning/2020/06/28/nipa_docker">Docker(이하 도커) 세팅</a> 까지 포스팅을 했었습니다.</p>
+          
+
+<p>지금까지 <a href="https://jjerry-k.github.io/deeplearning/2020/06/28/nipa_docker">Docker(이하 도커) 세팅</a> 까지 포스팅을 했었습니다.</p>
+
 <p>Docker 까진 좋은데&hellip;연결을 항상 Terminal 혹은 CMD를 켜서 ssh로 해야하나..? 생각이 듭니다.</p>
+
 <p>그래서 이래저래 찾아봤습니다.</p>
+
 <p>Docker 공식 문서를 보니 <a href="https://docs.docker.com/engine/examples/running_ssh_service/">Dockerize an SSH service</a> 이런 글이 있더군요.</p>
+
 <p>이 글을 참고하여 image(이하 이미지)를 만들어 보기로 했습니다.</p>
+
 <p>그럼 빠르게 빠르게 진행하겠습니다.</p>
+
 <h2 id="1-dockerfile-생성-및-build">1. Dockerfile 생성 및 build</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-docker" data-lang="docker"><span style="color:#66d9ef">FROM</span><span style="color:#e6db74"> nvidia/cuda:10.1-cudnn7-runtime-ubuntu16.04</span><span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">LABEL</span> maintainer <span style="color:#e6db74">&#34;Jerry Kim &lt;jaeyeol2931@gmail.com&gt;&#34;</span><span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">ARG</span> PYTHON_VERSION<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span>.7<span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> apt-get update<span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> apt-get install -y <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>        build-essential <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>        cmake <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>        git <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>        curl <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>        wget <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>        vim <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>        unzip <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>        ca-certificates <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>        libjpeg-dev <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>        libpng-dev <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>        openssh-server<span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> apt-get update <span style="color:#f92672">&amp;&amp;</span> apt-get -y upgrade<span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e">#RUN mkdir /var/run/sshd</span><span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> echo <span style="color:#e6db74">&#39;root:{개인 비밀번호}&#39;</span> | chpasswd<span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> sed -i <span style="color:#e6db74">&#39;s/PermitRootLogin prohibit-password/PermitRootLogin yes/&#39;</span> /etc/ssh/sshd_config<span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># SSH login fix. Otherwise user is kicked off after login</span><span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> sed <span style="color:#e6db74">&#39;s@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so@g&#39;</span> -i /etc/pam.d/sshd<span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">ENV</span> NOTVISIBLE <span style="color:#e6db74">&#34;in users profile&#34;</span><span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> echo <span style="color:#e6db74">&#34;export VISIBLE=now&#34;</span> &gt;&gt; /etc/profile<span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">EXPOSE</span><span style="color:#e6db74"> 22</span><span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">CMD</span> [<span style="color:#e6db74">&#34;/usr/sbin/sshd&#34;</span>, <span style="color:#e6db74">&#34;-D&#34;</span>]<span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> rm -rf /var/lib/apt/lists/*<span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> curl https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -o ~/miniconda.sh<span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> chmod +x ~/miniconda.sh <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>    ~/miniconda.sh -b -p /opt/conda <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>    rm ~/miniconda.sh<span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> /opt/conda/bin/conda install -y python<span style="color:#f92672">=</span>$PYTHON_VERSION numpy pyyaml scipy ipython mkl mkl-include ninja cython typing opencv matplotlib tqdm <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>    /opt/conda/bin/conda install -y jupyter jupyterlab seaborn pillow pandas pylint scikit-learn scikit-image tensorflow-gpu <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>    /opt/conda/bin/conda update -y --all <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>    /opt/conda/bin/conda clean -ya<span style="color:#960050;background-color:#1e0010">
-</span></code></pre></div><p>중간에 <code>RUN echo 'root:{개인 비밀번호}' | chpasswd</code> 에서 ssh 접속시 사용할 비밀번호를 적어주세요!</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># Example</span>
-RUN echo <span style="color:#e6db74">&#39;root:test&#39;</span> | chpasswd
-</code></pre></div><p>위 내용들을 vim이나 nano같은 에디터를 이용해서 Dockerfile을 만들어주세요!</p>
-<figure><img src="/images/post/nipa_vscode/Untitled.png"/>
+
+<pre><code class="language-docker">FROM nvidia/cuda:10.1-cudnn7-runtime-ubuntu16.04
+LABEL maintainer &quot;Jerry Kim &lt;jaeyeol2931@gmail.com&gt;&quot;
+ARG PYTHON_VERSION=3.7
+RUN apt-get update
+RUN apt-get install -y \
+        build-essential \
+        cmake \
+        git \
+        curl \
+        wget \
+        vim \
+        unzip \
+        ca-certificates \
+        libjpeg-dev \
+        libpng-dev \
+        openssh-server
+
+RUN apt-get update &amp;&amp; apt-get -y upgrade
+
+#RUN mkdir /var/run/sshd
+RUN echo 'root:{개인 비밀번호}' | chpasswd
+RUN sed -i 's/PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
+
+# SSH login fix. Otherwise user is kicked off after login
+RUN sed 's@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so@g' -i /etc/pam.d/sshd
+
+ENV NOTVISIBLE &quot;in users profile&quot;
+RUN echo &quot;export VISIBLE=now&quot; &gt;&gt; /etc/profile
+
+EXPOSE 22
+CMD [&quot;/usr/sbin/sshd&quot;, &quot;-D&quot;]
+
+RUN rm -rf /var/lib/apt/lists/*
+
+RUN curl https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -o ~/miniconda.sh
+
+RUN chmod +x ~/miniconda.sh &amp;&amp; \
+    ~/miniconda.sh -b -p /opt/conda &amp;&amp; \
+    rm ~/miniconda.sh
+
+RUN /opt/conda/bin/conda install -y python=$PYTHON_VERSION numpy pyyaml scipy ipython mkl mkl-include ninja cython typing opencv matplotlib tqdm &amp;&amp; \
+    /opt/conda/bin/conda install -y jupyter jupyterlab seaborn pillow pandas pylint scikit-learn scikit-image tensorflow-gpu &amp;&amp; \
+    /opt/conda/bin/conda update -y --all &amp;&amp; \
+    /opt/conda/bin/conda clean -ya
+</code></pre>
+
+<p>중간에 <code>RUN echo 'root:{개인 비밀번호}' | chpasswd</code> 에서 ssh 접속시 사용할 비밀번호를 적어주세요!</p>
+
+<pre><code class="language-bash"># Example
+RUN echo 'root:test' | chpasswd
+</code></pre>
+
+<p>위 내용들을 vim이나 nano같은 에디터를 이용해서 Dockerfile을 만들어주세요!</p>
+
+<figure>
+    <img src="/images/post/nipa_vscode/Untitled.png"/> 
 </figure>
+
 
 <p>그리고 다음과 같이 커맨드를 입력하여 도커 이미지를 build 합니다.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker build -t <span style="color:#f92672">{</span>이미지 이름<span style="color:#f92672">}</span> .
-</code></pre></div><figure><img src="/images/post/nipa_vscode/Untitled_1.png"/>
+
+<pre><code class="language-bash">docker build -t {이미지 이름} .
+</code></pre>
+
+<figure>
+    <img src="/images/post/nipa_vscode/Untitled_1.png"/> 
 </figure>
+
 
 <p>뭐 이런 저런 Log 들이 촤라———라락 넘어갈겁니다. 계속 기다려 주세요&hellip;.</p>
+
 <p><code>docker images</code> 를 입력하면 제대로 생성된 것을 볼 수 있습니다!</p>
-<figure><img src="/images/post/nipa_vscode/Untitled_2.png"/>
+
+<figure>
+    <img src="/images/post/nipa_vscode/Untitled_2.png"/> 
 </figure>
+
 
 <h2 id="2-container-실행">2. Container 실행</h2>
-<p>이미지를 실행하여 container(이하 컨테이너) 만들어 줍니다.</p>
-<p>세부 옵션은 <strong>구.글.링</strong> 아시죠?</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker run -d -P -v /home/ubuntu/jerry/:/jerry --name <span style="color:#f92672">{</span>컨테이너 이름<span style="color:#f92672">}</span> <span style="color:#f92672">{</span>이미지 이름<span style="color:#f92672">}</span>
 
-docker port <span style="color:#f92672">{</span>컨테이너 이름<span style="color:#f92672">}</span> <span style="color:#ae81ff">22</span>
-</code></pre></div><figure><img src="/images/post/nipa_vscode/Untitled_3.png"/>
+<p>이미지를 실행하여 container(이하 컨테이너) 만들어 줍니다.</p>
+
+<p>세부 옵션은 <strong>구.글.링</strong> 아시죠?</p>
+
+<pre><code class="language-bash">docker run -d -P -v /home/ubuntu/jerry/:/jerry --name {컨테이너 이름} {이미지 이름}
+
+docker port {컨테이너 이름} 22
+</code></pre>
+
+<figure>
+    <img src="/images/post/nipa_vscode/Untitled_3.png"/> 
 </figure>
 
+
 <p>컨테이너를 만들고 해당 컨테이너의 22번 포트 (ssh 포트)가 nipa의 몇번 포트와 연결되어 있는지 출력해줍니다.</p>
+
 <h2 id="3-vscode를-이용하여-접속">3. VSCode를 이용하여 접속</h2>
+
 <blockquote>
 <p>vscode 에 Remote - SSH 플러그인이 설치가 되어 있다는 전제 하에 진행합니다.</p>
 </blockquote>
+
 <p>새로운 호스트를 추가해줍니다.</p>
-<figure><img src="/images/post/nipa_vscode/Untitled_4.png"/>
+
+<figure>
+    <img src="/images/post/nipa_vscode/Untitled_4.png"/> 
 </figure>
+
 
 <p><code>ssh root@{NIPA IP} -p {포트 번호}</code> 라고 입력하고 엔터!</p>
-<figure><img src="/images/post/nipa_vscode/Untitled_5.png"/>
+
+<figure>
+    <img src="/images/post/nipa_vscode/Untitled_5.png"/> 
 </figure>
+
 
 <p>그럼 우하단에 <code>Host를 추가했습니다!</code> 와 같이 알림이 뜹니다.</p>
+
 <p>추가를 했으니 이제 Host에 연결을 해봅니다.</p>
+
 <p>비밀번호는 맨 처음에 Dockerfile에서 썼던 비밀번호 입니다!</p>
-<figure><img src="/images/post/nipa_vscode/Untitled_6.png"/>
+
+<figure>
+    <img src="/images/post/nipa_vscode/Untitled_6.png"/> 
 </figure>
+
 
 <p>아마 처음에는 세팅이 오래 걸릴겁니다. 우하단에 알림이 없어질 때까지 기다려주세요 !</p>
+
 <p>기초 세팅이 다 완료 되면 컨테이너의 vscode-server에 플러그인을 설치해야 합니다.</p>
+
 <p>저는 아래 4개 플러그인을 설치했어요.</p>
-<figure><img src="/images/post/nipa_vscode/Untitled_7.png"/>
+
+<figure>
+    <img src="/images/post/nipa_vscode/Untitled_7.png"/> 
 </figure>
+
 
 <p>그 후에 테스트 코드를 돌려봅니다.</p>
-<figure><img src="/images/post/nipa_vscode/Untitled_8.png"/>
+
+<figure>
+    <img src="/images/post/nipa_vscode/Untitled_8.png"/> 
 </figure>
 
+
 <p>정상적으로 잘 작동하네요!</p>
+
 <p>후&hellip;이제 Vim으로 코딩을 안할 수 있습니다.</p>
+
 <p>이번 포스팅은 정말 환경 구축이 처음이신 분들께는 불친절한 포스팅일 수도 있습니다.</p>
+
 <p>죄송합니다. 일단 제 일기처럼 쓰는 포스팅이라서요. 감안해서 읽어주세요.</p>
-<h2 id="ps">P.S.</h2>
+
+<h2 id="p-s">P.S.</h2>
+
 <ul>
 <li>근데 막상 내가 NIPA를 &hellip;..주로 쓰지 않음&hellip;</li>
 <li>나에게 NIPA는 환경 구축 포스팅을 적는 용도&hellip;</li>
@@ -388,7 +448,7 @@ docker port <span style="color:#f92672">{</span>컨테이너 이름<span style="
         </ul>
       </div>
       <div class="col-12 border-top py-4 text-center">
-        | copyright © 2020 <a href="https://themefisher.com">Themefisher</a> All Rights Reserved |
+        | copyright &copy; 2020 <a href="https://themefisher.com">Themefisher</a> All Rights Reserved |
       </div>
     </div>
   </div>

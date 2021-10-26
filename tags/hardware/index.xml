@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Hardware on Jerry&#39;s DevLog</title>
@@ -6,7 +6,11 @@
     <description>Recent content in Hardware on Jerry&#39;s DevLog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 29 Mar 2021 23:19:59 +0900</lastBuildDate><atom:link href="https://jjerry-k.github.io/tags/hardware/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 29 Mar 2021 23:19:59 +0900</lastBuildDate>
+    
+	<atom:link href="https://jjerry-k.github.io/tags/hardware/index.xml" rel="self" type="application/rss+xml" />
+    
+    
     <item>
       <title>Smart Mirror Customizing</title>
       <link>https://jjerry-k.github.io/blog/smartmirror2/</link>
@@ -50,7 +54,7 @@
       <pubDate>Mon, 20 Apr 2020 18:30:46 +0600</pubDate>
       
       <guid>https://jjerry-k.github.io/blog/rpi_transmission/</guid>
-      <description>Raspberry pi 4 &amp;amp; Transmission Container  1. Docker Install curl -fsSL get.</description>
+      <description>Raspberry pi 4 &amp;amp; Transmission Container 1. Docker Install curl -fsSL get.</description>
     </item>
     
     <item>
@@ -62,7 +66,7 @@
       <description>늦었지만 키보드 자랑&amp;hellip;
 바밀로 저소음흑축 108키 입니다.
 넘나 영롱하다&amp;hellip;
-   </description>
+   -- </description>
     </item>
     
     <item>
@@ -81,8 +85,7 @@
       <pubDate>Fri, 04 Aug 2017 18:30:46 +0600</pubDate>
       
       <guid>https://jjerry-k.github.io/blog/desktop/</guid>
-      <description>Building Desktop 학부생 연구원으로 연구실에서 공부와 연구를 하고 있지만..
-개인용 데스크탑이 없어서 노트북이 굉장히 고생을 많이 했습니다.</description>
+      <description>Building Desktop 학부생 연구원으로 연구실에서 공부와 연구를 하고 있지만..</description>
     </item>
     
   </channel>

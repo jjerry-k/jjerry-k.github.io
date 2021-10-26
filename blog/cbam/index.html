@@ -9,7 +9,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="this is meta description">
   <meta name="author" content="Jerry Kim">
-  <meta name="generator" content="Hugo 0.85.0" />
+  <meta name="generator" content="Hugo 0.54.0" />
 
   <!-- plugins -->
   
@@ -160,87 +160,139 @@
         </div>
         
         <div class="content mb-5">
-          <h1 id="cbam-convolutional-block-attention-module">CBAM: Convolutional Block Attention Module</h1>
-<p>Author: Sanghyun Woo, Jongchan Park, Joon-Young Lee, In So Kweon<br>
-Date: Jul 17, 2018<br>
+          
+
+<h1 id="cbam-convolutional-block-attention-module">CBAM: Convolutional Block Attention Module</h1>
+
+<p>Author: Sanghyun Woo, Jongchan Park, Joon-Young Lee, In So Kweon<br />
+Date: Jul 17, 2018<br />
 URL: <a href="https://arxiv.org/abs/1807.06521">https://arxiv.org/abs/1807.06521</a></p>
+
 <h1 id="introduction">Introduction</h1>
+
 <ul>
 <li>BAM 에서 설명한 것처럼 최근 CNN 성능 향상에 주로 연구되는 요소는 depth, width, cardinality.</li>
 <li>본 논문에선 Convolutional Block Attention Module(CBAM) 제안.</li>
 <li>Convolution을 이용하여 channel, spatial information 을 추출하고 섞어서 사용.</li>
-<li>channel, spatial attention module은 각각 &ldquo;what&rdquo;, &ldquo;where&quot;에 대한 정보를 학습할 수 있음.</li>
+<li>channel, spatial attention module은 각각 &ldquo;what&rdquo;, &ldquo;where&rdquo;에 대한 정보를 학습할 수 있음.</li>
 </ul>
-<figure><img src="/images/post/cbam/Untitled.png"/>
+
+<figure>
+    <img src="/images/post/cbam/Untitled.png"/> 
 </figure>
 
+
 <h1 id="convolutional-block-attention-module">Convolutional Block Attention Module</h1>
+
 <ul>
 <li>CBAM 의 구조는 다음 사진과 같음.</li>
 </ul>
-<p>$$F: \text{Input feature map} \\ F':\text{Channel attention module feature map} \\ F'': \text{Spatial attention module feature map} \\ F' = M_c(F)\bigotimes F \\ F'' = M_s(F')\bigotimes F'$$</p>
-<figure><img src="/images/post/cbam/Untitled_1.png"/>
+
+<p>$$F: \text{Input feature map} \\ F&rsquo;:\text{Channel attention module feature map} \\ F&rdquo;: \text{Spatial attention module feature map} \\ F&rsquo; = M_c(F)\bigotimes F \\ F&rdquo; = M_s(F&rsquo;)\bigotimes F&rsquo;$$</p>
+
+<figure>
+    <img src="/images/post/cbam/Untitled_1.png"/> 
 </figure>
 
+
 <h2 id="channel-attention-branch">Channel attention branch</h2>
-<p>$$M_c(F) = \sigma(MLP(AvgPool(F)) + MLP(MaxPool(F))) \\ = \sigma(W1(W0(F^c_{avg})) + W1(W0(F^c_{max})))$$</p>
-<p>W0 의 output channel 크기: F의 채널 수 / reduction ratio(r)</p>
+
+<p>$$M<em>c(F) = \sigma(MLP(AvgPool(F)) + MLP(MaxPool(F))) \\ = \sigma(W1(W0(F^c</em>{avg})) + W1(W0(F^c_{max})))$$</p>
+
+<p>W0 의 output channel 크기: F의 채널 수 / reduction ratio&reg;</p>
+
 <p>W1 의 output channel 크기: F의 채널 수</p>
+
 <h2 id="spatial-attention-branch">Spatial attention branch</h2>
-<p>$$M_s(F)=\sigma(f^{7\times7}([AvgPool(F); MaxPool(F)])) \\ = \sigma(f^{7 \times 7}([F^s_{avg};F^s_{max}]))$$</p>
+
+<p>$$M<em>s(F)=\sigma(f^{7\times7}([AvgPool(F); MaxPool(F)])) \\ = \sigma(f^{7 \times 7}([F^s</em>{avg};F^s_{max}]))$$</p>
+
 <ul>
 <li>7x7 Convolution의 output channel 크기: 1</li>
 </ul>
+
 <h2 id="arrangement-of-attention-modules">Arrangement of attention modules</h2>
+
 <ul>
 <li>두 branch의 순서를 어떻게 배열할지 고민.</li>
 <li>실험적으로 Channel → Spatial 로 하기로 함.</li>
 </ul>
+
 <h1 id="ablation-study-using-imagenet-1k">Ablation study using ImageNet-1K</h1>
+
 <h2 id="channel-attention">Channel attention</h2>
+
 <ul>
 <li>Pooling 기법별 성능 비교</li>
 </ul>
-<figure><img src="/images/post/cbam/Untitled_2.png"/>
+
+<figure>
+    <img src="/images/post/cbam/Untitled_2.png"/> 
 </figure>
 
+
 <h2 id="spatial-attention">Spatial attention</h2>
+
 <ul>
 <li>Pooling, convolution kernel size 에 따른 성능 비교</li>
 </ul>
-<figure><img src="/images/post/cbam/Untitled_3.png"/>
+
+<figure>
+    <img src="/images/post/cbam/Untitled_3.png"/> 
 </figure>
 
+
 <h2 id="arrangement-of-the-channel-and-spatial-attention">Arrangement of the channel and spatial attention</h2>
+
 <ul>
 <li>Attention module 순서에 따른 성능 비교</li>
 </ul>
-<figure><img src="/images/post/cbam/Untitled_4.png"/>
+
+<figure>
+    <img src="/images/post/cbam/Untitled_4.png"/> 
 </figure>
+
 
 <h1 id="result">Result</h1>
+
 <h3 id="classification-result-on-imagenet-1k">Classification Result on ImageNet-1K</h3>
-<figure><img src="/images/post/cbam/Untitled_5.png"/>
+
+<figure>
+    <img src="/images/post/cbam/Untitled_5.png"/> 
 </figure>
 
-<figure><img src="/images/post/cbam/Untitled_6.png"/>
+
+<figure>
+    <img src="/images/post/cbam/Untitled_6.png"/> 
 </figure>
 
-<figure><img src="/images/post/cbam/Untitled_7.png"/>
+
+<figure>
+    <img src="/images/post/cbam/Untitled_7.png"/> 
 </figure>
+
 
 <h3 id="object-detection-on-ms-coco-and-voc-2007">Object Detection on MS COCO and VOC 2007</h3>
-<figure><img src="/images/post/cbam/Untitled_8.png"/>
+
+<figure>
+    <img src="/images/post/cbam/Untitled_8.png"/> 
 </figure>
 
-<figure><img src="/images/post/cbam/Untitled_9.png"/>
+
+<figure>
+    <img src="/images/post/cbam/Untitled_9.png"/> 
 </figure>
+
 
 <h3 id="network-visualization-with-grad-cam">Network Visualization with Grad-CAM</h3>
-<figure><img src="/images/post/cbam/Untitled_10.png"/>
+
+<figure>
+    <img src="/images/post/cbam/Untitled_10.png"/> 
 </figure>
 
-<h2 id="ps">P.S</h2>
+
+<h2 id="p-s">P.S</h2>
+
 <ul>
 <li>BAM과 동일하게 Original Code가 있지만&hellip;.논문과 다른 부분이 매우 많음.</li>
 </ul>
@@ -357,7 +409,7 @@ URL: <a href="https://arxiv.org/abs/1807.06521">https://arxiv.org/abs/1807.06521
         </ul>
       </div>
       <div class="col-12 border-top py-4 text-center">
-        | copyright © 2020 <a href="https://themefisher.com">Themefisher</a> All Rights Reserved |
+        | copyright &copy; 2020 <a href="https://themefisher.com">Themefisher</a> All Rights Reserved |
       </div>
     </div>
   </div>

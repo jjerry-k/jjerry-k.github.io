@@ -9,7 +9,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="this is meta description">
   <meta name="author" content="Jerry Kim">
-  <meta name="generator" content="Hugo 0.85.0" />
+  <meta name="generator" content="Hugo 0.54.0" />
 
   <!-- plugins -->
   
@@ -162,30 +162,51 @@
         <img src="https://jjerry-k.github.io/images/post/tensorflow_model_load/Untitled.png" class="img-fluid w-100 mb-4" alt="TensorFlow 모델 로드 에러..">
         
         <div class="content mb-5">
-          <p>TensorFlow를 쓰다보면 종종 model load 할때 error 가 발생할때가 있습니다.</p>
+          
+
+<p>TensorFlow를 쓰다보면 종종 model load 할때 error 가 발생할때가 있습니다.</p>
+
 <p>에러에 따라  대처법을 적어보려고 합니다.</p>
+
 <p><strong>해당 방법은 모델을 json 으로 저장했을때 유효한 방법입니다!</strong></p>
-<h2 id="value-errorunknown-layer--functional">Value error:unknown layer : functional</h2>
+
+<h2 id="value-error-unknown-layer-functional">Value error:unknown layer : functional</h2>
+
 <p>json 안에 내용이</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{<span style="color:#f92672">&#34;class_name&#34;</span>: <span style="color:#e6db74">&#34;Functional&#34;</span>, 
-  <span style="color:#f92672">&#34;config&#34;</span>: {
-    <span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;functional_1&#34;</span>, 
-    <span style="color:#f92672">&#34;layers&#34;</span>: [{<span style="color:#f92672">&#34;class_name&#34;</span>: <span style="color:#e6db74">&#34;InputLayer&#34;</span> <span style="color:#960050;background-color:#1e0010">...</span>
-</code></pre></div><p>이렇게 되어있다면</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{<span style="color:#f92672">&#34;class_name&#34;</span>: <span style="color:#e6db74">&#34;Model&#34;</span>, 
-  <span style="color:#f92672">&#34;config&#34;</span>: {
-    <span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;model_1&#34;</span>, 
-    <span style="color:#f92672">&#34;layers&#34;</span>: [{<span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;input_1&#34;</span>, <span style="color:#f92672">&#34;class_name&#34;</span>: <span style="color:#e6db74">&#34;InputLayer&#34;</span> <span style="color:#960050;background-color:#1e0010">...</span>
-</code></pre></div><p>이렇게 <code>&quot;Functional&quot; 을 &quot;Model&quot;</code>로 <code>&quot;functional_1&quot;을 &quot;model_1&quot;</code>으로 변경 후 싫행하시면 됩니다.</p>
-<h2 id="typeerror-keyword-argument-not-understood-groups">TypeError: (&lsquo;Keyword argument not understood:&rsquo;, &lsquo;groups&rsquo;)</h2>
+
+<pre><code class="language-json">{&quot;class_name&quot;: &quot;Functional&quot;, 
+  &quot;config&quot;: {
+    &quot;name&quot;: &quot;functional_1&quot;, 
+    &quot;layers&quot;: [{&quot;class_name&quot;: &quot;InputLayer&quot; ...
+</code></pre>
+
+<p>이렇게 되어있다면</p>
+
+<pre><code class="language-json">{&quot;class_name&quot;: &quot;Model&quot;, 
+  &quot;config&quot;: {
+    &quot;name&quot;: &quot;model_1&quot;, 
+    &quot;layers&quot;: [{&quot;name&quot;: &quot;input_1&quot;, &quot;class_name&quot;: &quot;InputLayer&quot; ...
+</code></pre>
+
+<p>이렇게 <code>&quot;Functional&quot; 을 &quot;Model&quot;</code>로 <code>&quot;functional_1&quot;을 &quot;model_1&quot;</code>으로 변경 후 싫행하시면 됩니다.</p>
+
+<h2 id="typeerror-keyword-argument-not-understood-groups">TypeError: (&lsquo;Keyword argument not understood:&lsquo;, &lsquo;groups&rsquo;)</h2>
+
 <p>json 에서 &lsquo;groups&rsquo; 라는 내용을 찾아봅니다.</p>
+
 <p>다음과 같이 있네요.</p>
-<figure><img src="/images/post/tensorflow_model_load/Untitled.png"/>
+
+<figure>
+    <img src="/images/post/tensorflow_model_load/Untitled.png"/> 
 </figure>
 
+
 <p>단순히 json 안에 모든 <code>&quot;groups&quot;: ,</code> 를 지워주세요.</p>
+
 <p>그 후 실행하시면 됩니다!</p>
-<h2 id="ps">P.S</h2>
+
+<h2 id="p-s">P.S</h2>
+
 <ul>
 <li>간단 포스팅 끝.</li>
 <li>TF 2.4 에선 해결되려나&hellip;</li>
@@ -303,7 +324,7 @@
         </ul>
       </div>
       <div class="col-12 border-top py-4 text-center">
-        | copyright © 2020 <a href="https://themefisher.com">Themefisher</a> All Rights Reserved |
+        | copyright &copy; 2020 <a href="https://themefisher.com">Themefisher</a> All Rights Reserved |
       </div>
     </div>
   </div>

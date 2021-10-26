@@ -9,7 +9,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="this is meta description">
   <meta name="author" content="Jerry Kim">
-  <meta name="generator" content="Hugo 0.85.0" />
+  <meta name="generator" content="Hugo 0.54.0" />
 
   <!-- plugins -->
   
@@ -162,113 +162,130 @@
         <img src="https://jjerry-k.github.io/images/post/jupyter_image_viewer/image_viewer.gif" class="img-fluid w-100 mb-4" alt="Jupyter_image_viewer">
         
         <div class="content mb-5">
-          <p>Jupyter 많이 쓰시죠.</p>
+          
+
+<p>Jupyter 많이 쓰시죠.</p>
+
 <p>이번 포스팅에선 Jupyter에서 ipywidgets 를 이용하여 썸네일과 같은 Image Viewer를 만들어보겠습니다.</p>
+
 <p>먼저 전체적인 코드를 먼저 보여드리면&hellip;</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> os<span style="color:#f92672">,</span> glob<span style="color:#f92672">,</span> json
-<span style="color:#f92672">import</span> ipywidgets <span style="color:#66d9ef">as</span> widgets
-<span style="color:#f92672">from</span> ipywidgets <span style="color:#f92672">import</span> Button, AppLayout, Layout
-<span style="color:#f92672">%</span>matplotlib inline
 
-<span style="color:#75715e"># list 내의 값을 무한 반복 시키기 위한 cycle_list 클래스</span>
-<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">cycle_list</span>():
-    <span style="color:#66d9ef">def</span> __init__(self, values):
-        self<span style="color:#f92672">.</span>values <span style="color:#f92672">=</span> values
-        self<span style="color:#f92672">.</span>max_idx <span style="color:#f92672">=</span> len(values)<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>
-        self<span style="color:#f92672">.</span>curr_idx <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+<pre><code class="language-python">import os, glob, json
+import ipywidgets as widgets
+from ipywidgets import Button, AppLayout, Layout
+%matplotlib inline
+
+# list 내의 값을 무한 반복 시키기 위한 cycle_list 클래스
+class cycle_list():
+    def __init__(self, values):
+        self.values = values
+        self.max_idx = len(values)-1
+        self.curr_idx = 0
     
-    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">next</span>(self):
-        <span style="color:#66d9ef">if</span> self<span style="color:#f92672">.</span>curr_idx <span style="color:#f92672">==</span> self<span style="color:#f92672">.</span>max_idx:
-            self<span style="color:#f92672">.</span>curr_idx <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
-        <span style="color:#66d9ef">else</span>:
-            self<span style="color:#f92672">.</span>curr_idx <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
-        <span style="color:#66d9ef">return</span> self<span style="color:#f92672">.</span>values[self<span style="color:#f92672">.</span>curr_idx]
+    def next(self):
+        if self.curr_idx == self.max_idx:
+            self.curr_idx = 0
+        else:
+            self.curr_idx += 1
+        return self.values[self.curr_idx]
 
-    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">prev</span>(self):
-        <span style="color:#66d9ef">if</span> self<span style="color:#f92672">.</span>curr_idx <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>:
-            self<span style="color:#f92672">.</span>curr_idx <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>max_idx
-        <span style="color:#66d9ef">else</span>:
-            self<span style="color:#f92672">.</span>curr_idx <span style="color:#f92672">-=</span> <span style="color:#ae81ff">1</span>
-        <span style="color:#66d9ef">return</span> self<span style="color:#f92672">.</span>values[self<span style="color:#f92672">.</span>curr_idx]
+    def prev(self):
+        if self.curr_idx == 0:
+            self.curr_idx = self.max_idx
+        else:
+            self.curr_idx -= 1
+        return self.values[self.curr_idx]
 
-<span style="color:#75715e"># Image_Viewer 앱</span>
-<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">Image_Viewer</span>(root_path):
-	<span style="color:#75715e"># Header 내용</span>
-	header <span style="color:#f92672">=</span> widgets<span style="color:#f92672">.</span>HTML(<span style="color:#e6db74">&#34;&lt;h1&gt;Image Viewer&lt;/h1&gt;&#34;</span>, layout<span style="color:#f92672">=</span>Layout(height<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;auto&#34;</span>))
+# Image_Viewer 앱
+def Image_Viewer(root_path):
+	# Header 내용
+	header = widgets.HTML(&quot;&lt;h1&gt;Image Viewer&lt;/h1&gt;&quot;, layout=Layout(height=&quot;auto&quot;))
 
-	<span style="color:#75715e"># Next, Prev 버튼 </span>
-    prev_button <span style="color:#f92672">=</span> widgets<span style="color:#f92672">.</span>Button(
-        description<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Prev&#34;</span>, icon<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;backward&#34;</span>, layout<span style="color:#f92672">=</span>Layout(width<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;80%&#34;</span>, height<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;30%&#34;</span>)
+	# Next, Prev 버튼 
+    prev_button = widgets.Button(
+        description=&quot;Prev&quot;, icon=&quot;backward&quot;, layout=Layout(width=&quot;80%&quot;, height=&quot;30%&quot;)
     )
     
-    next_button <span style="color:#f92672">=</span> widgets<span style="color:#f92672">.</span>Button(
-        description<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Next&#34;</span>, icon<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;forward&#34;</span>, layout<span style="color:#f92672">=</span>Layout(width<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;80%&#34;</span>, height<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;30%&#34;</span>)
+    next_button = widgets.Button(
+        description=&quot;Next&quot;, icon=&quot;forward&quot;, layout=Layout(width=&quot;80%&quot;, height=&quot;30%&quot;)
     )
 
-    <span style="color:#75715e"># 이미지 읽기</span>
-    img_file_list <span style="color:#f92672">=</span> glob<span style="color:#f92672">.</span>glob(os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>join(root_path, <span style="color:#e6db74">&#39;*.jpeg&#39;</span>))
+    # 이미지 읽기
+    img_file_list = glob.glob(os.path.join(root_path, '*.jpeg'))
 
-    images <span style="color:#f92672">=</span> cycle_list(img_file_list)
+    images = cycle_list(img_file_list)
 
-    image <span style="color:#f92672">=</span> widgets<span style="color:#f92672">.</span>Image(
-        value<span style="color:#f92672">=</span>open(img_file_list[<span style="color:#ae81ff">0</span>], <span style="color:#e6db74">&#34;rb&#34;</span>)<span style="color:#f92672">.</span>read(),
-        format<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;jpeg&#34;</span>,
-        width<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;50%&#34;</span>,
-        height<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;50%&#34;</span>,
+    image = widgets.Image(
+        value=open(img_file_list[0], &quot;rb&quot;).read(),
+        format=&quot;jpeg&quot;,
+        width=&quot;50%&quot;,
+        height=&quot;50%&quot;,
     )
 
-    <span style="color:#75715e"># Footer 내용.</span>
-    footer <span style="color:#f92672">=</span> widgets<span style="color:#f92672">.</span>HTML(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;&lt;h4&gt;</span><span style="color:#e6db74">{</span>img_file_list[<span style="color:#ae81ff">0</span>]<span style="color:#e6db74">}</span><span style="color:#e6db74">&lt;/h4&gt;&#34;</span>, layout<span style="color:#f92672">=</span>Layout(height<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;auto&#34;</span>))
+    # Footer 내용.
+    footer = widgets.HTML(f&quot;&lt;h4&gt;{img_file_list[0]}&lt;/h4&gt;&quot;, layout=Layout(height=&quot;auto&quot;))
 
-	<span style="color:#75715e"># Button Action을 위한 함수 구성.</span>
-    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">update_image</span>(filename: str):
-        <span style="color:#66d9ef">with</span> open(filename, <span style="color:#e6db74">&#34;rb&#34;</span>) <span style="color:#66d9ef">as</span> f:
-            image<span style="color:#f92672">.</span>value <span style="color:#f92672">=</span> f<span style="color:#f92672">.</span>read()
+	# Button Action을 위한 함수 구성.
+    def update_image(filename: str):
+        with open(filename, &quot;rb&quot;) as f:
+            image.value = f.read()
     
-    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">update_footer</span>(filename: str):
-        footer<span style="color:#f92672">.</span>value <span style="color:#f92672">=</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;&lt;h4&gt;</span><span style="color:#e6db74">{</span>filename<span style="color:#e6db74">}</span><span style="color:#e6db74">&lt;/h4&gt;&#34;</span>
+    def update_footer(filename: str):
+        footer.value = f&quot;&lt;h4&gt;{filename}&lt;/h4&gt;&quot;
 
-    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">update_widgets</span>(filename: str):
+    def update_widgets(filename: str):
         update_image(filename)
         update_footer(filename)
               
-    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">handle_next</span>(button):
-        update_widgets(images<span style="color:#f92672">.</span>next())
+    def handle_next(button):
+        update_widgets(images.next())
                 
-    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">handle_prev</span>(button):
-        update_widgets(images<span style="color:#f92672">.</span>prev())
+    def handle_prev(button):
+        update_widgets(images.prev())
 
-    prev_button<span style="color:#f92672">.</span>on_click(handle_prev)
-    next_button<span style="color:#f92672">.</span>on_click(handle_next) 
+    prev_button.on_click(handle_prev)
+    next_button.on_click(handle_next) 
     
-    app <span style="color:#f92672">=</span> AppLayout(
-        header<span style="color:#f92672">=</span>header,
-        left_sidebar<span style="color:#f92672">=</span>prev_button,
-        center<span style="color:#f92672">=</span>image,
-        right_sidebar<span style="color:#f92672">=</span>next_button,
-        footer<span style="color:#f92672">=</span>footer,
-        justify_content<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;center&#34;</span>,
-        align_items<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;center&#34;</span>,
-        pane_heights <span style="color:#f92672">=</span> (<span style="color:#ae81ff">50</span>, <span style="color:#ae81ff">500</span>, <span style="color:#ae81ff">50</span>),
-        pane_widths <span style="color:#f92672">=</span> (<span style="color:#ae81ff">100</span>, <span style="color:#ae81ff">300</span>, <span style="color:#ae81ff">100</span>)
+    app = AppLayout(
+        header=header,
+        left_sidebar=prev_button,
+        center=image,
+        right_sidebar=next_button,
+        footer=footer,
+        justify_content=&quot;center&quot;,
+        align_items=&quot;center&quot;,
+        pane_heights = (50, 500, 50),
+        pane_widths = (100, 300, 100)
     )
     
-    <span style="color:#66d9ef">return</span> app
+    return app
 
 
-root_path <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;./imgs&#39;</span>
+root_path = './imgs'
 Image_Viewer(root_path)
-</code></pre></div><p>이 방법은 ipywdgets의 AppLayout 을 사용하는 건데요.</p>
+</code></pre>
+
+<p>이 방법은 ipywdgets의 AppLayout 을 사용하는 건데요.</p>
+
 <p>AppLayout은 기본적으로 다음과 같은 구성이 고정입니다.</p>
-<figure><img src="/images/post/jupyter_image_viewer/01.png"/>
+
+<figure>
+    <img src="/images/post/jupyter_image_viewer/01.png"/> 
 </figure>
 
+
 <p>이 구성에 각각의 파트를 넣은 것 뿐&hellip;.</p>
+
 <p>데이터 검수를 위해서 GUI를 만들어야할 일이 있었는데 흠&hellip;</p>
+
 <p>이걸로 한번 만들어볼까 합니다.</p>
+
 <p>상세설명은 안할거에요!</p>
+
 <p>그럼 이만&hellip;</p>
-<h3 id="ps">P.S</h3>
+
+<h3 id="p-s">P.S</h3>
+
 <ul>
 <li>이제 뭐하지&hellip;</li>
 <li>단축 근무는 좋은데&hellip; 써글 코로나..</li>
@@ -386,7 +403,7 @@ Image_Viewer(root_path)
         </ul>
       </div>
       <div class="col-12 border-top py-4 text-center">
-        | copyright © 2020 <a href="https://themefisher.com">Themefisher</a> All Rights Reserved |
+        | copyright &copy; 2020 <a href="https://themefisher.com">Themefisher</a> All Rights Reserved |
       </div>
     </div>
   </div>

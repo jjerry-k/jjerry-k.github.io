@@ -9,7 +9,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="this is meta description">
   <meta name="author" content="Jerry Kim">
-  <meta name="generator" content="Hugo 0.85.0" />
+  <meta name="generator" content="Hugo 0.54.0" />
 
   <!-- plugins -->
   
@@ -160,215 +160,338 @@
         </div>
         
         <div class="content mb-5">
-          <p>Deep Learning을 하기 위해 windows를 사용할 수도 있겠지만&hellip;<br>
-저는 Ubuntu를 사용하기로 했습니다. 왜냐하면 Ubuntu로 배웠으니..ㅎㅎ<br>
-자, 그럼 시작하겠습니다 .<br>
-제가 예전에 16.04를 다운받아서 설치한거라..<br>
-다운로드는 16.04.1로 되어있는데 설치는 16.04로 되어있습니다.<br>
-하지만 설치 방법은 똑같음!<br>
+          
+
+<p>Deep Learning을 하기 위해 windows를 사용할 수도 있겠지만&hellip;<br />
+저는 Ubuntu를 사용하기로 했습니다. 왜냐하면 Ubuntu로 배웠으니..ㅎㅎ<br />
+자, 그럼 시작하겠습니다 .<br />
+제가 예전에 16.04를 다운받아서 설치한거라..<br />
+다운로드는 16.04.1로 되어있는데 설치는 16.04로 되어있습니다.<br />
+하지만 설치 방법은 똑같음!<br />
 그리고 듀얼부팅은 Windows가 먼저 설치되어야 한다는거 잊지마세요.</p>
+
 <h2 id="1-설치-전에-확일-해야할-사항">1. 설치 전에 확일 해야할 사항</h2>
+
 <ul>
 <li>BIOS에서 secure booting disable</li>
 <li>Windows 에서 빠른 시작 켜기 옵션 끄기</li>
 </ul>
-<figure><img src="/images/post/dualboot/01.jpeg"/>
+
+<figure>
+    <img src="/images/post/dualboot/01.jpeg"/> 
 </figure>
 
-<figure><img src="/images/post/dualboot/02.jpeg"/>
+
+<figure>
+    <img src="/images/post/dualboot/02.jpeg"/> 
 </figure>
 
-<figure><img src="/images/post/dualboot/03.jpeg"/>
+
+<figure>
+    <img src="/images/post/dualboot/03.jpeg"/> 
 </figure>
 
-<figure><img src="/images/post/dualboot/04.jpeg"/>
+
+<figure>
+    <img src="/images/post/dualboot/04.jpeg"/> 
 </figure>
 
-<h4 id="11-설치-할-디스크-볼륨-만들기">1.1 설치 할 디스크 볼륨 만들기</h4>
-<figure><img src="/images/post/dualboot/05.jpeg"/>
+
+<h4 id="1-1-설치-할-디스크-볼륨-만들기">1.1 설치 할 디스크 볼륨 만들기</h4>
+
+<figure>
+    <img src="/images/post/dualboot/05.jpeg"/> 
 </figure>
+
 
 <p>저는 HDD에 설치할 거니까 HDD 주 파티션에서 마우스 오른쪽 클릭!</p>
-<figure><img src="/images/post/dualboot/06.jpeg"/>
+
+<figure>
+    <img src="/images/post/dualboot/06.jpeg"/> 
 </figure>
 
+
 <p>볼륨을 축소합시다.</p>
-<figure><img src="/images/post/dualboot/07.jpeg"/>
+
+<figure>
+    <img src="/images/post/dualboot/07.jpeg"/> 
 </figure>
+
 
 <p>원하시는 만큼 입력하세요.
 102,400 MB는 예시일뿐&hellip;</p>
-<figure><img src="/images/post/dualboot/08.jpeg"/>
+
+<figure>
+    <img src="/images/post/dualboot/08.jpeg"/> 
 </figure>
+
 
 <p>할당되지 않은 부분이 100GB 생겼네요!</p>
-<figure><img src="/images/post/dualboot/09.jpeg"/>
+
+<figure>
+    <img src="/images/post/dualboot/09.jpeg"/> 
 </figure>
+
 
 <h2 id="2-ubuntu-설치-과정">2. Ubuntu 설치 과정</h2>
-<h4 id="21-ubuntu-16041-lts-image-download">2.1 Ubuntu 16.04.1 LTS image Download</h4>
+
+<h4 id="2-1-ubuntu-16-04-1-lts-image-download">2.1 Ubuntu 16.04.1 LTS image Download</h4>
+
 <p><a href="http://www.ubuntu.com/download/desktop">http://www.ubuntu.com/download/desktop</a>에 들어갑니다.</p>
-<figure><img src="/images/post/dualboot/10.jpeg"/>
+
+<figure>
+    <img src="/images/post/dualboot/10.jpeg"/> 
 </figure>
 
-<p>Download를 클릭하면 다음 사진과 같이 나오는데 흠&hellip;잘 모르겠습니다.<br>
+
+<p>Download를 클릭하면 다음 사진과 같이 나오는데 흠&hellip;잘 모르겠습니다.<br />
 후원..같지만 &lsquo;Not now, take me to the download&rsquo;를 클릭합니다.</p>
-<figure><img src="/images/post/dualboot/11.jpeg"/>
+
+<figure>
+    <img src="/images/post/dualboot/11.jpeg"/> 
 </figure>
 
-<p>다운로드 창이 자동으로 나옵니다.<br>
+
+<p>다운로드 창이 자동으로 나옵니다.<br />
 저장할 경로 지정해주세요!</p>
-<figure><img src="/images/post/dualboot/12.jpeg"/>
+
+<figure>
+    <img src="/images/post/dualboot/12.jpeg"/> 
 </figure>
 
-<h4 id="22-ubuntu-16041-lts-부팅-디스크-만들기">2.2 Ubuntu 16.04.1 LTS 부팅 디스크 만들기</h4>
+
+<h4 id="2-2-ubuntu-16-04-1-lts-부팅-디스크-만들기">2.2 Ubuntu 16.04.1 LTS 부팅 디스크 만들기</h4>
+
 <p><a href="https://rufus.akeo.ie">https://rufus.akeo.ie</a>에서 util을 받습니다.</p>
-<figure><img src="/images/post/dualboot/13.jpeg"/>
+
+<figure>
+    <img src="/images/post/dualboot/13.jpeg"/> 
 </figure>
 
-<p>Util을 실행!<br>
+
+<p>Util을 실행!<br />
 처음으로 부팅 디스크로 쓸 USB를 선택합니다.</p>
-<figure><img src="/images/post/dualboot/14.jpeg"/>
+
+<figure>
+    <img src="/images/post/dualboot/14.jpeg"/> 
 </figure>
 
-<p>OS image를 불러와야겠죠?<br>
+
+<p>OS image를 불러와야겠죠?<br />
 저~~기 아이콘 눌러주세요!</p>
-<figure><img src="/images/post/dualboot/15.jpeg"/>
+
+<figure>
+    <img src="/images/post/dualboot/15.jpeg"/> 
 </figure>
+
 
 <p>ISO 파일이 있는 곳으로 가서 선택하고 열기!</p>
-<figure><img src="/images/post/dualboot/16.jpeg"/>
+
+<figure>
+    <img src="/images/post/dualboot/16.jpeg"/> 
 </figure>
+
 
 <p>그리고 시작을 누릅니다!</p>
-<figure><img src="/images/post/dualboot/17.jpeg"/>
+
+<figure>
+    <img src="/images/post/dualboot/17.jpeg"/> 
 </figure>
+
 
 <p>구구절절&hellip; 구구절절&hellip; &lsquo;OK&rsquo; 눌러주세요.</p>
-<figure><img src="/images/post/dualboot/18.jpeg"/>
+
+<figure>
+    <img src="/images/post/dualboot/18.jpeg"/> 
 </figure>
 
-<p>이런 경고는&hellip;저에게 통하지 않습니다..<br>
+
+<p>이런 경고는&hellip;저에게 통하지 않습니다..<br />
 &lsquo;확인&rsquo;을 눌러주세요!</p>
-<figure><img src="/images/post/dualboot/19.jpeg"/>
+
+<figure>
+    <img src="/images/post/dualboot/19.jpeg"/> 
 </figure>
+
 
 <p>진행이 됩니다.</p>
-<figure><img src="/images/post/dualboot/20.jpeg"/>
+
+<figure>
+    <img src="/images/post/dualboot/20.jpeg"/> 
 </figure>
+
 
 <p>되고 있는&hellip;건가..?</p>
-<figure><img src="/images/post/dualboot/21.jpeg"/>
+
+<figure>
+    <img src="/images/post/dualboot/21.jpeg"/> 
 </figure>
+
 
 <p>6분 36초 정도 걸렸네요..</p>
-<figure><img src="/images/post/dualboot/22.jpeg"/>
+
+<figure>
+    <img src="/images/post/dualboot/22.jpeg"/> 
 </figure>
+
 
 <p>그럼 이제 설치를 해보겠습니다.</p>
-<h4 id="23-ubuntu-설치하기">2.3 Ubuntu 설치하기</h4>
-<p>BIOS 세팅에서 부팅 순서를 USB로 바꿔주시거나<br>
-Boot Option에서 USB를 선택해서 부팅합니다.<br>
-검은 화면이 나오면서 &lsquo;Try Ubuntu without installing&rsquo;, &lsquo;Install 어쩌고&hellip;&rsquo; 등이 있는데요.<br>
-저는 스크린샷을 해야하므로 &lsquo;Try Ubuntu without installing&rsquo; 을 선택했습니다.<br>
+
+<h4 id="2-3-ubuntu-설치하기">2.3 Ubuntu 설치하기</h4>
+
+<p>BIOS 세팅에서 부팅 순서를 USB로 바꿔주시거나<br />
+Boot Option에서 USB를 선택해서 부팅합니다.<br />
+검은 화면이 나오면서 &lsquo;Try Ubuntu without installing&rsquo;, &lsquo;Install 어쩌고&hellip;&rsquo; 등이 있는데요.<br />
+저는 스크린샷을 해야하므로 &lsquo;Try Ubuntu without installing&rsquo; 을 선택했습니다.<br />
 &lsquo;또로롱&rsquo;하면서 화면이 뜹니다!</p>
-<figure><img src="/images/post/dualboot/23.jpeg"/>
+
+<figure>
+    <img src="/images/post/dualboot/23.jpeg"/> 
 </figure>
 
-<p>바탕화면에 &lsquo;Install Ubuntu 16.04 LTS&rsquo; 실행합니다. <br>
+
+<p>바탕화면에 &lsquo;Install Ubuntu 16.04 LTS&rsquo; 실행합니다.<br />
 디렉토리 이름이 영어인게 좋으니까 일단 English로 진행.</p>
-<figure><img src="/images/post/dualboot/24.jpeg"/>
+
+<figure>
+    <img src="/images/post/dualboot/24.jpeg"/> 
 </figure>
+
 
 <p>설치하면서 업데이트, 다른 소프트웨어 설치 여부는..마음대로&hellip;</p>
-<figure><img src="/images/post/dualboot/25.jpeg"/>
+
+<figure>
+    <img src="/images/post/dualboot/25.jpeg"/> 
 </figure>
 
-<p>설치 방식에 대한 옵션이 나옵니다.<br>
-&lsquo;Something else&rsquo;를 선택해주세요.<br>
+
+<p>설치 방식에 대한 옵션이 나옵니다.<br />
+&lsquo;Something else&rsquo;를 선택해주세요.<br />
 그래야 더 안심하고 설치하니까요&hellip;</p>
-<figure><img src="/images/post/dualboot/26.jpeg"/>
+
+<figure>
+    <img src="/images/post/dualboot/26.jpeg"/> 
 </figure>
 
-<p>윈도우에서 파티션을 나눴었죠.<br>
-저는 SSD에 윈도우, HDD에 우분투를 설치할 것이니..<br>
-HDD 파티션을 나눠놨었습니다.<br>
+
+<p>윈도우에서 파티션을 나눴었죠.<br />
+저는 SSD에 윈도우, HDD에 우분투를 설치할 것이니..<br />
+HDD 파티션을 나눠놨었습니다.<br />
 얼마나 나눌건지는..여러분 마음&hellip;
 전 64GB 정도 나눴습니다. (100GB 뺐다가 다시 줄임&hellip;)
 &lsquo;free space&rsquo;를 선택하고 왼쪽 아래에 &lsquo;+&lsquo;버튼을 눌러주세요.</p>
-<figure><img src="/images/post/dualboot/27.jpeg"/>
+
+<figure>
+    <img src="/images/post/dualboot/27.jpeg"/> 
 </figure>
 
-<p>먼저 Swap 파티션부터 만들죠.<br>
-자신의 RAM 용량과 똑같이 맞추라는 분도 계시고<br>
-요즘은 RAM 용량이 다 커서 필요없다는 분도 계셔서<br>
-저는 그 중간인 8GB를 Swap으로 만들었습니다.<br>
-설정법은 아래 사진과 같이!<br>
+
+<p>먼저 Swap 파티션부터 만들죠.<br />
+자신의 RAM 용량과 똑같이 맞추라는 분도 계시고<br />
+요즘은 RAM 용량이 다 커서 필요없다는 분도 계셔서<br />
+저는 그 중간인 8GB를 Swap으로 만들었습니다.<br />
+설정법은 아래 사진과 같이!<br />
 그리고 &lsquo;OK&rsquo;를 누릅시다.</p>
-<figure><img src="/images/post/dualboot/28.jpeg"/>
+
+<figure>
+    <img src="/images/post/dualboot/28.jpeg"/> 
 </figure>
 
-<p>아래 사진과 같이 swap 영역이 unknown으로 만들어집니다.<br>
-이제 Ubuntu 파티션을 만들어보죠.<br>
+
+<p>아래 사진과 같이 swap 영역이 unknown으로 만들어집니다.<br />
+이제 Ubuntu 파티션을 만들어보죠.<br />
 똑같이 &lsquo;free space&rsquo; 를 선택하고 &lsquo;+&rsquo; 버튼을 눌러줍니다.</p>
-<figure><img src="/images/post/dualboot/29.jpeg"/>
+
+<figure>
+    <img src="/images/post/dualboot/29.jpeg"/> 
 </figure>
 
-<p>&lsquo;Size&rsquo;에는 남은 용량을 다 씁니다.<br>
-나머지는 아래 사진과 같이 설정 !<br>
+
+<p>&lsquo;Size&rsquo;에는 남은 용량을 다 씁니다.<br />
+나머지는 아래 사진과 같이 설정 !<br />
 그리고 &lsquo;OK&rsquo;를 누릅시다.</p>
-<figure><img src="/images/post/dualboot/30.jpeg"/>
+
+<figure>
+    <img src="/images/post/dualboot/30.jpeg"/> 
 </figure>
 
-<p>이제 Boot loader 경로를 지정해야하는데요.<br>
-아랫 부분에 &lsquo;Device for boot loader installation&rsquo;에서<br>
-디스크를 선택하면 됩니다.<br>
-SSD에 지정을 하시기도 하지만 저는 HDD 지정을 했습니다.<br>
+
+<p>이제 Boot loader 경로를 지정해야하는데요.<br />
+아랫 부분에 &lsquo;Device for boot loader installation&rsquo;에서<br />
+디스크를 선택하면 됩니다.<br />
+SSD에 지정을 하시기도 하지만 저는 HDD 지정을 했습니다.<br />
 그리고 &lsquo;Install Now&rsquo;을 클릭합니다.</p>
-<figure><img src="/images/post/dualboot/31.jpeg"/>
+
+<figure>
+    <img src="/images/post/dualboot/31.jpeg"/> 
 </figure>
 
-<p>디스크가 변경됩니다. 뭐 이런 내용이 뜨는데<br>
-그냥. 조용히. 살포시.<br>
-&lsquo;Continue&rsquo; 를 눌러줍시다.<br>
+
+<p>디스크가 변경됩니다. 뭐 이런 내용이 뜨는데<br />
+그냥. 조용히. 살포시.<br />
+&lsquo;Continue&rsquo; 를 눌러줍시다.<br />
 (불안하시면 다시 확인 하시구요..)</p>
-<figure><img src="/images/post/dualboot/32.jpeg"/>
+
+<figure>
+    <img src="/images/post/dualboot/32.jpeg"/> 
 </figure>
+
 
 <p>위치 설정하시구요!</p>
-<figure><img src="/images/post/dualboot/33.jpeg"/>
+
+<figure>
+    <img src="/images/post/dualboot/33.jpeg"/> 
 </figure>
 
-<p>키보드 설정은 그냥 영어로 놔두세요. <br>
+
+<p>키보드 설정은 그냥 영어로 놔두세요.<br />
 나중에 설치 후에 설정 할겁니다!</p>
-<figure><img src="/images/post/dualboot/34.jpeg"/>
+
+<figure>
+    <img src="/images/post/dualboot/34.jpeg"/> 
 </figure>
 
-<p>계정 설정을 합니다!<br>
+
+<p>계정 설정을 합니다!<br />
 저는 Jerry니까&hellip; 우분투 계정도 Jerry.</p>
-<figure><img src="/images/post/dualboot/35.jpeg"/>
+
+<figure>
+    <img src="/images/post/dualboot/35.jpeg"/> 
 </figure>
+
 
 <p>설치 시작!!</p>
-<figure><img src="/images/post/dualboot/36.jpeg"/>
+
+<figure>
+    <img src="/images/post/dualboot/36.jpeg"/> 
 </figure>
+
 
 <p>그저&hellip; 기다림&hellip;</p>
-<figure><img src="/images/post/dualboot/37.jpeg"/>
+
+<figure>
+    <img src="/images/post/dualboot/37.jpeg"/> 
 </figure>
 
-<figure><img src="/images/post/dualboot/38.jpeg"/>
+
+<figure>
+    <img src="/images/post/dualboot/38.jpeg"/> 
 </figure>
 
-<p>설치가 완료되었습니다!<br>
+
+<p>설치가 완료되었습니다!<br />
 과감히 바로 &lsquo;Restart Now&rsquo;를 클립했습니다.</p>
-<figure><img src="/images/post/dualboot/39.jpeg"/>
+
+<figure>
+    <img src="/images/post/dualboot/39.jpeg"/> 
 </figure>
 
-<p>첫 포스팅이라 굉장히 난잡하고 스크롤이 촤라라라락하네요&hellip;<br>
+
+<p>첫 포스팅이라 굉장히 난잡하고 스크롤이 촤라라라락하네요&hellip;<br />
 좀 더 정리해서 쓰는 습관을 들여야지&hellip;</p>
-<p>Ubuntu를 접하게 되면서 굉장히 다사다난한 경험을 하는 저와 제 노트북&hellip;.<br>
-어쩌면 조만간 Windows 와 Ubuntu를 재설치 할 수도 있을 듯합니다..<br>
+
+<p>Ubuntu를 접하게 되면서 굉장히 다사다난한 경험을 하는 저와 제 노트북&hellip;.<br />
+어쩌면 조만간 Windows 와 Ubuntu를 재설치 할 수도 있을 듯합니다..<br />
 다음 포스팅은 설치 후 세팅에 관련하여 하겠습니다!</p>
 
         </div>
@@ -483,7 +606,7 @@ SSD에 지정을 하시기도 하지만 저는 HDD 지정을 했습니다.<br>
         </ul>
       </div>
       <div class="col-12 border-top py-4 text-center">
-        | copyright © 2020 <a href="https://themefisher.com">Themefisher</a> All Rights Reserved |
+        | copyright &copy; 2020 <a href="https://themefisher.com">Themefisher</a> All Rights Reserved |
       </div>
     </div>
   </div>

@@ -9,7 +9,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="this is meta description">
   <meta name="author" content="Jerry Kim">
-  <meta name="generator" content="Hugo 0.85.0" />
+  <meta name="generator" content="Hugo 0.54.0" />
 
   <!-- plugins -->
   
@@ -160,258 +160,270 @@
         </div>
         
         <div class="content mb-5">
-          <h1 id="you-only-look-once-unified-real-time-object-detection">You Only Look Once: Unified, Real-Time, Object detection</h1>
-<hr>
+          
+
+<h1 id="you-only-look-once-unified-real-time-object-detection">You Only Look Once: Unified, Real-Time, Object detection</h1>
+
+<hr />
+
 <blockquote>
 <p>편의상 bounding box -&gt; bbox</p>
-</blockquote>
+
 <h2 id="abstract">Abstract</h2>
+</blockquote>
+
 <ul>
 <li>Object detection을 bboxes, class probabilities regression 문제로 접근.</li>
 <li>Single Neural Network 로 bboxes와 class probabilities 둘 다 예측.</li>
 <li>Localization Error가 다소 높지만 background error가 낮음.</li>
 <li>End-to-End, Extremely fast</li>
 </ul>
+
 <h2 id="1-introduction">1. Introduction</h2>
+
 <ul>
 <li>Current Detection 시스템
+
 <ul>
 <li>DPM : Sliding Window 방식</li>
 <li>R-CNN 계열 : potential bboxes 추출 -&gt; image 에서 bboxes 부분 다시 classify -&gt; Post-processing</li>
+</ul></li>
+<li>Slow, Hard to optimize(각 요소별로 따로따로 학습을 해야함. RPN -&gt; Classifier -&gt; RPN -&gt; &hellip;)
+<br /></li>
 </ul>
-</li>
-<li>Slow, Hard to optimize(각 요소별로 따로따로 학습을 해야함. RPN -&gt; Classifier -&gt; RPN -&gt; &hellip;)</li>
-</ul>
-<figure><img src="/images/post/yolo/fig01.png"/>
+
+<figure>
+    <img src="/images/post/yolo/fig01.png"/> 
 </figure>
 
+
 <ul>
-<li>
-<p>복잡하지 않은 pipeline과 빠른 inferenc time.</p>
+<li><p>복잡하지 않은 pipeline과 빠른 inferenc time.</p>
+
 <ul>
 <li>45 fps on a Titan X .</li>
-</ul>
-</li>
-<li>
-<p>이미지 전체를 이용한 prediction</p>
+</ul></li>
+
+<li><p>이미지 전체를 이용한 prediction</p>
+
 <ul>
 <li>Fast R-CNN 보다 적은 background error</li>
-</ul>
-</li>
-<li>
-<p>Object의 general한 representations 학습.</p>
+</ul></li>
+
+<li><p>Object의 general한 representations 학습.</p>
+
 <ul>
 <li>natural image로 학습하고 art works로 test 했을 때 기존의 DPM 이나 R-CNN 보다 성능이 좋았다.</li>
 <li>새로운 도메인이나 뭔가 모를 입력에 대해 일반화 할 수 있다.</li>
+</ul></li>
 </ul>
-</li>
-</ul>
+
 <h2 id="2-unfied-detection">2. Unfied Detection</h2>
+
 <ul>
 <li>Single Neural Network로 통합.</li>
 <li>이미지 전체를 이용해서 각각의 bbox 예측.</li>
 </ul>
-<figure><img src="/images/post/yolo/fig02.png"/>
+
+<figure>
+    <img src="/images/post/yolo/fig02.png"/> 
 </figure>
 
+
 <ul>
-<li>
-<p>입력 이미지를 S x S grid로 나눔.</p>
+<li><p>입력 이미지를 S x S grid로 나눔.</p>
+
 <ul>
 <li>Feature map이 S x S 라고 이해하면 됨.</li>
-</ul>
-</li>
-<li>
-<p>각 grid cell은 B개의 bbox의 정보(x, y, w, h, confidence score), 해당 grid cell의 Class probabilities 정보를 가짐.</p>
+</ul></li>
+
+<li><p>각 grid cell은 B개의 bbox의 정보(x, y, w, h, confidence score), 해당 grid cell의 Class probabilities 정보를 가짐.</p>
+
 <ul>
-<li>
-<p>bbox의 정보</p>
-<ul>
+<li>bbox의 정보</li>
 <li>x, y : bbox의 center 좌표</li>
 <li>w, h : 이미지 크기에 대비한 상대적인 값.</li>
 <li>confidence score : bbox가 object를 가졌는지 box가 얼마나 정확히 예측했는지에 대한 score</li>
 <li>Confidence Score는 다음과 같이 정의.
-$${Confidence; Score}= Pr(Object) * IOU^{truth}_{pred}$$</li>
+$${Confidence\; Score}= Pr(Object) * IOU^{truth}_{pred}$$</li>
 <li>No object의 경우
+
 <ul>
 <li>Confidence Score는 0 이어야함.</li>
+</ul></li>
+
+<li><p>Confidence Score가 IOU와 같아지길 원함.</p></li>
+
+<li><p>Class Probabilities 정보</p></li>
+
+<li><p>C개의 class에 대한 conditional class probabilities, \(Pr(Class_i \mid Object)\)</p></li>
+
+<li><p>Test 시에는 Conditional class probabilities와 individual box confidence score를 곱했다고 함.<br />
+\(Pr(Class_i|Object) =  Pr(Object) * IOU\^{truth}_{pred} = Pr(Class_i) * IOU\^{truth}_{pred}\)</p></li>
+
+<li><p>bbox 별로 class confidence score를 알 수 있음.</p></li>
+</ul></li>
+
+<li><p>PASCAL VOC 로 평가. S = 7, B = 2, C = 20</p></li>
+
+<li><p>최종 출력은  7 x 7 x 30 의 tensor.</p></li>
 </ul>
-</li>
-<li>Confidence Score가 IOU와 같아지길 원함.</li>
-</ul>
-</li>
-<li>
-<p>Class Probabilities 정보</p>
-<ul>
-<li>
-<p>C개의 class에 대한 conditional class probabilities, \(Pr(Class_i \mid Object)\)</p>
-</li>
-<li>
-<p>Test 시에는 Conditional class probabilities와 individual box confidence score를 곱했다고 함.<br>
-\(Pr(Class_i|Object) =  Pr(Object) * IOU^{truth}_{pred} = Pr(Class_i) * IOU^{truth}_{pred}\)</p>
-</li>
-<li>
-<p>bbox 별로 class confidence score를 알 수 있음.</p>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>
-<p>PASCAL VOC 로 평가. S = 7, B = 2, C = 20</p>
-</li>
-<li>
-<p>최종 출력은  7 x 7 x 30 의 tensor.</p>
-</li>
-</ul>
-<h3 id="21-design">2.1 Design</h3>
+
+<h3 id="2-1-design">2.1 Design</h3>
+
 <ul>
 <li>24개의 Convolution layer, 2개의 Fully Connected layer.</li>
-<li>GoogLeNet의 inception 모듈 대신에 <!-- raw HTML omitted -->1 x 1 Convolution layer를 이용하여 reduction.<!-- raw HTML omitted -->
-<figure><img src="/images/post/yolo/fig03_1.png"/>
+<li>GoogLeNet의 inception 모듈 대신에 <span style="color:skyblue">1 x 1 Convolution layer를 이용하여 reduction.</span>
+<figure>
+    <img src="/images/post/yolo/fig03_1.png"/> 
 </figure>
 </li>
-<li>Tiny model은 9개의 Convolution layer, 2개의 Fully Connected layer.</li>
+<li>Tiny model은 9개의 Convolution layer, 2개의 Fully Connected layer.
+<br /></li>
 </ul>
-<h3 id="22-training">2.2 Training</h3>
+
+<h3 id="2-2-training">2.2 Training</h3>
+
 <ul>
-<li>
-<p>앞 단의 20개의 Convolution layer(Feature Extractor)를 ImageNet 1000-class competition 데이터(224 x 224)로 Pretrain.</p>
-</li>
-<li>
-<p>20번째 Convolution layer 뒤에 Average Pooling, Fully Connected Layer.</p>
-</li>
-<li>
-<p>ImageNet 2012 validation set으로 top-5 accuracy 88% 정도..
-<figure><img src="/images/post/yolo/fig03_2.png"/>
+<li>앞 단의 20개의 Convolution layer(Feature Extractor)를 ImageNet 1000-class competition 데이터(224 x 224)로 Pretrain.</li>
+<li>20번째 Convolution layer 뒤에 Average Pooling, Fully Connected Layer.</li>
+
+<li><p>ImageNet 2012 validation set으로 top-5 accuracy 88% 정도..
+<figure>
+    <img src="/images/post/yolo/fig03_2.png"/> 
 </figure>
-</p>
-</li>
-<li>
-<p>Pretrain 후 Detector 부분 추가 후 입력 크기를 448 x 448 로 높여서 학습 진행.</p>
-</li>
-<li>
-<p>Bounding Box의 width, height 값은 이미지의 width, height로 normalize 하여 0 ~ 1 사이 값을 같도록 함.</p>
-</li>
-<li>
-<p>Bounding Box의 x, y 값은 특정 grid cell의 left top으로부터 offset 값. 0 ~ 1 사이 값을 같도록 함.</p>
-</li>
-<li>
-<p>마지막 layer는 linear activation function 사용.</p>
-</li>
-<li>
-<p>다른 layer는 leaky ReLU 사용.
-$$\phi(x)=\begin{cases}x,&amp;if;x &gt;0\\ {0.1}x, &amp; otherwise\end{cases}$$</p>
-</li>
-<li>
-<p>Optimization이 쉬운 Sum-Squared Error 를 사용.</p>
-</li>
-<li>
-<p>이미지의 대부분 grid cell이 object 를 가지고 있지 않기 때문에 Confidence Score가 0 에 수렴.</p>
-</li>
-<li>
-<p>이 상황에선 object를 가지고 있는 grid cell의 gradient를 압도할 수 있음.</p>
-</li>
-<li>
-<p>이를 해결하기 위해 Bbox coordinate loss와 No object의 confidence loss 에 대해 weight 를 부여.<br>
-\(\lambda_{coord} = 5\) and \(\lambda_{noobj} = 0.5\).</p>
-</li>
-<li>
-<p>Sum-Squared Error는 large boxes와 small boxes 를 동일하게 평가.</p>
-</li>
-<li>
-<p>large boxes 에 대해서 중요성을 반영하기 위해 width, height 는 square root 사용.</p>
-</li>
+</p></li>
+
+<li><p>Pretrain 후 Detector 부분 추가 후 입력 크기를 448 x 448 로 높여서 학습 진행.</p></li>
+
+<li><p>Bounding Box의 width, height 값은 이미지의 width, height로 normalize 하여 0 ~ 1 사이 값을 같도록 함.</p></li>
+
+<li><p>Bounding Box의 x, y 값은 특정 grid cell의 left top으로부터 offset 값. 0 ~ 1 사이 값을 같도록 함.</p></li>
+
+<li><p>마지막 layer는 linear activation function 사용.</p></li>
+
+<li><p>다른 layer는 leaky ReLU 사용.
+$$\phi(x)=\begin{cases}x,&amp;if\;x &gt;0\\ {0.1}x, &amp; otherwise\end{cases}$$</p></li>
+
+<li><p>Optimization이 쉬운 Sum-Squared Error 를 사용.</p></li>
+
+<li><p>이미지의 대부분 grid cell이 object 를 가지고 있지 않기 때문에 Confidence Score가 0 에 수렴.</p></li>
+
+<li><p>이 상황에선 object를 가지고 있는 grid cell의 gradient를 압도할 수 있음.</p></li>
+
+<li><p>이를 해결하기 위해 Bbox coordinate loss와 No object의 confidence loss 에 대해 weight 를 부여.<br />
+\(\lambda<em>{coord} = 5\) and \(\lambda</em>{noobj} = 0.5\).</p></li>
+
+<li><p>Sum-Squared Error는 large boxes와 small boxes 를 동일하게 평가.</p></li>
+
+<li><p>large boxes 에 대해서 중요성을 반영하기 위해 width, height 는 square root 사용.</p></li>
 </ul>
-<p>$$\lambda_{coord}\sum^{S^2}_{i=0}\sum^B_{j=0}\mathbb{I}^{obj}_{ij}(x_i-\hat{x}_i)^2+(y_i-\hat{y}_i)^2$$
-$$+\lambda_{coord}\sum^{S^2}_{i=0}\sum^B_{j=0}\mathbb{I}^{obj}_{ij}(\sqrt{w_i}-\sqrt{\hat{w}_i})^2 + (\sqrt{h_i}-\sqrt{\hat{h}_i})^2$$
-$$+ \sum^{S^2}_{i=0}\sum^B_{j=0}\mathbb{I}^{obj}_{ij}(C_i - \hat{C}_i)^2$$
-$$ + \lambda_{noobj}\sum^{S^2}_{i=0}\sum^B_{j=0}\mathbb{I}^{noobj}_{ij}(C_i - \hat{C}_i)^2 $$
-$$ + \sum^{S^2}_{i=0}\mathbb{I}^{obj}_{i}\sum^B_{c\in{classes}}(p_i(c) - \hat{p}_i(c))^2 $$</p>
+
+<p>$$\lambda<em>{coord}\sum^{S^2}_{i=0}\sum^B</em>{j=0}\mathbb{I}^{obj}_{ij}(x_i-\hat{x}_i)^2+(y_i-\hat{y}<em>i)^2$$
+$$+\lambda</em>{coord}\sum^{S^2}_{i=0}\sum^B<em>{j=0}\mathbb{I}^{obj}</em>{ij}(\sqrt{w_i}-\sqrt{\hat{w}_i})^2 + (\sqrt{h_i}-\sqrt{\hat{h}<em>i})^2$$
+$$+ \sum^{S^2}_{i=0}\sum^B</em>{j=0}\mathbb{I}^{obj}_{ij}(C_i - \hat{C}<em>i)^2$$
+$$ + \lambda</em>{noobj}\sum^{S^2}_{i=0}\sum^B<em>{j=0}\mathbb{I}^{noobj}</em>{ij}(C_i - \hat{C}<em>i)^2 $$
+$$ + \sum^{S^2}_{i=0}\mathbb{I}^{obj}_{i}\sum^B</em>{c\in{classes}}(p_i&copy; - \hat{p}_i&copy;)^2 $$</p>
+
 <ul>
-<li>
-<p>\(\mathbb{I}^{obj}_{i}\) : Object가 존재하는 Grid Cell i.</p>
-</li>
-<li>
-<p>\(\mathbb{I}^{obj}_{ij}\) : Object가 존재하는 Grid Cell i의 Bounding Box j.</p>
-</li>
-<li>
-<p>Train 관련 Parameter</p>
+<li>\(\mathbb{I}^{obj}_{i}\) : Object가 존재하는 Grid Cell i.</li>
+
+<li><p>\(\mathbb{I}^{obj}_{ij}\) : Object가 존재하는 Grid Cell i의 Bounding Box j.</p></li>
+
+<li><p>Train 관련 Parameter</p>
+
 <ul>
 <li>Batch Szie : 64</li>
 <li>Momentum : 0.9</li>
 <li>Decay : 0.0005</li>
-<li>Learning rate
-<ul>
+<li>Learning rate</li>
 <li>\(10^{-3}\) 부터 \(10^{-2}\) 까지 천천히 증가.</li>
 <li>\(10^{-2}\) 로 75 epochs 학습.</li>
 <li>\(10^{-3}\) 로 줄여서 30 epochs 학습.</li>
 <li>\(10^{-4}\) 로 줄여서 30 epochs 학습.</li>
-</ul>
-</li>
 <li>Dropout : 0.5</li>
-<li>Data Augmentation
-<ul>
+<li>Data Augmentation</li>
 <li>Random Scaling, Translation of up to 20% of the original image size.</li>
-<li>Random adjustment exposure and saturation</li>
+<li>Random adjustment exposure and saturation
+<br /></li>
+</ul></li>
 </ul>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="23-inference">2.3 Inference</h3>
+
+<h3 id="2-3-inference">2.3 Inference</h3>
+
 <ul>
 <li>Large Object 나 여러 grid cell에 걸쳐있는 object는 여러 셀에 predict 될 수 있음.</li>
 <li>Non-maximal suppression 사용하여 해결.</li>
 </ul>
-<h3 id="24-limitations-of-yolo">2.4 Limitations of YOLO</h3>
+
+<h3 id="2-4-limitations-of-yolo">2.4 Limitations of YOLO</h3>
+
 <ul>
 <li>각 Grid Cell은 하나의 클래스만 가질 수 있기 때문에 Grid Cell 하나에 작은 object가 여러 개 있을때 제대로 예측하지 못할 수 있다.</li>
 <li>예상치 못한 aspect ratio나 configuration을 가진 객체를 일반화 하는데 어려움.</li>
 <li>Large box와 Small box를 동일하게 처리.</li>
 <li>Large box의 small error보다 Small box의 small error가 IOU에 훨씬 큰 영향을 끼침.</li>
 </ul>
+
 <h2 id="3-comparison-to-other-detection-systems">3. Comparison to Other Detection Systems</h2>
+
 <ul>
 <li>생략</li>
 </ul>
+
 <h2 id="4-experiments">4. Experiments</h2>
-<h3 id="41-comparison-to-other-realtime-systems">4.1. Comparison to Other RealTime Systems</h3>
+
+<h3 id="4-1-comparison-to-other-realtime-systems">4.1. Comparison to Other RealTime Systems</h3>
+
 <ul>
 <li>Fast Yolo는 가장 빠른 속도를 보여줌.</li>
 <li>YOLO 는 real-time 성능을 보여주면서 mAP도 뛰어난걸 확인할 수 있음.
-<figure><img src="/images/post/yolo/fig04_1.png"/>
+<figure>
+    <img src="/images/post/yolo/fig04_1.png"/> 
 </figure>
 </li>
 </ul>
-<h3 id="42-voc-2007-error-analysis">4.2. VOC 2007 Error Analysis</h3>
+
+<h3 id="4-2-voc-2007-error-analysis">4.2. VOC 2007 Error Analysis</h3>
+
 <ul>
 <li>Object Localization은 Fast R-CNN이 더 뛰어남.</li>
 <li>But, Background Error(False Positive)가 훨씬 높음.
-<figure><img src="/images/post/yolo/fig04_2.png"/>
+<figure>
+    <img src="/images/post/yolo/fig04_2.png"/> 
 </figure>
 </li>
 </ul>
-<h3 id="43-combining-fast-rcnn-and-yolo">4.3. Combining Fast RCNN and YOLO</h3>
+
+<h3 id="4-3-combining-fast-rcnn-and-yolo">4.3. Combining Fast RCNN and YOLO</h3>
+
 <ul>
 <li>Fast R-CNN과 YOLO를 앙상블 한 모델이 성능이 가장 좋음.
-<figure><img src="/images/post/yolo/fig04_3.png"/>
+<figure>
+    <img src="/images/post/yolo/fig04_3.png"/> 
 </figure>
 </li>
 </ul>
-<h3 id="44-voc-2012-results">4.4. VOC 2012 Results</h3>
-<figure><img src="/images/post/yolo/fig04_4.png"/>
+
+<h3 id="4-4-voc-2012-results">4.4. VOC 2012 Results</h3>
+
+<figure>
+    <img src="/images/post/yolo/fig04_4.png"/> 
 </figure>
 
-<h3 id="45-generalizability">4.5 Generalizability</h3>
+
+<h3 id="4-5-generalizability">4.5 Generalizability</h3>
+
 <ul>
 <li>새로운 도메인, 예상치 못한 입력이 들어왔을때 일반화 성능이 뛰어남.</li>
 <li>Picasso Dataset 과 People-Art Dataset을 이용하여 다른 모델들과 일반화 성능 비교.</li>
 <li>YOLO가 가장 성능이 좋은것을 보여줌.
-<figure><img src="/images/post/yolo/fig05_1.png"/>
+<figure>
+    <img src="/images/post/yolo/fig05_1.png"/> 
 </figure>
 
-<figure><img src="/images/post/yolo/fig05_2.png"/>
+<figure>
+    <img src="/images/post/yolo/fig05_2.png"/> 
 </figure>
 </li>
 </ul>
@@ -528,7 +540,7 @@ $$ + \sum^{S^2}_{i=0}\mathbb{I}^{obj}_{i}\sum^B_{c\in{classes}}(p_i(c) - \hat{p}
         </ul>
       </div>
       <div class="col-12 border-top py-4 text-center">
-        | copyright © 2020 <a href="https://themefisher.com">Themefisher</a> All Rights Reserved |
+        | copyright &copy; 2020 <a href="https://themefisher.com">Themefisher</a> All Rights Reserved |
       </div>
     </div>
   </div>

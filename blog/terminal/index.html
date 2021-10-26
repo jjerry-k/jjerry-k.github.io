@@ -9,7 +9,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="this is meta description">
   <meta name="author" content="Jerry Kim">
-  <meta name="generator" content="Hugo 0.85.0" />
+  <meta name="generator" content="Hugo 0.54.0" />
 
   <!-- plugins -->
   
@@ -160,23 +160,28 @@
         </div>
         
         <div class="content mb-5">
-          <p>저는 터미널을 마음대로 바꾸는걸 좋아합니다.<br>
-기본 터미널을 대체할 앱이 있긴하지만 추가적으로 설치하는걸 안좋아해서..ㅎㅎ<br>
-그래서 Customizing 하는 법을 포스팅하려고 합니다.<br>
+          <p>저는 터미널을 마음대로 바꾸는걸 좋아합니다.<br />
+기본 터미널을 대체할 앱이 있긴하지만 추가적으로 설치하는걸 안좋아해서..ㅎㅎ<br />
+그래서 Customizing 하는 법을 포스팅하려고 합니다.<br />
 Mac 터미널에서 환경변수 설정은 <code>.bash_profile</code> 에서 합니다.
 Ubuntu 에서 <code>.bashrc</code>와 같다고 생각하시면 되요.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># terminal customize</span>
-<span style="color:#75715e"># 컬러 적용 여부</span>
-export CLICOLOR<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>
-<span style="color:#75715e"># 디렉토리의 생상</span>
-export LSCOLORS<span style="color:#f92672">=</span>GxFxCxDxBxegedabagaced
-<span style="color:#75715e"># 유저 및 호스트의 색상</span>
-export PS1<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;35m\]\w\[\033[00m\]\$&#39;</span>
-</code></pre></div><p>첫번째 옵션은 1이면 Customizing응 한다는 의미입니다.</p>
-<p>두번째 옵션이 좀 문제인데요..<br>
-알아보기 매우 힘듭니다..<br>
-저도 기억하기 힘들어서 포스팅을 하는거죠.<br>
+
+<pre><code class="language-bash"># terminal customize
+# 컬러 적용 여부
+export CLICOLOR=1
+# 디렉토리의 생상
+export LSCOLORS=GxFxCxDxBxegedabagaced
+# 유저 및 호스트의 색상
+export PS1='\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;35m\]\w\[\033[00m\]\$'
+</code></pre>
+
+<p>첫번째 옵션은 1이면 Customizing응 한다는 의미입니다.</p>
+
+<p>두번째 옵션이 좀 문제인데요..<br />
+알아보기 매우 힘듭니다..<br />
+저도 기억하기 힘들어서 포스팅을 하는거죠.<br />
 자..두번째 옵션을 두 부분으로 나눠서 설명드리겠습니다.</p>
+
 <pre><code>Gx Fx Cx Dx Bx
 1x 2x 3x 4x 5x
 
@@ -185,7 +190,9 @@ export PS1<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;\
 3x : socket 색상
 4x : pipe 색
 5x : 실행파일 색상
-</code></pre><pre><code>eg ed ab ag ac ed
+</code></pre>
+
+<pre><code>eg ed ab ag ac ed
 1a 2b 3c 4d 5e 6f
 
 1a : block special 색상
@@ -194,9 +201,13 @@ export PS1<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;\
 4d : ext_setgid 색상
 5e : a-dir_writeothers_sticky 색상
 6f : b-dir_writeothers_NOsticky 색상
-</code></pre><p>솔직히 socket, pipe, 1a ~ 6f 까지는 뭔지 잘 모르겠습니다..<br>
+</code></pre>
+
+<p>솔직히 socket, pipe, 1a ~ 6f 까지는 뭔지 잘 모르겠습니다..<br />
 제대로 배우지 않아서&hellip;ㅎㅎ</p>
+
 <p>색상 설명</p>
+
 <pre><code>a     black
 b     red
 c     green
@@ -215,15 +226,24 @@ F     bold magenta
 G     bold cyan
 H     bold light grey (거의 흰색)
 x     default foreground or background
-</code></pre><p>모든 색상설정은 알파벳 두개로 구성이 됩니다.<br>
+</code></pre>
+
+<p>모든 색상설정은 알파벳 두개로 구성이 됩니다.<br />
 앞에 알파벳은 글자의 색상이고 뒤에 알파벳은 배경의 색상입니다.</p>
-<p>세번째 옵션을 살펴보겠습니다.<br>
+
+<p>세번째 옵션을 살펴보겠습니다.<br />
 이 옵션 또한 복잡하게 써있네요..</p>
+
 <pre><code>'\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;35m\]\w\[\033[00m\]\$'
 
-</code></pre><p>이건 터미널을 켰을때 유저와 PC 이름을 어떻게 보여줄 것인가를 정합니다.</p>
+</code></pre>
+
+<p>이건 터미널을 켰을때 유저와 PC 이름을 어떻게 보여줄 것인가를 정합니다.</p>
+
 <p><code>'\[\033[01;32m\]\u@\h\[\033[00m\]</code> 에서 {USER_NAME}@{PC_NAME}을 초록색 볼드체로 하겠다라는 의미입니다. (01 : 볼드체, 32m : 초록색)</p>
+
 <p><code>\[\033[01;35m\]\w\[\033[00m\]</code> 에서 ~을 자주색 볼드체로 하겠다라는 의미입니다. (01 : 볼드체, 35m : 자주색)</p>
+
 <p>자세한 정보는 추후에 더 추가하겠습니다!</p>
 
         </div>
@@ -338,7 +358,7 @@ x     default foreground or background
         </ul>
       </div>
       <div class="col-12 border-top py-4 text-center">
-        | copyright © 2020 <a href="https://themefisher.com">Themefisher</a> All Rights Reserved |
+        | copyright &copy; 2020 <a href="https://themefisher.com">Themefisher</a> All Rights Reserved |
       </div>
     </div>
   </div>

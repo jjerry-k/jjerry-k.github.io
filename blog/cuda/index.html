@@ -9,7 +9,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="this is meta description">
   <meta name="author" content="Jerry Kim">
-  <meta name="generator" content="Hugo 0.85.0" />
+  <meta name="generator" content="Hugo 0.54.0" />
 
   <!-- plugins -->
   
@@ -160,95 +160,134 @@
         </div>
         
         <div class="content mb-5">
-          <h1 id="환경-구축">환경 구축&hellip;.</h1>
+          
+
+<h1 id="환경-구축">환경 구축&hellip;.</h1>
+
 <p>Deep Learning을 하는데 GPU를 사용해야하니 CUDA와 cuDNN을 설치하기로 하죠.</p>
+
 <h2 id="1-nvidia-그래픽-드라이버-설치">1. NVIDIA 그래픽 드라이버 설치</h2>
-<p>Ubuntu 14.04 에선 그래픽 드라이버를 설치하는데 굉장히&hellip;<br>
-많은 고난과 역경을 겪었습니다&hellip;<br>
-(그래서 결국 설치 못해봄..)<br>
-하지만 16.04에선 어렵지 않음!!!!!!<br>
-(갈아탄 결정적인 이유&hellip;)<br>
+
+<p>Ubuntu 14.04 에선 그래픽 드라이버를 설치하는데 굉장히&hellip;<br />
+많은 고난과 역경을 겪었습니다&hellip;<br />
+(그래서 결국 설치 못해봄..)<br />
+하지만 16.04에선 어렵지 않음!!!!!!<br />
+(갈아탄 결정적인 이유&hellip;)<br />
 그렇다면 설치를 시작해보겠습니다.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo add-apt-repository ppa:graphics-drivers/ppa
+
+<pre><code class="language-bash">sudo add-apt-repository ppa:graphics-drivers/ppa
 
 sudo apt-get update
 
 sudo apt-get install nvidia-364
-</code></pre></div><p>(제 노트북은 GTX 960m 이므로..)<br>
-그냥 터미널에 입력하시면 되요.<br>
-NVIDIA 사이트에서 GPU 버전이랑 맞는걸로!!<br>
-그게 나을 듯합니다.<br>
-그 후 로그아웃을 하고 다시 로그인을 하려고 하면 무한 로그인이 될 거에요.<br>
-(안그러면 좋고..)<br>
-Ctrl + Alt + F1을 눌러 tty1으로 들어가서 로그인 후 reboot을 실행해줍시다.<br>
+</code></pre>
+
+<p>(제 노트북은 GTX 960m 이므로..)<br />
+그냥 터미널에 입력하시면 되요.<br />
+NVIDIA 사이트에서 GPU 버전이랑 맞는걸로!!<br />
+그게 나을 듯합니다.<br />
+그 후 로그아웃을 하고 다시 로그인을 하려고 하면 무한 로그인이 될 거에요.<br />
+(안그러면 좋고..)<br />
+Ctrl + Alt + F1을 눌러 tty1으로 들어가서 로그인 후 reboot을 실행해줍시다.<br />
 로그인 후 NVIDIA X Server Settings 를 켜면</p>
-<figure><img src="![image]%28/images/post/CUDA/01.png%29"/>
+
+<figure>
+    <img src="![image]%28/images/post/CUDA/01.png%29"/> 
 </figure>
 
+
 <p>요래 설치 된걸 확인할 수 있습니다.</p>
+
 <h2 id="2-cuda-설치">2. CUDA 설치</h2>
+
 <p>NVIDIA 드라이버를 설치 했으니 이제 CUDA를 설치해보도록 하죠.</p>
+
 <p><a href="https://developer.nvidia.com/cuda-downloads">https://developer.nvidia.com/cuda-downloads</a> 에 들어가시면 요로코롬 뜨는데요.</p>
-<!-- raw HTML omitted -->
-<p>각자의 환경에 맞춰서 선택한 후 다운로드 하시면 됩니다.<br>
-run 파일을 다운을 받은 후에 터미널을 여시고 run 파일이 다운로드된 디렉토리로 이동합니다.<br>
-그리고 파일의 권한을 모든  사용자가 사용할 수 있도록 변경합니다.<br>
+
+<p><img src="https://jjerry-k.github.io/public/img/CUDA/02.png"></p>
+
+<p>각자의 환경에 맞춰서 선택한 후 다운로드 하시면 됩니다.<br />
+run 파일을 다운을 받은 후에 터미널을 여시고 run 파일이 다운로드된 디렉토리로 이동합니다.<br />
+그리고 파일의 권한을 모든  사용자가 사용할 수 있도록 변경합니다.<br />
 그리고 실행!</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cd Downloads
+
+<pre><code class="language-bash">cd Downloads
 sudo chmod a+r cuda_7.5.18_linux.run
 sudo ./cuda_7.5.18_linux.run --override
 or
 sudo sh cuda_7.5.18_linux.run --override
-</code></pre></div><p>16.04는 gcc, g++ 버전이 5.x 라 override 를 해줘야합니다..<br>
-실행하면 어쩌고 저쩌고 약관 내용..? 이 나오는데요&hellip;<br>
-살포시 q 를 눌러줍니다.<br>
-그러면&hellip;사용자 정의 설치라고 할까요??<br>
+</code></pre>
+
+<p>16.04는 gcc, g++ 버전이 5.x 라 override 를 해줘야합니다..<br />
+실행하면 어쩌고 저쩌고 약관 내용..? 이 나오는데요&hellip;<br />
+살포시 q 를 눌러줍니다.<br />
+그러면&hellip;사용자 정의 설치라고 할까요??<br />
 이것 저것 물어봅니다.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">Do you accept the previously read EULA? <span style="color:#f92672">(</span>accept/decline/quit<span style="color:#f92672">)</span>: accept
 
-You are attempting to install on an unsupported configuration. Do you wish to <span style="color:#66d9ef">continue</span>? <span style="color:#f92672">((</span>y<span style="color:#f92672">)</span>es/<span style="color:#f92672">(</span>n<span style="color:#f92672">)</span>o<span style="color:#f92672">)</span> <span style="color:#f92672">[</span> default is no <span style="color:#f92672">]</span>: yes
+<pre><code class="language-bash">Do you accept the previously read EULA? (accept/decline/quit): accept
 
-Install NVIDIA Accelerated Graphics Driver <span style="color:#66d9ef">for</span> Linux-x86_64 352.39? <span style="color:#f92672">((</span>y<span style="color:#f92672">)</span>es/<span style="color:#f92672">(</span>n<span style="color:#f92672">)</span>o/<span style="color:#f92672">(</span>q<span style="color:#f92672">)</span>uit<span style="color:#f92672">)</span>: no
+You are attempting to install on an unsupported configuration. Do you wish to continue? ((y)es/(n)o) [ default is no ]: yes
 
-Install the CUDA 7.5 Toolkit? <span style="color:#f92672">((</span>y<span style="color:#f92672">)</span>es/<span style="color:#f92672">(</span>n<span style="color:#f92672">)</span>o/<span style="color:#f92672">(</span>q<span style="color:#f92672">)</span>uit<span style="color:#f92672">)</span>: yes
+Install NVIDIA Accelerated Graphics Driver for Linux-x86_64 352.39? ((y)es/(n)o/(q)uit): no
 
-Enter Toolkit Location <span style="color:#f92672">[</span> default is /usr/local/cuda-7.5 <span style="color:#f92672">]</span>: 그냥 엔터
+Install the CUDA 7.5 Toolkit? ((y)es/(n)o/(q)uit): yes
 
-Do you want to install a symbolic link at /usr/local/cuda? <span style="color:#f92672">((</span>y<span style="color:#f92672">)</span>es/<span style="color:#f92672">(</span>n<span style="color:#f92672">)</span>o/<span style="color:#f92672">(</span>q<span style="color:#f92672">)</span>uit<span style="color:#f92672">)</span>: yes
+Enter Toolkit Location [ default is /usr/local/cuda-7.5 ]: 그냥 엔터
 
-Install the CUDA 7.5 Samples? <span style="color:#f92672">((</span>y<span style="color:#f92672">)</span>es/<span style="color:#f92672">(</span>n<span style="color:#f92672">)</span>o/<span style="color:#f92672">(</span>q<span style="color:#f92672">)</span>uit<span style="color:#f92672">)</span>: no
-</code></pre></div><p>이런식으로 세팅을 해줍니다.<br>
-그리고 그저 기다리고 기다림&hellip;.<br>
-설치가 다 되었으면 뭐 따로 실행할 건 없습니다.<br>
-바로 cuDNN 설치를 하죠.<br>
+Do you want to install a symbolic link at /usr/local/cuda? ((y)es/(n)o/(q)uit): yes
+
+Install the CUDA 7.5 Samples? ((y)es/(n)o/(q)uit): no
+</code></pre>
+
+<p>이런식으로 세팅을 해줍니다.<br />
+그리고 그저 기다리고 기다림&hellip;.<br />
+설치가 다 되었으면 뭐 따로 실행할 건 없습니다.<br />
+바로 cuDNN 설치를 하죠.<br />
 이건 설치&hellip;.는 아니고 그냥 cuda 디렉토리에 파일을 파일 복사? 하는거에요.</p>
+
 <h2 id="3-cudnn-설치">3. cuDNN 설치</h2>
+
 <p>먼저 cuDNN 파일을 받으셔야하는데요.</p>
+
 <p><a href="https://developer.nvidia.com/rdp/cudnn-download">https://developer.nvidia.com/rdp/cudnn-download</a></p>
-<p>여기에 들어가셔서 계정 만드시고&hellip;.<br>
-사용 용도&hellip; 사용 할 라이브러리.. 등등 선택하시고 원하시는 버전 download 하시면 됩니다.<br>
-저는 4.0으로 했어요.<br>
+
+<p>여기에 들어가셔서 계정 만드시고&hellip;.<br />
+사용 용도&hellip; 사용 할 라이브러리.. 등등 선택하시고 원하시는 버전 download 하시면 됩니다.<br />
+저는 4.0으로 했어요.<br />
 Tensorflow라는 라이브러리를 사용할 것이기 때문에&hellip;
 그리고 나서 터미널을 켜고</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cd /usr/local
+
+<pre><code class="language-bash">cd /usr/local
 sudo tar zxf ~/Downloads/cudnn-7.0-linux-x64-v4.0-prod.tgz
-</code></pre></div><p>이렇게 하시거나 아니면</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cd cudnn 다운로드경로
+</code></pre>
+
+<p>이렇게 하시거나 아니면</p>
+
+<pre><code class="language-bash">cd cudnn 다운로드경로
 sudo tar zxf cudnn-7.0-linux-x64-v4.0-prod.tgz
 sudo cp cuda/include/cudnn.h /usr/local/cuda/include
 sudo cp cuda/lib64/libcudnn* /usr/local/cuda/lib64
-</code></pre></div><p>이렇게 해주시구요.<br>
+</code></pre>
+
+<p>이렇게 해주시구요.<br />
 환경변수를 설정해줘야 합니다.
 터미널을 껐다가 다시 켜주시고</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo gedit ~/.bashrc
-</code></pre></div><p>그려면 어떤 메모장? 문서 파일이 열립니다.
+
+<pre><code class="language-bash">sudo gedit ~/.bashrc
+</code></pre>
+
+<p>그려면 어떤 메모장? 문서 파일이 열립니다.
 매~~~~앤 아래 부분에</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">export PATH<span style="color:#f92672">=</span>/usr/local/cuda-7.5/bin:$PATH
-export LD_LIBRARY_PATH<span style="color:#f92672">=</span>/usr/local/cuda-7.5/lib64:$LD_LIBRARY_PATH
-</code></pre></div><p>를 추가해주세요.</p>
-<p>이렇게 GPU 설정이 끝났습니다&hellip;<br>
-이제 caffe와 tensorflow를 설치해야겠군요..<br>
-험난허다&hellip;<br>
+
+<pre><code class="language-bash">export PATH=/usr/local/cuda-7.5/bin:$PATH
+export LD_LIBRARY_PATH=/usr/local/cuda-7.5/lib64:$LD_LIBRARY_PATH
+</code></pre>
+
+<p>를 추가해주세요.</p>
+
+<p>이렇게 GPU 설정이 끝났습니다&hellip;<br />
+이제 caffe와 tensorflow를 설치해야겠군요..<br />
+험난허다&hellip;<br />
 개강이라 죽겠는데..</p>
 
         </div>
@@ -363,7 +402,7 @@ export LD_LIBRARY_PATH<span style="color:#f92672">=</span>/usr/local/cuda-7.5/li
         </ul>
       </div>
       <div class="col-12 border-top py-4 text-center">
-        | copyright © 2020 <a href="https://themefisher.com">Themefisher</a> All Rights Reserved |
+        | copyright &copy; 2020 <a href="https://themefisher.com">Themefisher</a> All Rights Reserved |
       </div>
     </div>
   </div>

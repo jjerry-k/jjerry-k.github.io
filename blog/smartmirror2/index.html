@@ -9,7 +9,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="this is meta description">
   <meta name="author" content="Jerry Kim">
-  <meta name="generator" content="Hugo 0.85.0" />
+  <meta name="generator" content="Hugo 0.54.0" />
 
   <!-- plugins -->
   
@@ -162,259 +162,307 @@
         <img src="https://www.raspberrypi.org/wp-content/uploads/2011/10/Raspi-PGB001.png" class="img-fluid w-100 mb-4" alt="Smart Mirror Customizing">
         
         <div class="content mb-5">
-          <p>저번 포스팅에선 Raspberry Pi 와 LCD, MagicMirror를 이용하여 Smart Mirror 초기 세팅을 했습니다!<br>
-이번 포스팅에선 화면을 쵸-큼 입맛대로 바꿔보려 합니다!<br>
+          
+
+<p>저번 포스팅에선 Raspberry Pi 와 LCD, MagicMirror를 이용하여 Smart Mirror 초기 세팅을 했습니다!<br />
+이번 포스팅에선 화면을 쵸-큼 입맛대로 바꿔보려 합니다!<br />
 우선 MagicMirror 의 config 디렉토리로 이동해주세요!</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cd ~/MagicMirror/config
-</code></pre></div><p>거기엔 다음과 같이 <code>config.js</code>, <code>config.js.sample</code>이 있습니다!<br>
+
+<pre><code class="language-bash">cd ~/MagicMirror/config
+</code></pre>
+
+<p>거기엔 다음과 같이 <code>config.js</code>, <code>config.js.sample</code>이 있습니다!<br />
 여기서 <code>config.js</code> 가 화면을 구성하는 정보들이 들어가있는 파일이고 <code>config.js.sample</code>는 이름 그대로 sample 파일입니다!</p>
-<figure><img src="/images/post/smartmirror_custom/00.png"/>
+
+<figure>
+    <img src="/images/post/smartmirror_custom/00.png"/> 
 </figure>
 
-<p>그럼 config.js 를 한번 보겠습니다!</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#75715e">/* Magic Mirror Config Sample
-</span><span style="color:#75715e"> *
-</span><span style="color:#75715e"> * By Michael Teeuw https://michaelteeuw.nl
-</span><span style="color:#75715e"> * MIT Licensed.
-</span><span style="color:#75715e"> *
-</span><span style="color:#75715e"> * For more information on how you can configure this file
-</span><span style="color:#75715e"> * See https://github.com/MichMich/MagicMirror#configuration
-</span><span style="color:#75715e"> *
-</span><span style="color:#75715e"> */</span>
 
-<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">config</span> <span style="color:#f92672">=</span> {
-	<span style="color:#a6e22e">address</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;localhost&#34;</span>, 	<span style="color:#75715e">// Address to listen on, can be:
-</span><span style="color:#75715e"></span>							<span style="color:#75715e">// - &#34;localhost&#34;, &#34;127.0.0.1&#34;, &#34;::1&#34; to listen on loopback interface
-</span><span style="color:#75715e"></span>							<span style="color:#75715e">// - another specific IPv4/6 to listen on a specific interface
-</span><span style="color:#75715e"></span>							<span style="color:#75715e">// - &#34;0.0.0.0&#34;, &#34;::&#34; to listen on any interface
-</span><span style="color:#75715e"></span>							<span style="color:#75715e">// Default, when address config is left out or empty, is &#34;localhost&#34;
-</span><span style="color:#75715e"></span>	<span style="color:#a6e22e">port</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">8080</span>,
-	<span style="color:#a6e22e">basePath</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;/&#34;</span>, 	<span style="color:#75715e">// The URL path where MagicMirror is hosted. If you are using a Reverse proxy
-</span><span style="color:#75715e"></span>					<span style="color:#75715e">// you must set the sub path here. basePath must end with a /
-</span><span style="color:#75715e"></span>	<span style="color:#a6e22e">ipWhitelist</span><span style="color:#f92672">:</span> [<span style="color:#e6db74">&#34;127.0.0.1&#34;</span>, <span style="color:#e6db74">&#34;::ffff:127.0.0.1&#34;</span>, <span style="color:#e6db74">&#34;::1&#34;</span>], 	<span style="color:#75715e">// Set [] to allow all IP addresses
-</span><span style="color:#75715e"></span>															<span style="color:#75715e">// or add a specific IPv4 of 192.168.1.5 :
-</span><span style="color:#75715e"></span>															<span style="color:#75715e">// [&#34;127.0.0.1&#34;, &#34;::ffff:127.0.0.1&#34;, &#34;::1&#34;, &#34;::ffff:192.168.1.5&#34;],
-</span><span style="color:#75715e"></span>															<span style="color:#75715e">// or IPv4 range of 192.168.3.0 --&gt; 192.168.3.15 use CIDR format :
-</span><span style="color:#75715e"></span>															<span style="color:#75715e">// [&#34;127.0.0.1&#34;, &#34;::ffff:127.0.0.1&#34;, &#34;::1&#34;, &#34;::ffff:192.168.3.0/28&#34;],
-</span><span style="color:#75715e"></span>
-	<span style="color:#a6e22e">useHttps</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">false</span>, 		<span style="color:#75715e">// Support HTTPS or not, default &#34;false&#34; will use HTTP
-</span><span style="color:#75715e"></span>	<span style="color:#a6e22e">httpsPrivateKey</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;&#34;</span>, 	<span style="color:#75715e">// HTTPS private key path, only require when useHttps is true
-</span><span style="color:#75715e"></span>	<span style="color:#a6e22e">httpsCertificate</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;&#34;</span>, 	<span style="color:#75715e">// HTTPS Certificate path, only require when useHttps is true
-</span><span style="color:#75715e"></span>
-	<span style="color:#a6e22e">language</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;en&#34;</span>,
-	<span style="color:#a6e22e">logLevel</span><span style="color:#f92672">:</span> [<span style="color:#e6db74">&#34;INFO&#34;</span>, <span style="color:#e6db74">&#34;LOG&#34;</span>, <span style="color:#e6db74">&#34;WARN&#34;</span>, <span style="color:#e6db74">&#34;ERROR&#34;</span>], <span style="color:#75715e">// Add &#34;DEBUG&#34; for even more logging
-</span><span style="color:#75715e"></span>	<span style="color:#a6e22e">timeFormat</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">24</span>,
-	<span style="color:#a6e22e">units</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;metric&#34;</span>,
-	<span style="color:#75715e">// serverOnly:  true/false/&#34;local&#34; ,
-</span><span style="color:#75715e"></span>	<span style="color:#75715e">// local for armv6l processors, default
-</span><span style="color:#75715e"></span>	<span style="color:#75715e">//   starts serveronly and then starts chrome browser
-</span><span style="color:#75715e"></span>	<span style="color:#75715e">// false, default for all NON-armv6l devices
-</span><span style="color:#75715e"></span>	<span style="color:#75715e">// true, force serveronly mode, because you want to.. no UI on this device
-</span><span style="color:#75715e"></span>
-	<span style="color:#a6e22e">modules</span><span style="color:#f92672">:</span> [
+<p>그럼 config.js 를 한번 보겠습니다!</p>
+
+<pre><code class="language-javascript">/* Magic Mirror Config Sample
+ *
+ * By Michael Teeuw https://michaelteeuw.nl
+ * MIT Licensed.
+ *
+ * For more information on how you can configure this file
+ * See https://github.com/MichMich/MagicMirror#configuration
+ *
+ */
+
+var config = {
+	address: &quot;localhost&quot;, 	// Address to listen on, can be:
+							// - &quot;localhost&quot;, &quot;127.0.0.1&quot;, &quot;::1&quot; to listen on loopback interface
+							// - another specific IPv4/6 to listen on a specific interface
+							// - &quot;0.0.0.0&quot;, &quot;::&quot; to listen on any interface
+							// Default, when address config is left out or empty, is &quot;localhost&quot;
+	port: 8080,
+	basePath: &quot;/&quot;, 	// The URL path where MagicMirror is hosted. If you are using a Reverse proxy
+					// you must set the sub path here. basePath must end with a /
+	ipWhitelist: [&quot;127.0.0.1&quot;, &quot;::ffff:127.0.0.1&quot;, &quot;::1&quot;], 	// Set [] to allow all IP addresses
+															// or add a specific IPv4 of 192.168.1.5 :
+															// [&quot;127.0.0.1&quot;, &quot;::ffff:127.0.0.1&quot;, &quot;::1&quot;, &quot;::ffff:192.168.1.5&quot;],
+															// or IPv4 range of 192.168.3.0 --&gt; 192.168.3.15 use CIDR format :
+															// [&quot;127.0.0.1&quot;, &quot;::ffff:127.0.0.1&quot;, &quot;::1&quot;, &quot;::ffff:192.168.3.0/28&quot;],
+
+	useHttps: false, 		// Support HTTPS or not, default &quot;false&quot; will use HTTP
+	httpsPrivateKey: &quot;&quot;, 	// HTTPS private key path, only require when useHttps is true
+	httpsCertificate: &quot;&quot;, 	// HTTPS Certificate path, only require when useHttps is true
+
+	language: &quot;en&quot;,
+	logLevel: [&quot;INFO&quot;, &quot;LOG&quot;, &quot;WARN&quot;, &quot;ERROR&quot;], // Add &quot;DEBUG&quot; for even more logging
+	timeFormat: 24,
+	units: &quot;metric&quot;,
+	// serverOnly:  true/false/&quot;local&quot; ,
+	// local for armv6l processors, default
+	//   starts serveronly and then starts chrome browser
+	// false, default for all NON-armv6l devices
+	// true, force serveronly mode, because you want to.. no UI on this device
+
+	modules: [
 		{
-			<span style="color:#a6e22e">module</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;alert&#34;</span>,
+			module: &quot;alert&quot;,
 		},
 		{
-			<span style="color:#a6e22e">module</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;updatenotification&#34;</span>,
-			<span style="color:#a6e22e">position</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;top_bar&#34;</span>
+			module: &quot;updatenotification&quot;,
+			position: &quot;top_bar&quot;
 		},
 		{
-			<span style="color:#a6e22e">module</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;clock&#34;</span>,
-			<span style="color:#a6e22e">position</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;top_left&#34;</span>
+			module: &quot;clock&quot;,
+			position: &quot;top_left&quot;
 		},
 		{
-			<span style="color:#a6e22e">module</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;calendar&#34;</span>,
-			<span style="color:#a6e22e">header</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;US Holidays&#34;</span>,
-			<span style="color:#a6e22e">position</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;top_left&#34;</span>,
-			<span style="color:#a6e22e">config</span><span style="color:#f92672">:</span> {
-				<span style="color:#a6e22e">calendars</span><span style="color:#f92672">:</span> [
+			module: &quot;calendar&quot;,
+			header: &quot;US Holidays&quot;,
+			position: &quot;top_left&quot;,
+			config: {
+				calendars: [
 					{
-						<span style="color:#a6e22e">symbol</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;calendar-check&#34;</span>,
-						<span style="color:#a6e22e">url</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;webcal://www.calendarlabs.com/ical-calendar/ics/76/US_Holidays.ics&#34;</span>					}
+						symbol: &quot;calendar-check&quot;,
+						url: &quot;webcal://www.calendarlabs.com/ical-calendar/ics/76/US_Holidays.ics&quot;					}
 				]
 			}
 		},
 		{
-			<span style="color:#a6e22e">module</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;compliments&#34;</span>,
-			<span style="color:#a6e22e">position</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;lower_third&#34;</span>
+			module: &quot;compliments&quot;,
+			position: &quot;lower_third&quot;
 		},
 		{
-			<span style="color:#a6e22e">module</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;currentweather&#34;</span>,
-			<span style="color:#a6e22e">position</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;top_right&#34;</span>,
-			<span style="color:#a6e22e">config</span><span style="color:#f92672">:</span> {
-				<span style="color:#a6e22e">location</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;New York&#34;</span>,
-				<span style="color:#a6e22e">locationID</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;5128581&#34;</span>, <span style="color:#75715e">//ID from http://bulk.openweathermap.org/sample/city.list.json.gz; unzip the gz file and find your city
-</span><span style="color:#75715e"></span>				<span style="color:#a6e22e">appid</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;YOUR_OPENWEATHER_API_KEY&#34;</span>
+			module: &quot;currentweather&quot;,
+			position: &quot;top_right&quot;,
+			config: {
+				location: &quot;New York&quot;,
+				locationID: &quot;5128581&quot;, //ID from http://bulk.openweathermap.org/sample/city.list.json.gz; unzip the gz file and find your city
+				appid: &quot;YOUR_OPENWEATHER_API_KEY&quot;
 			}
 		},
 		{
-			<span style="color:#a6e22e">module</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;weatherforecast&#34;</span>,
-			<span style="color:#a6e22e">position</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;top_right&#34;</span>,
-			<span style="color:#a6e22e">header</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Weather Forecast&#34;</span>,
-			<span style="color:#a6e22e">config</span><span style="color:#f92672">:</span> {
-				<span style="color:#a6e22e">location</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;New York&#34;</span>,
-				<span style="color:#a6e22e">locationID</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;5128581&#34;</span>, <span style="color:#75715e">//ID from http://bulk.openweathermap.org/sample/city.list.json.gz; unzip the gz file and find your city
-</span><span style="color:#75715e"></span>				<span style="color:#a6e22e">appid</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;YOUR_OPENWEATHER_API_KEY&#34;</span>
+			module: &quot;weatherforecast&quot;,
+			position: &quot;top_right&quot;,
+			header: &quot;Weather Forecast&quot;,
+			config: {
+				location: &quot;New York&quot;,
+				locationID: &quot;5128581&quot;, //ID from http://bulk.openweathermap.org/sample/city.list.json.gz; unzip the gz file and find your city
+				appid: &quot;YOUR_OPENWEATHER_API_KEY&quot;
 			}
 		},
 		{
-			<span style="color:#a6e22e">module</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;newsfeed&#34;</span>,
-			<span style="color:#a6e22e">position</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;bottom_bar&#34;</span>,
-			<span style="color:#a6e22e">config</span><span style="color:#f92672">:</span> {
-				<span style="color:#a6e22e">feeds</span><span style="color:#f92672">:</span> [
+			module: &quot;newsfeed&quot;,
+			position: &quot;bottom_bar&quot;,
+			config: {
+				feeds: [
 					{
-						<span style="color:#a6e22e">title</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;New York Times&#34;</span>,
-						<span style="color:#a6e22e">url</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;https://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml&#34;</span>
+						title: &quot;New York Times&quot;,
+						url: &quot;https://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml&quot;
 					}
 				],
-				<span style="color:#a6e22e">showSourceTitle</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>,
-				<span style="color:#a6e22e">showPublishDate</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>,
-				<span style="color:#a6e22e">broadcastNewsFeeds</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>,
-				<span style="color:#a6e22e">broadcastNewsUpdates</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>
+				showSourceTitle: true,
+				showPublishDate: true,
+				broadcastNewsFeeds: true,
+				broadcastNewsUpdates: true
 			}
 		},
 	]
 };
 
-<span style="color:#75715e">/*************** DO NOT EDIT THE LINE BELOW ***************/</span>
-<span style="color:#66d9ef">if</span> (<span style="color:#66d9ef">typeof</span> <span style="color:#a6e22e">module</span> <span style="color:#f92672">!==</span> <span style="color:#e6db74">&#34;undefined&#34;</span>) {<span style="color:#a6e22e">module</span>.<span style="color:#a6e22e">exports</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">config</span>;}
-</code></pre></div><p>뭐&hellip; 이것 저것 많이 있네요&hellip;<br>
-그 중에서 우리가 볼 것은 <code>modules</code> 부분입니다!<br>
-이 부분이 어떤 기능을 어디에 넣을지 적는 부분이에요!<br>
+/*************** DO NOT EDIT THE LINE BELOW ***************/
+if (typeof module !== &quot;undefined&quot;) {module.exports = config;}
+</code></pre>
+
+<p>뭐&hellip; 이것 저것 많이 있네요&hellip;<br />
+그 중에서 우리가 볼 것은 <code>modules</code> 부분입니다!<br />
+이 부분이 어떤 기능을 어디에 넣을지 적는 부분이에요!<br />
 대충 구성을 보시면 다음과 같습니다!</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">  <span style="color:#a6e22e">modules</span><span style="color:#f92672">:</span> [
+
+<pre><code class="language-javascript">  modules: [
       {
-        <span style="color:#a6e22e">모듈</span> <span style="color:#ae81ff">1</span> <span style="color:#a6e22e">정보</span>
+        모듈 1 정보
       },
       {
-        <span style="color:#a6e22e">모듈</span> <span style="color:#ae81ff">2</span> <span style="color:#a6e22e">정보</span>
+        모듈 2 정보
       },
       {
-        <span style="color:#a6e22e">모듈</span> <span style="color:#ae81ff">3</span> <span style="color:#a6e22e">정보</span>
+        모듈 3 정보
       },
       ...
     ]
-</code></pre></div><p>제가 변경/추가한 모듈을 차례대로 훑어보겠습니다!<br>
+</code></pre>
+
+<p>제가 변경/추가한 모듈을 차례대로 훑어보겠습니다!<br />
 (sample의 modules 부분에 상단 세 가지 <code>alert</code>, <code>updatenotification</code>, <code>clock</code>는 동일하게 사용했습니다!)</p>
+
 <h3 id="currentweather-weatherforecast">currentweather, weatherforecast</h3>
-<p>이 두 가지는 <a href="https://openweathermap.org">https://openweathermap.org</a> 라는 사이트의 API를 사용합니다!<br>
-일단 가입하시고 API Key를 복사해주세요!<br>
-<figure><img src="/images/post/smartmirror_custom/01.png"/>
+
+<p>이 두 가지는 <a href="https://openweathermap.org">https://openweathermap.org</a> 라는 사이트의 API를 사용합니다!<br />
+일단 가입하시고 API Key를 복사해주세요!<br />
+<figure>
+    <img src="/images/post/smartmirror_custom/01.png"/> 
 </figure>
 
-<figure><img src="/images/post/smartmirror_custom/02.png"/>
+<figure>
+    <img src="/images/post/smartmirror_custom/02.png"/> 
 </figure>
 
-<figure><img src="/images/post/smartmirror_custom/03.png"/>
+<figure>
+    <img src="/images/post/smartmirror_custom/03.png"/> 
 </figure>
 </p>
-<p><code>location</code>과 <code>locationID</code>는 주석에 적혀있듯이 압축파일을 다운로드 &amp; 해제하여 찾으시면 됩니다!<br>
-<code>position</code> 도 원하는 위치를 적어주세요! (top, bottom), (right, left, bar) 를 조합합니다!<br>
+
+<p><code>location</code>과 <code>locationID</code>는 주석에 적혀있듯이 압축파일을 다운로드 &amp; 해제하여 찾으시면 됩니다!<br />
+<code>position</code> 도 원하는 위치를 적어주세요! (top, bottom), (right, left, bar) 를 조합합니다!<br />
 (더 있을 것 같은데&hellip;일단은&hellip;.)</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">    {
-			<span style="color:#a6e22e">module</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;currentweather&#34;</span>,
-			<span style="color:#a6e22e">position</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;top_left&#34;</span>,
-			<span style="color:#a6e22e">config</span><span style="color:#f92672">:</span> {
-				<span style="color:#a6e22e">location</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Seoul&#34;</span>,
-				<span style="color:#a6e22e">locationID</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;1835847&#34;</span>, <span style="color:#75715e">//ID from http://bulk.openweathermap.org/sample/city.list.json.gz; unzip the gz file and find your city
-</span><span style="color:#75715e"></span>				<span style="color:#a6e22e">appid</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;{API KEY}&#34;</span> <span style="color:#75715e">// ex) appid: &#34;2985hcb5asdomqcmqwkodmsowmcolwm3&#34;
-</span><span style="color:#75715e"></span>			}
+
+<pre><code class="language-javascript">    {
+			module: &quot;currentweather&quot;,
+			position: &quot;top_left&quot;,
+			config: {
+				location: &quot;Seoul&quot;,
+				locationID: &quot;1835847&quot;, //ID from http://bulk.openweathermap.org/sample/city.list.json.gz; unzip the gz file and find your city
+				appid: &quot;{API KEY}&quot; // ex) appid: &quot;2985hcb5asdomqcmqwkodmsowmcolwm3&quot;
+			}
 		}
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">    {
-			<span style="color:#a6e22e">module</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;weatherforecast&#34;</span>,
-			<span style="color:#a6e22e">position</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;top_left&#34;</span>,
-			<span style="color:#a6e22e">header</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Weather Forecast&#34;</span>,
-			<span style="color:#a6e22e">config</span><span style="color:#f92672">:</span> {
-				<span style="color:#a6e22e">location</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Seoul&#34;</span>,
-				<span style="color:#a6e22e">locationID</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;1835847&#34;</span>, <span style="color:#75715e">//ID from http://bulk.openweathermap.org/sample/city.list.json.gz; unzip the gz file and find your city
-</span><span style="color:#75715e"></span>				<span style="color:#a6e22e">appid</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;{API KEY}&#34;</span> <span style="color:#75715e">// ex) appid: &#34;2985hcb5asdomqcmqwkodmsowmcolwm3&#34;
-</span><span style="color:#75715e"></span>			}
+</code></pre>
+
+<pre><code class="language-javascript">    {
+			module: &quot;weatherforecast&quot;,
+			position: &quot;top_left&quot;,
+			header: &quot;Weather Forecast&quot;,
+			config: {
+				location: &quot;Seoul&quot;,
+				locationID: &quot;1835847&quot;, //ID from http://bulk.openweathermap.org/sample/city.list.json.gz; unzip the gz file and find your city
+				appid: &quot;{API KEY}&quot; // ex) appid: &quot;2985hcb5asdomqcmqwkodmsowmcolwm3&quot;
+			}
 		}
-</code></pre></div><h3 id="calendar">calendar</h3>
-<p>달력의 경우에는 Google calendar와 연동을 했습니다!<br>
-연동하는 방법은 간단히 말하면 구글 캘린더의 iCal format 주소를 넣으면 됩니다!<br>
+</code></pre>
+
+<h3 id="calendar">calendar</h3>
+
+<p>달력의 경우에는 Google calendar와 연동을 했습니다!<br />
+연동하는 방법은 간단히 말하면 구글 캘린더의 iCal format 주소를 넣으면 됩니다!<br />
 사진을 참고하세요!</p>
-<p><figure><img src="/images/post/smartmirror_custom/04.png"/>
+
+<p><figure>
+    <img src="/images/post/smartmirror_custom/04.png"/> 
 </figure>
 
-아래 사진에서 개인 캘린더의 경우 iCal 주소는 가려져 있습니다!<br>
+아래 사진에서 개인 캘린더의 경우 iCal 주소는 가려져 있습니다!<br />
 오른쪽에 복사 버튼 누르셔도 되고 가리기 해제 하셔도 상관없어요!
-<figure><img src="/images/post/smartmirror_custom/05.png"/>
+<figure>
+    <img src="/images/post/smartmirror_custom/05.png"/> 
 </figure>
 
-<figure><img src="/images/post/smartmirror_custom/06.png"/>
+<figure>
+    <img src="/images/post/smartmirror_custom/06.png"/> 
 </figure>
 </p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">    { 
-			<span style="color:#a6e22e">module</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;calendar&#34;</span>, 
-			<span style="color:#a6e22e">header</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Calendar&#34;</span>, 
-			<span style="color:#a6e22e">position</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;top_right&#34;</span>, 
-			<span style="color:#a6e22e">config</span><span style="color:#f92672">:</span> {
-				<span style="color:#a6e22e">fetchIntervals</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">50000</span>,
-				<span style="color:#a6e22e">calendars</span><span style="color:#f92672">:</span> 
+
+<pre><code class="language-javascript">    { 
+			module: &quot;calendar&quot;, 
+			header: &quot;Calendar&quot;, 
+			position: &quot;top_right&quot;, 
+			config: {
+				fetchIntervals: 50000,
+				calendars: 
 				[ 
 					{ 
-						<span style="color:#a6e22e">symbol</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;calendar-check&#34;</span>, 
-		<span style="color:#75715e">//				url: &#34;webcal://www.calendarlabs.com/templates/ical/SouthKorea-Holidays.ics&#34;
-</span><span style="color:#75715e"></span>						<span style="color:#a6e22e">url</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;https://calendar.google.com/calendar/ical/ko.south_korea%23holiday%40group.v.calendar.google.com/public/basic.ics&#34;</span>
+						symbol: &quot;calendar-check&quot;, 
+		//				url: &quot;webcal://www.calendarlabs.com/templates/ical/SouthKorea-Holidays.ics&quot;
+						url: &quot;https://calendar.google.com/calendar/ical/ko.south_korea%23holiday%40group.v.calendar.google.com/public/basic.ics&quot;
 					},
 					{
-						<span style="color:#a6e22e">symbol</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;clendar-check&#34;</span>,
-						<span style="color:#a6e22e">url</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;{개인 캘린더 iCal 주소}&#34;</span>
+						symbol: &quot;clendar-check&quot;,
+						url: &quot;{개인 캘린더 iCal 주소}&quot;
 					}
 
 				] 
 			} 
 		}
-</code></pre></div><h3 id="mmm-airquality">MMM-AirQuality</h3>
-<p>MagicMirror의 third-party module 중 하나입니다!<br>
-이름에서 알 수 있듯이 <strong>대기 상태</strong>를 알려주는 모듈이에요!<br>
+</code></pre>
+
+<h3 id="mmm-airquality">MMM-AirQuality</h3>
+
+<p>MagicMirror의 third-party module 중 하나입니다!<br />
+이름에서 알 수 있듯이 <strong>대기 상태</strong>를 알려주는 모듈이에요!<br />
 우선 다음 Command를 입력하여 MMM-AirQuality를 받아옵니다!</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cd ~/MagicMirror/modules
+
+<pre><code class="language-bash">cd ~/MagicMirror/modules
 git clone https://github.com/CFenner/MMM-AirQuality
-</code></pre></div><p>이러면 받아오기 끝이에요!<br>
+</code></pre>
+
+<p>이러면 받아오기 끝이에요!<br />
 그러고나서 config.js에 아래와 같이 module을 추가합니다!</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">    {
-			<span style="color:#a6e22e">module</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;MMM-AirQuality&#34;</span>,
-			<span style="color:#a6e22e">position</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;top_right&#34;</span>,
-			<span style="color:#a6e22e">config</span><span style="color:#f92672">:</span> {
-				<span style="color:#a6e22e">location</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;seoul&#34;</span>
+
+<pre><code class="language-javascript">    {
+			module: &quot;MMM-AirQuality&quot;,
+			position: &quot;top_right&quot;,
+			config: {
+				location: &quot;seoul&quot;
 			}
     }
-</code></pre></div><h3 id="newsfeed">newsfeed</h3>
-<p>뉴스 정보를 받아오는 부분입니다!<br>
-딱히&hellip;설명 드릴게 없네요..ㅎㅎ<br>
+</code></pre>
+
+<h3 id="newsfeed">newsfeed</h3>
+
+<p>뉴스 정보를 받아오는 부분입니다!<br />
+딱히&hellip;설명 드릴게 없네요..ㅎㅎ<br />
 JTBC랑 Google news 둘 다 보려했는데 JTBC 밖에 안나오는 느낌&hellip;.적인 느낌..</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">    {
-			<span style="color:#a6e22e">module</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;newsfeed&#34;</span>,
-			<span style="color:#a6e22e">position</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;bottom_bar&#34;</span>,
-			<span style="color:#a6e22e">config</span><span style="color:#f92672">:</span> {
-				<span style="color:#a6e22e">feeds</span><span style="color:#f92672">:</span> [
+
+<pre><code class="language-javascript">    {
+			module: &quot;newsfeed&quot;,
+			position: &quot;bottom_bar&quot;,
+			config: {
+				feeds: [
 					{
-						<span style="color:#a6e22e">title</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;JTBC&#34;</span>,
-						<span style="color:#a6e22e">url</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;http://fs.jtbc.joins.com/RSS/newsflash.xml&#34;</span>,
-						<span style="color:#a6e22e">ref</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;http://news.jtbc.joins.com/Etc/RssService.aspx&#34;</span>
+						title: &quot;JTBC&quot;,
+						url: &quot;http://fs.jtbc.joins.com/RSS/newsflash.xml&quot;,
+						ref: &quot;http://news.jtbc.joins.com/Etc/RssService.aspx&quot;
 					},
 					{
-						<span style="color:#a6e22e">title</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Google News&#34;</span>,
-						<span style="color:#a6e22e">url</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;https://news.google.com/rxx?hl=ko&amp;gl=KR&amp;ceid=KR:ko&#34;</span>
+						title: &quot;Google News&quot;,
+						url: &quot;https://news.google.com/rxx?hl=ko&amp;gl=KR&amp;ceid=KR:ko&quot;
 					}
 				],
-				<span style="color:#a6e22e">showSourceTitle</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>,
-				<span style="color:#a6e22e">showPublishDate</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>,
-				<span style="color:#a6e22e">broadcastNewsFeeds</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>,
-				<span style="color:#a6e22e">broadcastNewsUpdates</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>
+				showSourceTitle: true,
+				showPublishDate: true,
+				broadcastNewsFeeds: true,
+				broadcastNewsUpdates: true
 			}
 		}
-</code></pre></div><p>이렇게 config.js를 수정하고 나면 다음과 같은 화면을 볼 수 있습니다!<br>
+</code></pre>
+
+<p>이렇게 config.js를 수정하고 나면 다음과 같은 화면을 볼 수 있습니다!<br />
 <strong>아! 이 화면은 Raspberry Pi 의 8080 포트와 로컬의 8080 포트를 터널링하면 볼 수 있습니다!</strong>
-<figure><img src="/images/post/smartmirror_custom/result.png"/>
+<figure>
+    <img src="/images/post/smartmirror_custom/result.png"/> 
 </figure>
 </p>
-<p>후&hellip;정말 간단한 Customizing 이 끝났네요..<br>
+
+<p>후&hellip;정말 간단한 Customizing 이 끝났네요..<br />
 이젠 뭘 더 추가해볼지, 프레임을 어떻게 짤지&hellip;계획해봐야겠습니다!</p>
-<h3 id="ps">P.S</h3>
+
+<h3 id="p-s">P.S</h3>
+
 <ul>
 <li>우드락&hellip;? 포맥스&hellip;?</li>
 </ul>
@@ -531,7 +579,7 @@ JTBC랑 Google news 둘 다 보려했는데 JTBC 밖에 안나오는 느낌&hell
         </ul>
       </div>
       <div class="col-12 border-top py-4 text-center">
-        | copyright © 2020 <a href="https://themefisher.com">Themefisher</a> All Rights Reserved |
+        | copyright &copy; 2020 <a href="https://themefisher.com">Themefisher</a> All Rights Reserved |
       </div>
     </div>
   </div>

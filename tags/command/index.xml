@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Command on Jerry&#39;s DevLog</title>
@@ -6,7 +6,11 @@
     <description>Recent content in Command on Jerry&#39;s DevLog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 08 Dec 2018 18:30:46 +0600</lastBuildDate><atom:link href="https://jjerry-k.github.io/tags/command/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 08 Dec 2018 18:30:46 +0600</lastBuildDate>
+    
+	<atom:link href="https://jjerry-k.github.io/tags/command/index.xml" rel="self" type="application/rss+xml" />
+    
+    
     <item>
       <title>scp를 이용해서 파일 or 디렉토리 복사하기!</title>
       <link>https://jjerry-k.github.io/blog/scp/</link>

@@ -9,7 +9,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="this is meta description">
   <meta name="author" content="Jerry Kim">
-  <meta name="generator" content="Hugo 0.85.0" />
+  <meta name="generator" content="Hugo 0.54.0" />
 
   <!-- plugins -->
   
@@ -160,281 +160,302 @@
         </div>
         
         <div class="content mb-5">
-          <p>이번 포스팅은 Multi GPU 시스템에서 Google의 머신러닝 오픈 소스 플랫폼인 <a href="https://www.tensorflow.org/">TensorFlow</a>사용법에 관한 것입니다!<br>
+          
+
+<p>이번 포스팅은 Multi GPU 시스템에서 Google의 머신러닝 오픈 소스 플랫폼인 <a href="https://www.tensorflow.org/">TensorFlow</a>사용법에 관한 것입니다!<br />
 거두절미하고 바로 코딩으로 들어가겠습니다!</p>
+
 <h2 id="single-gpu-예시">Single GPU 예시</h2>
+
 <ul>
 <li>다음 코드는 Single GPU를 이용하여 mnist data를 분류하는 코드입니다.</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># Import Package</span>
-<span style="color:#f92672">import</span> os
-<span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
-<span style="color:#f92672">import</span> tensorflow <span style="color:#66d9ef">as</span> tf
-<span style="color:#f92672">from</span> tensorflow.keras <span style="color:#f92672">import</span> layers, models, losses, optimizers, datasets, utils
 
-<span style="color:#75715e"># Data Prepare</span>
-(train_x, train_y), (test_x, test_y) <span style="color:#f92672">=</span> datasets<span style="color:#f92672">.</span>mnist<span style="color:#f92672">.</span>load_data()
-train_x, test_x <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>expand_dims(train_x<span style="color:#f92672">/</span><span style="color:#ae81ff">255.</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>), np<span style="color:#f92672">.</span>expand_dims(test_x<span style="color:#f92672">/</span><span style="color:#ae81ff">255.</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>)
-print(<span style="color:#e6db74">&#34;Train Data&#39;s Shape : &#34;</span>, train_x<span style="color:#f92672">.</span>shape, train_y<span style="color:#f92672">.</span>shape)
-print(<span style="color:#e6db74">&#34;Test Data&#39;s Shape : &#34;</span>, test_x<span style="color:#f92672">.</span>shape, test_y<span style="color:#f92672">.</span>shape)
+<pre><code class="language-python"># Import Package
+import os
+import numpy as np
+import tensorflow as tf
+from tensorflow.keras import layers, models, losses, optimizers, datasets, utils
 
-<span style="color:#75715e"># Build Network</span>
-cnn <span style="color:#f92672">=</span> models<span style="color:#f92672">.</span>Sequential()
-cnn<span style="color:#f92672">.</span>add(layers<span style="color:#f92672">.</span>Conv2D(<span style="color:#ae81ff">16</span>, <span style="color:#ae81ff">3</span>, activation<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;relu&#39;</span>, input_shape<span style="color:#f92672">=</span>(<span style="color:#ae81ff">28</span>, <span style="color:#ae81ff">28</span>, <span style="color:#ae81ff">1</span>,)))
-cnn<span style="color:#f92672">.</span>add(layers<span style="color:#f92672">.</span>MaxPool2D())
-cnn<span style="color:#f92672">.</span>add(layers<span style="color:#f92672">.</span>Conv2D(<span style="color:#ae81ff">32</span>, <span style="color:#ae81ff">3</span>, activation<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;relu&#39;</span>))
-cnn<span style="color:#f92672">.</span>add(layers<span style="color:#f92672">.</span>MaxPool2D())
-cnn<span style="color:#f92672">.</span>add(layers<span style="color:#f92672">.</span>Flatten())
-cnn<span style="color:#f92672">.</span>add(layers<span style="color:#f92672">.</span>Dense(<span style="color:#ae81ff">10</span>, activation<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;softmax&#39;</span>))
+# Data Prepare
+(train_x, train_y), (test_x, test_y) = datasets.mnist.load_data()
+train_x, test_x = np.expand_dims(train_x/255., -1), np.expand_dims(test_x/255., -1)
+print(&quot;Train Data's Shape : &quot;, train_x.shape, train_y.shape)
+print(&quot;Test Data's Shape : &quot;, test_x.shape, test_y.shape)
 
-cnn<span style="color:#f92672">.</span>compile(optimizer<span style="color:#f92672">=</span>optimizers<span style="color:#f92672">.</span>Adam(), loss<span style="color:#f92672">=</span>losses<span style="color:#f92672">.</span>sparse_categorical_crossentropy, metrics<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#39;accuracy&#39;</span>])                
-print(<span style="color:#e6db74">&#34;Network Built!&#34;</span>)
+# Build Network
+cnn = models.Sequential()
+cnn.add(layers.Conv2D(16, 3, activation='relu', input_shape=(28, 28, 1,)))
+cnn.add(layers.MaxPool2D())
+cnn.add(layers.Conv2D(32, 3, activation='relu'))
+cnn.add(layers.MaxPool2D())
+cnn.add(layers.Flatten())
+cnn.add(layers.Dense(10, activation='softmax'))
 
-<span style="color:#75715e"># Training Network</span>
-epochs<span style="color:#f92672">=</span><span style="color:#ae81ff">10</span>
-batch_size <span style="color:#f92672">=</span> <span style="color:#ae81ff">4096</span>
-history <span style="color:#f92672">=</span> cnn<span style="color:#f92672">.</span>fit(train_x, train_y, epochs<span style="color:#f92672">=</span><span style="color:#ae81ff">10</span>, batch_size<span style="color:#f92672">=</span>batch_size, validation_data<span style="color:#f92672">=</span>(test_x, test_y))
-</code></pre></div><h2 id="multi-gpu-예시">Multi GPU 예시</h2>
+cnn.compile(optimizer=optimizers.Adam(), loss=losses.sparse_categorical_crossentropy, metrics=['accuracy'])                
+print(&quot;Network Built!&quot;)
+
+# Training Network
+epochs=10
+batch_size = 4096
+history = cnn.fit(train_x, train_y, epochs=10, batch_size=batch_size, validation_data=(test_x, test_y))
+</code></pre>
+
+<h2 id="multi-gpu-예시">Multi GPU 예시</h2>
+
 <ul>
 <li>다음 코드는 Multi GPU를 이용한 코드입니다.</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># Import Package</span>
-<span style="color:#f92672">import</span> os
-<span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
-<span style="color:#f92672">import</span> tensorflow <span style="color:#66d9ef">as</span> tf
-<span style="color:#f92672">from</span> tensorflow.keras <span style="color:#f92672">import</span> layers, models, losses, optimizers, datasets, utils
 
-<span style="color:#75715e"># Data Prepare</span>
-(train_x, train_y), (test_x, test_y) <span style="color:#f92672">=</span> datasets<span style="color:#f92672">.</span>mnist<span style="color:#f92672">.</span>load_data()
-train_x, test_x <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>expand_dims(train_x<span style="color:#f92672">/</span><span style="color:#ae81ff">255.</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>), np<span style="color:#f92672">.</span>expand_dims(test_x<span style="color:#f92672">/</span><span style="color:#ae81ff">255.</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>)
-print(<span style="color:#e6db74">&#34;Train Data&#39;s Shape : &#34;</span>, train_x<span style="color:#f92672">.</span>shape, train_y<span style="color:#f92672">.</span>shape)
-print(<span style="color:#e6db74">&#34;Test Data&#39;s Shape : &#34;</span>, test_x<span style="color:#f92672">.</span>shape, test_y<span style="color:#f92672">.</span>shape)
+<pre><code class="language-python"># Import Package
+import os
+import numpy as np
+import tensorflow as tf
+from tensorflow.keras import layers, models, losses, optimizers, datasets, utils
 
-<span style="color:#75715e"># Build Network</span>
-strategy <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>distribute<span style="color:#f92672">.</span>MirroredStrategy()
-<span style="color:#66d9ef">with</span> strategy<span style="color:#f92672">.</span>scope():
-    cnn <span style="color:#f92672">=</span> models<span style="color:#f92672">.</span>Sequential()
-    cnn<span style="color:#f92672">.</span>add(layers<span style="color:#f92672">.</span>Conv2D(<span style="color:#ae81ff">16</span>, <span style="color:#ae81ff">3</span>, activation<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;relu&#39;</span>, input_shape<span style="color:#f92672">=</span>(<span style="color:#ae81ff">28</span>, <span style="color:#ae81ff">28</span>, <span style="color:#ae81ff">1</span>,)))
-    cnn<span style="color:#f92672">.</span>add(layers<span style="color:#f92672">.</span>MaxPool2D())
-    cnn<span style="color:#f92672">.</span>add(layers<span style="color:#f92672">.</span>Conv2D(<span style="color:#ae81ff">32</span>, <span style="color:#ae81ff">3</span>, activation<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;relu&#39;</span>))
-    cnn<span style="color:#f92672">.</span>add(layers<span style="color:#f92672">.</span>MaxPool2D())
-    cnn<span style="color:#f92672">.</span>add(layers<span style="color:#f92672">.</span>Flatten())
-    cnn<span style="color:#f92672">.</span>add(layers<span style="color:#f92672">.</span>Dense(<span style="color:#ae81ff">10</span>, activation<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;softmax&#39;</span>))
+# Data Prepare
+(train_x, train_y), (test_x, test_y) = datasets.mnist.load_data()
+train_x, test_x = np.expand_dims(train_x/255., -1), np.expand_dims(test_x/255., -1)
+print(&quot;Train Data's Shape : &quot;, train_x.shape, train_y.shape)
+print(&quot;Test Data's Shape : &quot;, test_x.shape, test_y.shape)
 
-    cnn<span style="color:#f92672">.</span>compile(optimizer<span style="color:#f92672">=</span>optimizers<span style="color:#f92672">.</span>Adam(), loss<span style="color:#f92672">=</span>losses<span style="color:#f92672">.</span>sparse_categorical_crossentropy, metrics<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#39;accuracy&#39;</span>])                
-print(<span style="color:#e6db74">&#34;Network Built!&#34;</span>)
+# Build Network
+strategy = tf.distribute.MirroredStrategy()
+with strategy.scope():
+    cnn = models.Sequential()
+    cnn.add(layers.Conv2D(16, 3, activation='relu', input_shape=(28, 28, 1,)))
+    cnn.add(layers.MaxPool2D())
+    cnn.add(layers.Conv2D(32, 3, activation='relu'))
+    cnn.add(layers.MaxPool2D())
+    cnn.add(layers.Flatten())
+    cnn.add(layers.Dense(10, activation='softmax'))
 
-<span style="color:#75715e"># Training Network</span>
-epochs<span style="color:#f92672">=</span><span style="color:#ae81ff">10</span>
-batch_size_each_gpu <span style="color:#f92672">=</span> <span style="color:#ae81ff">4096</span>
-batch_size <span style="color:#f92672">=</span> batch_size_each_gpu<span style="color:#f92672">*</span>len(gpus)
+    cnn.compile(optimizer=optimizers.Adam(), loss=losses.sparse_categorical_crossentropy, metrics=['accuracy'])                
+print(&quot;Network Built!&quot;)
 
-history <span style="color:#f92672">=</span> cnn<span style="color:#f92672">.</span>fit(train_x, train_y, epochs<span style="color:#f92672">=</span><span style="color:#ae81ff">10</span>, batch_size<span style="color:#f92672">=</span>batch_size, validation_data<span style="color:#f92672">=</span>(test_x, test_y))
-</code></pre></div><p>어렵지 않습니다. <code>Build Network</code> 주석 부분과 <code>Training Network</code> 부분에 <code>batch_size</code>만 조금 수정해주시면 끝납니다!<br>
-<figure><img src="/images/post/tf_multi_gpu/bob.png"/>
+# Training Network
+epochs=10
+batch_size_each_gpu = 4096
+batch_size = batch_size_each_gpu*len(gpus)
+
+history = cnn.fit(train_x, train_y, epochs=10, batch_size=batch_size, validation_data=(test_x, test_y))
+</code></pre>
+
+<p>어렵지 않습니다. <code>Build Network</code> 주석 부분과 <code>Training Network</code> 부분에 <code>batch_size</code>만 조금 수정해주시면 끝납니다!<br />
+<figure>
+    <img src="/images/post/tf_multi_gpu/bob.png"/> 
 </figure>
 </p>
-<p>하지만 이렇게 하면 무식하게 GPU의 모든 메모리를 할당합니다.<br>
+
+<p>하지만 이렇게 하면 무식하게 GPU의 모든 메모리를 할당합니다.<br />
 그렇기 떄문에 다음과 같이 코드를 추가하여 <code>필요한 만큼</code> 할당하도록 합니다.</p>
+
 <h2 id="필요한-만큼의-gpu-메모리만-사용하기">필요한 만큼의 GPU 메모리만 사용하기</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># Import Package</span>
-<span style="color:#f92672">import</span> os
-<span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
-<span style="color:#f92672">import</span> tensorflow <span style="color:#66d9ef">as</span> tf
-<span style="color:#f92672">from</span> tensorflow.keras <span style="color:#f92672">import</span> layers, models, losses, optimizers, datasets, utils
 
-<span style="color:#75715e"># Data Prepare</span>
-(train_x, train_y), (test_x, test_y) <span style="color:#f92672">=</span> datasets<span style="color:#f92672">.</span>mnist<span style="color:#f92672">.</span>load_data()
-train_x, test_x <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>expand_dims(train_x<span style="color:#f92672">/</span><span style="color:#ae81ff">255.</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>), np<span style="color:#f92672">.</span>expand_dims(test_x<span style="color:#f92672">/</span><span style="color:#ae81ff">255.</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>)
-print(<span style="color:#e6db74">&#34;Train Data&#39;s Shape : &#34;</span>, train_x<span style="color:#f92672">.</span>shape, train_y<span style="color:#f92672">.</span>shape)
-print(<span style="color:#e6db74">&#34;Test Data&#39;s Shape : &#34;</span>, test_x<span style="color:#f92672">.</span>shape, test_y<span style="color:#f92672">.</span>shape)
+<pre><code class="language-python"># Import Package
+import os
+import numpy as np
+import tensorflow as tf
+from tensorflow.keras import layers, models, losses, optimizers, datasets, utils
 
-<span style="color:#75715e"># For Efficiency</span>
-gpus <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>config<span style="color:#f92672">.</span>experimental<span style="color:#f92672">.</span>list_physical_devices(<span style="color:#e6db74">&#39;GPU&#39;</span>)
-<span style="color:#66d9ef">if</span> gpus:
-    <span style="color:#66d9ef">try</span>:
-        <span style="color:#66d9ef">for</span> gpu <span style="color:#f92672">in</span> gpus:
-            tf<span style="color:#f92672">.</span>config<span style="color:#f92672">.</span>experimental<span style="color:#f92672">.</span>set_memory_growth(gpu, <span style="color:#66d9ef">True</span>)
-        logical_gpus <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>config<span style="color:#f92672">.</span>experimental<span style="color:#f92672">.</span>list_logical_devices(<span style="color:#e6db74">&#39;GPU&#39;</span>)
-        print(len(gpus), <span style="color:#e6db74">&#34;Physical GPUs,&#34;</span>, len(logical_gpus), <span style="color:#e6db74">&#34;Logical GPUs&#34;</span>)
-    <span style="color:#66d9ef">except</span> <span style="color:#a6e22e">RuntimeError</span> <span style="color:#66d9ef">as</span> e:
+# Data Prepare
+(train_x, train_y), (test_x, test_y) = datasets.mnist.load_data()
+train_x, test_x = np.expand_dims(train_x/255., -1), np.expand_dims(test_x/255., -1)
+print(&quot;Train Data's Shape : &quot;, train_x.shape, train_y.shape)
+print(&quot;Test Data's Shape : &quot;, test_x.shape, test_y.shape)
+
+# For Efficiency
+gpus = tf.config.experimental.list_physical_devices('GPU')
+if gpus:
+    try:
+        for gpu in gpus:
+            tf.config.experimental.set_memory_growth(gpu, True)
+        logical_gpus = tf.config.experimental.list_logical_devices('GPU')
+        print(len(gpus), &quot;Physical GPUs,&quot;, len(logical_gpus), &quot;Logical GPUs&quot;)
+    except RuntimeError as e:
         print(e)
 
-<span style="color:#75715e"># Build Network</span>
-strategy <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>distribute<span style="color:#f92672">.</span>MirroredStrategy()
-<span style="color:#66d9ef">with</span> strategy<span style="color:#f92672">.</span>scope():
-    cnn <span style="color:#f92672">=</span> models<span style="color:#f92672">.</span>Sequential()
-    cnn<span style="color:#f92672">.</span>add(layers<span style="color:#f92672">.</span>Conv2D(<span style="color:#ae81ff">16</span>, <span style="color:#ae81ff">3</span>, activation<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;relu&#39;</span>, input_shape<span style="color:#f92672">=</span>(<span style="color:#ae81ff">28</span>, <span style="color:#ae81ff">28</span>, <span style="color:#ae81ff">1</span>,)))
-    cnn<span style="color:#f92672">.</span>add(layers<span style="color:#f92672">.</span>MaxPool2D())
-    cnn<span style="color:#f92672">.</span>add(layers<span style="color:#f92672">.</span>Conv2D(<span style="color:#ae81ff">32</span>, <span style="color:#ae81ff">3</span>, activation<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;relu&#39;</span>))
-    cnn<span style="color:#f92672">.</span>add(layers<span style="color:#f92672">.</span>MaxPool2D())
-    cnn<span style="color:#f92672">.</span>add(layers<span style="color:#f92672">.</span>Flatten())
-    cnn<span style="color:#f92672">.</span>add(layers<span style="color:#f92672">.</span>Dense(<span style="color:#ae81ff">10</span>, activation<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;softmax&#39;</span>))
+# Build Network
+strategy = tf.distribute.MirroredStrategy()
+with strategy.scope():
+    cnn = models.Sequential()
+    cnn.add(layers.Conv2D(16, 3, activation='relu', input_shape=(28, 28, 1,)))
+    cnn.add(layers.MaxPool2D())
+    cnn.add(layers.Conv2D(32, 3, activation='relu'))
+    cnn.add(layers.MaxPool2D())
+    cnn.add(layers.Flatten())
+    cnn.add(layers.Dense(10, activation='softmax'))
 
-    cnn<span style="color:#f92672">.</span>compile(optimizer<span style="color:#f92672">=</span>optimizers<span style="color:#f92672">.</span>Adam(), loss<span style="color:#f92672">=</span>losses<span style="color:#f92672">.</span>sparse_categorical_crossentropy, metrics<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#39;accuracy&#39;</span>])                
-print(<span style="color:#e6db74">&#34;Network Built!&#34;</span>)
+    cnn.compile(optimizer=optimizers.Adam(), loss=losses.sparse_categorical_crossentropy, metrics=['accuracy'])                
+print(&quot;Network Built!&quot;)
 
-<span style="color:#75715e"># Training Network</span>
-epochs<span style="color:#f92672">=</span><span style="color:#ae81ff">10</span>
-batch_size_each_gpu <span style="color:#f92672">=</span> <span style="color:#ae81ff">4096</span>
-batch_size <span style="color:#f92672">=</span> batch_size_each_gpu<span style="color:#f92672">*</span>len(gpus)
+# Training Network
+epochs=10
+batch_size_each_gpu = 4096
+batch_size = batch_size_each_gpu*len(gpus)
 
-history <span style="color:#f92672">=</span> cnn<span style="color:#f92672">.</span>fit(train_x, train_y, epochs<span style="color:#f92672">=</span><span style="color:#ae81ff">10</span>, batch_size<span style="color:#f92672">=</span>batch_size, validation_data<span style="color:#f92672">=</span>(test_x, test_y))
-</code></pre></div><p>기존 Multi GPU 코드와 달라진 점은</p>
-<ol>
-<li><code>For Efficiency</code>라는 부분이 추가.</li>
-<li><code>strategy = tf.distribute.MirroredStrategy()</code>을 <code>Build Network</code>에서 <code>For Efficiency</code>의 가장 첫번째 라인으로 이동.</li>
-</ol>
+history = cnn.fit(train_x, train_y, epochs=10, batch_size=batch_size, validation_data=(test_x, test_y))
+</code></pre>
+
+<p>기존 Multi GPU 코드와 달라진 점은
+1. <code>For Efficiency</code>라는 부분이 추가.
+2. <code>strategy = tf.distribute.MirroredStrategy()</code>을 <code>Build Network</code>에서 <code>For Efficiency</code>의 가장 첫번째 라인으로 이동.</p>
+
 <p>이렇게 변경 후 실행 후 nvidia-smi와 같은 모니터링 툴을 확인해보시면 이전과는 다르게 GPU 메모리를 필요한 만큼만 사용하는걸 보실 수 있습니다!</p>
-<h2 id="ps">P.S</h2>
+
+<h2 id="p-s">P.S</h2>
+
 <ul>
 <li>다음은 뭘로 포스팅하지&hellip;</li>
 </ul>
-<h2 id="번외편-using-gradient-tape">번외편 (Using gradient tape)</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">
-<span style="color:#75715e"># %%</span>
-<span style="color:#75715e"># Import Package</span>
-<span style="color:#f92672">import</span> os
-<span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
-<span style="color:#f92672">import</span> tensorflow <span style="color:#66d9ef">as</span> tf
-<span style="color:#f92672">from</span> tensorflow.keras <span style="color:#f92672">import</span> layers, models, losses, optimizers, datasets, utils
 
-gpus <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>config<span style="color:#f92672">.</span>experimental<span style="color:#f92672">.</span>list_physical_devices(<span style="color:#e6db74">&#39;GPU&#39;</span>)
-<span style="color:#66d9ef">if</span> gpus:
-    <span style="color:#66d9ef">try</span>:
-        <span style="color:#75715e"># Currently, memory growth needs to be the same across GPUs</span>
-        <span style="color:#66d9ef">for</span> gpu <span style="color:#f92672">in</span> gpus:
-            tf<span style="color:#f92672">.</span>config<span style="color:#f92672">.</span>experimental<span style="color:#f92672">.</span>set_memory_growth(gpu, <span style="color:#66d9ef">True</span>)
-        logical_gpus <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>config<span style="color:#f92672">.</span>experimental<span style="color:#f92672">.</span>list_logical_devices(<span style="color:#e6db74">&#39;GPU&#39;</span>)
-        print(len(gpus), <span style="color:#e6db74">&#34;Physical GPUs,&#34;</span>, len(logical_gpus), <span style="color:#e6db74">&#34;Logical GPUs&#34;</span>)
-    <span style="color:#66d9ef">except</span> <span style="color:#a6e22e">RuntimeError</span> <span style="color:#66d9ef">as</span> e:
-        <span style="color:#75715e"># Memory growth must be set before GPUs have been initialized</span>
+<h2 id="번외편-using-gradient-tape">번외편 (Using gradient tape)</h2>
+
+<pre><code class="language-python">
+# %%
+# Import Package
+import os
+import numpy as np
+import tensorflow as tf
+from tensorflow.keras import layers, models, losses, optimizers, datasets, utils
+
+gpus = tf.config.experimental.list_physical_devices('GPU')
+if gpus:
+    try:
+        # Currently, memory growth needs to be the same across GPUs
+        for gpu in gpus:
+            tf.config.experimental.set_memory_growth(gpu, True)
+        logical_gpus = tf.config.experimental.list_logical_devices('GPU')
+        print(len(gpus), &quot;Physical GPUs,&quot;, len(logical_gpus), &quot;Logical GPUs&quot;)
+    except RuntimeError as e:
+        # Memory growth must be set before GPUs have been initialized
         print(e)
 
-<span style="color:#75715e"># %%</span>
-<span style="color:#75715e"># Data Prepare</span>
-epochs<span style="color:#f92672">=</span><span style="color:#ae81ff">10</span>
-batch_size_each_gpu <span style="color:#f92672">=</span> <span style="color:#ae81ff">4096</span>
-batch_size <span style="color:#f92672">=</span> batch_size_each_gpu<span style="color:#f92672">*</span>len(gpus)
+# %%
+# Data Prepare
+epochs=10
+batch_size_each_gpu = 4096
+batch_size = batch_size_each_gpu*len(gpus)
 
-(train_x, train_y), (test_x, test_y) <span style="color:#f92672">=</span> datasets<span style="color:#f92672">.</span>mnist<span style="color:#f92672">.</span>load_data()
-train_x, test_x <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>expand_dims(train_x<span style="color:#f92672">/</span><span style="color:#ae81ff">255.</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>), np<span style="color:#f92672">.</span>expand_dims(test_x<span style="color:#f92672">/</span><span style="color:#ae81ff">255.</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>)
+(train_x, train_y), (test_x, test_y) = datasets.mnist.load_data()
+train_x, test_x = np.expand_dims(train_x/255., -1), np.expand_dims(test_x/255., -1)
 
-print(<span style="color:#e6db74">&#34;Train Data&#39;s Shape : &#34;</span>, train_x<span style="color:#f92672">.</span>shape, train_y<span style="color:#f92672">.</span>shape)
-print(<span style="color:#e6db74">&#34;Test Data&#39;s Shape : &#34;</span>, test_x<span style="color:#f92672">.</span>shape, test_y<span style="color:#f92672">.</span>shape)
+print(&quot;Train Data's Shape : &quot;, train_x.shape, train_y.shape)
+print(&quot;Test Data's Shape : &quot;, test_x.shape, test_y.shape)
 
-<span style="color:#75715e"># %%</span>
-<span style="color:#75715e"># Build Network</span>
-<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">build_model</span>(models<span style="color:#f92672">.</span>Model):
-    <span style="color:#66d9ef">def</span> __init__(self):
-        super(build_model, self)<span style="color:#f92672">.</span>__init__()
+# %%
+# Build Network
+class build_model(models.Model):
+    def __init__(self):
+        super(build_model, self).__init__()
 
-        self<span style="color:#f92672">.</span>conv1 <span style="color:#f92672">=</span> layers<span style="color:#f92672">.</span>Conv2D(<span style="color:#ae81ff">16</span>, <span style="color:#ae81ff">3</span>, activation<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;relu&#39;</span>)
-        self<span style="color:#f92672">.</span>pool1 <span style="color:#f92672">=</span> layers<span style="color:#f92672">.</span>MaxPool2D()
+        self.conv1 = layers.Conv2D(16, 3, activation='relu')
+        self.pool1 = layers.MaxPool2D()
 
-        self<span style="color:#f92672">.</span>conv2 <span style="color:#f92672">=</span> layers<span style="color:#f92672">.</span>Conv2D(<span style="color:#ae81ff">32</span>, <span style="color:#ae81ff">3</span>, activation<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;relu&#39;</span>)
-        self<span style="color:#f92672">.</span>pool2 <span style="color:#f92672">=</span> layers<span style="color:#f92672">.</span>MaxPool2D()
+        self.conv2 = layers.Conv2D(32, 3, activation='relu')
+        self.pool2 = layers.MaxPool2D()
 
-        self<span style="color:#f92672">.</span>flatten <span style="color:#f92672">=</span> layers<span style="color:#f92672">.</span>Flatten()
-        self<span style="color:#f92672">.</span>dense <span style="color:#f92672">=</span> layers<span style="color:#f92672">.</span>Dense(<span style="color:#ae81ff">10</span>, activation<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;softmax&#39;</span>)
+        self.flatten = layers.Flatten()
+        self.dense = layers.Dense(10, activation='softmax')
     
-    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">call</span>(self, x):
-        x <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>conv1(x)
-        x <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>pool1(x)
+    def call(self, x):
+        x = self.conv1(x)
+        x = self.pool1(x)
 
-        x <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>conv2(x)
-        x <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>pool2(x)
+        x = self.conv2(x)
+        x = self.pool2(x)
 
-        x <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>flatten(x)
+        x = self.flatten(x)
 
-        <span style="color:#66d9ef">return</span> self<span style="color:#f92672">.</span>dense(x)
+        return self.dense(x)
 
-print(<span style="color:#e6db74">&#34;Network Built!&#34;</span>)
+print(&quot;Network Built!&quot;)
 
-<span style="color:#75715e"># Set mirrored Strategy</span>
-strategy <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>distribute<span style="color:#f92672">.</span>MirroredStrategy()
+# Set mirrored Strategy
+strategy = tf.distribute.MirroredStrategy()
 
-<span style="color:#66d9ef">with</span> strategy<span style="color:#f92672">.</span>scope():
+with strategy.scope():
     
-    <span style="color:#75715e"># Prepare dataset </span>
-    train_dataset <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>data<span style="color:#f92672">.</span>Dataset<span style="color:#f92672">.</span>from_tensor_slices((train_x, train_y))<span style="color:#f92672">.</span>shuffle(len(train_x))<span style="color:#f92672">.</span>batch(batch_size) 
-    train_dist_dataset <span style="color:#f92672">=</span> strategy<span style="color:#f92672">.</span>experimental_distribute_dataset(train_dataset)
+    # Prepare dataset 
+    train_dataset = tf.data.Dataset.from_tensor_slices((train_x, train_y)).shuffle(len(train_x)).batch(batch_size) 
+    train_dist_dataset = strategy.experimental_distribute_dataset(train_dataset)
     
-    test_dataset <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>data<span style="color:#f92672">.</span>Dataset<span style="color:#f92672">.</span>from_tensor_slices((test_x, test_y))<span style="color:#f92672">.</span>batch(batch_size) 
-    test_dist_dataset <span style="color:#f92672">=</span> strategy<span style="color:#f92672">.</span>experimental_distribute_dataset(test_dataset)
+    test_dataset = tf.data.Dataset.from_tensor_slices((test_x, test_y)).batch(batch_size) 
+    test_dist_dataset = strategy.experimental_distribute_dataset(test_dataset)
 
-    <span style="color:#75715e"># Make Network</span>
-    cnn <span style="color:#f92672">=</span> build_model()
+    # Make Network
+    cnn = build_model()
 
-    <span style="color:#75715e"># Set Loss &amp; Metric function</span>
-    loss_object <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>losses<span style="color:#f92672">.</span>SparseCategoricalCrossentropy(reduction<span style="color:#f92672">=</span>tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>losses<span style="color:#f92672">.</span>Reduction<span style="color:#f92672">.</span>NONE)
-    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">compute_loss</span>(labels, predictions):
-        per_example_loss <span style="color:#f92672">=</span> loss_object(labels, predictions)
-        <span style="color:#66d9ef">return</span> tf<span style="color:#f92672">.</span>nn<span style="color:#f92672">.</span>compute_average_loss(per_example_loss, global_batch_size<span style="color:#f92672">=</span>batch_size)
+    # Set Loss &amp; Metric function
+    loss_object = tf.keras.losses.SparseCategoricalCrossentropy(reduction=tf.keras.losses.Reduction.NONE)
+    def compute_loss(labels, predictions):
+        per_example_loss = loss_object(labels, predictions)
+        return tf.nn.compute_average_loss(per_example_loss, global_batch_size=batch_size)
         
-    test_loss <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>metrics<span style="color:#f92672">.</span>Mean(name<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;test_loss&#39;</span>)
+    test_loss = tf.keras.metrics.Mean(name='test_loss')
 
-    train_accuracy <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>metrics<span style="color:#f92672">.</span>SparseCategoricalAccuracy(name<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;train_accuracy&#39;</span>)
-    test_accuracy <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>metrics<span style="color:#f92672">.</span>SparseCategoricalAccuracy(name<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;test_accuracy&#39;</span>)
+    train_accuracy = tf.keras.metrics.SparseCategoricalAccuracy(name='train_accuracy')
+    test_accuracy = tf.keras.metrics.SparseCategoricalAccuracy(name='test_accuracy')
 
-    <span style="color:#75715e"># Set optimizer</span>
-    optimizer <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>optimizers<span style="color:#f92672">.</span>Adam()
+    # Set optimizer
+    optimizer = tf.keras.optimizers.Adam()
 
-    <span style="color:#75715e"># Define taining, test function</span>
-    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">train_step</span>(inputs):
-        images, labels <span style="color:#f92672">=</span> inputs
+    # Define taining, test function
+    def train_step(inputs):
+        images, labels = inputs
 
-        <span style="color:#66d9ef">with</span> tf<span style="color:#f92672">.</span>GradientTape() <span style="color:#66d9ef">as</span> tape:
-            predictions <span style="color:#f92672">=</span> cnn(images, training<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
-            loss <span style="color:#f92672">=</span> compute_loss(labels, predictions)
+        with tf.GradientTape() as tape:
+            predictions = cnn(images, training=True)
+            loss = compute_loss(labels, predictions)
 
-        gradients <span style="color:#f92672">=</span> tape<span style="color:#f92672">.</span>gradient(loss, cnn<span style="color:#f92672">.</span>trainable_variables)
-        optimizer<span style="color:#f92672">.</span>apply_gradients(zip(gradients, cnn<span style="color:#f92672">.</span>trainable_variables))
+        gradients = tape.gradient(loss, cnn.trainable_variables)
+        optimizer.apply_gradients(zip(gradients, cnn.trainable_variables))
 
-        train_accuracy<span style="color:#f92672">.</span>update_state(labels, predictions)
-        <span style="color:#66d9ef">return</span> loss 
+        train_accuracy.update_state(labels, predictions)
+        return loss 
     
-    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">test_step</span>(inputs):
-        images, labels <span style="color:#f92672">=</span> inputs
+    def test_step(inputs):
+        images, labels = inputs
 
-        predictions <span style="color:#f92672">=</span> cnn(images, training<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>)
-        t_loss <span style="color:#f92672">=</span> loss_object(labels, predictions)
+        predictions = cnn(images, training=False)
+        t_loss = loss_object(labels, predictions)
 
-        test_loss<span style="color:#f92672">.</span>update_state(t_loss)
-        test_accuracy<span style="color:#f92672">.</span>update_state(labels, predictions)
+        test_loss.update_state(t_loss)
+        test_accuracy.update_state(labels, predictions)
 
-    <span style="color:#75715e"># Define training, test function suitable for Mirrored Strategy </span>
-    <span style="color:#a6e22e">@tf</span><span style="color:#f92672">.</span>function
-    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">distributed_train_step</span>(dataset_inputs):
-        per_replica_losses <span style="color:#f92672">=</span> strategy<span style="color:#f92672">.</span>experimental_run_v2(train_step, args<span style="color:#f92672">=</span>(dataset_inputs,))
-        <span style="color:#66d9ef">return</span> strategy<span style="color:#f92672">.</span>reduce(tf<span style="color:#f92672">.</span>distribute<span style="color:#f92672">.</span>ReduceOp<span style="color:#f92672">.</span>SUM, per_replica_losses, axis<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>)
+    # Define training, test function suitable for Mirrored Strategy 
+    @tf.function
+    def distributed_train_step(dataset_inputs):
+        per_replica_losses = strategy.experimental_run_v2(train_step, args=(dataset_inputs,))
+        return strategy.reduce(tf.distribute.ReduceOp.SUM, per_replica_losses, axis=None)
  
-    <span style="color:#a6e22e">@tf</span><span style="color:#f92672">.</span>function
-    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">distributed_test_step</span>(dataset_inputs):
-        <span style="color:#66d9ef">return</span> strategy<span style="color:#f92672">.</span>experimental_run_v2(test_step, args<span style="color:#f92672">=</span>(dataset_inputs,))
+    @tf.function
+    def distributed_test_step(dataset_inputs):
+        return strategy.experimental_run_v2(test_step, args=(dataset_inputs,))
 
-    <span style="color:#75715e"># Train Network</span>
-    <span style="color:#66d9ef">for</span> epoch <span style="color:#f92672">in</span> range(epochs):
+    # Train Network
+    for epoch in range(epochs):
     
-        <span style="color:#75715e"># Training Loop</span>
-        total_loss <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.0</span>
-        num_batches <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
-        <span style="color:#66d9ef">for</span> x <span style="color:#f92672">in</span> train_dist_dataset:
-            total_loss <span style="color:#f92672">+=</span> distributed_train_step(x)
-            num_batches <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
-        train_loss <span style="color:#f92672">=</span> total_loss <span style="color:#f92672">/</span> num_batches
+        # Training Loop
+        total_loss = 0.0
+        num_batches = 0
+        for x in train_dist_dataset:
+            total_loss += distributed_train_step(x)
+            num_batches += 1
+        train_loss = total_loss / num_batches
 
-        <span style="color:#75715e"># Test Loop</span>
-        <span style="color:#66d9ef">for</span> x <span style="color:#f92672">in</span> test_dist_dataset:
+        # Test Loop
+        for x in test_dist_dataset:
             distributed_test_step(x)
 
-        template <span style="color:#f92672">=</span> (<span style="color:#e6db74">&#34;에포크 </span><span style="color:#e6db74">{}</span><span style="color:#e6db74">, 손실: </span><span style="color:#e6db74">{}</span><span style="color:#e6db74">, 정확도: </span><span style="color:#e6db74">{}</span><span style="color:#e6db74">, 테스트 손실: </span><span style="color:#e6db74">{}</span><span style="color:#e6db74">, 테스트 정확도: </span><span style="color:#e6db74">{}</span><span style="color:#e6db74">&#34;</span>)
-        print (template<span style="color:#f92672">.</span>format(epoch<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>, train_loss, train_accuracy<span style="color:#f92672">.</span>result()<span style="color:#f92672">*</span><span style="color:#ae81ff">100</span>, test_loss<span style="color:#f92672">.</span>result(), test_accuracy<span style="color:#f92672">.</span>result()<span style="color:#f92672">*</span><span style="color:#ae81ff">100</span>))
+        template = (&quot;에포크 {}, 손실: {}, 정확도: {}, 테스트 손실: {}, 테스트 정확도: {}&quot;)
+        print (template.format(epoch+1, train_loss, train_accuracy.result()*100, test_loss.result(), test_accuracy.result()*100))
 
-        test_loss<span style="color:#f92672">.</span>reset_states()
-        train_accuracy<span style="color:#f92672">.</span>reset_states()
-        test_accuracy<span style="color:#f92672">.</span>reset_states()
-</code></pre></div>
+        test_loss.reset_states()
+        train_accuracy.reset_states()
+        test_accuracy.reset_states()
+</code></pre>
+
         </div>
 
         
@@ -547,7 +568,7 @@ strategy <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</s
         </ul>
       </div>
       <div class="col-12 border-top py-4 text-center">
-        | copyright © 2020 <a href="https://themefisher.com">Themefisher</a> All Rights Reserved |
+        | copyright &copy; 2020 <a href="https://themefisher.com">Themefisher</a> All Rights Reserved |
       </div>
     </div>
   </div>

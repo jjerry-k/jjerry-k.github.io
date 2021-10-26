@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Setting on Jerry&#39;s DevLog</title>
@@ -6,7 +6,11 @@
     <description>Recent content in Setting on Jerry&#39;s DevLog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 16 Aug 2020 18:30:46 +0600</lastBuildDate><atom:link href="https://jjerry-k.github.io/tags/setting/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 16 Aug 2020 18:30:46 +0600</lastBuildDate>
+    
+	<atom:link href="https://jjerry-k.github.io/tags/setting/index.xml" rel="self" type="application/rss+xml" />
+    
+    
     <item>
       <title>개인적인 Vim 설정</title>
       <link>https://jjerry-k.github.io/blog/vimrc/</link>
@@ -42,8 +46,7 @@
       <pubDate>Sun, 30 Jun 2019 18:30:46 +0600</pubDate>
       
       <guid>https://jjerry-k.github.io/blog/conda_package/</guid>
-      <description>이번 포스팅은 제가 많이 쓰는 패키지들에 대해서 적어보려고 합니다.
-추후에 포맷하고 다시 세팅할 수도 있으니까&amp;hellip;.</description>
+      <description>이번 포스팅은 제가 많이 쓰는 패키지들에 대해서 적어보려고 합니다.</description>
     </item>
     
     <item>
@@ -61,7 +64,7 @@
       <pubDate>Thu, 27 Sep 2018 18:30:46 +0600</pubDate>
       
       <guid>https://jjerry-k.github.io/blog/python4mac/</guid>
-      <description># brew 설치. /usr/bin/ruby -e &amp;#34;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&amp;#34; # wget 설치.</description>
+      <description># brew 설치. /usr/bin/ruby -e &amp;quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&amp;quot; # wget 설치.</description>
     </item>
     
     <item>

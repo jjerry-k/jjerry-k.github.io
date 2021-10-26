@@ -9,7 +9,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="this is meta description">
   <meta name="author" content="Jerry Kim">
-  <meta name="generator" content="Hugo 0.85.0" />
+  <meta name="generator" content="Hugo 0.54.0" />
 
   <!-- plugins -->
   
@@ -160,11 +160,16 @@
         </div>
         
         <div class="content mb-5">
-          <h1 id="end-to-end-object-detection-with-transformers">End-to-End Object Detection with Transformers</h1>
+          
+
+<h1 id="end-to-end-object-detection-with-transformers">End-to-End Object Detection with Transformers</h1>
+
 <p>Author: Nicolas Carion, Francisco Massa, Gabriel Synnaeve, Nicolas Usunier, Alexander Kirillov, and Sergey Zagoruyko
 Date: May 27, 2020
 URL: <a href="https://ai.facebook.com/research/publications/end-to-end-object-detection-with-transformers">https://ai.facebook.com/research/publications/end-to-end-object-detection-with-transformers</a></p>
+
 <h1 id="introduction">Introduction</h1>
+
 <ul>
 <li>현재 Object detection model들은 Input부터 Output (bounding bos, category label) 까지 Direct 하지 못함.  Post processing 이 영향을 끼치기 때문에&hellip;</li>
 <li>본 논문에선 Direct prediction approach 제안.</li>
@@ -172,89 +177,136 @@ URL: <a href="https://ai.facebook.com/research/publications/end-to-end-object-de
 <li><a href="https://arxiv.org/abs/1706.03762">Transformer</a> 를 사용.</li>
 <li>새로운 Loss function 도입.</li>
 </ul>
-<figure><img src="/images/post/DETR/Untitled.png"/>
+
+<figure>
+    <img src="/images/post/DETR/Untitled.png"/> 
 </figure>
 
+
 <h1 id="related-works">Related Works</h1>
+
 <h2 id="set-prediction">Set Prediction</h2>
+
 <ul>
 <li>현재까지 Direct로 set(box, class)을 prediction 하는 방법이 없음.</li>
 <li>Post processing 이 없는 model 제안.</li>
 <li>이를 위해 Hungarian algorithm 기반의 loss 설계.</li>
 </ul>
+
 <h2 id="transformers-and-parallel-decoding">Transformers and Parallel Decoding</h2>
+
 <ul>
 <li>다른 RNN 계열보다 Long sequence 에 적합한 model</li>
 <li>auto-regressive model</li>
 </ul>
+
 <h2 id="object-detection">Object detection</h2>
+
 <h3 id="set-based-loss">Set-based loss</h3>
+
 <ul>
 <li>기존에 bipatite matching loss 를 사용했지만  NMS 를 사용해야 성능이 향상되었음.</li>
 <li>그 후 Learnable NMS 를 사용한 방법이 제시 되었으나 hand-crafted context feature 를 사용 하기에 효율적이지 못함.</li>
 </ul>
+
 <h3 id="recurrent-detectors">Recurrent detectors</h3>
+
 <ul>
 <li>이름에서 알 수 있듯 RNN 계열을 도입한 Object detection</li>
 <li>기존 방법에선 Small dataset을 이용했고 RNN 계열을 이용했기에 parallel 구조를 가져가지 못했음.</li>
 </ul>
+
 <h1 id="the-detr-model">The DETR model</h1>
+
 <ul>
 <li>DETR은 크게 두 개의 장점이 있음. → a set prediction loss, a architecture</li>
 </ul>
-<figure><img src="/images/post/DETR/Untitled_1.png"/>
+
+<figure>
+    <img src="/images/post/DETR/Untitled_1.png"/> 
 </figure>
 
+
 <h2 id="object-detection-set-prediction-loss">Object detection set prediction loss</h2>
+
 <p>$$\hat{\sigma} = {argmin}_{\sigma \in \mathfrak{S}_N} \sum^N_i \mathcal{L}_{match}(y_i, \hat{y}_{\sigma(i)})$$</p>
+
 <p>$$\mathcal{L}_{match}(y_i, \hat{y}_{\sigma(i)}) = -1_{c_i \neq \phi}\hat{p}_{\sigma(i)}(c_i) +1_{c_i \neq \phi}\mathcal{L}_{box}(b_i, \hat{b}_{\sigma(i)})$$</p>
+
 <p>$$\mathcal{L}_{Hungarian}(y, \hat{y}) = \sum^N_i[-\log\hat{p}_{\hat{\sigma}(i)}(c_i) +1_{c_i \neq \phi}\mathcal{L}_{box}(b_i, \hat{b}_{\hat{\sigma}(i)})]$$</p>
+
 <h3 id="bounding-box-loss">Bounding box loss</h3>
+
 <p>$$\lambda_{iou}\mathcal{L}_{iou}(b_i, \hat{b}_{\sigma(i)}) + \lambda_{\mathrm{L}1}|b_i - \hat{b}_{\sigma(i)}|_1$$</p>
+
 <h2 id="detr-architecture">DETR architecture</h2>
+
 <h3 id="backbone">Backbone</h3>
+
 <ul>
 <li>일반적인 Backbone 사용.</li>
 <li>마지막 feataure map은 원본 사이즈 H, W 에 비해 32분의 1 downsampling, C는 2048</li>
 </ul>
+
 <h3 id="transformer-encoder">Transformer encoder</h3>
+
 <ul>
 <li>Attention is all you need의 Transformer의 encoder와 동일한 구조.</li>
 <li>Fixed positional encodings 으로 인하여 permutation-invariant 한 구조!</li>
 </ul>
+
 <h3 id="transformer-decoder">Transformer decoder</h3>
+
 <ul>
 <li>Attention is all you need의 Transformer의 decoder와 동일한 구조.</li>
 <li>기존 Transformer와 차이는</li>
 </ul>
+
 <h3 id="prediction-feed-forward-networks-ffns">Prediction feed-forward networks (FFNs)</h3>
+
 <ul>
 <li>ReLU를 사용하는 d dimension의 linear layer 3 개 사용.</li>
 <li>한 branch 에서는 Normalized center coordinate, height, width 를 예측.</li>
 <li>다른 하나의 branch는 class label을 softmax를 이용하여 예측.</li>
 <li>DETR은 항상 N개의 box에 대해 예측. 하지만 실제 object 수가 적을때는 나머지 box들을 no object 로 처리.</li>
 </ul>
+
 <h3 id="auxiliary-decoding-losses">Auxiliary decoding losses</h3>
+
 <ul>
 <li>Transformer decoder에  Auxiliary loss 를 추가.</li>
 </ul>
+
 <h1 id="experiment">Experiment</h1>
+
 <h2 id="comparison-with-faster-r-cnn">Comparison with Faster R-CNN</h2>
-<figure><img src="/images/post/DETR/Untitled_2.png"/>
+
+<figure>
+    <img src="/images/post/DETR/Untitled_2.png"/> 
 </figure>
+
 
 <h2 id="ablations">Ablations</h2>
-<figure><img src="/images/post/DETR/Untitled_3.png"/>
+
+<figure>
+    <img src="/images/post/DETR/Untitled_3.png"/> 
 </figure>
 
-<figure><img src="/images/post/DETR/Untitled_4.png"/>
+
+<figure>
+    <img src="/images/post/DETR/Untitled_4.png"/> 
 </figure>
+
 
 <h2 id="panoptic-segmentation">Panoptic segmentation</h2>
-<figure><img src="/images/post/DETR/Untitled_5.png"/>
+
+<figure>
+    <img src="/images/post/DETR/Untitled_5.png"/> 
 </figure>
 
-<h2 id="ps">P.S</h2>
+
+<h2 id="p-s">P.S</h2>
+
 <ul>
 <li>내용 보충 예정.</li>
 <li>신박한 컨셉.</li>
@@ -372,7 +424,7 @@ URL: <a href="https://ai.facebook.com/research/publications/end-to-end-object-de
         </ul>
       </div>
       <div class="col-12 border-top py-4 text-center">
-        | copyright © 2020 <a href="https://themefisher.com">Themefisher</a> All Rights Reserved |
+        | copyright &copy; 2020 <a href="https://themefisher.com">Themefisher</a> All Rights Reserved |
       </div>
     </div>
   </div>

@@ -9,7 +9,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="this is meta description">
   <meta name="author" content="Jerry Kim">
-  <meta name="generator" content="Hugo 0.85.0" />
+  <meta name="generator" content="Hugo 0.54.0" />
 
   <!-- plugins -->
   
@@ -160,28 +160,40 @@
         </div>
         
         <div class="content mb-5">
-          <p>거의 한달 반&hellip;만에 글을 씁니다..!<br>
-이번에는 Python에서 <a href="https://nifti.nimh.nih.gov/">NIfTI</a> 포맷의 데이터를 load 하는 방법에 대한 포스팅을 해보려고 합니다.<br>
+          <p>거의 한달 반&hellip;만에 글을 씁니다..!<br />
+이번에는 Python에서 <a href="https://nifti.nimh.nih.gov/">NIfTI</a> 포맷의 데이터를 load 하는 방법에 대한 포스팅을 해보려고 합니다.<br />
 저는 Anaconda를 사용중이기에..제 사용환경에 맞게 설명을 하겠습니다.</p>
+
 <p>가장 먼저 관련 패키지인 <a href="http://nipy.org/nibabel/"><code>Nibabel</code></a> 을 설치를 해줍니다.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">conda install -c conda-forge nibabel
-</code></pre></div><p>이러면 설치는 끝입니다.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">
-<span style="color:#f92672">import</span> nibabel <span style="color:#66d9ef">as</span> nib
-<span style="color:#f92672">from</span> matplotlib <span style="color:#f92672">import</span> pyplot <span style="color:#66d9ef">as</span> plt
 
-data <span style="color:#f92672">=</span> nib<span style="color:#f92672">.</span>load(<span style="color:#e6db74">&#34;.nii 경로&#34;</span>)
-img <span style="color:#f92672">=</span> data<span style="color:#f92672">.</span>get_data()
+<pre><code class="language-bash">conda install -c conda-forge nibabel
+</code></pre>
 
-<span style="color:#75715e">#plt.imshow(img)# 슬라이스 1장일 경우</span>
-plt<span style="color:#f92672">.</span>imshow(img[:,:,<span style="color:#e6db74">&#34;slice 번호&#34;</span>])
-plt<span style="color:#f92672">.</span>show()
-</code></pre></div><p>이런 식으로 작성하시면 됩니다.</p>
+<p>이러면 설치는 끝입니다.</p>
+
+<pre><code class="language-python">
+import nibabel as nib
+from matplotlib import pyplot as plt
+
+data = nib.load(&quot;.nii 경로&quot;)
+img = data.get_data()
+
+#plt.imshow(img)# 슬라이스 1장일 경우
+plt.imshow(img[:,:,&quot;slice 번호&quot;])
+plt.show()
+</code></pre>
+
+<p>이런 식으로 작성하시면 됩니다.</p>
+
 <p>예시를 보여드리면</p>
-<figure><img src="/images/post/nifti/01.png"/>
+
+<figure>
+    <img src="/images/post/nifti/01.png"/> 
 </figure>
 
+
 <p>이렇습니다!</p>
+
 <p>추후엔 DICOM 다루는 법에 대해서 업로드 해보겠습니다!</p>
 
         </div>
@@ -296,7 +308,7 @@ plt<span style="color:#f92672">.</span>show()
         </ul>
       </div>
       <div class="col-12 border-top py-4 text-center">
-        | copyright © 2020 <a href="https://themefisher.com">Themefisher</a> All Rights Reserved |
+        | copyright &copy; 2020 <a href="https://themefisher.com">Themefisher</a> All Rights Reserved |
       </div>
     </div>
   </div>

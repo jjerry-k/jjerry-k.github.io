@@ -9,7 +9,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="this is meta description">
   <meta name="author" content="Jerry Kim">
-  <meta name="generator" content="Hugo 0.85.0" />
+  <meta name="generator" content="Hugo 0.54.0" />
 
   <!-- plugins -->
   
@@ -160,113 +160,149 @@
         </div>
         
         <div class="content mb-5">
-          <h1 id="bam-bottleneck-attention-module">BAM: Bottleneck Attention Module</h1>
-<p>Author: Jongchan Park, Sanghyun Woo, Joon-Young Lee, In So Kweon<br>
-Date: Jul 17, 2018<br>
+          
+
+<h1 id="bam-bottleneck-attention-module">BAM: Bottleneck Attention Module</h1>
+
+<p>Author: Jongchan Park, Sanghyun Woo, Joon-Young Lee, In So Kweon<br />
+Date: Jul 17, 2018<br />
 URL: <a href="https://arxiv.org/abs/1807.06514">https://arxiv.org/abs/1807.06514</a></p>
+
 <h1 id="introduction">Introduction</h1>
+
 <ul>
-<li>
-<p>DL은 Classification, Detection, Segmentation 등 많은 패턴 인식 분야에서 강력한 Tool로 사용.</p>
-</li>
-<li>
-<p>성능을 올리기 위해서 좋은 backbone을 설계하는 것이 기본적인 접근법.</p>
-</li>
-<li>
-<p>직관적인 방법은 더 깊게 설계하는 것.</p>
-</li>
-<li>
-<p>VGGNet는 AlexNet 보다 두배 이상.</p>
-</li>
-<li>
-<p>ResNet 은 VGGNet보다 22배 이상이면서 residual connections 사용하여 gradient flow 를 향상.</p>
-</li>
-<li>
-<p>GoogLeNet 은 매우 깊고 같은 layer에서 다양한 feature를 사용하여 성능 향상.</p>
-</li>
-<li>
-<p>DenseNet 이전 layer의 feature map 들을 concatenation 하여 사용.</p>
-</li>
-<li>
-<p>WideResNet, PyramidNet layer의 channels 를 증가하여 성능 향상.</p>
-</li>
-<li>
-<p>ResNeXt, Xception과 같은 backbone은 grouped convolutions을 이용하여 성능 향상.</p>
-</li>
-<li>
-<p>본 논문에선 attention 의 효과를 보기 위해 기존의 architecture 에 사용하기 쉬운 가벼운 Bottle Attention Module(BAM) 제안</p>
-</li>
+<li><p>DL은 Classification, Detection, Segmentation 등 많은 패턴 인식 분야에서 강력한 Tool로 사용.</p></li>
+
+<li><p>성능을 올리기 위해서 좋은 backbone을 설계하는 것이 기본적인 접근법.</p></li>
+
+<li><p>직관적인 방법은 더 깊게 설계하는 것.</p></li>
+
+<li><p>VGGNet는 AlexNet 보다 두배 이상.</p></li>
+
+<li><p>ResNet 은 VGGNet보다 22배 이상이면서 residual connections 사용하여 gradient flow 를 향상.</p></li>
+
+<li><p>GoogLeNet 은 매우 깊고 같은 layer에서 다양한 feature를 사용하여 성능 향상.</p></li>
+
+<li><p>DenseNet 이전 layer의 feature map 들을 concatenation 하여 사용.</p></li>
+
+<li><p>WideResNet, PyramidNet layer의 channels 를 증가하여 성능 향상.</p></li>
+
+<li><p>ResNeXt, Xception과 같은 backbone은 grouped convolutions을 이용하여 성능 향상.</p></li>
+
+<li><p>본 논문에선 attention 의 효과를 보기 위해 기존의 architecture 에 사용하기 쉬운 가벼운 Bottle Attention Module(BAM) 제안</p></li>
 </ul>
-<figure><img src="/images/post/bam/Untitled.png"/>
+
+<figure>
+    <img src="/images/post/bam/Untitled.png"/> 
 </figure>
 
+
 <h1 id="bottleneck-attention-module">Bottleneck Attention Module</h1>
+
 <ul>
 <li>BAM 의 구조는 다음 사진과 같음.</li>
 </ul>
-<p>$$F: \text{Input feature map} \\ M(F): \text{Attention map} \\ F' = F + F\bigotimes M(F) \\ M(F) = \sigma(M_c(F) + M_s(F))$$</p>
-<figure><img src="/images/post/bam/Untitled_1.png"/>
+
+<p>$$F: \text{Input feature map} \\ M(F): \text{Attention map} \\ F&rsquo; = F + F\bigotimes M(F) \\ M(F) = \sigma(M_c(F) + M_s(F))$$</p>
+
+<figure>
+    <img src="/images/post/bam/Untitled_1.png"/> 
 </figure>
 
+
 <h2 id="channel-attention-branch">Channel attention branch</h2>
+
 <p>$$M_c(F) = BN(MLP(AvgPool(F))) \\ = BN(W_1(W_0AvgPool(F) + b_0)+b_1)$$</p>
-<p>W0 의 output channel 크기: F의 채널 수 / reduction ratio(r)</p>
+
+<p>W0 의 output channel 크기: F의 채널 수 / reduction ratio&reg;</p>
+
 <p>W1 의 output channel 크기: F의 채널 수</p>
+
 <h2 id="spatial-attention-branch">Spatial attention branch</h2>
+
 <p>$$M_s(F)=BN(f_3^{1\times1}(f_2^{3\times3}(f_1^{3\times3}(f_0^{1\times1}(F)))))$$</p>
+
 <ul>
 <li>모든 연산은 convolution 연산.</li>
 <li>3x3 Convolution 연산 수행시엔 dilation convolution 사용.</li>
-<li>첫번째~세번째 Convolution 의 output channel 크기: F의 채널 수 / reduction ratio(r)</li>
+<li>첫번째~세번째 Convolution 의 output channel 크기: F의 채널 수 / reduction ratio&reg;</li>
 <li>마지막 Convolution 의 output channel 크기: 1</li>
 </ul>
+
 <h2 id="combine-two-attention-branches">Combine two attention branches</h2>
+
 <p>$$M(F) = \sigma(M_c(F) + M_s(F))$$</p>
+
 <ul>
 <li>Channel attention branch 출력: 1x1xR</li>
 <li>Spatial attention branch 출력: HxWx1</li>
 <li>두 attention branch를 합치는 방법으로 element-wise summation, multiplication, max operation 고려.</li>
 </ul>
+
 <h1 id="ablation-study-using-cifar-100">Ablation study using CIFAR-100</h1>
+
 <h2 id="dilation-value-and-reduction-ratio">Dilation value and Reduction ratio</h2>
+
 <ul>
 <li>Dilation value와 Reduction ratio에 따른 성능 비교</li>
 <li>Table 1 (a)</li>
 </ul>
-<h2 id="separate-or-combined-branches--combining-methods">Separate or Combined branches &amp; Combining methods</h2>
+
+<h2 id="separate-or-combined-branches-combining-methods">Separate or Combined branches &amp; Combining methods</h2>
+
 <ul>
 <li>두 attention branch 사용 방법에 따른 성능 비교</li>
 <li>Table 1 (b)</li>
 </ul>
+
 <h2 id="comparison-with-placing-original-convblocks">Comparison with placing original convblocks</h2>
+
 <ul>
 <li>BAM 사용 여부에 따른 성능 비교</li>
-<li>Table 1 (c)</li>
+<li>Table 1 &copy;</li>
 </ul>
-<figure><img src="/images/post/bam/Untitled_2.png"/>
+
+<figure>
+    <img src="/images/post/bam/Untitled_2.png"/> 
 </figure>
 
+
 <h2 id="bottleneck-the-efficient-point-to-place-bam">Bottleneck: The efficient point to place BAM</h2>
+
 <ul>
 <li>BAM 사용 위치에 따른 성능 비교.</li>
 </ul>
-<figure><img src="/images/post/bam/Untitled_3.png"/>
+
+<figure>
+    <img src="/images/post/bam/Untitled_3.png"/> 
 </figure>
+
 
 <h1 id="result">Result</h1>
+
 <h2 id="classification-result-on-cifar-100-and-imagenet-1k">Classification Result on CIFAR-100 and ImageNet-1K</h2>
-<figure><img src="/images/post/bam/Untitled_4.png"/>
+
+<figure>
+    <img src="/images/post/bam/Untitled_4.png"/> 
 </figure>
+
 
 <h2 id="object-detection-on-ms-coco-and-voc-2007">Object Detection on MS COCO and VOC 2007</h2>
-<figure><img src="/images/post/bam/Untitled_5.png"/>
+
+<figure>
+    <img src="/images/post/bam/Untitled_5.png"/> 
 </figure>
+
 
 <h2 id="comparison-with-squeeze-and-excitation">Comparison with Squeeze-and-Excitation</h2>
-<figure><img src="/images/post/bam/Untitled_6.png"/>
+
+<figure>
+    <img src="/images/post/bam/Untitled_6.png"/> 
 </figure>
 
-<h3 id="ps">P.S</h3>
+
+<h3 id="p-s">P.S</h3>
+
 <ul>
 <li>Original Code가 있지만&hellip;.논문과 다른 부분이 매우 많음.</li>
 </ul>
@@ -383,7 +419,7 @@ URL: <a href="https://arxiv.org/abs/1807.06514">https://arxiv.org/abs/1807.06514
         </ul>
       </div>
       <div class="col-12 border-top py-4 text-center">
-        | copyright © 2020 <a href="https://themefisher.com">Themefisher</a> All Rights Reserved |
+        | copyright &copy; 2020 <a href="https://themefisher.com">Themefisher</a> All Rights Reserved |
       </div>
     </div>
   </div>
