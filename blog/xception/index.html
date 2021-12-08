@@ -9,7 +9,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="this is meta description">
   <meta name="author" content="Jerry Kim">
-  <meta name="generator" content="Hugo 0.54.0" />
+  <meta name="generator" content="Hugo 0.90.0" />
 
   <!-- plugins -->
   
@@ -160,18 +160,12 @@
         </div>
         
         <div class="content mb-5">
-          
-
-<h1 id="xception-deep-learning-with-depthwise-separable-convolution">Xception: Deep Learning with Depthwise Separable Convolution</h1>
-
-<p>Author: Franc¸ois Chollet<br />
-Date: Dec 19, 2016<br />
+          <h1 id="xception-deep-learning-with-depthwise-separable-convolution">Xception: Deep Learning with Depthwise Separable Convolution</h1>
+<p>Author: Franc¸ois Chollet<br>
+Date: Dec 19, 2016<br>
 URL: <a href="https://arxiv.org/abs/1610.02357">https://arxiv.org/abs/1610.02357</a></p>
-
-<hr />
-
+<hr>
 <h1 id="abstract">Abstract</h1>
-
 <ul>
 <li>CNN 에서 많이 사용되는 Inception 은 Regular Convolution 과 Depthwise Separable Convolution 의 중간 단계.</li>
 <li>Depthwise Separable Convolution 은 최대 개수의 타워를 가진 Inception module (?)</li>
@@ -181,98 +175,106 @@ URL: <a href="https://arxiv.org/abs/1610.02357">https://arxiv.org/abs/1610.02357
 <li>Inception V3와 Xception 이 동일한 parameter 수를 가짐.</li>
 <li>그러므로 연산량, 메모리의 증가가 아닌 모델 parameter를 효과적으로 사용해서 성능 향상이 된 것.</li>
 </ul>
-
-<h1 id="1-introduction"><strong>1. Introduction</strong></h1>
-
+<h1 id="1introduction"><strong>1. Introduction</strong></h1>
 <ul>
-<li>Convolutional Neural Network (이하 CNN) 은 Computer Vision 에서 가장 주요한 알고리즘이 되었고, 이를 설계하는 방법에 대해 개발하는데 많은 관심을 가지게 됨.</li>
-<li>Lenet -&gt; AlexNet (2012) -&gt; ZFNet (2013) -&gt; VGG (2014) -&gt; Inception 종류 &hellip; -&gt; Inception-ResNet (2015)</li>
-<li>Inception 스타일의 기본 구성 요소는 Inception module.</li>
-
-<li><p>Figure 1은 Inception V3 의 표준 Inception Module.</p>
-
-<figure>
-    <img src="/images/post/xception/Untitled.png"/> 
-</figure>
+<li>
+<p>Convolutional Neural Network (이하 CNN) 은 Computer Vision 에서 가장 주요한 알고리즘이 되었고, 이를 설계하는 방법에 대해 개발하는데 많은 관심을 가지게 됨.</p>
 </li>
+<li>
+<p>Lenet -&gt; AlexNet (2012) -&gt; ZFNet (2013) -&gt; VGG (2014) -&gt; Inception 종류 &hellip; -&gt; Inception-ResNet (2015)</p>
+</li>
+<li>
+<p>Inception 스타일의 기본 구성 요소는 Inception module.</p>
+</li>
+<li>
+<p>Figure 1은 Inception V3 의 표준 Inception Module.</p>
+<figure><img src="/images/post/xception/Untitled.png"/>
+</figure>
 
-<li><p>Inception 모델은 위와 같은 모듈을 Stack 한 것. VGG-Style 네트워크는 단순히 Convolution layer를 Stack.</p></li>
-
-<li><p>실험적으로 Inception-style 이 VGG-style보다 적은 parameter로 다양한, 많은 feature를 학습 할 수 있다는 것을 보임.</p></li>
+</li>
+<li>
+<p>Inception 모델은 위와 같은 모듈을 Stack 한 것. VGG-Style 네트워크는 단순히 Convolution layer를 Stack.</p>
+</li>
+<li>
+<p>실험적으로 Inception-style 이 VGG-style보다 적은 parameter로 다양한, 많은 feature를 학습 할 수 있다는 것을 보임.</p>
+</li>
 </ul>
-
-<h2 id="1-1-the-inception-hypothesis"><strong>1.1 The Inception hypothesis</strong></h2>
-
+<h2 id="11theinceptionhypothesis"><strong>1.1 The Inception hypothesis</strong></h2>
 <ul>
-<li>Convolution layer는 3차원 공간에서 filter를 학습하려고 함.</li>
-<li>Single Convolution kernel 은 채널의 correlation과 공간의 correlation 을 동시에 mapping 함.</li>
-<li>Inception 모듈은 채널, 공간의 correlation 을 독립적으로 나타낼 수 있도록 연산을 분해. -&gt; 쉽고 효율적인 프로세스를 만듦.</li>
-<li>Inception의 가설은 채널 채널, 공간의 correlation 이 분리되어 있으므로 동시에 매핑하는 것은 좋지 않다는 것.</li>
-
-<li><p>Figure 2는 3x3 conv와 1x1 conv만 사용한 단순화한 Inception 모듈.</p>
-
-<figure>
-    <img src="/images/post/xception/Untitled_1.png"/> 
-</figure>
+<li>
+<p>Convolution layer는 3차원 공간에서 filter를 학습하려고 함.</p>
 </li>
-
-<li><p>Figure 3은 Figure 2의 Inception 모듈에서 하나의 큰 1x1 Convolution과 3x3 Convolution들로 재구성한 것.</p>
-
-<figure>
-    <img src="/images/post/xception/Untitled_2.png"/> 
-</figure>
+<li>
+<p>Single Convolution kernel 은 채널의 correlation과 공간의 correlation 을 동시에 mapping 함.</p>
 </li>
+<li>
+<p>Inception 모듈은 채널, 공간의 correlation 을 독립적으로 나타낼 수 있도록 연산을 분해. -&gt; 쉽고 효율적인 프로세스를 만듦.</p>
+</li>
+<li>
+<p>Inception의 가설은 채널 채널, 공간의 correlation 이 분리되어 있으므로 동시에 매핑하는 것은 좋지 않다는 것.</p>
+</li>
+<li>
+<p>Figure 2는 3x3 conv와 1x1 conv만 사용한 단순화한 Inception 모듈.</p>
+<figure><img src="/images/post/xception/Untitled_1.png"/>
+</figure>
 
-<li><p>이 방법이 Inception 의 가설보다 뛰어난 가설을 만드는 것이 합리적인 것일지, 채널과 공간을 독립적으로 매핑할 수 있는지 의문.</p></li>
+</li>
+<li>
+<p>Figure 3은 Figure 2의 Inception 모듈에서 하나의 큰 1x1 Convolution과 3x3 Convolution들로 재구성한 것.</p>
+<figure><img src="/images/post/xception/Untitled_2.png"/>
+</figure>
+
+</li>
+<li>
+<p>이 방법이 Inception 의 가설보다 뛰어난 가설을 만드는 것이 합리적인 것일지, 채널과 공간을 독립적으로 매핑할 수 있는지 의문.</p>
+</li>
 </ul>
-
-<h2 id="1-2-the-continuum-between-convolutions-and-separable-convolutions"><strong>1.2 The continuum between convolutions and separable convolutions</strong></h2>
-
+<h2 id="12thecontinuumbetweenconvolutionsandseparableconvolutions"><strong>1.2 The continuum between convolutions and separable convolutions</strong></h2>
 <ul>
-<li><p>Figure 4 처럼 Inception 모듈 구성.</p>
-
-<figure>
-    <img src="/images/post/xception/Untitled_3.png"/> 
+<li>
+<p>Figure 4 처럼 Inception 모듈 구성.</p>
+<figure><img src="/images/post/xception/Untitled_3.png"/>
 </figure>
+
 </li>
-
-<li><p>1x1 Convolution 적용하여 채널의 correlation 매핑, 그 후 각각의 channel별로 공간의 correlation 매핑</p></li>
-
-<li><p>이를 <strong>An “extreme” version of an Inception module</strong> 이라고 칭함.</p></li>
-
-<li><p>TensorFlow 프레임워크에 Depthwise Separable Convolution 연산과 거의 동일함.</p></li>
-
-<li><p>TensorFlow나 Keras 프레임워크에 있는 Depthwise Separable Convolution (Separable Convolution 라고도 불림.) 은 각 channel 별로 3x3 Convolution 적용 후 채널간의 1x1 Convolution 적용.</p></li>
-
-<li><p>영상처리 분야에서 사용하는 Separable Convolution 과 혼동하면 안됨, 이 연산은 공간적 분리를 하는 Convolution.</p></li>
+<li>
+<p>1x1 Convolution 적용하여 채널의 correlation 매핑, 그 후 각각의 channel별로 공간의 correlation 매핑</p>
+</li>
+<li>
+<p>이를 <strong>An “extreme” version of an Inception module</strong> 이라고 칭함.</p>
+</li>
+<li>
+<p>TensorFlow 프레임워크에 Depthwise Separable Convolution 연산과 거의 동일함.</p>
+</li>
+<li>
+<p>TensorFlow나 Keras 프레임워크에 있는 Depthwise Separable Convolution (Separable Convolution 라고도 불림.) 은 각 channel 별로 3x3 Convolution 적용 후 채널간의 1x1 Convolution 적용.</p>
+</li>
+<li>
+<p>영상처리 분야에서 사용하는 Separable Convolution 과 혼동하면 안됨, 이 연산은 공간적 분리를 하는 Convolution.</p>
+</li>
 </ul>
-
 <table>
 <thead>
 <tr>
-<th align="center">비교</th>
-<th align="center">Extream</th>
-<th align="center">Depthwise Separable</th>
+<th style="text-align:center">비교</th>
+<th style="text-align:center">Extream</th>
+<th style="text-align:center">Depthwise Separable</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
-<td align="center">연산순서</td>
-<td align="center">pointwise&ndash;&gt;channelwise</td>
-<td align="center">channelwise&ndash;&gt;pointwise</td>
+<td style="text-align:center">연산순서</td>
+<td style="text-align:center">pointwise&ndash;&gt;channelwise</td>
+<td style="text-align:center">channelwise&ndash;&gt;pointwise</td>
 </tr>
-
 <tr>
-<td align="center">비선형성</td>
-<td align="center">Presence</td>
-<td align="center">Absence</td>
+<td style="text-align:center">비선형성</td>
+<td style="text-align:center">Presence</td>
+<td style="text-align:center">Absence</td>
 </tr>
 </tbody>
 </table>
-
-<h1 id="2-prior-work"><strong>2. Prior work</strong></h1>
-
+<h1 id="2priorwork"><strong>2. Prior work</strong></h1>
 <ul>
 <li>VGG-16 과 같은 구조가 xception 과 유사.</li>
 <li>Inception 구조는 가지치기의 이점을 보여줌.</li>
@@ -280,13 +282,9 @@ URL: <a href="https://arxiv.org/abs/1610.02357">https://arxiv.org/abs/1610.02357
 <li>TensorFlow에는 이미 구현되어있음.</li>
 <li>Residual connection 을 광범위하게 사용.</li>
 </ul>
-
-<h1 id="3-the-xception-architecture"><strong>3. The Xception architecture</strong></h1>
-
-<figure>
-    <img src="/images/post/xception/Untitled_4.png"/> 
+<h1 id="3thexceptionarchitecture"><strong>3. The Xception architecture</strong></h1>
+<figure><img src="/images/post/xception/Untitled_4.png"/>
 </figure>
-
 
 <ul>
 <li>Figure 5 와 같은 구조 제안.</li>
@@ -294,134 +292,105 @@ URL: <a href="https://arxiv.org/abs/1610.02357">https://arxiv.org/abs/1610.02357
 <li>총 36개의 convolution layer로 구성.</li>
 <li>매우 단순한 구조.</li>
 </ul>
-
-<h1 id="4-experimental-evaluation"><strong>4. Experimental evaluation</strong></h1>
-
+<h1 id="4experimentalevaluation"><strong>4. Experimental evaluation</strong></h1>
 <ul>
 <li>Xception과 Inceotion V3 비교.</li>
 <li>Parameters가 비슷. 네트워크 규모에 대한 차이를 없애기 위함.</li>
 <li>ImageNet과 JFT dataset 이용.</li>
 </ul>
-
-<h2 id="4-1-the-jft-dataset"><strong>4.1 The JFT dataset</strong></h2>
-
+<h2 id="41thejftdataset"><strong>4.1 The JFT dataset</strong></h2>
 <ul>
 <li>그냥&hellip;JFT 데이터 설명&hellip;</li>
 <li>Google 데이터 중 하나</li>
 <li>JFT 로 학습, FastEval14k dataset으로 성능 비교.</li>
 </ul>
-
-<h2 id="4-2-optimization-configuration"><strong>4.2 Optimization configuration</strong></h2>
-
+<h2 id="42optimizationconfiguration"><strong>4.2 Optimization configuration</strong></h2>
 <ul>
 <li>각 방법에 대해서 다음과 같은 설정으로 Xception, Inception V3 모두 학습</li>
 <li>On ImageNet
-
 <ul>
 <li>Optimizer: SGD</li>
 <li>Momentum: 0.9</li>
 <li>Initial learning rate: 0.045</li>
 <li>Learning rate decay: 0.94 (every 2 epochs)</li>
-</ul></li>
+</ul>
+</li>
 <li>On JFT
-
 <ul>
 <li>Optimizer: RMSprop</li>
 <li>Momentum: 0.9</li>
 <li>Initial learning rate: 0.001</li>
 <li>Learning rate decay: 0.9 (every 3,000,000 samples)</li>
-</ul></li>
 </ul>
-
-<h2 id="4-3-regularization-configuration"><strong>4.3 Regularization configuration</strong></h2>
-
+</li>
+</ul>
+<h2 id="43regularizationconfiguration"><strong>4.3 Regularization configuration</strong></h2>
 <ul>
 <li>Weight decay</li>
 <li>Dropout</li>
 <li>Auxiliary loss tower</li>
 </ul>
-
-<h2 id="4-4-training-infrastructure"><strong>4.4 Training infrastructure</strong></h2>
-
+<h2 id="44traininginfrastructure"><strong>4.4 Training infrastructure</strong></h2>
 <ul>
 <li>80개의 NVIDIA K80 GPU &hellip;.</li>
 <li>ImageNet 학습시 <strong>synchronous gradient descent</strong>을 적용하여 data parallelism 이용. → 3일 소요</li>
 <li>JFT 학습시 <strong>asynchronous gradient descent</strong>을 적용하여 data parallelism 이용. →한달 소요</li>
 </ul>
-
-<h2 id="4-5-comparison-with-inception-v3"><strong>4.5 Comparison with Inception V3</strong></h2>
-
-<h3 id="4-5-1-classification-performance"><strong>4.5.1 Classification performance</strong></h3>
-
+<h2 id="45comparisonwithinceptionv3"><strong>4.5 Comparison with Inception V3</strong></h2>
+<h3 id="451classificationperformance"><strong>4.5.1 Classification performance</strong></h3>
 <ul>
-<li><p>두 데이터 모두 Xception이 좋은 성능을 보임.</p>
-
-<figure>
-    <img src="/images/post/xception/Untitled_5.png"/> 
+<li>
+<p>두 데이터 모두 Xception이 좋은 성능을 보임.</p>
+<figure><img src="/images/post/xception/Untitled_5.png"/>
 </figure>
 
-
-<figure>
-    <img src="/images/post/xception/Untitled_6.png"/> 
+<figure><img src="/images/post/xception/Untitled_6.png"/>
 </figure>
 
-
-<figure>
-    <img src="/images/post/xception/Untitled_7.png"/> 
+<figure><img src="/images/post/xception/Untitled_7.png"/>
 </figure>
 
-
-<figure>
-    <img src="/images/post/xception/Untitled_8.png"/> 
+<figure><img src="/images/post/xception/Untitled_8.png"/>
 </figure>
 
-
-<figure>
-    <img src="/images/post/xception/Untitled_9.png"/> 
+<figure><img src="/images/post/xception/Untitled_9.png"/>
 </figure>
+
 </li>
 </ul>
-
-<h3 id="4-5-2-size-and-speed"><strong>4.5.2 Size and speed</strong></h3>
-
+<h3 id="452sizeandspeed"><strong>4.5.2 Size and speed</strong></h3>
 <ul>
-<li><p>Parameter가 늘지 않으면서 성능 향상을 보이기에 Xception이 효율적인 모델.</p>
-
-<figure>
-    <img src="/images/post/xception/Untitled_10.png"/> 
+<li>
+<p>Parameter가 늘지 않으면서 성능 향상을 보이기에 Xception이 효율적인 모델.</p>
+<figure><img src="/images/post/xception/Untitled_10.png"/>
 </figure>
+
 </li>
 </ul>
-
-<h3 id="4-6-effect-of-the-residual-connections"><strong>4.6 Effect of the residual connections</strong></h3>
-
+<h3 id="46effectoftheresidualconnections"><strong>4.6 Effect of the residual connections</strong></h3>
 <ul>
 <li>Residual connection에 대한 ablation study 진행.</li>
 <li>Residual connection의 중요성을 보여줌.</li>
 </ul>
-
-<figure>
-    <img src="/images/post/xception/Untitled_11.png"/> 
+<figure><img src="/images/post/xception/Untitled_11.png"/>
 </figure>
 
-
-<h3 id="4-7-effect-of-an-intermediate-activation-after-point-wise-convolutions"><strong>4.7 Effect of an intermediate activation after point wise convolutions</strong></h3>
-
+<h3 id="47effectofanintermediateactivationafterpointwiseconvolutions"><strong>4.7 Effect of an intermediate activation after point wise convolutions</strong></h3>
 <ul>
-<li>Depthwise separable convolution은 depthwise → pointwise convolution으로 구성되어있음.</li>
-
-<li><p>그 중간에 activation function에 대한 ablation study 진행.</p>
-
-<figure>
-    <img src="/images/post/xception/Untitled_12.png"/> 
-</figure>
+<li>
+<p>Depthwise separable convolution은 depthwise → pointwise convolution으로 구성되어있음.</p>
 </li>
+<li>
+<p>그 중간에 activation function에 대한 ablation study 진행.</p>
+<figure><img src="/images/post/xception/Untitled_12.png"/>
+</figure>
 
-<li><p><a href="https://arxiv.org/pdf/1512.00567.pdf">Inception module에 대한 연구</a>와 반대되는 결과 도출.</p></li>
+</li>
+<li>
+<p><a href="https://arxiv.org/pdf/1512.00567.pdf">Inception module에 대한 연구</a>와 반대되는 결과 도출.</p>
+</li>
 </ul>
-
-<h1 id="5-future-directions"><strong>5. Future directions</strong></h1>
-
+<h1 id="5futuredirections"><strong>5. Future directions</strong></h1>
 <ul>
 <li>Depthwise separble convolution 이 만능이라는 보장은 없음.</li>
 </ul>
@@ -538,7 +507,7 @@ URL: <a href="https://arxiv.org/abs/1610.02357">https://arxiv.org/abs/1610.02357
         </ul>
       </div>
       <div class="col-12 border-top py-4 text-center">
-        | copyright &copy; 2020 <a href="https://themefisher.com">Themefisher</a> All Rights Reserved |
+        | copyright © 2020 <a href="https://themefisher.com">Themefisher</a> All Rights Reserved |
       </div>
     </div>
   </div>

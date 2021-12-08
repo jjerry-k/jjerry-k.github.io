@@ -1,18 +1,14 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Deeplearning on Jerry&#39;s DevLog</title>
+    <title>DeepLearning on Jerry&#39;s DevLog</title>
     <link>https://jjerry-k.github.io/categories/deeplearning/</link>
-    <description>Recent content in Deeplearning on Jerry&#39;s DevLog</description>
+    <description>Recent content in DeepLearning on Jerry&#39;s DevLog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 08 Aug 2021 23:05:38 +0900</lastBuildDate>
-    
-	<atom:link href="https://jjerry-k.github.io/categories/deeplearning/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sun, 08 Aug 2021 23:05:38 +0900</lastBuildDate><atom:link href="https://jjerry-k.github.io/categories/deeplearning/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>쉽고 빠르게 결과를 확인해보자. Streamlit</title>
+      <title>ML/DL Prototype using Streamlit</title>
       <link>https://jjerry-k.github.io/blog/streamlit/</link>
       <pubDate>Sun, 08 Aug 2021 23:05:38 +0900</pubDate>
       
@@ -40,16 +36,6 @@
     </item>
     
     <item>
-      <title> IPad 에서 VSCode 사용하기</title>
-      <link>https://jjerry-k.github.io/blog/codeserver/</link>
-      <pubDate>Thu, 15 Apr 2021 23:47:36 +0900</pubDate>
-      
-      <guid>https://jjerry-k.github.io/blog/codeserver/</guid>
-      <description>근래에 12인치 맥북과 아이패드 프로 9.7인치를 중고로 팔았습니다.
-그리고 아이패드 프로 11인치 1세대를 구매했죠&amp;hellip;(포기할 수 없었다.</description>
-    </item>
-    
-    <item>
       <title>About TensorFlow Callback </title>
       <link>https://jjerry-k.github.io/blog/tf_callback/</link>
       <pubDate>Mon, 22 Feb 2021 19:32:50 +0900</pubDate>
@@ -64,7 +50,8 @@
       <pubDate>Tue, 12 Jan 2021 01:14:36 +0900</pubDate>
       
       <guid>https://jjerry-k.github.io/blog/mediapipe_4/</guid>
-      <description>최근 MediaPipe의 버전이 올라가면서 python API에 추가된 솔루션이 있습니다!</description>
+      <description>최근 MediaPipe의 버전이 올라가면서 python API에 추가된 솔루션이 있습니다!
+holistic 이라는 솔루션입니다!</description>
     </item>
     
     <item>
@@ -193,7 +180,7 @@ Jupyter는 아는데&amp;hellip;. Neptune은 또 뭐여&amp;hellip;.</descriptio
       
       <guid>https://jjerry-k.github.io/blog/netron/</guid>
       <description>오늘은 netron 이라는 Tool를 드리려 합니다.
- 본 포스팅은 https://github.</description>
+ 본 포스팅은 https://github.com/lutzroeder/netron 내용을 이용하여 작성하였습니다.</description>
     </item>
     
     <item>
@@ -411,7 +398,7 @@ NIPA는 정보통신산업진흥원 의 약자인데 근데 그래서 이게 왜
       <pubDate>Fri, 29 Mar 2019 18:30:46 +0600</pubDate>
       
       <guid>https://jjerry-k.github.io/blog/yolo/</guid>
-      <description>You Only Look Once: Unified, Real-Time, Object detection  편의상 bounding box -&amp;gt; bbox</description>
+      <description>You Only Look Once: Unified, Real-Time, Object detection   편의상 bounding box -&amp;gt; bbox</description>
     </item>
     
     <item>

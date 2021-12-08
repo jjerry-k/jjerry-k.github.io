@@ -9,7 +9,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="this is meta description">
   <meta name="author" content="Jerry Kim">
-  <meta name="generator" content="Hugo 0.54.0" />
+  <meta name="generator" content="Hugo 0.90.0" />
 
   <!-- plugins -->
   
@@ -162,55 +162,33 @@
         <img src="https://jjerry-k.github.io/images/post/coral/thumbnail.png" class="img-fluid w-100 mb-4" alt="Google Coral USB 사용기">
         
         <div class="content mb-5">
-          
-
-<h1 id="raspberry-pi-4-google-coral-usb-accelerator">Raspberry pi 4 &amp; Google Coral USB Accelerator</h1>
-
+          <h1 id="raspberry-pi-4--google-coral-usb-accelerator">Raspberry pi 4 &amp; Google Coral USB Accelerator</h1>
 <p>평소에 라즈베리파이 4를 NAS로 사용하고 있었습니다.  <a href="https://jjerry-k.github.io/living/2018/07/10/Raspberry-Mini-PC/">이런 느낌으로..</a></p>
-
 <p>하지만&hellip;항상 마음 속에는 &ldquo;흠&hellip;.라즈베리파이로 딥러닝을 돌려보고 싶다&hellip;&rdquo; 라는 생각을 하고 있었죠.</p>
-
 <p>평소와 같이 <del>평화로운 중고나라</del> 를 탐색하고 있었습니다. (모니터가 사고 싶어서 &hellip;.)</p>
-
 <p>근데 . . 갑자기 . . ? 왜 인지 모르겠지만 Google Coral USB Accelerator 를 검색하고 싶더군요.</p>
-
 <p>그래서 바로 검색을 했고 7마넌(나름 저렴)에 올라와있길래 일요일에 주문을 했습니다.</p>
-
 <p>그리고 오늘 집에 도착을 했죠.</p>
-
 <p>이제 사용을 해보려고 합니다.</p>
-
 <p>준비물을 소개하도록 하죠.</p>
-
 <h1 id="준비물">준비물</h1>
-
 <ul>
 <li>라즈베리 파이</li>
 <li>Coral Accelerator</li>
 <li>Webcam</li>
 </ul>
-
-<figure>
-    <img src="/images/post/coral/01.png"/> 
+<figure><img src="/images/post/coral/01.png"/>
 </figure>
-
 
 <h1 id="step-1-연결">Step 1. 연결</h1>
-
-<figure>
-    <img src="/images/post/coral/02.png"/> 
+<figure><img src="/images/post/coral/02.png"/>
 </figure>
 
-
-<figure>
-    <img src="/images/post/coral/03.png"/> 
+<figure><img src="/images/post/coral/03.png"/>
 </figure>
-
 
 <p>모두 연결 후 라즈베리파이를 켜면 위 사진과 같이 USB에 흰색 불이 들어옵니다.</p>
-
 <h1 id="step-2-라즈베리파이-세팅">Step 2. 라즈베리파이 세팅</h1>
-
 <pre><code>#!/bin/bash
 
 echo &quot;deb https://packages.cloud.google.com/apt coral-edgetpu-stable main&quot; | sudo tee /etc/apt/sources.list.d/coral-edgetpu.list
@@ -233,15 +211,10 @@ cd examples-camera
 
 sh download_models.sh
 </code></pre>
-
 <p><code>download_models.sh</code>를 실행하시면 다음과 같이  <code>all_models</code>라는 디렉토리 안에 각 데이터셋 별 labelmap.txt와 학습된 모델의 tflite 파일이 있습니다.</p>
-
 <p>여기서 밑줄 친 파일을 이용해서 object detection 을 해볼겁니다! 일단 그 다음 세팅으로 넘어가죠.</p>
-
-<figure>
-    <img src="/images/post/coral/04.png"/> 
+<figure><img src="/images/post/coral/04.png"/>
 </figure>
-
 
 <pre><code>#!/bin/bash
 
@@ -249,13 +222,9 @@ cd opencv
 
 sh install_requirements.sh
 </code></pre>
-
 <p>opencv를 이용한 스크립트를 사용하기 위해 필요한 것들을 설치합니다.</p>
-
 <h1 id="step-3-스크립트-실행">Step 3. 스크립트 실행</h1>
-
 <p>이제 opencv 디렉토리 안에 detect.py를 실행 시켜줄건데요. 옵션이 몇개 있습니다. 한번 살펴보도록 하죠.</p>
-
 <pre><code>usage: detect.py [-h] [--model MODEL] [--labels LABELS] [--top_k TOP_K]
                  [--camera_idx CAMERA_IDX] [--threshold THRESHOLD]
 
@@ -269,25 +238,18 @@ optional arguments:
   --threshold THRESHOLD
                         classifier score threshold
 </code></pre>
-
 <p>한번 다음과 같이 실행을 해보겠습니다.</p>
-
 <pre><code>python detect.py \
 --model ../all_models/mobilenet_ssd_v2_face_quant_postprocess_edgetpu.tflite \
 --labels ../all_models/coco_labels.txt \
 --top_k 3 \
 --threshold 0.7
 </code></pre>
-
-<figure>
-    <img src="/images/post/coral/05.png"/> 
+<figure><img src="/images/post/coral/05.png"/>
 </figure>
 
-
 <p>막 빠를 줄 알았는데 Webcam 의 한계라 그런지&hellip; FPS가 낮네요..</p>
-
 <p>추후에 카메라 모듈을 이용해서 해봐야겠습니다.</p>
-
 <p>그럼 간단한 이용기를 마치겠습니다.</p>
 
         </div>
@@ -402,7 +364,7 @@ optional arguments:
         </ul>
       </div>
       <div class="col-12 border-top py-4 text-center">
-        | copyright &copy; 2020 <a href="https://themefisher.com">Themefisher</a> All Rights Reserved |
+        | copyright © 2020 <a href="https://themefisher.com">Themefisher</a> All Rights Reserved |
       </div>
     </div>
   </div>

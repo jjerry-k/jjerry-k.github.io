@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Usage on Jerry&#39;s DevLog</title>
@@ -6,11 +6,7 @@
     <description>Recent content in Usage on Jerry&#39;s DevLog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 31 Jan 2021 20:56:18 +0900</lastBuildDate>
-    
-	<atom:link href="https://jjerry-k.github.io/tags/usage/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sun, 31 Jan 2021 20:56:18 +0900</lastBuildDate><atom:link href="https://jjerry-k.github.io/tags/usage/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Configuration</title>
       <link>https://jjerry-k.github.io/blog/configuration/</link>
@@ -36,7 +32,7 @@
       <pubDate>Thu, 09 May 2019 18:30:46 +0600</pubDate>
       
       <guid>https://jjerry-k.github.io/blog/part1a/</guid>
-      <description>Index  Index  A. Visualizing statistical relationships Relating variables with scatter plots Emphasizing continuity with line plots  Aggregation and representing uncertainty Plotting subsets of data with semantic mappings Plotting with date data  Showing multiple relationships with facets   A.</description>
+      <description>Index  Index  A. Visualizing statistical relationships  Relating variables with scatter plots Emphasizing continuity with line plots  Aggregation and representing uncertainty Plotting subsets of data with semantic mappings Plotting with date data   Showing multiple relationships with facets      A.</description>
     </item>
     
     <item>

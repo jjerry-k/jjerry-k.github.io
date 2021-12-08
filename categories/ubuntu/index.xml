@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Ubuntu on Jerry&#39;s DevLog</title>
@@ -6,11 +6,7 @@
     <description>Recent content in Ubuntu on Jerry&#39;s DevLog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 24 Oct 2020 18:30:46 +0600</lastBuildDate>
-    
-	<atom:link href="https://jjerry-k.github.io/categories/ubuntu/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sat, 24 Oct 2020 18:30:46 +0600</lastBuildDate><atom:link href="https://jjerry-k.github.io/categories/ubuntu/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Docker Usage (1)</title>
       <link>https://jjerry-k.github.io/blog/docker_usage_01/</link>
@@ -46,7 +42,7 @@
       <pubDate>Tue, 05 May 2020 18:30:46 +0600</pubDate>
       
       <guid>https://jjerry-k.github.io/blog/dockerfile/</guid>
-      <description>지극히 개인이 사용하기 위한 Dockerfile  환경을 만들 때마다 추가될 예정입니다.</description>
+      <description>지극히 개인이 사용하기 위한 Dockerfile   환경을 만들 때마다 추가될 예정입니다.</description>
     </item>
     
     <item>

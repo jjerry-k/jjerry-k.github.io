@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Jerry&#39;s DevLog</title>
@@ -6,161 +6,13 @@
     <description>Recent content in Tags on Jerry&#39;s DevLog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 08 Dec 2018 18:30:46 +0600</lastBuildDate>
-    
-	<atom:link href="https://jjerry-k.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Thu, 09 Dec 2021 00:43:06 +0900</lastBuildDate><atom:link href="https://jjerry-k.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Command</title>
-      <link>https://jjerry-k.github.io/tags/command/</link>
-      <pubDate>Sat, 08 Dec 2018 18:30:46 +0600</pubDate>
+      <title>Library</title>
+      <link>https://jjerry-k.github.io/tags/library/</link>
+      <pubDate>Thu, 09 Dec 2021 00:43:06 +0900</pubDate>
       
-      <guid>https://jjerry-k.github.io/tags/command/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Community</title>
-      <link>https://jjerry-k.github.io/tags/community/</link>
-      <pubDate>Fri, 08 Jan 2021 01:00:34 +0900</pubDate>
-      
-      <guid>https://jjerry-k.github.io/tags/community/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Daily</title>
-      <link>https://jjerry-k.github.io/tags/daily/</link>
-      <pubDate>Fri, 07 Sep 2018 18:30:46 +0600</pubDate>
-      
-      <guid>https://jjerry-k.github.io/tags/daily/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Docker</title>
-      <link>https://jjerry-k.github.io/tags/docker/</link>
-      <pubDate>Sat, 24 Oct 2020 18:30:46 +0600</pubDate>
-      
-      <guid>https://jjerry-k.github.io/tags/docker/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Github</title>
-      <link>https://jjerry-k.github.io/tags/github/</link>
-      <pubDate>Sat, 30 Jan 2021 02:27:00 +0900</pubDate>
-      
-      <guid>https://jjerry-k.github.io/tags/github/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Hardware</title>
-      <link>https://jjerry-k.github.io/tags/hardware/</link>
-      <pubDate>Mon, 29 Mar 2021 23:19:59 +0900</pubDate>
-      
-      <guid>https://jjerry-k.github.io/tags/hardware/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Hashlib</title>
-      <link>https://jjerry-k.github.io/tags/hashlib/</link>
-      <pubDate>Wed, 10 Feb 2021 00:46:48 +0900</pubDate>
-      
-      <guid>https://jjerry-k.github.io/tags/hashlib/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Hugo</title>
-      <link>https://jjerry-k.github.io/tags/hugo/</link>
-      <pubDate>Mon, 23 Nov 2020 20:41:18 +0900</pubDate>
-      
-      <guid>https://jjerry-k.github.io/tags/hugo/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Jekyll</title>
-      <link>https://jjerry-k.github.io/tags/jekyll/</link>
-      <pubDate>Wed, 24 Oct 2018 18:30:46 +0600</pubDate>
-      
-      <guid>https://jjerry-k.github.io/tags/jekyll/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Jupyter</title>
-      <link>https://jjerry-k.github.io/tags/jupyter/</link>
-      <pubDate>Tue, 08 Dec 2020 00:24:48 +0900</pubDate>
-      
-      <guid>https://jjerry-k.github.io/tags/jupyter/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Macbook</title>
-      <link>https://jjerry-k.github.io/tags/macbook/</link>
-      <pubDate>Sun, 26 Apr 2020 18:30:46 +0600</pubDate>
-      
-      <guid>https://jjerry-k.github.io/tags/macbook/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Markdown</title>
-      <link>https://jjerry-k.github.io/tags/markdown/</link>
-      <pubDate>Fri, 19 Oct 2018 18:30:46 +0600</pubDate>
-      
-      <guid>https://jjerry-k.github.io/tags/markdown/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Paper</title>
-      <link>https://jjerry-k.github.io/tags/paper/</link>
-      <pubDate>Fri, 21 Aug 2020 18:30:46 +0600</pubDate>
-      
-      <guid>https://jjerry-k.github.io/tags/paper/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Review</title>
-      <link>https://jjerry-k.github.io/tags/review/</link>
-      <pubDate>Wed, 10 Feb 2021 20:43:43 +0900</pubDate>
-      
-      <guid>https://jjerry-k.github.io/tags/review/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Setting</title>
-      <link>https://jjerry-k.github.io/tags/setting/</link>
-      <pubDate>Sun, 16 Aug 2020 18:30:46 +0600</pubDate>
-      
-      <guid>https://jjerry-k.github.io/tags/setting/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Small Talk</title>
-      <link>https://jjerry-k.github.io/tags/small-talk/</link>
-      <pubDate>Mon, 30 Nov 2020 22:37:59 +0900</pubDate>
-      
-      <guid>https://jjerry-k.github.io/tags/small-talk/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Tensorflow</title>
-      <link>https://jjerry-k.github.io/tags/tensorflow/</link>
-      <pubDate>Mon, 22 Feb 2021 19:32:50 +0900</pubDate>
-      
-      <guid>https://jjerry-k.github.io/tags/tensorflow/</guid>
+      <guid>https://jjerry-k.github.io/tags/library/</guid>
       <description></description>
     </item>
     
@@ -174,11 +26,155 @@
     </item>
     
     <item>
+      <title>Hardware</title>
+      <link>https://jjerry-k.github.io/tags/hardware/</link>
+      <pubDate>Mon, 29 Mar 2021 23:19:59 +0900</pubDate>
+      
+      <guid>https://jjerry-k.github.io/tags/hardware/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>TensorFlow</title>
+      <link>https://jjerry-k.github.io/tags/tensorflow/</link>
+      <pubDate>Mon, 22 Feb 2021 19:32:50 +0900</pubDate>
+      
+      <guid>https://jjerry-k.github.io/tags/tensorflow/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Review</title>
+      <link>https://jjerry-k.github.io/tags/review/</link>
+      <pubDate>Wed, 10 Feb 2021 20:43:43 +0900</pubDate>
+      
+      <guid>https://jjerry-k.github.io/tags/review/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Usage</title>
       <link>https://jjerry-k.github.io/tags/usage/</link>
       <pubDate>Sun, 31 Jan 2021 20:56:18 +0900</pubDate>
       
       <guid>https://jjerry-k.github.io/tags/usage/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Github</title>
+      <link>https://jjerry-k.github.io/tags/github/</link>
+      <pubDate>Sat, 30 Jan 2021 02:27:00 +0900</pubDate>
+      
+      <guid>https://jjerry-k.github.io/tags/github/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Community</title>
+      <link>https://jjerry-k.github.io/tags/community/</link>
+      <pubDate>Fri, 08 Jan 2021 01:00:34 +0900</pubDate>
+      
+      <guid>https://jjerry-k.github.io/tags/community/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Jupyter</title>
+      <link>https://jjerry-k.github.io/tags/jupyter/</link>
+      <pubDate>Tue, 08 Dec 2020 00:24:48 +0900</pubDate>
+      
+      <guid>https://jjerry-k.github.io/tags/jupyter/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Small Talk</title>
+      <link>https://jjerry-k.github.io/tags/small-talk/</link>
+      <pubDate>Mon, 30 Nov 2020 22:37:59 +0900</pubDate>
+      
+      <guid>https://jjerry-k.github.io/tags/small-talk/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Hugo</title>
+      <link>https://jjerry-k.github.io/tags/hugo/</link>
+      <pubDate>Mon, 23 Nov 2020 20:41:18 +0900</pubDate>
+      
+      <guid>https://jjerry-k.github.io/tags/hugo/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Docker</title>
+      <link>https://jjerry-k.github.io/tags/docker/</link>
+      <pubDate>Sat, 24 Oct 2020 18:30:46 +0600</pubDate>
+      
+      <guid>https://jjerry-k.github.io/tags/docker/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Paper</title>
+      <link>https://jjerry-k.github.io/tags/paper/</link>
+      <pubDate>Fri, 21 Aug 2020 18:30:46 +0600</pubDate>
+      
+      <guid>https://jjerry-k.github.io/tags/paper/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Setting</title>
+      <link>https://jjerry-k.github.io/tags/setting/</link>
+      <pubDate>Sun, 16 Aug 2020 18:30:46 +0600</pubDate>
+      
+      <guid>https://jjerry-k.github.io/tags/setting/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Macbook</title>
+      <link>https://jjerry-k.github.io/tags/macbook/</link>
+      <pubDate>Sun, 26 Apr 2020 18:30:46 +0600</pubDate>
+      
+      <guid>https://jjerry-k.github.io/tags/macbook/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Command</title>
+      <link>https://jjerry-k.github.io/tags/command/</link>
+      <pubDate>Sat, 08 Dec 2018 18:30:46 +0600</pubDate>
+      
+      <guid>https://jjerry-k.github.io/tags/command/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Jekyll</title>
+      <link>https://jjerry-k.github.io/tags/jekyll/</link>
+      <pubDate>Wed, 24 Oct 2018 18:30:46 +0600</pubDate>
+      
+      <guid>https://jjerry-k.github.io/tags/jekyll/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Markdown</title>
+      <link>https://jjerry-k.github.io/tags/markdown/</link>
+      <pubDate>Fri, 19 Oct 2018 18:30:46 +0600</pubDate>
+      
+      <guid>https://jjerry-k.github.io/tags/markdown/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Daily</title>
+      <link>https://jjerry-k.github.io/tags/daily/</link>
+      <pubDate>Fri, 07 Sep 2018 18:30:46 +0600</pubDate>
+      
+      <guid>https://jjerry-k.github.io/tags/daily/</guid>
       <description></description>
     </item>
     

@@ -9,7 +9,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="this is meta description">
   <meta name="author" content="Jerry Kim">
-  <meta name="generator" content="Hugo 0.54.0" />
+  <meta name="generator" content="Hugo 0.90.0" />
 
   <!-- plugins -->
   
@@ -160,97 +160,61 @@
         </div>
         
         <div class="content mb-5">
-          
-
-<h1 id="stargan-unified-generative-adversarial-networks-for-multi-domain-image-to-image-translation">StarGAN: Unified Generative Adversarial Networks for Multi-Domain Image-to-Image Translation</h1>
-
-<p>Author: Yunjey Choi, Youngjung Uh, Jaejun Yoo, Jung-Woo Ha<br />
-Date: Dec 21, 2019<br />
+          <h1 id="stargan-unified-generative-adversarial-networks-for-multi-domain-image-to-image-translation">StarGAN: Unified Generative Adversarial Networks for Multi-Domain Image-to-Image Translation</h1>
+<p>Author: Yunjey Choi, Youngjung Uh, Jaejun Yoo, Jung-Woo Ha<br>
+Date: Dec 21, 2019<br>
 URL: <a href="https://arxiv.org/abs/1711.09020">https://arxiv.org/abs/1711.09020</a></p>
-
 <h1 id="introduction">Introduction</h1>
-
 <ul>
 <li>Multi domain image translation 이라고 하면 다음 사진과 같이 머리 색, 성별, 연령대 등과 같이 여러 condition 에 대응하는 영상을 생성.</li>
 </ul>
-
-<figure>
-    <img src="/images/post/starganv1/Untitled.png"/> 
+<figure><img src="/images/post/starganv1/Untitled.png"/>
 </figure>
-
 
 <ul>
 <li>기존의 image-to-image translation 은 n개의 domain 을 적용할 시에 n*(n-1) 개의 generator가 필요했음.</li>
 <li>StarGAN은 한 1개의 generator로 n개의 domain 을 적용.</li>
 </ul>
-
-<figure>
-    <img src="/images/post/starganv1/Untitled_1.png"/> 
+<figure><img src="/images/post/starganv1/Untitled_1.png"/>
 </figure>
-
 
 <h1 id="star-generative-adversarial-networks">Star Generative Adversarial Networks</h1>
-
-<figure>
-    <img src="/images/post/starganv1/Untitled_2.png"/> 
+<figure><img src="/images/post/starganv1/Untitled_2.png"/>
 </figure>
 
-
 <h1 id="loss-functions">Loss functions</h1>
-
 <ul>
 <li>Adversarial Loss</li>
 </ul>
-
-<p>$$\mathcal{L}_{adv} = \mathbb{E}_x [\log D<em>{src}(x)] + \mathbb{E}_{x, c} [\log (1-D</em>{src}(G(x,c)))] - \lambda<em>{gp}\mathbb{E}_{\hat{x}}[(\Vert \nabla</em>{\hat{x}}D_{src}(\hat{x})\Vert_2 -1)^2]$$</p>
-
+<p>$$\mathcal{L}_{adv} = \mathbb{E}_x [\log D_{src}(x)] + \mathbb{E}_{x, c} [\log (1-D_{src}(G(x,c)))] - \lambda_{gp}\mathbb{E}_{\hat{x}}[(\Vert \nabla_{\hat{x}}D_{src}(\hat{x})\Vert_2 -1)^2]$$</p>
 <p>$$\lambda_{gp} = 10$$</p>
-
 <ul>
 <li>Domain Classification Loss</li>
 </ul>
-
-<p>$$\mathcal{L}\^r<em>{cls} = \mathbb{E}_{x, c&rsquo;}[-\log D</em>{cls}(c&rsquo;|x)]$$</p>
-
-<p>$$\mathcal{L}\^f<em>{cls} = \mathbb{E}_{x, c&rsquo;}[-\log D</em>{cls}(c|G(x, c)]$$</p>
-
+<p>$$\mathcal{L}^r_{cls} = \mathbb{E}_{x, c'}[-\log D_{cls}(c'|x)]$$</p>
+<p>$$\mathcal{L}^f_{cls} = \mathbb{E}_{x, c'}[-\log D_{cls}(c|G(x, c)]$$</p>
 <ul>
 <li>Reconstruction Loss</li>
 </ul>
-
-<p>$$\mathcal{L}_{rec} = \mathbb{E}_{x, c, c&rsquo;}[\Vert x-G(G(x, c), c&rsquo;)\Vert_1]$$</p>
-
+<p>$$\mathcal{L}_{rec} = \mathbb{E}_{x, c, c'}[\Vert x-G(G(x, c), c')\Vert_1]$$</p>
 <ul>
 <li>Full Objective</li>
 </ul>
-
-<p>$$\mathcal{L}_D = -\mathcal{L}_{adv} + \lambda<em>{cls}\mathcal{L}^r</em>{cls}$$</p>
-
-<p>$$\mathcal{L}_G = \mathcal{L}_{adv} + \lambda<em>{cls}\mathcal{L}^f</em>{cls}+\lambda<em>{rec}\mathcal{L}</em>{rec}$$</p>
-
-<p>$$\lambda<em>{cls} = 1, \lambda</em>{rec} = 10$$</p>
-
+<p>$$\mathcal{L}_D = -\mathcal{L}_{adv} + \lambda_{cls}\mathcal{L}^r_{cls}$$</p>
+<p>$$\mathcal{L}_G = \mathcal{L}_{adv} + \lambda_{cls}\mathcal{L}^f_{cls}+\lambda_{rec}\mathcal{L}_{rec}$$</p>
+<p>$$\lambda_{cls} = 1, \lambda_{rec} = 10$$</p>
 <h1 id="result">Result</h1>
-
-<figure>
-    <img src="/images/post/starganv1/Untitled_3.png"/> 
+<figure><img src="/images/post/starganv1/Untitled_3.png"/>
 </figure>
 
-
-<figure>
-    <img src="/images/post/starganv1/Untitled_4.png"/> 
+<figure><img src="/images/post/starganv1/Untitled_4.png"/>
 </figure>
-
 
 <h1 id="training-detail">Training Detail</h1>
-
-<figure>
-    <img src="/images/post/starganv1/Untitled_5.png"/> 
+<figure><img src="/images/post/starganv1/Untitled_5.png"/>
 </figure>
 
-
-<figure>
-    <img src="/images/post/starganv1/Untitled_6.png"/> 
+<figure><img src="/images/post/starganv1/Untitled_6.png"/>
 </figure>
 
 
@@ -366,7 +330,7 @@ URL: <a href="https://arxiv.org/abs/1711.09020">https://arxiv.org/abs/1711.09020
         </ul>
       </div>
       <div class="col-12 border-top py-4 text-center">
-        | copyright &copy; 2020 <a href="https://themefisher.com">Themefisher</a> All Rights Reserved |
+        | copyright © 2020 <a href="https://themefisher.com">Themefisher</a> All Rights Reserved |
       </div>
     </div>
   </div>

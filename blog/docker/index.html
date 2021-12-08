@@ -9,7 +9,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="this is meta description">
   <meta name="author" content="Jerry Kim">
-  <meta name="generator" content="Hugo 0.54.0" />
+  <meta name="generator" content="Hugo 0.90.0" />
 
   <!-- plugins -->
   
@@ -160,26 +160,25 @@
         </div>
         
         <div class="content mb-5">
-          <pre><code class="language-bash"># nvidia docker 서비스 시작
+          <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># nvidia docker 서비스 시작</span>
 sudo service nvidia-docker start
 
-# 특정 포트 터널링, 경로 마운트, Docker image:tag 를 이용하여 container 로 실행
-docker run -ti -rm -p {호스트포트}:{도커포트} -v {호스트경로}:{도커경로} {IMAGE_NAME:tag} bash
+<span style="color:#75715e"># 특정 포트 터널링, 경로 마운트, Docker image:tag 를 이용하여 container 로 실행</span>
+docker run -ti -rm -p <span style="color:#f92672">{</span>호스트포트<span style="color:#f92672">}</span>:<span style="color:#f92672">{</span>도커포트<span style="color:#f92672">}</span> -v <span style="color:#f92672">{</span>호스트경로<span style="color:#f92672">}</span>:<span style="color:#f92672">{</span>도커경로<span style="color:#f92672">}</span> <span style="color:#f92672">{</span>IMAGE_NAME:tag<span style="color:#f92672">}</span> bash
 
-# 종료된 Container 삭제
-docker rm {CONTAINER_NAEM}
+<span style="color:#75715e"># 종료된 Container 삭제</span>
+docker rm <span style="color:#f92672">{</span>CONTAINER_NAEM<span style="color:#f92672">}</span>
 
-# Docker Image 삭제
-docker rmi {IMAGE_NAME}
+<span style="color:#75715e"># Docker Image 삭제</span>
+docker rmi <span style="color:#f92672">{</span>IMAGE_NAME<span style="color:#f92672">}</span>
 
-# 종료된 Container를 삭제하지 않고 새로운 IMAGE로 생성
-docker commit {CONTAINER_NAEM} {IMAGE_NAME:TAG}
+<span style="color:#75715e"># 종료된 Container를 삭제하지 않고 새로운 IMAGE로 생성</span>
+docker commit <span style="color:#f92672">{</span>CONTAINER_NAEM<span style="color:#f92672">}</span> <span style="color:#f92672">{</span>IMAGE_NAME:TAG<span style="color:#f92672">}</span>
 
-# Docker container 내에서 jupyter notebook 혹은 jupyter lab을 실행할때 사용되는 커맨드
-CUDA_VISIBLE_DEVICES=0 jupyter notebook --ip=0.0.0.0 --port=포트번호 --allow-root
+<span style="color:#75715e"># Docker container 내에서 jupyter notebook 혹은 jupyter lab을 실행할때 사용되는 커맨드</span>
+CUDA_VISIBLE_DEVICES<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span> jupyter notebook --ip<span style="color:#f92672">=</span>0.0.0.0 --port<span style="color:#f92672">=</span>포트번호 --allow-root
 
-</code></pre>
-
+</code></pre></div>
         </div>
 
         
@@ -292,7 +291,7 @@ CUDA_VISIBLE_DEVICES=0 jupyter notebook --ip=0.0.0.0 --port=포트번호 --allow
         </ul>
       </div>
       <div class="col-12 border-top py-4 text-center">
-        | copyright &copy; 2020 <a href="https://themefisher.com">Themefisher</a> All Rights Reserved |
+        | copyright © 2020 <a href="https://themefisher.com">Themefisher</a> All Rights Reserved |
       </div>
     </div>
   </div>

@@ -9,7 +9,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="this is meta description">
   <meta name="author" content="Jerry Kim">
-  <meta name="generator" content="Hugo 0.54.0" />
+  <meta name="generator" content="Hugo 0.90.0" />
 
   <!-- plugins -->
   
@@ -162,218 +162,147 @@
         <img src="https://phillipi.github.io/pix2pix/images/edges2cats.jpg" class="img-fluid w-100 mb-4" alt="Review: Pix2Pix">
         
         <div class="content mb-5">
-          
-
-<h1 id="image-to-image-translation-with-conditional-adversarial-networks">Image-to-Image Translation with Conditional Adversarial Networks</h1>
-
+          <h1 id="image-to-image-translation-with-conditional-adversarial-networks">Image-to-Image Translation with Conditional Adversarial Networks</h1>
 <p>Author: Phillip Isola, Jun-Yan Zhu, Tinghui Zhou, Alexei A. Efros
 Date: Nov 26, 2018
 URL: <a href="https://arxiv.org/abs/1611.07004">https://arxiv.org/abs/1611.07004</a></p>
-
 <p>GAN을 이용한 Image translation 의 시초에 가까운 Pix2Pix를 알아보려고 합니다.</p>
-
 <p>자세하게 리뷰하진 않을 겁니다.</p>
-
 <h1 id="introduction">Introduction</h1>
-
 <ul>
 <li>이 논문의 main contribution은 다양한 문제에서 Conditional GAN이 합리적인 결과를 생성한다는 것을 입증하는 것.</li>
 <li>이를 위해 Image-to-Image translation 으로 연구 진행.</li>
 </ul>
-
-<figure>
-    <img src="/images/post/pix2pix/Untitled.png"/> 
+<figure><img src="/images/post/pix2pix/Untitled.png"/>
 </figure>
 
-
 <h1 id="method">Method</h1>
-
 <ul>
 <li>정말 간단한 구조</li>
 <li>다음 사진은 Edge(Sketch) 영상을 Photo 영상으로 만드는 예시.</li>
 </ul>
-
-<figure>
-    <img src="/images/post/pix2pix/Untitled_1.png"/> 
+<figure><img src="/images/post/pix2pix/Untitled_1.png"/>
 </figure>
 
-
 <h2 id="objective">Objective</h2>
-
 <p>$$\mathcal{L}_{cGAN}(G, D) = \mathbb{E}_{x, y}[\log D(x, y)] + \mathbb{E}_{x, z}[\log (1-D(x, G(x, z))]$$</p>
-
 <p>$$\mathcal{L}_{L1}(G) = \mathbb{E}_{x, y, z}[||y-G(x,z)||_1]$$</p>
-
-<p>$$G^* = argmin_Gmax<em>D\mathcal{L}</em>{cGAN}(G, D) + \lambda\mathcal{L}_{L1}(G)$$</p>
-
+<p>$$G^* = argmin_Gmax_D\mathcal{L}<em>{cGAN}(G, D) + \lambda\mathcal{L}</em>{L1}(G)$$</p>
 <h2 id="network-architectures">Network architectures</h2>
-
 <ul>
 <li>DCGAN 에서 제안한 방법으로 각 block을 구성.
-
 <ul>
 <li>Convolution → BatchNorm → ReLU</li>
-</ul></li>
 </ul>
-
+</li>
+</ul>
 <h3 id="generator-with-skips">Generator with skips</h3>
-
 <ul>
 <li>U-Net 과 비슷하나 Concatenate를 Add로 변경.</li>
 </ul>
-
-<figure>
-    <img src="/images/post/pix2pix/Untitled_2.png"/> 
+<figure><img src="/images/post/pix2pix/Untitled_2.png"/>
 </figure>
 
-
 <h3 id="markovian-discriminator-patchgan">Markovian discriminator (PatchGAN)</h3>
-
 <ul>
 <li>L1, L2 만 사용하면 blurry result가 만들어진다는 것은 많이 알려진 사항.</li>
 <li>Low frequency 부분에 대한 부분은 L1 loss로 High frequency는 GAN loss 가 담당.</li>
 <li>좀 더 다양한 High frequency 에 적합하도록 하기 위해 local image patch 에 대해 discriminator를 적용. (PatchGAN)</li>
 <li>NxN patch 에 대해 각각 real/fake를 판별.</li>
 </ul>
-
-<figure>
-    <img src="/images/post/pix2pix/Untitled_3.png"/> 
+<figure><img src="/images/post/pix2pix/Untitled_3.png"/>
 </figure>
 
-
 <h2 id="optimization-and-inference">Optimization and Inference</h2>
-
 <ul>
 <li>D → G 와 같은 순서로 학습 진행</li>
 <li>Optimizer: Adam
-
 <ul>
 <li>Learning rate: 0.0002</li>
 <li>Momentum \(\beta_1\): 0.5</li>
 <li>Momentum \(\beta_2\): 0.999</li>
-</ul></li>
+</ul>
+</li>
 <li>Batch size: 1~10</li>
 </ul>
-
 <h1 id="experimants">Experimants</h1>
-
 <ul>
 <li><em>Semantic labels ↔photo</em></li>
-<li>*Architectural labels*→<em>photo</em></li>
-<li>*Map*↔<em>aerial photo</em></li>
-<li>*BW*→<em>color photos</em></li>
-<li>*Edges*→<em>photo</em></li>
-<li>*Sketch*→<em>photo</em></li>
-<li>*Day*→<em>night</em></li>
-<li>*Thermal*→<em>color photos</em></li>
-<li>*Photo with missing pixels*→*inpainted photo*</li>
+<li><em>Architectural labels</em>→<em>photo</em></li>
+<li><em>Map</em>↔<em>aerial photo</em></li>
+<li><em>BW</em>→<em>color photos</em></li>
+<li><em>Edges</em>→<em>photo</em></li>
+<li><em>Sketch</em>→<em>photo</em></li>
+<li><em>Day</em>→<em>night</em></li>
+<li><em>Thermal</em>→<em>color photos</em></li>
+<li><em>Photo with missing pixels</em>→*inpainted photo*</li>
 </ul>
-
 <h2 id="evaluation-metrics">Evaluation metrics</h2>
-
 <ul>
 <li>Amazon Mechanical Turk (AMT)</li>
 <li>FCN-score</li>
 </ul>
-
-<h2 id="analysis-of-the-objective-function">Analysis of the  objective function</h2>
-
-<figure>
-    <img src="/images/post/pix2pix/Untitled_3.png"/> 
+<h2 id="analysis-of-the--objective-function">Analysis of the  objective function</h2>
+<figure><img src="/images/post/pix2pix/Untitled_3.png"/>
 </figure>
 
-
-<figure>
-    <img src="/images/post/pix2pix/Untitled_4.png"/> 
+<figure><img src="/images/post/pix2pix/Untitled_4.png"/>
 </figure>
-
 
 <h2 id="analysis-of-the-generator-architecture">Analysis of the generator architecture</h2>
-
 <ul>
 <li>U-Net 기반의 구조로 했을 때가 훨씬 좋음.</li>
 </ul>
-
-<figure>
-    <img src="/images/post/pix2pix/Untitled_5.png"/> 
+<figure><img src="/images/post/pix2pix/Untitled_5.png"/>
 </figure>
 
-
-<figure>
-    <img src="/images/post/pix2pix/Untitled_6.png"/> 
+<figure><img src="/images/post/pix2pix/Untitled_6.png"/>
 </figure>
-
 
 <h2 id="from-pixelgans-to-patchgans-to-imagegans">From PixelGANs to PatchGANs to ImageGANs</h2>
-
 <ul>
 <li>Discriminator의 출력을 1x1, 16x16, 70x70, 286x286과 같이 차례로 키우면서 실험.</li>
 </ul>
-
-<figure>
-    <img src="/images/post/pix2pix/Untitled_7.png"/> 
+<figure><img src="/images/post/pix2pix/Untitled_7.png"/>
 </figure>
 
-
-<figure>
-    <img src="/images/post/pix2pix/Untitled_8.png"/> 
+<figure><img src="/images/post/pix2pix/Untitled_8.png"/>
 </figure>
-
 
 <h2 id="perceptual-validation">Perceptual validation</h2>
-
 <ul>
 <li>사람이 보기에도 L1 + cGAN이 좋음.</li>
 </ul>
-
-<figure>
-    <img src="/images/post/pix2pix/Untitled_9.png"/> 
+<figure><img src="/images/post/pix2pix/Untitled_9.png"/>
 </figure>
-
 
 <ul>
 <li>Colorization에서는 좀 떨어짐.</li>
 </ul>
-
-<figure>
-    <img src="/images/post/pix2pix/Untitled_10.png"/> 
+<figure><img src="/images/post/pix2pix/Untitled_10.png"/>
 </figure>
 
-
 <h2 id="semantic-segmentation">Semantic segmentation</h2>
-
 <ul>
 <li>해당 task 에서는 오히려 L1과 같은 reconstruction loss만을 이용한 구조가 적합해 보임.</li>
 </ul>
-
-<figure>
-    <img src="/images/post/pix2pix/Untitled_11.png"/> 
+<figure><img src="/images/post/pix2pix/Untitled_11.png"/>
 </figure>
 
-
-<figure>
-    <img src="/images/post/pix2pix/Untitled_12.png"/> 
+<figure><img src="/images/post/pix2pix/Untitled_12.png"/>
 </figure>
-
 
 <h2 id="community-driven-research">Community-driven Research</h2>
-
 <ul>
 <li>Twitter 에 공개한 후 다른 연구자들의 실험.</li>
 </ul>
-
-<figure>
-    <img src="/images/post/pix2pix/Untitled_13.png"/> 
+<figure><img src="/images/post/pix2pix/Untitled_13.png"/>
 </figure>
 
-
-<figure>
-    <img src="/images/post/pix2pix/Untitled_14.png"/> 
+<figure><img src="/images/post/pix2pix/Untitled_14.png"/>
 </figure>
 
-
-<h2 id="p-s">P.S</h2>
-
+<h2 id="ps">P.S</h2>
 <ul>
 <li>장마철&hellip; 물 조심하세요..</li>
 </ul>
@@ -490,7 +419,7 @@ URL: <a href="https://arxiv.org/abs/1611.07004">https://arxiv.org/abs/1611.07004
         </ul>
       </div>
       <div class="col-12 border-top py-4 text-center">
-        | copyright &copy; 2020 <a href="https://themefisher.com">Themefisher</a> All Rights Reserved |
+        | copyright © 2020 <a href="https://themefisher.com">Themefisher</a> All Rights Reserved |
       </div>
     </div>
   </div>

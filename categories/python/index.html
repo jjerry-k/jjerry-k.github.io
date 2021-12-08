@@ -9,7 +9,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="Private Blog">
   <meta name="author" content="Jerry Kim">
-  <meta name="generator" content="Hugo 0.54.0" />
+  <meta name="generator" content="Hugo 0.90.0" />
 
   <!-- plugins -->
   
@@ -148,7 +148,32 @@
           <div class="col-md-6 mb-4">
     <article class="card">
         
-        <img src="https://www.python.org/static/img/python-logo.png" class="card-img-top" alt="Python hashlib">
+        <img src="https://www.python.org/static/community_logos/python-logo-master-v3-TM.png" class="card-img-top" alt="Python itertools">
+        
+        <div class="card-body px-0">
+        
+        <a href="/categories/python"
+            class="text-primary">Python</a>
+        
+        <a href="https://jjerry-k.github.io/blog/itertools/" class="h5 d-block my-3">Python itertools</a>
+        <div class="mb-3 post-meta">
+            <span>By Jerry Kim</span>
+            
+            <span class="border-bottom border-primary px-2 mx-1"></span>
+            <span>09 December 2021</span>
+            
+        </div>
+        <p class="card-text">Python 표준 라이브러리 중 하나인 itertools 사용법을 간단히 알아보려 합니다.</p>
+        <a href="https://jjerry-k.github.io/blog/itertools/" class="btn btn-outline-primary">read more</a>
+        </div>
+    </article>
+</div>
+
+          
+          <div class="col-md-6 mb-4">
+    <article class="card">
+        
+        <img src="https://www.python.org/static/community_logos/python-logo-master-v3-TM.png" class="card-img-top" alt="Python hashlib">
         
         <div class="card-body px-0">
         
@@ -268,30 +293,6 @@
 </div>
 
           
-          <div class="col-md-6 mb-4">
-    <article class="card">
-        
-        <div class="card-body px-0">
-        
-        <a href="/categories/python"
-            class="text-primary">Python</a>
-        
-        <a href="https://jjerry-k.github.io/blog/dicom/" class="h5 d-block my-3">Python으로 DICOM 영상을 읽어보자!</a>
-        <div class="mb-3 post-meta">
-            <span>By Jerry Kim</span>
-            
-            <span class="border-bottom border-primary px-2 mx-1"></span>
-            <span>06 July 2019</span>
-            
-        </div>
-        <p class="card-text">예~~전에 NIfTI 파일을 load 하는 방법을 올렸었습니다!
-이번에는 Python에서 DICOM 포맷의 데이터를 load 하는 방법에 대한 포스팅을 해보려고 합니다.</p>
-        <a href="https://jjerry-k.github.io/blog/dicom/" class="btn btn-outline-primary">read more</a>
-        </div>
-    </article>
-</div>
-
-          
         </div>
       </div>
       
@@ -348,13 +349,13 @@
       <li class="list-inline-item"><a class="d-block p-2 bg-primary text-white"
           href="/tags/hardware">Hardware</a></li>
       <li class="list-inline-item"><a class="d-block p-2 bg-primary text-white"
-          href="/tags/hashlib">Hashlib</a></li>
-      <li class="list-inline-item"><a class="d-block p-2 bg-primary text-white"
           href="/tags/hugo">Hugo</a></li>
       <li class="list-inline-item"><a class="d-block p-2 bg-primary text-white"
           href="/tags/jekyll">Jekyll</a></li>
       <li class="list-inline-item"><a class="d-block p-2 bg-primary text-white"
           href="/tags/jupyter">Jupyter</a></li>
+      <li class="list-inline-item"><a class="d-block p-2 bg-primary text-white"
+          href="/tags/library">Library</a></li>
       <li class="list-inline-item"><a class="d-block p-2 bg-primary text-white"
           href="/tags/macbook">Macbook</a></li>
       <li class="list-inline-item"><a class="d-block p-2 bg-primary text-white"
@@ -404,50 +405,26 @@
       
       <div class="col-12 mt-5">
         
-
-<ul class="pagination">
-    
-    <li class="page-item">
-        <a href="/categories/python/" class="page-link" aria-label="First"><span aria-hidden="true">&laquo;&laquo;</span></a>
-    </li>
-    
-    <li class="page-item disabled">
-    <a href="" class="page-link" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a>
-    </li>
-    
-    
-    
-    
-    
-    
-        
-        
-    
-    
-    <li class="page-item active"><a class="page-link" href="/categories/python/">1</a></li>
-    
-    
-    
-    
-    
-    
-        
-        
-    
-    
-    <li class="page-item"><a class="page-link" href="/categories/python/page/2/">2</a></li>
-    
-    
-    <li class="page-item">
-    <a href="/categories/python/page/2/" class="page-link" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
-    </li>
-    
-    <li class="page-item">
-        <a href="/categories/python/page/2/" class="page-link" aria-label="Last"><span aria-hidden="true">&raquo;&raquo;</span></a>
-    </li>
-    
-</ul>
-
+    <ul class="pagination pagination-default">
+      <li class="page-item disabled">
+        <a aria-disabled="true" aria-label="First" class="page-link" role="button" tabindex="-1"><span aria-hidden="true">&laquo;&laquo;</span></a>
+      </li>
+      <li class="page-item disabled">
+        <a aria-disabled="true" aria-label="Previous" class="page-link" role="button" tabindex="-1"><span aria-hidden="true">&laquo;</span></a>
+      </li>
+      <li class="page-item active">
+        <a aria-current="page" aria-label="Page 1" class="page-link" role="button">1</a>
+      </li>
+      <li class="page-item">
+        <a href="/categories/python/page/2/" aria-label="Page 2" class="page-link" role="button">2</a>
+      </li>
+      <li class="page-item">
+        <a href="/categories/python/page/2/" aria-label="Next" class="page-link" role="button"><span aria-hidden="true">&raquo;</span></a>
+      </li>
+      <li class="page-item">
+        <a href="/categories/python/page/2/" aria-label="Last" class="page-link" role="button"><span aria-hidden="true">&raquo;&raquo;</span></a>
+      </li>
+    </ul>
       </div>
     </div>
   </div>
@@ -530,7 +507,7 @@
         </ul>
       </div>
       <div class="col-12 border-top py-4 text-center">
-        | copyright &copy; 2020 <a href="https://themefisher.com">Themefisher</a> All Rights Reserved |
+        | copyright © 2020 <a href="https://themefisher.com">Themefisher</a> All Rights Reserved |
       </div>
     </div>
   </div>

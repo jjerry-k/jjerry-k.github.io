@@ -9,7 +9,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="this is meta description">
   <meta name="author" content="Jerry Kim">
-  <meta name="generator" content="Hugo 0.54.0" />
+  <meta name="generator" content="Hugo 0.90.0" />
 
   <!-- plugins -->
   
@@ -160,16 +160,11 @@
         </div>
         
         <div class="content mb-5">
-          
-
-<h1 id="aggregated-residual-transformations-for-deep-neural-networks">Aggregated Residual Transformations for Deep Neural Networks</h1>
-
-<p>Author: Saining Xie, Ross Girshick, Piotr Dollár, Zhuowen Tu, Kaiming He<br />
-Date: Nov 16, 2016<br />
+          <h1 id="aggregated-residual-transformations-for-deep-neural-networks">Aggregated Residual Transformations for Deep Neural Networks</h1>
+<p>Author: Saining Xie, Ross Girshick, Piotr Dollár, Zhuowen Tu, Kaiming He<br>
+Date: Nov 16, 2016<br>
 URL: <a href="https://arxiv.org/abs/1611.05431">https://arxiv.org/abs/1611.05431</a></p>
-
 <h1 id="introduction">Introduction</h1>
-
 <ul>
 <li>Network desine 에 고려해야할 hyper-parameter가 너무 많음. (Width, filter size, Height, &hellip;.)</li>
 <li>VGG, ResNet은 비슷한 구조의 레이어를 계속 쌓는 방법을 사용.</li>
@@ -178,166 +173,108 @@ URL: <a href="https://arxiv.org/abs/1611.05431">https://arxiv.org/abs/1611.05431
 <li>일반적인 Reidual Block과 ResNeXt의 Residual Block 비교.</li>
 <li>Cardinality = Number of Groups,</li>
 </ul>
-
-<figure>
-    <img src="/images/post/resnext/Untitled.png"/> 
+<figure><img src="/images/post/resnext/Untitled.png"/>
 </figure>
 
-
 <h1 id="method">Method</h1>
-
 <h2 id="template">Template</h2>
-
 <ul>
 <li>전체적인 구조는 기존의 VGG/ResNet과 같이 일정 Block 을 반복하여 쌓는 구조.</li>
 <li>반복되는 블럭은 동일한 hyper parameter 사용.</li>
 </ul>
-
-<figure>
-    <img src="/images/post/resnext/Untitled_1.png"/> 
+<figure><img src="/images/post/resnext/Untitled_1.png"/>
 </figure>
 
-
 <h2 id="revisiting-simple-neurons">Revisiting Simple Neurons</h2>
-
 <ul>
 <li>가장 기본적인 뉴런의 구조</li>
 </ul>
-
 <p>$$\sum_{i=1}^Dw_ix_i$$</p>
-
-<figure>
-    <img src="/images/post/resnext/Untitled_2.png"/> 
+<figure><img src="/images/post/resnext/Untitled_2.png"/>
 </figure>
-
 
 <ul>
 <li>기본 뉴런 또한 split-transform-merge (Splitting, Transforming, Aggregating)의 구조를 가짐.</li>
-<li>Vector X 가 $x_i$로 Splitting, $x_iw<em>i$로 Transforming, $\sum</em>{i=1}^D$ 로 Aggregating</li>
+<li>Vector X 가 $x_i$로 Splitting, $x_iw_i$로 Transforming, $\sum_{i=1}^D$ 로 Aggregating</li>
 </ul>
-
 <h2 id="aggregated-transformations">Aggregated Transformations</h2>
-
 <ul>
 <li>Networt-in-Network와 다르게 Network-in-Neuron이라는 컨셉으로 차원 확장</li>
 </ul>
-
 <p>$$\mathcal{F}(x) = \sum_{i=1}^C\mathcal{T}_i(\mathrm{x})$$</p>
-
 <ul>
 <li>다른 방식이지만 동일하다는 것을 설명</li>
 </ul>
-
-<figure>
-    <img src="/images/post/resnext/Untitled_3.png"/> 
+<figure><img src="/images/post/resnext/Untitled_3.png"/>
 </figure>
 
-
-<figure>
-    <img src="/images/post/resnext/Untitled_4.png"/> 
+<figure><img src="/images/post/resnext/Untitled_4.png"/>
 </figure>
-
 
 <h2 id="model-capacity">Model Capacity</h2>
-
 <ul>
 <li>Complexity, Number of parameter 를 유지하면서 실험.</li>
 <li>다른 Hyper parameter는 수정하고 싶지 않기 때문에 Residual Block의 Cardinality C와 bottleneck d를 수정</li>
 <li>Cardinality와 bottleneck d의 관계</li>
 </ul>
-
-<figure>
-    <img src="/images/post/resnext/Untitled_5.png"/> 
+<figure><img src="/images/post/resnext/Untitled_5.png"/>
 </figure>
 
-
 <h1 id="result">Result</h1>
-
 <h2 id="on-imagenet-1k">On ImageNet-1K</h2>
-
 <ul>
 <li>Cardinality를 1~32 씩 증가시키되 complexity 는 유지하도록 설정하고 실험.</li>
 </ul>
-
-<figure>
-    <img src="/images/post/resnext/Untitled_6.png"/> 
+<figure><img src="/images/post/resnext/Untitled_6.png"/>
 </figure>
 
-
-<figure>
-    <img src="/images/post/resnext/Untitled_7.png"/> 
+<figure><img src="/images/post/resnext/Untitled_7.png"/>
 </figure>
-
 
 <ul>
 <li>Increasing Cardinality 와  Increasing depth or width 비교</li>
 <li>Cardinality 의 성능이 더 좋음.</li>
 </ul>
-
-<figure>
-    <img src="/images/post/resnext/Untitled_8.png"/> 
+<figure><img src="/images/post/resnext/Untitled_8.png"/>
 </figure>
-
 
 <ul>
 <li>Residual connections 여부에 따른 비교</li>
 </ul>
-
-<figure>
-    <img src="/images/post/resnext/Untitled_9.png"/> 
+<figure><img src="/images/post/resnext/Untitled_9.png"/>
 </figure>
-
 
 <ul>
 <li>State-of-the-art model 과 비교</li>
 </ul>
-
-<figure>
-    <img src="/images/post/resnext/Untitled_10.png"/> 
+<figure><img src="/images/post/resnext/Untitled_10.png"/>
 </figure>
 
-
 <h2 id="on-imagenet-5k">On ImageNet-5K</h2>
-
 <ul>
 <li>5000개 클래스에서도 잘 되더라.</li>
 </ul>
-
-<figure>
-    <img src="/images/post/resnext/Untitled_11.png"/> 
+<figure><img src="/images/post/resnext/Untitled_11.png"/>
 </figure>
 
-
-<figure>
-    <img src="/images/post/resnext/Untitled_12.png"/> 
+<figure><img src="/images/post/resnext/Untitled_12.png"/>
 </figure>
-
 
 <h2 id="on-cifar">On CIFAR</h2>
-
-<figure>
-    <img src="/images/post/resnext/Untitled_13.png"/> 
+<figure><img src="/images/post/resnext/Untitled_13.png"/>
 </figure>
 
-
-<figure>
-    <img src="/images/post/resnext/Untitled_14.png"/> 
+<figure><img src="/images/post/resnext/Untitled_14.png"/>
 </figure>
-
 
 <h2 id="on-coco-object-detection">On COCO object detection</h2>
-
 <ul>
 <li>Faster RCNN에 적용.</li>
 </ul>
-
-<figure>
-    <img src="/images/post/resnext/Untitled_15.png"/> 
+<figure><img src="/images/post/resnext/Untitled_15.png"/>
 </figure>
 
-
-<h2 id="p-s">P.S</h2>
-
+<h2 id="ps">P.S</h2>
 <ul>
 <li>AlexNet의 선견지명.</li>
 <li>하긴 안좋으면 논문으로 쓸리가 없지.</li>
@@ -455,7 +392,7 @@ URL: <a href="https://arxiv.org/abs/1611.05431">https://arxiv.org/abs/1611.05431
         </ul>
       </div>
       <div class="col-12 border-top py-4 text-center">
-        | copyright &copy; 2020 <a href="https://themefisher.com">Themefisher</a> All Rights Reserved |
+        | copyright © 2020 <a href="https://themefisher.com">Themefisher</a> All Rights Reserved |
       </div>
     </div>
   </div>

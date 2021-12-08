@@ -9,7 +9,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="this is meta description">
   <meta name="author" content="Jerry Kim">
-  <meta name="generator" content="Hugo 0.54.0" />
+  <meta name="generator" content="Hugo 0.90.0" />
 
   <!-- plugins -->
   
@@ -160,67 +160,60 @@
         </div>
         
         <div class="content mb-5">
-          
-
-<h1 id="지극히-개인이-사용하기-위한-dockerfile">지극히 개인이 사용하기 위한 Dockerfile</h1>
-
-<hr />
-
+          <h1 id="지극히-개인이-사용하기-위한-dockerfile">지극히 개인이 사용하기 위한 Dockerfile</h1>
+<hr>
 <ul>
 <li>환경을 만들 때마다 추가될 예정입니다.</li>
 <li>마음껏 편하신대로 Copy &amp; Paste 하세요!</li>
 </ul>
-
 <h2 id="tensorflow">TensorFlow</h2>
-
-<pre><code class="language-Dockerfile">FROM nvidia/cuda:10.1-cudnn7-runtime-ubuntu18.04
-LABEL maintainer &quot;Jerry Kim &lt;jaeyeol2931@gmail.com&gt;&quot;
-ARG PYTHON_VERSION=3.7
-RUN apt-get update
-RUN apt-get install -y \
-        build-essential \
-        cmake \
-        git \
-        curl \
-        wget \
-        ca-certificates \
-        libjpeg-dev \
-        libpng-dev
-
-RUN apt-get update &amp;&amp; apt-get -y upgrade
-
-# 2020.10.11 내용 추가
-# Docker container에 ssh로 접속하고 싶다면....
-# RUN mkdir /var/run/sshd
-RUN echo 'root:{개인 비밀번호}' | chpasswd
-RUN sed -i 's/PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
-
-# SSH login fix. Otherwise user is kicked off after login
-RUN sed 's@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so@g' -i /etc/pam.d/sshd
-
-ENV NOTVISIBLE &quot;in users profile&quot;
-RUN echo &quot;export VISIBLE=now&quot; &gt;&gt; /etc/profile
-
-EXPOSE 22
-CMD [&quot;/usr/sbin/sshd&quot;, &quot;-D&quot;]
-
-RUN rm -rf /var/lib/apt/lists/*
-
-RUN curl https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -o ~/miniconda.sh
-
-RUN chmod +x ~/miniconda.sh &amp;&amp; \
-    ~/miniconda.sh -b -p /opt/conda &amp;&amp; \
-    rm ~/miniconda.sh
-
-RUN /opt/conda/bin/conda install -y python=$PYTHON_VERSION numpy pyyaml scipy ipython mkl mkl-include ninja cython typing opencv matplotlib tqdm &amp;&amp; \
-    /opt/conda/bin/conda install -y jupyter jupyterlab seaborn pillow pandas pylint scikit-learn scikit-image tensorflow-gpu &amp;&amp; \
-    /opt/conda/bin/conda update -y --all &amp;&amp; \
-    /opt/conda/bin/conda clean -ya
-
-ENV PATH /opt/conda/bin:$PATH
-
-</code></pre>
-
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Dockerfile" data-lang="Dockerfile"><span style="color:#66d9ef">FROM</span><span style="color:#e6db74"> nvidia/cuda:10.1-cudnn7-runtime-ubuntu18.04</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">LABEL</span> maintainer <span style="color:#e6db74">&#34;Jerry Kim &lt;jaeyeol2931@gmail.com&gt;&#34;</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">ARG</span> PYTHON_VERSION<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span>.7<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> apt-get update<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> apt-get install -y <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>        build-essential <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>        cmake <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>        git <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>        curl <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>        wget <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>        ca-certificates <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>        libjpeg-dev <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>        libpng-dev<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> apt-get update <span style="color:#f92672">&amp;&amp;</span> apt-get -y upgrade<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># 2020.10.11 내용 추가</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># Docker container에 ssh로 접속하고 싶다면....</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># RUN mkdir /var/run/sshd</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> echo <span style="color:#e6db74">&#39;root:{개인 비밀번호}&#39;</span> | chpasswd<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> sed -i <span style="color:#e6db74">&#39;s/PermitRootLogin prohibit-password/PermitRootLogin yes/&#39;</span> /etc/ssh/sshd_config<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># SSH login fix. Otherwise user is kicked off after login</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> sed <span style="color:#e6db74">&#39;s@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so@g&#39;</span> -i /etc/pam.d/sshd<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">ENV</span> NOTVISIBLE <span style="color:#e6db74">&#34;in users profile&#34;</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> echo <span style="color:#e6db74">&#34;export VISIBLE=now&#34;</span> &gt;&gt; /etc/profile<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">EXPOSE</span><span style="color:#e6db74"> 22</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">CMD</span> [<span style="color:#e6db74">&#34;/usr/sbin/sshd&#34;</span>, <span style="color:#e6db74">&#34;-D&#34;</span>]<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> rm -rf /var/lib/apt/lists/*<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> curl https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -o ~/miniconda.sh<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> chmod +x ~/miniconda.sh <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    ~/miniconda.sh -b -p /opt/conda <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    rm ~/miniconda.sh<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> /opt/conda/bin/conda install -y python<span style="color:#f92672">=</span>$PYTHON_VERSION numpy pyyaml scipy ipython mkl mkl-include ninja cython typing opencv matplotlib tqdm <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    /opt/conda/bin/conda install -y jupyter jupyterlab seaborn pillow pandas pylint scikit-learn scikit-image tensorflow-gpu <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    /opt/conda/bin/conda update -y --all <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    /opt/conda/bin/conda clean -ya<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">ENV</span> PATH /opt/conda/bin:$PATH<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span></code></pre></div>
         </div>
 
         
@@ -333,7 +326,7 @@ ENV PATH /opt/conda/bin:$PATH
         </ul>
       </div>
       <div class="col-12 border-top py-4 text-center">
-        | copyright &copy; 2020 <a href="https://themefisher.com">Themefisher</a> All Rights Reserved |
+        | copyright © 2020 <a href="https://themefisher.com">Themefisher</a> All Rights Reserved |
       </div>
     </div>
   </div>

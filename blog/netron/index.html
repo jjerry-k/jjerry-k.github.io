@@ -9,7 +9,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="this is meta description">
   <meta name="author" content="Jerry Kim">
-  <meta name="generator" content="Hugo 0.54.0" />
+  <meta name="generator" content="Hugo 0.90.0" />
 
   <!-- plugins -->
   
@@ -162,18 +162,12 @@
         <img src="https://github.com/lutzroeder/netron/raw/main/.github/logo.svg" class="img-fluid w-100 mb-4" alt="Netron! Network 구조를 한번 볼까요?">
         
         <div class="content mb-5">
-          
-
-<p>오늘은 <a href="https://github.com/lutzroeder/netron">netron</a> 이라는 Tool를 드리려 합니다.</p>
-
+          <p>오늘은 <a href="https://github.com/lutzroeder/netron">netron</a> 이라는 Tool를 드리려 합니다.</p>
 <blockquote>
 <p>본 포스팅은 <a href="https://github.com/lutzroeder/netron">https://github.com/lutzroeder/netron</a> 내용을 이용하여 작성하였습니다.</p>
 </blockquote>
-
 <p>간단히 말씀드리면 Neural network viewer 입니다.</p>
-
 <p>굉장히 많은 Framework들을 지원하고 있습니다.</p>
-
 <ul>
 <li><strong>ONNX</strong> (<code>.onnx</code>, <code>.pb</code>, <code>.pbtxt</code>)</li>
 <li><strong>Keras</strong> (<code>.h5</code>, <code>.keras</code>)</li>
@@ -189,9 +183,7 @@
 <li><strong>UFF</strong> (<code>.uff</code>)</li>
 <li><strong>TensorFlow Lite</strong> (<code>.tflite</code>)</li>
 </ul>
-
 <p>이 외에도 불안정하지만 다음과 같은 Framework 도 지원합니다.</p>
-
 <ul>
 <li><strong>TorchScript</strong> (<code>.pt</code>, <code>.pth</code>)</li>
 <li><strong>PyTorch</strong> (<code>.pt</code>, <code>.pth</code>)</li>
@@ -210,13 +202,9 @@
 <li><strong>TensorFlow.js</strong> (<code>model.json</code>, <code>.pb</code>)</li>
 <li><strong>TensorFlow</strong> (<code>.pb</code>, <code>.meta</code>, <code>.pbtxt</code>, <code>.ckpt</code>, <code>.index</code>)</li>
 </ul>
-
 <p>(솔직히 Torch, TensorFlow 종류는 왜 나눠서 설명하는지 잘 모르겠음&hellip;..하나로 합쳐 놓으면 안되나..)</p>
-
 <h2 id="설치-및-사용법">설치 및 사용법</h2>
-
 <p>netron은 PC에 설치해서 사용하거나 설치없이 Browser 버전으로 사용할 수도 있습니다.</p>
-
 <ul>
 <li><strong>macOS</strong>: <strong><a href="https://github.com/lutzroeder/netron/releases/latest">Download</a></strong> the <code>.dmg</code> file or run <code>brew cask install netron</code></li>
 <li><strong>Linux</strong>: <strong><a href="https://github.com/lutzroeder/netron/releases/latest">Download</a></strong> the <code>.AppImage</code> file or run <code>snap install netron</code></li>
@@ -224,41 +212,25 @@
 <li><strong>Python Server</strong>: Run <code>pip install netron</code> and <code>netron [FILE]</code> or <code>import netron; netron.start('[FILE]')</code></li>
 <li><strong>Browser</strong>: <strong><a href="https://www.lutzroeder.com/ai/netron">Start</a></strong> the browser version.</li>
 </ul>
-
 <p>한번 브라우저 버전을 실행시켜 보았습니다.</p>
-
-<figure>
-    <img src="/images/post/netron/Untitled.png"/> 
+<figure><img src="/images/post/netron/Untitled.png"/>
 </figure>
-
 
 <p><code>Open Model</code> 을 클릭 하신 후 보고 싶은 Network 저장 파일을 선택합니다.</p>
-
-<figure>
-    <img src="/images/post/netron/Untitled_1.png"/> 
+<figure><img src="/images/post/netron/Untitled_1.png"/>
 </figure>
-
 
 <p>Network 구조가 차례로 보이네요.</p>
-
-<figure>
-    <img src="/images/post/netron/Untitled_2.png"/> 
+<figure><img src="/images/post/netron/Untitled_2.png"/>
 </figure>
-
 
 <p>다음은 keras로 작성된 MobileNetV2 를 netron으로 띄운 후 앞 부분을 잘라낸 사진입니다.</p>
-
-<figure>
-    <img src="/images/post/netron/Untitled_3.png"/> 
+<figure><img src="/images/post/netron/Untitled_3.png"/>
 </figure>
 
-
 <p>왼쪽에는 네트워크 구조를 볼 수 있고 만약 레이어를 선택하면 오른쪽에 Node(Layer)에 대한 세부 설정 값들을 확인할 수 있습니다.</p>
-
 <p>몇몇 프레임워크 별로 sample을 이렇게 제공해줍니다!</p>
-
 <p>open을 누르면 browser를 이용하여 볼 수 있네요!</p>
-
 <ul>
 <li><strong>ONNX</strong>: <a href="https://raw.githubusercontent.com/onnx/tutorials/master/tutorials/assets/squeezenet.onnx">squeezenet</a> [<a href="https://lutzroeder.github.io/netron?url=https://raw.githubusercontent.com/onnx/tutorials/master/tutorials/assets/squeezenet.onnx">open</a>]</li>
 <li><strong>CoreML</strong>: <a href="https://raw.githubusercontent.com/Lausbert/Exermote/master/ExermoteInference/ExermoteCoreML/ExermoteCoreML/Model/Exermote.mlmodel">exermote</a> [<a href="https://lutzroeder.github.io/netron?url=https://raw.githubusercontent.com/Lausbert/Exermote/master/ExermoteInference/ExermoteCoreML/ExermoteCoreML/Model/Exermote.mlmodel">open</a>]</li>
@@ -270,9 +242,7 @@
 <li><strong>TorchScript</strong>: <a href="https://raw.githubusercontent.com/ApolloAuto/apollo/master/modules/prediction/data/traced_online_pred_layer.pt">traced_online_pred_layer</a> [<a href="https://lutzroeder.github.io/netron?url=https://raw.githubusercontent.com/ApolloAuto/apollo/master/modules/prediction/data/traced_online_pred_layer.pt">open</a>]</li>
 <li><strong>Caffe</strong>: <a href="https://raw.githubusercontent.com/shicai/MobileNet-Caffe/master/mobilenet_v2.caffemodel">mobilenet_v2</a> [<a href="https://lutzroeder.github.io/netron?url=https://raw.githubusercontent.com/shicai/MobileNet-Caffe/master/mobilenet_v2.caffemodel">open</a>]</li>
 </ul>
-
-<h2 id="p-s">P.S.</h2>
-
+<h2 id="ps">P.S.</h2>
 <ul>
 <li>피곤&hellip;</li>
 </ul>
@@ -389,7 +359,7 @@
         </ul>
       </div>
       <div class="col-12 border-top py-4 text-center">
-        | copyright &copy; 2020 <a href="https://themefisher.com">Themefisher</a> All Rights Reserved |
+        | copyright © 2020 <a href="https://themefisher.com">Themefisher</a> All Rights Reserved |
       </div>
     </div>
   </div>

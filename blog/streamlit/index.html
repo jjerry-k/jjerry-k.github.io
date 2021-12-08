@@ -9,7 +9,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="this is meta description">
   <meta name="author" content="Jerry Kim">
-  <meta name="generator" content="Hugo 0.54.0" />
+  <meta name="generator" content="Hugo 0.90.0" />
 
   <!-- plugins -->
   
@@ -150,7 +150,7 @@
         <a href="/categories/deeplearning"
           class="text-primary">Deep learning</a>
         
-        <h2>쉽고 빠르게 결과를 확인해보자. Streamlit</h2>
+        <h2>ML/DL Prototype using Streamlit</h2>
         <div class="mb-3 post-meta">
           <span>By Jerry Kim</span>
           
@@ -159,95 +159,87 @@
           
         </div>
         
-        <img src="https://streamlit.io/images/brand/streamlit-logo-secondary-colormark-darktext.svg" class="img-fluid w-100 mb-4" alt="쉽고 빠르게 결과를 확인해보자. Streamlit">
+        <img src="https://streamlit.io/images/brand/streamlit-logo-secondary-colormark-darktext.svg" class="img-fluid w-100 mb-4" alt="ML/DL Prototype using Streamlit">
         
         <div class="content mb-5">
-          
-
-<p>동일한 task에서 Deep learning model 들을 이래저래 학습을 하다보면 매우 귀찮은 상황이 발생하곤 합니다&hellip;.<br />
-N개의 모델에 대한 각각의 결과를 보기가 <strong>매우 귀&hellip;찮&hellip;다&hellip;!!!!</strong>(물론 wandb, neptune, 등의 log 관리를 하면 괜찮..)<br />
+          <p>동일한 task에서 Deep learning model 들을 이래저래 학습을 하다보면 매우 귀찮은 상황이 발생하곤 합니다&hellip;.<br>
+N개의 모델에 대한 각각의 결과를 보기가 <strong>매우 귀&hellip;찮&hellip;다&hellip;!!!!</strong>(물론 wandb, neptune, 등의 log 관리를 하면 괜찮..)<br>
 그래서 이번에는 <a href="https://docs.streamlit.io/en/stable/">Streamlit</a>이라는 파이썬 라이브러리를 이용해서 Infernce 결과를 정말 쉽게 볼 수 있는 포스팅을 해보려합니다!</p>
-
-<p>뭐&hellip;.제 포스팅의 성격 아시죠..?
-&gt;자세한 설명..넘어갑니다. 바로 예제에요&hellip; 궁금하면 링크를 드릴테니 알아서 보세요.</p>
-
+<p>뭐&hellip;.제 포스팅의 성격 아시죠..?</p>
+<blockquote>
+<p>자세한 설명..넘어갑니다. 바로 예제에요&hellip; 궁금하면 링크를 드릴테니 알아서 보세요.</p>
+</blockquote>
 <h2 id="example-code">Example code</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> streamlit <span style="color:#66d9ef">as</span> st
 
-<pre><code class="language-python">import streamlit as st
+<span style="color:#f92672">import</span> json
+<span style="color:#f92672">from</span> io <span style="color:#f92672">import</span> BytesIO
 
-import json
-from io import BytesIO
+<span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
+<span style="color:#f92672">from</span> PIL <span style="color:#f92672">import</span> Image
 
-import numpy as np
-from PIL import Image
-
-import torch
-from torchvision import transforms
-import pretrainedmodels
-from efficientnet_pytorch import EfficientNet
-
+<span style="color:#f92672">import</span> torch
+<span style="color:#f92672">from</span> torchvision <span style="color:#f92672">import</span> transforms
+<span style="color:#f92672">import</span> pretrainedmodels
+<span style="color:#f92672">from</span> efficientnet_pytorch <span style="color:#f92672">import</span> EfficientNet
 
 
-with open(&quot;imagenet_class_index.json&quot;, &quot;r&quot;) as f:
-    class_idx = json.load(f)
-    idx2label = [class_idx[str(k)][1] for k in range(len(class_idx))]
 
-available_models = [
-    &quot;efficientnet-b0&quot;, &quot;efficientnet-b1&quot;, &quot;efficientnet-b2&quot;, &quot;efficientnet-b3&quot;, &quot;efficientnet-b4&quot;, 
-    &quot;efficientnet-b5&quot;, &quot;efficientnet-b6&quot;, &quot;efficientnet-b7&quot;, 
-    &quot;alexnet&quot;, &quot;vgg11&quot;, &quot;vgg11_bn&quot;, &quot;vgg13&quot;, &quot;vgg13_bn&quot;, &quot;vgg16&quot;, &quot;vgg16_bn&quot;, &quot;vgg19_bn&quot;, &quot;vgg19&quot;,
-    &quot;densenet121&quot;, &quot;densenet169&quot;, &quot;densenet201&quot;, &quot;densenet161&quot;,
-    &quot;resnet18&quot;, &quot;resnet34&quot;, &quot;resnet50&quot;, &quot;resnet101&quot;, &quot;resnet152&quot;, &quot;resnext101_32x4d&quot;, &quot;resnext101_64x4d&quot;, 
-    &quot;squeezenet1_0&quot;, &quot;squeezenet1_1&quot;, &quot;nasnetamobile&quot;, &quot;nasnetalarge&quot;, 
-    &quot;dpn68&quot;, &quot;dpn68b&quot;, &quot;dpn92&quot;, &quot;dpn98&quot;, &quot;dpn131&quot;, 
-    &quot;senet154&quot;, &quot;se_resnet50&quot;, &quot;se_resnet101&quot;, &quot;se_resnet152&quot;, &quot;se_resnext50_32x4d&quot;, &quot;se_resnext101_32x4d&quot;,
-    &quot;inceptionv4&quot;, &quot;inceptionresnetv2&quot;, &quot;xception&quot;, &quot;fbresnet152&quot;, &quot;bninception&quot;,
-    &quot;cafferesnet101&quot;, &quot;pnasnet5large&quot;, &quot;polynet&quot;
+<span style="color:#66d9ef">with</span> open(<span style="color:#e6db74">&#34;imagenet_class_index.json&#34;</span>, <span style="color:#e6db74">&#34;r&#34;</span>) <span style="color:#66d9ef">as</span> f:
+    class_idx <span style="color:#f92672">=</span> json<span style="color:#f92672">.</span>load(f)
+    idx2label <span style="color:#f92672">=</span> [class_idx[str(k)][<span style="color:#ae81ff">1</span>] <span style="color:#66d9ef">for</span> k <span style="color:#f92672">in</span> range(len(class_idx))]
+
+available_models <span style="color:#f92672">=</span> [
+    <span style="color:#e6db74">&#34;efficientnet-b0&#34;</span>, <span style="color:#e6db74">&#34;efficientnet-b1&#34;</span>, <span style="color:#e6db74">&#34;efficientnet-b2&#34;</span>, <span style="color:#e6db74">&#34;efficientnet-b3&#34;</span>, <span style="color:#e6db74">&#34;efficientnet-b4&#34;</span>, 
+    <span style="color:#e6db74">&#34;efficientnet-b5&#34;</span>, <span style="color:#e6db74">&#34;efficientnet-b6&#34;</span>, <span style="color:#e6db74">&#34;efficientnet-b7&#34;</span>, 
+    <span style="color:#e6db74">&#34;alexnet&#34;</span>, <span style="color:#e6db74">&#34;vgg11&#34;</span>, <span style="color:#e6db74">&#34;vgg11_bn&#34;</span>, <span style="color:#e6db74">&#34;vgg13&#34;</span>, <span style="color:#e6db74">&#34;vgg13_bn&#34;</span>, <span style="color:#e6db74">&#34;vgg16&#34;</span>, <span style="color:#e6db74">&#34;vgg16_bn&#34;</span>, <span style="color:#e6db74">&#34;vgg19_bn&#34;</span>, <span style="color:#e6db74">&#34;vgg19&#34;</span>,
+    <span style="color:#e6db74">&#34;densenet121&#34;</span>, <span style="color:#e6db74">&#34;densenet169&#34;</span>, <span style="color:#e6db74">&#34;densenet201&#34;</span>, <span style="color:#e6db74">&#34;densenet161&#34;</span>,
+    <span style="color:#e6db74">&#34;resnet18&#34;</span>, <span style="color:#e6db74">&#34;resnet34&#34;</span>, <span style="color:#e6db74">&#34;resnet50&#34;</span>, <span style="color:#e6db74">&#34;resnet101&#34;</span>, <span style="color:#e6db74">&#34;resnet152&#34;</span>, <span style="color:#e6db74">&#34;resnext101_32x4d&#34;</span>, <span style="color:#e6db74">&#34;resnext101_64x4d&#34;</span>, 
+    <span style="color:#e6db74">&#34;squeezenet1_0&#34;</span>, <span style="color:#e6db74">&#34;squeezenet1_1&#34;</span>, <span style="color:#e6db74">&#34;nasnetamobile&#34;</span>, <span style="color:#e6db74">&#34;nasnetalarge&#34;</span>, 
+    <span style="color:#e6db74">&#34;dpn68&#34;</span>, <span style="color:#e6db74">&#34;dpn68b&#34;</span>, <span style="color:#e6db74">&#34;dpn92&#34;</span>, <span style="color:#e6db74">&#34;dpn98&#34;</span>, <span style="color:#e6db74">&#34;dpn131&#34;</span>, 
+    <span style="color:#e6db74">&#34;senet154&#34;</span>, <span style="color:#e6db74">&#34;se_resnet50&#34;</span>, <span style="color:#e6db74">&#34;se_resnet101&#34;</span>, <span style="color:#e6db74">&#34;se_resnet152&#34;</span>, <span style="color:#e6db74">&#34;se_resnext50_32x4d&#34;</span>, <span style="color:#e6db74">&#34;se_resnext101_32x4d&#34;</span>,
+    <span style="color:#e6db74">&#34;inceptionv4&#34;</span>, <span style="color:#e6db74">&#34;inceptionresnetv2&#34;</span>, <span style="color:#e6db74">&#34;xception&#34;</span>, <span style="color:#e6db74">&#34;fbresnet152&#34;</span>, <span style="color:#e6db74">&#34;bninception&#34;</span>,
+    <span style="color:#e6db74">&#34;cafferesnet101&#34;</span>, <span style="color:#e6db74">&#34;pnasnet5large&#34;</span>, <span style="color:#e6db74">&#34;polynet&#34;</span>
 ]
 
-def load_moel(model_name):
-    if &quot;efficientnet&quot; in model_name:
-        model = EfficientNet.from_pretrained(model_name)    
-    else:
-        model = pretrainedmodels.__dict__[model_name](num_classes=1000)
-    return model
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">load_moel</span>(model_name):
+    <span style="color:#66d9ef">if</span> <span style="color:#e6db74">&#34;efficientnet&#34;</span> <span style="color:#f92672">in</span> model_name:
+        model <span style="color:#f92672">=</span> EfficientNet<span style="color:#f92672">.</span>from_pretrained(model_name)    
+    <span style="color:#66d9ef">else</span>:
+        model <span style="color:#f92672">=</span> pretrainedmodels<span style="color:#f92672">.</span>__dict__[model_name](num_classes<span style="color:#f92672">=</span><span style="color:#ae81ff">1000</span>)
+    <span style="color:#66d9ef">return</span> model
 
-option = st.selectbox(
-    'Select Model',
+option <span style="color:#f92672">=</span> st<span style="color:#f92672">.</span>selectbox(
+    <span style="color:#e6db74">&#39;Select Model&#39;</span>,
      available_models)
-model = load_moel(option)
-model.eval()
+model <span style="color:#f92672">=</span> load_moel(option)
+model<span style="color:#f92672">.</span>eval()
 
-# load data
-uploaded_file = st.file_uploader(&quot;Choose a Image&quot;)
+<span style="color:#75715e"># load data</span>
+uploaded_file <span style="color:#f92672">=</span> st<span style="color:#f92672">.</span>file_uploader(<span style="color:#e6db74">&#34;Choose a Image&#34;</span>)
 
-if uploaded_file is not None:
-    bytes_data = uploaded_file.getvalue()
-    image = Image.open(BytesIO(bytes_data)).convert(&quot;RGB&quot;)
-    img_for_plot = np.array(image)
+<span style="color:#66d9ef">if</span> uploaded_file <span style="color:#f92672">is</span> <span style="color:#f92672">not</span> <span style="color:#66d9ef">None</span>:
+    bytes_data <span style="color:#f92672">=</span> uploaded_file<span style="color:#f92672">.</span>getvalue()
+    image <span style="color:#f92672">=</span> Image<span style="color:#f92672">.</span>open(BytesIO(bytes_data))<span style="color:#f92672">.</span>convert(<span style="color:#e6db74">&#34;RGB&#34;</span>)
+    img_for_plot <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array(image)
     
-    img = transforms.ToTensor()(image)
-    normalize = transforms.Normalize(mean=[0.485, 0.456, 0.406],
-                                        std=[0.229, 0.224, 0.225])
-    img = normalize(img).unsqueeze(dim=0)   
-    result = model(img).squeeze(dim=0)
-    predict_idx = result.argmax().item()
-    prob = torch.softmax(result, dim=0)
-    st.image(img_for_plot, use_column_width=True)
-    st.text(f&quot;{idx2label[predict_idx]}, {prob[predict_idx]}&quot;)
-</code></pre>
-
-<h2 id="result">Result</h2>
-
-<figure>
-    <img src="/images/post/streamlit/streamlit.gif"/> 
+    img <span style="color:#f92672">=</span> transforms<span style="color:#f92672">.</span>ToTensor()(image)
+    normalize <span style="color:#f92672">=</span> transforms<span style="color:#f92672">.</span>Normalize(mean<span style="color:#f92672">=</span>[<span style="color:#ae81ff">0.485</span>, <span style="color:#ae81ff">0.456</span>, <span style="color:#ae81ff">0.406</span>],
+                                        std<span style="color:#f92672">=</span>[<span style="color:#ae81ff">0.229</span>, <span style="color:#ae81ff">0.224</span>, <span style="color:#ae81ff">0.225</span>])
+    img <span style="color:#f92672">=</span> normalize(img)<span style="color:#f92672">.</span>unsqueeze(dim<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>)   
+    result <span style="color:#f92672">=</span> model(img)<span style="color:#f92672">.</span>squeeze(dim<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>)
+    predict_idx <span style="color:#f92672">=</span> result<span style="color:#f92672">.</span>argmax()<span style="color:#f92672">.</span>item()
+    prob <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>softmax(result, dim<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>)
+    st<span style="color:#f92672">.</span>image(img_for_plot, use_column_width<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+    st<span style="color:#f92672">.</span>text(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span>idx2label[predict_idx]<span style="color:#e6db74">}</span><span style="color:#e6db74">, </span><span style="color:#e6db74">{</span>prob[predict_idx]<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</code></pre></div><h2 id="result">Result</h2>
+<figure><img src="/images/post/streamlit/streamlit.gif"/>
 </figure>
 
-
-<p>정말 간단&hellip;합니다.<br />
-flask, django, fastApi 등 웹 프레임워크를 이용해서도 이런걸 만들 수 있길 합니다만&hellip;<br />
-어쨌든 웹..이기 때문에 html, css, javascript 같은 언어 사용이 불가피한데요.<br />
-이건&hellip;그냥 편하게 해주네요..!<br />
+<p>정말 간단&hellip;합니다.<br>
+flask, django, fastApi 등 웹 프레임워크를 이용해서도 이런걸 만들 수 있길 합니다만&hellip;<br>
+어쨌든 웹..이기 때문에 html, css, javascript 같은 언어 사용이 불가피한데요.<br>
+이건&hellip;그냥 편하게 해주네요..!<br>
 더 다양한 페이지를 만들어볼 수 있을 듯합니다!</p>
 
         </div>
@@ -362,7 +354,7 @@ flask, django, fastApi 등 웹 프레임워크를 이용해서도 이런걸 만�
         </ul>
       </div>
       <div class="col-12 border-top py-4 text-center">
-        | copyright &copy; 2020 <a href="https://themefisher.com">Themefisher</a> All Rights Reserved |
+        | copyright © 2020 <a href="https://themefisher.com">Themefisher</a> All Rights Reserved |
       </div>
     </div>
   </div>

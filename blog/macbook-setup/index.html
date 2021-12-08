@@ -9,7 +9,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="this is meta description">
   <meta name="author" content="Jerry Kim">
-  <meta name="generator" content="Hugo 0.54.0" />
+  <meta name="generator" content="Hugo 0.90.0" />
 
   <!-- plugins -->
   
@@ -160,190 +160,173 @@
         </div>
         
         <div class="content mb-5">
-          
-
-<h1 id="after-macos-install">After MacOS Install</h1>
-
+          <h1 id="after-macos-install">After MacOS Install</h1>
 <h2 id="1-install-applications">1. Install applications</h2>
-
 <ul>
 <li>Kakao Talk</li>
 <li>Between</li>
 <li>Snap
-
 <ul>
 <li>Add Terminal shortcut</li>
-</ul></li>
+</ul>
+</li>
 <li>Speedtest</li>
 <li>Magnet</li>
 <li>MenuBar Stats
-
 <ul>
 <li>Add MenuBar Stats Plugins Manager</li>
 <li><a href="https://www.seense.com/menubarstats/plugins3/">https://www.seense.com/menubarstats/plugins3/</a></li>
-</ul></li>
+</ul>
+</li>
 <li>Buddy for Youtube</li>
 <li>Bandizip
-
 <ul>
 <li><a href="https://kr.bandisoft.com/bandizip/x/">https://kr.bandisoft.com/bandizip/x/</a></li>
-</ul></li>
+</ul>
+</li>
 <li>Notion
-
 <ul>
 <li><a href="https://www.notion.so/desktop">https://www.notion.so/desktop</a></li>
-</ul></li>
 </ul>
-
+</li>
+</ul>
 <h2 id="2-install-brew">2. Install brew</h2>
-
-<pre><code class="language-bash">/usr/bin/ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;
-</code></pre>
-
-<h2 id="3-install-oh-my-zsh">3. Install oh-my-zsh</h2>
-
-<pre><code class="language-bash">sh -c &quot;$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)&quot;
-</code></pre>
-
-<h2 id="4-install-pyenv">4. Install pyenv</h2>
-
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">/usr/bin/ruby -e <span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span>curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span>
+</code></pre></div><h2 id="3-install-oh-my-zsh">3. Install oh-my-zsh</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sh -c <span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span>curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span>
+</code></pre></div><h2 id="4-install-pyenv">4. Install pyenv</h2>
 <p><a href="https://jjerry-k.github.io/python/2018/09/27/python4mac/">Python Installation for mac</a></p>
-
 <h2 id="5-edit-zshrc">5. Edit .zshrc</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># If you come from bash you might have to change your $PATH.</span>
+<span style="color:#75715e"># export PATH=$HOME/bin:/usr/local/bin:$PATH</span>
 
-<pre><code class="language-bash"># If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
+<span style="color:#75715e"># Path to your oh-my-zsh installation.</span>
+export ZSH<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;/Users/jerry/.oh-my-zsh&#34;</span>
 
-# Path to your oh-my-zsh installation.
-export ZSH=&quot;/Users/jerry/.oh-my-zsh&quot;
+<span style="color:#75715e"># Set name of the theme to load --- if set to &#34;random&#34;, it will</span>
+<span style="color:#75715e"># load a random theme each time oh-my-zsh is loaded, in which case,</span>
+<span style="color:#75715e"># to know which specific one was loaded, run: echo $RANDOM_THEME</span>
+<span style="color:#75715e"># See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes</span>
+ZSH_THEME<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;jreese&#34;</span>
 
-# Set name of the theme to load --- if set to &quot;random&quot;, it will
-# load a random theme each time oh-my-zsh is loaded, in which case,
-# to know which specific one was loaded, run: echo $RANDOM_THEME
-# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME=&quot;jreese&quot;
+<span style="color:#75715e"># Set list of themes to pick from when loading at random</span>
+<span style="color:#75715e"># Setting this variable when ZSH_THEME=random will cause zsh to load</span>
+<span style="color:#75715e"># a theme from this variable instead of looking in ~/.oh-my-zsh/themes/</span>
+<span style="color:#75715e"># If set to an empty array, this variable will have no effect.</span>
+<span style="color:#75715e"># ZSH_THEME_RANDOM_CANDIDATES=( &#34;robbyrussell&#34; &#34;agnoster&#34; )</span>
 
-# Set list of themes to pick from when loading at random
-# Setting this variable when ZSH_THEME=random will cause zsh to load
-# a theme from this variable instead of looking in ~/.oh-my-zsh/themes/
-# If set to an empty array, this variable will have no effect.
-# ZSH_THEME_RANDOM_CANDIDATES=( &quot;robbyrussell&quot; &quot;agnoster&quot; )
+<span style="color:#75715e"># Uncomment the following line to use case-sensitive completion.</span>
+<span style="color:#75715e"># CASE_SENSITIVE=&#34;true&#34;</span>
 
-# Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE=&quot;true&quot;
+<span style="color:#75715e"># Uncomment the following line to use hyphen-insensitive completion.</span>
+<span style="color:#75715e"># Case-sensitive completion must be off. _ and - will be interchangeable.</span>
+<span style="color:#75715e"># HYPHEN_INSENSITIVE=&#34;true&#34;</span>
 
-# Uncomment the following line to use hyphen-insensitive completion.
-# Case-sensitive completion must be off. _ and - will be interchangeable.
-# HYPHEN_INSENSITIVE=&quot;true&quot;
+<span style="color:#75715e"># Uncomment the following line to disable bi-weekly auto-update checks.</span>
+<span style="color:#75715e"># DISABLE_AUTO_UPDATE=&#34;true&#34;</span>
 
-# Uncomment the following line to disable bi-weekly auto-update checks.
-# DISABLE_AUTO_UPDATE=&quot;true&quot;
+<span style="color:#75715e"># Uncomment the following line to automatically update without prompting.</span>
+<span style="color:#75715e"># DISABLE_UPDATE_PROMPT=&#34;true&#34;</span>
 
-# Uncomment the following line to automatically update without prompting.
-# DISABLE_UPDATE_PROMPT=&quot;true&quot;
+<span style="color:#75715e"># Uncomment the following line to change how often to auto-update (in days).</span>
+<span style="color:#75715e"># export UPDATE_ZSH_DAYS=13</span>
 
-# Uncomment the following line to change how often to auto-update (in days).
-# export UPDATE_ZSH_DAYS=13
+<span style="color:#75715e"># Uncomment the following line if pasting URLs and other text is messed up.</span>
+<span style="color:#75715e"># DISABLE_MAGIC_FUNCTIONS=true</span>
 
-# Uncomment the following line if pasting URLs and other text is messed up.
-# DISABLE_MAGIC_FUNCTIONS=true
+<span style="color:#75715e"># Uncomment the following line to disable colors in ls.</span>
+<span style="color:#75715e"># DISABLE_LS_COLORS=&#34;true&#34;</span>
 
-# Uncomment the following line to disable colors in ls.
-# DISABLE_LS_COLORS=&quot;true&quot;
+<span style="color:#75715e"># Uncomment the following line to disable auto-setting terminal title.</span>
+<span style="color:#75715e"># DISABLE_AUTO_TITLE=&#34;true&#34;</span>
 
-# Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE=&quot;true&quot;
+<span style="color:#75715e"># Uncomment the following line to enable command auto-correction.</span>
+<span style="color:#75715e"># ENABLE_CORRECTION=&#34;true&#34;</span>
 
-# Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION=&quot;true&quot;
+<span style="color:#75715e"># Uncomment the following line to display red dots whilst waiting for completion.</span>
+<span style="color:#75715e"># COMPLETION_WAITING_DOTS=&#34;true&#34;</span>
 
-# Uncomment the following line to display red dots whilst waiting for completion.
-# COMPLETION_WAITING_DOTS=&quot;true&quot;
+<span style="color:#75715e"># Uncomment the following line if you want to disable marking untracked files</span>
+<span style="color:#75715e"># under VCS as dirty. This makes repository status check for large repositories</span>
+<span style="color:#75715e"># much, much faster.</span>
+<span style="color:#75715e"># DISABLE_UNTRACKED_FILES_DIRTY=&#34;true&#34;</span>
 
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY=&quot;true&quot;
+<span style="color:#75715e"># Uncomment the following line if you want to change the command execution time</span>
+<span style="color:#75715e"># stamp shown in the history command output.</span>
+<span style="color:#75715e"># You can set one of the optional three formats:</span>
+<span style="color:#75715e"># &#34;mm/dd/yyyy&#34;|&#34;dd.mm.yyyy&#34;|&#34;yyyy-mm-dd&#34;</span>
+<span style="color:#75715e"># or set a custom format using the strftime function format specifications,</span>
+<span style="color:#75715e"># see &#39;man strftime&#39; for details.</span>
+<span style="color:#75715e"># HIST_STAMPS=&#34;mm/dd/yyyy&#34;</span>
 
-# Uncomment the following line if you want to change the command execution time
-# stamp shown in the history command output.
-# You can set one of the optional three formats:
-# &quot;mm/dd/yyyy&quot;|&quot;dd.mm.yyyy&quot;|&quot;yyyy-mm-dd&quot;
-# or set a custom format using the strftime function format specifications,
-# see 'man strftime' for details.
-# HIST_STAMPS=&quot;mm/dd/yyyy&quot;
+<span style="color:#75715e"># Would you like to use another custom folder than $ZSH/custom?</span>
+<span style="color:#75715e"># ZSH_CUSTOM=/path/to/new-custom-folder</span>
 
-# Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
-
-# Which plugins would you like to load?
-# Standard plugins can be found in ~/.oh-my-zsh/plugins/*
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+<span style="color:#75715e"># Which plugins would you like to load?</span>
+<span style="color:#75715e"># Standard plugins can be found in ~/.oh-my-zsh/plugins/*</span>
+<span style="color:#75715e"># Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/</span>
+<span style="color:#75715e"># Example format: plugins=(rails git textmate ruby lighthouse)</span>
+<span style="color:#75715e"># Add wisely, as too many plugins slow down shell startup.</span>
+plugins<span style="color:#f92672">=(</span>git<span style="color:#f92672">)</span>
 
 source $ZSH/oh-my-zsh.sh
 
-# User configuration
+<span style="color:#75715e"># User configuration</span>
 
-# export MANPATH=&quot;/usr/local/man:$MANPATH&quot;
+<span style="color:#75715e"># export MANPATH=&#34;/usr/local/man:$MANPATH&#34;</span>
 
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
+<span style="color:#75715e"># You may need to manually set your language environment</span>
+<span style="color:#75715e"># export LANG=en_US.UTF-8</span>
 
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
+<span style="color:#75715e"># Preferred editor for local and remote sessions</span>
+<span style="color:#75715e"># if [[ -n $SSH_CONNECTION ]]; then</span>
+<span style="color:#75715e">#   export EDITOR=&#39;vim&#39;</span>
+<span style="color:#75715e"># else</span>
+<span style="color:#75715e">#   export EDITOR=&#39;mvim&#39;</span>
+<span style="color:#75715e"># fi</span>
 
-# Compilation flags
-# export ARCHFLAGS=&quot;-arch x86_64&quot;
+<span style="color:#75715e"># Compilation flags</span>
+<span style="color:#75715e"># export ARCHFLAGS=&#34;-arch x86_64&#34;</span>
 
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig=&quot;mate ~/.zshrc&quot;
-# alias ohmyzsh=&quot;mate ~/.oh-my-zsh&quot;
+<span style="color:#75715e"># Set personal aliases, overriding those provided by oh-my-zsh libs,</span>
+<span style="color:#75715e"># plugins, and themes. Aliases can be placed here, though oh-my-zsh</span>
+<span style="color:#75715e"># users are encouraged to define aliases within the ZSH_CUSTOM folder.</span>
+<span style="color:#75715e"># For a full list of active aliases, run `alias`.</span>
+<span style="color:#75715e">#</span>
+<span style="color:#75715e"># Example aliases</span>
+<span style="color:#75715e"># alias zshconfig=&#34;mate ~/.zshrc&#34;</span>
+<span style="color:#75715e"># alias ohmyzsh=&#34;mate ~/.oh-my-zsh&#34;</span>
 
-# Set pyenv
-export PYENV_ROOT=&quot;${HOME}/.pyenv&quot;
-export PATH=&quot;${PYENV_ROOT}bin:$PATH&quot;
-eval &quot;$(pyenv init -)&quot;
+<span style="color:#75715e"># Set pyenv</span>
+export PYENV_ROOT<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>HOME<span style="color:#e6db74">}</span><span style="color:#e6db74">/.pyenv&#34;</span>
+export PATH<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>PYENV_ROOT<span style="color:#e6db74">}</span><span style="color:#e6db74">bin:</span>$PATH<span style="color:#e6db74">&#34;</span>
+eval <span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span>pyenv init -<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span>
 
-# &gt;&gt;&gt; conda initialize &gt;&gt;&gt;
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup=&quot;$('/Users/jerry/.pyenv/versions/miniconda3-latest/bin/conda' 'shell.zsh' 'hook' 2&gt; /dev/null)&quot;
-if [ $? -eq 0 ]; then
-    eval &quot;$__conda_setup&quot;
-else
-    if [ -f &quot;/Users/jerry/.pyenv/versions/miniconda3-latest/etc/profile.d/conda.sh&quot; ]; then
-        . &quot;/Users/jerry/.pyenv/versions/miniconda3-latest/etc/profile.d/conda.sh&quot;
-    else
-        export PATH=&quot;/Users/jerry/.pyenv/versions/miniconda3-latest/bin:$PATH&quot;
-    fi
-fi
+<span style="color:#75715e"># &gt;&gt;&gt; conda initialize &gt;&gt;&gt;</span>
+<span style="color:#75715e"># !! Contents within this block are managed by &#39;conda init&#39; !!</span>
+__conda_setup<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span><span style="color:#e6db74">&#39;/Users/jerry/.pyenv/versions/miniconda3-latest/bin/conda&#39;</span> <span style="color:#e6db74">&#39;shell.zsh&#39;</span> <span style="color:#e6db74">&#39;hook&#39;</span> 2&gt; /dev/null<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span>
+<span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> $? -eq <span style="color:#ae81ff">0</span> <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
+    eval <span style="color:#e6db74">&#34;</span>$__conda_setup<span style="color:#e6db74">&#34;</span>
+<span style="color:#66d9ef">else</span>
+    <span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> -f <span style="color:#e6db74">&#34;/Users/jerry/.pyenv/versions/miniconda3-latest/etc/profile.d/conda.sh&#34;</span> <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
+        . <span style="color:#e6db74">&#34;/Users/jerry/.pyenv/versions/miniconda3-latest/etc/profile.d/conda.sh&#34;</span>
+    <span style="color:#66d9ef">else</span>
+        export PATH<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;/Users/jerry/.pyenv/versions/miniconda3-latest/bin:</span>$PATH<span style="color:#e6db74">&#34;</span>
+    <span style="color:#66d9ef">fi</span>
+<span style="color:#66d9ef">fi</span>
 unset __conda_setup
-# &lt;&lt;&lt; conda initialize &lt;&lt;&lt;
-</code></pre>
-
-<h2 id="6-create-conda-environment">6. Create conda environment</h2>
-
-<pre><code class="language-bash">#!/bin/bash
-
+<span style="color:#75715e"># &lt;&lt;&lt; conda initialize &lt;&lt;&lt;</span>
+</code></pre></div><h2 id="6-create-conda-environment">6. Create conda environment</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e">#!/bin/bash
+</span><span style="color:#75715e"></span>
 conda install -y ipykernel jupyter jupyterlab pylint
 conda update --all -y
-conda create -y -n tf python=3.7
-conda create -y -n tc python=3.7
+conda create -y -n tf python<span style="color:#f92672">=</span>3.7
+conda create -y -n tc python<span style="color:#f92672">=</span>3.7
 
 source ~/.pyenv/versions/miniconda3-latest/etc/profile.d/conda.sh
 
-# Create TensorFlow Environment
+<span style="color:#75715e"># Create TensorFlow Environment</span>
 conda activate tf
 conda install -y numpy scipy pandas matplotlib pylint
 conda install -y seaborn pillow scikit-image opencv scikit-learn tqdm ipython ipykernel ipywidgets
@@ -352,7 +335,7 @@ conda update --all -y
 python -m ipykernel install --user --name tf --display-name TensorFlow
 conda deactivate
 
-# Create PyTorch Environment
+<span style="color:#75715e"># Create PyTorch Environment</span>
 conda activate tc
 conda install -y numpy scipy pandas matplotlib pylint
 conda install -y seaborn pillow scikit-image opencv scikit-learn tqdm ipython ipykernel ipywidgets
@@ -360,14 +343,10 @@ conda install -y -c pytorch pytorch torchvision
 conda update --all -y
 python -m ipykernel install --user --name tc --display-name PyTorch
 conda deactivate
-</code></pre>
-
-<h2 id="7-install-vscode">7. Install VSCode</h2>
-
+</code></pre></div><h2 id="7-install-vscode">7. Install VSCode</h2>
 <ul>
 <li><a href="https://code.visualstudio.com/docs/?dv=osx">https://code.visualstudio.com/docs/?dv=osx</a></li>
 <li>Install plugin
-
 <ul>
 <li>python</li>
 <li>pylance</li>
@@ -375,19 +354,20 @@ conda deactivate
 <li>indent-rainbow</li>
 <li>Remote - SSH</li>
 <li>kite
-
 <ul>
 <li><a href="https://kite.com/download/">https://kite.com/download/</a></li>
-</ul></li>
+</ul>
+</li>
 <li>c/c++</li>
 <li>markdown-all-in-one</li>
 <li>leetcode
-
 <ul>
 <li>brew install node</li>
 <li>Sign in using github</li>
-</ul></li>
-</ul></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 
         </div>
@@ -502,7 +482,7 @@ conda deactivate
         </ul>
       </div>
       <div class="col-12 border-top py-4 text-center">
-        | copyright &copy; 2020 <a href="https://themefisher.com">Themefisher</a> All Rights Reserved |
+        | copyright © 2020 <a href="https://themefisher.com">Themefisher</a> All Rights Reserved |
       </div>
     </div>
   </div>

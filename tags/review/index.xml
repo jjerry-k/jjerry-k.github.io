@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Review on Jerry&#39;s DevLog</title>
@@ -6,11 +6,7 @@
     <description>Recent content in Review on Jerry&#39;s DevLog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 10 Feb 2021 20:43:43 +0900</lastBuildDate>
-    
-	<atom:link href="https://jjerry-k.github.io/tags/review/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Wed, 10 Feb 2021 20:43:43 +0900</lastBuildDate><atom:link href="https://jjerry-k.github.io/tags/review/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>M1 Macbook Pro 열흘 사용기</title>
       <link>https://jjerry-k.github.io/blog/silicon_mac/</link>

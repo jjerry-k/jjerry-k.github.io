@@ -9,7 +9,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="this is meta description">
   <meta name="author" content="Jerry Kim">
-  <meta name="generator" content="Hugo 0.54.0" />
+  <meta name="generator" content="Hugo 0.90.0" />
 
   <!-- plugins -->
   
@@ -162,283 +162,229 @@
         <img src="https://rapids.ai/assets/images/og_image.png" class="img-fluid w-100 mb-4" alt="RAPIDS!!!">
         
         <div class="content mb-5">
-          
-
-<blockquote>
+          <blockquote>
 <p>RAPIDS is a suite of software libraries for executing end-to-end data science &amp; analytics pipelines entirely on GPUs.</p>
 </blockquote>
-
 <p>위 글은 <a href="https://rapids.ai/index.html">RAPIDS 공식 홈페이지</a>에서 가져온 내용입니다.</p>
-
 <p>말 그대로 모든 과정을 GPU 에서 실행하도록 도와주는 라이브러리입니다.</p>
-
 <h2 id="prerequisites">PREREQUISITES</h2>
-
 <p><strong>GPU</strong></p>
-
 <ul>
 <li>NVIDIA Pascal™ or better with <strong><a href="https://developer.nvidia.com/cuda-gpus">compute capability</a></strong> 6.0+</li>
 </ul>
-
 <p><strong>OS</strong></p>
-
 <ul>
 <li>Ubuntu 16.04/18.04 or CentOS 7 with <code>gcc/++</code> 7.5+</li>
 <li>See <a href="https://docs.rapids.ai/notices/rsn0001">RSN 1</a> for details on our recent update to <code>gcc/++</code> 7.5  RHEL 7 support is provided through CentOS 7 builds/installs</li>
 </ul>
-
 <p><strong>Docker</strong></p>
-
 <ul>
 <li>Docker CE v19.03+ and <strong><a href="https://github.com/NVIDIA/nvidia-docker#quickstart">nvidia-container-toolkit</a></strong></li>
 <li><a href="https://rapids.ai/start.html#-docker-container">Legacy Support</a> - Docker CE v17-18 and <a href="https://github.com/NVIDIA/nvidia-docker/wiki/Installation-(version-2.0)">nvidia-docker2</a></li>
 </ul>
-
 <p><strong>CUDA &amp; NVIDIA Drivers</strong></p>
-
 <ul>
 <li>One of the following supported versions: <a href="https://developer.nvidia.com/cuda-10.0-download-archive">10.0</a> &amp; v410.48+  <a href="https://developer.nvidia.com/cuda-10.1-download-archive-update2">10.1.2</a> &amp; v418.87+  <a href="https://developer.nvidia.com/cuda-10.2-download-archive">10.2</a> &amp; v440.33+</li>
 </ul>
-
 <h2 id="rapids-apis">RAPIDS APIs</h2>
-
 <ul>
 <li>RAPIDS 에는 현재 5개의 라이브러리를 제공.</li>
 <li><strong>cuDF ( 요것이 Main )</strong>
-
 <ul>
 <li>Python GPU DataFrame library</li>
-</ul></li>
+</ul>
+</li>
 <li>cuML
-
 <ul>
 <li>a suite of libraries that implement machine learning algorithms and mathematical primitives functions</li>
-</ul></li>
+</ul>
+</li>
 <li>cuGraph
-
 <ul>
 <li>a GPU accelerated graph analytics library</li>
-</ul></li>
+</ul>
+</li>
 <li>nvStrings
-
 <ul>
 <li>a pandas-like API that will be familiar to data engineers &amp; data scientists</li>
-</ul></li>
+</ul>
+</li>
 <li>Cyber Log Accelerators(CLX)
-
 <ul>
 <li>a collection of RAPIDS examples for security analysts, data scientists, and engineers to quickly get started applying RAPIS and GPU acceleration to real-world cybersecurity use cases</li>
-</ul></li>
 </ul>
-
+</li>
+</ul>
 <h2 id="installation-guide">Installation Guide</h2>
-
 <p><a href="https://rapids.ai/start.html#get-rapids">https://rapids.ai/start.html#get-rapids</a></p>
-
 <h3 id="anaconda-or-miniconda">Anaconda or Miniconda</h3>
-
 <ul>
 <li>설치하는데 시간이 꽤나 오래 걸려요&hellip;</li>
 </ul>
-
-<pre><code class="language-bash">conda install -c rapidsai -c nvidia -c conda-forge \
-    -c defaults rapids=0.14 python=3.7 cudatoolkit=10.1
-# cudatoolkit은 사용하는 DL 프레임워크 호환성 고려하세요!
-</code></pre>
-
-<h2 id="example">Example</h2>
-
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">conda install -c rapidsai -c nvidia -c conda-forge <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    -c defaults rapids<span style="color:#f92672">=</span>0.14 python<span style="color:#f92672">=</span>3.7 cudatoolkit<span style="color:#f92672">=</span>10.1
+<span style="color:#75715e"># cudatoolkit은 사용하는 DL 프레임워크 호환성 고려하세요!</span>
+</code></pre></div><h2 id="example">Example</h2>
 <p>이번 포스팅에선 cuDF 에 대한 예제를 보여드리려 합니다.</p>
-
 <p>추가적으로 <a href="https://dask.org/">Dask</a>, <a href="https://github.com/rapidsai/dask-cudf">Dask-cuDF</a> 라는 2개의 라이브러리를 사용합니다.</p>
-
 <p>먼저 사용할 Package 들을 import 해줍니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> os
 
-<pre><code class="language-python">import os
-
-import numpy as np
-import pandas as pd
-import cudf
-import dask_cudf
-</code></pre>
-
-<p>다음 예시는 pandas와 cudf 를 비교하는 예시입니다.</p>
-
-<pre><code class="language-python"># Series
-s = pd.Series([1,2,3,None,4])
-print(&quot;Pandas&quot;)
+<span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
+<span style="color:#f92672">import</span> pandas <span style="color:#66d9ef">as</span> pd
+<span style="color:#f92672">import</span> cudf
+<span style="color:#f92672">import</span> dask_cudf
+</code></pre></div><p>다음 예시는 pandas와 cudf 를 비교하는 예시입니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># Series</span>
+s <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>Series([<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>,<span style="color:#66d9ef">None</span>,<span style="color:#ae81ff">4</span>])
+print(<span style="color:#e6db74">&#34;Pandas&#34;</span>)
 print(s)
 
-gs = cudf.Series([1,2,3,None,4])
-print(&quot;\ncuDF&quot;)
+gs <span style="color:#f92672">=</span> cudf<span style="color:#f92672">.</span>Series([<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>,<span style="color:#66d9ef">None</span>,<span style="color:#ae81ff">4</span>])
+print(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">cuDF&#34;</span>)
 print(gs)
 
-dask_gs = dask_cudf.from_cudf(gs, npartitions=2)
+dask_gs <span style="color:#f92672">=</span> dask_cudf<span style="color:#f92672">.</span>from_cudf(gs, npartitions<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>)
 
-print(&quot;\nDask-cuDF&quot;)
-print(dask_gs.compute())
-</code></pre>
-
-<pre><code class="language-python">Pandas
-0    1.0
-1    2.0
-2    3.0
-3    NaN
-4    4.0
+print(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">Dask-cuDF&#34;</span>)
+print(dask_gs<span style="color:#f92672">.</span>compute())
+</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">Pandas
+<span style="color:#ae81ff">0</span>    <span style="color:#ae81ff">1.0</span>
+<span style="color:#ae81ff">1</span>    <span style="color:#ae81ff">2.0</span>
+<span style="color:#ae81ff">2</span>    <span style="color:#ae81ff">3.0</span>
+<span style="color:#ae81ff">3</span>    NaN
+<span style="color:#ae81ff">4</span>    <span style="color:#ae81ff">4.0</span>
 dtype: float64
 
 cuDF
-0       1
-1       2
-2       3
-3    null
-4       4
+<span style="color:#ae81ff">0</span>       <span style="color:#ae81ff">1</span>
+<span style="color:#ae81ff">1</span>       <span style="color:#ae81ff">2</span>
+<span style="color:#ae81ff">2</span>       <span style="color:#ae81ff">3</span>
+<span style="color:#ae81ff">3</span>    null
+<span style="color:#ae81ff">4</span>       <span style="color:#ae81ff">4</span>
 dtype: int64
 
-Dask-cuDF
-0       1
-1       2
-2       3
-3    null
-4       4
+Dask<span style="color:#f92672">-</span>cuDF
+<span style="color:#ae81ff">0</span>       <span style="color:#ae81ff">1</span>
+<span style="color:#ae81ff">1</span>       <span style="color:#ae81ff">2</span>
+<span style="color:#ae81ff">2</span>       <span style="color:#ae81ff">3</span>
+<span style="color:#ae81ff">3</span>    null
+<span style="color:#ae81ff">4</span>       <span style="color:#ae81ff">4</span>
 dtype: int64
-</code></pre>
+</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># DataFrame </span>
+pdf <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>DataFrame({<span style="color:#e6db74">&#39;a&#39;</span>: list(range(<span style="color:#ae81ff">20</span>)), <span style="color:#e6db74">&#39;b&#39;</span>: list(reversed(range(<span style="color:#ae81ff">20</span>))), <span style="color:#e6db74">&#39;c&#39;</span>: list(range(<span style="color:#ae81ff">20</span>))})
+print(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">Pandas&#34;</span>)
+print(pdf<span style="color:#f92672">.</span>head(<span style="color:#ae81ff">5</span>))
 
-<pre><code class="language-python"># DataFrame 
-pdf = pd.DataFrame({'a': list(range(20)), 'b': list(reversed(range(20))), 'c': list(range(20))})
-print(&quot;\nPandas&quot;)
-print(pdf.head(5))
+gdf <span style="color:#f92672">=</span> cudf<span style="color:#f92672">.</span>DataFrame<span style="color:#f92672">.</span>from_pandas(pdf)
+print(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">cuDF&#34;</span>)
+print(gdf<span style="color:#f92672">.</span>head(<span style="color:#ae81ff">5</span>))
 
-gdf = cudf.DataFrame.from_pandas(pdf)
-print(&quot;\ncuDF&quot;)
-print(gdf.head(5))
+dask_gdf <span style="color:#f92672">=</span> dask_cudf<span style="color:#f92672">.</span>from_cudf(gdf, npartitions<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>)
 
-dask_gdf = dask_cudf.from_cudf(gdf, npartitions=2)
-
-print(&quot;\nDask-cuDF&quot;)
-print(dask_gdf.compute().head(5))
-</code></pre>
-
-<pre><code class="language-python">Pandas
+print(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">Dask-cuDF&#34;</span>)
+print(dask_gdf<span style="color:#f92672">.</span>compute()<span style="color:#f92672">.</span>head(<span style="color:#ae81ff">5</span>))
+</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">Pandas
    a   b  c
-0  0  19  0
-1  1  18  1
-2  2  17  2
-3  3  16  3
-4  4  15  4
+<span style="color:#ae81ff">0</span>  <span style="color:#ae81ff">0</span>  <span style="color:#ae81ff">19</span>  <span style="color:#ae81ff">0</span>
+<span style="color:#ae81ff">1</span>  <span style="color:#ae81ff">1</span>  <span style="color:#ae81ff">18</span>  <span style="color:#ae81ff">1</span>
+<span style="color:#ae81ff">2</span>  <span style="color:#ae81ff">2</span>  <span style="color:#ae81ff">17</span>  <span style="color:#ae81ff">2</span>
+<span style="color:#ae81ff">3</span>  <span style="color:#ae81ff">3</span>  <span style="color:#ae81ff">16</span>  <span style="color:#ae81ff">3</span>
+<span style="color:#ae81ff">4</span>  <span style="color:#ae81ff">4</span>  <span style="color:#ae81ff">15</span>  <span style="color:#ae81ff">4</span>
 
 cuDF
    a   b  c
-0  0  19  0
-1  1  18  1
-2  2  17  2
-3  3  16  3
-4  4  15  4
+<span style="color:#ae81ff">0</span>  <span style="color:#ae81ff">0</span>  <span style="color:#ae81ff">19</span>  <span style="color:#ae81ff">0</span>
+<span style="color:#ae81ff">1</span>  <span style="color:#ae81ff">1</span>  <span style="color:#ae81ff">18</span>  <span style="color:#ae81ff">1</span>
+<span style="color:#ae81ff">2</span>  <span style="color:#ae81ff">2</span>  <span style="color:#ae81ff">17</span>  <span style="color:#ae81ff">2</span>
+<span style="color:#ae81ff">3</span>  <span style="color:#ae81ff">3</span>  <span style="color:#ae81ff">16</span>  <span style="color:#ae81ff">3</span>
+<span style="color:#ae81ff">4</span>  <span style="color:#ae81ff">4</span>  <span style="color:#ae81ff">15</span>  <span style="color:#ae81ff">4</span>
 
-Dask-cuDF
+Dask<span style="color:#f92672">-</span>cuDF
    a   b  c
-0  0  19  0
-1  1  18  1
-2  2  17  2
-3  3  16  3
-4  4  15  4
-</code></pre>
+<span style="color:#ae81ff">0</span>  <span style="color:#ae81ff">0</span>  <span style="color:#ae81ff">19</span>  <span style="color:#ae81ff">0</span>
+<span style="color:#ae81ff">1</span>  <span style="color:#ae81ff">1</span>  <span style="color:#ae81ff">18</span>  <span style="color:#ae81ff">1</span>
+<span style="color:#ae81ff">2</span>  <span style="color:#ae81ff">2</span>  <span style="color:#ae81ff">17</span>  <span style="color:#ae81ff">2</span>
+<span style="color:#ae81ff">3</span>  <span style="color:#ae81ff">3</span>  <span style="color:#ae81ff">16</span>  <span style="color:#ae81ff">3</span>
+<span style="color:#ae81ff">4</span>  <span style="color:#ae81ff">4</span>  <span style="color:#ae81ff">15</span>  <span style="color:#ae81ff">4</span>
+</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># Sorting</span>
+print(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">Pandas&#34;</span>)
+print(pdf<span style="color:#f92672">.</span>sort_values(by<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;b&#39;</span>)<span style="color:#f92672">.</span>head(<span style="color:#ae81ff">5</span>))
 
-<pre><code class="language-python"># Sorting
-print(&quot;\nPandas&quot;)
-print(pdf.sort_values(by='b').head(5))
+print(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">cuDF&#34;</span>)
+print(gdf<span style="color:#f92672">.</span>sort_values(by<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;b&#39;</span>)<span style="color:#f92672">.</span>head(<span style="color:#ae81ff">5</span>))
 
-print(&quot;\ncuDF&quot;)
-print(gdf.sort_values(by='b').head(5))
-
-print(&quot;\nDask-cuDF&quot;)
-print(dask_gdf.sort_values(by='b').compute().head(5))
-</code></pre>
-
-<pre><code class="language-python">Pandas
+print(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">Dask-cuDF&#34;</span>)
+print(dask_gdf<span style="color:#f92672">.</span>sort_values(by<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;b&#39;</span>)<span style="color:#f92672">.</span>compute()<span style="color:#f92672">.</span>head(<span style="color:#ae81ff">5</span>))
+</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">Pandas
      a  b   c
-19  19  0  19
-18  18  1  18
-17  17  2  17
-16  16  3  16
-15  15  4  15
+<span style="color:#ae81ff">19</span>  <span style="color:#ae81ff">19</span>  <span style="color:#ae81ff">0</span>  <span style="color:#ae81ff">19</span>
+<span style="color:#ae81ff">18</span>  <span style="color:#ae81ff">18</span>  <span style="color:#ae81ff">1</span>  <span style="color:#ae81ff">18</span>
+<span style="color:#ae81ff">17</span>  <span style="color:#ae81ff">17</span>  <span style="color:#ae81ff">2</span>  <span style="color:#ae81ff">17</span>
+<span style="color:#ae81ff">16</span>  <span style="color:#ae81ff">16</span>  <span style="color:#ae81ff">3</span>  <span style="color:#ae81ff">16</span>
+<span style="color:#ae81ff">15</span>  <span style="color:#ae81ff">15</span>  <span style="color:#ae81ff">4</span>  <span style="color:#ae81ff">15</span>
 
 cuDF
      a  b   c
-19  19  0  19
-18  18  1  18
-17  17  2  17
-16  16  3  16
-15  15  4  15
+<span style="color:#ae81ff">19</span>  <span style="color:#ae81ff">19</span>  <span style="color:#ae81ff">0</span>  <span style="color:#ae81ff">19</span>
+<span style="color:#ae81ff">18</span>  <span style="color:#ae81ff">18</span>  <span style="color:#ae81ff">1</span>  <span style="color:#ae81ff">18</span>
+<span style="color:#ae81ff">17</span>  <span style="color:#ae81ff">17</span>  <span style="color:#ae81ff">2</span>  <span style="color:#ae81ff">17</span>
+<span style="color:#ae81ff">16</span>  <span style="color:#ae81ff">16</span>  <span style="color:#ae81ff">3</span>  <span style="color:#ae81ff">16</span>
+<span style="color:#ae81ff">15</span>  <span style="color:#ae81ff">15</span>  <span style="color:#ae81ff">4</span>  <span style="color:#ae81ff">15</span>
 
-Dask-cuDF
+Dask<span style="color:#f92672">-</span>cuDF
      a  b   c
-19  19  0  19
-18  18  1  18
-17  17  2  17
-16  16  3  16
-15  15  4  15
-</code></pre>
+<span style="color:#ae81ff">19</span>  <span style="color:#ae81ff">19</span>  <span style="color:#ae81ff">0</span>  <span style="color:#ae81ff">19</span>
+<span style="color:#ae81ff">18</span>  <span style="color:#ae81ff">18</span>  <span style="color:#ae81ff">1</span>  <span style="color:#ae81ff">18</span>
+<span style="color:#ae81ff">17</span>  <span style="color:#ae81ff">17</span>  <span style="color:#ae81ff">2</span>  <span style="color:#ae81ff">17</span>
+<span style="color:#ae81ff">16</span>  <span style="color:#ae81ff">16</span>  <span style="color:#ae81ff">3</span>  <span style="color:#ae81ff">16</span>
+<span style="color:#ae81ff">15</span>  <span style="color:#ae81ff">15</span>  <span style="color:#ae81ff">4</span>  <span style="color:#ae81ff">15</span>
+</code></pre></div><p>이번엔 큰 DataFrame을 만들어서 sorting 속도를 비교하는 코드입니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># %%</span>
+<span style="color:#75715e"># Speed Test</span>
+num_element <span style="color:#f92672">=</span> <span style="color:#ae81ff">1000000</span>
+pdf <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>DataFrame({<span style="color:#e6db74">&#39;a&#39;</span>: list(range(num_element)), <span style="color:#e6db74">&#39;b&#39;</span>: list(reversed(range(num_element))), <span style="color:#e6db74">&#39;c&#39;</span>: np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>randint(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1200000</span>, num_element)})
+print(pdf<span style="color:#f92672">.</span>head(<span style="color:#ae81ff">5</span>))
 
-<p>이번엔 큰 DataFrame을 만들어서 sorting 속도를 비교하는 코드입니다.</p>
+gdf <span style="color:#f92672">=</span> cudf<span style="color:#f92672">.</span>DataFrame<span style="color:#f92672">.</span>from_pandas(pdf)
+print(gdf<span style="color:#f92672">.</span>head(<span style="color:#ae81ff">5</span>))
 
-<pre><code class="language-python"># %%
-# Speed Test
-num_element = 1000000
-pdf = pd.DataFrame({'a': list(range(num_element)), 'b': list(reversed(range(num_element))), 'c': np.random.randint(0, 1200000, num_element)})
-print(pdf.head(5))
+dask_gdf <span style="color:#f92672">=</span> dask_cudf<span style="color:#f92672">.</span>from_cudf(gdf, npartitions<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>)
+print(dask_gdf<span style="color:#f92672">.</span>compute()<span style="color:#f92672">.</span>head(<span style="color:#ae81ff">5</span>))
+</code></pre></div><p>실행 속도는 ipython의 <a href="https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-timeit">timeit</a> 이라는 magic function 을 이용하였습니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">%%</span>timeit
+pdf<span style="color:#f92672">.</span>sort_values(by<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;c&#34;</span>)
 
-gdf = cudf.DataFrame.from_pandas(pdf)
-print(gdf.head(5))
+<span style="color:#f92672">%%</span>timeit
+gdf<span style="color:#f92672">.</span>sort_values(by<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;c&#34;</span>)
 
-dask_gdf = dask_cudf.from_cudf(gdf, npartitions=2)
-print(dask_gdf.compute().head(5))
-</code></pre>
+<span style="color:#f92672">%%</span>timeit
+dask_gdf<span style="color:#f92672">.</span>sort_values(by<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;c&#34;</span>)<span style="color:#f92672">.</span>compute()
 
-<p>실행 속도는 ipython의 <a href="https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-timeit">timeit</a> 이라는 magic function 을 이용하였습니다.</p>
+</code></pre></div><p><code>num_element</code>를 바꿔가면서 테스트를 해봤습니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># num_element = 1000</span>
+<span style="color:#ae81ff">448</span> µs <span style="color:#960050;background-color:#1e0010">±</span> <span style="color:#ae81ff">38.8</span> µs per loop (mean <span style="color:#960050;background-color:#1e0010">±</span> std<span style="color:#f92672">.</span> dev<span style="color:#f92672">.</span> of <span style="color:#ae81ff">7</span> runs, <span style="color:#ae81ff">1000</span> loops each)
+<span style="color:#ae81ff">2.84</span> ms <span style="color:#960050;background-color:#1e0010">±</span> <span style="color:#ae81ff">1.56</span> ms per loop (mean <span style="color:#960050;background-color:#1e0010">±</span> std<span style="color:#f92672">.</span> dev<span style="color:#f92672">.</span> of <span style="color:#ae81ff">7</span> runs, <span style="color:#ae81ff">100</span> loops each)
+<span style="color:#ae81ff">83.4</span> ms <span style="color:#960050;background-color:#1e0010">±</span> <span style="color:#ae81ff">47.7</span> ms per loop (mean <span style="color:#960050;background-color:#1e0010">±</span> std<span style="color:#f92672">.</span> dev<span style="color:#f92672">.</span> of <span style="color:#ae81ff">7</span> runs, <span style="color:#ae81ff">1</span> loop each)
 
-<pre><code class="language-python">%%timeit
-pdf.sort_values(by=&quot;c&quot;)
+<span style="color:#75715e"># num_element = 10000</span>
+<span style="color:#ae81ff">1.39</span> ms <span style="color:#960050;background-color:#1e0010">±</span> <span style="color:#ae81ff">42.8</span> µs per loop (mean <span style="color:#960050;background-color:#1e0010">±</span> std<span style="color:#f92672">.</span> dev<span style="color:#f92672">.</span> of <span style="color:#ae81ff">7</span> runs, <span style="color:#ae81ff">1000</span> loops each)
+<span style="color:#ae81ff">3.14</span> ms <span style="color:#960050;background-color:#1e0010">±</span> <span style="color:#ae81ff">1.99</span> ms per loop (mean <span style="color:#960050;background-color:#1e0010">±</span> std<span style="color:#f92672">.</span> dev<span style="color:#f92672">.</span> of <span style="color:#ae81ff">7</span> runs, <span style="color:#ae81ff">100</span> loops each)
+<span style="color:#ae81ff">89.9</span> ms <span style="color:#960050;background-color:#1e0010">±</span> <span style="color:#ae81ff">24.3</span> ms per loop (mean <span style="color:#960050;background-color:#1e0010">±</span> std<span style="color:#f92672">.</span> dev<span style="color:#f92672">.</span> of <span style="color:#ae81ff">7</span> runs, <span style="color:#ae81ff">10</span> loops each)
 
-%%timeit
-gdf.sort_values(by=&quot;c&quot;)
+<span style="color:#75715e"># num_element = 100000</span>
+<span style="color:#ae81ff">13.8</span> ms <span style="color:#960050;background-color:#1e0010">±</span> <span style="color:#ae81ff">467</span> µs per loop (mean <span style="color:#960050;background-color:#1e0010">±</span> std<span style="color:#f92672">.</span> dev<span style="color:#f92672">.</span> of <span style="color:#ae81ff">7</span> runs, <span style="color:#ae81ff">100</span> loops each)
+<span style="color:#ae81ff">5.61</span> ms <span style="color:#960050;background-color:#1e0010">±</span> <span style="color:#ae81ff">2.55</span> ms per loop (mean <span style="color:#960050;background-color:#1e0010">±</span> std<span style="color:#f92672">.</span> dev<span style="color:#f92672">.</span> of <span style="color:#ae81ff">7</span> runs, <span style="color:#ae81ff">100</span> loops each)
+<span style="color:#ae81ff">116</span> ms <span style="color:#960050;background-color:#1e0010">±</span> <span style="color:#ae81ff">29.3</span> ms per loop (mean <span style="color:#960050;background-color:#1e0010">±</span> std<span style="color:#f92672">.</span> dev<span style="color:#f92672">.</span> of <span style="color:#ae81ff">7</span> runs, <span style="color:#ae81ff">10</span> loops each)
 
-%%timeit
-dask_gdf.sort_values(by=&quot;c&quot;).compute()
-
-</code></pre>
-
-<p><code>num_element</code>를 바꿔가면서 테스트를 해봤습니다.</p>
-
-<pre><code class="language-python"># num_element = 1000
-448 µs ± 38.8 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
-2.84 ms ± 1.56 ms per loop (mean ± std. dev. of 7 runs, 100 loops each)
-83.4 ms ± 47.7 ms per loop (mean ± std. dev. of 7 runs, 1 loop each)
-
-# num_element = 10000
-1.39 ms ± 42.8 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
-3.14 ms ± 1.99 ms per loop (mean ± std. dev. of 7 runs, 100 loops each)
-89.9 ms ± 24.3 ms per loop (mean ± std. dev. of 7 runs, 10 loops each)
-
-# num_element = 100000
-13.8 ms ± 467 µs per loop (mean ± std. dev. of 7 runs, 100 loops each)
-5.61 ms ± 2.55 ms per loop (mean ± std. dev. of 7 runs, 100 loops each)
-116 ms ± 29.3 ms per loop (mean ± std. dev. of 7 runs, 10 loops each)
-
-#num_element = 1000000
-225 ms ± 31.4 ms per loop (mean ± std. dev. of 7 runs, 1 loop each)
-8.17 ms ± 534 µs per loop (mean ± std. dev. of 7 runs, 100 loops each)
-118 ms ± 27 ms per loop (mean ± std. dev. of 7 runs, 10 loops each)
-</code></pre>
-
-<p>적은 양에서는 CPU 가 더 빠르지만 점점 대규모로 늘어나니&hellip;.GPU 가 빠르군요.</p>
-
+<span style="color:#75715e">#num_element = 1000000</span>
+<span style="color:#ae81ff">225</span> ms <span style="color:#960050;background-color:#1e0010">±</span> <span style="color:#ae81ff">31.4</span> ms per loop (mean <span style="color:#960050;background-color:#1e0010">±</span> std<span style="color:#f92672">.</span> dev<span style="color:#f92672">.</span> of <span style="color:#ae81ff">7</span> runs, <span style="color:#ae81ff">1</span> loop each)
+<span style="color:#ae81ff">8.17</span> ms <span style="color:#960050;background-color:#1e0010">±</span> <span style="color:#ae81ff">534</span> µs per loop (mean <span style="color:#960050;background-color:#1e0010">±</span> std<span style="color:#f92672">.</span> dev<span style="color:#f92672">.</span> of <span style="color:#ae81ff">7</span> runs, <span style="color:#ae81ff">100</span> loops each)
+<span style="color:#ae81ff">118</span> ms <span style="color:#960050;background-color:#1e0010">±</span> <span style="color:#ae81ff">27</span> ms per loop (mean <span style="color:#960050;background-color:#1e0010">±</span> std<span style="color:#f92672">.</span> dev<span style="color:#f92672">.</span> of <span style="color:#ae81ff">7</span> runs, <span style="color:#ae81ff">10</span> loops each)
+</code></pre></div><p>적은 양에서는 CPU 가 더 빠르지만 점점 대규모로 늘어나니&hellip;.GPU 가 빠르군요.</p>
 <p>아! Dask_cuDF는 보통 multi gpu 일 때 사용하는데 제가 실험한 환경은 NIPA 수시 사용자&hellip;환경이라 V100 단일 환경이었습니다.</p>
-
 <p>그래서&hellip;dask_gdf 에 대한 속도는 믿지 마세요..</p>
-
-<h2 id="p-s">P.S</h2>
-
+<h2 id="ps">P.S</h2>
 <ul>
 <li>서터레스를 많이 받습니다.</li>
 <li>원인은&hellip;.&lsquo;그&rsquo; 집회&hellip;</li>
@@ -556,7 +502,7 @@ dask_gdf.sort_values(by=&quot;c&quot;).compute()
         </ul>
       </div>
       <div class="col-12 border-top py-4 text-center">
-        | copyright &copy; 2020 <a href="https://themefisher.com">Themefisher</a> All Rights Reserved |
+        | copyright © 2020 <a href="https://themefisher.com">Themefisher</a> All Rights Reserved |
       </div>
     </div>
   </div>

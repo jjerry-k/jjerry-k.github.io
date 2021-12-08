@@ -9,7 +9,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="this is meta description">
   <meta name="author" content="Jerry Kim">
-  <meta name="generator" content="Hugo 0.54.0" />
+  <meta name="generator" content="Hugo 0.90.0" />
 
   <!-- plugins -->
   
@@ -160,50 +160,47 @@
         </div>
         
         <div class="content mb-5">
-          <pre><code class="language-bash"># brew 설치.
-/usr/bin/ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;
+          <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># brew 설치.</span>
+/usr/bin/ruby -e <span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span>curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span>
 
-# wget 설치.
+<span style="color:#75715e"># wget 설치.</span>
 brew install wget
 
-#pyenv 설치.
+<span style="color:#75715e">#pyenv 설치.</span>
 brew install pyenv
 
-# bash_profile 에 경로 추가.
-echo 'export PYENV_ROOT=&quot;${HOME}/.pyenv&quot;' &gt;&gt; ~/.zshrc
+<span style="color:#75715e"># bash_profile 에 경로 추가.</span>
+echo <span style="color:#e6db74">&#39;export PYENV_ROOT=&#34;${HOME}/.pyenv&#34;&#39;</span> &gt;&gt; ~/.zshrc
 
-echo 'export PATH=&quot;${PYENV_ROOT}bin:$PATH&quot;' &gt;&gt; ~/.zshrc
+echo <span style="color:#e6db74">&#39;export PATH=&#34;${PYENV_ROOT}bin:$PATH&#34;&#39;</span> &gt;&gt; ~/.zshrc
 
-echo 'eval &quot;$(pyenv init -)&quot;' &gt;&gt; ~/.zshrc
+echo <span style="color:#e6db74">&#39;eval &#34;$(pyenv init -)&#34;&#39;</span> &gt;&gt; ~/.zshrc
 
 exec $SHELL
 
-# 설치할 수 있는 환경 보여줌.
+<span style="color:#75715e"># 설치할 수 있는 환경 보여줌.</span>
 pyenv install --list
 
-# 위에서 환경 확인 후 원하는 버전 입력.
+<span style="color:#75715e"># 위에서 환경 확인 후 원하는 버전 입력.</span>
 pyenv install &lt;버전 이름&gt;
 
-# system  과 &lt;버전 이름&gt; 두 환경이 존재.
+<span style="color:#75715e"># system  과 &lt;버전 이름&gt; 두 환경이 존재.</span>
 pyenv versions
 
-# &lt;버전 이름&gt;으로 default version 변경.
+<span style="color:#75715e"># &lt;버전 이름&gt;으로 default version 변경.</span>
 pyenv global &lt;버전 이름&gt;
 
 pyenv versions
 
 
-# tmp 폴더 에선 system 이라는 버전으로 사용.
+<span style="color:#75715e"># tmp 폴더 에선 system 이라는 버전으로 사용.</span>
 mkdir tmp
 
 cd tmp
 
 pyenv local system
 
-</code></pre>
-
-<p><strong>pyenv</strong> 를 사용하면 특정 폴더에서는 python2 로 작동하고 그 외에는 python3 로 작동하게 할 수 있습니다!</p>
-
+</code></pre></div><p><strong>pyenv</strong> 를 사용하면 특정 폴더에서는 python2 로 작동하고 그 외에는 python3 로 작동하게 할 수 있습니다!</p>
 <p>감사합니다!</p>
 
         </div>
@@ -318,7 +315,7 @@ pyenv local system
         </ul>
       </div>
       <div class="col-12 border-top py-4 text-center">
-        | copyright &copy; 2020 <a href="https://themefisher.com">Themefisher</a> All Rights Reserved |
+        | copyright © 2020 <a href="https://themefisher.com">Themefisher</a> All Rights Reserved |
       </div>
     </div>
   </div>

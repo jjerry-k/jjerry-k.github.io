@@ -9,7 +9,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="this is meta description">
   <meta name="author" content="Jerry Kim">
-  <meta name="generator" content="Hugo 0.54.0" />
+  <meta name="generator" content="Hugo 0.90.0" />
 
   <!-- plugins -->
   
@@ -162,163 +162,138 @@
         <img src="https://jjerry-k.github.io/images/post/configuration/configuration.png" class="img-fluid w-100 mb-4" alt="Configuration">
         
         <div class="content mb-5">
-          
-
-<p>Python 을 이용하여 ML, DL 코딩을 하다보면 관리해야하는 설정값이 매우 많습니다.<br />
+          <p>Python 을 이용하여 ML, DL 코딩을 하다보면 관리해야하는 설정값이 매우 많습니다.<br>
 너무 많아서 문제입니다&hellip; <code>Backbone, Learning rate, Epochs, Save path, ......</code>
-이걸 실행할때 마다 스크립트를 수정하기에는 매우 번거롭습니다.<br />
-그렇기에 이런 설정값을 관리하는 Configuration 파일을 따로 만들어서 관리를 하죠!<br />
+이걸 실행할때 마다 스크립트를 수정하기에는 매우 번거롭습니다.<br>
+그렇기에 이런 설정값을 관리하는 Configuration 파일을 따로 만들어서 관리를 하죠!<br>
 이번 포스팅에선 대표적으로 사용되는 네 가지 방법을 포스팅하려 합니다.
-각각에 대한 구체적인 설명을 하지 않습니다.<br />
+각각에 대한 구체적인 설명을 하지 않습니다.<br>
 예시 코드만 적고 포스팅을 마치려 합니다.</p>
-
 <h3 id="json">Json</h3>
-
-<pre><code class="language-json">{
-&quot;name&quot;: &quot;Jerry&quot;,
-&quot;github&quot;: &quot;jjerry-k&quot;,
-&quot;blog_url&quot;: &quot;jjerry-k.github.io&quot;,
-&quot;sns&quot;: {
-  &quot;facebook&quot;: &quot;https://www.facebook.com/jerry.kim.566/&quot;,
-  &quot;twitter&quot;: &quot;https://twitter.com/jjerry_k&quot;,
-  &quot;linkdin&quot;: &quot;https://www.linkedin.com/in/jerry-kim-b8804216b/&quot;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
+<span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;Jerry&#34;</span>,
+<span style="color:#f92672">&#34;github&#34;</span>: <span style="color:#e6db74">&#34;jjerry-k&#34;</span>,
+<span style="color:#f92672">&#34;blog_url&#34;</span>: <span style="color:#e6db74">&#34;jjerry-k.github.io&#34;</span>,
+<span style="color:#f92672">&#34;sns&#34;</span>: {
+  <span style="color:#f92672">&#34;facebook&#34;</span>: <span style="color:#e6db74">&#34;https://www.facebook.com/jerry.kim.566/&#34;</span>,
+  <span style="color:#f92672">&#34;twitter&#34;</span>: <span style="color:#e6db74">&#34;https://twitter.com/jjerry_k&#34;</span>,
+  <span style="color:#f92672">&#34;linkdin&#34;</span>: <span style="color:#e6db74">&#34;https://www.linkedin.com/in/jerry-kim-b8804216b/&#34;</span>
 },
-&quot;favorite&quot;: [&quot;cat&quot;, &quot;coding&quot;, &quot;DIY&quot;]
+<span style="color:#f92672">&#34;favorite&#34;</span>: [<span style="color:#e6db74">&#34;cat&#34;</span>, <span style="color:#e6db74">&#34;coding&#34;</span>, <span style="color:#e6db74">&#34;DIY&#34;</span>]
 }
-</code></pre>
+</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> json
 
-<pre><code class="language-python">import json
+<span style="color:#66d9ef">with</span> open(<span style="color:#e6db74">&#34;config.json&#34;</span>) <span style="color:#66d9ef">as</span> json_data_file:
+    data <span style="color:#f92672">=</span> json<span style="color:#f92672">.</span>load(json_data_file)
 
-with open(&quot;config.json&quot;) as json_data_file:
-    data = json.load(json_data_file)
-
-print(type(data)) # &lt;class 'dict'&gt;
+print(type(data)) <span style="color:#75715e"># &lt;class &#39;dict&#39;&gt;</span>
 print(data)
-# {'name': 'Jerry', 
-# 'github': 'jjerry-k', 
-# 'blog_url': 'jjerry-k.github.io', 
-# 'sns': {'facebook': 'https://www.facebook.com/jerry.kim.566/', 
-#         'twitter': 'https://twitter.com/jjerry_k', 
-#         'linkedin': 'https://www.linkedin.com/in/jerry-kim-b8804216b/'}, 
-# 'favorite': ['cat', 'coding', 'DIY']}
-</code></pre>
+<span style="color:#75715e"># {&#39;name&#39;: &#39;Jerry&#39;, </span>
+<span style="color:#75715e"># &#39;github&#39;: &#39;jjerry-k&#39;, </span>
+<span style="color:#75715e"># &#39;blog_url&#39;: &#39;jjerry-k.github.io&#39;, </span>
+<span style="color:#75715e"># &#39;sns&#39;: {&#39;facebook&#39;: &#39;https://www.facebook.com/jerry.kim.566/&#39;, </span>
+<span style="color:#75715e">#         &#39;twitter&#39;: &#39;https://twitter.com/jjerry_k&#39;, </span>
+<span style="color:#75715e">#         &#39;linkedin&#39;: &#39;https://www.linkedin.com/in/jerry-kim-b8804216b/&#39;}, </span>
+<span style="color:#75715e"># &#39;favorite&#39;: [&#39;cat&#39;, &#39;coding&#39;, &#39;DIY&#39;]}</span>
+</code></pre></div><h3 id="ymlyaml">YML/YAML</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">name</span>: <span style="color:#ae81ff">Jerry</span>
 
-<h3 id="yml-yaml">YML/YAML</h3>
+<span style="color:#f92672">github</span>: <span style="color:#ae81ff">jjerry-k</span>
 
-<pre><code class="language-yaml">name: Jerry
+<span style="color:#f92672">sns</span>:
+    <span style="color:#f92672">facebook</span>: <span style="color:#ae81ff">https://www.facebook.com/jerry.kim.566/</span>
+    <span style="color:#f92672">twitter</span>: <span style="color:#ae81ff">https://twitter.com/jjerry_k</span>
+    <span style="color:#f92672">linkedin</span>: <span style="color:#ae81ff">https://www.linkedin.com/in/jerry-kim-b8804216b/</span>
 
-github: jjerry-k
+<span style="color:#f92672">favorite</span>: 
+    - <span style="color:#ae81ff">cat</span>
+    - <span style="color:#ae81ff">coding</span>
+    - <span style="color:#ae81ff">DIY</span>
+</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> yaml
 
-sns:
-    facebook: https://www.facebook.com/jerry.kim.566/
-    twitter: https://twitter.com/jjerry_k
-    linkedin: https://www.linkedin.com/in/jerry-kim-b8804216b/
+<span style="color:#66d9ef">with</span> open(<span style="color:#e6db74">&#34;config.yml&#34;</span>, <span style="color:#e6db74">&#34;r&#34;</span>) <span style="color:#66d9ef">as</span> ymlfile:
+    data <span style="color:#f92672">=</span> yaml<span style="color:#f92672">.</span>load(ymlfile)
 
-favorite: 
-    - cat
-    - coding
-    - DIY
-</code></pre>
-
-<pre><code class="language-python">import yaml
-
-with open(&quot;config.yml&quot;, &quot;r&quot;) as ymlfile:
-    data = yaml.load(ymlfile)
-
-print(type(data)) # &lt;class 'dict'&gt;
+print(type(data)) <span style="color:#75715e"># &lt;class &#39;dict&#39;&gt;</span>
 print(data)
-# {'name': 'Jerry', 
-# 'github': 'jjerry-k', 
-# 'blog_url': 'jjerry-k.github.io', 
-# 'sns': {'facebook': 'https://www.facebook.com/jerry.kim.566/', 
-#         'twitter': 'https://twitter.com/jjerry_k', 
-#         'linkedin': 'https://www.linkedin.com/in/jerry-kim-b8804216b/'}, 
-# 'favorite': ['cat', 'coding', 'DIY']}
-</code></pre>
+<span style="color:#75715e"># {&#39;name&#39;: &#39;Jerry&#39;, </span>
+<span style="color:#75715e"># &#39;github&#39;: &#39;jjerry-k&#39;, </span>
+<span style="color:#75715e"># &#39;blog_url&#39;: &#39;jjerry-k.github.io&#39;, </span>
+<span style="color:#75715e"># &#39;sns&#39;: {&#39;facebook&#39;: &#39;https://www.facebook.com/jerry.kim.566/&#39;, </span>
+<span style="color:#75715e">#         &#39;twitter&#39;: &#39;https://twitter.com/jjerry_k&#39;, </span>
+<span style="color:#75715e">#         &#39;linkedin&#39;: &#39;https://www.linkedin.com/in/jerry-kim-b8804216b/&#39;}, </span>
+<span style="color:#75715e"># &#39;favorite&#39;: [&#39;cat&#39;, &#39;coding&#39;, &#39;DIY&#39;]}</span>
+</code></pre></div><h3 id="xml">XML</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#f92672">&lt;config&gt;</span>
+    <span style="color:#f92672">&lt;name&gt;</span>Jerry<span style="color:#f92672">&lt;/name&gt;</span>
+    <span style="color:#f92672">&lt;github&gt;</span>jjerry-k<span style="color:#f92672">&lt;/github&gt;</span>
+    <span style="color:#f92672">&lt;blog_url&gt;</span>jjerry-k.github.io<span style="color:#f92672">&lt;/blog_url&gt;</span>
+    <span style="color:#f92672">&lt;sns&gt;</span>
+        <span style="color:#f92672">&lt;facebook&gt;</span>https://www.facebook.com/jerry.kim.566/<span style="color:#f92672">&lt;/facebook&gt;</span>
+        <span style="color:#f92672">&lt;twitter&gt;</span>https://twitter.com/jjerry_k<span style="color:#f92672">&lt;/twitter&gt;</span>
+        <span style="color:#f92672">&lt;linkedin&gt;</span>https://www.linkedin.com/in/jerry-kim-b8804216b/<span style="color:#f92672">&lt;/linkedin&gt;</span>
+    <span style="color:#f92672">&lt;favorite&gt;</span>
+        <span style="color:#f92672">&lt;li&gt;</span>cat<span style="color:#f92672">&lt;/li&gt;</span>
+        <span style="color:#f92672">&lt;li&gt;</span>coding<span style="color:#f92672">&lt;/li&gt;</span>
+        <span style="color:#f92672">&lt;li&gt;</span>DIY<span style="color:#f92672">&lt;/li&gt;</span>
+    <span style="color:#f92672">&lt;/favorite&gt;</span>
+<span style="color:#f92672">&lt;/config&gt;</span>
+</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> xml.etree.ElementTree <span style="color:#66d9ef">as</span> ET
+root <span style="color:#f92672">=</span> ET<span style="color:#f92672">.</span>parse(<span style="color:#e6db74">&#39;config.xml&#39;</span>)<span style="color:#f92672">.</span>getroot()
 
-<h3 id="xml">XML</h3>
+print(type(root)) <span style="color:#75715e"># &lt;class &#39;xml.etree.ElementTree.Element&#39;&gt;</span>
+elem_list <span style="color:#f92672">=</span> list(root)
+<span style="color:#66d9ef">for</span> elem <span style="color:#f92672">in</span> elem_list:
+    sub_elem_list <span style="color:#f92672">=</span> list(elem)
+    <span style="color:#66d9ef">if</span> sub_elem_list:
+        <span style="color:#66d9ef">for</span> sub_elem <span style="color:#f92672">in</span> sub_elem_list:
+            print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span>elem<span style="color:#f92672">.</span>tag<span style="color:#e6db74">}</span><span style="color:#e6db74">, </span><span style="color:#e6db74">{</span>sub_elem<span style="color:#f92672">.</span>tag<span style="color:#e6db74">}</span><span style="color:#e6db74">: </span><span style="color:#e6db74">{</span>sub_elem<span style="color:#f92672">.</span>text<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+    <span style="color:#66d9ef">else</span>: print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span>elem<span style="color:#f92672">.</span>tag<span style="color:#e6db74">}</span><span style="color:#e6db74">: </span><span style="color:#e6db74">{</span>elem<span style="color:#f92672">.</span>text<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
 
-<pre><code class="language-xml">&lt;config&gt;
-    &lt;name&gt;Jerry&lt;/name&gt;
-    &lt;github&gt;jjerry-k&lt;/github&gt;
-    &lt;blog_url&gt;jjerry-k.github.io&lt;/blog_url&gt;
-    &lt;sns&gt;
-        &lt;facebook&gt;https://www.facebook.com/jerry.kim.566/&lt;/facebook&gt;
-        &lt;twitter&gt;https://twitter.com/jjerry_k&lt;/twitter&gt;
-        &lt;linkedin&gt;https://www.linkedin.com/in/jerry-kim-b8804216b/&lt;/linkedin&gt;
-    &lt;favorite&gt;
-        &lt;li&gt;cat&lt;/li&gt;
-        &lt;li&gt;coding&lt;/li&gt;
-        &lt;li&gt;DIY&lt;/li&gt;
-    &lt;/favorite&gt;
-&lt;/config&gt;
-</code></pre>
+<span style="color:#75715e"># name: Jerry</span>
+<span style="color:#75715e"># github: jjerry-k</span>
+<span style="color:#75715e"># blog_url: jjerry-k.github.io</span>
+<span style="color:#75715e"># sns, facebook: https://www.facebook.com/jerry.kim.566/</span>
+<span style="color:#75715e"># sns, twitter: https://twitter.com/jjerry_k</span>
+<span style="color:#75715e"># sns, linkedin: https://www.linkedin.com/in/jerry-kim-b8804216b/</span>
+<span style="color:#75715e"># favorite, li: cat</span>
+<span style="color:#75715e"># favorite, li: coding</span>
+<span style="color:#75715e"># favorite, li: DIY</span>
+</code></pre></div><h3 id="cfgconf">cfg/conf</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cfg" data-lang="cfg"><span style="color:#66d9ef">[defaults]</span>
+<span style="color:#a6e22e">name</span><span style="color:#f92672">=</span> <span style="color:#e6db74">Jerry</span>
+<span style="color:#a6e22e">github</span><span style="color:#f92672">=</span> <span style="color:#e6db74">jjeryr-k</span>
+<span style="color:#a6e22e">blog_url</span><span style="color:#f92672">=</span> <span style="color:#e6db74">jjerry-k.github.io</span>
+<span style="color:#a6e22e">favorite</span><span style="color:#f92672">=</span> <span style="color:#e6db74">[&#34;cat&#34;, &#34;coding&#34;, &#34;DIY&#34;]</span>
 
-<pre><code class="language-python">import xml.etree.ElementTree as ET
-root = ET.parse('config.xml').getroot()
+<span style="color:#66d9ef">[sns]</span>
+<span style="color:#a6e22e">facebook</span><span style="color:#f92672">=</span> <span style="color:#e6db74">https://www.facebook.com/jerry.kim.566/</span>
+<span style="color:#a6e22e">twitter</span><span style="color:#f92672">=</span> <span style="color:#e6db74">https://twitter.com/jjerry_k</span>
+<span style="color:#a6e22e">linkedin</span><span style="color:#f92672">=</span> <span style="color:#e6db74">https://www.linkedin.com/in/jerry-kim-b8804216b/</span>
+</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> configparser
 
-print(type(root)) # &lt;class 'xml.etree.ElementTree.Element'&gt;
-elem_list = list(root)
-for elem in elem_list:
-    sub_elem_list = list(elem)
-    if sub_elem_list:
-        for sub_elem in sub_elem_list:
-            print(f&quot;{elem.tag}, {sub_elem.tag}: {sub_elem.text}&quot;)
-    else: print(f&quot;{elem.tag}: {elem.text}&quot;)
+config <span style="color:#f92672">=</span> configparser<span style="color:#f92672">.</span>ConfigParser()
+config<span style="color:#f92672">.</span>read(<span style="color:#e6db74">&#39;config.cfg&#39;</span>)
 
-# name: Jerry
-# github: jjerry-k
-# blog_url: jjerry-k.github.io
-# sns, facebook: https://www.facebook.com/jerry.kim.566/
-# sns, twitter: https://twitter.com/jjerry_k
-# sns, linkedin: https://www.linkedin.com/in/jerry-kim-b8804216b/
-# favorite, li: cat
-# favorite, li: coding
-# favorite, li: DIY
-</code></pre>
+print(type(config)) <span style="color:#75715e"># &lt;class &#39;configparser.ConfigParser&#39;&gt;</span>
 
-<h3 id="cfg-conf">cfg/conf</h3>
+<span style="color:#66d9ef">for</span> section <span style="color:#f92672">in</span> config<span style="color:#f92672">.</span>sections():
+    <span style="color:#66d9ef">for</span> option <span style="color:#f92672">in</span> config<span style="color:#f92672">.</span>options(section):
+        print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span>section<span style="color:#e6db74">}</span><span style="color:#e6db74">, </span><span style="color:#e6db74">{</span>option<span style="color:#e6db74">}</span><span style="color:#e6db74">, </span><span style="color:#e6db74">{</span>config<span style="color:#f92672">.</span>get(section, option)<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
 
-<pre><code class="language-cfg">[defaults]
-name= Jerry
-github= jjeryr-k
-blog_url= jjerry-k.github.io
-favorite= [&quot;cat&quot;, &quot;coding&quot;, &quot;DIY&quot;]
+<span style="color:#75715e"># defaults, name, Jerry</span>
+<span style="color:#75715e"># defaults, github, jjeryr-k</span>
+<span style="color:#75715e"># defaults, blog_url, jjerry-k.github.io</span>
+<span style="color:#75715e"># defaults, favorite, [&#34;cat&#34;, &#34;coding&#34;, &#34;DIY&#34;]</span>
+<span style="color:#75715e"># sns, facebook, https://www.facebook.com/jerry.kim.566/</span>
+<span style="color:#75715e"># sns, twitter, https://twitter.com/jjerry_k</span>
+<span style="color:#75715e"># sns, linkedin, https://www.linkedin.com/in/jerry-kim-b8804216b/</span>
 
-[sns]
-facebook= https://www.facebook.com/jerry.kim.566/
-twitter= https://twitter.com/jjerry_k
-linkedin= https://www.linkedin.com/in/jerry-kim-b8804216b/
-</code></pre>
-
-<pre><code class="language-python">import configparser
-
-config = configparser.ConfigParser()
-config.read('config.cfg')
-
-print(type(config)) # &lt;class 'configparser.ConfigParser'&gt;
-
-for section in config.sections():
-    for option in config.options(section):
-        print(f&quot;{section}, {option}, {config.get(section, option)}&quot;)
-
-# defaults, name, Jerry
-# defaults, github, jjeryr-k
-# defaults, blog_url, jjerry-k.github.io
-# defaults, favorite, [&quot;cat&quot;, &quot;coding&quot;, &quot;DIY&quot;]
-# sns, facebook, https://www.facebook.com/jerry.kim.566/
-# sns, twitter, https://twitter.com/jjerry_k
-# sns, linkedin, https://www.linkedin.com/in/jerry-kim-b8804216b/
-
-</code></pre>
-
-<p>여기까지 입니다.<br />
-흠&hellip;.개인적으론 YAML이 가장 편해보이네요.<br />
-configuration file 만드는거나&hellip;parsing 하는거나&hellip;<br />
+</code></pre></div><p>여기까지 입니다.<br>
+흠&hellip;.개인적으론 YAML이 가장 편해보이네요.<br>
+configuration file 만드는거나&hellip;parsing 하는거나&hellip;<br>
 본인 편한거 잘 찾아서 쓰시면 될 듯합니다!</p>
-
-<h3 id="p-s">P.S</h3>
-
+<h3 id="ps">P.S</h3>
 <ul>
 <li>다음엔 뭐쓰지&hellip;</li>
 </ul>
@@ -435,7 +410,7 @@ configuration file 만드는거나&hellip;parsing 하는거나&hellip;<br />
         </ul>
       </div>
       <div class="col-12 border-top py-4 text-center">
-        | copyright &copy; 2020 <a href="https://themefisher.com">Themefisher</a> All Rights Reserved |
+        | copyright © 2020 <a href="https://themefisher.com">Themefisher</a> All Rights Reserved |
       </div>
     </div>
   </div>

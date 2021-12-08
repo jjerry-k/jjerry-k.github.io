@@ -9,7 +9,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="this is meta description">
   <meta name="author" content="Jerry Kim">
-  <meta name="generator" content="Hugo 0.54.0" />
+  <meta name="generator" content="Hugo 0.90.0" />
 
   <!-- plugins -->
   
@@ -162,64 +162,53 @@
         <img src="https://google.github.io/mediapipe/images/mediapipe_small.png" class="img-fluid w-100 mb-4" alt="MediaPipe - (3)">
         
         <div class="content mb-5">
-          
-
-<p>저번 Mediapipe의 Hands 포스팅에 이어서 Mediapipe의 Pose 를 테스트 해보겠습니다.</p>
-
+          <p>저번 Mediapipe의 Hands 포스팅에 이어서 Mediapipe의 Pose 를 테스트 해보겠습니다.</p>
 <h2 id="실행-코드">실행 코드</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> time
+<span style="color:#f92672">import</span> cv2 <span style="color:#66d9ef">as</span> cv
+<span style="color:#f92672">import</span> mediapipe <span style="color:#66d9ef">as</span> mp
+mp_drawing <span style="color:#f92672">=</span> mp<span style="color:#f92672">.</span>solutions<span style="color:#f92672">.</span>drawing_utils
+mp_pose <span style="color:#f92672">=</span> mp<span style="color:#f92672">.</span>solutions<span style="color:#f92672">.</span>pose
 
-<pre><code class="language-python">import time
-import cv2 as cv
-import mediapipe as mp
-mp_drawing = mp.solutions.drawing_utils
-mp_pose = mp.solutions.pose
-
-prevTime = 0
-idx = 0
-pose = mp_pose.Pose(
-    min_detection_confidence=0.5, min_tracking_confidence=0.5)
-cap = cv.VideoCapture('./ufc.gif')
-while cap.isOpened():
-    success, image = cap.read()
-    curTime = time.time()
-    if not success:
-        break
+prevTime <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+idx <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+pose <span style="color:#f92672">=</span> mp_pose<span style="color:#f92672">.</span>Pose(
+    min_detection_confidence<span style="color:#f92672">=</span><span style="color:#ae81ff">0.5</span>, min_tracking_confidence<span style="color:#f92672">=</span><span style="color:#ae81ff">0.5</span>)
+cap <span style="color:#f92672">=</span> cv<span style="color:#f92672">.</span>VideoCapture(<span style="color:#e6db74">&#39;./ufc.gif&#39;</span>)
+<span style="color:#66d9ef">while</span> cap<span style="color:#f92672">.</span>isOpened():
+    success, image <span style="color:#f92672">=</span> cap<span style="color:#f92672">.</span>read()
+    curTime <span style="color:#f92672">=</span> time<span style="color:#f92672">.</span>time()
+    <span style="color:#66d9ef">if</span> <span style="color:#f92672">not</span> success:
+        <span style="color:#66d9ef">break</span>
     
-    image = cv.cvtColor(cv.flip(image, 1), cv.COLOR_BGR2RGB)
-    image.flags.writeable = False
-    results = pose.process(image)
+    image <span style="color:#f92672">=</span> cv<span style="color:#f92672">.</span>cvtColor(cv<span style="color:#f92672">.</span>flip(image, <span style="color:#ae81ff">1</span>), cv<span style="color:#f92672">.</span>COLOR_BGR2RGB)
+    image<span style="color:#f92672">.</span>flags<span style="color:#f92672">.</span>writeable <span style="color:#f92672">=</span> <span style="color:#66d9ef">False</span>
+    results <span style="color:#f92672">=</span> pose<span style="color:#f92672">.</span>process(image)
 
-    image.flags.writeable = True
-    image = cv.cvtColor(image, cv.COLOR_RGB2BGR)
-    mp_drawing.draw_landmarks(
-        image, results.pose_landmarks, mp_pose.POSE_CONNECTIONS)
+    image<span style="color:#f92672">.</span>flags<span style="color:#f92672">.</span>writeable <span style="color:#f92672">=</span> <span style="color:#66d9ef">True</span>
+    image <span style="color:#f92672">=</span> cv<span style="color:#f92672">.</span>cvtColor(image, cv<span style="color:#f92672">.</span>COLOR_RGB2BGR)
+    mp_drawing<span style="color:#f92672">.</span>draw_landmarks(
+        image, results<span style="color:#f92672">.</span>pose_landmarks, mp_pose<span style="color:#f92672">.</span>POSE_CONNECTIONS)
 
-    sec = curTime - prevTime
-    prevTime = curTime
-    fps = 1/(sec)
-    str = f&quot;FPS : {fps:0.1f}&quot;
+    sec <span style="color:#f92672">=</span> curTime <span style="color:#f92672">-</span> prevTime
+    prevTime <span style="color:#f92672">=</span> curTime
+    fps <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span><span style="color:#f92672">/</span>(sec)
+    str <span style="color:#f92672">=</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;FPS : </span><span style="color:#e6db74">{</span>fps<span style="color:#e6db74">:</span><span style="color:#e6db74">0.1f</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
     
-		cv.putText(image, str, (0, 100), cv.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0))
-    cv.imshow('MediaPipe Pose', image)
-    cv.imwrite(f&quot;./sample_{idx:05d}.jpg&quot;, image) # for making gif
-    idx += 1
-    if cv.waitKey(1) &amp; 0xFF == ord('q'):
-        break
-pose.close()
-cap.release()
-</code></pre>
-
-<p>좀 더 해봐야겠지만 일단 지금 코드로는 제대로 잡진 못하는 것 같네요..</p>
-
+		cv<span style="color:#f92672">.</span>putText(image, str, (<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">100</span>), cv<span style="color:#f92672">.</span>FONT_HERSHEY_SIMPLEX, <span style="color:#ae81ff">1</span>, (<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">255</span>, <span style="color:#ae81ff">0</span>))
+    cv<span style="color:#f92672">.</span>imshow(<span style="color:#e6db74">&#39;MediaPipe Pose&#39;</span>, image)
+    cv<span style="color:#f92672">.</span>imwrite(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;./sample_</span><span style="color:#e6db74">{</span>idx<span style="color:#e6db74">:</span><span style="color:#e6db74">05d</span><span style="color:#e6db74">}</span><span style="color:#e6db74">.jpg&#34;</span>, image) <span style="color:#75715e"># for making gif</span>
+    idx <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
+    <span style="color:#66d9ef">if</span> cv<span style="color:#f92672">.</span>waitKey(<span style="color:#ae81ff">1</span>) <span style="color:#f92672">&amp;</span> <span style="color:#ae81ff">0xFF</span> <span style="color:#f92672">==</span> ord(<span style="color:#e6db74">&#39;q&#39;</span>):
+        <span style="color:#66d9ef">break</span>
+pose<span style="color:#f92672">.</span>close()
+cap<span style="color:#f92672">.</span>release()
+</code></pre></div><p>좀 더 해봐야겠지만 일단 지금 코드로는 제대로 잡진 못하는 것 같네요..</p>
 <p>흠&hellip;.코드를 좀 수정해봐야겠습니다..</p>
-
-<figure>
-    <img src="/images/post/mediapipe/pose_output.gif"/> 
+<figure><img src="/images/post/mediapipe/pose_output.gif"/>
 </figure>
 
-
-<h2 id="p-s">P.S</h2>
-
+<h2 id="ps">P.S</h2>
 <ul>
 <li>다음엔&hellip;.bazel 버전을..?</li>
 </ul>
@@ -336,7 +325,7 @@ cap.release()
         </ul>
       </div>
       <div class="col-12 border-top py-4 text-center">
-        | copyright &copy; 2020 <a href="https://themefisher.com">Themefisher</a> All Rights Reserved |
+        | copyright © 2020 <a href="https://themefisher.com">Themefisher</a> All Rights Reserved |
       </div>
     </div>
   </div>

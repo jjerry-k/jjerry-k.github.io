@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Living on Jerry&#39;s DevLog</title>
@@ -6,10 +6,16 @@
     <description>Recent content in Living on Jerry&#39;s DevLog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 29 Mar 2021 23:19:59 +0900</lastBuildDate>
-    
-	<atom:link href="https://jjerry-k.github.io/categories/living/index.xml" rel="self" type="application/rss+xml" />
-    
+    <lastBuildDate>Thu, 15 Apr 2021 23:47:36 +0900</lastBuildDate><atom:link href="https://jjerry-k.github.io/categories/living/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title> IPad 에서 VSCode 사용하기</title>
+      <link>https://jjerry-k.github.io/blog/codeserver/</link>
+      <pubDate>Thu, 15 Apr 2021 23:47:36 +0900</pubDate>
+      
+      <guid>https://jjerry-k.github.io/blog/codeserver/</guid>
+      <description>근래에 12인치 맥북과 아이패드 프로 9.7인치를 중고로 팔았습니다.
+그리고 아이패드 프로 11인치 1세대를 구매했죠&amp;hellip;(포기할 수 없었다.</description>
+    </item>
     
     <item>
       <title>Smart Mirror Customizing</title>
@@ -94,7 +100,7 @@ Disqus에 댓글을 남겨주세요!</description>
       <pubDate>Sun, 26 Apr 2020 18:30:46 +0600</pubDate>
       
       <guid>https://jjerry-k.github.io/blog/macbook-setup/</guid>
-      <description>After MacOS Install 1. Install applications  Kakao Talk Between Snap  Add Terminal shortcut  Speedtest Magnet MenuBar Stats  Add MenuBar Stats Plugins Manager https://www.</description>
+      <description>After MacOS Install 1. Install applications  Kakao Talk Between Snap  Add Terminal shortcut   Speedtest Magnet MenuBar Stats  Add MenuBar Stats Plugins Manager https://www.</description>
     </item>
     
     <item>
@@ -103,7 +109,7 @@ Disqus에 댓글을 남겨주세요!</description>
       <pubDate>Mon, 20 Apr 2020 18:30:46 +0600</pubDate>
       
       <guid>https://jjerry-k.github.io/blog/rpi_transmission/</guid>
-      <description>Raspberry pi 4 &amp;amp; Transmission Container 1. Docker Install curl -fsSL get.</description>
+      <description>Raspberry pi 4 &amp;amp; Transmission Container  1. Docker Install curl -fsSL get.</description>
     </item>
     
     <item>
@@ -125,7 +131,7 @@ Disqus에 댓글을 남겨주세요!</description>
       <description>늦었지만 키보드 자랑&amp;hellip;
 바밀로 저소음흑축 108키 입니다.
 넘나 영롱하다&amp;hellip;
-   -- </description>
+   </description>
     </item>
     
     <item>
@@ -164,7 +170,8 @@ Disqus에 댓글을 남겨주세요!</description>
       <pubDate>Fri, 04 Aug 2017 18:30:46 +0600</pubDate>
       
       <guid>https://jjerry-k.github.io/blog/desktop/</guid>
-      <description>Building Desktop 학부생 연구원으로 연구실에서 공부와 연구를 하고 있지만..</description>
+      <description>Building Desktop 학부생 연구원으로 연구실에서 공부와 연구를 하고 있지만..
+개인용 데스크탑이 없어서 노트북이 굉장히 고생을 많이 했습니다.</description>
     </item>
     
   </channel>

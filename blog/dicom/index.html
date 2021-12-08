@@ -9,7 +9,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="this is meta description">
   <meta name="author" content="Jerry Kim">
-  <meta name="generator" content="Hugo 0.54.0" />
+  <meta name="generator" content="Hugo 0.90.0" />
 
   <!-- plugins -->
   
@@ -160,44 +160,32 @@
         </div>
         
         <div class="content mb-5">
-          <p>예~~전에 <a href="https://jjerry-k.github.io/python/2019/01/23/nifti/">NIfTI</a> 파일을 load 하는 방법을 올렸었습니다!<br />
+          <p>예~~전에 <a href="https://jjerry-k.github.io/python/2019/01/23/nifti/">NIfTI</a> 파일을 load 하는 방법을 올렸었습니다!<br>
 이번에는 Python에서 <a href="https://www.dicomstandard.org">DICOM</a> 포맷의 데이터를 load 하는 방법에 대한 포스팅을 해보려고 합니다.</p>
-
 <p>가장 먼저 관련 패키지인 <a href="https://pydicom.github.io/pydicom/stable/index.html"><code>Pydicom</code></a> 을 설치를 해줍니다.</p>
-
-<pre><code class="language-bash">conda install -c conda-forge pydicom
-</code></pre>
-
-<p>저번과 똑같이 단순한 설치방법!</p>
-
-<p>이제 코딩으로 읽어보겠습니다.<br />
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">conda install -c conda-forge pydicom
+</code></pre></div><p>저번과 똑같이 단순한 설치방법!</p>
+<p>이제 코딩으로 읽어보겠습니다.<br>
 예시 데이터로 다음 <a href="https://github.com/pydicom/pydicom/blob/master/pydicom/data/test_files/MR_small.dcm">링크</a>에 있는 영상을 이용하였습니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">
+<span style="color:#f92672">import</span> pydicom <span style="color:#66d9ef">as</span> di
+<span style="color:#f92672">from</span> matplotlib <span style="color:#f92672">import</span> pyplot <span style="color:#66d9ef">as</span> plt
 
-<pre><code class="language-python">
-import pydicom as di
-from matplotlib import pyplot as plt
+data <span style="color:#f92672">=</span> di<span style="color:#f92672">.</span>read_file(<span style="color:#e6db74">&#34;.dcm 경로&#34;</span>)
+<span style="color:#75715e">#data = di.dcmread(&#34;.dcm 경로&#34;) # 편한거 쓰시면 됩니다.</span>
 
-data = di.read_file(&quot;.dcm 경로&quot;)
-#data = di.dcmread(&quot;.dcm 경로&quot;) # 편한거 쓰시면 됩니다.
+img <span style="color:#f92672">=</span> data<span style="color:#f92672">.</span>pixel_array
 
-img = data.pixel_array
-
-plt.imshow(img) # 슬라이스 1장일 경우
-#plt.imshow(img[:,:,&quot;slice 번호&quot;]) # 슬라이스가 여러 장일 경우
-plt.show()
-</code></pre>
-
-<p>이런 식으로 작성하시면 됩니다.<br />
- 예시를 보여드리면</p>
-
-<figure>
-    <img src="/images/post/dicom/01.png"/> 
+plt<span style="color:#f92672">.</span>imshow(img) <span style="color:#75715e"># 슬라이스 1장일 경우</span>
+<span style="color:#75715e">#plt.imshow(img[:,:,&#34;slice 번호&#34;]) # 슬라이스가 여러 장일 경우</span>
+plt<span style="color:#f92672">.</span>show()
+</code></pre></div><p>이런 식으로 작성하시면 됩니다.<br>
+예시를 보여드리면</p>
+<figure><img src="/images/post/dicom/01.png"/>
 </figure>
 
-
-<p>예시 영상이 좀 작네요&hellip;<br />
+<p>예시 영상이 좀 작네요&hellip;<br>
 어쨌든 이런 식으로 읽습니다.</p>
-
 <p>흠&hellip;.NIfTI와 DICOM을 했으니&hellip;다음엔 <strong>Insight Meta-Image</strong> 를 해보겠습니다!</p>
 
         </div>
@@ -312,7 +300,7 @@ plt.show()
         </ul>
       </div>
       <div class="col-12 border-top py-4 text-center">
-        | copyright &copy; 2020 <a href="https://themefisher.com">Themefisher</a> All Rights Reserved |
+        | copyright © 2020 <a href="https://themefisher.com">Themefisher</a> All Rights Reserved |
       </div>
     </div>
   </div>
