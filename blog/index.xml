@@ -6,7 +6,16 @@
     <description>Recent content in Blogs on Jerry&#39;s DevLog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 09 Dec 2021 00:43:06 +0900</lastBuildDate><atom:link href="https://jjerry-k.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 10 Dec 2021 00:05:33 +0900</lastBuildDate><atom:link href="https://jjerry-k.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Python tqdm</title>
+      <link>https://jjerry-k.github.io/blog/tqdm/</link>
+      <pubDate>Fri, 10 Dec 2021 00:05:33 +0900</pubDate>
+      
+      <guid>https://jjerry-k.github.io/blog/tqdm/</guid>
+      <description>Python으로 이런 저런 코드를 작성하다 보면 Progress bar가 필요한 경우가 있습니다.</description>
+    </item>
+    
     <item>
       <title>Python itertools</title>
       <link>https://jjerry-k.github.io/blog/itertools/</link>
