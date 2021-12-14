@@ -6,7 +6,17 @@
     <description>Recent content on Jerry&#39;s DevLog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 10 Dec 2021 00:05:33 +0900</lastBuildDate><atom:link href="https://jjerry-k.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 14 Dec 2021 21:31:55 +0900</lastBuildDate><atom:link href="https://jjerry-k.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>V-AIS Discord 서버 시작 !</title>
+      <link>https://jjerry-k.github.io/blog/discord/</link>
+      <pubDate>Tue, 14 Dec 2021 21:31:55 +0900</pubDate>
+      
+      <guid>https://jjerry-k.github.io/blog/discord/</guid>
+      <description>Discord가 생각보다 핫합니다..!
+그래서 이번에 제가 운영하던 카카오톡 오픈 커뮤니티 V-AIS 의 디스코드 서버를 만들어봤습니다!</description>
+    </item>
+    
     <item>
       <title>Python tqdm</title>
       <link>https://jjerry-k.github.io/blog/tqdm/</link>

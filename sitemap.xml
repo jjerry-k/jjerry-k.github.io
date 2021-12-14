@@ -3,13 +3,25 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://jjerry-k.github.io/blog/</loc>
-    <lastmod>2021-12-10T00:05:33+09:00</lastmod>
+    <lastmod>2021-12-14T21:31:55+09:00</lastmod>
   </url><url>
     <loc>https://jjerry-k.github.io/categories/</loc>
-    <lastmod>2021-12-10T00:05:33+09:00</lastmod>
+    <lastmod>2021-12-14T21:31:55+09:00</lastmod>
+  </url><url>
+    <loc>https://jjerry-k.github.io/tags/community/</loc>
+    <lastmod>2021-12-14T21:31:55+09:00</lastmod>
   </url><url>
     <loc>https://jjerry-k.github.io/</loc>
-    <lastmod>2021-12-10T00:05:33+09:00</lastmod>
+    <lastmod>2021-12-14T21:31:55+09:00</lastmod>
+  </url><url>
+    <loc>https://jjerry-k.github.io/categories/living/</loc>
+    <lastmod>2021-12-14T21:31:55+09:00</lastmod>
+  </url><url>
+    <loc>https://jjerry-k.github.io/tags/</loc>
+    <lastmod>2021-12-14T21:31:55+09:00</lastmod>
+  </url><url>
+    <loc>https://jjerry-k.github.io/blog/discord/</loc>
+    <lastmod>2021-12-14T21:31:55+09:00</lastmod>
   </url><url>
     <loc>https://jjerry-k.github.io/tags/library/</loc>
     <lastmod>2021-12-10T00:05:33+09:00</lastmod>
@@ -18,9 +30,6 @@
     <lastmod>2021-12-10T00:05:33+09:00</lastmod>
   </url><url>
     <loc>https://jjerry-k.github.io/blog/tqdm/</loc>
-    <lastmod>2021-12-10T00:05:33+09:00</lastmod>
-  </url><url>
-    <loc>https://jjerry-k.github.io/tags/</loc>
     <lastmod>2021-12-10T00:05:33+09:00</lastmod>
   </url><url>
     <loc>https://jjerry-k.github.io/blog/itertools/</loc>
@@ -42,9 +51,6 @@
     <lastmod>2021-06-20T23:06:14+09:00</lastmod>
   </url><url>
     <loc>https://jjerry-k.github.io/blog/codeserver/</loc>
-    <lastmod>2021-04-15T23:47:36+09:00</lastmod>
-  </url><url>
-    <loc>https://jjerry-k.github.io/categories/living/</loc>
     <lastmod>2021-04-15T23:47:36+09:00</lastmod>
   </url><url>
     <loc>https://jjerry-k.github.io/tags/hardware/</loc>
@@ -85,9 +91,6 @@
   </url><url>
     <loc>https://jjerry-k.github.io/blog/mediapipe_4/</loc>
     <lastmod>2021-01-12T01:14:36+09:00</lastmod>
-  </url><url>
-    <loc>https://jjerry-k.github.io/tags/community/</loc>
-    <lastmod>2021-01-08T01:00:34+09:00</lastmod>
   </url><url>
     <loc>https://jjerry-k.github.io/blog/kakaobot/</loc>
     <lastmod>2021-01-08T01:00:34+09:00</lastmod>
