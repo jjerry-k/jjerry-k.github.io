@@ -6,7 +6,16 @@
     <description>Recent content on Jerry&#39;s DevLog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 14 Dec 2021 21:31:55 +0900</lastBuildDate><atom:link href="https://jjerry-k.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 19 Dec 2021 21:03:27 +0900</lastBuildDate><atom:link href="https://jjerry-k.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Python argparse</title>
+      <link>https://jjerry-k.github.io/blog/python_argument/</link>
+      <pubDate>Sun, 19 Dec 2021 21:03:27 +0900</pubDate>
+      
+      <guid>https://jjerry-k.github.io/blog/python_argument/</guid>
+      <description>Python을 처음 접했을때 스크립트를 작성하고 python ~~~.py 이런 식으로 실행했습니다.</description>
+    </item>
+    
     <item>
       <title>V-AIS Discord 서버 시작 !</title>
       <link>https://jjerry-k.github.io/blog/discord/</link>
@@ -19,19 +28,19 @@
     
     <item>
       <title>Python tqdm</title>
-      <link>https://jjerry-k.github.io/blog/tqdm/</link>
+      <link>https://jjerry-k.github.io/blog/python_tqdm/</link>
       <pubDate>Fri, 10 Dec 2021 00:05:33 +0900</pubDate>
       
-      <guid>https://jjerry-k.github.io/blog/tqdm/</guid>
+      <guid>https://jjerry-k.github.io/blog/python_tqdm/</guid>
       <description>Python으로 이런 저런 코드를 작성하다 보면 Progress bar가 필요한 경우가 있습니다.</description>
     </item>
     
     <item>
       <title>Python itertools</title>
-      <link>https://jjerry-k.github.io/blog/itertools/</link>
+      <link>https://jjerry-k.github.io/blog/python_itertools/</link>
       <pubDate>Thu, 09 Dec 2021 00:43:06 +0900</pubDate>
       
-      <guid>https://jjerry-k.github.io/blog/itertools/</guid>
+      <guid>https://jjerry-k.github.io/blog/python_itertools/</guid>
       <description>Python 표준 라이브러리 중 하나인 itertools 사용법을 간단히 알아보려 합니다.</description>
     </item>
     
@@ -189,10 +198,10 @@ Disqus에 댓글을 남겨주세요!</description>
     
     <item>
       <title>Hugo Blog</title>
-      <link>https://jjerry-k.github.io/blog/hugo-blog/</link>
+      <link>https://jjerry-k.github.io/blog/hugo_blog/</link>
       <pubDate>Mon, 23 Nov 2020 20:41:18 +0900</pubDate>
       
-      <guid>https://jjerry-k.github.io/blog/hugo-blog/</guid>
+      <guid>https://jjerry-k.github.io/blog/hugo_blog/</guid>
       <description>이번에 Github Blog를 이전하게 되었습니다!
 기존에는 Jekyll 기반의 블로그를 사용했었는데요.</description>
     </item>
@@ -522,10 +531,10 @@ NIPA는 정보통신산업진흥원 의 약자인데 근데 그래서 이게 왜
     
     <item>
       <title>개인적인 맥북 세팅법</title>
-      <link>https://jjerry-k.github.io/blog/macbook-setup/</link>
+      <link>https://jjerry-k.github.io/blog/macbook_setup/</link>
       <pubDate>Sun, 26 Apr 2020 18:30:46 +0600</pubDate>
       
-      <guid>https://jjerry-k.github.io/blog/macbook-setup/</guid>
+      <guid>https://jjerry-k.github.io/blog/macbook_setup/</guid>
       <description>After MacOS Install 1. Install applications  Kakao Talk Between Snap  Add Terminal shortcut   Speedtest Magnet MenuBar Stats  Add MenuBar Stats Plugins Manager https://www.</description>
     </item>
     

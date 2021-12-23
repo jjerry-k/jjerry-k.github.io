@@ -3,36 +3,39 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://jjerry-k.github.io/blog/</loc>
-    <lastmod>2021-12-14T21:31:55+09:00</lastmod>
+    <lastmod>2021-12-19T21:03:27+09:00</lastmod>
   </url><url>
     <loc>https://jjerry-k.github.io/categories/</loc>
-    <lastmod>2021-12-14T21:31:55+09:00</lastmod>
-  </url><url>
-    <loc>https://jjerry-k.github.io/tags/community/</loc>
-    <lastmod>2021-12-14T21:31:55+09:00</lastmod>
+    <lastmod>2021-12-19T21:03:27+09:00</lastmod>
   </url><url>
     <loc>https://jjerry-k.github.io/</loc>
+    <lastmod>2021-12-19T21:03:27+09:00</lastmod>
+  </url><url>
+    <loc>https://jjerry-k.github.io/tags/library/</loc>
+    <lastmod>2021-12-19T21:03:27+09:00</lastmod>
+  </url><url>
+    <loc>https://jjerry-k.github.io/categories/python/</loc>
+    <lastmod>2021-12-19T21:03:27+09:00</lastmod>
+  </url><url>
+    <loc>https://jjerry-k.github.io/blog/python_argument/</loc>
+    <lastmod>2021-12-19T21:03:27+09:00</lastmod>
+  </url><url>
+    <loc>https://jjerry-k.github.io/tags/</loc>
+    <lastmod>2021-12-19T21:03:27+09:00</lastmod>
+  </url><url>
+    <loc>https://jjerry-k.github.io/tags/community/</loc>
     <lastmod>2021-12-14T21:31:55+09:00</lastmod>
   </url><url>
     <loc>https://jjerry-k.github.io/categories/living/</loc>
     <lastmod>2021-12-14T21:31:55+09:00</lastmod>
   </url><url>
-    <loc>https://jjerry-k.github.io/tags/</loc>
-    <lastmod>2021-12-14T21:31:55+09:00</lastmod>
-  </url><url>
     <loc>https://jjerry-k.github.io/blog/discord/</loc>
     <lastmod>2021-12-14T21:31:55+09:00</lastmod>
   </url><url>
-    <loc>https://jjerry-k.github.io/tags/library/</loc>
+    <loc>https://jjerry-k.github.io/blog/python_tqdm/</loc>
     <lastmod>2021-12-10T00:05:33+09:00</lastmod>
   </url><url>
-    <loc>https://jjerry-k.github.io/categories/python/</loc>
-    <lastmod>2021-12-10T00:05:33+09:00</lastmod>
-  </url><url>
-    <loc>https://jjerry-k.github.io/blog/tqdm/</loc>
-    <lastmod>2021-12-10T00:05:33+09:00</lastmod>
-  </url><url>
-    <loc>https://jjerry-k.github.io/blog/itertools/</loc>
+    <loc>https://jjerry-k.github.io/blog/python_itertools/</loc>
     <lastmod>2021-12-09T00:43:06+09:00</lastmod>
   </url><url>
     <loc>https://jjerry-k.github.io/categories/deeplearning/</loc>
@@ -116,7 +119,7 @@
     <loc>https://jjerry-k.github.io/tags/hugo/</loc>
     <lastmod>2020-11-23T20:41:18+09:00</lastmod>
   </url><url>
-    <loc>https://jjerry-k.github.io/blog/hugo-blog/</loc>
+    <loc>https://jjerry-k.github.io/blog/hugo_blog/</loc>
     <lastmod>2020-11-23T20:41:18+09:00</lastmod>
   </url><url>
     <loc>https://jjerry-k.github.io/about/</loc>
@@ -242,7 +245,7 @@
     <loc>https://jjerry-k.github.io/tags/macbook/</loc>
     <lastmod>2020-04-26T18:30:46+06:00</lastmod>
   </url><url>
-    <loc>https://jjerry-k.github.io/blog/macbook-setup/</loc>
+    <loc>https://jjerry-k.github.io/blog/macbook_setup/</loc>
     <lastmod>2020-04-26T18:30:46+06:00</lastmod>
   </url><url>
     <loc>https://jjerry-k.github.io/blog/rpi_transmission/</loc>
