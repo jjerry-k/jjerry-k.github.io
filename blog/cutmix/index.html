@@ -9,7 +9,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="this is meta description">
   <meta name="author" content="Jerry Kim">
-  <meta name="generator" content="Hugo 0.90.0" />
+  <meta name="generator" content="Hugo 0.68.3" />
 
   <!-- plugins -->
   
@@ -172,7 +172,8 @@ URL: <a href="https://arxiv.org/abs/1905.04899">https://arxiv.org/abs/1905.04899
 <li>그 외에도 일부분을 0으로 채운다거나 노이즈로 채우는 방법, 정보가 있는 부분의 pixel을 줄이는 방법 등이 성능 향상을 보였으나 CNN은 데이터가 많이 고픈데&hellip;.데이터를 없앤다..? 라는 부분에서 의문을 가짐.</li>
 <li>영상의 일부를 자르고 다른 영상으로 대체하는 CutMix 를 제안.</li>
 </ul>
-<figure><img src="/images/post/cutmix/Untitled.png"/>
+<figure>
+    <img src="/images/post/cutmix/Untitled.png"/> 
 </figure>
 
 <h1 id="cutmix">CutMix</h1>
@@ -204,19 +205,22 @@ $$r_y \sim \text{Unif } (0, H), r_h = H\sqrt{1-\lambda}$$</p>
 <ul>
 <li>CutMix를 이용했을 때 CNN이 어느 부분을 학습하는지 확인.</li>
 </ul>
-<figure><img src="/images/post/cutmix/Untitled_1.png"/>
+<figure>
+    <img src="/images/post/cutmix/Untitled_1.png"/> 
 </figure>
 
 <ul>
 <li>다른 method와 비교하여 CutMix의 주요 차이점.</li>
 </ul>
-<figure><img src="/images/post/cutmix/Untitled_2.png"/>
+<figure>
+    <img src="/images/post/cutmix/Untitled_2.png"/> 
 </figure>
 
 <ul>
 <li>Validation Error를 비교했을 때 기존의 모델에 비해 CutMix 적용시 Error가 낮음.</li>
 </ul>
-<figure><img src="/images/post/cutmix/Untitled_3.png"/>
+<figure>
+    <img src="/images/post/cutmix/Untitled_3.png"/> 
 </figure>
 
 <h1 id="experiments">Experiments</h1>
@@ -225,39 +229,45 @@ $$r_y \sim \text{Unif } (0, H), r_h = H\sqrt{1-\lambda}$$</p>
 <ul>
 <li>Baseline, 다른 augmentation method와 비교</li>
 </ul>
-<figure><img src="/images/post/cutmix/Untitled_4.png"/>
+<figure>
+    <img src="/images/post/cutmix/Untitled_4.png"/> 
 </figure>
 
 <ul>
 <li>두 Model에 CutMix를 적용하여 성능 비교.</li>
 </ul>
-<figure><img src="/images/post/cutmix/Untitled_5.png"/>
+<figure>
+    <img src="/images/post/cutmix/Untitled_5.png"/> 
 </figure>
 
 <h3 id="cifar-classification">CIFAR Classification</h3>
 <ul>
 <li>다른 Regularization 들과 비교.</li>
 </ul>
-<figure><img src="/images/post/cutmix/Untitled_6.png"/>
+<figure>
+    <img src="/images/post/cutmix/Untitled_6.png"/> 
 </figure>
 
 <ul>
 <li>가벼운 Model 에 적용하여 비교.</li>
 </ul>
-<figure><img src="/images/post/cutmix/Untitled_7.png"/>
+<figure>
+    <img src="/images/post/cutmix/Untitled_7.png"/> 
 </figure>
 
 <ul>
 <li>CIFAR-10에 적용한 결과.</li>
 </ul>
-<figure><img src="/images/post/cutmix/Untitled_8.png"/>
+<figure>
+    <img src="/images/post/cutmix/Untitled_8.png"/> 
 </figure>
 
 <h3 id="ablation-studies">Ablation Studies</h3>
 <ul>
 <li><strong>CutMix 에서 alpha가 뭐지&hellip;&hellip;.</strong></li>
 </ul>
-<figure><img src="/images/post/cutmix/Untitled_9.png"/>
+<figure>
+    <img src="/images/post/cutmix/Untitled_9.png"/> 
 </figure>
 
 <ul>
@@ -268,7 +278,8 @@ $$r_y \sim \text{Unif } (0, H), r_h = H\sqrt{1-\lambda}$$</p>
 <li>One-hot: 패치 비율에 따라 Portion label이 아닌 One-hot encoding으로 적용</li>
 <li>Complete-label: lambda 를 고려하지 않고 \(y = 0.5y_A + 0.5y_B\)로 적용</li>
 </ul>
-<figure><img src="/images/post/cutmix/Untitled_10.png"/>
+<figure>
+    <img src="/images/post/cutmix/Untitled_10.png"/> 
 </figure>
 
 <h2 id="weakly-supervised-object-localization">Weakly Supervised Object Localization</h2>
@@ -276,17 +287,20 @@ $$r_y \sim \text{Unif } (0, H), r_h = H\sqrt{1-\lambda}$$</p>
 <li>Localization 부분에 대해 다른 방법들과 비교.</li>
 <li>학습 후 CAM을 이용해서 bounding box를 그린 것으로 보임.</li>
 </ul>
-<figure><img src="/images/post/cutmix/Untitled_11.png"/>
+<figure>
+    <img src="/images/post/cutmix/Untitled_11.png"/> 
 </figure>
 
-<figure><img src="/images/post/cutmix/Untitled_12.png"/>
+<figure>
+    <img src="/images/post/cutmix/Untitled_12.png"/> 
 </figure>
 
 <h2 id="transfer-learning-of-pretrained-model">Transfer Learning of Pretrained Model</h2>
 <ul>
 <li>Object detection, Image captioning 에 적용하여 성능 비교.</li>
 </ul>
-<figure><img src="/images/post/cutmix/Untitled_13.png"/>
+<figure>
+    <img src="/images/post/cutmix/Untitled_13.png"/> 
 </figure>
 
 <h2 id="robustness-and-uncertainty">Robustness and Uncertainty</h2>
@@ -294,24 +308,28 @@ $$r_y \sim \text{Unif } (0, H), r_h = H\sqrt{1-\lambda}$$</p>
 <li>Adversarial attack 에 대해 Accuracy 비교.</li>
 <li><a href="https://arxiv.org/abs/1412.6572">Fast Gradient Sign Method (FGSM)</a>을 이용하여 adversarial perturbation 생성.</li>
 </ul>
-<figure><img src="/images/post/cutmix/Untitled_14.png"/>
+<figure>
+    <img src="/images/post/cutmix/Untitled_14.png"/> 
 </figure>
 
 <ul>
 <li>Occlusion 상황에 대해서 성능 비교.</li>
 <li>가운데 부분 혹은 Boundary 에 0~224 크기 사이의 hole을 생성.</li>
 </ul>
-<figure><img src="/images/post/cutmix/Untitled_15.png"/>
+<figure>
+    <img src="/images/post/cutmix/Untitled_15.png"/> 
 </figure>
 
 <ul>
 <li>Uncertainty</li>
 </ul>
-<figure><img src="/images/post/cutmix/Untitled_16.png"/>
+<figure>
+    <img src="/images/post/cutmix/Untitled_16.png"/> 
 </figure>
 
 <h2 id="cutmix-algorithm">CutMix Algorithm</h2>
-<figure><img src="/images/post/cutmix/Untitled_17.png"/>
+<figure>
+    <img src="/images/post/cutmix/Untitled_17.png"/> 
 </figure>
 
 <h2 id="ps">P.S</h2>

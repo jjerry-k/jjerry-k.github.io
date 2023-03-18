@@ -6,7 +6,11 @@
     <description>Recent content in Blog on Jerry&#39;s DevLog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 23 Nov 2020 20:41:18 +0900</lastBuildDate><atom:link href="https://jjerry-k.github.io/categories/blog/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 23 Nov 2020 20:41:18 +0900</lastBuildDate>
+    
+	<atom:link href="https://jjerry-k.github.io/categories/blog/index.xml" rel="self" type="application/rss+xml" />
+    
+    
     <item>
       <title>Hugo Blog</title>
       <link>https://jjerry-k.github.io/blog/hugo_blog/</link>

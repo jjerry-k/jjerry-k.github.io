@@ -9,7 +9,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="this is meta description">
   <meta name="author" content="Jerry Kim">
-  <meta name="generator" content="Hugo 0.90.0" />
+  <meta name="generator" content="Hugo 0.68.3" />
 
   <!-- plugins -->
   
@@ -165,14 +165,15 @@
           <p>저번 포스팅에선 Raspberry Pi 와 LCD, MagicMirror를 이용하여 Smart Mirror 초기 세팅을 했습니다!<br>
 이번 포스팅에선 화면을 쵸-큼 입맛대로 바꿔보려 합니다!<br>
 우선 MagicMirror 의 config 디렉토리로 이동해주세요!</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cd ~/MagicMirror/config
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cd ~/MagicMirror/config
 </code></pre></div><p>거기엔 다음과 같이 <code>config.js</code>, <code>config.js.sample</code>이 있습니다!<br>
 여기서 <code>config.js</code> 가 화면을 구성하는 정보들이 들어가있는 파일이고 <code>config.js.sample</code>는 이름 그대로 sample 파일입니다!</p>
-<figure><img src="/images/post/smartmirror_custom/00.png"/>
+<figure>
+    <img src="/images/post/smartmirror_custom/00.png"/> 
 </figure>
 
 <p>그럼 config.js 를 한번 보겠습니다!</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#75715e">/* Magic Mirror Config Sample
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#75715e">/* Magic Mirror Config Sample
 </span><span style="color:#75715e"> *
 </span><span style="color:#75715e"> * By Michael Teeuw https://michaelteeuw.nl
 </span><span style="color:#75715e"> * MIT Licensed.
@@ -283,7 +284,7 @@
 그 중에서 우리가 볼 것은 <code>modules</code> 부분입니다!<br>
 이 부분이 어떤 기능을 어디에 넣을지 적는 부분이에요!<br>
 대충 구성을 보시면 다음과 같습니다!</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">  <span style="color:#a6e22e">modules</span><span style="color:#f92672">:</span> [
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">  <span style="color:#a6e22e">modules</span><span style="color:#f92672">:</span> [
       {
         <span style="color:#a6e22e">모듈</span> <span style="color:#ae81ff">1</span> <span style="color:#a6e22e">정보</span>
       },
@@ -300,19 +301,22 @@
 <h3 id="currentweather-weatherforecast">currentweather, weatherforecast</h3>
 <p>이 두 가지는 <a href="https://openweathermap.org">https://openweathermap.org</a> 라는 사이트의 API를 사용합니다!<br>
 일단 가입하시고 API Key를 복사해주세요!<br>
-<figure><img src="/images/post/smartmirror_custom/01.png"/>
+<figure>
+    <img src="/images/post/smartmirror_custom/01.png"/> 
 </figure>
 
-<figure><img src="/images/post/smartmirror_custom/02.png"/>
+<figure>
+    <img src="/images/post/smartmirror_custom/02.png"/> 
 </figure>
 
-<figure><img src="/images/post/smartmirror_custom/03.png"/>
+<figure>
+    <img src="/images/post/smartmirror_custom/03.png"/> 
 </figure>
 </p>
 <p><code>location</code>과 <code>locationID</code>는 주석에 적혀있듯이 압축파일을 다운로드 &amp; 해제하여 찾으시면 됩니다!<br>
 <code>position</code> 도 원하는 위치를 적어주세요! (top, bottom), (right, left, bar) 를 조합합니다!<br>
 (더 있을 것 같은데&hellip;일단은&hellip;.)</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">    {
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">    {
 			<span style="color:#a6e22e">module</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;currentweather&#34;</span>,
 			<span style="color:#a6e22e">position</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;top_left&#34;</span>,
 			<span style="color:#a6e22e">config</span><span style="color:#f92672">:</span> {
@@ -321,7 +325,7 @@
 </span><span style="color:#75715e"></span>				<span style="color:#a6e22e">appid</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;{API KEY}&#34;</span> <span style="color:#75715e">// ex) appid: &#34;2985hcb5asdomqcmqwkodmsowmcolwm3&#34;
 </span><span style="color:#75715e"></span>			}
 		}
-</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">    {
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">    {
 			<span style="color:#a6e22e">module</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;weatherforecast&#34;</span>,
 			<span style="color:#a6e22e">position</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;top_left&#34;</span>,
 			<span style="color:#a6e22e">header</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Weather Forecast&#34;</span>,
@@ -335,18 +339,21 @@
 <p>달력의 경우에는 Google calendar와 연동을 했습니다!<br>
 연동하는 방법은 간단히 말하면 구글 캘린더의 iCal format 주소를 넣으면 됩니다!<br>
 사진을 참고하세요!</p>
-<p><figure><img src="/images/post/smartmirror_custom/04.png"/>
+<p><figure>
+    <img src="/images/post/smartmirror_custom/04.png"/> 
 </figure>
 
 아래 사진에서 개인 캘린더의 경우 iCal 주소는 가려져 있습니다!<br>
 오른쪽에 복사 버튼 누르셔도 되고 가리기 해제 하셔도 상관없어요!
-<figure><img src="/images/post/smartmirror_custom/05.png"/>
+<figure>
+    <img src="/images/post/smartmirror_custom/05.png"/> 
 </figure>
 
-<figure><img src="/images/post/smartmirror_custom/06.png"/>
+<figure>
+    <img src="/images/post/smartmirror_custom/06.png"/> 
 </figure>
 </p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">    { 
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">    { 
 			<span style="color:#a6e22e">module</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;calendar&#34;</span>, 
 			<span style="color:#a6e22e">header</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Calendar&#34;</span>, 
 			<span style="color:#a6e22e">position</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;top_right&#34;</span>, 
@@ -371,11 +378,11 @@
 <p>MagicMirror의 third-party module 중 하나입니다!<br>
 이름에서 알 수 있듯이 <strong>대기 상태</strong>를 알려주는 모듈이에요!<br>
 우선 다음 Command를 입력하여 MMM-AirQuality를 받아옵니다!</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cd ~/MagicMirror/modules
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cd ~/MagicMirror/modules
 git clone https://github.com/CFenner/MMM-AirQuality
 </code></pre></div><p>이러면 받아오기 끝이에요!<br>
 그러고나서 config.js에 아래와 같이 module을 추가합니다!</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">    {
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">    {
 			<span style="color:#a6e22e">module</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;MMM-AirQuality&#34;</span>,
 			<span style="color:#a6e22e">position</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;top_right&#34;</span>,
 			<span style="color:#a6e22e">config</span><span style="color:#f92672">:</span> {
@@ -386,7 +393,7 @@ git clone https://github.com/CFenner/MMM-AirQuality
 <p>뉴스 정보를 받아오는 부분입니다!<br>
 딱히&hellip;설명 드릴게 없네요..ㅎㅎ<br>
 JTBC랑 Google news 둘 다 보려했는데 JTBC 밖에 안나오는 느낌&hellip;.적인 느낌..</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">    {
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">    {
 			<span style="color:#a6e22e">module</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;newsfeed&#34;</span>,
 			<span style="color:#a6e22e">position</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;bottom_bar&#34;</span>,
 			<span style="color:#a6e22e">config</span><span style="color:#f92672">:</span> {
@@ -409,7 +416,8 @@ JTBC랑 Google news 둘 다 보려했는데 JTBC 밖에 안나오는 느낌&hell
 		}
 </code></pre></div><p>이렇게 config.js를 수정하고 나면 다음과 같은 화면을 볼 수 있습니다!<br>
 <strong>아! 이 화면은 Raspberry Pi 의 8080 포트와 로컬의 8080 포트를 터널링하면 볼 수 있습니다!</strong>
-<figure><img src="/images/post/smartmirror_custom/result.png"/>
+<figure>
+    <img src="/images/post/smartmirror_custom/result.png"/> 
 </figure>
 </p>
 <p>후&hellip;정말 간단한 Customizing 이 끝났네요..<br>

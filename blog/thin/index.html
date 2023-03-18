@@ -9,7 +9,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="this is meta description">
   <meta name="author" content="Jerry Kim">
-  <meta name="generator" content="Hugo 0.90.0" />
+  <meta name="generator" content="Hugo 0.68.3" />
 
   <!-- plugins -->
   
@@ -232,11 +232,13 @@ and Molecular Medical Imaging, Fudan University, Shanghai 200433, China</li>
 <li>하지만 최근까지 제안된 Network는 대부분 2D image에 대한 upscaling.</li>
 <li>몇몇 Network는 3D image로 확장했지만 그렇게 효과를 보지 못했음.</li>
 <li>이 논문의 Flow
-<figure><img src="/images/post/thin/fig01.PNG"/>
+<figure>
+    <img src="/images/post/thin/fig01.PNG"/> 
 </figure>
 </li>
 </ul>
-<figure><img src="/images/post/thin/fig02.PNG"/>
+<figure>
+    <img src="/images/post/thin/fig02.PNG"/> 
 </figure>
 
 <h3 id="b-network-architecture">B. Network Architecture</h3>
@@ -249,7 +251,8 @@ and Molecular Medical Imaging, Fudan University, Shanghai 200433, China</li>
 <li>Output : Thin MRI</li>
 <li>r : Upscaling Factor ( r = 8 일 경우의 예시 )</li>
 </ul>
-<figure><img src="/images/post/thin/fig03.PNG"/>
+<figure>
+    <img src="/images/post/thin/fig03.PNG"/> 
 </figure>
 
 <ul>
@@ -290,7 +293,8 @@ and Molecular Medical Imaging, Fudan University, Shanghai 200433, China</li>
 </li>
 <li>
 <p>Discriminator
-<figure><img src="/images/post/thin/fig04.PNG"/>
+<figure>
+    <img src="/images/post/thin/fig04.PNG"/> 
 </figure>
 </p>
 <ul>
@@ -301,7 +305,8 @@ and Molecular Medical Imaging, Fudan University, Shanghai 200433, China</li>
 </li>
 </ul>
 <h4 id="3d-denseu-net">3D-DenseU-Net</h4>
-<figure><img src="/images/post/thin/fig05.PNG"/>
+<figure>
+    <img src="/images/post/thin/fig05.PNG"/> 
 </figure>
 
 <ul>
@@ -329,7 +334,7 @@ and Molecular Medical Imaging, Fudan University, Shanghai 200433, China</li>
 </ul>
 </li>
 </ul>
-<p>$$L^G_{SC} = \frac{1}{rLWH}\sum_{x,y,z=1,1,1}^{L,W,rH}\sqrt{(I^{GT}<em>{x,y,z}-I^Y</em>{z,y,z})^2+\epsilon}\cdot\bigg(\frac{1}{2}+\frac{(I^{GT}<em>{x,y,z}-I^Y</em>{z,y,z})^2}{2max((I^{GT}-I^Y)^2)}\bigg)$$</p>
+<p>$$L^G_{SC} = \frac{1}{rLWH}\sum_{x,y,z=1,1,1}^{L,W,rH}\sqrt{(I^{GT}_{x,y,z}-I^Y_{z,y,z})^2+\epsilon}\cdot\bigg(\frac{1}{2}+\frac{(I^{GT}_{x,y,z}-I^Y_{z,y,z})^2}{2max((I^{GT}-I^Y)^2)}\bigg)$$</p>
 <ul>
 <li>3-D Gradient Correction Loss
 <ul>
@@ -338,7 +343,7 @@ and Molecular Medical Imaging, Fudan University, Shanghai 200433, China</li>
 </ul>
 </li>
 </ul>
-<p>$$L^G_{GC} = \mathbb{E}[(\nabla_{x}I^{GT}<em>{x,y,z} - \nabla</em>{x}I^Y_{x,y,z})^2] \\  + \mathbb{E}[(\nabla_{y}I^{GT}<em>{x,y,z} - \nabla</em>{y}I^Y_{x,y,z})]^2 \\ + \mathbb{E}[(\nabla_{z}I^{GT}<em>{x,y,z} - \nabla</em>{z}I^Y_{x,y,z})^2]$$</p>
+<p>$$L^G_{GC} = \mathbb{E}[(\nabla_{x}I^{GT}_{x,y,z} - \nabla_{x}I^Y_{x,y,z})^2] \\  + \mathbb{E}[(\nabla_{y}I^{GT}_{x,y,z} - \nabla_{y}I^Y_{x,y,z})]^2 \\ + \mathbb{E}[(\nabla_{z}I^{GT}_{x,y,z} - \nabla_{z}I^Y_{x,y,z})^2]$$</p>
 <ul>
 <li>Adversarial Loss
 <ul>
@@ -436,7 +441,8 @@ $$NMI(X, Y) = 2\frac{H(X) + H(Y) - H(X, Y)}{H(X)+H(Y)}$$</p>
 <ul>
 <li>총 154 samples의 2~5세 유아 Axial, Sagittal Thick MRI, Axial Thin MRI</li>
 </ul>
-<figure><img src="/images/post/thin/tab01.PNG"/>
+<figure>
+    <img src="/images/post/thin/tab01.PNG"/> 
 </figure>
 
 <ul>
@@ -561,10 +567,12 @@ $$NMI(X, Y) = 2\frac{H(X) + H(Y) - H(X, Y)}{H(X)+H(Y)}$$</p>
 <h4 id="c-ablation-experiment-on-input-data">C. Ablation Experiment On Input Data</h4>
 <ul>
 <li>Input을 변경하면서 실험 진행.
-<figure><img src="/images/post/thin/fig06.PNG"/>
+<figure>
+    <img src="/images/post/thin/fig06.PNG"/> 
 </figure>
 
-<figure><img src="/images/post/thin/tab02.PNG"/>
+<figure>
+    <img src="/images/post/thin/tab02.PNG"/> 
 </figure>
 </li>
 <li>Axial 과 Sagittal 을 같이 사용했을 때가 좀 더 세부적인 구조, 적은 왜곡을 보임.
@@ -577,10 +585,12 @@ $$NMI(X, Y) = 2\frac{H(X) + H(Y) - H(X, Y)}{H(X)+H(Y)}$$</p>
 <h4 id="d-ablation-experiment-on-loss-function">D. Ablation Experiment On Loss Function</h4>
 <ul>
 <li>Loss를 변경하면서 실험 진행.
-<figure><img src="/images/post/thin/fig07.PNG"/>
+<figure>
+    <img src="/images/post/thin/fig07.PNG"/> 
 </figure>
 
-<figure><img src="/images/post/thin/tab03.PNG"/>
+<figure>
+    <img src="/images/post/thin/tab03.PNG"/> 
 </figure>
 </li>
 <li>Self-Adaptive Charbonnier Loss에 비해 \(\ell1 norm\) 이 흐린 영상을 생성.</li>
@@ -599,10 +609,12 @@ $$NMI(X, Y) = 2\frac{H(X) + H(Y) - H(X, Y)}{H(X)+H(Y)}$$</p>
 <h4 id="e-comparison-with-other--methods">E. Comparison With Other  Methods</h4>
 <ul>
 <li>다른 Method들과 비교.
-<figure><img src="/images/post/thin/fig08.PNG"/>
+<figure>
+    <img src="/images/post/thin/fig08.PNG"/> 
 </figure>
 
-<figure><img src="/images/post/thin/tab04.PNG"/>
+<figure>
+    <img src="/images/post/thin/tab04.PNG"/> 
 </figure>
 </li>
 <li>제안한 method로 생성된 image가 가장 Realistic하고 Ground truth 와 가장 비슷하다고 함.</li>

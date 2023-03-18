@@ -9,7 +9,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="this is meta description">
   <meta name="author" content="Jerry Kim">
-  <meta name="generator" content="Hugo 0.90.0" />
+  <meta name="generator" content="Hugo 0.68.3" />
 
   <!-- plugins -->
   
@@ -165,16 +165,16 @@
           <h1 id="raspberry-pi-4--transmission-container">Raspberry pi 4 &amp; Transmission Container</h1>
 <hr>
 <h1 id="1-docker-install">1. Docker Install</h1>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">curl -fsSL get.docker.com -o get-docker.sh
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">curl -fsSL get.docker.com -o get-docker.sh
 
 sudo bash get-docker.sh
 
 sudo usermod -aG docker pi
 </code></pre></div><p>그리고 재부팅</p>
 <h1 id="2-pull-transmission-image">2. Pull Transmission Image</h1>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker pull linuxserver/transmission
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker pull linuxserver/transmission
 </code></pre></div><h1 id="3-create-transmission-container">3. Create Transmission Container</h1>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker create <span style="color:#ae81ff">\
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker create <span style="color:#ae81ff">\
 </span><span style="color:#ae81ff"></span>    --name<span style="color:#f92672">=</span>transmission <span style="color:#ae81ff">\
 </span><span style="color:#ae81ff"></span>    -e PUID<span style="color:#f92672">=</span><span style="color:#ae81ff">1000</span> <span style="color:#ae81ff">\
 </span><span style="color:#ae81ff"></span>    -e PGID<span style="color:#f92672">=</span><span style="color:#ae81ff">1000</span> <span style="color:#ae81ff">\
@@ -190,7 +190,7 @@ sudo usermod -aG docker pi
 </span><span style="color:#ae81ff"></span>    --restart unless-stopped <span style="color:#ae81ff">\
 </span><span style="color:#ae81ff"></span>    linuxserver/transmission
 </code></pre></div><h1 id="4-run-container">4. Run Container</h1>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker start transmission
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker start transmission
 </code></pre></div>
         </div>
 

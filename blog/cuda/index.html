@@ -9,7 +9,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="this is meta description">
   <meta name="author" content="Jerry Kim">
-  <meta name="generator" content="Hugo 0.90.0" />
+  <meta name="generator" content="Hugo 0.68.3" />
 
   <!-- plugins -->
   
@@ -169,7 +169,7 @@
 하지만 16.04에선 어렵지 않음!!!!!!<br>
 (갈아탄 결정적인 이유&hellip;)<br>
 그렇다면 설치를 시작해보겠습니다.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo add-apt-repository ppa:graphics-drivers/ppa
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo add-apt-repository ppa:graphics-drivers/ppa
 
 sudo apt-get update
 
@@ -182,7 +182,8 @@ NVIDIA 사이트에서 GPU 버전이랑 맞는걸로!!<br>
 (안그러면 좋고..)<br>
 Ctrl + Alt + F1을 눌러 tty1으로 들어가서 로그인 후 reboot을 실행해줍시다.<br>
 로그인 후 NVIDIA X Server Settings 를 켜면</p>
-<figure><img src="![image]%28/images/post/CUDA/01.png%29"/>
+<figure>
+    <img src="![image]%28/images/post/CUDA/01.png%29"/> 
 </figure>
 
 <p>요래 설치 된걸 확인할 수 있습니다.</p>
@@ -194,7 +195,7 @@ Ctrl + Alt + F1을 눌러 tty1으로 들어가서 로그인 후 reboot을 실행
 run 파일을 다운을 받은 후에 터미널을 여시고 run 파일이 다운로드된 디렉토리로 이동합니다.<br>
 그리고 파일의 권한을 모든  사용자가 사용할 수 있도록 변경합니다.<br>
 그리고 실행!</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cd Downloads
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cd Downloads
 sudo chmod a+r cuda_7.5.18_linux.run
 sudo ./cuda_7.5.18_linux.run --override
 or
@@ -204,7 +205,7 @@ sudo sh cuda_7.5.18_linux.run --override
 살포시 q 를 눌러줍니다.<br>
 그러면&hellip;사용자 정의 설치라고 할까요??<br>
 이것 저것 물어봅니다.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">Do you accept the previously read EULA? <span style="color:#f92672">(</span>accept/decline/quit<span style="color:#f92672">)</span>: accept
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">Do you accept the previously read EULA? <span style="color:#f92672">(</span>accept/decline/quit<span style="color:#f92672">)</span>: accept
 
 You are attempting to install on an unsupported configuration. Do you wish to <span style="color:#66d9ef">continue</span>? <span style="color:#f92672">((</span>y<span style="color:#f92672">)</span>es/<span style="color:#f92672">(</span>n<span style="color:#f92672">)</span>o<span style="color:#f92672">)</span> <span style="color:#f92672">[</span> default is no <span style="color:#f92672">]</span>: yes
 
@@ -230,20 +231,20 @@ Install the CUDA 7.5 Samples? <span style="color:#f92672">((</span>y<span style=
 저는 4.0으로 했어요.<br>
 Tensorflow라는 라이브러리를 사용할 것이기 때문에&hellip;
 그리고 나서 터미널을 켜고</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cd /usr/local
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cd /usr/local
 sudo tar zxf ~/Downloads/cudnn-7.0-linux-x64-v4.0-prod.tgz
 </code></pre></div><p>이렇게 하시거나 아니면</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cd cudnn 다운로드경로
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cd cudnn 다운로드경로
 sudo tar zxf cudnn-7.0-linux-x64-v4.0-prod.tgz
 sudo cp cuda/include/cudnn.h /usr/local/cuda/include
 sudo cp cuda/lib64/libcudnn* /usr/local/cuda/lib64
 </code></pre></div><p>이렇게 해주시구요.<br>
 환경변수를 설정해줘야 합니다.
 터미널을 껐다가 다시 켜주시고</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo gedit ~/.bashrc
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo gedit ~/.bashrc
 </code></pre></div><p>그려면 어떤 메모장? 문서 파일이 열립니다.
 매~~~~앤 아래 부분에</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">export PATH<span style="color:#f92672">=</span>/usr/local/cuda-7.5/bin:$PATH
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">export PATH<span style="color:#f92672">=</span>/usr/local/cuda-7.5/bin:$PATH
 export LD_LIBRARY_PATH<span style="color:#f92672">=</span>/usr/local/cuda-7.5/lib64:$LD_LIBRARY_PATH
 </code></pre></div><p>를 추가해주세요.</p>
 <p>이렇게 GPU 설정이 끝났습니다&hellip;<br>

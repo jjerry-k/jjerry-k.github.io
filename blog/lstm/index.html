@@ -9,7 +9,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="this is meta description">
   <meta name="author" content="Jerry Kim">
-  <meta name="generator" content="Hugo 0.90.0" />
+  <meta name="generator" content="Hugo 0.68.3" />
 
   <!-- plugins -->
   
@@ -163,7 +163,7 @@
           <h2 id="tensorflow-lstm-예제-코드">TensorFlow LSTM 예제 코드</h2>
 <p>여기저기서 TensorFlow LSTM 코드를 찾다가 예제를 제가 보기 편하게 작성햇습니다.</p>
 <h3 id="추후에-새로운-코드로-업데이트-할-예정입니다"><strong>추후에 새로운 코드로 업데이트 할 예정입니다.</strong></h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> tensorflow <span style="color:#66d9ef">as</span> tf
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> tensorflow <span style="color:#f92672">as</span> tf
 <span style="color:#f92672">from</span> tensorflow.keras <span style="color:#f92672">import</span> models, layers, optimizers, losses
 <span style="color:#f92672">from</span> tensorflow.keras.utills <span style="color:#f92672">import</span> to_categorical
 
@@ -183,8 +183,8 @@ x_train, x_test <span style="color:#f92672">=</span> x_train<span style="color:#
 y_train, y_test <span style="color:#f92672">=</span> to_categorical(y_train, n_class), to_categorical(y_test, n_class)
 tf<span style="color:#f92672">.</span>set_random_seed(<span style="color:#ae81ff">777</span>)
 
-X <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>placeholder(tf<span style="color:#f92672">.</span>float32, [<span style="color:#66d9ef">None</span>, n_step, n_input])
-Y <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>placeholder(tf<span style="color:#f92672">.</span>float32, [<span style="color:#66d9ef">None</span>, n_class])
+X <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>placeholder(tf<span style="color:#f92672">.</span>float32, [None, n_step, n_input])
+Y <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>placeholder(tf<span style="color:#f92672">.</span>float32, [None, n_class])
 
 W <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>Variable(tf<span style="color:#f92672">.</span>random_normal([n_hidden1, n_class]))
 b <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>Variable(tf<span style="color:#f92672">.</span>random_normal([n_class]))
@@ -216,7 +216,7 @@ optimizer <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</
 
 <span style="color:#75715e"># GPU 메모리 할당.</span>
 config <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>ConfigProto()
-config<span style="color:#f92672">.</span>gpu_options<span style="color:#f92672">.</span>allow_growth <span style="color:#f92672">=</span> <span style="color:#66d9ef">True</span>
+config<span style="color:#f92672">.</span>gpu_options<span style="color:#f92672">.</span>allow_growth <span style="color:#f92672">=</span> True
 sess <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>Session(config<span style="color:#f92672">=</span>config)
 sess<span style="color:#f92672">.</span>run(tf<span style="color:#f92672">.</span>global_variables_initializer())
 
@@ -235,9 +235,9 @@ total_batch <span style="color:#f92672">=</span> int(mnist<span style="color:#f9
                                feed_dict<span style="color:#f92672">=</span>{X: batch_xs, Y: batch_ys})
         total_cost <span style="color:#f92672">+=</span> cost_val
 
-    print(<span style="color:#e6db74">&#39;Epoch : </span><span style="color:#e6db74">%04d</span><span style="color:#e6db74">&#39;</span><span style="color:#f92672">%</span> (epoch <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>),<span style="color:#e6db74">&#39;Avg cost : </span><span style="color:#e6db74">{:f}</span><span style="color:#e6db74">&#39;</span><span style="color:#f92672">.</span>format(total_cost <span style="color:#f92672">/</span> total_batch))
+    <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#39;Epoch : </span><span style="color:#e6db74">%04d</span><span style="color:#e6db74">&#39;</span><span style="color:#f92672">%</span> (epoch <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>),<span style="color:#e6db74">&#39;Avg cost : {:f}&#39;</span><span style="color:#f92672">.</span>format(total_cost <span style="color:#f92672">/</span> total_batch))
 
-print(<span style="color:#e6db74">&#39;Optimization Done&#39;</span>)
+<span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#39;Optimization Done&#39;</span>)
 
 is_correct <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>equal(tf<span style="color:#f92672">.</span>argmax(model, <span style="color:#ae81ff">1</span>), tf<span style="color:#f92672">.</span>argmax(Y, <span style="color:#ae81ff">1</span>))
 accuracy <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>reduce_mean(tf<span style="color:#f92672">.</span>cast(is_correct, tf<span style="color:#f92672">.</span>float32))
@@ -246,7 +246,7 @@ test_batch_size <span style="color:#f92672">=</span> len(mnist<span style="color
 test_xs <span style="color:#f92672">=</span> mnist<span style="color:#f92672">.</span>test<span style="color:#f92672">.</span>images<span style="color:#f92672">.</span>reshape(test_batch_size, n_step, n_input)
 test_ys <span style="color:#f92672">=</span> mnist<span style="color:#f92672">.</span>test<span style="color:#f92672">.</span>labels
 
-print(<span style="color:#e6db74">&#39;Test Accuracy : &#39;</span>, sess<span style="color:#f92672">.</span>run(accuracy, feed_dict<span style="color:#f92672">=</span>{X: test_xs, Y: test_ys}))
+<span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#39;Test Accuracy : &#39;</span>, sess<span style="color:#f92672">.</span>run(accuracy, feed_dict<span style="color:#f92672">=</span>{X: test_xs, Y: test_ys}))
 
 </code></pre></div>
         </div>

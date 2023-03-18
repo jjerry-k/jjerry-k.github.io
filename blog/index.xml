@@ -6,7 +6,11 @@
     <description>Recent content in Blogs on Jerry&#39;s DevLog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 19 Dec 2021 21:03:27 +0900</lastBuildDate><atom:link href="https://jjerry-k.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 19 Dec 2021 21:03:27 +0900</lastBuildDate>
+    
+	<atom:link href="https://jjerry-k.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
+    
+    
     <item>
       <title>Python argparse</title>
       <link>https://jjerry-k.github.io/blog/python_argument/</link>
@@ -686,7 +690,7 @@ NIPA는 정보통신산업진흥원 의 약자인데 근데 그래서 이게 왜
       <description>늦었지만 키보드 자랑&amp;hellip;
 바밀로 저소음흑축 108키 입니다.
 넘나 영롱하다&amp;hellip;
-   </description>
+    </description>
     </item>
     
     <item>

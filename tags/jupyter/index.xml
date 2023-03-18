@@ -6,7 +6,11 @@
     <description>Recent content in Jupyter on Jerry&#39;s DevLog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 08 Dec 2020 00:24:48 +0900</lastBuildDate><atom:link href="https://jjerry-k.github.io/tags/jupyter/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 08 Dec 2020 00:24:48 +0900</lastBuildDate>
+    
+	<atom:link href="https://jjerry-k.github.io/tags/jupyter/index.xml" rel="self" type="application/rss+xml" />
+    
+    
     <item>
       <title>Jupyter_image_viewer</title>
       <link>https://jjerry-k.github.io/blog/jupyter_image_viewer/</link>

@@ -9,7 +9,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="this is meta description">
   <meta name="author" content="Jerry Kim">
-  <meta name="generator" content="Hugo 0.90.0" />
+  <meta name="generator" content="Hugo 0.68.3" />
 
   <!-- plugins -->
   
@@ -159,7 +159,7 @@
           
         </div>
         
-        <img src="https://google.github.io/mediapipe/images/mediapipe_small.png" class="img-fluid w-100 mb-4" alt="MediaPipe - (5)">
+        <img src="https://mediapipe.dev/images/mediapipe_small.png" class="img-fluid w-100 mb-4" alt="MediaPipe - (5)">
         
         <div class="content mb-5">
           <p>요즘 MediaPipe에 대해 tracking을 안하다보니 어떤 솔루션이 새로 나왔는지 잘 몰랐습니다&hellip; 오랜만에 들어갔더니 세 가지 솔루션이 추가가 되었더라구요!</p>
@@ -167,9 +167,9 @@
 <p>이번엔 <code>Selfie Segmentation</code> 이라는 솔루션입니다!</p>
 <p>단순히 말하면 Human segmentation 이에요!</p>
 <h2 id="실행-코드">실행 코드</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> cv2
-<span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
-<span style="color:#f92672">import</span> mediapipe <span style="color:#66d9ef">as</span> mp
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> cv2
+<span style="color:#f92672">import</span> numpy <span style="color:#f92672">as</span> np
+<span style="color:#f92672">import</span> mediapipe <span style="color:#f92672">as</span> mp
 mp_drawing <span style="color:#f92672">=</span> mp<span style="color:#f92672">.</span>solutions<span style="color:#f92672">.</span>drawing_utils
 mp_selfie_segmentation <span style="color:#f92672">=</span> mp<span style="color:#f92672">.</span>solutions<span style="color:#f92672">.</span>selfie_segmentation
 
@@ -195,10 +195,12 @@ MASK_COLOR <span style="color:#f92672">=</span> (<span style="color:#ae81ff">1</
 </code></pre></div><table>
 <thead>
 <tr>
-<th style="text-align:center"><figure><img src="/images/post/mediapipe/selfie_input.jpg"/>
+<th align="center"><figure>
+    <img src="/images/post/mediapipe/selfie_input.jpg"/> 
 </figure>
 </th>
-<th style="text-align:center"><figure><img src="/images/post/mediapipe/selfie_output.jpg"/>
+<th align="center"><figure>
+    <img src="/images/post/mediapipe/selfie_output.jpg"/> 
 </figure>
 </th>
 </tr>
@@ -213,9 +215,9 @@ MASK_COLOR <span style="color:#f92672">=</span> (<span style="color:#ae81ff">1</
 여기엔 두개의 모드가 있습니다. 하나는 Base mode, 다른 하나는 Landscape mode.<br>
 약&mdash;-간 차이가 있어요 ㅋㅋㅋ</p>
 <h2 id="실행-코드-1">실행 코드</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> cv2 <span style="color:#66d9ef">as</span> cv
-<span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
-<span style="color:#f92672">import</span> mediapipe <span style="color:#66d9ef">as</span> mp
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> cv2 <span style="color:#f92672">as</span> cv
+<span style="color:#f92672">import</span> numpy <span style="color:#f92672">as</span> np
+<span style="color:#f92672">import</span> mediapipe <span style="color:#f92672">as</span> mp
 mp_drawing <span style="color:#f92672">=</span> mp<span style="color:#f92672">.</span>solutions<span style="color:#f92672">.</span>drawing_utils
 mp_selfie_segmentation <span style="color:#f92672">=</span> mp<span style="color:#f92672">.</span>solutions<span style="color:#f92672">.</span>selfie_segmentation
 
@@ -253,27 +255,27 @@ bg_img <span style="color:#f92672">=</span> cv<span style="color:#f92672">.</spa
 
 
 fourcc <span style="color:#f92672">=</span> cv<span style="color:#f92672">.</span>VideoWriter_fourcc(<span style="color:#f92672">*</span><span style="color:#e6db74">&#39;DIVX&#39;</span>)
-out <span style="color:#f92672">=</span> cv<span style="color:#f92672">.</span>VideoWriter(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#39;selfie_output.mp4&#39;</span>, fourcc, <span style="color:#ae81ff">30.0</span>, (int(W), int(H)))    
+out <span style="color:#f92672">=</span> cv<span style="color:#f92672">.</span>VideoWriter(f<span style="color:#e6db74">&#39;selfie_output.mp4&#39;</span>, fourcc, <span style="color:#ae81ff">30.0</span>, (int(W), int(H)))    
 
 frame_idx <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
 <span style="color:#66d9ef">while</span>(cap<span style="color:#f92672">.</span>isOpened()):
     
     ret, frame <span style="color:#f92672">=</span> cap<span style="color:#f92672">.</span>read()
-    <span style="color:#66d9ef">if</span> ret <span style="color:#f92672">==</span> <span style="color:#66d9ef">False</span>:
+    <span style="color:#66d9ef">if</span> ret <span style="color:#f92672">==</span> False:
         <span style="color:#66d9ef">break</span>
     frame <span style="color:#f92672">=</span> change_background(frame, bg_img, mode<span style="color:#f92672">=</span>idx, threshold<span style="color:#f92672">=</span><span style="color:#ae81ff">0.4</span>)
     out<span style="color:#f92672">.</span>write(frame)
 </code></pre></div><table>
 <thead>
 <tr>
-<th style="text-align:center">설명</th>
-<th style="text-align:center">영상</th>
+<th align="center">설명</th>
+<th align="center">영상</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:center">Input</td>
-<td style="text-align:center">
+<td align="center">Input</td>
+<td align="center">
  
 <video width=50% autoplay loop>
     <source src="/images/post/mediapipe/selfie_input.mp4" type="video/mp4">
@@ -281,8 +283,8 @@ frame_idx <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</sp
 </td>
 </tr>
 <tr>
-<td style="text-align:center">Base model</td>
-<td style="text-align:center">
+<td align="center">Base model</td>
+<td align="center">
  
 <video width=50% autoplay loop>
     <source src="/images/post/mediapipe/selfie_output_base.mp4" type="video/mp4">
@@ -290,8 +292,8 @@ frame_idx <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</sp
 </td>
 </tr>
 <tr>
-<td style="text-align:center">Landscape model</td>
-<td style="text-align:center">
+<td align="center">Landscape model</td>
+<td align="center">
  
 <video width=50% autoplay loop>
     <source src="/images/post/mediapipe/selfie_output_landscape.mp4" type="video/mp4">

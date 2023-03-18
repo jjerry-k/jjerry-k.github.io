@@ -9,7 +9,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="this is meta description">
   <meta name="author" content="Jerry Kim">
-  <meta name="generator" content="Hugo 0.90.0" />
+  <meta name="generator" content="Hugo 0.68.3" />
 
   <!-- plugins -->
   
@@ -191,13 +191,13 @@
 </li>
 </ul>
 <h2 id="2-install-brew">2. Install brew</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">/usr/bin/ruby -e <span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span>curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">/usr/bin/ruby -e <span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span>curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span>
 </code></pre></div><h2 id="3-install-oh-my-zsh">3. Install oh-my-zsh</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sh -c <span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span>curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sh -c <span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span>curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span>
 </code></pre></div><h2 id="4-install-pyenv">4. Install pyenv</h2>
 <p><a href="https://jjerry-k.github.io/python/2018/09/27/python4mac/">Python Installation for mac</a></p>
 <h2 id="5-edit-zshrc">5. Edit .zshrc</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># If you come from bash you might have to change your $PATH.</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># If you come from bash you might have to change your $PATH.</span>
 <span style="color:#75715e"># export PATH=$HOME/bin:/usr/local/bin:$PATH</span>
 
 <span style="color:#75715e"># Path to your oh-my-zsh installation.</span>
@@ -292,7 +292,7 @@ source $ZSH/oh-my-zsh.sh
 <span style="color:#75715e"># plugins, and themes. Aliases can be placed here, though oh-my-zsh</span>
 <span style="color:#75715e"># users are encouraged to define aliases within the ZSH_CUSTOM folder.</span>
 <span style="color:#75715e"># For a full list of active aliases, run `alias`.</span>
-<span style="color:#75715e">#</span>
+#
 <span style="color:#75715e"># Example aliases</span>
 <span style="color:#75715e"># alias zshconfig=&#34;mate ~/.zshrc&#34;</span>
 <span style="color:#75715e"># alias ohmyzsh=&#34;mate ~/.oh-my-zsh&#34;</span>
@@ -317,7 +317,7 @@ __conda_setup<span style="color:#f92672">=</span><span style="color:#e6db74">&#3
 unset __conda_setup
 <span style="color:#75715e"># &lt;&lt;&lt; conda initialize &lt;&lt;&lt;</span>
 </code></pre></div><h2 id="6-create-conda-environment">6. Create conda environment</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e">#!/bin/bash
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e">#!/bin/bash
 </span><span style="color:#75715e"></span>
 conda install -y ipykernel jupyter jupyterlab pylint
 conda update --all -y

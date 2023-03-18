@@ -9,7 +9,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="this is meta description">
   <meta name="author" content="Jerry Kim">
-  <meta name="generator" content="Hugo 0.90.0" />
+  <meta name="generator" content="Hugo 0.68.3" />
 
   <!-- plugins -->
   
@@ -165,7 +165,8 @@
           <p>Python으로 이런 저런 코드를 작성하다 보면 Progress bar가 필요한 경우가 있습니다.
 제 경우에는 ML/DL 학습 부분에서 얼마나 학습이 되었는지&hellip;. 보기 위해 필요하죠..
 keras, TensorFlow 같은 경우에는 특정 API에선 progress bar가 보이긴합니다.</p>
-<figure><img src="/images/post/tqdm/01.png"/>
+<figure>
+    <img src="/images/post/tqdm/01.png"/> 
 </figure>
 
 <p>하지만 PyTorch에는 .. 없죠. 직접 만들어야합니다.<br>
@@ -173,8 +174,8 @@ keras, TensorFlow 같은 경우에는 특정 API에선 progress bar가 보이긴
 <p>그래서 이번엔 <a href="https://tqdm.github.io/"><code>tqdm</code></a> 이라는 라이브러리 사용법을 알아보고자 합니다.</p>
 <h4 id="기본-사용법">기본 사용법</h4>
 <p>for loop를 사용할때 tqdm(iterable) 과 같이 사용하면 다음과 같은 출력을 얻을 수 있습니다.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python3" data-lang="python3"><span style="color:#f92672">import</span> time
-<span style="color:#f92672">from</span> tqdm <span style="color:#f92672">import</span> tqdm
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python3" data-lang="python3"><span style="color:#f92672">import</span> time
+<span style="color:#f92672">from</span> tqdm <span style="color:#66d9ef">import</span> tqdm
 <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> tqdm(range(<span style="color:#ae81ff">1000</span>)):
 	time<span style="color:#f92672">.</span>sleep(<span style="color:#ae81ff">0.01</span>)
 
@@ -183,18 +184,18 @@ keras, TensorFlow 같은 경우에는 특정 API에선 progress bar가 보이긴
 <p>tqdm의 출력으로 나오는 Progress bar 전체의 앞, 뒤에 특정 값을 넣을 수도 있습니다.</p>
 <p>마치 keras, TensorFlow의 예시와 같이 Epoch, loss, accuracy을 넣을 수 있어요!</p>
 <p>예시는 다음과 같습니다.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python3" data-lang="python3"><span style="color:#f92672">import</span> time
-<span style="color:#f92672">from</span> tqdm <span style="color:#f92672">import</span> tqdm
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python3" data-lang="python3"><span style="color:#f92672">import</span> time
+<span style="color:#f92672">from</span> tqdm <span style="color:#66d9ef">import</span> tqdm
 
 num_epochs <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span>
 <span style="color:#66d9ef">for</span> epoch <span style="color:#f92672">in</span> range(num_epochs):
     num_steps <span style="color:#f92672">=</span> <span style="color:#ae81ff">100</span>
-    <span style="color:#66d9ef">with</span> tqdm(desc<span style="color:#f92672">=</span><span style="color:#e6db74">f</span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">{</span>epoch<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span><span style="color:#e6db74">}</span><span style="color:#e6db74">/</span><span style="color:#e6db74">{</span>num_epochs<span style="color:#e6db74">}</span><span style="color:#e6db74">&#39;</span>, total<span style="color:#f92672">=</span>num_steps) <span style="color:#66d9ef">as</span> t:
+    <span style="color:#66d9ef">with</span> tqdm(desc<span style="color:#f92672">=</span>f<span style="color:#e6db74">&#39;{epoch+1}/</span><span style="color:#e6db74">{num_epochs}</span><span style="color:#e6db74">&#39;</span>, total<span style="color:#f92672">=</span>num_steps) <span style="color:#66d9ef">as</span> t:
         <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(num_steps):
             time<span style="color:#f92672">.</span>sleep(<span style="color:#ae81ff">0.01</span>)
             t<span style="color:#f92672">.</span>set_postfix({
-                            <span style="color:#e6db74">&#34;Accuracy&#34;</span>: <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span>i<span style="color:#f92672">/</span>num_steps<span style="color:#e6db74">:</span><span style="color:#e6db74">.2f</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>,
-                            <span style="color:#e6db74">&#34;Loss&#34;</span>: <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span>i<span style="color:#f92672">/</span>num_steps<span style="color:#e6db74">:</span><span style="color:#e6db74">.2f</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>})
+                            <span style="color:#e6db74">&#34;Accuracy&#34;</span>: f<span style="color:#e6db74">&#34;{i/num_steps:.2f}&#34;</span>,
+                            <span style="color:#e6db74">&#34;Loss&#34;</span>: f<span style="color:#e6db74">&#34;{i/num_steps:.2f}&#34;</span>})
             t<span style="color:#f92672">.</span>update()
 
 <span style="color:#75715e"># 1/5: 100%|█████████████████████████████| 100/100 [00:01&lt;00:00, 62.57it/s, Accuracy=0.99, Loss=0.99] </span>

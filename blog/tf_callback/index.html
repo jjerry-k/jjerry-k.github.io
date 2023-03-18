@@ -9,7 +9,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="this is meta description">
   <meta name="author" content="Jerry Kim">
-  <meta name="generator" content="Hugo 0.90.0" />
+  <meta name="generator" content="Hugo 0.68.3" />
 
   <!-- plugins -->
   
@@ -169,78 +169,49 @@
 <p>몇몇 편하게 쓸 수 있게 제공하는 Callback 함수들도 있습니다.  <a href="https://www.tensorflow.org/api_docs/python/tf/keras/callbacks">참고 링크</a></p>
 <p>이번 포스팅은 제공하는 Callback 함수가 아닌 <strong>내 입맛대로 Callback 함수</strong>을 만들어보려합니다!</p>
 <p>기본적인 틀을 보여드리면 다음과 같습니다!</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CustomCallback</span>(keras<span style="color:#f92672">.</span>callbacks<span style="color:#f92672">.</span>Callback):
-    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">on_train_begin</span>(self, logs<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>):
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CustomCallback</span>(keras<span style="color:#f92672">.</span>callbacks<span style="color:#f92672">.</span>Callback):
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">on_train_begin</span>(self, logs<span style="color:#f92672">=</span>None):
         
-    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">on_train_end</span>(self, logs<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>):
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">on_train_end</span>(self, logs<span style="color:#f92672">=</span>None):
         
-    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">on_epoch_begin</span>(self, epoch, logs<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>):
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">on_epoch_begin</span>(self, epoch, logs<span style="color:#f92672">=</span>None):
         
-    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">on_epoch_end</span>(self, epoch, logs<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>):
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">on_epoch_end</span>(self, epoch, logs<span style="color:#f92672">=</span>None):
         
-    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">on_test_begin</span>(self, logs<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>):
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">on_test_begin</span>(self, logs<span style="color:#f92672">=</span>None):
         
-    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">on_test_end</span>(self, logs<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>):
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">on_test_end</span>(self, logs<span style="color:#f92672">=</span>None):
         
-    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">on_predict_begin</span>(self, logs<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>):
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">on_predict_begin</span>(self, logs<span style="color:#f92672">=</span>None):
         
-    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">on_predict_end</span>(self, logs<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>):
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">on_predict_end</span>(self, logs<span style="color:#f92672">=</span>None):
         
-    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">on_train_batch_begin</span>(self, batch, logs<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>):
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">on_train_batch_begin</span>(self, batch, logs<span style="color:#f92672">=</span>None):
         
-    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">on_train_batch_end</span>(self, batch, logs<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>):
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">on_train_batch_end</span>(self, batch, logs<span style="color:#f92672">=</span>None):
         
-    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">on_test_batch_begin</span>(self, batch, logs<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>):
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">on_test_batch_begin</span>(self, batch, logs<span style="color:#f92672">=</span>None):
         
-    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">on_test_batch_end</span>(self, batch, logs<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>):
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">on_test_batch_end</span>(self, batch, logs<span style="color:#f92672">=</span>None):
         
-    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">on_predict_batch_begin</span>(self, batch, logs<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>):
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">on_predict_batch_begin</span>(self, batch, logs<span style="color:#f92672">=</span>None):
         
-    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">on_predict_batch_end</span>(self, batch, logs<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>):
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">on_predict_batch_end</span>(self, batch, logs<span style="color:#f92672">=</span>None):
 </code></pre></div><p>callback은 <code>구간</code> 단위로 함수를 정의합니다!<br>
 여기서 구간이란 전체적인 학습의 시작과 종료, 매 epoch의 시작과 종료, 매 batch의 시작과 종료 등과 같습니다.<br>
-조금 더 자세히 알아보겠습니다. </p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">구간</th>
-<th style="text-align:center">설명</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center"><code>on_train_begin</code>, <code>on_train_end</code></td>
-<td style="text-align:center"><code>학습 프로세스</code> 시작, 종료시 수행할 기능</td>
-</tr>
-<tr>
-<td style="text-align:center"><code>on_epoch_begin</code>, <code>on_epoch_end</code></td>
-<td style="text-align:center"><code>Epoch</code> 시작, 종료시 수행할 기능</td>
-</tr>
-<tr>
-<td style="text-align:center"><code>on_test_begin</code>, <code>on_test_end</code></td>
-<td style="text-align:center"><code>Evaluation</code> 시작, 종료시 수행할 기능</td>
-</tr>
-<tr>
-<td style="text-align:center"><code>on_predict_begin</code>, <code>on_predict_end</code></td>
-<td style="text-align:center"><code>Prediction</code> 시작, 종료시 수행할 기능</td>
-</tr>
-<tr>
-<td style="text-align:center"><code>on_train_batch_begin</code>, <code>on_train_batch_end</code></td>
-<td style="text-align:center"><code>배치 단위의 Train</code> 시작, 종료시 수행할 기능</td>
-</tr>
-<tr>
-<td style="text-align:center"><code>on_test_batch_begin</code>, <code>on_test_batch_end</code></td>
-<td style="text-align:center"><code>배치 단위의 Evaluation</code> 시작, 종료시 수행할 기능</td>
-</tr>
-<tr>
-<td style="text-align:center"><code>on_predict_batch_begin</code>, <code>on_predict_batch_end</code></td>
-<td style="text-align:center"><code>배치 단위의 Prediction</code> 시작, 종료시 수행할 기능</td>
-</tr>
-</tbody>
-</table>
+조금 더 자세히 알아보겠습니다.<br>
+|구간|설명|
+|:&mdash;:|:&mdash;:|
+|<code>on_train_begin</code>, <code>on_train_end</code>|<code>학습 프로세스</code> 시작, 종료시 수행할 기능|
+|<code>on_epoch_begin</code>, <code>on_epoch_end</code>|<code>Epoch</code> 시작, 종료시 수행할 기능|
+|<code>on_test_begin</code>, <code>on_test_end</code>|<code>Evaluation</code> 시작, 종료시 수행할 기능|
+|<code>on_predict_begin</code>, <code>on_predict_end</code>|<code>Prediction</code> 시작, 종료시 수행할 기능|
+|<code>on_train_batch_begin</code>, <code>on_train_batch_end</code>|<code>배치 단위의 Train</code> 시작, 종료시 수행할 기능|
+|<code>on_test_batch_begin</code>, <code>on_test_batch_end</code>|<code>배치 단위의 Evaluation</code> 시작, 종료시 수행할 기능|
+|<code>on_predict_batch_begin</code>, <code>on_predict_batch_end</code>|<code>배치 단위의 Prediction</code> 시작, 종료시 수행할 기능|</p>
 <p>그럼 대충 에제 코드를 돌려보겠습니다.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
-<span style="color:#f92672">import</span> tensorflow <span style="color:#66d9ef">as</span> tf
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> numpy <span style="color:#f92672">as</span> np
+<span style="color:#f92672">import</span> tensorflow <span style="color:#f92672">as</span> tf
 <span style="color:#f92672">from</span> tensorflow.keras <span style="color:#f92672">import</span> models, layers, callbacks
 tf<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>set_seed(<span style="color:#ae81ff">777</span>)
 
@@ -256,28 +227,28 @@ model<span style="color:#f92672">.</span>add(layers<span style="color:#f92672">.
 model<span style="color:#f92672">.</span>compile(optimizer<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;sgd&#39;</span>, loss<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;mse&#39;</span>)
 
 <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CustomCallback</span>(keras<span style="color:#f92672">.</span>callbacks<span style="color:#f92672">.</span>Callback):
-    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">on_train_begin</span>(self, logs<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>):
-        print(<span style="color:#e6db74">&#34;Train Start! &#34;</span>)
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">on_train_begin</span>(self, logs<span style="color:#f92672">=</span>None):
+        <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;Train Start! &#34;</span>)
 
-    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">on_train_end</span>(self, logs<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>):
-        print(<span style="color:#e6db74">&#34;Train End! &#34;</span>)
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">on_train_end</span>(self, logs<span style="color:#f92672">=</span>None):
+        <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;Train End! &#34;</span>)
 
-    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">on_epoch_begin</span>(self, epoch, logs<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>):
-        print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span>epoch<span style="color:#e6db74">}</span><span style="color:#e6db74"> Start!&#34;</span>)
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">on_epoch_begin</span>(self, epoch, logs<span style="color:#f92672">=</span>None):
+        <span style="color:#66d9ef">print</span>(f<span style="color:#e6db74">&#34;{epoch} Start!&#34;</span>)
 
-    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">on_epoch_end</span>(self, epoch, logs<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>):
-        print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span>epoch<span style="color:#e6db74">}</span><span style="color:#e6db74"> End!&#34;</span>)
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">on_epoch_end</span>(self, epoch, logs<span style="color:#f92672">=</span>None):
+        <span style="color:#66d9ef">print</span>(f<span style="color:#e6db74">&#34;{epoch} End!&#34;</span>)
 
-    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">on_train_batch_begin</span>(self, batch, logs<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>):
-        print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span>batch<span style="color:#e6db74">}</span><span style="color:#e6db74"> Start!&#34;</span>)
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">on_train_batch_begin</span>(self, batch, logs<span style="color:#f92672">=</span>None):
+        <span style="color:#66d9ef">print</span>(f<span style="color:#e6db74">&#34;{batch} Start!&#34;</span>)
 
-    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">on_train_batch_end</span>(self, batch, logs<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>):
-        print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span>batch<span style="color:#e6db74">}</span><span style="color:#e6db74"> End!&#34;</span>)
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">on_train_batch_end</span>(self, batch, logs<span style="color:#f92672">=</span>None):
+        <span style="color:#66d9ef">print</span>(f<span style="color:#e6db74">&#34;{batch} End!&#34;</span>)
 
 history <span style="color:#f92672">=</span> model<span style="color:#f92672">.</span>fit(x, y, epochs<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>, batch_size<span style="color:#f92672">=</span><span style="color:#ae81ff">1024</span>, callbacks <span style="color:#f92672">=</span> [CustomCallback()], verbose <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>)
 </code></pre></div><p>위의 코드를 돌리면 다음과 같은 출력이 나옵니다.<br>
 코드는 매우 단순 하니 읽어보시면 바로 해석 될 듯&hellip;</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">Train Start! 
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">Train Start! 
 Epoch <span style="color:#ae81ff">0</span> Start!
 Batch <span style="color:#ae81ff">0</span> Start!
 Batch <span style="color:#ae81ff">0</span> End!
@@ -303,11 +274,11 @@ Epoch <span style="color:#ae81ff">0</span> End!
 Train End! 
 </code></pre></div><p>그럼 이번엔 실용적인(?) callback을 만들어보겠습니다.</p>
 <p>매 epoch 마다 Loss graph를 그리는 기능을 넣어보겠습니다!</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> numpy <span style="color:#f92672">as</span> np
 <span style="color:#f92672">from</span> matplotlib <span style="color:#f92672">import</span> pyplot <span style="color:#66d9ef">as</span> plt
 plt<span style="color:#f92672">.</span>ion() <span style="color:#75715e"># ipython 환경이 아닐 시 interactive plot을 할 수 있도록 변경</span>
 
-<span style="color:#f92672">import</span> tensorflow <span style="color:#66d9ef">as</span> tf
+<span style="color:#f92672">import</span> tensorflow <span style="color:#f92672">as</span> tf
 <span style="color:#f92672">from</span> tensorflow.keras <span style="color:#f92672">import</span> models, layers, callbacks
 tf<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>set_seed(<span style="color:#ae81ff">777</span>)
 
@@ -320,16 +291,16 @@ model<span style="color:#f92672">.</span>add(layers<span style="color:#f92672">.
 model<span style="color:#f92672">.</span>compile(optimizer<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;sgd&#39;</span>, loss<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;mse&#39;</span>)
 
 <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CustomCallback</span>(callbacks<span style="color:#f92672">.</span>Callback):
-    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">on_train_begin</span>(self, logs<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>):
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">on_train_begin</span>(self, logs<span style="color:#f92672">=</span>None):
         plt<span style="color:#f92672">.</span>figure(figsize<span style="color:#f92672">=</span>(<span style="color:#ae81ff">10</span>, <span style="color:#ae81ff">10</span>))
         plt<span style="color:#f92672">.</span>xlim([<span style="color:#f92672">-</span><span style="color:#ae81ff">0.5</span>, self<span style="color:#f92672">.</span>params[<span style="color:#e6db74">&#39;epochs&#39;</span>]<span style="color:#f92672">+</span><span style="color:#ae81ff">0.5</span>])
-        print(<span style="color:#e6db74">&#34;Train Start! &#34;</span>)
+        <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;Train Start! &#34;</span>)
 
-    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">on_train_end</span>(self, logs<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>):
-        print(<span style="color:#e6db74">&#34;Train End! &#34;</span>)
-        plt<span style="color:#f92672">.</span>show(block<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">on_train_end</span>(self, logs<span style="color:#f92672">=</span>None):
+        <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;Train End! &#34;</span>)
+        plt<span style="color:#f92672">.</span>show(block<span style="color:#f92672">=</span>True)
 
-    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">on_epoch_end</span>(self, epoch, logs<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>):
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">on_epoch_end</span>(self, epoch, logs<span style="color:#f92672">=</span>None):
 
         plt<span style="color:#f92672">.</span>plot(epoch, logs[<span style="color:#e6db74">&#34;loss&#34;</span>], <span style="color:#e6db74">&#39;bo&#39;</span>)
         plt<span style="color:#f92672">.</span>show()
@@ -338,7 +309,8 @@ model<span style="color:#f92672">.</span>compile(optimizer<span style="color:#f9
 history <span style="color:#f92672">=</span> model<span style="color:#f92672">.</span>fit(x, y, epochs<span style="color:#f92672">=</span><span style="color:#ae81ff">10</span>, batch_size<span style="color:#f92672">=</span><span style="color:#ae81ff">1024</span>, callbacks <span style="color:#f92672">=</span> [CustomCallback()])
 
 
-</code></pre></div><figure><img src="/images/post/tf_callback/example.gif"/>
+</code></pre></div><figure>
+    <img src="/images/post/tf_callback/example.gif"/> 
 </figure>
 
 <p>Jupyter, IPython 없이도 Interactive하게 loss graph를 잘 그릴 수 &hellip; 있네요. (솔직히 이번에 처음 해봤음..)</p>

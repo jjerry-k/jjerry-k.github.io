@@ -9,7 +9,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="this is meta description">
   <meta name="author" content="Jerry Kim">
-  <meta name="generator" content="Hugo 0.90.0" />
+  <meta name="generator" content="Hugo 0.68.3" />
 
   <!-- plugins -->
   
@@ -197,15 +197,17 @@ URL: <a href="https://arxiv.org/abs/1807.06514">https://arxiv.org/abs/1807.06514
 <p>본 논문에선 attention 의 효과를 보기 위해 기존의 architecture 에 사용하기 쉬운 가벼운 Bottle Attention Module(BAM) 제안</p>
 </li>
 </ul>
-<figure><img src="/images/post/bam/Untitled.png"/>
+<figure>
+    <img src="/images/post/bam/Untitled.png"/> 
 </figure>
 
 <h1 id="bottleneck-attention-module">Bottleneck Attention Module</h1>
 <ul>
 <li>BAM 의 구조는 다음 사진과 같음.</li>
 </ul>
-<p>$$F: \text{Input feature map} \\ M(F): \text{Attention map} \\ F' = F + F\bigotimes M(F) \\ M(F) = \sigma(M_c(F) + M_s(F))$$</p>
-<figure><img src="/images/post/bam/Untitled_1.png"/>
+<p>$$F: \text{Input feature map} \\ M(F): \text{Attention map} \\ F&rsquo; = F + F\bigotimes M(F) \\ M(F) = \sigma(M_c(F) + M_s(F))$$</p>
+<figure>
+    <img src="/images/post/bam/Untitled_1.png"/> 
 </figure>
 
 <h2 id="channel-attention-branch">Channel attention branch</h2>
@@ -243,27 +245,32 @@ URL: <a href="https://arxiv.org/abs/1807.06514">https://arxiv.org/abs/1807.06514
 <li>BAM 사용 여부에 따른 성능 비교</li>
 <li>Table 1 (c)</li>
 </ul>
-<figure><img src="/images/post/bam/Untitled_2.png"/>
+<figure>
+    <img src="/images/post/bam/Untitled_2.png"/> 
 </figure>
 
 <h2 id="bottleneck-the-efficient-point-to-place-bam">Bottleneck: The efficient point to place BAM</h2>
 <ul>
 <li>BAM 사용 위치에 따른 성능 비교.</li>
 </ul>
-<figure><img src="/images/post/bam/Untitled_3.png"/>
+<figure>
+    <img src="/images/post/bam/Untitled_3.png"/> 
 </figure>
 
 <h1 id="result">Result</h1>
 <h2 id="classification-result-on-cifar-100-and-imagenet-1k">Classification Result on CIFAR-100 and ImageNet-1K</h2>
-<figure><img src="/images/post/bam/Untitled_4.png"/>
+<figure>
+    <img src="/images/post/bam/Untitled_4.png"/> 
 </figure>
 
 <h2 id="object-detection-on-ms-coco-and-voc-2007">Object Detection on MS COCO and VOC 2007</h2>
-<figure><img src="/images/post/bam/Untitled_5.png"/>
+<figure>
+    <img src="/images/post/bam/Untitled_5.png"/> 
 </figure>
 
 <h2 id="comparison-with-squeeze-and-excitation">Comparison with Squeeze-and-Excitation</h2>
-<figure><img src="/images/post/bam/Untitled_6.png"/>
+<figure>
+    <img src="/images/post/bam/Untitled_6.png"/> 
 </figure>
 
 <h3 id="ps">P.S</h3>
