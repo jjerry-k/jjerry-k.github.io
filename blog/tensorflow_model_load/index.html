@@ -9,7 +9,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="this is meta description">
   <meta name="author" content="Jerry Kim">
-  <meta name="generator" content="Hugo 0.68.3" />
+  <meta name="generator" content="Hugo 0.92.2" />
 
   <!-- plugins -->
   
@@ -160,21 +160,20 @@
 <p><strong>해당 방법은 모델을 json 으로 저장했을때 유효한 방법입니다!</strong></p>
 <h2 id="value-errorunknown-layer--functional">Value error:unknown layer : functional</h2>
 <p>json 안에 내용이</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{<span style="color:#f92672">&#34;class_name&#34;</span>: <span style="color:#e6db74">&#34;Functional&#34;</span>, 
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{<span style="color:#f92672">&#34;class_name&#34;</span>: <span style="color:#e6db74">&#34;Functional&#34;</span>, 
   <span style="color:#f92672">&#34;config&#34;</span>: {
     <span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;functional_1&#34;</span>, 
     <span style="color:#f92672">&#34;layers&#34;</span>: [{<span style="color:#f92672">&#34;class_name&#34;</span>: <span style="color:#e6db74">&#34;InputLayer&#34;</span> <span style="color:#960050;background-color:#1e0010">...</span>
 </code></pre></div><p>이렇게 되어있다면</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{<span style="color:#f92672">&#34;class_name&#34;</span>: <span style="color:#e6db74">&#34;Model&#34;</span>, 
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{<span style="color:#f92672">&#34;class_name&#34;</span>: <span style="color:#e6db74">&#34;Model&#34;</span>, 
   <span style="color:#f92672">&#34;config&#34;</span>: {
     <span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;model_1&#34;</span>, 
     <span style="color:#f92672">&#34;layers&#34;</span>: [{<span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;input_1&#34;</span>, <span style="color:#f92672">&#34;class_name&#34;</span>: <span style="color:#e6db74">&#34;InputLayer&#34;</span> <span style="color:#960050;background-color:#1e0010">...</span>
 </code></pre></div><p>이렇게 <code>&quot;Functional&quot; 을 &quot;Model&quot;</code>로 <code>&quot;functional_1&quot;을 &quot;model_1&quot;</code>으로 변경 후 싫행하시면 됩니다.</p>
-<h2 id="typeerror-keyword-argument-not-understood-groups">TypeError: (&lsquo;Keyword argument not understood:', &lsquo;groups&rsquo;)</h2>
+<h2 id="typeerror-keyword-argument-not-understood-groups">TypeError: (&lsquo;Keyword argument not understood:&rsquo;, &lsquo;groups&rsquo;)</h2>
 <p>json 에서 &lsquo;groups&rsquo; 라는 내용을 찾아봅니다.</p>
 <p>다음과 같이 있네요.</p>
-<figure>
-    <img src="/images/post/tensorflow_model_load/Untitled.png"/> 
+<figure><img src="/images/post/tensorflow_model_load/Untitled.png"/>
 </figure>
 
 <p>단순히 json 안에 모든 <code>&quot;groups&quot;: ,</code> 를 지워주세요.</p>
@@ -189,8 +188,8 @@
 
         
         <div style="text-align:center; margin:20px 0px 20px 0px">
-          <a href="https://donaricano.com/mypage/1391188679_guPzXC" target="_blank">
-            <img src="https://jjerry-k.github.io/images/promotion.png" alt="donaricano-btn"
+          <a href="https://www.buymeacoffee.com/jjerry" target="_blank">
+            <img src="https://jjerry-k.github.io/images/promotion.png" alt="support-btn"
             style="height: 100px !important;width: 100px !important;" />
           </br>
             <span class="caption">도움이 되셨다면 몰랑이에게 밀크티를...! </br> 더 다양한 포스팅을 채우도록 노력할게요!</span>

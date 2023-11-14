@@ -9,7 +9,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="this is meta description">
   <meta name="author" content="Jerry Kim">
-  <meta name="generator" content="Hugo 0.68.3" />
+  <meta name="generator" content="Hugo 0.92.2" />
 
   <!-- plugins -->
   
@@ -169,8 +169,7 @@ Face Detector..? FPS가 너무 안나옴&hellip;.<br>
 <li>micro 5핀 OTG 케이블</li>
 <li>mini Hdmi 컨버터</li>
 </ul>
-<figure>
-    <img src="/images/post/smartmirror/01.jpeg"/> 
+<figure><img src="/images/post/smartmirror/01.jpeg"/>
 </figure>
 
 <h2 id="제작-과정">제작 과정</h2>
@@ -178,26 +177,23 @@ Face Detector..? FPS가 너무 안나옴&hellip;.<br>
 <p><a href="http://emmanuelcontreras.com/how-to/how-to-create-a-magic-mirror-2-with-pi-zero-w/">http://emmanuelcontreras.com/how-to/how-to-create-a-magic-mirror-2-with-pi-zero-w/</a></p>
 <p>위 링크로 가셔서 스크롤을 내리시다보면 다음 사진의 파란색 상자 부분이 보입니다!<br>
 클릭해서 이미지 다운로드!!</p>
-<figure>
-    <img src="/images/post/smartmirror/Untitled.png"/> 
+<figure><img src="/images/post/smartmirror/Untitled.png"/>
 </figure>
 
 <p><a href="https://www.balena.io/etcher/">https://www.balena.io/etcher/</a><br>
 저는 Flashing Tool 로 balena Etcher를 사용했습니다.<br>
 PC에 SD카드를 연결 후 Tool에서 다운로드한 이미지와 SD 카드를 선택하고 Flash 버튼 클릭!
-<figure>
-    <img src="/images/post/smartmirror/Untitled%201.png"/> 
+<figure><img src="/images/post/smartmirror/Untitled%201.png"/>
 </figure>
 
-<figure>
-    <img src="/images/post/smartmirror/Untitled%202.png"/> 
+<figure><img src="/images/post/smartmirror/Untitled%202.png"/>
 </figure>
 </p>
 <p>설치가 완료되면 SD 카드로 가서 <code>SSH</code> 라는 빈 파일을 생성해주세요.<br>
 (<code>touch SSH</code> 이런 식으로&hellip;)<br>
 그리고 wifi를 미리 잡아주려합니다.
 <code>wpa_supplicant.conf</code> 라는 파일을 생성하고 다음과 같이 적어줍니다!</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ctrl_interface<span style="color:#f92672">=</span>DIR<span style="color:#f92672">=</span>/var/run/wpa_supplicant GROUP<span style="color:#f92672">=</span>netdev
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ctrl_interface<span style="color:#f92672">=</span>DIR<span style="color:#f92672">=</span>/var/run/wpa_supplicant GROUP<span style="color:#f92672">=</span>netdev
 update_config<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>
  
 network<span style="color:#f92672">={</span>
@@ -206,37 +202,31 @@ network<span style="color:#f92672">={</span>
 <span style="color:#f92672">}</span>
 </code></pre></div><p>당연히 아시겠지만 <code>&quot;네크워크 이름&quot;</code>, <code>&quot;네트워크 비밀번호&quot;</code>는 사용하실 wifi SSID와 비밀번호 적는겁니다..!<br>
 그 후 다음과 같이 두 파일이 생성되어 있는 것을 확인해주세요!</p>
-<figure>
-    <img src="/images/post/smartmirror/Untitled%204.png"/> 
+<figure><img src="/images/post/smartmirror/Untitled%204.png"/>
 </figure>
 
 <h3 id="초기-세팅">초기 세팅</h3>
 <p>PC에서 SD 카드를 제거하고 Raspberry Pi, SD카드, LCD를 연결해줍니다.<br>
-<figure>
-    <img src="/images/post/smartmirror/02.jpeg"/> 
+<figure><img src="/images/post/smartmirror/02.jpeg"/>
 </figure>
 
-<figure>
-    <img src="/images/post/smartmirror/03.jpeg"/> 
+<figure><img src="/images/post/smartmirror/03.jpeg"/>
 </figure>
 </p>
 <p>연결 후 전원을 인가하고 한&hellip;4~5분? 지나면 디스플레이에 화면이 뜹니다!
-<figure>
-    <img src="/images/post/smartmirror/04.jpeg"/> 
+<figure><img src="/images/post/smartmirror/04.jpeg"/>
 </figure>
 
-<figure>
-    <img src="/images/post/smartmirror/05.jpeg"/> 
+<figure><img src="/images/post/smartmirror/05.jpeg"/>
 </figure>
 </p>
 <p>이제는 Raspberry Pi에 SSH로 접속해서 직접 세팅을 할겁니다!</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ssh pi@<span style="color:#f92672">{</span>ip<span style="color:#f92672">}</span> <span style="color:#75715e"># 초기 비밀번호는 raspberry</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ssh pi@<span style="color:#f92672">{</span>ip<span style="color:#f92672">}</span> <span style="color:#75715e"># 초기 비밀번호는 raspberry</span>
 <span style="color:#75715e"># ex) ssh pi@192.168.0.137</span>
 </code></pre></div><p>접속해서는 passwd 를 이용해서 root와 pi 계정의 비밀번호를 변경&hellip;하셔도 되고 안하셔도 됩니다! ㅎㅎ<br>
 그 후에 <code>pm2 stop all</code> 이라는 명령어를 실행해주세요!<br>
 설치한 이미지가 기본적으로 MagicMirror 가 실행되도록 해놓은 것이기 때문에 실행을 잠시 중단하는 명령어입니다!
-<figure>
-    <img src="/images/post/smartmirror/Untitled%205.png"/> 
+<figure><img src="/images/post/smartmirror/Untitled%205.png"/>
 </figure>
 </p>
 <p>그 후엔 이것저것 추가적인 Raspberry Pi 세팅을 해줄건데요!<br>
@@ -245,54 +235,44 @@ network<span style="color:#f92672">={</span>
 그러면 다음과 같은 화면이 나오는데요!<br>
 여기선 Filesystem 확장, Timezone 변경 두가지를 할겁니다!</p>
 <p><strong>Advanced Options -&gt; Expand Filesystem</strong>
-<figure>
-    <img src="/images/post/smartmirror/Untitled%206.png"/> 
+<figure><img src="/images/post/smartmirror/Untitled%206.png"/>
 </figure>
 </p>
-<figure>
-    <img src="/images/post/smartmirror/Untitled%207.png"/> 
+<figure><img src="/images/post/smartmirror/Untitled%207.png"/>
 </figure>
 
-<figure>
-    <img src="/images/post/smartmirror/Untitled%208.png"/> 
+<figure><img src="/images/post/smartmirror/Untitled%208.png"/>
 </figure>
 
 <p><strong>Localisation Options -&gt; Change Timezone</strong></p>
-<figure>
-    <img src="/images/post/smartmirror/Untitled%2013.png"/> 
+<figure><img src="/images/post/smartmirror/Untitled%2013.png"/>
 </figure>
 
-<figure>
-    <img src="/images/post/smartmirror/Untitled%209.png"/> 
+<figure><img src="/images/post/smartmirror/Untitled%209.png"/>
 </figure>
 
-<figure>
-    <img src="/images/post/smartmirror/Untitled%2010.png"/> 
+<figure><img src="/images/post/smartmirror/Untitled%2010.png"/>
 </figure>
 
-<figure>
-    <img src="/images/post/smartmirror/Untitled%2014.png"/> 
+<figure><img src="/images/post/smartmirror/Untitled%2014.png"/>
 </figure>
 
-<figure>
-    <img src="/images/post/smartmirror/Untitled%2015.png"/> 
+<figure><img src="/images/post/smartmirror/Untitled%2015.png"/>
 </figure>
 
 <p>두 사항을 변경하셨으면 reboot를 해주세요!
-<figure>
-    <img src="/images/post/smartmirror/Untitled%2011.png"/> 
+<figure><img src="/images/post/smartmirror/Untitled%2011.png"/>
 </figure>
 </p>
 <h3 id="magicmirror2-update">MagicMirror2 Update</h3>
 <p>MagicMirror도 꽤나 많은 사항이 Update 되었기 때문에&hellip;.올려줘야겠죠!</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cd ~/MagicMirror
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cd ~/MagicMirror
 rm -rf package*.json
 git pull
 npm install
 </code></pre></div><p>Raspberry Pi Zero 라서 다음과 같은 에러메세지가 뜨게 됩니다!<br>
 하지만 무시하세요&hellip; reboot 하면 정상 동작합니다&hellip;
-<figure>
-    <img src="/images/post/smartmirror/Untitled%2012.png"/> 
+<figure><img src="/images/post/smartmirror/Untitled%2012.png"/>
 </figure>
 </p>
 <p>그리고 마지막으로 리부팅을 하면! 끝입니다!</p>
@@ -308,8 +288,8 @@ npm install
 
         
         <div style="text-align:center; margin:20px 0px 20px 0px">
-          <a href="https://donaricano.com/mypage/1391188679_guPzXC" target="_blank">
-            <img src="https://jjerry-k.github.io/images/promotion.png" alt="donaricano-btn"
+          <a href="https://www.buymeacoffee.com/jjerry" target="_blank">
+            <img src="https://jjerry-k.github.io/images/promotion.png" alt="support-btn"
             style="height: 100px !important;width: 100px !important;" />
           </br>
             <span class="caption">도움이 되셨다면 몰랑이에게 밀크티를...! </br> 더 다양한 포스팅을 채우도록 노력할게요!</span>

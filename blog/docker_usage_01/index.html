@@ -9,7 +9,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="this is meta description">
   <meta name="author" content="Jerry Kim">
-  <meta name="generator" content="Hugo 0.68.3" />
+  <meta name="generator" content="Hugo 0.92.2" />
 
   <!-- plugins -->
   
@@ -159,7 +159,7 @@
 <p>사용법을 보러 오시는 분이라면 어느 정도 Docker 가 뭔지는 아실테니&hellip;</p>
 <p>자세한 설명이 보고 싶으시다면 <a href="https://docs.docker.com/get-started/overview/">공식 홈페이지</a> 혹은 책을 참고하세요.</p>
 <p>설치 방법은 간단하게 다음과 같습니다.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo apt-get update
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo apt-get update
 
 sudo apt-get install <span style="color:#ae81ff">\
 </span><span style="color:#ae81ff"></span>    apt-transport-https <span style="color:#ae81ff">\
@@ -201,7 +201,7 @@ sudo reboot
 <h1 id="자신만의-image-container-만들어보기">자신만의 Image, Container 만들어보기</h1>
 <p>예시는 ubuntu에 python 3.x를 설치하는 과정입니다.</p>
 <p><code>docker run</code> 옵션에 대해서는 <a href="https://docs.docker.com/engine/reference/commandline/run/">링크</a>(여기) 에서 확인하세요.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 지원하는 ubuntu tag</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 지원하는 ubuntu tag</span>
 <span style="color:#75715e"># 14.04, trusty-20191217, trusty</span>
 <span style="color:#75715e"># 16.04, xenial-20200916, xenial</span>
 <span style="color:#75715e"># 18.04, bionic-20200921, bionic</span>
@@ -216,15 +216,13 @@ docker pull ubuntu:<span style="color:#f92672">{</span>원하는 버전 tag<span
 
 <span style="color:#75715e"># Container 생성</span>
 docker run -ti ubuntu:<span style="color:#f92672">{</span>원하는 버전 tag<span style="color:#f92672">}</span> bash
-</code></pre></div><figure>
-    <img src="/images/post/Docker_Usage_01/Untitled.png"/> 
+</code></pre></div><figure><img src="/images/post/Docker_Usage_01/Untitled.png"/>
 </figure>
 
-<figure>
-    <img src="/images/post/Docker_Usage_01/Untitled_1.png"/> 
+<figure><img src="/images/post/Docker_Usage_01/Untitled_1.png"/>
 </figure>
 
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># Docker container 에서 실행.</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># Docker container 에서 실행.</span>
 apt update
 
 apt install -y build-essential cmake git curl wget vim unzip 
@@ -243,22 +241,19 @@ exit
 <p>그래서 지금은 3.8이 설치 됩니다. ( 3.8 을 설치하실 분들은 apt로 python을 설치할 필요 없음 )</p>
 <p>추가적으로 저는 3.7을 설치했습니다.</p>
 <p>그 결과 마지막 커맨드 (<code>ls /usr/bin/ | grep python</code>)를 입력하면 다음과 같이 출력이 나옵니다.</p>
-<figure>
-    <img src="/images/post/Docker_Usage_01/Untitled_2.png"/> 
+<figure><img src="/images/post/Docker_Usage_01/Untitled_2.png"/>
 </figure>
 
 <p>이렇게 하면 Container에 원하는 환경을 세팅했습니다.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker ps -a
-</code></pre></div><figure>
-    <img src="/images/post/Docker_Usage_01/Untitled_3.png"/> 
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker ps -a
+</code></pre></div><figure><img src="/images/post/Docker_Usage_01/Untitled_3.png"/>
 </figure>
 
 <p>이를 Image로 만들어야 합니다.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker commit <span style="color:#f92672">{</span>컨테이너 이름<span style="color:#f92672">}</span> <span style="color:#f92672">{</span>이미지 이름:태그<span style="color:#f92672">}</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker commit <span style="color:#f92672">{</span>컨테이너 이름<span style="color:#f92672">}</span> <span style="color:#f92672">{</span>이미지 이름:태그<span style="color:#f92672">}</span>
 docker images
 docker rmi <span style="color:#f92672">{</span>컨테이너 이름<span style="color:#f92672">}</span>
-</code></pre></div><figure>
-    <img src="/images/post/Docker_Usage_01/Untitled_4.png"/> 
+</code></pre></div><figure><img src="/images/post/Docker_Usage_01/Untitled_4.png"/>
 </figure>
 
 <p>앞으로는 <code>docker run -ti --rm {이미지 이름:태그} bash</code> 와 같이 실행하면 됩니다!</p>
@@ -271,7 +266,7 @@ docker rmi <span style="color:#f92672">{</span>컨테이너 이름<span style="c
 <p><code>LABEL</code>: 해당 Dockerfile로 만든 이미지의 정보, 작성자등의 정보 작성. (꼭 할 필요는 없음)</p>
 <p><code>ARG</code>: Dockerfile 내에서 사용되는 환경변수 (<code>ENV</code>와 혼동되기 쉬움)</p>
 <p><code>RUN</code>: image를 구성에 필요한 각 단계를 실행</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">FROM ubuntu:<span style="color:#f92672">{</span>원하는 버전 tag<span style="color:#f92672">}</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">FROM ubuntu:<span style="color:#f92672">{</span>원하는 버전 tag<span style="color:#f92672">}</span>
 LABEL maintainer <span style="color:#e6db74">&#34;Jerry Kim &lt;jaeyeol2931@gmail.com&gt;&#34;</span>
 ARG PYTHON_VERSION<span style="color:#f92672">={</span>원하는 버전<span style="color:#f92672">}</span>
 
@@ -290,23 +285,19 @@ RUN apt install -y python$PYTHON_VERSION
 <span style="color:#75715e"># 설치 확인</span>
 RUN ls /usr/bin/ | grep python
 </code></pre></div><p>대충 디렉토리를 하나 만들고 위 내용이 담긴 Dockerfile을 만듭니다.</p>
-<figure>
-    <img src="/images/post/Docker_Usage_01/Untitled_5.png"/> 
+<figure><img src="/images/post/Docker_Usage_01/Untitled_5.png"/>
 </figure>
 
 <p>그리고 Dockerfile이 있는 디렉토리로 이동하여 다음 커맨드를 입력합니다.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker build -t <span style="color:#f92672">{</span>이미지 이름:태그<span style="color:#f92672">}</span> .
-</code></pre></div><figure>
-    <img src="/images/post/Docker_Usage_01/Untitled_6.png"/> 
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker build -t <span style="color:#f92672">{</span>이미지 이름:태그<span style="color:#f92672">}</span> .
+</code></pre></div><figure><img src="/images/post/Docker_Usage_01/Untitled_6.png"/>
 </figure>
 
 <p>그럼 다음과 마지막에 다음과 같은 출력이 나오고 <code>docker images</code>를 해보면 잘 생성된 것을 볼 수 있습니다.</p>
-<figure>
-    <img src="/images/post/Docker_Usage_01/Untitled_7.png"/> 
+<figure><img src="/images/post/Docker_Usage_01/Untitled_7.png"/>
 </figure>
 
-<figure>
-    <img src="/images/post/Docker_Usage_01/Untitled_8.png"/> 
+<figure><img src="/images/post/Docker_Usage_01/Untitled_8.png"/>
 </figure>
 
 <h2 id="ps">P.S</h2>
@@ -321,8 +312,8 @@ RUN ls /usr/bin/ | grep python
 
         
         <div style="text-align:center; margin:20px 0px 20px 0px">
-          <a href="https://donaricano.com/mypage/1391188679_guPzXC" target="_blank">
-            <img src="https://jjerry-k.github.io/images/promotion.png" alt="donaricano-btn"
+          <a href="https://www.buymeacoffee.com/jjerry" target="_blank">
+            <img src="https://jjerry-k.github.io/images/promotion.png" alt="support-btn"
             style="height: 100px !important;width: 100px !important;" />
           </br>
             <span class="caption">도움이 되셨다면 몰랑이에게 밀크티를...! </br> 더 다양한 포스팅을 채우도록 노력할게요!</span>

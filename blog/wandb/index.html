@@ -9,7 +9,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="this is meta description">
   <meta name="author" content="Jerry Kim">
-  <meta name="generator" content="Hugo 0.68.3" />
+  <meta name="generator" content="Hugo 0.92.2" />
 
   <!-- plugins -->
   
@@ -170,56 +170,52 @@
 <h3 id="sign-up-을-했다는-가정하에-진행합니다"><strong>Sign Up</strong> 을 했다는 가정하에 진행합니다.</h3>
 <h1 id="패키지-설치">패키지 설치</h1>
 <p><code>wandb</code> 패키지를 먼저 설치해줍니다.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">pip install wandb
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">pip install wandb
 </code></pre></div><h1 id="wandb-로그인">wandb 로그인</h1>
 <p>설치 후 Terminal (or 명령 프롬프트) 에 다음과 같이 입력합니다.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">wandb login
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">wandb login
 </code></pre></div><p>그러면 아래와 같은 화면이 나오면서 웹 브라우저가 켜집니다.</p>
-<figure>
-    <img src="/images/post/wandb/Untitled.png"/> 
+<figure><img src="/images/post/wandb/Untitled.png"/>
 </figure>
 
-<figure>
-    <img src="/images/post/wandb/Untitled_1.png"/> 
+<figure><img src="/images/post/wandb/Untitled_1.png"/>
 </figure>
 
 <p>Browser 에서 API키를 복사해주해서 Terminal (or 명령 프롬프트) 에 붙여넣기합니다.</p>
-<figure>
-    <img src="/images/post/wandb/Untitled_2.png"/> 
+<figure><img src="/images/post/wandb/Untitled_2.png"/>
 </figure>
 
 <p>그럼 wandb 에 로그인 완료!</p>
-<figure>
-    <img src="/images/post/wandb/Untitled_3.png"/> 
+<figure><img src="/images/post/wandb/Untitled_3.png"/>
 </figure>
 
 <h1 id="code-실행">Code 실행</h1>
 <p>간단한 MLP를 이용한 MNIST Classification 문제입니다.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">
 <span style="color:#75715e"># wandb initialization</span>
 <span style="color:#f92672">import</span> wandb
 wandb<span style="color:#f92672">.</span>init(project<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;test_project&#34;</span>)
 
 <span style="color:#f92672">import</span> os
-<span style="color:#f92672">import</span> numpy <span style="color:#f92672">as</span> np
+<span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
 <span style="color:#f92672">from</span> matplotlib <span style="color:#f92672">import</span> pyplot <span style="color:#66d9ef">as</span> plt
 
-<span style="color:#f92672">import</span> tensorflow <span style="color:#f92672">as</span> tf
+<span style="color:#f92672">import</span> tensorflow <span style="color:#66d9ef">as</span> tf
 <span style="color:#f92672">from</span> tensorflow.keras <span style="color:#f92672">import</span> models, layers, optimizers, losses, utils, datasets
 
 
 <span style="color:#75715e"># Import callback function</span>
 <span style="color:#f92672">from</span> wandb.keras <span style="color:#f92672">import</span> WandbCallback 
 
-<span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;Packge Loaded!&#34;</span>)
+print(<span style="color:#e6db74">&#34;Packge Loaded!&#34;</span>)
 
 
 <span style="color:#75715e"># Data Loading</span>
 (train_x, train_y), (test_x, test_y) <span style="color:#f92672">=</span> datasets<span style="color:#f92672">.</span>mnist<span style="color:#f92672">.</span>load_data()
 train_x, test_x <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>reshape(train_x<span style="color:#f92672">/</span><span style="color:#ae81ff">255.</span>, [<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">784</span>]), np<span style="color:#f92672">.</span>reshape(test_x<span style="color:#f92672">/</span><span style="color:#ae81ff">255.</span>, [<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">784</span>])
 
-<span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;Train Data&#39;s Shape : &#34;</span>, train_x<span style="color:#f92672">.</span>shape, train_y<span style="color:#f92672">.</span>shape)
-<span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;Test Data&#39;s Shape : &#34;</span>, test_x<span style="color:#f92672">.</span>shape, test_y<span style="color:#f92672">.</span>shape)
+print(<span style="color:#e6db74">&#34;Train Data&#39;s Shape : &#34;</span>, train_x<span style="color:#f92672">.</span>shape, train_y<span style="color:#f92672">.</span>shape)
+print(<span style="color:#e6db74">&#34;Test Data&#39;s Shape : &#34;</span>, test_x<span style="color:#f92672">.</span>shape, test_y<span style="color:#f92672">.</span>shape)
 
 <span style="color:#75715e"># Network Building</span>
 <span style="color:#75715e">## Using Sequential</span>
@@ -228,7 +224,7 @@ mlp<span style="color:#f92672">.</span>add(layers<span style="color:#f92672">.</
 mlp<span style="color:#f92672">.</span>add(layers<span style="color:#f92672">.</span>Dense(<span style="color:#ae81ff">128</span>, activation<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;relu&#39;</span>))
 mlp<span style="color:#f92672">.</span>add(layers<span style="color:#f92672">.</span>Dense(<span style="color:#ae81ff">10</span>, activation<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;softmax&#39;</span>))
 
-<span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;Network Built!&#34;</span>)
+print(<span style="color:#e6db74">&#34;Network Built!&#34;</span>)
 
 mlp<span style="color:#f92672">.</span>compile(optimizer<span style="color:#f92672">=</span>optimizers<span style="color:#f92672">.</span>Adam(), loss<span style="color:#f92672">=</span>losses<span style="color:#f92672">.</span>sparse_categorical_crossentropy, metrics<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#39;accuracy&#39;</span>])
 
@@ -240,49 +236,40 @@ history <span style="color:#f92672">=</span> mlp<span style="color:#f92672">.</s
 위에서 <code>test_project</code> 라는 프로젝트에 세팅을 했기 때문에 확인을 해봅니다.<br>
 하나의 프로젝트에서 한번 실행하면 뭔지 모를 조합의 <code>Name</code>으로 실행 상태를 보여줍니다.
 저는 한번만 했기 때문에 <code>lyric-dream-3</code> 라는 이름으로 하나만 생겨있습니다.</p>
-<figure>
-    <img src="/images/post/wandb/Untitled_4.png"/> 
+<figure><img src="/images/post/wandb/Untitled_4.png"/>
 </figure>
 
 <p><code>lyric-dream-3</code> 같이 이름을 클릭해서 무엇을 볼 수 있는지 살펴보겠습니다.</p>
 <h2 id="chart-탭">Chart 탭</h2>
 <p>Chart 탭에선 loss, epoch, metric 등과 같은 학습 관련 지표를 볼 수 있는 <code>CHARTS</code>와 모델 학습에 사용된 시스템을 모니터링 할 수 있는 <code>SYSTEM</code>이 있습니다.</p>
-<figure>
-    <img src="/images/post/wandb/Untitled_5.png"/> 
+<figure><img src="/images/post/wandb/Untitled_5.png"/>
 </figure>
 
-<figure>
-    <img src="/images/post/wandb/Untitled_6.png"/> 
+<figure><img src="/images/post/wandb/Untitled_6.png"/>
 </figure>
 
-<figure>
-    <img src="/images/post/wandb/Untitled_7.png"/> 
+<figure><img src="/images/post/wandb/Untitled_7.png"/>
 </figure>
 
-<figure>
-    <img src="/images/post/wandb/Untitled_8.png"/> 
+<figure><img src="/images/post/wandb/Untitled_8.png"/>
 </figure>
 
-<figure>
-    <img src="/images/post/wandb/Untitled_9.png"/> 
+<figure><img src="/images/post/wandb/Untitled_9.png"/>
 </figure>
 
 <h2 id="system-탭">System 탭</h2>
 <p>System 탭에서는 Chart 탭에서 <code>SYSTEM</code> 과 동일한 그래프를 보여주네요.
-<figure>
-    <img src="/images/post/wandb/Untitled_10.png"/> 
+<figure><img src="/images/post/wandb/Untitled_10.png"/>
 </figure>
 </p>
 <h2 id="model-탭">Model 탭</h2>
 <p>이름 그대로 학습하는 Model의 graph 구조를 볼 수 있습니다.
-<figure>
-    <img src="/images/post/wandb/Untitled_11.png"/> 
+<figure><img src="/images/post/wandb/Untitled_11.png"/>
 </figure>
 </p>
 <h2 id="logs-탭">Logs 탭</h2>
 <p>여기선 학습 로그들이 저장됩니다.
-<figure>
-    <img src="/images/post/wandb/Untitled_12.png"/> 
+<figure><img src="/images/post/wandb/Untitled_12.png"/>
 </figure>
 </p>
 <h2 id="files-탭">Files 탭</h2>
@@ -290,8 +277,7 @@ history <span style="color:#f92672">=</span> mlp<span style="color:#f92672">.</s
 Files 탭에는 현재 모델을 돌릴때 사용된 정보, 가장 성능이 좋았을 epoch 의 model, 돌리는 환경에 설치된 package 리스트 등의 정보가 저장됩니다.<br>
 물론 다운로드 가능!<br>
 <code>model-best.h5</code>는 graph 정보도 저장되어 있기 때문에 다운로드 후 load해서 바로 Inference 가능합니다!
-<figure>
-    <img src="/images/post/wandb/Untitled_13.png"/> 
+<figure><img src="/images/post/wandb/Untitled_13.png"/>
 </figure>
 </p>
 <p><a href="https://www.wandb.com/">Weights &amp; Biases</a> 에 대해 정~~~말 간단히 알아봤습니다.<br>
@@ -299,34 +285,34 @@ Files 탭에는 현재 모델을 돌릴때 사용된 정보, 가장 성능이 �
 추후에는 좀 더 다양한 기능과 프레임워크에 적용해보도록 하겠습니다.</p>
 <hr>
 <h1 id="200401-pytorch-예제-추가">200401 PyTorch 예제 추가</h1>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">
 <span style="color:#75715e"># wandb initialization</span>
 <span style="color:#f92672">import</span> wandb
 wandb<span style="color:#f92672">.</span>init(project<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;test_project&#34;</span>)
 
 <span style="color:#75715e"># Importing Modules</span>
-<span style="color:#f92672">import</span> numpy <span style="color:#f92672">as</span> np
+<span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
 <span style="color:#f92672">from</span> matplotlib <span style="color:#f92672">import</span> pyplot <span style="color:#66d9ef">as</span> plt
 
 <span style="color:#f92672">import</span> torch
 <span style="color:#f92672">from</span> torch <span style="color:#f92672">import</span> nn, optim
-<span style="color:#f92672">import</span> torch.nn.functional <span style="color:#f92672">as</span> F
+<span style="color:#f92672">import</span> torch.nn.functional <span style="color:#66d9ef">as</span> F
 <span style="color:#f92672">from</span> torchvision <span style="color:#f92672">import</span> utils, datasets, transforms
 
 <span style="color:#75715e"># Loading Data</span>
 
 <span style="color:#75715e"># MNIST dataset</span>
 mnist_train <span style="color:#f92672">=</span> datasets<span style="color:#f92672">.</span>MNIST(root<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;./&#39;</span>,
-                          train<span style="color:#f92672">=</span>True,
+                          train<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>,
                           transform<span style="color:#f92672">=</span>transforms<span style="color:#f92672">.</span>ToTensor(),
-                          download<span style="color:#f92672">=</span>True)
-<span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;Downloading Train Data Done ! &#34;</span>)
+                          download<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+print(<span style="color:#e6db74">&#34;Downloading Train Data Done ! &#34;</span>)
 
 mnist_test <span style="color:#f92672">=</span> datasets<span style="color:#f92672">.</span>MNIST(root<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;./&#39;</span>,
-                         train<span style="color:#f92672">=</span>False,
+                         train<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>,
                          transform<span style="color:#f92672">=</span>transforms<span style="color:#f92672">.</span>ToTensor(),
-                         download<span style="color:#f92672">=</span>True)
-<span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;Downloading Test Data Done ! &#34;</span>)
+                         download<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+print(<span style="color:#e6db74">&#34;Downloading Test Data Done ! &#34;</span>)
 
 <span style="color:#75715e"># Defining Model</span>
 
@@ -352,9 +338,9 @@ wandb<span style="color:#f92672">.</span>watch(model)
 <span style="color:#75715e"># Training Phase</span>
 batch_size <span style="color:#f92672">=</span> <span style="color:#ae81ff">100</span>
 
-data_iter <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>utils<span style="color:#f92672">.</span>data<span style="color:#f92672">.</span>DataLoader(mnist_train, batch_size<span style="color:#f92672">=</span><span style="color:#ae81ff">100</span>, shuffle<span style="color:#f92672">=</span>True, num_workers<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>)
+data_iter <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>utils<span style="color:#f92672">.</span>data<span style="color:#f92672">.</span>DataLoader(mnist_train, batch_size<span style="color:#f92672">=</span><span style="color:#ae81ff">100</span>, shuffle<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>, num_workers<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>)
 
-<span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;Iteration maker Done !&#34;</span>)
+print(<span style="color:#e6db74">&#34;Iteration maker Done !&#34;</span>)
 
 <span style="color:#75715e"># Training loop</span>
 <span style="color:#66d9ef">for</span> epoch <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">10</span>):
@@ -374,13 +360,13 @@ data_iter <span style="color:#f92672">=</span> torch<span style="color:#f92672">
         
         avg_loss <span style="color:#f92672">+=</span> loss
         <span style="color:#66d9ef">if</span> (i<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>)<span style="color:#f92672">%</span><span style="color:#ae81ff">100</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span> :
-            <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;Epoch : &#34;</span>, epoch<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>, <span style="color:#e6db74">&#34;Iteration : &#34;</span>, i<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>, <span style="color:#e6db74">&#34; Loss : &#34;</span>, avg_loss<span style="color:#f92672">.</span>data<span style="color:#f92672">.</span>numpy()<span style="color:#f92672">/</span>(i<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>))
+            print(<span style="color:#e6db74">&#34;Epoch : &#34;</span>, epoch<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>, <span style="color:#e6db74">&#34;Iteration : &#34;</span>, i<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>, <span style="color:#e6db74">&#34; Loss : &#34;</span>, avg_loss<span style="color:#f92672">.</span>data<span style="color:#f92672">.</span>numpy()<span style="color:#f92672">/</span>(i<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>))
 
     <span style="color:#75715e"># Logging metrics    </span>
     wandb<span style="color:#f92672">.</span>log({<span style="color:#e6db74">&#39;epoch&#39;</span>: epoch<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>, <span style="color:#e6db74">&#34;loss&#34;</span>: avg_loss<span style="color:#f92672">.</span>data<span style="color:#f92672">.</span>numpy()<span style="color:#f92672">/</span>(i<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>)})
 
-    <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;Epoch : &#34;</span>, epoch<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>, <span style="color:#e6db74">&#34; Loss : &#34;</span>, avg_loss<span style="color:#f92672">.</span>data<span style="color:#f92672">.</span>numpy()<span style="color:#f92672">/</span>total_batch)
-<span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;Training Done !&#34;</span>)
+    print(<span style="color:#e6db74">&#34;Epoch : &#34;</span>, epoch<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>, <span style="color:#e6db74">&#34; Loss : &#34;</span>, avg_loss<span style="color:#f92672">.</span>data<span style="color:#f92672">.</span>numpy()<span style="color:#f92672">/</span>total_batch)
+print(<span style="color:#e6db74">&#34;Training Done !&#34;</span>)
 
 <span style="color:#75715e"># Save final model</span>
 torch<span style="color:#f92672">.</span>save(model<span style="color:#f92672">.</span>state_dict(), <span style="color:#e6db74">&#34;model.h5&#34;</span>)
@@ -393,7 +379,7 @@ test_lab <span style="color:#f92672">=</span> mnist_test<span style="color:#f926
 outputs <span style="color:#f92672">=</span> model<span style="color:#f92672">.</span>forward(test_img)
 pred_val, pred_idx <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>max(outputs<span style="color:#f92672">.</span>data, <span style="color:#ae81ff">1</span>)
 correct <span style="color:#f92672">=</span> (pred_idx <span style="color:#f92672">==</span> test_lab)<span style="color:#f92672">.</span>sum()
-<span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#39;Accuracy : &#39;</span>, correct<span style="color:#f92672">.</span>data<span style="color:#f92672">.</span>numpy()<span style="color:#f92672">/</span>len(test_img)<span style="color:#f92672">*</span><span style="color:#ae81ff">100</span>)
+print(<span style="color:#e6db74">&#39;Accuracy : &#39;</span>, correct<span style="color:#f92672">.</span>data<span style="color:#f92672">.</span>numpy()<span style="color:#f92672">/</span>len(test_img)<span style="color:#f92672">*</span><span style="color:#ae81ff">100</span>)
 
 <span style="color:#75715e"># Testing</span>
 
@@ -404,15 +390,15 @@ Y_single_data <span style="color:#f92672">=</span> mnist_test<span style="color:
 single_prediction <span style="color:#f92672">=</span> model(X_single_data)
 plt<span style="color:#f92672">.</span>imshow(X_single_data<span style="color:#f92672">.</span>data<span style="color:#f92672">.</span>view(<span style="color:#ae81ff">28</span>,<span style="color:#ae81ff">28</span>)<span style="color:#f92672">.</span>numpy(), cmap<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;gray&#39;</span>)
 
-<span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#39;Label : &#39;</span>, Y_single_data<span style="color:#f92672">.</span>data<span style="color:#f92672">.</span>numpy()[<span style="color:#ae81ff">0</span>])
-<span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#39;Prediction : &#39;</span>, torch<span style="color:#f92672">.</span>max(single_prediction<span style="color:#f92672">.</span>data, <span style="color:#ae81ff">1</span>)[<span style="color:#ae81ff">1</span>]<span style="color:#f92672">.</span>numpy()[<span style="color:#ae81ff">0</span>])
+print(<span style="color:#e6db74">&#39;Label : &#39;</span>, Y_single_data<span style="color:#f92672">.</span>data<span style="color:#f92672">.</span>numpy()[<span style="color:#ae81ff">0</span>])
+print(<span style="color:#e6db74">&#39;Prediction : &#39;</span>, torch<span style="color:#f92672">.</span>max(single_prediction<span style="color:#f92672">.</span>data, <span style="color:#ae81ff">1</span>)[<span style="color:#ae81ff">1</span>]<span style="color:#f92672">.</span>numpy()[<span style="color:#ae81ff">0</span>])
 </code></pre></div>
         </div>
 
         
         <div style="text-align:center; margin:20px 0px 20px 0px">
-          <a href="https://donaricano.com/mypage/1391188679_guPzXC" target="_blank">
-            <img src="https://jjerry-k.github.io/images/promotion.png" alt="donaricano-btn"
+          <a href="https://www.buymeacoffee.com/jjerry" target="_blank">
+            <img src="https://jjerry-k.github.io/images/promotion.png" alt="support-btn"
             style="height: 100px !important;width: 100px !important;" />
           </br>
             <span class="caption">도움이 되셨다면 몰랑이에게 밀크티를...! </br> 더 다양한 포스팅을 채우도록 노력할게요!</span>

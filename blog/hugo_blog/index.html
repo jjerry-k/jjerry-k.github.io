@@ -9,7 +9,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="this is meta description">
   <meta name="author" content="Jerry Kim">
-  <meta name="generator" content="Hugo 0.68.3" />
+  <meta name="generator" content="Hugo 0.92.2" />
 
   <!-- plugins -->
   
@@ -185,8 +185,7 @@
 <ul>
 <li>
 <p>블로그 소스용
-<figure>
-    <img src="/images/post/hugo-blog/img_01.png"/> 
+<figure><img src="/images/post/hugo-blog/img_01.png"/>
 </figure>
 </p>
 </li>
@@ -199,55 +198,48 @@
 </li>
 </ul>
 <h4 id="2-hugo-설치-및-프로젝트-생성">2. Hugo 설치 및 프로젝트 생성.</h4>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">brew install hugo
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">brew install hugo
 
 hugo new site <span style="color:#f92672">{</span>프로젝트 이름<span style="color:#f92672">}</span>
 </code></pre></div><p>hugo를 설치하고 새 프로젝트를 생성합니다.</p>
 <p>저는 편의를 위해 프로젝트 이름을 <strong>blog_source</strong> 라고 했습니다.</p>
-<figure>
-    <img src="/images/post/hugo-blog/img_02.png"/> 
+<figure><img src="/images/post/hugo-blog/img_02.png"/>
 </figure>
 
 <h4 id="3-테마-설치">3. 테마 설치</h4>
 <p>프로젝트 디렉토리에 themes 디렉토리가 보입니다.</p>
 <p>themes 디렉토리로 이동하여 위에서 골랐던 테마를 다운로드 합니다.
 저는 <a href="https://github.com/themefisher/liva-hugo">liva-hugo</a> 를 사용했습니다.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cd blog_source
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cd blog_source
 cd themes
 git clone https://github.com/themefisher/liva-hugo.git
-</code></pre></div><figure>
-    <img src="/images/post/hugo-blog/img_03.png"/> 
+</code></pre></div><figure><img src="/images/post/hugo-blog/img_03.png"/>
 </figure>
 
-<figure>
-    <img src="/images/post/hugo-blog/img_04.png"/> 
+<figure><img src="/images/post/hugo-blog/img_04.png"/>
 </figure>
 
 <p>liva-hugo 는 이해가 쉽도록 exampleSite를 이용해보려고 합니다.</p>
 <p>blog_source/themes/liva-hugo/exampleSite 에 있는 content, static, config.toml 을 blog_source 에 있는 위치에 복사해줍니다.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cp -r themes/liva-hugo/exampleSite/content/* ./content
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cp -r themes/liva-hugo/exampleSite/content/* ./content
 cp -r themes/liva-hugo/exampleSite/static/* ./static
 cp themes/liva-hugo/exampleSite/config.toml ./
-</code></pre></div><figure>
-    <img src="/images/post/hugo-blog/img_05.png"/> 
+</code></pre></div><figure><img src="/images/post/hugo-blog/img_05.png"/>
 </figure>
 
 <h4 id="4-서버-실행-및-글쓰기">4. 서버 실행 및 글쓰기</h4>
 <p>현재 블로그 상태가 어떤지 궁금합니다. 일단 hugo server를 실행시켜 봅니다.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 현재 위치: 프로젝트 디렉토리</span>
-hugo server -p <span style="color:#f92672">{</span>원하는 포트 번호<span style="color:#f92672">}</span> -D <span style="color:#75715e"># Default PORT 1313</span> 
-</code></pre></div><figure>
-    <img src="/images/post/hugo-blog/img_06.png"/> 
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 현재 위치: 프로젝트 디렉토리</span>
+hugo server -p <span style="color:#f92672">{</span>원하는 포트 번호<span style="color:#f92672">}</span> -D <span style="color:#75715e"># Default PORT 1313 </span>
+</code></pre></div><figure><img src="/images/post/hugo-blog/img_06.png"/>
 </figure>
 
 <p>그리고 localhost:1313 로 접속을 하면 예시를 사이트 양식을 가져왔기 때문에 다음과 같이 나옵니다.</p>
-<figure>
-    <img src="/images/post/hugo-blog/img_07.png"/> 
+<figure><img src="/images/post/hugo-blog/img_07.png"/>
 </figure>
 
 <p>포스팅을 하기 전에 다른 포스팅을 확인해봅니다.</p>
-<figure>
-    <img src="/images/post/hugo-blog/img_08.png"/> 
+<figure><img src="/images/post/hugo-blog/img_08.png"/>
 </figure>
 
 <p>liva-hugo는 이러한 템플릿을 바탕으로 포스팅을 작성해야합니다.</p>
@@ -255,25 +247,23 @@ hugo server -p <span style="color:#f92672">{</span>원하는 포트 번호<span 
 <p>자 그럼 포스팅을 한번 써보도록 합시다.</p>
 <p><code>hugo new blog/hello.md</code> 라고 입력을 해도 되고 <code>blog/hello.md 를 직접 생성</code>하셔도 됩니다.</p>
 <p>그 후 템플릿에 맞게 작성을 해줍니다.</p>
-<figure>
-    <img src="/images/post/hugo-blog/img_09.png"/> 
+<figure><img src="/images/post/hugo-blog/img_09.png"/>
 </figure>
 
 <p>이렇게 작성 후 저장을 하면 블로그에 다음과 같이 글이 생성된 것을 볼 수 있습니다.</p>
-<figure>
-    <img src="/images/post/hugo-blog/img_10.png"/> 
+<figure><img src="/images/post/hugo-blog/img_10.png"/>
 </figure>
 
 <p>hugo 공통적으로 템플릿에 <code>draft: </code> 부분을 <code>true</code>로 한다면 블로그에 반영되지 않습니다.</p>
 <p>반대로 <code>false</code> 를 적는다면 블로그에 반영이 됩니다.</p>
 <h4 id="5-github에-배포">5. Github에 배포</h4>
 <p>커맨드로 바로 적겠습니다.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 현재 위치: 프로젝트 디렉토리</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 현재 위치: 프로젝트 디렉토리</span>
 git init
 git remote add origin https://github.com/jjerry-k/blog_source <span style="color:#75715e">#{블로그 소스용 repository}</span>
 git submodule add -b master https://github.com/jjerry-k/jjerry-k.github.io public <span style="color:#75715e">#{호스팅용 repository}</span>
 </code></pre></div><p>그 후 빌드 &amp; 배포를 합니다.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 현재 위치: 프로젝트 디렉토리</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 현재 위치: 프로젝트 디렉토리</span>
 hugo -t liva-hugo <span style="color:#75715e"># hugo -t {테마 이름}</span>
 
 cd public
@@ -297,8 +287,8 @@ git push
 
         
         <div style="text-align:center; margin:20px 0px 20px 0px">
-          <a href="https://donaricano.com/mypage/1391188679_guPzXC" target="_blank">
-            <img src="https://jjerry-k.github.io/images/promotion.png" alt="donaricano-btn"
+          <a href="https://www.buymeacoffee.com/jjerry" target="_blank">
+            <img src="https://jjerry-k.github.io/images/promotion.png" alt="support-btn"
             style="height: 100px !important;width: 100px !important;" />
           </br>
             <span class="caption">도움이 되셨다면 몰랑이에게 밀크티를...! </br> 더 다양한 포스팅을 채우도록 노력할게요!</span>

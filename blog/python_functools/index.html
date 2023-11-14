@@ -9,7 +9,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="this is meta description">
   <meta name="author" content="Jerry Kim">
-  <meta name="generator" content="Hugo 0.68.3" />
+  <meta name="generator" content="Hugo 0.92.2" />
 
   <!-- plugins -->
   
@@ -160,17 +160,17 @@
 <h3 id="partial-함수">partial 함수</h3>
 <p>functools 모듈의 partial 함수는 기존 함수의 인자를 고정하는 역할을 합니다. 즉, 인자를 일부분만 넘겨주고 나머지 인자는 나중에 전달할 수 있게끔 만들어줍니다.
 예를 들어, 다음과 같은 함수가 있다고 가정해보겠습니다.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">add</span>(a, b):
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">add</span>(a, b):
     <span style="color:#66d9ef">return</span> a <span style="color:#f92672">+</span> b
 </code></pre></div><p>이 함수를 partial 함수로 변환하면 다음과 같이 사용할 수 있습니다.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> functools <span style="color:#f92672">import</span> partial
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> functools <span style="color:#f92672">import</span> partial
 
 add_five <span style="color:#f92672">=</span> partial(add, <span style="color:#ae81ff">5</span>)
 result <span style="color:#f92672">=</span> add_five(<span style="color:#ae81ff">3</span>) <span style="color:#75715e"># 8</span>
 </code></pre></div><h3 id="reduce-함수">reduce 함수</h3>
 <p>reduce 함수는 시퀀스(리스트, 튜플 등)에 대해 주어진 함수를 적용하고, 결과를 누적하는 함수입니다. 이 함수는 functools 모듈에서 가져올 수 있습니다.
 예를 들어, 다음과 같이 리스트의 모든 항목을 곱하는 함수를 작성할 수 있습니다.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> functools <span style="color:#f92672">import</span> reduce
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> functools <span style="color:#f92672">import</span> reduce
 
 <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">multiply</span>(x, y):
     <span style="color:#66d9ef">return</span> x <span style="color:#f92672">*</span> y
@@ -179,9 +179,9 @@ result <span style="color:#f92672">=</span> reduce(multiply, [<span style="color
 </code></pre></div><h3 id="lru_cache-함수">lru_cache 함수</h3>
 <p>lru_cache 함수는 Least Recently Used 캐시를 구현하는 데 사용됩니다. 이 함수는 결과를 캐시에 저장하여 이전에 계산한 인자의 결과를 저장하고, 동일한 인자가 다시 전달될 때 이전에 계산한 결과를 반환합니다.
 예를 들어, 다음과 같은 함수가 있다고 가정해보겠습니다.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> functools <span style="color:#f92672">import</span> lru_cache
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> functools <span style="color:#f92672">import</span> lru_cache
 
-<span style="color:#a6e22e">@lru_cache</span>(maxsize<span style="color:#f92672">=</span>None)
+<span style="color:#a6e22e">@lru_cache</span>(maxsize<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>)
 <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">fibonacci</span>(n):
     <span style="color:#66d9ef">if</span> n <span style="color:#f92672">&lt;=</span> <span style="color:#ae81ff">1</span>:
         <span style="color:#66d9ef">return</span> n
@@ -193,8 +193,8 @@ result <span style="color:#f92672">=</span> reduce(multiply, [<span style="color
 
         
         <div style="text-align:center; margin:20px 0px 20px 0px">
-          <a href="https://donaricano.com/mypage/1391188679_guPzXC" target="_blank">
-            <img src="https://jjerry-k.github.io/images/promotion.png" alt="donaricano-btn"
+          <a href="https://www.buymeacoffee.com/jjerry" target="_blank">
+            <img src="https://jjerry-k.github.io/images/promotion.png" alt="support-btn"
             style="height: 100px !important;width: 100px !important;" />
           </br>
             <span class="caption">도움이 되셨다면 몰랑이에게 밀크티를...! </br> 더 다양한 포스팅을 채우도록 노력할게요!</span>

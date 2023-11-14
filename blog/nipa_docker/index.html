@@ -9,7 +9,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="this is meta description">
   <meta name="author" content="Jerry Kim">
-  <meta name="generator" content="Hugo 0.68.3" />
+  <meta name="generator" content="Hugo 0.92.2" />
 
   <!-- plugins -->
   
@@ -162,47 +162,42 @@
 <p>물론 기본적으로 설치된 Anaconda  환경으로도 충분할 수 있지만 살짝쿵 문제가 있습니다.</p>
 <p>문제에 대해 살펴보겠습니다.</p>
 <p>NIPA GPU 서버에 접속을 하면 다음과 같은 화면이 출력됩니다.</p>
-<figure>
-    <img src="/images/post/nipa_docker/Untitled.png"/> 
+<figure><img src="/images/post/nipa_docker/Untitled.png"/>
 </figure>
 
 <p>먼저 말씀드렸던 conda 환경으로 기본적으로 다양한 환경이 제공되네요.</p>
 <p>저의 경우 이번에 tf-nightly가 필요했습니다.</p>
 <p>그래서 TensorFlow2, python3.6 환경을 activate  한 후 설치를 시도했죠.</p>
-<figure>
-    <img src="/images/post/nipa_docker/Untitled_1.png"/> 
+<figure><img src="/images/post/nipa_docker/Untitled_1.png"/>
 </figure>
 
 <table>
 <thead>
 <tr>
-<th align="center">what&hellip;?</th>
+<th style="text-align:center">what&hellip;?</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="center"><figure>
-    <img src="/images/post/nipa_docker/Untitled_2.png"/> 
+<td style="text-align:center"><figure><img src="/images/post/nipa_docker/Untitled_2.png"/>
 </figure>
 </td>
 </tr>
 </tbody>
 </table>
 <p>음&hellip;.conda 버전의 문제인가 싶어서 base conda를 update  하려 했습니다.</p>
-<figure>
-    <img src="/images/post/nipa_docker/Untitled_3.png"/> 
+<figure><img src="/images/post/nipa_docker/Untitled_3.png"/>
 </figure>
 
 <table>
 <thead>
 <tr>
-<th align="center">what&hellip;?</th>
+<th style="text-align:center">what&hellip;?</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="center"><figure>
-    <img src="/images/post/nipa_docker/Untitled_2.png"/> 
+<td style="text-align:center"><figure><img src="/images/post/nipa_docker/Untitled_2.png"/>
 </figure>
 </td>
 </tr>
@@ -216,7 +211,7 @@
 <p>홈페이지 혹은 Docker 에 대한 포스팅을 참고하시기 바랍니다.</p>
 <p>간단히 말씀드리면 OS 단계까지 가상환경을 만드는 겁니다.</p>
 <p>그럼 설치 방법에 대해 적겠습니다.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 2020.10.10 추가 사항</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 2020.10.10 추가 사항</span>
 conda uninstall curl
 
 <span style="color:#75715e"># SET UP THE REPOSITORY</span>
@@ -245,8 +240,7 @@ sudo apt-get install docker-ce docker-ce-cli containerd.io
 <span style="color:#75715e"># VERIFY THAT DOCKER ENGINE IS INSTALLED CORRECTLY</span>
 sudo docker run hello-world
 </code></pre></div><p>만약에 제대로 설치 되었다면 마지막에 다음과 같은 출력이 남습니다</p>
-<figure>
-    <img src="/images/post/nipa_docker/Untitled_4.png"/> 
+<figure><img src="/images/post/nipa_docker/Untitled_4.png"/>
 </figure>
 
 <p>여기까지 하시면 기본 Docker 설치는 끝났습니다.</p>
@@ -254,7 +248,7 @@ sudo docker run hello-world
 <p>GPU를 쓰기 위해선 <a href="https://github.com/NVIDIA/nvidia-docker">nvidia-docker</a>를 설치를 해야 합니다.</p>
 <p>nvidia-docker는 간단히 말하면 docker 에서 데스크탑의 GPU를 사용할 수 있도록 nvidia에서 만든(?)것입니다.</p>
 <p>설치법은 다음과 같습니다.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># Ubuntu 16.04/18.04/20.04, Debian Jessie/Stretch/Buster</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># Ubuntu 16.04/18.04/20.04, Debian Jessie/Stretch/Buster</span>
 <span style="color:#75715e"># Add the package repositories</span>
 distribution<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>. /etc/os-release;echo $ID$VERSION_ID<span style="color:#66d9ef">)</span>
 curl -s -L https://nvidia.github.io/nvidia-docker/gpgkey | sudo apt-key add -
@@ -266,20 +260,18 @@ sudo systemctl restart docker
 <span style="color:#75715e"># Test nvidia-docker</span>
 sudo docker run --gpus all nvidia/cuda:10.0-base nvidia-smi
 </code></pre></div><p>이 또한 설치가 제대로 되었다면 마지막에 다음과 같이 <code>nvidia-smi</code> 출력이 나올 겁니다.</p>
-<figure>
-    <img src="/images/post/nipa_docker/Untitled_5.png"/> 
+<figure><img src="/images/post/nipa_docker/Untitled_5.png"/>
 </figure>
 
 <table>
 <thead>
 <tr>
-<th align="center">하&hellip;.편안&hellip;.</th>
+<th style="text-align:center">하&hellip;.편안&hellip;.</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="center"><figure>
-    <img src="/images/post/nipa_docker/Untitled_6.png"/> 
+<td style="text-align:center"><figure><img src="/images/post/nipa_docker/Untitled_6.png"/>
 </figure>
 </td>
 </tr>
@@ -301,8 +293,8 @@ sudo docker run --gpus all nvidia/cuda:10.0-base nvidia-smi
 
         
         <div style="text-align:center; margin:20px 0px 20px 0px">
-          <a href="https://donaricano.com/mypage/1391188679_guPzXC" target="_blank">
-            <img src="https://jjerry-k.github.io/images/promotion.png" alt="donaricano-btn"
+          <a href="https://www.buymeacoffee.com/jjerry" target="_blank">
+            <img src="https://jjerry-k.github.io/images/promotion.png" alt="support-btn"
             style="height: 100px !important;width: 100px !important;" />
           </br>
             <span class="caption">도움이 되셨다면 몰랑이에게 밀크티를...! </br> 더 다양한 포스팅을 채우도록 노력할게요!</span>

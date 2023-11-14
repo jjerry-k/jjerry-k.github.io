@@ -9,7 +9,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="this is meta description">
   <meta name="author" content="Jerry Kim">
-  <meta name="generator" content="Hugo 0.68.3" />
+  <meta name="generator" content="Hugo 0.92.2" />
 
   <!-- plugins -->
   
@@ -171,12 +171,12 @@
 <!-- raw HTML omitted -->
 <p>이번 포스팅에선 Face Mesh를 테스트 해보겠습니다.</p>
 <h2 id="설치법">설치법</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># mediapipe가 opencv 4.0.0 이하와 호환이래요..</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># mediapipe가 opencv 4.0.0 이하와 호환이래요..</span>
 pip install mediapipe opencv-python<span style="color:#f92672">==</span>3.4.11.45
 </code></pre></div><p>&hellip;? 겁나&hellip;간단합니다.</p>
 <h2 id="실행-코드">실행 코드</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> cv2 <span style="color:#f92672">as</span> cv
-<span style="color:#f92672">import</span> mediapipe <span style="color:#f92672">as</span> mp
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> cv2 <span style="color:#66d9ef">as</span> cv
+<span style="color:#f92672">import</span> mediapipe <span style="color:#66d9ef">as</span> mp
 mp_drawing <span style="color:#f92672">=</span> mp<span style="color:#f92672">.</span>solutions<span style="color:#f92672">.</span>drawing_utils
 mp_face_mesh <span style="color:#f92672">=</span> mp<span style="color:#f92672">.</span>solutions<span style="color:#f92672">.</span>face_mesh
 
@@ -191,10 +191,10 @@ cap <span style="color:#f92672">=</span> cv<span style="color:#f92672">.</span>V
         <span style="color:#66d9ef">break</span>
 
     image <span style="color:#f92672">=</span> cv<span style="color:#f92672">.</span>cvtColor(cv<span style="color:#f92672">.</span>flip(image, <span style="color:#ae81ff">1</span>), cv<span style="color:#f92672">.</span>COLOR_BGR2RGB)
-    image<span style="color:#f92672">.</span>flags<span style="color:#f92672">.</span>writeable <span style="color:#f92672">=</span> False
+    image<span style="color:#f92672">.</span>flags<span style="color:#f92672">.</span>writeable <span style="color:#f92672">=</span> <span style="color:#66d9ef">False</span>
     results <span style="color:#f92672">=</span> face_mesh<span style="color:#f92672">.</span>process(image)
 
-    image<span style="color:#f92672">.</span>flags<span style="color:#f92672">.</span>writeable <span style="color:#f92672">=</span> True
+    image<span style="color:#f92672">.</span>flags<span style="color:#f92672">.</span>writeable <span style="color:#f92672">=</span> <span style="color:#66d9ef">True</span>
     image <span style="color:#f92672">=</span> cv<span style="color:#f92672">.</span>cvtColor(image, cv<span style="color:#f92672">.</span>COLOR_RGB2BGR)
     <span style="color:#66d9ef">if</span> results<span style="color:#f92672">.</span>multi_face_landmarks:
         <span style="color:#66d9ef">for</span> face_landmarks <span style="color:#f92672">in</span> results<span style="color:#f92672">.</span>multi_face_landmarks:
@@ -211,8 +211,7 @@ face_mesh<span style="color:#f92672">.</span>close()
 cap<span style="color:#f92672">.</span>release()
 </code></pre></div><p>이걸 돌린다면 우째 나올까요???</p>
 <p>다음 애니메이션은 코드를 깨작 수정하여 GIF로 만든 것입니다.</p>
-<figure>
-    <img src="/images/post/mediapipe/face_mesh.gif"/> 
+<figure><img src="/images/post/mediapipe/face_mesh.gif"/>
 </figure>
 
 <p>별 기대 안하고 돌렸는데 제 맥미니 (Intel(R) Core(TM) i5-8500B CPU @ 3.00GHz) 으로 평균 30fps 이상 나오네요!</p>
@@ -232,8 +231,8 @@ cap<span style="color:#f92672">.</span>release()
 
         
         <div style="text-align:center; margin:20px 0px 20px 0px">
-          <a href="https://donaricano.com/mypage/1391188679_guPzXC" target="_blank">
-            <img src="https://jjerry-k.github.io/images/promotion.png" alt="donaricano-btn"
+          <a href="https://www.buymeacoffee.com/jjerry" target="_blank">
+            <img src="https://jjerry-k.github.io/images/promotion.png" alt="support-btn"
             style="height: 100px !important;width: 100px !important;" />
           </br>
             <span class="caption">도움이 되셨다면 몰랑이에게 밀크티를...! </br> 더 다양한 포스팅을 채우도록 노력할게요!</span>

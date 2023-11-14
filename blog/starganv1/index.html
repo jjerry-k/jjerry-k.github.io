@@ -9,7 +9,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="this is meta description">
   <meta name="author" content="Jerry Kim">
-  <meta name="generator" content="Hugo 0.68.3" />
+  <meta name="generator" content="Hugo 0.92.2" />
 
   <!-- plugins -->
   
@@ -161,21 +161,18 @@ URL: <a href="https://arxiv.org/abs/1711.09020">https://arxiv.org/abs/1711.09020
 <ul>
 <li>Multi domain image translation 이라고 하면 다음 사진과 같이 머리 색, 성별, 연령대 등과 같이 여러 condition 에 대응하는 영상을 생성.</li>
 </ul>
-<figure>
-    <img src="/images/post/starganv1/Untitled.png"/> 
+<figure><img src="/images/post/starganv1/Untitled.png"/>
 </figure>
 
 <ul>
 <li>기존의 image-to-image translation 은 n개의 domain 을 적용할 시에 n*(n-1) 개의 generator가 필요했음.</li>
 <li>StarGAN은 한 1개의 generator로 n개의 domain 을 적용.</li>
 </ul>
-<figure>
-    <img src="/images/post/starganv1/Untitled_1.png"/> 
+<figure><img src="/images/post/starganv1/Untitled_1.png"/>
 </figure>
 
 <h1 id="star-generative-adversarial-networks">Star Generative Adversarial Networks</h1>
-<figure>
-    <img src="/images/post/starganv1/Untitled_2.png"/> 
+<figure><img src="/images/post/starganv1/Untitled_2.png"/>
 </figure>
 
 <h1 id="loss-functions">Loss functions</h1>
@@ -187,12 +184,12 @@ URL: <a href="https://arxiv.org/abs/1711.09020">https://arxiv.org/abs/1711.09020
 <ul>
 <li>Domain Classification Loss</li>
 </ul>
-<p>$$\mathcal{L}^r_{cls} = \mathbb{E}_{x, c&rsquo;}[-\log D_{cls}(c'|x)]$$</p>
-<p>$$\mathcal{L}^f_{cls} = \mathbb{E}_{x, c&rsquo;}[-\log D_{cls}(c|G(x, c)]$$</p>
+<p>$$\mathcal{L}^r_{cls} = \mathbb{E}_{x, c'}[-\log D_{cls}(c'|x)]$$</p>
+<p>$$\mathcal{L}^f_{cls} = \mathbb{E}_{x, c'}[-\log D_{cls}(c|G(x, c)]$$</p>
 <ul>
 <li>Reconstruction Loss</li>
 </ul>
-<p>$$\mathcal{L}_{rec} = \mathbb{E}_{x, c, c&rsquo;}[\Vert x-G(G(x, c), c&rsquo;)\Vert_1]$$</p>
+<p>$$\mathcal{L}_{rec} = \mathbb{E}_{x, c, c'}[\Vert x-G(G(x, c), c')\Vert_1]$$</p>
 <ul>
 <li>Full Objective</li>
 </ul>
@@ -200,21 +197,17 @@ URL: <a href="https://arxiv.org/abs/1711.09020">https://arxiv.org/abs/1711.09020
 <p>$$\mathcal{L}_G = \mathcal{L}_{adv} + \lambda_{cls}\mathcal{L}^f_{cls}+\lambda_{rec}\mathcal{L}_{rec}$$</p>
 <p>$$\lambda_{cls} = 1, \lambda_{rec} = 10$$</p>
 <h1 id="result">Result</h1>
-<figure>
-    <img src="/images/post/starganv1/Untitled_3.png"/> 
+<figure><img src="/images/post/starganv1/Untitled_3.png"/>
 </figure>
 
-<figure>
-    <img src="/images/post/starganv1/Untitled_4.png"/> 
+<figure><img src="/images/post/starganv1/Untitled_4.png"/>
 </figure>
 
 <h1 id="training-detail">Training Detail</h1>
-<figure>
-    <img src="/images/post/starganv1/Untitled_5.png"/> 
+<figure><img src="/images/post/starganv1/Untitled_5.png"/>
 </figure>
 
-<figure>
-    <img src="/images/post/starganv1/Untitled_6.png"/> 
+<figure><img src="/images/post/starganv1/Untitled_6.png"/>
 </figure>
 
 
@@ -222,8 +215,8 @@ URL: <a href="https://arxiv.org/abs/1711.09020">https://arxiv.org/abs/1711.09020
 
         
         <div style="text-align:center; margin:20px 0px 20px 0px">
-          <a href="https://donaricano.com/mypage/1391188679_guPzXC" target="_blank">
-            <img src="https://jjerry-k.github.io/images/promotion.png" alt="donaricano-btn"
+          <a href="https://www.buymeacoffee.com/jjerry" target="_blank">
+            <img src="https://jjerry-k.github.io/images/promotion.png" alt="support-btn"
             style="height: 100px !important;width: 100px !important;" />
           </br>
             <span class="caption">도움이 되셨다면 몰랑이에게 밀크티를...! </br> 더 다양한 포스팅을 채우도록 노력할게요!</span>

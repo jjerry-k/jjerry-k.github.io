@@ -9,7 +9,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="Usage code-server">
   <meta name="author" content="Jerry Kim">
-  <meta name="generator" content="Hugo 0.68.3" />
+  <meta name="generator" content="Hugo 0.92.2" />
 
   <!-- plugins -->
   
@@ -169,26 +169,26 @@
 이미 code-server 측에서 docker hub에 docker image를 올려놓으셨습니다..!<br>
 그걸 이용하면 후딱 가능!<br>
 우선 아래 Dockerfile을 만듭니다!</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Dockerfile" data-lang="Dockerfile"><span style="color:#66d9ef">FROM</span><span style="color:#e6db74"> codercom/code-server:latest</span><span style="color:#960050;background-color:#1e0010">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Dockerfile" data-lang="Dockerfile"><span style="color:#66d9ef">FROM</span><span style="color:#e6db74"> codercom/code-server:latest</span><span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">USER</span><span style="color:#e6db74"> coder</span><span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">ENV</span> SHELL<span style="color:#f92672">=</span>/bin/bash<span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> sudo apt-get update <span style="color:#f92672">&amp;&amp;</span> sudo apt-get -y upgrade<span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> sudo apt-get install -y unzip wget vim<span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">ENV</span> PORT<span style="color:#f92672">=</span><span style="color:#ae81ff">8080</span>
 </code></pre></div><p>그 후에 <code>docker build</code>를 이용하여 image를 만들어주세요!</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cd <span style="color:#f92672">{</span>Dockerfile이 있는 경로<span style="color:#f92672">}</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cd <span style="color:#f92672">{</span>Dockerfile이 있는 경로<span style="color:#f92672">}</span>
 docker build --tag code-server:latest .
 </code></pre></div><p>다 만드어진 후에는 code-server 설정을 건드려야합니다!</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">mkdir -p ~/.config/code-server
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">mkdir -p ~/.config/code-server
 vim ~/.config/code-server/config.yaml
 </code></pre></div><p>config.yaml에 아래 내용을 적어주세요!</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#66d9ef">bind-addr</span>: <span style="color:#ae81ff">127.0.0.1</span>:<span style="color:#ae81ff">8080</span>
-<span style="color:#66d9ef">auth</span>: password
-<span style="color:#66d9ef">password</span>: {비밀번호} <span style="color:#75715e"># 어지간하면 숫자로 하세요. 다른건 Test 안해봄...</span>
-<span style="color:#66d9ef">cert</span>: <span style="color:#66d9ef">false</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">bind-addr</span>: <span style="color:#ae81ff">127.0.0.1</span>:<span style="color:#ae81ff">8080</span>
+<span style="color:#f92672">auth</span>: <span style="color:#ae81ff">password</span>
+<span style="color:#f92672">password</span>: {<span style="color:#ae81ff">비밀번호}</span> <span style="color:#75715e"># 어지간하면 숫자로 하세요. 다른건 Test 안해봄...</span>
+<span style="color:#f92672">cert</span>: <span style="color:#66d9ef">false</span>
 </code></pre></div><p>이러면 세팅은 끝입니다!</p>
 <p>실행은 다음 명령어를 사용하시면 됩니다 !</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># docker 권한이 없으면 sudo 붙이세요.</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># docker 권한이 없으면 sudo 붙이세요.</span>
 docker run -it -d --rm --gpus all <span style="color:#ae81ff">\
 </span><span style="color:#ae81ff"></span>  --name code-server -p 127.0.0.1:8080:8080 <span style="color:#ae81ff">\
 </span><span style="color:#ae81ff"></span>  -v <span style="color:#e6db74">&#34;</span>$HOME<span style="color:#e6db74">/.config:/home/coder/.config&#34;</span> <span style="color:#ae81ff">\
@@ -198,8 +198,7 @@ docker run -it -d --rm --gpus all <span style="color:#ae81ff">\
 </span><span style="color:#ae81ff"></span>  code-server:latest
 </code></pre></div><p>그러면 이렇게 아이패드에서 코딩을 할 수 있습니다..!<br>
 (당연히 포트 터널링 해주셔야해요&hellip;)
-<figure>
-    <img src="/images/post/codeserver/01.jpeg"/> 
+<figure><img src="/images/post/codeserver/01.jpeg"/>
 </figure>
 </p>
 <p>포스팅은 여기까지 입니다..!<br>
@@ -213,8 +212,8 @@ docker run -it -d --rm --gpus all <span style="color:#ae81ff">\
 
         
         <div style="text-align:center; margin:20px 0px 20px 0px">
-          <a href="https://donaricano.com/mypage/1391188679_guPzXC" target="_blank">
-            <img src="https://jjerry-k.github.io/images/promotion.png" alt="donaricano-btn"
+          <a href="https://www.buymeacoffee.com/jjerry" target="_blank">
+            <img src="https://jjerry-k.github.io/images/promotion.png" alt="support-btn"
             style="height: 100px !important;width: 100px !important;" />
           </br>
             <span class="caption">도움이 되셨다면 몰랑이에게 밀크티를...! </br> 더 다양한 포스팅을 채우도록 노력할게요!</span>

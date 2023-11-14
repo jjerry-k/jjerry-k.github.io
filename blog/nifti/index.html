@@ -9,7 +9,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="this is meta description">
   <meta name="author" content="Jerry Kim">
-  <meta name="generator" content="Hugo 0.68.3" />
+  <meta name="generator" content="Hugo 0.92.2" />
 
   <!-- plugins -->
   
@@ -157,10 +157,10 @@
 이번에는 Python에서 <a href="https://nifti.nimh.nih.gov/">NIfTI</a> 포맷의 데이터를 load 하는 방법에 대한 포스팅을 해보려고 합니다.<br>
 저는 Anaconda를 사용중이기에..제 사용환경에 맞게 설명을 하겠습니다.</p>
 <p>가장 먼저 관련 패키지인 <a href="http://nipy.org/nibabel/"><code>Nibabel</code></a> 을 설치를 해줍니다.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">conda install -c conda-forge nibabel
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">conda install -c conda-forge nibabel
 </code></pre></div><p>이러면 설치는 끝입니다.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">
-<span style="color:#f92672">import</span> nibabel <span style="color:#f92672">as</span> nib
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">
+<span style="color:#f92672">import</span> nibabel <span style="color:#66d9ef">as</span> nib
 <span style="color:#f92672">from</span> matplotlib <span style="color:#f92672">import</span> pyplot <span style="color:#66d9ef">as</span> plt
 
 data <span style="color:#f92672">=</span> nib<span style="color:#f92672">.</span>load(<span style="color:#e6db74">&#34;.nii 경로&#34;</span>)
@@ -171,8 +171,7 @@ plt<span style="color:#f92672">.</span>imshow(img[:,:,<span style="color:#e6db74
 plt<span style="color:#f92672">.</span>show()
 </code></pre></div><p>이런 식으로 작성하시면 됩니다.</p>
 <p>예시를 보여드리면</p>
-<figure>
-    <img src="/images/post/nifti/01.png"/> 
+<figure><img src="/images/post/nifti/01.png"/>
 </figure>
 
 <p>이렇습니다!</p>
@@ -182,8 +181,8 @@ plt<span style="color:#f92672">.</span>show()
 
         
         <div style="text-align:center; margin:20px 0px 20px 0px">
-          <a href="https://donaricano.com/mypage/1391188679_guPzXC" target="_blank">
-            <img src="https://jjerry-k.github.io/images/promotion.png" alt="donaricano-btn"
+          <a href="https://www.buymeacoffee.com/jjerry" target="_blank">
+            <img src="https://jjerry-k.github.io/images/promotion.png" alt="support-btn"
             style="height: 100px !important;width: 100px !important;" />
           </br>
             <span class="caption">도움이 되셨다면 몰랑이에게 밀크티를...! </br> 더 다양한 포스팅을 채우도록 노력할게요!</span>

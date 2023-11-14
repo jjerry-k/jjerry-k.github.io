@@ -9,7 +9,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="this is meta description">
   <meta name="author" content="Jerry Kim">
-  <meta name="generator" content="Hugo 0.68.3" />
+  <meta name="generator" content="Hugo 0.92.2" />
 
   <!-- plugins -->
   
@@ -167,28 +167,24 @@
 <p>뻘소리 그만하고 간단 간단 설명 시작하겠습니다.</p>
 <h2 id="1-ngrok으로-token-만들기">1. ngrok으로 token 만들기</h2>
 <p>ngrok은 대충 로컬 웹 서버를 SSH 접속이나 모바일 테스트 할 수 있도록 공공 URL로 접근 가능토록 해주는 것입니다.  가격은 걱정하지 마세요. 1개는 무료거든요.</p>
-<figure>
-    <img src="/images/post/colab_vscode/Untitled.png"/> 
+<figure><img src="/images/post/colab_vscode/Untitled.png"/>
 </figure>
 
 <p>어쨌든 가입을 하고 token을 생성 해줍니다.</p>
-<figure>
-    <img src="/images/post/colab_vscode/Untitled_1.png"/> 
+<figure><img src="/images/post/colab_vscode/Untitled_1.png"/>
 </figure>
 
-<figure>
-    <img src="/images/post/colab_vscode/Untitled_2.png"/> 
+<figure><img src="/images/post/colab_vscode/Untitled_2.png"/>
 </figure>
 
 <h2 id="2-colab에-ngrok-설치-및-실행">2. Colab에 ngrok 설치 및 실행</h2>
 <p>노트북 설정을 먼저 해주세요. (ex) CPU, GPU, TPU</p>
-<figure>
-    <img src="/images/post/colab_vscode/Untitled_3.png"/> 
+<figure><img src="/images/post/colab_vscode/Untitled_3.png"/>
 </figure>
 
 <p>그리고 셀에 다음과 같이 코드를 실행합니다.</p>
 <p>아래 authtoken 에는 ngrok의 Authtoken을 적어주세요. (당연하지만 스트링으로)</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># Install useful stuff</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># Install useful stuff</span>
 <span style="color:#960050;background-color:#1e0010">!</span> apt install <span style="color:#f92672">--</span>yes ssh screen nano htop ranger git <span style="color:#f92672">&gt;</span> <span style="color:#f92672">/</span>dev<span style="color:#f92672">/</span>null
 <span style="color:#75715e"># SSH setting</span>
 <span style="color:#960050;background-color:#1e0010">!</span> echo <span style="color:#e6db74">&#34;root:carbonara&#34;</span> <span style="color:#f92672">|</span> chpasswd
@@ -211,77 +207,66 @@ str_ssh <span style="color:#f92672">=</span> r<span style="color:#f92672">.</spa
 str_ssh <span style="color:#f92672">=</span> sub(<span style="color:#e6db74">&#34;tcp://&#34;</span>, <span style="color:#e6db74">&#34;&#34;</span>, str_ssh)
 str_ssh <span style="color:#f92672">=</span> sub(<span style="color:#e6db74">&#34;:&#34;</span>, <span style="color:#e6db74">&#34; -p &#34;</span>, str_ssh)
 str_ssh <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;ssh root@&#34;</span> <span style="color:#f92672">+</span> str_ssh
-<span style="color:#66d9ef">print</span>(str_ssh)
-</code></pre></div><figure>
-    <img src="/images/post/colab_vscode/Untitled_4.png"/> 
+print(str_ssh)
+</code></pre></div><figure><img src="/images/post/colab_vscode/Untitled_4.png"/>
 </figure>
 
 <p>출력으로 나온 커맨드를 이용하여 한번 터미널에서 테스트를 해봅니다. 비밀번호는 <code>carbonara</code> 입니다.</p>
-<figure>
-    <img src="/images/post/colab_vscode/Untitled_5.png"/> 
+<figure><img src="/images/post/colab_vscode/Untitled_5.png"/>
 </figure>
 
 <h2 id="3-vscode에서-실행하기">3. VSCode에서 실행하기</h2>
 <p>먼저 Colab 화면에서 다음 코드를 실행해서 Google Drive를 마운트 해줍니다.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># Mount Google Drive and make some folders for vscode</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># Mount Google Drive and make some folders for vscode</span>
 <span style="color:#f92672">from</span> google.colab <span style="color:#f92672">import</span> drive
 drive<span style="color:#f92672">.</span>mount(<span style="color:#e6db74">&#39;/googledrive&#39;</span>)
 <span style="color:#960050;background-color:#1e0010">!</span> mkdir <span style="color:#f92672">-</span>p <span style="color:#f92672">/</span>googledrive<span style="color:#f92672">/</span>My\ Drive<span style="color:#f92672">/</span>colabdrive
 <span style="color:#960050;background-color:#1e0010">!</span> mkdir <span style="color:#f92672">-</span>p <span style="color:#f92672">/</span>googledrive<span style="color:#f92672">/</span>My\ Drive<span style="color:#f92672">/</span>colabdrive<span style="color:#f92672">/</span>root<span style="color:#f92672">/.</span>local<span style="color:#f92672">/</span>share<span style="color:#f92672">/</span>code<span style="color:#f92672">-</span>server
 <span style="color:#960050;background-color:#1e0010">!</span> ln <span style="color:#f92672">-</span>s <span style="color:#f92672">/</span>googledrive<span style="color:#f92672">/</span>My\ Drive<span style="color:#f92672">/</span>colabdrive <span style="color:#f92672">/</span>
 <span style="color:#960050;background-color:#1e0010">!</span> ln <span style="color:#f92672">-</span>s <span style="color:#f92672">/</span>googledrive<span style="color:#f92672">/</span>My\ Drive<span style="color:#f92672">/</span>colabdrive<span style="color:#f92672">/</span>root<span style="color:#f92672">/.</span>local<span style="color:#f92672">/</span>share<span style="color:#f92672">/</span>code<span style="color:#f92672">-</span>server <span style="color:#f92672">/</span>root<span style="color:#f92672">/.</span>local<span style="color:#f92672">/</span>share<span style="color:#f92672">/</span>
-</code></pre></div><figure>
-    <img src="/images/post/colab_vscode/Untitled_6.png"/> 
+</code></pre></div><figure><img src="/images/post/colab_vscode/Untitled_6.png"/>
 </figure>
 
 <p>VSCode를 켜고 ssh로 접속을 해봅니다.</p>
-<figure>
-    <img src="/images/post/colab_vscode/Untitled_7.png"/> 
+<figure><img src="/images/post/colab_vscode/Untitled_7.png"/>
 </figure>
 
 <p>접속해서 Colab Notebooks 디렉토리에 접근한 화면입니다. Google Drive랑 동일한 것을 확인할 수 있죠!</p>
-<figure>
-    <img src="/images/post/colab_vscode/Untitled_8.png"/> 
+<figure><img src="/images/post/colab_vscode/Untitled_8.png"/>
 </figure>
 
 <h2 id="4-코드-작성-및-실행">4. 코드 작성 및 실행</h2>
 <p>코드 실행 여부를 테스트 해보겠습니다.</p>
 <p>일단 Colab 에는 VSCode 플러그인이 설치 되어 있지 않기 때문에 python이나 개인적으로 필요한 플러그인들을 설치해줍니다.</p>
 <p>저는 테스트이니 아래 세 가지만 설치했습니다.</p>
-<figure>
-    <img src="/images/post/colab_vscode/Untitled_9.png"/> 
+<figure><img src="/images/post/colab_vscode/Untitled_9.png"/>
 </figure>
 
 <p>그럼 한번 실행해보죠.</p>
-<figure>
-    <img src="/images/post/colab_vscode/Untitled_10.png"/> 
+<figure><img src="/images/post/colab_vscode/Untitled_10.png"/>
 </figure>
 
 <p>오&hellip;..신기&hellip;</p>
 <p>이렇게 연결해서 사용이 가능합니다.</p>
 <p><code>htop</code>를 이용해서 리소스 모니터링도 가능하죠.</p>
-<figure>
-    <img src="/images/post/colab_vscode/Untitled_11.png"/> 
+<figure><img src="/images/post/colab_vscode/Untitled_11.png"/>
 </figure>
 
 <p>여기까지 Colab x VSCode 포스팅입니다. 뭐&hellip;.어떤 면에선 편할 것 같지만 막&hellip;편할 것 같진 않네요.</p>
 <p>아직 이 상황을 겪지 않아서 모르겠지만 원래 코랩의 큰 문제가 있죠. Session timeout&hellip;.</p>
 <p>일정 시간동안 동작이 없으면 연결이 끊겨서 다시 실행을 시켜야하는&hellip;.상황이 오죠.</p>
-<figure>
-    <img src="/images/post/colab_vscode/Untitled_12.png"/> 
+<figure><img src="/images/post/colab_vscode/Untitled_12.png"/>
 </figure>
 
 <p>나한테 왜 그래&hellip;</p>
 <p>그 상황이 왔을 때 느낌으로는 VSCode의 SSH 접속이 끊길 것 같네요. 흠&hellip;. 실험 후에 추가로 적어 보겠습니다.</p>
 <h2 id="ps">P.S</h2>
 <p>끊겼습니다.</p>
-<figure>
-    <img src="https://github.com/jjerry-k/jjerry-k.github.io/blob/master/public/img/colab_vscode/Untitled_13.png?raw=true"/> 
+<figure><img src="https://github.com/jjerry-k/jjerry-k.github.io/blob/master/public/img/colab_vscode/Untitled_13.png?raw=true"/>
 </figure>
 
 <p>VSCode 를 봐도..</p>
-<figure>
-    <img src="https://github.com/jjerry-k/jjerry-k.github.io/blob/master/public/img/colab_vscode/Untitled_14.png?raw=true"/> 
+<figure><img src="https://github.com/jjerry-k/jjerry-k.github.io/blob/master/public/img/colab_vscode/Untitled_14.png?raw=true"/>
 </figure>
 
 <p>그렇습니다. 제 생각대로 Colab의 Session time이 끝나면&hellip;끊기네요..ㅎㅎ
@@ -291,8 +276,8 @@ drive<span style="color:#f92672">.</span>mount(<span style="color:#e6db74">&#39;
 
         
         <div style="text-align:center; margin:20px 0px 20px 0px">
-          <a href="https://donaricano.com/mypage/1391188679_guPzXC" target="_blank">
-            <img src="https://jjerry-k.github.io/images/promotion.png" alt="donaricano-btn"
+          <a href="https://www.buymeacoffee.com/jjerry" target="_blank">
+            <img src="https://jjerry-k.github.io/images/promotion.png" alt="support-btn"
             style="height: 100px !important;width: 100px !important;" />
           </br>
             <span class="caption">도움이 되셨다면 몰랑이에게 밀크티를...! </br> 더 다양한 포스팅을 채우도록 노력할게요!</span>

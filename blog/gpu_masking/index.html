@@ -9,7 +9,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="this is meta description">
   <meta name="author" content="Jerry Kim">
-  <meta name="generator" content="Hugo 0.68.3" />
+  <meta name="generator" content="Hugo 0.92.2" />
 
   <!-- plugins -->
   
@@ -157,7 +157,7 @@
 그러면 GPU 각각을 분배하거나 메모리를 분산해야겠죠.<br>
 제 연구실 같은 경우엔 전자를 택했습니다.<br>
 그래서 이번엔 특정 GPU만 사용하는 방법을 간 ! 단 ! 하 ! 게 포스팅하려고 합니다. (Just 명령어만 쓸꺼임.)</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">CUDA_VISIBLE_DEVICES<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span> python ~~~.py <span style="color:#75715e"># 0번 GPU만 사용.</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">CUDA_VISIBLE_DEVICES<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span> python ~~~.py <span style="color:#75715e"># 0번 GPU만 사용.</span>
 <span style="color:#75715e">#CUDA_VISIBLE_DEVICES=0,3 python ~~~.py # 0, 3번 GPU 사용.</span>
 </code></pre></div><p>이렇게 실행하시면 ~~~.py 를 실행해서 GPU 를 사용할 경우 0번 GPU만 사용해서 스크립트가 실행됩니다!
 많은 분들이 <strong>TensorFlow</strong>를 사용하실텐데 이것으로 예를 들어보겠습니다.<br>
@@ -168,8 +168,8 @@ GPU가 여러 대인 상황에서 아무 옵션도 주지 않고 (스크립트�
 
         
         <div style="text-align:center; margin:20px 0px 20px 0px">
-          <a href="https://donaricano.com/mypage/1391188679_guPzXC" target="_blank">
-            <img src="https://jjerry-k.github.io/images/promotion.png" alt="donaricano-btn"
+          <a href="https://www.buymeacoffee.com/jjerry" target="_blank">
+            <img src="https://jjerry-k.github.io/images/promotion.png" alt="support-btn"
             style="height: 100px !important;width: 100px !important;" />
           </br>
             <span class="caption">도움이 되셨다면 몰랑이에게 밀크티를...! </br> 더 다양한 포스팅을 채우도록 노력할게요!</span>

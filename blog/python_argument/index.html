@@ -9,7 +9,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="this is meta description">
   <meta name="author" content="Jerry Kim">
-  <meta name="generator" content="Hugo 0.68.3" />
+  <meta name="generator" content="Hugo 0.92.2" />
 
   <!-- plugins -->
   
@@ -161,16 +161,16 @@
 <p>이번 포스팅에선 위와 같이 스크립트를 실행할때 인자를 넘기는 법에 대해 두 가지 빠르게 예제를 적어보겠습니다!!</p>
 <p>예제는 <strong>두개의 정수</strong> a, b를 받아서 a^b를 하는 스크립트 입니다!</p>
 <h4 id="sys-모듈-사용">sys 모듈 사용</h4>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python3" data-lang="python3">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python3" data-lang="python3">
 <span style="color:#f92672">import</span> sys
 
-<span style="color:#66d9ef">assert</span> sys<span style="color:#f92672">.</span>argv[<span style="color:#ae81ff">1</span>]<span style="color:#f92672">.</span>isdigit(), f<span style="color:#e6db74">&#34;첫번째 인자(&#39;</span><span style="color:#e6db74">{sys.argv[1]}</span><span style="color:#e6db74">&#39;)가 정수가 아닙니다!&#34;</span>
-<span style="color:#66d9ef">assert</span> sys<span style="color:#f92672">.</span>argv[<span style="color:#ae81ff">2</span>]<span style="color:#f92672">.</span>isdigit(), f<span style="color:#e6db74">&#34;두번째 인자(&#39;</span><span style="color:#e6db74">{sys.argv[2]}</span><span style="color:#e6db74">&#39;)가 정수가 아닙니다!&#34;</span>
+<span style="color:#66d9ef">assert</span> sys<span style="color:#f92672">.</span>argv[<span style="color:#ae81ff">1</span>]<span style="color:#f92672">.</span>isdigit(), <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;첫번째 인자(&#39;</span><span style="color:#e6db74">{</span>sys<span style="color:#f92672">.</span>argv[<span style="color:#ae81ff">1</span>]<span style="color:#e6db74">}</span><span style="color:#e6db74">&#39;)가 정수가 아닙니다!&#34;</span>
+<span style="color:#66d9ef">assert</span> sys<span style="color:#f92672">.</span>argv[<span style="color:#ae81ff">2</span>]<span style="color:#f92672">.</span>isdigit(), <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;두번째 인자(&#39;</span><span style="color:#e6db74">{</span>sys<span style="color:#f92672">.</span>argv[<span style="color:#ae81ff">2</span>]<span style="color:#e6db74">}</span><span style="color:#e6db74">&#39;)가 정수가 아닙니다!&#34;</span>
 
 a <span style="color:#f92672">=</span> int(sys<span style="color:#f92672">.</span>argv[<span style="color:#ae81ff">1</span>])
 b <span style="color:#f92672">=</span> int(sys<span style="color:#f92672">.</span>argv[<span style="color:#ae81ff">2</span>])
 
-print(f<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{a}</span><span style="color:#e6db74">^</span><span style="color:#e6db74">{b}</span><span style="color:#e6db74"> = {a**b}&#34;</span>)
+print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span>a<span style="color:#e6db74">}</span><span style="color:#e6db74">^</span><span style="color:#e6db74">{</span>b<span style="color:#e6db74">}</span><span style="color:#e6db74"> = </span><span style="color:#e6db74">{</span>a<span style="color:#f92672">**</span>b<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
 
 <span style="color:#75715e"># python ~~~.py 2, 4</span>
 <span style="color:#75715e"># 2^4 = 16</span>
@@ -179,7 +179,7 @@ print(f<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{a}</
 <li>그렇기 때문에 첫번째 인자를 <code>argv[1]</code> 로 한 것입니다!</li>
 </ul>
 <h4 id="argparse-모듈-사용">argparse 모듈 사용</h4>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python3" data-lang="python3">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python3" data-lang="python3">
 <span style="color:#f92672">import</span> argparse
 
 parser <span style="color:#f92672">=</span> argparse<span style="color:#f92672">.</span>ArgumentParser()
@@ -189,7 +189,7 @@ parser<span style="color:#f92672">.</span>add_argument(<span style="color:#e6db7
 
 args <span style="color:#f92672">=</span> parser<span style="color:#f92672">.</span>parse_args()
 
-print(f<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{args.a}</span><span style="color:#e6db74">^</span><span style="color:#e6db74">{args.b}</span><span style="color:#e6db74"> = {args.a**args.b}&#34;</span>)
+print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span>args<span style="color:#f92672">.</span>a<span style="color:#e6db74">}</span><span style="color:#e6db74">^</span><span style="color:#e6db74">{</span>args<span style="color:#f92672">.</span>b<span style="color:#e6db74">}</span><span style="color:#e6db74"> = </span><span style="color:#e6db74">{</span>args<span style="color:#f92672">.</span>a<span style="color:#f92672">**</span>args<span style="color:#f92672">.</span>b<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
 
 <span style="color:#75715e"># python ~~~.py --a 2 --b 4</span>
 <span style="color:#75715e"># 2^4 = 16</span>
@@ -206,8 +206,8 @@ print(f<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{args
 
         
         <div style="text-align:center; margin:20px 0px 20px 0px">
-          <a href="https://donaricano.com/mypage/1391188679_guPzXC" target="_blank">
-            <img src="https://jjerry-k.github.io/images/promotion.png" alt="donaricano-btn"
+          <a href="https://www.buymeacoffee.com/jjerry" target="_blank">
+            <img src="https://jjerry-k.github.io/images/promotion.png" alt="support-btn"
             style="height: 100px !important;width: 100px !important;" />
           </br>
             <span class="caption">도움이 되셨다면 몰랑이에게 밀크티를...! </br> 더 다양한 포스팅을 채우도록 노력할게요!</span>

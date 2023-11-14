@@ -9,7 +9,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="this is meta description">
   <meta name="author" content="Jerry Kim">
-  <meta name="generator" content="Hugo 0.68.3" />
+  <meta name="generator" content="Hugo 0.92.2" />
 
   <!-- plugins -->
   
@@ -163,12 +163,12 @@ N개의 모델에 대한 각각의 결과를 보기가 <strong>매우 귀&hellip
 <p>자세한 설명..넘어갑니다. 바로 예제에요&hellip; 궁금하면 링크를 드릴테니 알아서 보세요.</p>
 </blockquote>
 <h2 id="example-code">Example code</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> streamlit <span style="color:#f92672">as</span> st
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> streamlit <span style="color:#66d9ef">as</span> st
 
 <span style="color:#f92672">import</span> json
 <span style="color:#f92672">from</span> io <span style="color:#f92672">import</span> BytesIO
 
-<span style="color:#f92672">import</span> numpy <span style="color:#f92672">as</span> np
+<span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
 <span style="color:#f92672">from</span> PIL <span style="color:#f92672">import</span> Image
 
 <span style="color:#f92672">import</span> torch
@@ -211,7 +211,7 @@ model<span style="color:#f92672">.</span>eval()
 <span style="color:#75715e"># load data</span>
 uploaded_file <span style="color:#f92672">=</span> st<span style="color:#f92672">.</span>file_uploader(<span style="color:#e6db74">&#34;Choose a Image&#34;</span>)
 
-<span style="color:#66d9ef">if</span> uploaded_file <span style="color:#f92672">is</span> <span style="color:#f92672">not</span> None:
+<span style="color:#66d9ef">if</span> uploaded_file <span style="color:#f92672">is</span> <span style="color:#f92672">not</span> <span style="color:#66d9ef">None</span>:
     bytes_data <span style="color:#f92672">=</span> uploaded_file<span style="color:#f92672">.</span>getvalue()
     image <span style="color:#f92672">=</span> Image<span style="color:#f92672">.</span>open(BytesIO(bytes_data))<span style="color:#f92672">.</span>convert(<span style="color:#e6db74">&#34;RGB&#34;</span>)
     img_for_plot <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array(image)
@@ -223,11 +223,10 @@ uploaded_file <span style="color:#f92672">=</span> st<span style="color:#f92672"
     result <span style="color:#f92672">=</span> model(img)<span style="color:#f92672">.</span>squeeze(dim<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>)
     predict_idx <span style="color:#f92672">=</span> result<span style="color:#f92672">.</span>argmax()<span style="color:#f92672">.</span>item()
     prob <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>softmax(result, dim<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>)
-    st<span style="color:#f92672">.</span>image(img_for_plot, use_column_width<span style="color:#f92672">=</span>True)
-    st<span style="color:#f92672">.</span>text(f<span style="color:#e6db74">&#34;{idx2label[predict_idx]}, {prob[predict_idx]}&#34;</span>)
+    st<span style="color:#f92672">.</span>image(img_for_plot, use_column_width<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+    st<span style="color:#f92672">.</span>text(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span>idx2label[predict_idx]<span style="color:#e6db74">}</span><span style="color:#e6db74">, </span><span style="color:#e6db74">{</span>prob[predict_idx]<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
 </code></pre></div><h2 id="result">Result</h2>
-<figure>
-    <img src="/images/post/streamlit/streamlit.gif"/> 
+<figure><img src="/images/post/streamlit/streamlit.gif"/>
 </figure>
 
 <p>정말 간단&hellip;합니다.<br>
@@ -240,8 +239,8 @@ flask, django, fastApi 등 웹 프레임워크를 이용해서도 이런걸 만�
 
         
         <div style="text-align:center; margin:20px 0px 20px 0px">
-          <a href="https://donaricano.com/mypage/1391188679_guPzXC" target="_blank">
-            <img src="https://jjerry-k.github.io/images/promotion.png" alt="donaricano-btn"
+          <a href="https://www.buymeacoffee.com/jjerry" target="_blank">
+            <img src="https://jjerry-k.github.io/images/promotion.png" alt="support-btn"
             style="height: 100px !important;width: 100px !important;" />
           </br>
             <span class="caption">도움이 되셨다면 몰랑이에게 밀크티를...! </br> 더 다양한 포스팅을 채우도록 노력할게요!</span>

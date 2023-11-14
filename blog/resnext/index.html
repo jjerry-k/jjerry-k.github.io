@@ -9,7 +9,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="this is meta description">
   <meta name="author" content="Jerry Kim">
-  <meta name="generator" content="Hugo 0.68.3" />
+  <meta name="generator" content="Hugo 0.92.2" />
 
   <!-- plugins -->
   
@@ -166,8 +166,7 @@ URL: <a href="https://arxiv.org/abs/1611.05431">https://arxiv.org/abs/1611.05431
 <li>일반적인 Reidual Block과 ResNeXt의 Residual Block 비교.</li>
 <li>Cardinality = Number of Groups,</li>
 </ul>
-<figure>
-    <img src="/images/post/resnext/Untitled.png"/> 
+<figure><img src="/images/post/resnext/Untitled.png"/>
 </figure>
 
 <h1 id="method">Method</h1>
@@ -176,8 +175,7 @@ URL: <a href="https://arxiv.org/abs/1611.05431">https://arxiv.org/abs/1611.05431
 <li>전체적인 구조는 기존의 VGG/ResNet과 같이 일정 Block 을 반복하여 쌓는 구조.</li>
 <li>반복되는 블럭은 동일한 hyper parameter 사용.</li>
 </ul>
-<figure>
-    <img src="/images/post/resnext/Untitled_1.png"/> 
+<figure><img src="/images/post/resnext/Untitled_1.png"/>
 </figure>
 
 <h2 id="revisiting-simple-neurons">Revisiting Simple Neurons</h2>
@@ -185,8 +183,7 @@ URL: <a href="https://arxiv.org/abs/1611.05431">https://arxiv.org/abs/1611.05431
 <li>가장 기본적인 뉴런의 구조</li>
 </ul>
 <p>$$\sum_{i=1}^Dw_ix_i$$</p>
-<figure>
-    <img src="/images/post/resnext/Untitled_2.png"/> 
+<figure><img src="/images/post/resnext/Untitled_2.png"/>
 </figure>
 
 <ul>
@@ -201,12 +198,10 @@ URL: <a href="https://arxiv.org/abs/1611.05431">https://arxiv.org/abs/1611.05431
 <ul>
 <li>다른 방식이지만 동일하다는 것을 설명</li>
 </ul>
-<figure>
-    <img src="/images/post/resnext/Untitled_3.png"/> 
+<figure><img src="/images/post/resnext/Untitled_3.png"/>
 </figure>
 
-<figure>
-    <img src="/images/post/resnext/Untitled_4.png"/> 
+<figure><img src="/images/post/resnext/Untitled_4.png"/>
 </figure>
 
 <h2 id="model-capacity">Model Capacity</h2>
@@ -215,8 +210,7 @@ URL: <a href="https://arxiv.org/abs/1611.05431">https://arxiv.org/abs/1611.05431
 <li>다른 Hyper parameter는 수정하고 싶지 않기 때문에 Residual Block의 Cardinality C와 bottleneck d를 수정</li>
 <li>Cardinality와 bottleneck d의 관계</li>
 </ul>
-<figure>
-    <img src="/images/post/resnext/Untitled_5.png"/> 
+<figure><img src="/images/post/resnext/Untitled_5.png"/>
 </figure>
 
 <h1 id="result">Result</h1>
@@ -224,63 +218,53 @@ URL: <a href="https://arxiv.org/abs/1611.05431">https://arxiv.org/abs/1611.05431
 <ul>
 <li>Cardinality를 1~32 씩 증가시키되 complexity 는 유지하도록 설정하고 실험.</li>
 </ul>
-<figure>
-    <img src="/images/post/resnext/Untitled_6.png"/> 
+<figure><img src="/images/post/resnext/Untitled_6.png"/>
 </figure>
 
-<figure>
-    <img src="/images/post/resnext/Untitled_7.png"/> 
+<figure><img src="/images/post/resnext/Untitled_7.png"/>
 </figure>
 
 <ul>
 <li>Increasing Cardinality 와  Increasing depth or width 비교</li>
 <li>Cardinality 의 성능이 더 좋음.</li>
 </ul>
-<figure>
-    <img src="/images/post/resnext/Untitled_8.png"/> 
+<figure><img src="/images/post/resnext/Untitled_8.png"/>
 </figure>
 
 <ul>
 <li>Residual connections 여부에 따른 비교</li>
 </ul>
-<figure>
-    <img src="/images/post/resnext/Untitled_9.png"/> 
+<figure><img src="/images/post/resnext/Untitled_9.png"/>
 </figure>
 
 <ul>
 <li>State-of-the-art model 과 비교</li>
 </ul>
-<figure>
-    <img src="/images/post/resnext/Untitled_10.png"/> 
+<figure><img src="/images/post/resnext/Untitled_10.png"/>
 </figure>
 
 <h2 id="on-imagenet-5k">On ImageNet-5K</h2>
 <ul>
 <li>5000개 클래스에서도 잘 되더라.</li>
 </ul>
-<figure>
-    <img src="/images/post/resnext/Untitled_11.png"/> 
+<figure><img src="/images/post/resnext/Untitled_11.png"/>
 </figure>
 
-<figure>
-    <img src="/images/post/resnext/Untitled_12.png"/> 
+<figure><img src="/images/post/resnext/Untitled_12.png"/>
 </figure>
 
 <h2 id="on-cifar">On CIFAR</h2>
-<figure>
-    <img src="/images/post/resnext/Untitled_13.png"/> 
+<figure><img src="/images/post/resnext/Untitled_13.png"/>
 </figure>
 
-<figure>
-    <img src="/images/post/resnext/Untitled_14.png"/> 
+<figure><img src="/images/post/resnext/Untitled_14.png"/>
 </figure>
 
 <h2 id="on-coco-object-detection">On COCO object detection</h2>
 <ul>
 <li>Faster RCNN에 적용.</li>
 </ul>
-<figure>
-    <img src="/images/post/resnext/Untitled_15.png"/> 
+<figure><img src="/images/post/resnext/Untitled_15.png"/>
 </figure>
 
 <h2 id="ps">P.S</h2>
@@ -293,8 +277,8 @@ URL: <a href="https://arxiv.org/abs/1611.05431">https://arxiv.org/abs/1611.05431
 
         
         <div style="text-align:center; margin:20px 0px 20px 0px">
-          <a href="https://donaricano.com/mypage/1391188679_guPzXC" target="_blank">
-            <img src="https://jjerry-k.github.io/images/promotion.png" alt="donaricano-btn"
+          <a href="https://www.buymeacoffee.com/jjerry" target="_blank">
+            <img src="https://jjerry-k.github.io/images/promotion.png" alt="support-btn"
             style="height: 100px !important;width: 100px !important;" />
           </br>
             <span class="caption">도움이 되셨다면 몰랑이에게 밀크티를...! </br> 더 다양한 포스팅을 채우도록 노력할게요!</span>

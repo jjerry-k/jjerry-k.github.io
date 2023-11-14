@@ -9,7 +9,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="this is meta description">
   <meta name="author" content="Jerry Kim">
-  <meta name="generator" content="Hugo 0.68.3" />
+  <meta name="generator" content="Hugo 0.92.2" />
 
   <!-- plugins -->
   
@@ -181,8 +181,7 @@ URL: <a href="https://arxiv.org/abs/1610.02357">https://arxiv.org/abs/1610.02357
 </li>
 <li>
 <p>Figure 1은 Inception V3 의 표준 Inception Module.</p>
-<figure>
-    <img src="/images/post/xception/Untitled.png"/> 
+<figure><img src="/images/post/xception/Untitled.png"/>
 </figure>
 
 </li>
@@ -209,15 +208,13 @@ URL: <a href="https://arxiv.org/abs/1610.02357">https://arxiv.org/abs/1610.02357
 </li>
 <li>
 <p>Figure 2는 3x3 conv와 1x1 conv만 사용한 단순화한 Inception 모듈.</p>
-<figure>
-    <img src="/images/post/xception/Untitled_1.png"/> 
+<figure><img src="/images/post/xception/Untitled_1.png"/>
 </figure>
 
 </li>
 <li>
 <p>Figure 3은 Figure 2의 Inception 모듈에서 하나의 큰 1x1 Convolution과 3x3 Convolution들로 재구성한 것.</p>
-<figure>
-    <img src="/images/post/xception/Untitled_2.png"/> 
+<figure><img src="/images/post/xception/Untitled_2.png"/>
 </figure>
 
 </li>
@@ -229,8 +226,7 @@ URL: <a href="https://arxiv.org/abs/1610.02357">https://arxiv.org/abs/1610.02357
 <ul>
 <li>
 <p>Figure 4 처럼 Inception 모듈 구성.</p>
-<figure>
-    <img src="/images/post/xception/Untitled_3.png"/> 
+<figure><img src="/images/post/xception/Untitled_3.png"/>
 </figure>
 
 </li>
@@ -253,21 +249,21 @@ URL: <a href="https://arxiv.org/abs/1610.02357">https://arxiv.org/abs/1610.02357
 <table>
 <thead>
 <tr>
-<th align="center">비교</th>
-<th align="center">Extream</th>
-<th align="center">Depthwise Separable</th>
+<th style="text-align:center">비교</th>
+<th style="text-align:center">Extream</th>
+<th style="text-align:center">Depthwise Separable</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="center">연산순서</td>
-<td align="center">pointwise&ndash;&gt;channelwise</td>
-<td align="center">channelwise&ndash;&gt;pointwise</td>
+<td style="text-align:center">연산순서</td>
+<td style="text-align:center">pointwise&ndash;&gt;channelwise</td>
+<td style="text-align:center">channelwise&ndash;&gt;pointwise</td>
 </tr>
 <tr>
-<td align="center">비선형성</td>
-<td align="center">Presence</td>
-<td align="center">Absence</td>
+<td style="text-align:center">비선형성</td>
+<td style="text-align:center">Presence</td>
+<td style="text-align:center">Absence</td>
 </tr>
 </tbody>
 </table>
@@ -280,8 +276,7 @@ URL: <a href="https://arxiv.org/abs/1610.02357">https://arxiv.org/abs/1610.02357
 <li>Residual connection 을 광범위하게 사용.</li>
 </ul>
 <h1 id="3thexceptionarchitecture"><strong>3. The Xception architecture</strong></h1>
-<figure>
-    <img src="/images/post/xception/Untitled_4.png"/> 
+<figure><img src="/images/post/xception/Untitled_4.png"/>
 </figure>
 
 <ul>
@@ -339,24 +334,19 @@ URL: <a href="https://arxiv.org/abs/1610.02357">https://arxiv.org/abs/1610.02357
 <ul>
 <li>
 <p>두 데이터 모두 Xception이 좋은 성능을 보임.</p>
-<figure>
-    <img src="/images/post/xception/Untitled_5.png"/> 
+<figure><img src="/images/post/xception/Untitled_5.png"/>
 </figure>
 
-<figure>
-    <img src="/images/post/xception/Untitled_6.png"/> 
+<figure><img src="/images/post/xception/Untitled_6.png"/>
 </figure>
 
-<figure>
-    <img src="/images/post/xception/Untitled_7.png"/> 
+<figure><img src="/images/post/xception/Untitled_7.png"/>
 </figure>
 
-<figure>
-    <img src="/images/post/xception/Untitled_8.png"/> 
+<figure><img src="/images/post/xception/Untitled_8.png"/>
 </figure>
 
-<figure>
-    <img src="/images/post/xception/Untitled_9.png"/> 
+<figure><img src="/images/post/xception/Untitled_9.png"/>
 </figure>
 
 </li>
@@ -365,8 +355,7 @@ URL: <a href="https://arxiv.org/abs/1610.02357">https://arxiv.org/abs/1610.02357
 <ul>
 <li>
 <p>Parameter가 늘지 않으면서 성능 향상을 보이기에 Xception이 효율적인 모델.</p>
-<figure>
-    <img src="/images/post/xception/Untitled_10.png"/> 
+<figure><img src="/images/post/xception/Untitled_10.png"/>
 </figure>
 
 </li>
@@ -376,8 +365,7 @@ URL: <a href="https://arxiv.org/abs/1610.02357">https://arxiv.org/abs/1610.02357
 <li>Residual connection에 대한 ablation study 진행.</li>
 <li>Residual connection의 중요성을 보여줌.</li>
 </ul>
-<figure>
-    <img src="/images/post/xception/Untitled_11.png"/> 
+<figure><img src="/images/post/xception/Untitled_11.png"/>
 </figure>
 
 <h3 id="47effectofanintermediateactivationafterpointwiseconvolutions"><strong>4.7 Effect of an intermediate activation after point wise convolutions</strong></h3>
@@ -387,8 +375,7 @@ URL: <a href="https://arxiv.org/abs/1610.02357">https://arxiv.org/abs/1610.02357
 </li>
 <li>
 <p>그 중간에 activation function에 대한 ablation study 진행.</p>
-<figure>
-    <img src="/images/post/xception/Untitled_12.png"/> 
+<figure><img src="/images/post/xception/Untitled_12.png"/>
 </figure>
 
 </li>
@@ -405,8 +392,8 @@ URL: <a href="https://arxiv.org/abs/1610.02357">https://arxiv.org/abs/1610.02357
 
         
         <div style="text-align:center; margin:20px 0px 20px 0px">
-          <a href="https://donaricano.com/mypage/1391188679_guPzXC" target="_blank">
-            <img src="https://jjerry-k.github.io/images/promotion.png" alt="donaricano-btn"
+          <a href="https://www.buymeacoffee.com/jjerry" target="_blank">
+            <img src="https://jjerry-k.github.io/images/promotion.png" alt="support-btn"
             style="height: 100px !important;width: 100px !important;" />
           </br>
             <span class="caption">도움이 되셨다면 몰랑이에게 밀크티를...! </br> 더 다양한 포스팅을 채우도록 노력할게요!</span>
