@@ -6,7 +6,17 @@
     <description>Recent content on Jerry&#39;s DevLog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 04 Dec 2023 22:49:39 +0900</lastBuildDate><atom:link href="https://jjerry-k.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 07 Dec 2023 12:08:00 +0900</lastBuildDate><atom:link href="https://jjerry-k.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Triton Inference Server 입문기 - (2)</title>
+      <link>https://jjerry-k.github.io/blog/triton02/</link>
+      <pubDate>Thu, 07 Dec 2023 12:08:00 +0900</pubDate>
+      
+      <guid>https://jjerry-k.github.io/blog/triton02/</guid>
+      <description>저번 포스팅(Triton Inference Server 입문기 - (1))과 이어집니다!
+이번 포스팅에선 Triton Inference Server를 직접 실행시켜보고자 합니다!</description>
+    </item>
+    
     <item>
       <title>Triton Inference Server 입문기 - (1)</title>
       <link>https://jjerry-k.github.io/blog/triton01/</link>
