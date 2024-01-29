@@ -6,7 +6,16 @@
     <description>Recent content in Categories on Jerry&#39;s DevLog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 07 Dec 2023 12:08:00 +0900</lastBuildDate><atom:link href="https://jjerry-k.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 25 Jan 2024 20:36:29 +0900</lastBuildDate><atom:link href="https://jjerry-k.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Programming</title>
+      <link>https://jjerry-k.github.io/categories/programming/</link>
+      <pubDate>Thu, 25 Jan 2024 20:36:29 +0900</pubDate>
+      
+      <guid>https://jjerry-k.github.io/categories/programming/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>DeepLearning</title>
       <link>https://jjerry-k.github.io/categories/deeplearning/</link>
