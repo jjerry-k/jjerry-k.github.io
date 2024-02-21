@@ -6,13 +6,23 @@
     <description>Recent content on Jerry&#39;s DevLog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 25 Jan 2024 20:36:29 +0900</lastBuildDate><atom:link href="https://jjerry-k.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 20 Feb 2024 23:00:34 +0900</lastBuildDate><atom:link href="https://jjerry-k.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Vector Search를 위한 MongoDB Atlas 설치</title>
-      <link>https://jjerry-k.github.io/blog/atlas_local/</link>
+      <title>MongoDB Atlas 입문기 - (2)</title>
+      <link>https://jjerry-k.github.io/blog/atlas_local_02/</link>
+      <pubDate>Tue, 20 Feb 2024 23:00:34 +0900</pubDate>
+      
+      <guid>https://jjerry-k.github.io/blog/atlas_local_02/</guid>
+      <description>안녕하세요! Jerry 입니다!
+지난번에 Vector Search를 해보기 위해서&amp;hellip;. MongoDB Atlas 세팅을 해보았습니다!</description>
+    </item>
+    
+    <item>
+      <title>MongoDB Atlas 입문기 - (1)</title>
+      <link>https://jjerry-k.github.io/blog/atlas_local_01/</link>
       <pubDate>Thu, 25 Jan 2024 20:36:29 +0900</pubDate>
       
-      <guid>https://jjerry-k.github.io/blog/atlas_local/</guid>
+      <guid>https://jjerry-k.github.io/blog/atlas_local_01/</guid>
       <description>안녕하세요! Jerry 입니다!
 딥러닝, 특히나 자연어 처리에서 LLM의 등장 이후 Vector Search라는 기술에 대한 중요성이 커졌습니다!</description>
     </item>
