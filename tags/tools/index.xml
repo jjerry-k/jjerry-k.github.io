@@ -84,20 +84,20 @@ MediaPipe is a framework for building multimodal (eg.</description>
     </item>
     
     <item>
-      <title>Weights &amp; Biases Usage - [2]</title>
-      <link>https://jjerry-k.github.io/blog/sweep/</link>
+      <title>About Weights &amp; Biases - (3)</title>
+      <link>https://jjerry-k.github.io/blog/wandb03/</link>
       <pubDate>Fri, 28 Aug 2020 18:30:46 +0600</pubDate>
       
-      <guid>https://jjerry-k.github.io/blog/sweep/</guid>
+      <guid>https://jjerry-k.github.io/blog/wandb03/</guid>
       <description>오늘은 Weights &amp;amp; Biases 의 기능중 하나인 sweep에 대해서 알아보려고 합니다.</description>
     </item>
     
     <item>
-      <title>Weights &amp; Biases Usage - [1]</title>
-      <link>https://jjerry-k.github.io/blog/wandb_usage_1/</link>
+      <title>About Weights &amp; Biases - (2)</title>
+      <link>https://jjerry-k.github.io/blog/wandb02/</link>
       <pubDate>Thu, 27 Aug 2020 18:30:46 +0600</pubDate>
       
-      <guid>https://jjerry-k.github.io/blog/wandb_usage_1/</guid>
+      <guid>https://jjerry-k.github.io/blog/wandb02/</guid>
       <description>이번 포스팅은 Weights &amp;amp; Biases 를 활용하여 Network 성능 비교 예시를 하려고 합니다.</description>
     </item>
     
@@ -196,11 +196,11 @@ NIPA는 정보통신산업진흥원 의 약자인데 근데 그래서 이게 왜
     </item>
     
     <item>
-      <title>Weights &amp; Biases 가 뭐지??</title>
-      <link>https://jjerry-k.github.io/blog/wandb/</link>
+      <title>About Weights &amp; Biases - (1)</title>
+      <link>https://jjerry-k.github.io/blog/wandb01/</link>
       <pubDate>Sun, 01 Mar 2020 18:30:46 +0600</pubDate>
       
-      <guid>https://jjerry-k.github.io/blog/wandb/</guid>
+      <guid>https://jjerry-k.github.io/blog/wandb01/</guid>
       <description>이번 포스팅에선 Weights &amp;amp; Biases 라는 Tool 을 소개드리려 합니다.</description>
     </item>
     
