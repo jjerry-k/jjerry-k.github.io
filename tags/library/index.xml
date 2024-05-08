@@ -6,7 +6,18 @@
     <description>Recent content in Library on Jerry&#39;s DevLog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 03 Apr 2023 21:43:03 +0900</lastBuildDate><atom:link href="https://jjerry-k.github.io/tags/library/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 08 May 2024 22:34:26 +0900</lastBuildDate><atom:link href="https://jjerry-k.github.io/tags/library/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>About Ray</title>
+      <link>https://jjerry-k.github.io/blog/ray_01/</link>
+      <pubDate>Wed, 08 May 2024 22:34:26 +0900</pubDate>
+      
+      <guid>https://jjerry-k.github.io/blog/ray_01/</guid>
+      <description>Multiprocessing, Distributed applications&amp;hellip;등을 좀 찾다가 RAY라는 것을 보았습니다.
+이거슨..무엇일까&amp;hellip;
+찾아보니 Python 에서 이를 쉽게 할 수있도록 해주는 패키지 입니다.</description>
+    </item>
+    
     <item>
       <title>Python Collections</title>
       <link>https://jjerry-k.github.io/blog/python_collections/</link>

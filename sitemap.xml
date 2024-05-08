@@ -2,14 +2,26 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://jjerry-k.github.io/blog/ray_01/</loc>
+    <lastmod>2024-05-08T22:34:26+09:00</lastmod>
+  </url><url>
     <loc>https://jjerry-k.github.io/blog/</loc>
-    <lastmod>2024-02-20T23:00:34+09:00</lastmod>
+    <lastmod>2024-05-08T22:34:26+09:00</lastmod>
   </url><url>
     <loc>https://jjerry-k.github.io/categories/</loc>
-    <lastmod>2024-02-20T23:00:34+09:00</lastmod>
+    <lastmod>2024-05-08T22:34:26+09:00</lastmod>
   </url><url>
     <loc>https://jjerry-k.github.io/</loc>
-    <lastmod>2024-02-20T23:00:34+09:00</lastmod>
+    <lastmod>2024-05-08T22:34:26+09:00</lastmod>
+  </url><url>
+    <loc>https://jjerry-k.github.io/tags/library/</loc>
+    <lastmod>2024-05-08T22:34:26+09:00</lastmod>
+  </url><url>
+    <loc>https://jjerry-k.github.io/categories/python/</loc>
+    <lastmod>2024-05-08T22:34:26+09:00</lastmod>
+  </url><url>
+    <loc>https://jjerry-k.github.io/tags/</loc>
+    <lastmod>2024-05-08T22:34:26+09:00</lastmod>
   </url><url>
     <loc>https://jjerry-k.github.io/tags/mongo-db-atlas/</loc>
     <lastmod>2024-02-20T23:00:34+09:00</lastmod>
@@ -18,9 +30,6 @@
     <lastmod>2024-02-20T23:00:34+09:00</lastmod>
   </url><url>
     <loc>https://jjerry-k.github.io/categories/programming/</loc>
-    <lastmod>2024-02-20T23:00:34+09:00</lastmod>
-  </url><url>
-    <loc>https://jjerry-k.github.io/tags/</loc>
     <lastmod>2024-02-20T23:00:34+09:00</lastmod>
   </url><url>
     <loc>https://jjerry-k.github.io/tags/vector-search/</loc>
@@ -49,12 +58,6 @@
   </url><url>
     <loc>https://jjerry-k.github.io/blog/restart/</loc>
     <lastmod>2023-11-14T23:55:41+09:00</lastmod>
-  </url><url>
-    <loc>https://jjerry-k.github.io/tags/library/</loc>
-    <lastmod>2023-04-03T21:43:03+09:00</lastmod>
-  </url><url>
-    <loc>https://jjerry-k.github.io/categories/python/</loc>
-    <lastmod>2023-04-03T21:43:03+09:00</lastmod>
   </url><url>
     <loc>https://jjerry-k.github.io/blog/python_collections/</loc>
     <lastmod>2023-04-03T21:43:03+09:00</lastmod>
