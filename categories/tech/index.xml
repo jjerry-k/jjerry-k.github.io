@@ -17,5 +17,23 @@
 그리고 아이패드 프로 11인치 1세대를 구매했죠&amp;hellip;(포기할 수 없었다.</description>
     </item>
     
+    <item>
+      <title>Smart Mirror Customizing</title>
+      <link>https://jjerry-k.github.io/blog/hobby/smartmirror_02/</link>
+      <pubDate>Mon, 29 Mar 2021 23:19:59 +0900</pubDate>
+      
+      <guid>https://jjerry-k.github.io/blog/hobby/smartmirror_02/</guid>
+      <description>저번 포스팅에선 Raspberry Pi 와 LCD, MagicMirror를 이용하여 Smart Mirror 초기 세팅을 했습니다!</description>
+    </item>
+    
+    <item>
+      <title>Raspberry Pi를 이용한 Smart Mirror 만들기</title>
+      <link>https://jjerry-k.github.io/blog/hobby/smartmirror_01/</link>
+      <pubDate>Sun, 28 Mar 2021 01:41:53 +0900</pubDate>
+      
+      <guid>https://jjerry-k.github.io/blog/hobby/smartmirror_01/</guid>
+      <description>이번 생일에 Raspberry Pi Zero WH 를 선물로 받았습니다. (제가 선물로 달라고 했음.</description>
+    </item>
+    
   </channel>
 </rss>
