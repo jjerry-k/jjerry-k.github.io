@@ -9,10 +9,10 @@
     <lastBuildDate>Mon, 04 Dec 2023 22:49:39 +0900</lastBuildDate><atom:link href="https://jjerry-k.github.io/tags/deploy/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Triton Inference Server 입문기 - (1)</title>
-      <link>https://jjerry-k.github.io/blog/triton01/</link>
+      <link>https://jjerry-k.github.io/blog/tech/triton_01/</link>
       <pubDate>Mon, 04 Dec 2023 22:49:39 +0900</pubDate>
       
-      <guid>https://jjerry-k.github.io/blog/triton01/</guid>
+      <guid>https://jjerry-k.github.io/blog/tech/triton_01/</guid>
       <description>Triton (Triton Inference Server) ? Triton이라고 많이 부르는 Triton Inference Server는 다양한 딥 러닝 프레임워크(PyTorch, TensorFlow, ONNX 등)로 개발된 딥러닝 모델을 배포하고 추론(Inference)을 위한 고성능의 오픈 소스 추론 서버 솔루션으로 많은 곳에서 사용되고 있습니다.</description>
     </item>
     

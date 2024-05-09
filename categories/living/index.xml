@@ -9,135 +9,115 @@
     <lastBuildDate>Tue, 14 Dec 2021 21:31:55 +0900</lastBuildDate><atom:link href="https://jjerry-k.github.io/categories/living/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>V-AIS Discord 서버 시작 !</title>
-      <link>https://jjerry-k.github.io/blog/discord/</link>
+      <link>https://jjerry-k.github.io/blog/hobby/discord/</link>
       <pubDate>Tue, 14 Dec 2021 21:31:55 +0900</pubDate>
       
-      <guid>https://jjerry-k.github.io/blog/discord/</guid>
+      <guid>https://jjerry-k.github.io/blog/hobby/discord/</guid>
       <description>Discord가 생각보다 핫합니다..!
 그래서 이번에 제가 운영하던 카카오톡 오픈 커뮤니티 V-AIS 의 디스코드 서버를 만들어봤습니다!</description>
     </item>
     
     <item>
-      <title> IPad 에서 VSCode 사용하기</title>
-      <link>https://jjerry-k.github.io/blog/codeserver/</link>
-      <pubDate>Thu, 15 Apr 2021 23:47:36 +0900</pubDate>
-      
-      <guid>https://jjerry-k.github.io/blog/codeserver/</guid>
-      <description>근래에 12인치 맥북과 아이패드 프로 9.7인치를 중고로 팔았습니다.
-그리고 아이패드 프로 11인치 1세대를 구매했죠&amp;hellip;(포기할 수 없었다.</description>
-    </item>
-    
-    <item>
       <title>Smart Mirror Customizing</title>
-      <link>https://jjerry-k.github.io/blog/smartmirror2/</link>
+      <link>https://jjerry-k.github.io/blog/hobby/smartmirror_02/</link>
       <pubDate>Mon, 29 Mar 2021 23:19:59 +0900</pubDate>
       
-      <guid>https://jjerry-k.github.io/blog/smartmirror2/</guid>
+      <guid>https://jjerry-k.github.io/blog/hobby/smartmirror_02/</guid>
       <description>저번 포스팅에선 Raspberry Pi 와 LCD, MagicMirror를 이용하여 Smart Mirror 초기 세팅을 했습니다!</description>
     </item>
     
     <item>
       <title>Raspberry Pi를 이용한 Smart Mirror 만들기</title>
-      <link>https://jjerry-k.github.io/blog/smartmirror/</link>
+      <link>https://jjerry-k.github.io/blog/hobby/smartmirror_01/</link>
       <pubDate>Sun, 28 Mar 2021 01:41:53 +0900</pubDate>
       
-      <guid>https://jjerry-k.github.io/blog/smartmirror/</guid>
+      <guid>https://jjerry-k.github.io/blog/hobby/smartmirror_01/</guid>
       <description>이번 생일에 Raspberry Pi Zero WH 를 선물로 받았습니다. (제가 선물로 달라고 했음.</description>
     </item>
     
     <item>
       <title>M1 Macbook Pro 열흘 사용기</title>
-      <link>https://jjerry-k.github.io/blog/silicon_mac/</link>
+      <link>https://jjerry-k.github.io/blog/hobby/silicon_mac/</link>
       <pubDate>Wed, 10 Feb 2021 20:43:43 +0900</pubDate>
       
-      <guid>https://jjerry-k.github.io/blog/silicon_mac/</guid>
+      <guid>https://jjerry-k.github.io/blog/hobby/silicon_mac/</guid>
       <description>약 한달? 전 회사에 여분의 맥북 프로 신형이 생겨서 CTO님께 넌지시 말씀을 드렸습니다.</description>
     </item>
     
     <item>
       <title>Daily Commit</title>
-      <link>https://jjerry-k.github.io/blog/daily_commit/</link>
+      <link>https://jjerry-k.github.io/blog/personal/daily_commit/</link>
       <pubDate>Sat, 30 Jan 2021 02:27:00 +0900</pubDate>
       
-      <guid>https://jjerry-k.github.io/blog/daily_commit/</guid>
+      <guid>https://jjerry-k.github.io/blog/personal/daily_commit/</guid>
       <description>작년 1월&amp;hellip;
 곧 졸업을 앞두고 조금 막막했습니다.
 모든 석사가 이런 경험을 하는지는 모르겠으나.</description>
     </item>
     
     <item>
-      <title>Kakaobot</title>
-      <link>https://jjerry-k.github.io/blog/kakaobot/</link>
-      <pubDate>Fri, 08 Jan 2021 01:00:34 +0900</pubDate>
-      
-      <guid>https://jjerry-k.github.io/blog/kakaobot/</guid>
-      <description>요즘 딥러닝은 좀 손을 놓고 다른걸 하고 있습니다!
-카카오톡 오픈채팅을 이용하여 커뮤니티 운영을 한지&amp;hellip; 올해가 4년.</description>
-    </item>
-    
-    <item>
       <title>Small Talk</title>
-      <link>https://jjerry-k.github.io/blog/talk/</link>
+      <link>https://jjerry-k.github.io/blog/hobby/talk/</link>
       <pubDate>Mon, 30 Nov 2020 22:37:59 +0900</pubDate>
       
-      <guid>https://jjerry-k.github.io/blog/talk/</guid>
+      <guid>https://jjerry-k.github.io/blog/hobby/talk/</guid>
       <description>이 곳은 편하게 소통하기 위한 장소입니다.
 Disqus에 댓글을 남겨주세요!</description>
     </item>
     
     <item>
       <title>개인적인 CODNS CRONTAB</title>
-      <link>https://jjerry-k.github.io/blog/codns/</link>
+      <link>https://jjerry-k.github.io/blog/personal/codns/</link>
       <pubDate>Mon, 16 Nov 2020 18:30:46 +0600</pubDate>
       
-      <guid>https://jjerry-k.github.io/blog/codns/</guid>
+      <guid>https://jjerry-k.github.io/blog/personal/codns/</guid>
       <description>현재 D-Link 공유기를 사용중인데 올해 초? D-Link 측에서 DDNS 서비스를 종료한다는 공지가 떴습니다.</description>
     </item>
     
     <item>
       <title>D-Link ddns 서비스 종료</title>
-      <link>https://jjerry-k.github.io/blog/dlink_ddns/</link>
+      <link>https://jjerry-k.github.io/blog/hobby/dlink_ddns/</link>
       <pubDate>Sun, 31 May 2020 18:30:46 +0600</pubDate>
       
-      <guid>https://jjerry-k.github.io/blog/dlink_ddns/</guid>
+      <guid>https://jjerry-k.github.io/blog/hobby/dlink_ddns/</guid>
       <description>D-Link의 DIR-815L 을 잘 쓰고 있었습니다&amp;hellip;
 라즈베리파이와 연결하여 DDNS 도해놓고..</description>
     </item>
     
     <item>
       <title>개인적인 맥북 세팅법</title>
-      <link>https://jjerry-k.github.io/blog/macbook_setup/</link>
+      <link>https://jjerry-k.github.io/blog/personal/macbook_setup/</link>
       <pubDate>Sun, 26 Apr 2020 18:30:46 +0600</pubDate>
       
-      <guid>https://jjerry-k.github.io/blog/macbook_setup/</guid>
+      <guid>https://jjerry-k.github.io/blog/personal/macbook_setup/</guid>
       <description>After MacOS Install 1. Install applications  Kakao Talk Between Snap  Add Terminal shortcut   Speedtest Magnet MenuBar Stats  Add MenuBar Stats Plugins Manager https://www.</description>
     </item>
     
     <item>
       <title>Raspberry pi 4 에 Transmission 세팅하기</title>
-      <link>https://jjerry-k.github.io/blog/rpi_transmission/</link>
+      <link>https://jjerry-k.github.io/blog/hobby/rpi_transmission/</link>
       <pubDate>Mon, 20 Apr 2020 18:30:46 +0600</pubDate>
       
-      <guid>https://jjerry-k.github.io/blog/rpi_transmission/</guid>
+      <guid>https://jjerry-k.github.io/blog/hobby/rpi_transmission/</guid>
       <description>Raspberry pi 4 &amp;amp; Transmission Container  1. Docker Install curl -fsSL get.</description>
     </item>
     
     <item>
       <title>맥북 Atom 완벽 제거</title>
-      <link>https://jjerry-k.github.io/blog/macbook_auto_start/</link>
+      <link>https://jjerry-k.github.io/blog/etc/macbook_auto_start/</link>
       <pubDate>Sun, 14 Apr 2019 18:30:46 +0600</pubDate>
       
-      <guid>https://jjerry-k.github.io/blog/macbook_auto_start/</guid>
+      <guid>https://jjerry-k.github.io/blog/etc/macbook_auto_start/</guid>
       <description>안녕하세요! Jerry 입니다!
 오늘은 .. Atom 에디터를 완벽히 지우는 법에 대해 간단 포스팅을 하려고 합니다.</description>
     </item>
     
     <item>
       <title>첫 기계식 키보드 !</title>
-      <link>https://jjerry-k.github.io/blog/keyboard/</link>
+      <link>https://jjerry-k.github.io/blog/hobby/keyboard/</link>
       <pubDate>Fri, 01 Feb 2019 18:30:46 +0600</pubDate>
       
-      <guid>https://jjerry-k.github.io/blog/keyboard/</guid>
+      <guid>https://jjerry-k.github.io/blog/hobby/keyboard/</guid>
       <description>늦었지만 키보드 자랑&amp;hellip;
 바밀로 저소음흑축 108키 입니다.
 넘나 영롱하다&amp;hellip;
@@ -146,40 +126,40 @@ Disqus에 댓글을 남겨주세요!</description>
     
     <item>
       <title>Mac Terminal Customizing</title>
-      <link>https://jjerry-k.github.io/blog/terminal/</link>
+      <link>https://jjerry-k.github.io/blog/personal/terminal/</link>
       <pubDate>Wed, 07 Nov 2018 18:30:46 +0600</pubDate>
       
-      <guid>https://jjerry-k.github.io/blog/terminal/</guid>
+      <guid>https://jjerry-k.github.io/blog/personal/terminal/</guid>
       <description>저는 터미널을 마음대로 바꾸는걸 좋아합니다.
 기본 터미널을 대체할 앱이 있긴하지만 추가적으로 설치하는걸 안좋아해서.</description>
     </item>
     
     <item>
       <title>휴가</title>
-      <link>https://jjerry-k.github.io/blog/vacation/</link>
+      <link>https://jjerry-k.github.io/blog/personal/vacation/</link>
       <pubDate>Fri, 07 Sep 2018 18:30:46 +0600</pubDate>
       
-      <guid>https://jjerry-k.github.io/blog/vacation/</guid>
+      <guid>https://jjerry-k.github.io/blog/personal/vacation/</guid>
       <description>약 두 달정도 달려온 챌린지가 끝나고 처음으로 휴가를 얻었습니다.
 일단은 이번 주 쉬고 다음 주부터 다시 연구 시작.</description>
     </item>
     
     <item>
       <title>라즈베리파이로 미니 PC 만들기!</title>
-      <link>https://jjerry-k.github.io/blog/raspberry-mini-pc/</link>
+      <link>https://jjerry-k.github.io/blog/hobby/raspberry_mini_pc/</link>
       <pubDate>Tue, 10 Jul 2018 18:30:46 +0600</pubDate>
       
-      <guid>https://jjerry-k.github.io/blog/raspberry-mini-pc/</guid>
+      <guid>https://jjerry-k.github.io/blog/hobby/raspberry_mini_pc/</guid>
       <description>근래에 라즈베리파이로 미니 PC를 만들었습니다!
 그래서 만드는 과정에 대해 글을 써보려고 합니다!</description>
     </item>
     
     <item>
       <title>데스크탑 조립기</title>
-      <link>https://jjerry-k.github.io/blog/desktop/</link>
+      <link>https://jjerry-k.github.io/blog/hobby/build_desktop/</link>
       <pubDate>Fri, 04 Aug 2017 18:30:46 +0600</pubDate>
       
-      <guid>https://jjerry-k.github.io/blog/desktop/</guid>
+      <guid>https://jjerry-k.github.io/blog/hobby/build_desktop/</guid>
       <description>Building Desktop 학부생 연구원으로 연구실에서 공부와 연구를 하고 있지만..
 개인용 데스크탑이 없어서 노트북이 굉장히 고생을 많이 했습니다.</description>
     </item>

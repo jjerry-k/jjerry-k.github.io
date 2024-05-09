@@ -9,10 +9,10 @@
     <lastBuildDate>Wed, 08 May 2024 22:34:26 +0900</lastBuildDate><atom:link href="https://jjerry-k.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>About Ray</title>
-      <link>https://jjerry-k.github.io/blog/ray_01/</link>
+      <link>https://jjerry-k.github.io/blog/tech/python/ray_01/</link>
       <pubDate>Wed, 08 May 2024 22:34:26 +0900</pubDate>
       
-      <guid>https://jjerry-k.github.io/blog/ray_01/</guid>
+      <guid>https://jjerry-k.github.io/blog/tech/python/ray_01/</guid>
       <description>Multiprocessing, Distributed applications&amp;hellip;등을 좀 찾다가 RAY라는 것을 보았습니다.
 이거슨..무엇일까&amp;hellip;
 찾아보니 Python 에서 이를 쉽게 할 수있도록 해주는 패키지 입니다.</description>
@@ -20,39 +20,39 @@
     
     <item>
       <title>MongoDB Atlas 입문기 - (2)</title>
-      <link>https://jjerry-k.github.io/blog/atlas_local_02/</link>
+      <link>https://jjerry-k.github.io/blog/tech/database/atlas_local_02/</link>
       <pubDate>Tue, 20 Feb 2024 23:00:34 +0900</pubDate>
       
-      <guid>https://jjerry-k.github.io/blog/atlas_local_02/</guid>
+      <guid>https://jjerry-k.github.io/blog/tech/database/atlas_local_02/</guid>
       <description>안녕하세요! Jerry 입니다!
 지난번에 Vector Search를 해보기 위해서&amp;hellip;. MongoDB Atlas 세팅을 해보았습니다!</description>
     </item>
     
     <item>
       <title>MongoDB Atlas 입문기 - (1)</title>
-      <link>https://jjerry-k.github.io/blog/atlas_local_01/</link>
+      <link>https://jjerry-k.github.io/blog/tech/database/atlas_local_01/</link>
       <pubDate>Thu, 25 Jan 2024 20:36:29 +0900</pubDate>
       
-      <guid>https://jjerry-k.github.io/blog/atlas_local_01/</guid>
+      <guid>https://jjerry-k.github.io/blog/tech/database/atlas_local_01/</guid>
       <description>안녕하세요! Jerry 입니다!
 딥러닝, 특히나 자연어 처리에서 LLM의 등장 이후 Vector Search라는 기술에 대한 중요성이 커졌습니다!</description>
     </item>
     
     <item>
       <title>Triton Inference Server 입문기 - (1)</title>
-      <link>https://jjerry-k.github.io/blog/triton01/</link>
+      <link>https://jjerry-k.github.io/blog/tech/triton_01/</link>
       <pubDate>Mon, 04 Dec 2023 22:49:39 +0900</pubDate>
       
-      <guid>https://jjerry-k.github.io/blog/triton01/</guid>
+      <guid>https://jjerry-k.github.io/blog/tech/triton_01/</guid>
       <description>Triton (Triton Inference Server) ? Triton이라고 많이 부르는 Triton Inference Server는 다양한 딥 러닝 프레임워크(PyTorch, TensorFlow, ONNX 등)로 개발된 딥러닝 모델을 배포하고 추론(Inference)을 위한 고성능의 오픈 소스 추론 서버 솔루션으로 많은 곳에서 사용되고 있습니다.</description>
     </item>
     
     <item>
       <title>블로그 다시 시작!</title>
-      <link>https://jjerry-k.github.io/blog/restart/</link>
+      <link>https://jjerry-k.github.io/blog/personal/restart/</link>
       <pubDate>Tue, 14 Nov 2023 23:55:41 +0900</pubDate>
       
-      <guid>https://jjerry-k.github.io/blog/restart/</guid>
+      <guid>https://jjerry-k.github.io/blog/personal/restart/</guid>
       <description>안녕하세요!
 정말 오랜만에 새로운 글로 인사드립니다!
 현생에 치여 포스팅을 못하고 있었는데요!</description>
@@ -60,166 +60,166 @@
     
     <item>
       <title>Python Collections</title>
-      <link>https://jjerry-k.github.io/blog/python_collections/</link>
+      <link>https://jjerry-k.github.io/blog/tech/python/python_collections/</link>
       <pubDate>Mon, 03 Apr 2023 21:43:03 +0900</pubDate>
       
-      <guid>https://jjerry-k.github.io/blog/python_collections/</guid>
+      <guid>https://jjerry-k.github.io/blog/tech/python/python_collections/</guid>
       <description>Python은 collections라는 표준 라이브러리를 제공하여, 리스트, 튜플, 딕셔너리 등과 같은 내장 자료형보다 더 풍부한 데이터 구조를 지원합니다.</description>
     </item>
     
     <item>
       <title>Python Functools</title>
-      <link>https://jjerry-k.github.io/blog/python_functools/</link>
+      <link>https://jjerry-k.github.io/blog/tech/python/python_functools/</link>
       <pubDate>Sat, 01 Apr 2023 01:33:21 +0900</pubDate>
       
-      <guid>https://jjerry-k.github.io/blog/python_functools/</guid>
+      <guid>https://jjerry-k.github.io/blog/tech/python/python_functools/</guid>
       <description>Python의 functools 모듈은 함수형 프로그래밍에 대한 일부 기능을 제공합니다. 이 모듈에는 여러 가지 유용한 함수들이 포함되어 있으며, 주로 고차 함수와 함수형 프로그래밍에 사용됩니다!</description>
     </item>
     
     <item>
       <title>Python Webtool</title>
-      <link>https://jjerry-k.github.io/blog/python_webtool/</link>
+      <link>https://jjerry-k.github.io/blog/tech/python/python_webtool/</link>
       <pubDate>Sat, 01 Apr 2023 01:10:40 +0900</pubDate>
       
-      <guid>https://jjerry-k.github.io/blog/python_webtool/</guid>
+      <guid>https://jjerry-k.github.io/blog/tech/python/python_webtool/</guid>
       <description>인공지능 모델을 만들고 나면 모델을 사용 해볼 수 있는 웹 앱을 만들곤 합니다.</description>
     </item>
     
     <item>
       <title>Python argparse</title>
-      <link>https://jjerry-k.github.io/blog/python_argument/</link>
+      <link>https://jjerry-k.github.io/blog/tech/python/python_argument/</link>
       <pubDate>Sun, 19 Dec 2021 21:03:27 +0900</pubDate>
       
-      <guid>https://jjerry-k.github.io/blog/python_argument/</guid>
+      <guid>https://jjerry-k.github.io/blog/tech/python/python_argument/</guid>
       <description>Python을 처음 접했을때 스크립트를 작성하고 python ~~~.py 이런 식으로 실행했습니다.</description>
     </item>
     
     <item>
       <title>V-AIS Discord 서버 시작 !</title>
-      <link>https://jjerry-k.github.io/blog/discord/</link>
+      <link>https://jjerry-k.github.io/blog/hobby/discord/</link>
       <pubDate>Tue, 14 Dec 2021 21:31:55 +0900</pubDate>
       
-      <guid>https://jjerry-k.github.io/blog/discord/</guid>
+      <guid>https://jjerry-k.github.io/blog/hobby/discord/</guid>
       <description>Discord가 생각보다 핫합니다..!
 그래서 이번에 제가 운영하던 카카오톡 오픈 커뮤니티 V-AIS 의 디스코드 서버를 만들어봤습니다!</description>
     </item>
     
     <item>
       <title>Python tqdm</title>
-      <link>https://jjerry-k.github.io/blog/python_tqdm/</link>
+      <link>https://jjerry-k.github.io/blog/tech/python/python_tqdm/</link>
       <pubDate>Fri, 10 Dec 2021 00:05:33 +0900</pubDate>
       
-      <guid>https://jjerry-k.github.io/blog/python_tqdm/</guid>
+      <guid>https://jjerry-k.github.io/blog/tech/python/python_tqdm/</guid>
       <description>Python으로 이런 저런 코드를 작성하다 보면 Progress bar가 필요한 경우가 있습니다.</description>
     </item>
     
     <item>
       <title>Python itertools</title>
-      <link>https://jjerry-k.github.io/blog/python_itertools/</link>
+      <link>https://jjerry-k.github.io/blog/tech/python/python_itertools/</link>
       <pubDate>Thu, 09 Dec 2021 00:43:06 +0900</pubDate>
       
-      <guid>https://jjerry-k.github.io/blog/python_itertools/</guid>
+      <guid>https://jjerry-k.github.io/blog/tech/python/python_itertools/</guid>
       <description>Python 표준 라이브러리 중 하나인 itertools 사용법을 간단히 알아보려 합니다.</description>
     </item>
     
     <item>
       <title>ML/DL Prototype using Streamlit</title>
-      <link>https://jjerry-k.github.io/blog/streamlit/</link>
+      <link>https://jjerry-k.github.io/blog/tech/python/streamlit/</link>
       <pubDate>Sun, 08 Aug 2021 23:05:38 +0900</pubDate>
       
-      <guid>https://jjerry-k.github.io/blog/streamlit/</guid>
+      <guid>https://jjerry-k.github.io/blog/tech/python/streamlit/</guid>
       <description>동일한 task에서 Deep learning model 들을 이래저래 학습을 하다보면 매우 귀찮은 상황이 발생하곤 합니다&amp;hellip;.</description>
     </item>
     
     <item>
       <title>MediaPipe - (6)</title>
-      <link>https://jjerry-k.github.io/blog/mediapipe_6/</link>
+      <link>https://jjerry-k.github.io/blog/tech/python/mediapipe_06/</link>
       <pubDate>Mon, 21 Jun 2021 00:06:14 +0900</pubDate>
       
-      <guid>https://jjerry-k.github.io/blog/mediapipe_6/</guid>
+      <guid>https://jjerry-k.github.io/blog/tech/python/mediapipe_06/</guid>
       <description>오늘은 Selfie Segmentation에 이은 Face Detection 이라는 솔루션입니다!
 이름만 봐도 뭐하는지 알 수 있습니다.</description>
     </item>
     
     <item>
       <title>MediaPipe - (5)</title>
-      <link>https://jjerry-k.github.io/blog/mediapipe_5/</link>
+      <link>https://jjerry-k.github.io/blog/tech/python/mediapipe_05/</link>
       <pubDate>Sun, 20 Jun 2021 23:06:14 +0900</pubDate>
       
-      <guid>https://jjerry-k.github.io/blog/mediapipe_5/</guid>
+      <guid>https://jjerry-k.github.io/blog/tech/python/mediapipe_05/</guid>
       <description>요즘 MediaPipe에 대해 tracking을 안하다보니 어떤 솔루션이 새로 나왔는지 잘 몰랐습니다&amp;hellip; 오랜만에 들어갔더니 세 가지 솔루션이 추가가 되었더라구요!</description>
     </item>
     
     <item>
-      <title> IPad 에서 VSCode 사용하기</title>
-      <link>https://jjerry-k.github.io/blog/codeserver/</link>
+      <title>IPad 에서 VSCode 사용하기</title>
+      <link>https://jjerry-k.github.io/blog/tech/codeserver/</link>
       <pubDate>Thu, 15 Apr 2021 23:47:36 +0900</pubDate>
       
-      <guid>https://jjerry-k.github.io/blog/codeserver/</guid>
+      <guid>https://jjerry-k.github.io/blog/tech/codeserver/</guid>
       <description>근래에 12인치 맥북과 아이패드 프로 9.7인치를 중고로 팔았습니다.
 그리고 아이패드 프로 11인치 1세대를 구매했죠&amp;hellip;(포기할 수 없었다.</description>
     </item>
     
     <item>
       <title>Smart Mirror Customizing</title>
-      <link>https://jjerry-k.github.io/blog/smartmirror2/</link>
+      <link>https://jjerry-k.github.io/blog/hobby/smartmirror_02/</link>
       <pubDate>Mon, 29 Mar 2021 23:19:59 +0900</pubDate>
       
-      <guid>https://jjerry-k.github.io/blog/smartmirror2/</guid>
+      <guid>https://jjerry-k.github.io/blog/hobby/smartmirror_02/</guid>
       <description>저번 포스팅에선 Raspberry Pi 와 LCD, MagicMirror를 이용하여 Smart Mirror 초기 세팅을 했습니다!</description>
     </item>
     
     <item>
       <title>Raspberry Pi를 이용한 Smart Mirror 만들기</title>
-      <link>https://jjerry-k.github.io/blog/smartmirror/</link>
+      <link>https://jjerry-k.github.io/blog/hobby/smartmirror_01/</link>
       <pubDate>Sun, 28 Mar 2021 01:41:53 +0900</pubDate>
       
-      <guid>https://jjerry-k.github.io/blog/smartmirror/</guid>
+      <guid>https://jjerry-k.github.io/blog/hobby/smartmirror_01/</guid>
       <description>이번 생일에 Raspberry Pi Zero WH 를 선물로 받았습니다. (제가 선물로 달라고 했음.</description>
     </item>
     
     <item>
       <title>About TensorFlow Callback </title>
-      <link>https://jjerry-k.github.io/blog/tf_callback/</link>
+      <link>https://jjerry-k.github.io/blog/tech/deeplearning/tf_callback/</link>
       <pubDate>Mon, 22 Feb 2021 19:32:50 +0900</pubDate>
       
-      <guid>https://jjerry-k.github.io/blog/tf_callback/</guid>
+      <guid>https://jjerry-k.github.io/blog/tech/deeplearning/tf_callback/</guid>
       <description>A callback is a powerful tool to customize the behavior of a Keras model during training, evaluation, or inference.</description>
     </item>
     
     <item>
       <title>M1 Macbook Pro 열흘 사용기</title>
-      <link>https://jjerry-k.github.io/blog/silicon_mac/</link>
+      <link>https://jjerry-k.github.io/blog/hobby/silicon_mac/</link>
       <pubDate>Wed, 10 Feb 2021 20:43:43 +0900</pubDate>
       
-      <guid>https://jjerry-k.github.io/blog/silicon_mac/</guid>
+      <guid>https://jjerry-k.github.io/blog/hobby/silicon_mac/</guid>
       <description>약 한달? 전 회사에 여분의 맥북 프로 신형이 생겨서 CTO님께 넌지시 말씀을 드렸습니다.</description>
     </item>
     
     <item>
       <title>Python hashlib</title>
-      <link>https://jjerry-k.github.io/blog/python_hash/</link>
+      <link>https://jjerry-k.github.io/blog/tech/python/python_hash/</link>
       <pubDate>Wed, 10 Feb 2021 00:46:48 +0900</pubDate>
       
-      <guid>https://jjerry-k.github.io/blog/python_hash/</guid>
+      <guid>https://jjerry-k.github.io/blog/tech/python/python_hash/</guid>
       <description>Python 표준 라이브러리 중 하나인 hashlib 사용법을 간단히 알아보려 합니다.</description>
     </item>
     
     <item>
       <title>Configuration</title>
-      <link>https://jjerry-k.github.io/blog/configuration/</link>
+      <link>https://jjerry-k.github.io/blog/tech/python/configuration/</link>
       <pubDate>Sun, 31 Jan 2021 20:56:18 +0900</pubDate>
       
-      <guid>https://jjerry-k.github.io/blog/configuration/</guid>
+      <guid>https://jjerry-k.github.io/blog/tech/python/configuration/</guid>
       <description>Python 을 이용하여 ML, DL 코딩을 하다보면 관리해야하는 설정값이 매우 많습니다.</description>
     </item>
     
     <item>
       <title>Daily Commit</title>
-      <link>https://jjerry-k.github.io/blog/daily_commit/</link>
+      <link>https://jjerry-k.github.io/blog/personal/daily_commit/</link>
       <pubDate>Sat, 30 Jan 2021 02:27:00 +0900</pubDate>
       
-      <guid>https://jjerry-k.github.io/blog/daily_commit/</guid>
+      <guid>https://jjerry-k.github.io/blog/personal/daily_commit/</guid>
       <description>작년 1월&amp;hellip;
 곧 졸업을 앞두고 조금 막막했습니다.
 모든 석사가 이런 경험을 하는지는 모르겠으나.</description>
@@ -227,540 +227,530 @@
     
     <item>
       <title>MediaPipe - (4)</title>
-      <link>https://jjerry-k.github.io/blog/mediapipe_4/</link>
+      <link>https://jjerry-k.github.io/blog/tech/python/mediapipe_04/</link>
       <pubDate>Tue, 12 Jan 2021 01:14:36 +0900</pubDate>
       
-      <guid>https://jjerry-k.github.io/blog/mediapipe_4/</guid>
+      <guid>https://jjerry-k.github.io/blog/tech/python/mediapipe_04/</guid>
       <description>최근 MediaPipe의 버전이 올라가면서 python API에 추가된 솔루션이 있습니다!
 holistic 이라는 솔루션입니다!</description>
     </item>
     
     <item>
-      <title>Kakaobot</title>
-      <link>https://jjerry-k.github.io/blog/kakaobot/</link>
-      <pubDate>Fri, 08 Jan 2021 01:00:34 +0900</pubDate>
-      
-      <guid>https://jjerry-k.github.io/blog/kakaobot/</guid>
-      <description>요즘 딥러닝은 좀 손을 놓고 다른걸 하고 있습니다!
-카카오톡 오픈채팅을 이용하여 커뮤니티 운영을 한지&amp;hellip; 올해가 4년.</description>
-    </item>
-    
-    <item>
-      <title>Jupyter_image_viewer</title>
-      <link>https://jjerry-k.github.io/blog/jupyter_image_viewer/</link>
+      <title>Jupyter notebook으로 뷰어 만들기</title>
+      <link>https://jjerry-k.github.io/blog/tech/python/jupyter_image_viewer/</link>
       <pubDate>Tue, 08 Dec 2020 00:24:48 +0900</pubDate>
       
-      <guid>https://jjerry-k.github.io/blog/jupyter_image_viewer/</guid>
+      <guid>https://jjerry-k.github.io/blog/tech/python/jupyter_image_viewer/</guid>
       <description>Jupyter 많이 쓰시죠.
 이번 포스팅에선 Jupyter에서 ipywidgets 를 이용하여 썸네일과 같은 Image Viewer를 만들어보겠습니다.</description>
     </item>
     
     <item>
       <title>Small Talk</title>
-      <link>https://jjerry-k.github.io/blog/talk/</link>
+      <link>https://jjerry-k.github.io/blog/hobby/talk/</link>
       <pubDate>Mon, 30 Nov 2020 22:37:59 +0900</pubDate>
       
-      <guid>https://jjerry-k.github.io/blog/talk/</guid>
+      <guid>https://jjerry-k.github.io/blog/hobby/talk/</guid>
       <description>이 곳은 편하게 소통하기 위한 장소입니다.
 Disqus에 댓글을 남겨주세요!</description>
     </item>
     
     <item>
       <title>TensorFlow 모델 로드 에러..</title>
-      <link>https://jjerry-k.github.io/blog/tensorflow_model_load/</link>
+      <link>https://jjerry-k.github.io/blog/tech/deeplearning/tensorflow_model_load/</link>
       <pubDate>Sat, 28 Nov 2020 11:45:10 +0900</pubDate>
       
-      <guid>https://jjerry-k.github.io/blog/tensorflow_model_load/</guid>
+      <guid>https://jjerry-k.github.io/blog/tech/deeplearning/tensorflow_model_load/</guid>
       <description>TensorFlow를 쓰다보면 종종 model load 할때 error 가 발생할때가 있습니다.</description>
     </item>
     
     <item>
       <title>Hugo Blog</title>
-      <link>https://jjerry-k.github.io/blog/hugo_blog/</link>
+      <link>https://jjerry-k.github.io/blog/tech/blog/hugo_blog/</link>
       <pubDate>Mon, 23 Nov 2020 20:41:18 +0900</pubDate>
       
-      <guid>https://jjerry-k.github.io/blog/hugo_blog/</guid>
+      <guid>https://jjerry-k.github.io/blog/tech/blog/hugo_blog/</guid>
       <description>이번에 Github Blog를 이전하게 되었습니다!
 기존에는 Jekyll 기반의 블로그를 사용했었는데요.</description>
     </item>
     
     <item>
       <title>개인적인 CODNS CRONTAB</title>
-      <link>https://jjerry-k.github.io/blog/codns/</link>
+      <link>https://jjerry-k.github.io/blog/personal/codns/</link>
       <pubDate>Mon, 16 Nov 2020 18:30:46 +0600</pubDate>
       
-      <guid>https://jjerry-k.github.io/blog/codns/</guid>
+      <guid>https://jjerry-k.github.io/blog/personal/codns/</guid>
       <description>현재 D-Link 공유기를 사용중인데 올해 초? D-Link 측에서 DDNS 서비스를 종료한다는 공지가 떴습니다.</description>
     </item>
     
     <item>
       <title>MediaPipe - (3)</title>
-      <link>https://jjerry-k.github.io/blog/mediapipe_3/</link>
+      <link>https://jjerry-k.github.io/blog/tech/python/mediapipe_03/</link>
       <pubDate>Sun, 15 Nov 2020 18:30:46 +0600</pubDate>
       
-      <guid>https://jjerry-k.github.io/blog/mediapipe_3/</guid>
+      <guid>https://jjerry-k.github.io/blog/tech/python/mediapipe_03/</guid>
       <description>저번 Mediapipe의 Hands 포스팅에 이어서 Mediapipe의 Pose 를 테스트 해보겠습니다.</description>
     </item>
     
     <item>
       <title>MediaPipe - (2)</title>
-      <link>https://jjerry-k.github.io/blog/mediapipe_2/</link>
+      <link>https://jjerry-k.github.io/blog/tech/python/mediapipe_02/</link>
       <pubDate>Sat, 14 Nov 2020 18:30:46 +0600</pubDate>
       
-      <guid>https://jjerry-k.github.io/blog/mediapipe_2/</guid>
+      <guid>https://jjerry-k.github.io/blog/tech/python/mediapipe_02/</guid>
       <description>저번 Mediapipe와 Face mesh 포스팅에 이어서 Mediapipe의 Hands 를 테스트 해보겠습니다.</description>
     </item>
     
     <item>
       <title>MediaPipe - (1)</title>
-      <link>https://jjerry-k.github.io/blog/mediapipe_1/</link>
+      <link>https://jjerry-k.github.io/blog/tech/python/mediapipe_01/</link>
       <pubDate>Fri, 13 Nov 2020 18:30:46 +0600</pubDate>
       
-      <guid>https://jjerry-k.github.io/blog/mediapipe_1/</guid>
+      <guid>https://jjerry-k.github.io/blog/tech/python/mediapipe_01/</guid>
       <description>이번 포스팅에선 Google의 MediaPipe에 대해서 다뤄보려합니다.
 MediaPipe is a framework for building multimodal (eg.</description>
     </item>
     
     <item>
       <title>Docker Usage (1)</title>
-      <link>https://jjerry-k.github.io/blog/docker_usage_01/</link>
+      <link>https://jjerry-k.github.io/blog/tech/docker_usage_01/</link>
       <pubDate>Sat, 24 Oct 2020 18:30:46 +0600</pubDate>
       
-      <guid>https://jjerry-k.github.io/blog/docker_usage_01/</guid>
+      <guid>https://jjerry-k.github.io/blog/tech/docker_usage_01/</guid>
       <description>Docker 에 대한 설명은 안합니다.
 사용법을 보러 오시는 분이라면 어느 정도 Docker 가 뭔지는 아실테니&amp;hellip;</description>
     </item>
     
     <item>
       <title>Seed 가 뭐길래..</title>
-      <link>https://jjerry-k.github.io/blog/seed/</link>
+      <link>https://jjerry-k.github.io/blog/tech/deeplearning/seed/</link>
       <pubDate>Sat, 12 Sep 2020 18:30:46 +0600</pubDate>
       
-      <guid>https://jjerry-k.github.io/blog/seed/</guid>
+      <guid>https://jjerry-k.github.io/blog/tech/deeplearning/seed/</guid>
       <description>Deep learning model 을 실험하다보면 reproducibility 라는 말을 자주 듣게 됩니다.</description>
     </item>
     
     <item>
       <title>자주 사용하는 Docker Command 정리</title>
-      <link>https://jjerry-k.github.io/blog/docker/</link>
+      <link>https://jjerry-k.github.io/blog/tech/docker_command/</link>
       <pubDate>Sun, 30 Aug 2020 18:30:46 +0600</pubDate>
       
-      <guid>https://jjerry-k.github.io/blog/docker/</guid>
+      <guid>https://jjerry-k.github.io/blog/tech/docker_command/</guid>
       <description># nvidia docker 서비스 시작 sudo service nvidia-docker start # 특정 포트 터널링, 경로 마운트, Docker image:tag 를 이용하여 container 로 실행 docker run -ti -rm -p {호스트포트}:{도커포트} -v {호스트경로}:{도커경로} {IMAGE_NAME:tag} bash # 종료된 Container 삭제 docker rm {CONTAINER_NAEM} # Docker Image 삭제 docker rmi {IMAGE_NAME} # 종료된 Container를 삭제하지 않고 새로운 IMAGE로 생성 docker commit {CONTAINER_NAEM} {IMAGE_NAME:TAG} # Docker container 내에서 jupyter notebook 혹은 jupyter lab을 실행할때 사용되는 커맨드 CUDA_VISIBLE_DEVICES=0 jupyter notebook --ip=0.</description>
     </item>
     
     <item>
       <title>About Weights &amp; Biases - (3)</title>
-      <link>https://jjerry-k.github.io/blog/wandb03/</link>
+      <link>https://jjerry-k.github.io/blog/tech/python/wandb_03/</link>
       <pubDate>Fri, 28 Aug 2020 18:30:46 +0600</pubDate>
       
-      <guid>https://jjerry-k.github.io/blog/wandb03/</guid>
+      <guid>https://jjerry-k.github.io/blog/tech/python/wandb_03/</guid>
       <description>오늘은 Weights &amp;amp; Biases 의 기능중 하나인 sweep에 대해서 알아보려고 합니다.</description>
     </item>
     
     <item>
       <title>About Weights &amp; Biases - (2)</title>
-      <link>https://jjerry-k.github.io/blog/wandb02/</link>
+      <link>https://jjerry-k.github.io/blog/tech/python/wandb_02/</link>
       <pubDate>Thu, 27 Aug 2020 18:30:46 +0600</pubDate>
       
-      <guid>https://jjerry-k.github.io/blog/wandb02/</guid>
+      <guid>https://jjerry-k.github.io/blog/tech/python/wandb_02/</guid>
       <description>이번 포스팅은 Weights &amp;amp; Biases 를 활용하여 Network 성능 비교 예시를 하려고 합니다.</description>
     </item>
     
     <item>
       <title>Paper Reading Roadmap</title>
-      <link>https://jjerry-k.github.io/blog/paper_roadmap/</link>
+      <link>https://jjerry-k.github.io/blog/paper/roadmap/</link>
       <pubDate>Fri, 21 Aug 2020 18:30:46 +0600</pubDate>
       
-      <guid>https://jjerry-k.github.io/blog/paper_roadmap/</guid>
+      <guid>https://jjerry-k.github.io/blog/paper/roadmap/</guid>
       <description>본 포스팅은 고려대학교 산업경영공학부 Data Science &amp;amp; Business Analytics 연구실의 강필성 교수님의 자료를 정리한 포스팅입니다.</description>
     </item>
     
     <item>
       <title>RAPIDS APIs ( cuML )</title>
-      <link>https://jjerry-k.github.io/blog/rapids-cuml/</link>
+      <link>https://jjerry-k.github.io/blog/tech/python/rapids-cuml/</link>
       <pubDate>Thu, 20 Aug 2020 18:30:46 +0600</pubDate>
       
-      <guid>https://jjerry-k.github.io/blog/rapids-cuml/</guid>
+      <guid>https://jjerry-k.github.io/blog/tech/python/rapids-cuml/</guid>
       <description>어제는 RAPIDS에 대한 소개와 RAPIDS APIs 중 cuDF 에 대한 예제에 대한 포스팅을 했습니다.</description>
     </item>
     
     <item>
       <title>RAPIDS!!!</title>
-      <link>https://jjerry-k.github.io/blog/rapids/</link>
+      <link>https://jjerry-k.github.io/blog/tech/python/rapids/</link>
       <pubDate>Wed, 19 Aug 2020 18:30:46 +0600</pubDate>
       
-      <guid>https://jjerry-k.github.io/blog/rapids/</guid>
+      <guid>https://jjerry-k.github.io/blog/tech/python/rapids/</guid>
       <description>RAPIDS is a suite of software libraries for executing end-to-end data science &amp;amp; analytics pipelines entirely on GPUs.</description>
     </item>
     
     <item>
       <title>개인적인 Vim 설정</title>
-      <link>https://jjerry-k.github.io/blog/vimrc/</link>
+      <link>https://jjerry-k.github.io/blog/personal/vimrc/</link>
       <pubDate>Sun, 16 Aug 2020 18:30:46 +0600</pubDate>
       
-      <guid>https://jjerry-k.github.io/blog/vimrc/</guid>
+      <guid>https://jjerry-k.github.io/blog/personal/vimrc/</guid>
       <description>지극히 개인이 사용하기 위한 vimrc
 마음껏 편하신대로 Copy &amp;amp; Paste 하세요!</description>
     </item>
     
     <item>
       <title>Review: Cycle GAN</title>
-      <link>https://jjerry-k.github.io/blog/cycle_gan/</link>
+      <link>https://jjerry-k.github.io/blog/paper/cycle_gan/</link>
       <pubDate>Tue, 11 Aug 2020 18:30:46 +0600</pubDate>
       
-      <guid>https://jjerry-k.github.io/blog/cycle_gan/</guid>
+      <guid>https://jjerry-k.github.io/blog/paper/cycle_gan/</guid>
       <description>Unpaired Image-to-Image Translation using Cycle-Consistent Adversarial Networks Author: Jun-Yan Zhu∗, Taesung Park∗, Phillip Isola, Alexei A.</description>
     </item>
     
     <item>
       <title>Review: Pix2Pix</title>
-      <link>https://jjerry-k.github.io/blog/pix2pix/</link>
+      <link>https://jjerry-k.github.io/blog/paper/pix2pix/</link>
       <pubDate>Mon, 10 Aug 2020 18:30:46 +0600</pubDate>
       
-      <guid>https://jjerry-k.github.io/blog/pix2pix/</guid>
+      <guid>https://jjerry-k.github.io/blog/paper/pix2pix/</guid>
       <description>Image-to-Image Translation with Conditional Adversarial Networks Author: Phillip Isola, Jun-Yan Zhu, Tinghui Zhou, Alexei A.</description>
     </item>
     
     <item>
       <title>Neptune...? 은 또 뭐여..</title>
-      <link>https://jjerry-k.github.io/blog/neptune/</link>
+      <link>https://jjerry-k.github.io/blog/tech/python/neptune/</link>
       <pubDate>Thu, 23 Jul 2020 18:30:46 +0600</pubDate>
       
-      <guid>https://jjerry-k.github.io/blog/neptune/</guid>
+      <guid>https://jjerry-k.github.io/blog/tech/python/neptune/</guid>
       <description>오늘은 neptune.ai 라는 툴을 소개시켜 드리려 합니다.
 Jupyter는 아는데&amp;hellip;. Neptune은 또 뭐여&amp;hellip;.</description>
     </item>
     
     <item>
       <title>Netron! Network 구조를 한번 볼까요?</title>
-      <link>https://jjerry-k.github.io/blog/netron/</link>
+      <link>https://jjerry-k.github.io/blog/tech/python/netron/</link>
       <pubDate>Mon, 20 Jul 2020 18:30:46 +0600</pubDate>
       
-      <guid>https://jjerry-k.github.io/blog/netron/</guid>
+      <guid>https://jjerry-k.github.io/blog/tech/python/netron/</guid>
       <description>오늘은 netron 이라는 Tool를 드리려 합니다.
  본 포스팅은 https://github.com/lutzroeder/netron 내용을 이용하여 작성하였습니다.</description>
     </item>
     
     <item>
       <title>NIPA x VScode !</title>
-      <link>https://jjerry-k.github.io/blog/nipa_vscode/</link>
+      <link>https://jjerry-k.github.io/blog/nipa/nipa_vscode/</link>
       <pubDate>Wed, 15 Jul 2020 18:30:46 +0600</pubDate>
       
-      <guid>https://jjerry-k.github.io/blog/nipa_vscode/</guid>
+      <guid>https://jjerry-k.github.io/blog/nipa/nipa_vscode/</guid>
       <description>지금까지 Docker(이하 도커) 세팅 까지 포스팅을 했었습니다.
 Docker 까진 좋은데&amp;hellip;연결을 항상 Terminal 혹은 CMD를 켜서 ssh로 해야하나.</description>
     </item>
     
     <item>
       <title>Colab x VSCode !</title>
-      <link>https://jjerry-k.github.io/blog/colab_vscode/</link>
+      <link>https://jjerry-k.github.io/blog/tech/colab_vscode/</link>
       <pubDate>Mon, 13 Jul 2020 18:30:46 +0600</pubDate>
       
-      <guid>https://jjerry-k.github.io/blog/colab_vscode/</guid>
+      <guid>https://jjerry-k.github.io/blog/tech/colab_vscode/</guid>
       <description>본 포스팅은 Colab on steroids: free GPU instances with SSH access and Visual Studio Code Server 내용을 (많이) 참고하여 작성하였습니다.</description>
     </item>
     
     <item>
       <title>NIPA x Docker !</title>
-      <link>https://jjerry-k.github.io/blog/nipa_docker/</link>
+      <link>https://jjerry-k.github.io/blog/nipa/nipa_docker/</link>
       <pubDate>Sun, 28 Jun 2020 18:30:46 +0600</pubDate>
       
-      <guid>https://jjerry-k.github.io/blog/nipa_docker/</guid>
+      <guid>https://jjerry-k.github.io/blog/nipa/nipa_docker/</guid>
       <description>원래 NIPA GPU 서버를 대여받은 후에 포트 포워딩을 먼저 해줘야 합니다.</description>
     </item>
     
     <item>
       <title>NIPA 컴퓨팅 자원 신청 방법 !</title>
-      <link>https://jjerry-k.github.io/blog/nipa_apply/</link>
+      <link>https://jjerry-k.github.io/blog/nipa/nipa_apply/</link>
       <pubDate>Sat, 27 Jun 2020 18:30:46 +0600</pubDate>
       
-      <guid>https://jjerry-k.github.io/blog/nipa_apply/</guid>
+      <guid>https://jjerry-k.github.io/blog/nipa/nipa_apply/</guid>
       <description>저번 포스팅에 이어 이번엔 NIPA 컴퓨팅 자원 이용 신청에 관한 포스팅을 해보려 합니다!</description>
     </item>
     
     <item>
       <title>NIPA...NIPA가 뭐죠..</title>
-      <link>https://jjerry-k.github.io/blog/nipa_intro/</link>
+      <link>https://jjerry-k.github.io/blog/nipa/nipa_intro/</link>
       <pubDate>Fri, 26 Jun 2020 18:30:46 +0600</pubDate>
       
-      <guid>https://jjerry-k.github.io/blog/nipa_intro/</guid>
+      <guid>https://jjerry-k.github.io/blog/nipa/nipa_intro/</guid>
       <description>요즘 커뮤니티(V-AIS) 에선 NIPA에 대한 얘기가 많이 나옵니다.
 NIPA는 정보통신산업진흥원 의 약자인데 근데 그래서 이게 왜.</description>
     </item>
     
     <item>
       <title>TensorFlow Multi GPU 사용법</title>
-      <link>https://jjerry-k.github.io/blog/tf2_multi_gpu/</link>
+      <link>https://jjerry-k.github.io/blog/tech/deeplearning/tf2_multi_gpu/</link>
       <pubDate>Sun, 14 Jun 2020 18:30:46 +0600</pubDate>
       
-      <guid>https://jjerry-k.github.io/blog/tf2_multi_gpu/</guid>
+      <guid>https://jjerry-k.github.io/blog/tech/deeplearning/tf2_multi_gpu/</guid>
       <description>이번 포스팅은 Multi GPU 시스템에서 Google의 머신러닝 오픈 소스 플랫폼인 TensorFlow사용법에 관한 것입니다!</description>
     </item>
     
     <item>
       <title>Review: DETR</title>
-      <link>https://jjerry-k.github.io/blog/detr/</link>
+      <link>https://jjerry-k.github.io/blog/paper/detr/</link>
       <pubDate>Sat, 13 Jun 2020 18:30:46 +0600</pubDate>
       
-      <guid>https://jjerry-k.github.io/blog/detr/</guid>
+      <guid>https://jjerry-k.github.io/blog/paper/detr/</guid>
       <description>End-to-End Object Detection with Transformers Author: Nicolas Carion, Francisco Massa, Gabriel Synnaeve, Nicolas Usunier, Alexander Kirillov, and Sergey Zagoruyko Date: May 27, 2020 URL: https://ai.</description>
     </item>
     
     <item>
       <title>D-Link ddns 서비스 종료</title>
-      <link>https://jjerry-k.github.io/blog/dlink_ddns/</link>
+      <link>https://jjerry-k.github.io/blog/hobby/dlink_ddns/</link>
       <pubDate>Sun, 31 May 2020 18:30:46 +0600</pubDate>
       
-      <guid>https://jjerry-k.github.io/blog/dlink_ddns/</guid>
+      <guid>https://jjerry-k.github.io/blog/hobby/dlink_ddns/</guid>
       <description>D-Link의 DIR-815L 을 잘 쓰고 있었습니다&amp;hellip;
 라즈베리파이와 연결하여 DDNS 도해놓고..</description>
     </item>
     
     <item>
       <title>Review: ShuffleNetV2</title>
-      <link>https://jjerry-k.github.io/blog/shufflenetv2/</link>
+      <link>https://jjerry-k.github.io/blog/paper/shufflenetv2/</link>
       <pubDate>Sat, 09 May 2020 18:30:46 +0600</pubDate>
       
-      <guid>https://jjerry-k.github.io/blog/shufflenetv2/</guid>
+      <guid>https://jjerry-k.github.io/blog/paper/shufflenetv2/</guid>
       <description>ShuffleNet V2: Practical Guidelines for Efficient CNN Architecture Design Author: Ningning Ma, Xiangyu Zhang, Hai-Tao Zheng, Jian Sun</description>
     </item>
     
     <item>
       <title>Review: ResNeXt</title>
-      <link>https://jjerry-k.github.io/blog/resnext/</link>
+      <link>https://jjerry-k.github.io/blog/paper/resnext/</link>
       <pubDate>Fri, 08 May 2020 18:30:46 +0600</pubDate>
       
-      <guid>https://jjerry-k.github.io/blog/resnext/</guid>
+      <guid>https://jjerry-k.github.io/blog/paper/resnext/</guid>
       <description>Aggregated Residual Transformations for Deep Neural Networks Author: Saining Xie, Ross Girshick, Piotr Dollár, Zhuowen Tu, Kaiming He</description>
     </item>
     
     <item>
       <title>Review: ShuffleNetV1</title>
-      <link>https://jjerry-k.github.io/blog/shufflenetv1/</link>
+      <link>https://jjerry-k.github.io/blog/paper/shufflenetv1/</link>
       <pubDate>Thu, 07 May 2020 18:30:46 +0600</pubDate>
       
-      <guid>https://jjerry-k.github.io/blog/shufflenetv1/</guid>
+      <guid>https://jjerry-k.github.io/blog/paper/shufflenetv1/</guid>
       <description>ShuffleNet: An Extremely Efficient Convolutional Neural Network for Mobile Devices Author: Xiangyu Zhang, Xinyu Zhou, Mengxiao Lin, Jian Sun</description>
     </item>
     
     <item>
       <title>Review: CutMix</title>
-      <link>https://jjerry-k.github.io/blog/cutmix/</link>
+      <link>https://jjerry-k.github.io/blog/paper/cutmix/</link>
       <pubDate>Wed, 06 May 2020 18:30:46 +0600</pubDate>
       
-      <guid>https://jjerry-k.github.io/blog/cutmix/</guid>
+      <guid>https://jjerry-k.github.io/blog/paper/cutmix/</guid>
       <description>CutMix: Regularization Strategy to Train Strong Classifiers with Localizable Features Author: Sangdoo Yun, Dongyoon Han, Seong Joon Oh, Sanghyuk Chun, Junsuk Choe, Youngjoon Yoo</description>
     </item>
     
     <item>
       <title>개인적인 도커 파일</title>
-      <link>https://jjerry-k.github.io/blog/dockerfile/</link>
+      <link>https://jjerry-k.github.io/blog/personal/_dockerfile/</link>
       <pubDate>Tue, 05 May 2020 18:30:46 +0600</pubDate>
       
-      <guid>https://jjerry-k.github.io/blog/dockerfile/</guid>
+      <guid>https://jjerry-k.github.io/blog/personal/_dockerfile/</guid>
       <description>지극히 개인이 사용하기 위한 Dockerfile   환경을 만들 때마다 추가될 예정입니다.</description>
     </item>
     
     <item>
       <title>Review: EfficientNet</title>
-      <link>https://jjerry-k.github.io/blog/efficientnet/</link>
+      <link>https://jjerry-k.github.io/blog/paper/efficientnet/</link>
       <pubDate>Sat, 02 May 2020 18:30:46 +0600</pubDate>
       
-      <guid>https://jjerry-k.github.io/blog/efficientnet/</guid>
+      <guid>https://jjerry-k.github.io/blog/paper/efficientnet/</guid>
       <description>EfficientNet: Rethinking Model Scaling for Convolutional Neural Networks Author: Mingxing Tan, Quoc V.</description>
     </item>
     
     <item>
       <title>Review: CBAM</title>
-      <link>https://jjerry-k.github.io/blog/cbam/</link>
+      <link>https://jjerry-k.github.io/blog/paper/cbam/</link>
       <pubDate>Thu, 30 Apr 2020 18:30:46 +0600</pubDate>
       
-      <guid>https://jjerry-k.github.io/blog/cbam/</guid>
+      <guid>https://jjerry-k.github.io/blog/paper/cbam/</guid>
       <description>CBAM: Convolutional Block Attention Module Author: Sanghyun Woo, Jongchan Park, Joon-Young Lee, In So Kweon</description>
     </item>
     
     <item>
       <title>Review: BAM</title>
-      <link>https://jjerry-k.github.io/blog/bam/</link>
+      <link>https://jjerry-k.github.io/blog/paper/bam/</link>
       <pubDate>Wed, 29 Apr 2020 18:30:46 +0600</pubDate>
       
-      <guid>https://jjerry-k.github.io/blog/bam/</guid>
+      <guid>https://jjerry-k.github.io/blog/paper/bam/</guid>
       <description>BAM: Bottleneck Attention Module Author: Jongchan Park, Sanghyun Woo, Joon-Young Lee, In So Kweon</description>
     </item>
     
     <item>
       <title>Review: MobileNet V3</title>
-      <link>https://jjerry-k.github.io/blog/mobilenetv3/</link>
+      <link>https://jjerry-k.github.io/blog/paper/mobilenetv3/</link>
       <pubDate>Tue, 28 Apr 2020 18:30:46 +0600</pubDate>
       
-      <guid>https://jjerry-k.github.io/blog/mobilenetv3/</guid>
+      <guid>https://jjerry-k.github.io/blog/paper/mobilenetv3/</guid>
       <description>Searching for MobileNetV3 Author: Andrew G. Howard, Mark Sandler, Grace Chu, Liang-Chieh Chen, Bo Chen, Mingxing Tan, Weijun Wang, Yukun Zhu, Ruoming Pang, Vijay Vasudevan, Quoc V.</description>
     </item>
     
     <item>
       <title>Review: MobileNet V2</title>
-      <link>https://jjerry-k.github.io/blog/mobilenetv2/</link>
+      <link>https://jjerry-k.github.io/blog/paper/mobilenetv2/</link>
       <pubDate>Mon, 27 Apr 2020 18:30:46 +0600</pubDate>
       
-      <guid>https://jjerry-k.github.io/blog/mobilenetv2/</guid>
+      <guid>https://jjerry-k.github.io/blog/paper/mobilenetv2/</guid>
       <description>MobileNetV2: Inverted Residuals and Linear Bottlenecks Author: Mark Sandler, Andrew G.</description>
     </item>
     
     <item>
       <title>개인적인 맥북 세팅법</title>
-      <link>https://jjerry-k.github.io/blog/macbook_setup/</link>
+      <link>https://jjerry-k.github.io/blog/personal/macbook_setup/</link>
       <pubDate>Sun, 26 Apr 2020 18:30:46 +0600</pubDate>
       
-      <guid>https://jjerry-k.github.io/blog/macbook_setup/</guid>
+      <guid>https://jjerry-k.github.io/blog/personal/macbook_setup/</guid>
       <description>After MacOS Install 1. Install applications  Kakao Talk Between Snap  Add Terminal shortcut   Speedtest Magnet MenuBar Stats  Add MenuBar Stats Plugins Manager https://www.</description>
     </item>
     
     <item>
       <title>Raspberry pi 4 에 Transmission 세팅하기</title>
-      <link>https://jjerry-k.github.io/blog/rpi_transmission/</link>
+      <link>https://jjerry-k.github.io/blog/hobby/rpi_transmission/</link>
       <pubDate>Mon, 20 Apr 2020 18:30:46 +0600</pubDate>
       
-      <guid>https://jjerry-k.github.io/blog/rpi_transmission/</guid>
+      <guid>https://jjerry-k.github.io/blog/hobby/rpi_transmission/</guid>
       <description>Raspberry pi 4 &amp;amp; Transmission Container  1. Docker Install curl -fsSL get.</description>
     </item>
     
     <item>
       <title>Google Coral USB 사용기</title>
-      <link>https://jjerry-k.github.io/blog/coral/</link>
+      <link>https://jjerry-k.github.io/blog/hobby/coral/</link>
       <pubDate>Tue, 31 Mar 2020 18:30:46 +0600</pubDate>
       
-      <guid>https://jjerry-k.github.io/blog/coral/</guid>
+      <guid>https://jjerry-k.github.io/blog/hobby/coral/</guid>
       <description>Raspberry pi 4 &amp;amp; Google Coral USB Accelerator 평소에 라즈베리파이 4를 NAS로 사용하고 있었습니다.</description>
     </item>
     
     <item>
       <title>Review: StarGAN v2</title>
-      <link>https://jjerry-k.github.io/blog/starganv2/</link>
+      <link>https://jjerry-k.github.io/blog/paper/starganv2/</link>
       <pubDate>Wed, 04 Mar 2020 18:30:46 +0600</pubDate>
       
-      <guid>https://jjerry-k.github.io/blog/starganv2/</guid>
+      <guid>https://jjerry-k.github.io/blog/paper/starganv2/</guid>
       <description>StarGAN v2: Diverse Image Synthessis for Multiple Domains Author: Yunjey Choi, Youngjung Uh, Jaejun Yoo, Jung-Woo Ha</description>
     </item>
     
     <item>
       <title>Review: StarGAN v1</title>
-      <link>https://jjerry-k.github.io/blog/starganv1/</link>
+      <link>https://jjerry-k.github.io/blog/paper/starganv1/</link>
       <pubDate>Mon, 02 Mar 2020 18:30:46 +0600</pubDate>
       
-      <guid>https://jjerry-k.github.io/blog/starganv1/</guid>
+      <guid>https://jjerry-k.github.io/blog/paper/starganv1/</guid>
       <description>StarGAN: Unified Generative Adversarial Networks for Multi-Domain Image-to-Image Translation Author: Yunjey Choi, Youngjung Uh, Jaejun Yoo, Jung-Woo Ha</description>
     </item>
     
     <item>
       <title>About Weights &amp; Biases - (1)</title>
-      <link>https://jjerry-k.github.io/blog/wandb01/</link>
+      <link>https://jjerry-k.github.io/blog/tech/python/wandb_01/</link>
       <pubDate>Sun, 01 Mar 2020 18:30:46 +0600</pubDate>
       
-      <guid>https://jjerry-k.github.io/blog/wandb01/</guid>
+      <guid>https://jjerry-k.github.io/blog/tech/python/wandb_01/</guid>
       <description>이번 포스팅에선 Weights &amp;amp; Biases 라는 Tool 을 소개드리려 합니다.</description>
     </item>
     
     <item>
       <title>Review: MobileNet V1</title>
-      <link>https://jjerry-k.github.io/blog/mobilenetv1/</link>
+      <link>https://jjerry-k.github.io/blog/paper/mobilenetv1/</link>
       <pubDate>Wed, 26 Feb 2020 18:30:46 +0600</pubDate>
       
-      <guid>https://jjerry-k.github.io/blog/mobilenetv1/</guid>
+      <guid>https://jjerry-k.github.io/blog/paper/mobilenetv1/</guid>
       <description>MobileNets: Efficient Convolutional Neural Networks for Mobile Vision Applications Author: Andrew G.</description>
     </item>
     
     <item>
       <title>Review: Xception</title>
-      <link>https://jjerry-k.github.io/blog/xception/</link>
+      <link>https://jjerry-k.github.io/blog/paper/xception/</link>
       <pubDate>Sun, 16 Feb 2020 18:30:46 +0600</pubDate>
       
-      <guid>https://jjerry-k.github.io/blog/xception/</guid>
+      <guid>https://jjerry-k.github.io/blog/paper/xception/</guid>
       <description>Xception: Deep Learning with Depthwise Separable Convolution Author: Franc¸ois Chollet</description>
     </item>
     
     <item>
       <title>jupyter Lab 에서 단축키 설정하는 방법!</title>
-      <link>https://jjerry-k.github.io/blog/jupyter_shortcut/</link>
+      <link>https://jjerry-k.github.io/blog/tech/python/jupyter_shortcut/</link>
       <pubDate>Sat, 07 Sep 2019 18:30:46 +0600</pubDate>
       
-      <guid>https://jjerry-k.github.io/blog/jupyter_shortcut/</guid>
+      <guid>https://jjerry-k.github.io/blog/tech/python/jupyter_shortcut/</guid>
       <description>파이썬, 딥러닝을 하시는 분들 중 Jupyter 부류를 이용하시는 분들이 꽤 많습니다.</description>
     </item>
     
     <item>
       <title>jupyter (ipython) 여러 커널 사용하기!</title>
-      <link>https://jjerry-k.github.io/blog/multiple_kernel/</link>
+      <link>https://jjerry-k.github.io/blog/tech/python/multiple_kernel/</link>
       <pubDate>Wed, 10 Jul 2019 18:30:46 +0600</pubDate>
       
-      <guid>https://jjerry-k.github.io/blog/multiple_kernel/</guid>
+      <guid>https://jjerry-k.github.io/blog/tech/python/multiple_kernel/</guid>
       <description>Anaconda 를 사용하다보면 여러 가상환경을 만들게 됩니다. (아닐수도 있구요&amp;hellip;)
 그 후에 jupyter 를 사용하시는 분들이라면 대부분 이렇게 사용하실 겁니다.</description>
     </item>
     
     <item>
       <title>Python으로 DICOM 영상을 읽어보자!</title>
-      <link>https://jjerry-k.github.io/blog/dicom/</link>
+      <link>https://jjerry-k.github.io/blog/tech/python/dicom/</link>
       <pubDate>Sat, 06 Jul 2019 18:30:46 +0600</pubDate>
       
-      <guid>https://jjerry-k.github.io/blog/dicom/</guid>
+      <guid>https://jjerry-k.github.io/blog/tech/python/dicom/</guid>
       <description>예~~전에 NIfTI 파일을 load 하는 방법을 올렸었습니다!
 이번에는 Python에서 DICOM 포맷의 데이터를 load 하는 방법에 대한 포스팅을 해보려고 합니다.</description>
     </item>
     
     <item>
       <title>Review: MRI interpolation using Deep Learning</title>
-      <link>https://jjerry-k.github.io/blog/thin/</link>
+      <link>https://jjerry-k.github.io/blog/paper/thin/</link>
       <pubDate>Fri, 05 Jul 2019 18:30:46 +0600</pubDate>
       
-      <guid>https://jjerry-k.github.io/blog/thin/</guid>
+      <guid>https://jjerry-k.github.io/blog/paper/thin/</guid>
       <description>Deep Generative Adversarial Networks for Thin-Section Infant MR Image Reconstruction  Jiaqi Gu1, Zezu Li1, YuanYuan Wans1, 3, Haowei Yang2, Zhongwei Qiao2, and Jinhua Yu1, 3 1School of Information Science and Technology, Fudan University, Shanghai 200433, China</description>
     </item>
     
     <item>
       <title>(개인적으로) 무.조.건 설치하는 Anaconda 패키지</title>
-      <link>https://jjerry-k.github.io/blog/conda_package/</link>
+      <link>https://jjerry-k.github.io/blog/tech/python/conda_package/</link>
       <pubDate>Sun, 30 Jun 2019 18:30:46 +0600</pubDate>
       
-      <guid>https://jjerry-k.github.io/blog/conda_package/</guid>
+      <guid>https://jjerry-k.github.io/blog/tech/python/conda_package/</guid>
       <description>이번 포스팅은 제가 많이 쓰는 패키지들에 대해서 적어보려고 합니다.
 추후에 포맷하고 다시 세팅할 수도 있으니까&amp;hellip;.</description>
     </item>
     
     <item>
       <title>Seaborn Tutorial Part 1-A</title>
-      <link>https://jjerry-k.github.io/blog/part1a/</link>
+      <link>https://jjerry-k.github.io/blog/tech/python/part1a/</link>
       <pubDate>Thu, 09 May 2019 18:30:46 +0600</pubDate>
       
-      <guid>https://jjerry-k.github.io/blog/part1a/</guid>
+      <guid>https://jjerry-k.github.io/blog/tech/python/part1a/</guid>
       <description>Index  Index  A. Visualizing statistical relationships  Relating variables with scatter plots Emphasizing continuity with line plots  Aggregation and representing uncertainty Plotting subsets of data with semantic mappings Plotting with date data   Showing multiple relationships with facets      A.</description>
     </item>
     
     <item>
       <title>맥북 Atom 완벽 제거</title>
-      <link>https://jjerry-k.github.io/blog/macbook_auto_start/</link>
+      <link>https://jjerry-k.github.io/blog/etc/macbook_auto_start/</link>
       <pubDate>Sun, 14 Apr 2019 18:30:46 +0600</pubDate>
       
-      <guid>https://jjerry-k.github.io/blog/macbook_auto_start/</guid>
+      <guid>https://jjerry-k.github.io/blog/etc/macbook_auto_start/</guid>
       <description>안녕하세요! Jerry 입니다!
 오늘은 .. Atom 에디터를 완벽히 지우는 법에 대해 간단 포스팅을 하려고 합니다.</description>
     </item>
     
     <item>
       <title>Review: YOLO</title>
-      <link>https://jjerry-k.github.io/blog/yolo/</link>
+      <link>https://jjerry-k.github.io/blog/paper/yolo/</link>
       <pubDate>Fri, 29 Mar 2019 18:30:46 +0600</pubDate>
       
-      <guid>https://jjerry-k.github.io/blog/yolo/</guid>
+      <guid>https://jjerry-k.github.io/blog/paper/yolo/</guid>
       <description>You Only Look Once: Unified, Real-Time, Object detection   편의상 bounding box -&amp;gt; bbox</description>
     </item>
     
     <item>
       <title>첫 기계식 키보드 !</title>
-      <link>https://jjerry-k.github.io/blog/keyboard/</link>
+      <link>https://jjerry-k.github.io/blog/hobby/keyboard/</link>
       <pubDate>Fri, 01 Feb 2019 18:30:46 +0600</pubDate>
       
-      <guid>https://jjerry-k.github.io/blog/keyboard/</guid>
+      <guid>https://jjerry-k.github.io/blog/hobby/keyboard/</guid>
       <description>늦었지만 키보드 자랑&amp;hellip;
 바밀로 저소음흑축 108키 입니다.
 넘나 영롱하다&amp;hellip;
@@ -769,30 +759,30 @@ NIPA는 정보통신산업진흥원 의 약자인데 근데 그래서 이게 왜
     
     <item>
       <title>Python으로 NIfTI 영상을 읽어보자!</title>
-      <link>https://jjerry-k.github.io/blog/nifti/</link>
+      <link>https://jjerry-k.github.io/blog/tech/python/nifti/</link>
       <pubDate>Wed, 23 Jan 2019 18:30:46 +0600</pubDate>
       
-      <guid>https://jjerry-k.github.io/blog/nifti/</guid>
+      <guid>https://jjerry-k.github.io/blog/tech/python/nifti/</guid>
       <description>거의 한달 반&amp;hellip;만에 글을 씁니다..!
 이번에는 Python에서 NIfTI 포맷의 데이터를 load 하는 방법에 대한 포스팅을 해보려고 합니다.</description>
     </item>
     
     <item>
       <title>scp를 이용해서 파일 or 디렉토리 복사하기!</title>
-      <link>https://jjerry-k.github.io/blog/scp/</link>
+      <link>https://jjerry-k.github.io/blog/tech/scp/</link>
       <pubDate>Sat, 08 Dec 2018 18:30:46 +0600</pubDate>
       
-      <guid>https://jjerry-k.github.io/blog/scp/</guid>
+      <guid>https://jjerry-k.github.io/blog/tech/scp/</guid>
       <description>대부분이 그렇겠지만 딥러닝, 머신러닝 하시는 분들은 우분투 서버를 이용합니다.
 물론 저도 그렇구요.</description>
     </item>
     
     <item>
       <title>Anaconda를 이용하여 TensorFlow 설치하기!</title>
-      <link>https://jjerry-k.github.io/blog/anaconda_setting/</link>
+      <link>https://jjerry-k.github.io/blog/tech/python/anaconda_setting/</link>
       <pubDate>Sun, 18 Nov 2018 18:30:46 +0600</pubDate>
       
-      <guid>https://jjerry-k.github.io/blog/anaconda_setting/</guid>
+      <guid>https://jjerry-k.github.io/blog/tech/python/anaconda_setting/</guid>
       <description>안녕하세요!
 오늘은 TensorFlow 설치 방법을 간단하게 알려드리려고 합니다.
 CPU와 GPU 중에서도 GPU 버전 설치에 대해 알려드릴거에요!</description>
@@ -800,58 +790,58 @@ CPU와 GPU 중에서도 GPU 버전 설치에 대해 알려드릴거에요!</desc
     
     <item>
       <title>Mac Terminal Customizing</title>
-      <link>https://jjerry-k.github.io/blog/terminal/</link>
+      <link>https://jjerry-k.github.io/blog/personal/terminal/</link>
       <pubDate>Wed, 07 Nov 2018 18:30:46 +0600</pubDate>
       
-      <guid>https://jjerry-k.github.io/blog/terminal/</guid>
+      <guid>https://jjerry-k.github.io/blog/personal/terminal/</guid>
       <description>저는 터미널을 마음대로 바꾸는걸 좋아합니다.
 기본 터미널을 대체할 앱이 있긴하지만 추가적으로 설치하는걸 안좋아해서.</description>
     </item>
     
     <item>
       <title>Jekyll Blog</title>
-      <link>https://jjerry-k.github.io/blog/gitblog/</link>
+      <link>https://jjerry-k.github.io/blog/tech/blog/gitblog/</link>
       <pubDate>Wed, 24 Oct 2018 18:30:46 +0600</pubDate>
       
-      <guid>https://jjerry-k.github.io/blog/gitblog/</guid>
+      <guid>https://jjerry-k.github.io/blog/tech/blog/gitblog/</guid>
       <description>안녕하세요! Jerry 입니다.
 요즘 깃헙으로 블로그를 하려고 하시는 분이 많은데요!</description>
     </item>
     
     <item>
       <title>Anaconda 간단하게 사용하기!</title>
-      <link>https://jjerry-k.github.io/blog/anaconda/</link>
+      <link>https://jjerry-k.github.io/blog/tech/python/anaconda/</link>
       <pubDate>Tue, 23 Oct 2018 18:30:46 +0600</pubDate>
       
-      <guid>https://jjerry-k.github.io/blog/anaconda/</guid>
+      <guid>https://jjerry-k.github.io/blog/tech/python/anaconda/</guid>
       <description>저번 Python 설치 포스팅에서 pyenv로 설치 하는 법을 포스팅 했었습니다.</description>
     </item>
     
     <item>
       <title>Markdown 사용법</title>
-      <link>https://jjerry-k.github.io/blog/markdown/</link>
+      <link>https://jjerry-k.github.io/blog/tech/blog/markdown/</link>
       <pubDate>Fri, 19 Oct 2018 18:30:46 +0600</pubDate>
       
-      <guid>https://jjerry-k.github.io/blog/markdown/</guid>
+      <guid>https://jjerry-k.github.io/blog/tech/blog/markdown/</guid>
       <description>Markdown은 2004년 존그루버에 의해 만들어졌으며 쉽게 쓰고 읽을 수 있으며 HTML로 변환이 가능한 텍스트 기반의 마크업언어입니다.</description>
     </item>
     
     <item>
       <title>Python 3.6 에서 이 경고 보기 싫어요..</title>
-      <link>https://jjerry-k.github.io/blog/warning/</link>
+      <link>https://jjerry-k.github.io/blog/tech/python/python_warning/</link>
       <pubDate>Fri, 19 Oct 2018 18:30:46 +0600</pubDate>
       
-      <guid>https://jjerry-k.github.io/blog/warning/</guid>
+      <guid>https://jjerry-k.github.io/blog/tech/python/python_warning/</guid>
       <description>안녕하세요! Jerry 입니다!
 어제 pip 로 설치하지 말라구요!? 라는 포스팅을 했죠?</description>
     </item>
     
     <item>
       <title>pip 로 설치하지 말라구요!?</title>
-      <link>https://jjerry-k.github.io/blog/condavspip/</link>
+      <link>https://jjerry-k.github.io/blog/tech/python/condavspip/</link>
       <pubDate>Thu, 18 Oct 2018 18:30:46 +0600</pubDate>
       
-      <guid>https://jjerry-k.github.io/blog/condavspip/</guid>
+      <guid>https://jjerry-k.github.io/blog/tech/python/condavspip/</guid>
       <description>오늘 갑자기 당황스러운 포스팅을 봤습니다.
 출처 : https://www.anaconda.com/blog/developer-blog/tensorflow-in-anaconda/
 내용을 보니 pip 로 설치하는것 보다 conda를 이용하면 좋은 점이 두 가지가 있다고 합니다.</description>
@@ -859,95 +849,95 @@ CPU와 GPU 중에서도 GPU 버전 설치에 대해 알려드릴거에요!</desc
     
     <item>
       <title>GPU를 골라서 써보자!</title>
-      <link>https://jjerry-k.github.io/blog/gpu_masking/</link>
+      <link>https://jjerry-k.github.io/blog/tech/deeplearning/gpu_masking/</link>
       <pubDate>Wed, 10 Oct 2018 18:30:46 +0600</pubDate>
       
-      <guid>https://jjerry-k.github.io/blog/gpu_masking/</guid>
+      <guid>https://jjerry-k.github.io/blog/tech/deeplearning/gpu_masking/</guid>
       <description>현재 저는 하나의 GPU 서버를 가지고 여러 명이 Deep Learning 을 돌려야 합니다.</description>
     </item>
     
     <item>
       <title>Python Installation for mac</title>
-      <link>https://jjerry-k.github.io/blog/python4mac/</link>
+      <link>https://jjerry-k.github.io/blog/hobby/python4mac/</link>
       <pubDate>Thu, 27 Sep 2018 18:30:46 +0600</pubDate>
       
-      <guid>https://jjerry-k.github.io/blog/python4mac/</guid>
+      <guid>https://jjerry-k.github.io/blog/hobby/python4mac/</guid>
       <description># brew 설치. /usr/bin/ruby -e &amp;#34;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&amp;#34; # wget 설치.</description>
     </item>
     
     <item>
       <title>Object Detection API</title>
-      <link>https://jjerry-k.github.io/blog/tfod/</link>
+      <link>https://jjerry-k.github.io/blog/tech/deeplearning/tfod/</link>
       <pubDate>Wed, 12 Sep 2018 18:30:46 +0600</pubDate>
       
-      <guid>https://jjerry-k.github.io/blog/tfod/</guid>
+      <guid>https://jjerry-k.github.io/blog/tech/deeplearning/tfod/</guid>
       <description>이번에 V.ais에서 TensorFlow Object Detection API 사용 매뉴얼을 작성해봤습니다.
 https://github.com/V-AIS/tensorflow</description>
     </item>
     
     <item>
       <title>휴가</title>
-      <link>https://jjerry-k.github.io/blog/vacation/</link>
+      <link>https://jjerry-k.github.io/blog/personal/vacation/</link>
       <pubDate>Fri, 07 Sep 2018 18:30:46 +0600</pubDate>
       
-      <guid>https://jjerry-k.github.io/blog/vacation/</guid>
+      <guid>https://jjerry-k.github.io/blog/personal/vacation/</guid>
       <description>약 두 달정도 달려온 챌린지가 끝나고 처음으로 휴가를 얻었습니다.
 일단은 이번 주 쉬고 다음 주부터 다시 연구 시작.</description>
     </item>
     
     <item>
       <title>LSTM 예제 코드</title>
-      <link>https://jjerry-k.github.io/blog/lstm/</link>
+      <link>https://jjerry-k.github.io/blog/tech/deeplearning/lstm/</link>
       <pubDate>Thu, 16 Aug 2018 18:30:46 +0600</pubDate>
       
-      <guid>https://jjerry-k.github.io/blog/lstm/</guid>
+      <guid>https://jjerry-k.github.io/blog/tech/deeplearning/lstm/</guid>
       <description>TensorFlow LSTM 예제 코드 여기저기서 TensorFlow LSTM 코드를 찾다가 예제를 제가 보기 편하게 작성햇습니다.</description>
     </item>
     
     <item>
       <title>라즈베리파이로 미니 PC 만들기!</title>
-      <link>https://jjerry-k.github.io/blog/raspberry-mini-pc/</link>
+      <link>https://jjerry-k.github.io/blog/hobby/raspberry_mini_pc/</link>
       <pubDate>Tue, 10 Jul 2018 18:30:46 +0600</pubDate>
       
-      <guid>https://jjerry-k.github.io/blog/raspberry-mini-pc/</guid>
+      <guid>https://jjerry-k.github.io/blog/hobby/raspberry_mini_pc/</guid>
       <description>근래에 라즈베리파이로 미니 PC를 만들었습니다!
 그래서 만드는 과정에 대해 글을 써보려고 합니다!</description>
     </item>
     
     <item>
       <title>데스크탑 조립기</title>
-      <link>https://jjerry-k.github.io/blog/desktop/</link>
+      <link>https://jjerry-k.github.io/blog/hobby/build_desktop/</link>
       <pubDate>Fri, 04 Aug 2017 18:30:46 +0600</pubDate>
       
-      <guid>https://jjerry-k.github.io/blog/desktop/</guid>
+      <guid>https://jjerry-k.github.io/blog/hobby/build_desktop/</guid>
       <description>Building Desktop 학부생 연구원으로 연구실에서 공부와 연구를 하고 있지만..
 개인용 데스크탑이 없어서 노트북이 굉장히 고생을 많이 했습니다.</description>
     </item>
     
     <item>
       <title>Ubuntu CUDA &amp; Cudnn 설치하기</title>
-      <link>https://jjerry-k.github.io/blog/cuda/</link>
+      <link>https://jjerry-k.github.io/blog/legacy/setup_cuda/</link>
       <pubDate>Thu, 08 Sep 2016 18:30:46 +0600</pubDate>
       
-      <guid>https://jjerry-k.github.io/blog/cuda/</guid>
+      <guid>https://jjerry-k.github.io/blog/legacy/setup_cuda/</guid>
       <description>환경 구축&amp;hellip;. Deep Learning을 하는데 GPU를 사용해야하니 CUDA와 cuDNN을 설치하기로 하죠.</description>
     </item>
     
     <item>
       <title>Ubuntu 한글 설정</title>
-      <link>https://jjerry-k.github.io/blog/setting/</link>
+      <link>https://jjerry-k.github.io/blog/legacy/setting/</link>
       <pubDate>Sat, 20 Aug 2016 18:30:46 +0600</pubDate>
       
-      <guid>https://jjerry-k.github.io/blog/setting/</guid>
+      <guid>https://jjerry-k.github.io/blog/legacy/setting/</guid>
       <description>우분투를 설치를 했으나!!!! 한글 키보드를 설정을 해야합니다. 그럼 시작해볼까요. (이번에도 사진 촤라라락.</description>
     </item>
     
     <item>
       <title>Windows 10 &amp; Ubuntu 16.04 듀얼부팅</title>
-      <link>https://jjerry-k.github.io/blog/dualboot/</link>
+      <link>https://jjerry-k.github.io/blog/legacy/dualboot/</link>
       <pubDate>Tue, 16 Aug 2016 18:30:46 +0600</pubDate>
       
-      <guid>https://jjerry-k.github.io/blog/dualboot/</guid>
+      <guid>https://jjerry-k.github.io/blog/legacy/dualboot/</guid>
       <description>Deep Learning을 하기 위해 windows를 사용할 수도 있겠지만&amp;hellip;
 저는 Ubuntu를 사용하기로 했습니다.</description>
     </item>

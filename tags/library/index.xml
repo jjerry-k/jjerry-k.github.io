@@ -9,10 +9,10 @@
     <lastBuildDate>Wed, 08 May 2024 22:34:26 +0900</lastBuildDate><atom:link href="https://jjerry-k.github.io/tags/library/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>About Ray</title>
-      <link>https://jjerry-k.github.io/blog/ray_01/</link>
+      <link>https://jjerry-k.github.io/blog/tech/python/ray_01/</link>
       <pubDate>Wed, 08 May 2024 22:34:26 +0900</pubDate>
       
-      <guid>https://jjerry-k.github.io/blog/ray_01/</guid>
+      <guid>https://jjerry-k.github.io/blog/tech/python/ray_01/</guid>
       <description>Multiprocessing, Distributed applications&amp;hellip;등을 좀 찾다가 RAY라는 것을 보았습니다.
 이거슨..무엇일까&amp;hellip;
 찾아보니 Python 에서 이를 쉽게 할 수있도록 해주는 패키지 입니다.</description>
@@ -20,64 +20,64 @@
     
     <item>
       <title>Python Collections</title>
-      <link>https://jjerry-k.github.io/blog/python_collections/</link>
+      <link>https://jjerry-k.github.io/blog/tech/python/python_collections/</link>
       <pubDate>Mon, 03 Apr 2023 21:43:03 +0900</pubDate>
       
-      <guid>https://jjerry-k.github.io/blog/python_collections/</guid>
+      <guid>https://jjerry-k.github.io/blog/tech/python/python_collections/</guid>
       <description>Python은 collections라는 표준 라이브러리를 제공하여, 리스트, 튜플, 딕셔너리 등과 같은 내장 자료형보다 더 풍부한 데이터 구조를 지원합니다.</description>
     </item>
     
     <item>
       <title>Python Functools</title>
-      <link>https://jjerry-k.github.io/blog/python_functools/</link>
+      <link>https://jjerry-k.github.io/blog/tech/python/python_functools/</link>
       <pubDate>Sat, 01 Apr 2023 01:33:21 +0900</pubDate>
       
-      <guid>https://jjerry-k.github.io/blog/python_functools/</guid>
+      <guid>https://jjerry-k.github.io/blog/tech/python/python_functools/</guid>
       <description>Python의 functools 모듈은 함수형 프로그래밍에 대한 일부 기능을 제공합니다. 이 모듈에는 여러 가지 유용한 함수들이 포함되어 있으며, 주로 고차 함수와 함수형 프로그래밍에 사용됩니다!</description>
     </item>
     
     <item>
       <title>Python Webtool</title>
-      <link>https://jjerry-k.github.io/blog/python_webtool/</link>
+      <link>https://jjerry-k.github.io/blog/tech/python/python_webtool/</link>
       <pubDate>Sat, 01 Apr 2023 01:10:40 +0900</pubDate>
       
-      <guid>https://jjerry-k.github.io/blog/python_webtool/</guid>
+      <guid>https://jjerry-k.github.io/blog/tech/python/python_webtool/</guid>
       <description>인공지능 모델을 만들고 나면 모델을 사용 해볼 수 있는 웹 앱을 만들곤 합니다.</description>
     </item>
     
     <item>
       <title>Python argparse</title>
-      <link>https://jjerry-k.github.io/blog/python_argument/</link>
+      <link>https://jjerry-k.github.io/blog/tech/python/python_argument/</link>
       <pubDate>Sun, 19 Dec 2021 21:03:27 +0900</pubDate>
       
-      <guid>https://jjerry-k.github.io/blog/python_argument/</guid>
+      <guid>https://jjerry-k.github.io/blog/tech/python/python_argument/</guid>
       <description>Python을 처음 접했을때 스크립트를 작성하고 python ~~~.py 이런 식으로 실행했습니다.</description>
     </item>
     
     <item>
       <title>Python tqdm</title>
-      <link>https://jjerry-k.github.io/blog/python_tqdm/</link>
+      <link>https://jjerry-k.github.io/blog/tech/python/python_tqdm/</link>
       <pubDate>Fri, 10 Dec 2021 00:05:33 +0900</pubDate>
       
-      <guid>https://jjerry-k.github.io/blog/python_tqdm/</guid>
+      <guid>https://jjerry-k.github.io/blog/tech/python/python_tqdm/</guid>
       <description>Python으로 이런 저런 코드를 작성하다 보면 Progress bar가 필요한 경우가 있습니다.</description>
     </item>
     
     <item>
       <title>Python itertools</title>
-      <link>https://jjerry-k.github.io/blog/python_itertools/</link>
+      <link>https://jjerry-k.github.io/blog/tech/python/python_itertools/</link>
       <pubDate>Thu, 09 Dec 2021 00:43:06 +0900</pubDate>
       
-      <guid>https://jjerry-k.github.io/blog/python_itertools/</guid>
+      <guid>https://jjerry-k.github.io/blog/tech/python/python_itertools/</guid>
       <description>Python 표준 라이브러리 중 하나인 itertools 사용법을 간단히 알아보려 합니다.</description>
     </item>
     
     <item>
       <title>Python hashlib</title>
-      <link>https://jjerry-k.github.io/blog/python_hash/</link>
+      <link>https://jjerry-k.github.io/blog/tech/python/python_hash/</link>
       <pubDate>Wed, 10 Feb 2021 00:46:48 +0900</pubDate>
       
-      <guid>https://jjerry-k.github.io/blog/python_hash/</guid>
+      <guid>https://jjerry-k.github.io/blog/tech/python/python_hash/</guid>
       <description>Python 표준 라이브러리 중 하나인 hashlib 사용법을 간단히 알아보려 합니다.</description>
     </item>
     

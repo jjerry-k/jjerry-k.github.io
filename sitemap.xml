@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://jjerry-k.github.io/blog/ray_01/</loc>
+    <loc>https://jjerry-k.github.io/blog/tech/python/ray_01/</loc>
     <lastmod>2024-05-08T22:34:26+09:00</lastmod>
   </url><url>
     <loc>https://jjerry-k.github.io/blog/</loc>
@@ -11,13 +11,13 @@
     <loc>https://jjerry-k.github.io/categories/</loc>
     <lastmod>2024-05-08T22:34:26+09:00</lastmod>
   </url><url>
+    <loc>https://jjerry-k.github.io/categories/development/</loc>
+    <lastmod>2024-05-08T22:34:26+09:00</lastmod>
+  </url><url>
     <loc>https://jjerry-k.github.io/</loc>
     <lastmod>2024-05-08T22:34:26+09:00</lastmod>
   </url><url>
     <loc>https://jjerry-k.github.io/tags/library/</loc>
-    <lastmod>2024-05-08T22:34:26+09:00</lastmod>
-  </url><url>
-    <loc>https://jjerry-k.github.io/categories/python/</loc>
     <lastmod>2024-05-08T22:34:26+09:00</lastmod>
   </url><url>
     <loc>https://jjerry-k.github.io/tags/</loc>
@@ -26,7 +26,7 @@
     <loc>https://jjerry-k.github.io/tags/mongo-db-atlas/</loc>
     <lastmod>2024-02-20T23:00:34+09:00</lastmod>
   </url><url>
-    <loc>https://jjerry-k.github.io/blog/atlas_local_02/</loc>
+    <loc>https://jjerry-k.github.io/blog/tech/database/atlas_local_02/</loc>
     <lastmod>2024-02-20T23:00:34+09:00</lastmod>
   </url><url>
     <loc>https://jjerry-k.github.io/categories/programming/</loc>
@@ -35,7 +35,7 @@
     <loc>https://jjerry-k.github.io/tags/vector-search/</loc>
     <lastmod>2024-02-20T23:00:34+09:00</lastmod>
   </url><url>
-    <loc>https://jjerry-k.github.io/blog/atlas_local_01/</loc>
+    <loc>https://jjerry-k.github.io/blog/tech/database/atlas_local_01/</loc>
     <lastmod>2024-01-25T20:36:29+09:00</lastmod>
   </url><url>
     <loc>https://jjerry-k.github.io/categories/deeplearning/</loc>
@@ -44,7 +44,7 @@
     <loc>https://jjerry-k.github.io/tags/deploy/</loc>
     <lastmod>2023-12-04T22:49:39+09:00</lastmod>
   </url><url>
-    <loc>https://jjerry-k.github.io/blog/triton01/</loc>
+    <loc>https://jjerry-k.github.io/blog/tech/triton_01/</loc>
     <lastmod>2023-12-04T22:49:39+09:00</lastmod>
   </url><url>
     <loc>https://jjerry-k.github.io/categories/blog/</loc>
@@ -53,19 +53,22 @@
     <loc>https://jjerry-k.github.io/tags/small-talk/</loc>
     <lastmod>2023-11-14T23:55:41+09:00</lastmod>
   </url><url>
-    <loc>https://jjerry-k.github.io/blog/restart/</loc>
+    <loc>https://jjerry-k.github.io/blog/personal/restart/</loc>
     <lastmod>2023-11-14T23:55:41+09:00</lastmod>
   </url><url>
-    <loc>https://jjerry-k.github.io/blog/python_collections/</loc>
+    <loc>https://jjerry-k.github.io/categories/python/</loc>
     <lastmod>2023-04-03T21:43:03+09:00</lastmod>
   </url><url>
-    <loc>https://jjerry-k.github.io/blog/python_functools/</loc>
+    <loc>https://jjerry-k.github.io/blog/tech/python/python_collections/</loc>
+    <lastmod>2023-04-03T21:43:03+09:00</lastmod>
+  </url><url>
+    <loc>https://jjerry-k.github.io/blog/tech/python/python_functools/</loc>
     <lastmod>2023-04-01T01:33:21+09:00</lastmod>
   </url><url>
-    <loc>https://jjerry-k.github.io/blog/python_webtool/</loc>
+    <loc>https://jjerry-k.github.io/blog/tech/python/python_webtool/</loc>
     <lastmod>2023-04-01T01:10:40+09:00</lastmod>
   </url><url>
-    <loc>https://jjerry-k.github.io/blog/python_argument/</loc>
+    <loc>https://jjerry-k.github.io/blog/tech/python/python_argument/</loc>
     <lastmod>2021-12-19T21:03:27+09:00</lastmod>
   </url><url>
     <loc>https://jjerry-k.github.io/tags/community/</loc>
@@ -74,235 +77,235 @@
     <loc>https://jjerry-k.github.io/categories/living/</loc>
     <lastmod>2021-12-14T21:31:55+09:00</lastmod>
   </url><url>
-    <loc>https://jjerry-k.github.io/blog/discord/</loc>
+    <loc>https://jjerry-k.github.io/blog/hobby/discord/</loc>
     <lastmod>2021-12-14T21:31:55+09:00</lastmod>
   </url><url>
-    <loc>https://jjerry-k.github.io/blog/python_tqdm/</loc>
+    <loc>https://jjerry-k.github.io/blog/tech/python/python_tqdm/</loc>
     <lastmod>2021-12-10T00:05:33+09:00</lastmod>
   </url><url>
-    <loc>https://jjerry-k.github.io/blog/python_itertools/</loc>
+    <loc>https://jjerry-k.github.io/blog/tech/python/python_itertools/</loc>
     <lastmod>2021-12-09T00:43:06+09:00</lastmod>
   </url><url>
-    <loc>https://jjerry-k.github.io/blog/streamlit/</loc>
+    <loc>https://jjerry-k.github.io/blog/tech/python/streamlit/</loc>
     <lastmod>2021-08-08T23:05:38+09:00</lastmod>
   </url><url>
     <loc>https://jjerry-k.github.io/tags/tools/</loc>
     <lastmod>2021-08-08T23:05:38+09:00</lastmod>
   </url><url>
-    <loc>https://jjerry-k.github.io/blog/mediapipe_6/</loc>
+    <loc>https://jjerry-k.github.io/blog/tech/python/mediapipe_06/</loc>
     <lastmod>2021-06-21T00:06:14+09:00</lastmod>
   </url><url>
-    <loc>https://jjerry-k.github.io/blog/mediapipe_5/</loc>
+    <loc>https://jjerry-k.github.io/blog/tech/python/mediapipe_05/</loc>
     <lastmod>2021-06-20T23:06:14+09:00</lastmod>
   </url><url>
-    <loc>https://jjerry-k.github.io/blog/codeserver/</loc>
+    <loc>https://jjerry-k.github.io/blog/tech/codeserver/</loc>
+    <lastmod>2021-04-15T23:47:36+09:00</lastmod>
+  </url><url>
+    <loc>https://jjerry-k.github.io/categories/tech/</loc>
     <lastmod>2021-04-15T23:47:36+09:00</lastmod>
   </url><url>
     <loc>https://jjerry-k.github.io/tags/hardware/</loc>
     <lastmod>2021-03-29T23:19:59+09:00</lastmod>
   </url><url>
-    <loc>https://jjerry-k.github.io/blog/smartmirror2/</loc>
+    <loc>https://jjerry-k.github.io/blog/hobby/smartmirror_02/</loc>
     <lastmod>2021-03-29T23:19:59+09:00</lastmod>
   </url><url>
-    <loc>https://jjerry-k.github.io/blog/smartmirror/</loc>
+    <loc>https://jjerry-k.github.io/blog/hobby/smartmirror_01/</loc>
     <lastmod>2021-03-28T01:41:53+09:00</lastmod>
   </url><url>
-    <loc>https://jjerry-k.github.io/blog/tf_callback/</loc>
+    <loc>https://jjerry-k.github.io/blog/tech/deeplearning/tf_callback/</loc>
     <lastmod>2021-02-22T19:32:50+09:00</lastmod>
   </url><url>
     <loc>https://jjerry-k.github.io/tags/tensorflow/</loc>
     <lastmod>2021-02-22T19:32:50+09:00</lastmod>
   </url><url>
-    <loc>https://jjerry-k.github.io/blog/silicon_mac/</loc>
+    <loc>https://jjerry-k.github.io/blog/hobby/silicon_mac/</loc>
     <lastmod>2021-02-10T20:43:43+09:00</lastmod>
   </url><url>
     <loc>https://jjerry-k.github.io/tags/review/</loc>
     <lastmod>2021-02-10T20:43:43+09:00</lastmod>
   </url><url>
-    <loc>https://jjerry-k.github.io/blog/python_hash/</loc>
+    <loc>https://jjerry-k.github.io/blog/tech/python/python_hash/</loc>
     <lastmod>2021-02-10T00:46:48+09:00</lastmod>
   </url><url>
-    <loc>https://jjerry-k.github.io/blog/configuration/</loc>
+    <loc>https://jjerry-k.github.io/blog/tech/python/configuration/</loc>
     <lastmod>2021-01-31T20:56:18+09:00</lastmod>
   </url><url>
     <loc>https://jjerry-k.github.io/tags/usage/</loc>
     <lastmod>2021-01-31T20:56:18+09:00</lastmod>
   </url><url>
-    <loc>https://jjerry-k.github.io/blog/daily_commit/</loc>
+    <loc>https://jjerry-k.github.io/blog/personal/daily_commit/</loc>
     <lastmod>2021-01-30T02:27:00+09:00</lastmod>
   </url><url>
     <loc>https://jjerry-k.github.io/tags/github/</loc>
     <lastmod>2021-01-30T02:27:00+09:00</lastmod>
   </url><url>
-    <loc>https://jjerry-k.github.io/blog/mediapipe_4/</loc>
+    <loc>https://jjerry-k.github.io/blog/tech/python/mediapipe_04/</loc>
     <lastmod>2021-01-12T01:14:36+09:00</lastmod>
-  </url><url>
-    <loc>https://jjerry-k.github.io/blog/kakaobot/</loc>
-    <lastmod>2021-01-08T01:00:34+09:00</lastmod>
   </url><url>
     <loc>https://jjerry-k.github.io/tags/jupyter/</loc>
     <lastmod>2020-12-08T00:24:48+09:00</lastmod>
   </url><url>
-    <loc>https://jjerry-k.github.io/blog/jupyter_image_viewer/</loc>
+    <loc>https://jjerry-k.github.io/blog/tech/python/jupyter_image_viewer/</loc>
     <lastmod>2020-12-08T00:24:48+09:00</lastmod>
   </url><url>
-    <loc>https://jjerry-k.github.io/blog/talk/</loc>
+    <loc>https://jjerry-k.github.io/blog/hobby/talk/</loc>
     <lastmod>2020-11-30T22:37:59+09:00</lastmod>
   </url><url>
-    <loc>https://jjerry-k.github.io/blog/tensorflow_model_load/</loc>
+    <loc>https://jjerry-k.github.io/blog/tech/deeplearning/tensorflow_model_load/</loc>
     <lastmod>2020-11-28T11:45:10+09:00</lastmod>
   </url><url>
     <loc>https://jjerry-k.github.io/tags/hugo/</loc>
     <lastmod>2020-11-23T20:41:18+09:00</lastmod>
   </url><url>
-    <loc>https://jjerry-k.github.io/blog/hugo_blog/</loc>
+    <loc>https://jjerry-k.github.io/blog/tech/blog/hugo_blog/</loc>
     <lastmod>2020-11-23T20:41:18+09:00</lastmod>
   </url><url>
     <loc>https://jjerry-k.github.io/about/</loc>
     <lastmod>2020-11-19T13:49:23+06:00</lastmod>
   </url><url>
-    <loc>https://jjerry-k.github.io/blog/codns/</loc>
+    <loc>https://jjerry-k.github.io/blog/personal/codns/</loc>
     <lastmod>2020-11-16T18:30:46+06:00</lastmod>
   </url><url>
-    <loc>https://jjerry-k.github.io/blog/mediapipe_3/</loc>
+    <loc>https://jjerry-k.github.io/blog/tech/python/mediapipe_03/</loc>
     <lastmod>2020-11-15T18:30:46+06:00</lastmod>
   </url><url>
-    <loc>https://jjerry-k.github.io/blog/mediapipe_2/</loc>
+    <loc>https://jjerry-k.github.io/blog/tech/python/mediapipe_02/</loc>
     <lastmod>2020-11-14T18:30:46+06:00</lastmod>
   </url><url>
-    <loc>https://jjerry-k.github.io/blog/mediapipe_1/</loc>
+    <loc>https://jjerry-k.github.io/blog/tech/python/mediapipe_01/</loc>
     <lastmod>2020-11-13T18:30:46+06:00</lastmod>
   </url><url>
     <loc>https://jjerry-k.github.io/tags/docker/</loc>
     <lastmod>2020-10-24T18:30:46+06:00</lastmod>
   </url><url>
-    <loc>https://jjerry-k.github.io/blog/docker_usage_01/</loc>
+    <loc>https://jjerry-k.github.io/blog/tech/docker_usage_01/</loc>
     <lastmod>2020-10-24T18:30:46+06:00</lastmod>
   </url><url>
     <loc>https://jjerry-k.github.io/categories/ubuntu/</loc>
     <lastmod>2020-10-24T18:30:46+06:00</lastmod>
   </url><url>
-    <loc>https://jjerry-k.github.io/blog/seed/</loc>
+    <loc>https://jjerry-k.github.io/blog/tech/deeplearning/seed/</loc>
     <lastmod>2020-09-12T18:30:46+06:00</lastmod>
   </url><url>
-    <loc>https://jjerry-k.github.io/blog/docker/</loc>
+    <loc>https://jjerry-k.github.io/blog/tech/docker_command/</loc>
     <lastmod>2020-08-30T18:30:46+06:00</lastmod>
   </url><url>
-    <loc>https://jjerry-k.github.io/blog/wandb03/</loc>
+    <loc>https://jjerry-k.github.io/blog/tech/python/wandb_03/</loc>
     <lastmod>2020-08-28T18:30:46+06:00</lastmod>
   </url><url>
-    <loc>https://jjerry-k.github.io/blog/wandb02/</loc>
+    <loc>https://jjerry-k.github.io/blog/tech/python/wandb_02/</loc>
     <lastmod>2020-08-27T18:30:46+06:00</lastmod>
   </url><url>
     <loc>https://jjerry-k.github.io/tags/paper/</loc>
     <lastmod>2020-08-21T18:30:46+06:00</lastmod>
   </url><url>
-    <loc>https://jjerry-k.github.io/blog/paper_roadmap/</loc>
+    <loc>https://jjerry-k.github.io/blog/paper/roadmap/</loc>
     <lastmod>2020-08-21T18:30:46+06:00</lastmod>
   </url><url>
-    <loc>https://jjerry-k.github.io/blog/rapids-cuml/</loc>
+    <loc>https://jjerry-k.github.io/blog/tech/python/rapids-cuml/</loc>
     <lastmod>2020-08-20T18:30:46+06:00</lastmod>
   </url><url>
-    <loc>https://jjerry-k.github.io/blog/rapids/</loc>
+    <loc>https://jjerry-k.github.io/blog/tech/python/rapids/</loc>
     <lastmod>2020-08-19T18:30:46+06:00</lastmod>
   </url><url>
     <loc>https://jjerry-k.github.io/tags/setting/</loc>
     <lastmod>2020-08-16T18:30:46+06:00</lastmod>
   </url><url>
-    <loc>https://jjerry-k.github.io/blog/vimrc/</loc>
+    <loc>https://jjerry-k.github.io/blog/personal/vimrc/</loc>
     <lastmod>2020-08-16T18:30:46+06:00</lastmod>
   </url><url>
-    <loc>https://jjerry-k.github.io/blog/cycle_gan/</loc>
+    <loc>https://jjerry-k.github.io/blog/paper/cycle_gan/</loc>
     <lastmod>2020-08-11T18:30:46+06:00</lastmod>
   </url><url>
-    <loc>https://jjerry-k.github.io/blog/pix2pix/</loc>
+    <loc>https://jjerry-k.github.io/blog/paper/pix2pix/</loc>
     <lastmod>2020-08-10T18:30:46+06:00</lastmod>
   </url><url>
-    <loc>https://jjerry-k.github.io/blog/neptune/</loc>
+    <loc>https://jjerry-k.github.io/blog/tech/python/neptune/</loc>
     <lastmod>2020-07-23T18:30:46+06:00</lastmod>
   </url><url>
-    <loc>https://jjerry-k.github.io/blog/netron/</loc>
+    <loc>https://jjerry-k.github.io/blog/tech/python/netron/</loc>
     <lastmod>2020-07-20T18:30:46+06:00</lastmod>
   </url><url>
-    <loc>https://jjerry-k.github.io/blog/nipa_vscode/</loc>
+    <loc>https://jjerry-k.github.io/blog/nipa/nipa_vscode/</loc>
     <lastmod>2020-07-15T18:30:46+06:00</lastmod>
   </url><url>
-    <loc>https://jjerry-k.github.io/blog/colab_vscode/</loc>
+    <loc>https://jjerry-k.github.io/blog/tech/colab_vscode/</loc>
     <lastmod>2020-07-13T18:30:46+06:00</lastmod>
   </url><url>
-    <loc>https://jjerry-k.github.io/blog/nipa_docker/</loc>
+    <loc>https://jjerry-k.github.io/blog/nipa/nipa_docker/</loc>
     <lastmod>2020-06-28T18:30:46+06:00</lastmod>
   </url><url>
-    <loc>https://jjerry-k.github.io/blog/nipa_apply/</loc>
+    <loc>https://jjerry-k.github.io/blog/nipa/nipa_apply/</loc>
     <lastmod>2020-06-27T18:30:46+06:00</lastmod>
   </url><url>
-    <loc>https://jjerry-k.github.io/blog/nipa_intro/</loc>
+    <loc>https://jjerry-k.github.io/blog/nipa/nipa_intro/</loc>
     <lastmod>2020-06-26T18:30:46+06:00</lastmod>
   </url><url>
-    <loc>https://jjerry-k.github.io/blog/tf2_multi_gpu/</loc>
+    <loc>https://jjerry-k.github.io/blog/tech/deeplearning/tf2_multi_gpu/</loc>
     <lastmod>2020-06-14T18:30:46+06:00</lastmod>
   </url><url>
-    <loc>https://jjerry-k.github.io/blog/detr/</loc>
+    <loc>https://jjerry-k.github.io/blog/paper/detr/</loc>
     <lastmod>2020-06-13T18:30:46+06:00</lastmod>
   </url><url>
-    <loc>https://jjerry-k.github.io/blog/dlink_ddns/</loc>
+    <loc>https://jjerry-k.github.io/blog/hobby/dlink_ddns/</loc>
     <lastmod>2020-05-31T18:30:46+06:00</lastmod>
   </url><url>
-    <loc>https://jjerry-k.github.io/blog/shufflenetv2/</loc>
+    <loc>https://jjerry-k.github.io/blog/paper/shufflenetv2/</loc>
     <lastmod>2020-05-09T18:30:46+06:00</lastmod>
   </url><url>
-    <loc>https://jjerry-k.github.io/blog/resnext/</loc>
+    <loc>https://jjerry-k.github.io/blog/paper/resnext/</loc>
     <lastmod>2020-05-08T18:30:46+06:00</lastmod>
   </url><url>
-    <loc>https://jjerry-k.github.io/blog/shufflenetv1/</loc>
+    <loc>https://jjerry-k.github.io/blog/paper/shufflenetv1/</loc>
     <lastmod>2020-05-07T18:30:46+06:00</lastmod>
   </url><url>
-    <loc>https://jjerry-k.github.io/blog/cutmix/</loc>
+    <loc>https://jjerry-k.github.io/blog/paper/cutmix/</loc>
     <lastmod>2020-05-06T18:30:46+06:00</lastmod>
   </url><url>
-    <loc>https://jjerry-k.github.io/blog/dockerfile/</loc>
+    <loc>https://jjerry-k.github.io/blog/personal/_dockerfile/</loc>
     <lastmod>2020-05-05T18:30:46+06:00</lastmod>
   </url><url>
-    <loc>https://jjerry-k.github.io/blog/efficientnet/</loc>
+    <loc>https://jjerry-k.github.io/blog/paper/efficientnet/</loc>
     <lastmod>2020-05-02T18:30:46+06:00</lastmod>
   </url><url>
-    <loc>https://jjerry-k.github.io/blog/cbam/</loc>
+    <loc>https://jjerry-k.github.io/blog/paper/cbam/</loc>
     <lastmod>2020-04-30T18:30:46+06:00</lastmod>
   </url><url>
-    <loc>https://jjerry-k.github.io/blog/bam/</loc>
+    <loc>https://jjerry-k.github.io/blog/paper/bam/</loc>
     <lastmod>2020-04-29T18:30:46+06:00</lastmod>
   </url><url>
-    <loc>https://jjerry-k.github.io/blog/mobilenetv3/</loc>
+    <loc>https://jjerry-k.github.io/blog/paper/mobilenetv3/</loc>
     <lastmod>2020-04-28T18:30:46+06:00</lastmod>
   </url><url>
-    <loc>https://jjerry-k.github.io/blog/mobilenetv2/</loc>
+    <loc>https://jjerry-k.github.io/blog/paper/mobilenetv2/</loc>
     <lastmod>2020-04-27T18:30:46+06:00</lastmod>
   </url><url>
     <loc>https://jjerry-k.github.io/tags/macbook/</loc>
     <lastmod>2020-04-26T18:30:46+06:00</lastmod>
   </url><url>
-    <loc>https://jjerry-k.github.io/blog/macbook_setup/</loc>
+    <loc>https://jjerry-k.github.io/blog/personal/macbook_setup/</loc>
     <lastmod>2020-04-26T18:30:46+06:00</lastmod>
   </url><url>
-    <loc>https://jjerry-k.github.io/blog/rpi_transmission/</loc>
+    <loc>https://jjerry-k.github.io/blog/hobby/rpi_transmission/</loc>
     <lastmod>2020-04-20T18:30:46+06:00</lastmod>
   </url><url>
-    <loc>https://jjerry-k.github.io/blog/coral/</loc>
+    <loc>https://jjerry-k.github.io/blog/hobby/coral/</loc>
     <lastmod>2020-03-31T18:30:46+06:00</lastmod>
   </url><url>
-    <loc>https://jjerry-k.github.io/blog/starganv2/</loc>
+    <loc>https://jjerry-k.github.io/blog/paper/starganv2/</loc>
     <lastmod>2020-03-04T18:30:46+06:00</lastmod>
   </url><url>
-    <loc>https://jjerry-k.github.io/blog/starganv1/</loc>
+    <loc>https://jjerry-k.github.io/blog/paper/starganv1/</loc>
     <lastmod>2020-03-02T18:30:46+06:00</lastmod>
   </url><url>
-    <loc>https://jjerry-k.github.io/blog/wandb01/</loc>
+    <loc>https://jjerry-k.github.io/blog/tech/python/wandb_01/</loc>
     <lastmod>2020-03-01T18:30:46+06:00</lastmod>
   </url><url>
-    <loc>https://jjerry-k.github.io/blog/mobilenetv1/</loc>
+    <loc>https://jjerry-k.github.io/blog/paper/mobilenetv1/</loc>
     <lastmod>2020-02-26T18:30:46+06:00</lastmod>
   </url><url>
-    <loc>https://jjerry-k.github.io/blog/xception/</loc>
+    <loc>https://jjerry-k.github.io/blog/paper/xception/</loc>
     <lastmod>2020-02-16T18:30:46+06:00</lastmod>
   </url><url>
     <loc>https://jjerry-k.github.io/contact/</loc>
@@ -311,100 +314,100 @@
     <loc>https://jjerry-k.github.io/search/</loc>
     <lastmod>2019-10-29T13:49:23+06:00</lastmod>
   </url><url>
-    <loc>https://jjerry-k.github.io/blog/jupyter_shortcut/</loc>
+    <loc>https://jjerry-k.github.io/blog/tech/python/jupyter_shortcut/</loc>
     <lastmod>2019-09-07T18:30:46+06:00</lastmod>
   </url><url>
-    <loc>https://jjerry-k.github.io/blog/multiple_kernel/</loc>
+    <loc>https://jjerry-k.github.io/blog/tech/python/multiple_kernel/</loc>
     <lastmod>2019-07-10T18:30:46+06:00</lastmod>
   </url><url>
-    <loc>https://jjerry-k.github.io/blog/dicom/</loc>
+    <loc>https://jjerry-k.github.io/blog/tech/python/dicom/</loc>
     <lastmod>2019-07-06T18:30:46+06:00</lastmod>
   </url><url>
-    <loc>https://jjerry-k.github.io/blog/thin/</loc>
+    <loc>https://jjerry-k.github.io/blog/paper/thin/</loc>
     <lastmod>2019-07-05T18:30:46+06:00</lastmod>
   </url><url>
-    <loc>https://jjerry-k.github.io/blog/conda_package/</loc>
+    <loc>https://jjerry-k.github.io/blog/tech/python/conda_package/</loc>
     <lastmod>2019-06-30T18:30:46+06:00</lastmod>
   </url><url>
-    <loc>https://jjerry-k.github.io/blog/part1a/</loc>
+    <loc>https://jjerry-k.github.io/blog/tech/python/part1a/</loc>
     <lastmod>2019-05-09T18:30:46+06:00</lastmod>
   </url><url>
-    <loc>https://jjerry-k.github.io/blog/macbook_auto_start/</loc>
+    <loc>https://jjerry-k.github.io/blog/etc/macbook_auto_start/</loc>
     <lastmod>2019-04-14T18:30:46+06:00</lastmod>
   </url><url>
-    <loc>https://jjerry-k.github.io/blog/yolo/</loc>
+    <loc>https://jjerry-k.github.io/blog/paper/yolo/</loc>
     <lastmod>2019-03-29T18:30:46+06:00</lastmod>
   </url><url>
-    <loc>https://jjerry-k.github.io/blog/keyboard/</loc>
+    <loc>https://jjerry-k.github.io/blog/hobby/keyboard/</loc>
     <lastmod>2019-02-01T18:30:46+06:00</lastmod>
   </url><url>
-    <loc>https://jjerry-k.github.io/blog/nifti/</loc>
+    <loc>https://jjerry-k.github.io/blog/tech/python/nifti/</loc>
     <lastmod>2019-01-23T18:30:46+06:00</lastmod>
   </url><url>
     <loc>https://jjerry-k.github.io/tags/command/</loc>
     <lastmod>2018-12-08T18:30:46+06:00</lastmod>
   </url><url>
-    <loc>https://jjerry-k.github.io/blog/scp/</loc>
+    <loc>https://jjerry-k.github.io/blog/tech/scp/</loc>
     <lastmod>2018-12-08T18:30:46+06:00</lastmod>
   </url><url>
-    <loc>https://jjerry-k.github.io/blog/anaconda_setting/</loc>
+    <loc>https://jjerry-k.github.io/blog/tech/python/anaconda_setting/</loc>
     <lastmod>2018-11-18T18:30:46+06:00</lastmod>
   </url><url>
-    <loc>https://jjerry-k.github.io/blog/terminal/</loc>
+    <loc>https://jjerry-k.github.io/blog/personal/terminal/</loc>
     <lastmod>2018-11-07T18:30:46+06:00</lastmod>
   </url><url>
     <loc>https://jjerry-k.github.io/tags/jekyll/</loc>
     <lastmod>2018-10-24T18:30:46+06:00</lastmod>
   </url><url>
-    <loc>https://jjerry-k.github.io/blog/gitblog/</loc>
+    <loc>https://jjerry-k.github.io/blog/tech/blog/gitblog/</loc>
     <lastmod>2018-10-24T18:30:46+06:00</lastmod>
   </url><url>
-    <loc>https://jjerry-k.github.io/blog/anaconda/</loc>
+    <loc>https://jjerry-k.github.io/blog/tech/python/anaconda/</loc>
     <lastmod>2018-10-23T18:30:46+06:00</lastmod>
   </url><url>
     <loc>https://jjerry-k.github.io/tags/markdown/</loc>
     <lastmod>2018-10-19T18:30:46+06:00</lastmod>
   </url><url>
-    <loc>https://jjerry-k.github.io/blog/markdown/</loc>
+    <loc>https://jjerry-k.github.io/blog/tech/blog/markdown/</loc>
     <lastmod>2018-10-19T18:30:46+06:00</lastmod>
   </url><url>
-    <loc>https://jjerry-k.github.io/blog/warning/</loc>
+    <loc>https://jjerry-k.github.io/blog/tech/python/python_warning/</loc>
     <lastmod>2018-10-19T18:30:46+06:00</lastmod>
   </url><url>
-    <loc>https://jjerry-k.github.io/blog/condavspip/</loc>
+    <loc>https://jjerry-k.github.io/blog/tech/python/condavspip/</loc>
     <lastmod>2018-10-18T18:30:46+06:00</lastmod>
   </url><url>
-    <loc>https://jjerry-k.github.io/blog/gpu_masking/</loc>
+    <loc>https://jjerry-k.github.io/blog/tech/deeplearning/gpu_masking/</loc>
     <lastmod>2018-10-10T18:30:46+06:00</lastmod>
   </url><url>
-    <loc>https://jjerry-k.github.io/blog/python4mac/</loc>
+    <loc>https://jjerry-k.github.io/blog/hobby/python4mac/</loc>
     <lastmod>2018-09-27T18:30:46+06:00</lastmod>
   </url><url>
-    <loc>https://jjerry-k.github.io/blog/tfod/</loc>
+    <loc>https://jjerry-k.github.io/blog/tech/deeplearning/tfod/</loc>
     <lastmod>2018-09-12T18:30:46+06:00</lastmod>
   </url><url>
     <loc>https://jjerry-k.github.io/tags/daily/</loc>
     <lastmod>2018-09-07T18:30:46+06:00</lastmod>
   </url><url>
-    <loc>https://jjerry-k.github.io/blog/vacation/</loc>
+    <loc>https://jjerry-k.github.io/blog/personal/vacation/</loc>
     <lastmod>2018-09-07T18:30:46+06:00</lastmod>
   </url><url>
-    <loc>https://jjerry-k.github.io/blog/lstm/</loc>
+    <loc>https://jjerry-k.github.io/blog/tech/deeplearning/lstm/</loc>
     <lastmod>2018-08-16T18:30:46+06:00</lastmod>
   </url><url>
-    <loc>https://jjerry-k.github.io/blog/raspberry-mini-pc/</loc>
+    <loc>https://jjerry-k.github.io/blog/hobby/raspberry_mini_pc/</loc>
     <lastmod>2018-07-10T18:30:46+06:00</lastmod>
   </url><url>
-    <loc>https://jjerry-k.github.io/blog/desktop/</loc>
+    <loc>https://jjerry-k.github.io/blog/hobby/build_desktop/</loc>
     <lastmod>2017-08-04T18:30:46+06:00</lastmod>
   </url><url>
-    <loc>https://jjerry-k.github.io/blog/cuda/</loc>
+    <loc>https://jjerry-k.github.io/blog/legacy/setup_cuda/</loc>
     <lastmod>2016-09-08T18:30:46+06:00</lastmod>
   </url><url>
-    <loc>https://jjerry-k.github.io/blog/setting/</loc>
+    <loc>https://jjerry-k.github.io/blog/legacy/setting/</loc>
     <lastmod>2016-08-20T18:30:46+06:00</lastmod>
   </url><url>
-    <loc>https://jjerry-k.github.io/blog/dualboot/</loc>
+    <loc>https://jjerry-k.github.io/blog/legacy/dualboot/</loc>
     <lastmod>2016-08-16T18:30:46+06:00</lastmod>
   </url>
 </urlset>
