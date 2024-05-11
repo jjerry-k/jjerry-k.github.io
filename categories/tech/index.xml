@@ -6,7 +6,16 @@
     <description>Recent content in Tech on Jerry&#39;s DevLog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 20 Feb 2024 23:00:34 +0900</lastBuildDate><atom:link href="https://jjerry-k.github.io/categories/tech/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 10 May 2024 21:01:19 +0900</lastBuildDate><atom:link href="https://jjerry-k.github.io/categories/tech/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>About Github Actions</title>
+      <link>https://jjerry-k.github.io/blog/tech/github_actions/</link>
+      <pubDate>Fri, 10 May 2024 21:01:19 +0900</pubDate>
+      
+      <guid>https://jjerry-k.github.io/blog/tech/github_actions/</guid>
+      <description>GitHub Actions는 GitHub에서 제공하는 지속적인 통합(Continuous Integration, CI) 및 지속적인 배포(Continuous Deployment, CD) 서비스입니다.</description>
+    </item>
+    
     <item>
       <title>MongoDB Atlas 입문기 - (2)</title>
       <link>https://jjerry-k.github.io/blog/tech/database/atlas_local_02/</link>
