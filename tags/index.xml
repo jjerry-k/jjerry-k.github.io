@@ -44,11 +44,11 @@
     </item>
     
     <item>
-      <title>Deploy</title>
-      <link>https://jjerry-k.github.io/tags/deploy/</link>
+      <title>Tools</title>
+      <link>https://jjerry-k.github.io/tags/tools/</link>
       <pubDate>Mon, 04 Dec 2023 22:49:39 +0900</pubDate>
       
-      <guid>https://jjerry-k.github.io/tags/deploy/</guid>
+      <guid>https://jjerry-k.github.io/tags/tools/</guid>
       <description></description>
     </item>
     
@@ -67,15 +67,6 @@
       <pubDate>Tue, 14 Dec 2021 21:31:55 +0900</pubDate>
       
       <guid>https://jjerry-k.github.io/tags/community/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Tools</title>
-      <link>https://jjerry-k.github.io/tags/tools/</link>
-      <pubDate>Sun, 08 Aug 2021 23:05:38 +0900</pubDate>
-      
-      <guid>https://jjerry-k.github.io/tags/tools/</guid>
       <description></description>
     </item>
     
@@ -125,6 +116,15 @@
     </item>
     
     <item>
+      <title>Blog</title>
+      <link>https://jjerry-k.github.io/tags/blog/</link>
+      <pubDate>Mon, 23 Nov 2020 20:41:18 +0900</pubDate>
+      
+      <guid>https://jjerry-k.github.io/tags/blog/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Hugo</title>
       <link>https://jjerry-k.github.io/tags/hugo/</link>
       <pubDate>Mon, 23 Nov 2020 20:41:18 +0900</pubDate>
@@ -170,11 +170,11 @@
     </item>
     
     <item>
-      <title>Command</title>
-      <link>https://jjerry-k.github.io/tags/command/</link>
+      <title>Shell</title>
+      <link>https://jjerry-k.github.io/tags/shell/</link>
       <pubDate>Sat, 08 Dec 2018 18:30:46 +0600</pubDate>
       
-      <guid>https://jjerry-k.github.io/tags/command/</guid>
+      <guid>https://jjerry-k.github.io/tags/shell/</guid>
       <description></description>
     </item>
     
@@ -193,15 +193,6 @@
       <pubDate>Fri, 19 Oct 2018 18:30:46 +0600</pubDate>
       
       <guid>https://jjerry-k.github.io/tags/markdown/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Daily</title>
-      <link>https://jjerry-k.github.io/tags/daily/</link>
-      <pubDate>Fri, 07 Sep 2018 18:30:46 +0600</pubDate>
-      
-      <guid>https://jjerry-k.github.io/tags/daily/</guid>
       <description></description>
     </item>
     

@@ -6,7 +6,16 @@
     <description>Recent content in Tools on Jerry&#39;s DevLog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 08 Aug 2021 23:05:38 +0900</lastBuildDate><atom:link href="https://jjerry-k.github.io/tags/tools/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 04 Dec 2023 22:49:39 +0900</lastBuildDate><atom:link href="https://jjerry-k.github.io/tags/tools/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Triton Inference Server 입문기 - (1)</title>
+      <link>https://jjerry-k.github.io/blog/tech/deeplearning/triton_01/</link>
+      <pubDate>Mon, 04 Dec 2023 22:49:39 +0900</pubDate>
+      
+      <guid>https://jjerry-k.github.io/blog/tech/deeplearning/triton_01/</guid>
+      <description>Triton (Triton Inference Server) ? Triton이라고 많이 부르는 Triton Inference Server는 다양한 딥 러닝 프레임워크(PyTorch, TensorFlow, ONNX 등)로 개발된 딥러닝 모델을 배포하고 추론(Inference)을 위한 고성능의 오픈 소스 추론 서버 솔루션으로 많은 곳에서 사용되고 있습니다.</description>
+    </item>
+    
     <item>
       <title>ML/DL Prototype using Streamlit</title>
       <link>https://jjerry-k.github.io/blog/tech/python/streamlit/</link>
@@ -37,10 +46,10 @@
     
     <item>
       <title>IPad 에서 VSCode 사용하기</title>
-      <link>https://jjerry-k.github.io/blog/tech/codeserver/</link>
+      <link>https://jjerry-k.github.io/blog/tech/tips/codeserver/</link>
       <pubDate>Thu, 15 Apr 2021 23:47:36 +0900</pubDate>
       
-      <guid>https://jjerry-k.github.io/blog/tech/codeserver/</guid>
+      <guid>https://jjerry-k.github.io/blog/tech/tips/codeserver/</guid>
       <description>근래에 12인치 맥북과 아이패드 프로 9.7인치를 중고로 팔았습니다.
 그리고 아이패드 프로 11인치 1세대를 구매했죠&amp;hellip;(포기할 수 없었다.</description>
     </item>
@@ -151,10 +160,10 @@ Docker 까진 좋은데&amp;hellip;연결을 항상 Terminal 혹은 CMD를 켜�
     
     <item>
       <title>Colab x VSCode !</title>
-      <link>https://jjerry-k.github.io/blog/tech/colab_vscode/</link>
+      <link>https://jjerry-k.github.io/blog/tech/tips/colab_vscode/</link>
       <pubDate>Mon, 13 Jul 2020 18:30:46 +0600</pubDate>
       
-      <guid>https://jjerry-k.github.io/blog/tech/colab_vscode/</guid>
+      <guid>https://jjerry-k.github.io/blog/tech/tips/colab_vscode/</guid>
       <description>본 포스팅은 Colab on steroids: free GPU instances with SSH access and Visual Studio Code Server 내용을 (많이) 참고하여 작성하였습니다.</description>
     </item>
     

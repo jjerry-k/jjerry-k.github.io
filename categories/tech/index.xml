@@ -9,10 +9,10 @@
     <lastBuildDate>Fri, 10 May 2024 21:01:19 +0900</lastBuildDate><atom:link href="https://jjerry-k.github.io/categories/tech/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>About Github Actions</title>
-      <link>https://jjerry-k.github.io/blog/tech/github_actions/</link>
+      <link>https://jjerry-k.github.io/blog/tech/github/actions/</link>
       <pubDate>Fri, 10 May 2024 21:01:19 +0900</pubDate>
       
-      <guid>https://jjerry-k.github.io/blog/tech/github_actions/</guid>
+      <guid>https://jjerry-k.github.io/blog/tech/github/actions/</guid>
       <description>GitHub Actions는 GitHub에서 제공하는 지속적인 통합(Continuous Integration, CI) 및 지속적인 배포(Continuous Deployment, CD) 서비스입니다.</description>
     </item>
     
@@ -38,30 +38,40 @@
     
     <item>
       <title>IPad 에서 VSCode 사용하기</title>
-      <link>https://jjerry-k.github.io/blog/tech/codeserver/</link>
+      <link>https://jjerry-k.github.io/blog/tech/tips/codeserver/</link>
       <pubDate>Thu, 15 Apr 2021 23:47:36 +0900</pubDate>
       
-      <guid>https://jjerry-k.github.io/blog/tech/codeserver/</guid>
+      <guid>https://jjerry-k.github.io/blog/tech/tips/codeserver/</guid>
       <description>근래에 12인치 맥북과 아이패드 프로 9.7인치를 중고로 팔았습니다.
 그리고 아이패드 프로 11인치 1세대를 구매했죠&amp;hellip;(포기할 수 없었다.</description>
     </item>
     
     <item>
+      <title>Hugo Blog</title>
+      <link>https://jjerry-k.github.io/blog/tech/blog/hugo_blog/</link>
+      <pubDate>Mon, 23 Nov 2020 20:41:18 +0900</pubDate>
+      
+      <guid>https://jjerry-k.github.io/blog/tech/blog/hugo_blog/</guid>
+      <description>이번에 Github Blog를 이전하게 되었습니다!
+기존에는 Jekyll 기반의 블로그를 사용했었는데요.</description>
+    </item>
+    
+    <item>
       <title>Docker Usage (1)</title>
-      <link>https://jjerry-k.github.io/blog/tech/docker_usage_01/</link>
+      <link>https://jjerry-k.github.io/blog/tech/docker/usage_01/</link>
       <pubDate>Sat, 24 Oct 2020 18:30:46 +0600</pubDate>
       
-      <guid>https://jjerry-k.github.io/blog/tech/docker_usage_01/</guid>
+      <guid>https://jjerry-k.github.io/blog/tech/docker/usage_01/</guid>
       <description>Docker 에 대한 설명은 안합니다.
 사용법을 보러 오시는 분이라면 어느 정도 Docker 가 뭔지는 아실테니&amp;hellip;</description>
     </item>
     
     <item>
       <title>자주 사용하는 Docker Command 정리</title>
-      <link>https://jjerry-k.github.io/blog/tech/docker_command/</link>
+      <link>https://jjerry-k.github.io/blog/tech/tips/docker_command/</link>
       <pubDate>Sun, 30 Aug 2020 18:30:46 +0600</pubDate>
       
-      <guid>https://jjerry-k.github.io/blog/tech/docker_command/</guid>
+      <guid>https://jjerry-k.github.io/blog/tech/tips/docker_command/</guid>
       <description># nvidia docker 서비스 시작 sudo service nvidia-docker start # 특정 포트 터널링, 경로 마운트, Docker image:tag 를 이용하여 container 로 실행 docker run -ti -rm -p {호스트포트}:{도커포트} -v {호스트경로}:{도커경로} {IMAGE_NAME:tag} bash # 종료된 Container 삭제 docker rm {CONTAINER_NAEM} # Docker Image 삭제 docker rmi {IMAGE_NAME} # 종료된 Container를 삭제하지 않고 새로운 IMAGE로 생성 docker commit {CONTAINER_NAEM} {IMAGE_NAME:TAG} # Docker container 내에서 jupyter notebook 혹은 jupyter lab을 실행할때 사용되는 커맨드 CUDA_VISIBLE_DEVICES=0 jupyter notebook --ip=0.</description>
     </item>
     
@@ -86,12 +96,31 @@
     
     <item>
       <title>scp를 이용해서 파일 or 디렉토리 복사하기!</title>
-      <link>https://jjerry-k.github.io/blog/tech/scp/</link>
+      <link>https://jjerry-k.github.io/blog/tech/tips/scp/</link>
       <pubDate>Sat, 08 Dec 2018 18:30:46 +0600</pubDate>
       
-      <guid>https://jjerry-k.github.io/blog/tech/scp/</guid>
+      <guid>https://jjerry-k.github.io/blog/tech/tips/scp/</guid>
       <description>대부분이 그렇겠지만 딥러닝, 머신러닝 하시는 분들은 우분투 서버를 이용합니다.
 물론 저도 그렇구요.</description>
+    </item>
+    
+    <item>
+      <title>Jekyll Blog</title>
+      <link>https://jjerry-k.github.io/blog/tech/blog/jekyll_blog/</link>
+      <pubDate>Wed, 24 Oct 2018 18:30:46 +0600</pubDate>
+      
+      <guid>https://jjerry-k.github.io/blog/tech/blog/jekyll_blog/</guid>
+      <description>안녕하세요! Jerry 입니다.
+요즘 깃헙으로 블로그를 하려고 하시는 분이 많은데요!</description>
+    </item>
+    
+    <item>
+      <title>Markdown 사용법</title>
+      <link>https://jjerry-k.github.io/blog/tech/blog/markdown/</link>
+      <pubDate>Fri, 19 Oct 2018 18:30:46 +0600</pubDate>
+      
+      <guid>https://jjerry-k.github.io/blog/tech/blog/markdown/</guid>
+      <description>Markdown은 2004년 존그루버에 의해 만들어졌으며 쉽게 쓰고 읽을 수 있으며 HTML로 변환이 가능한 텍스트 기반의 마크업언어입니다.</description>
     </item>
     
     <item>

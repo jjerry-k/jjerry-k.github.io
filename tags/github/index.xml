@@ -9,10 +9,10 @@
     <lastBuildDate>Fri, 10 May 2024 21:01:19 +0900</lastBuildDate><atom:link href="https://jjerry-k.github.io/tags/github/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>About Github Actions</title>
-      <link>https://jjerry-k.github.io/blog/tech/github_actions/</link>
+      <link>https://jjerry-k.github.io/blog/tech/github/actions/</link>
       <pubDate>Fri, 10 May 2024 21:01:19 +0900</pubDate>
       
-      <guid>https://jjerry-k.github.io/blog/tech/github_actions/</guid>
+      <guid>https://jjerry-k.github.io/blog/tech/github/actions/</guid>
       <description>GitHub Actions는 GitHub에서 제공하는 지속적인 통합(Continuous Integration, CI) 및 지속적인 배포(Continuous Deployment, CD) 서비스입니다.</description>
     </item>
     
