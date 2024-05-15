@@ -2,22 +2,31 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://jjerry-k.github.io/blog/tech/python/onnx/</loc>
+    <lastmod>2024-05-14T10:19:51+09:00</lastmod>
+  </url><url>
+    <loc>https://jjerry-k.github.io/blog/</loc>
+    <lastmod>2024-05-14T10:19:51+09:00</lastmod>
+  </url><url>
+    <loc>https://jjerry-k.github.io/categories/</loc>
+    <lastmod>2024-05-14T10:19:51+09:00</lastmod>
+  </url><url>
+    <loc>https://jjerry-k.github.io/categories/deeplearning/</loc>
+    <lastmod>2024-05-14T10:19:51+09:00</lastmod>
+  </url><url>
+    <loc>https://jjerry-k.github.io/</loc>
+    <lastmod>2024-05-14T10:19:51+09:00</lastmod>
+  </url><url>
+    <loc>https://jjerry-k.github.io/tags/</loc>
+    <lastmod>2024-05-14T10:19:51+09:00</lastmod>
+  </url><url>
+    <loc>https://jjerry-k.github.io/tags/tools/</loc>
+    <lastmod>2024-05-14T10:19:51+09:00</lastmod>
+  </url><url>
     <loc>https://jjerry-k.github.io/blog/tech/github/actions/</loc>
     <lastmod>2024-05-10T21:01:19+09:00</lastmod>
   </url><url>
-    <loc>https://jjerry-k.github.io/blog/</loc>
-    <lastmod>2024-05-10T21:01:19+09:00</lastmod>
-  </url><url>
-    <loc>https://jjerry-k.github.io/categories/</loc>
-    <lastmod>2024-05-10T21:01:19+09:00</lastmod>
-  </url><url>
     <loc>https://jjerry-k.github.io/tags/github/</loc>
-    <lastmod>2024-05-10T21:01:19+09:00</lastmod>
-  </url><url>
-    <loc>https://jjerry-k.github.io/</loc>
-    <lastmod>2024-05-10T21:01:19+09:00</lastmod>
-  </url><url>
-    <loc>https://jjerry-k.github.io/tags/</loc>
     <lastmod>2024-05-10T21:01:19+09:00</lastmod>
   </url><url>
     <loc>https://jjerry-k.github.io/categories/tech/</loc>
@@ -43,12 +52,6 @@
   </url><url>
     <loc>https://jjerry-k.github.io/blog/tech/database/atlas_local_01/</loc>
     <lastmod>2024-01-25T20:36:29+09:00</lastmod>
-  </url><url>
-    <loc>https://jjerry-k.github.io/categories/deeplearning/</loc>
-    <lastmod>2023-12-04T22:49:39+09:00</lastmod>
-  </url><url>
-    <loc>https://jjerry-k.github.io/tags/tools/</loc>
-    <lastmod>2023-12-04T22:49:39+09:00</lastmod>
   </url><url>
     <loc>https://jjerry-k.github.io/blog/tech/deeplearning/triton_01/</loc>
     <lastmod>2023-12-04T22:49:39+09:00</lastmod>
